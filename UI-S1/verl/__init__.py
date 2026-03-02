@@ -12,12 +12,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
 import os
 
-import pkg_resources
+# CRITICAL: Set NCCL and Gloo environment variables BEFORE any torch imports.
+# PyTorch loads and configures these backends at import time.
+# This fixes multi-node initialization hangs on HPE Slingshot / GH200 systems.
+
+# Use hsn0 specifically (primary high-speed network interface)
+os.environ.setdefault("NCCL_SOCKET_IFNAME", "hsn0")
+os.environ.setdefault("GLOO_SOCKET_IFNAME", "hsn0")
+
+# NCCL configuration
+os.environ.setdefault("NCCL_NET", "Socket")  # Force socket transport (bypass AWS-OFI-NCCL plugin)
+os.environ.setdefault("NCCL_IB_DISABLE", "1")  # Disable InfiniBand
+os.environ.setdefault("NCCL_DEBUG", "INFO")  # Enable NCCL debug output
+os.environ.setdefault("NCCL_DEBUG_SUBSYS", "INIT,NET")  # Subsystems to debug
+os.environ.setdefault("NCCL_P2P_DISABLE", "1")  # Disable P2P completely to avoid memory issues
+os.environ.setdefault("NCCL_CROSS_NIC", "2")  # Allow cross-NIC communication (2 = more aggressive)
+os.environ.setdefault("NCCL_SOCKET_NTHREADS", "1")  # Minimal socket threads
+os.environ.setdefault("NCCL_NSOCKS_PERTHREAD", "1")
+os.environ.setdefault("NCCL_SOCKET_FAMILY", "AF_INET")  # Force IPv4 to avoid binding issues
+os.environ.setdefault("NCCL_BUFFSIZE", "8388608")  # 8MB buffer size
+# CRITICAL: Increase NCCL timeout for multi-node FSDP all-gather operations
+# Default 10 min (600s) is too short - increase to 60 min (3600s)
+os.environ.setdefault("NCCL_TIMEOUT", "3600")
+
+import logging
+
+from importlib.metadata import version as get_version, PackageNotFoundError
 from packaging.version import parse as parse_version
-from pkg_resources import DistributionNotFound
 
 from .protocol import DataProto
 from .utils.device import is_npu_available
@@ -50,11 +73,11 @@ if is_npu_available:
     package_name = "transformers"
     required_version_spec = "4.52.4"
     try:
-        installed_version = pkg_resources.get_distribution(package_name).version
+        installed_version = get_version(package_name)
         installed = parse_version(installed_version)
         required = parse_version(required_version_spec)
 
         if not installed >= required:
             raise ValueError(f"{package_name} version >= {required_version_spec} is required on ASCEND NPU, current version is {installed}.")
-    except DistributionNotFound as e:
+    except PackageNotFoundError as e:
         raise ImportError(f"package {package_name} is not installed, please run pip install {package_name}=={required_version_spec}") from e

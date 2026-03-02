@@ -18,6 +18,8 @@ import os
 import time
 from collections import OrderedDict
 
+import torch
+
 from torch.distributed.device_mesh import DeviceMesh
 from torch.distributed.fsdp.api import FullStateDictConfig, ShardedStateDictConfig, StateDictType
 from torch.distributed.fsdp.fully_sharded_data_parallel import FullyShardedDataParallel as FSDP
@@ -269,6 +271,9 @@ class FSDPVLLMShardingManager(BaseShardingManager):
             else:
 
                 def replace_lora_wrapper(k):
+                    # Skip visual encoder params - vLLM doesn't support LoRA for visual parts
+                    if k.startswith("visual.") or k.startswith("model.visual."):
+                        return k
                     stacked_params = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
                     if any([k.endswith(f"{s}.weight") for s in stacked_params]):
                         return k.replace(".weight", ".base_layer.weight")
@@ -280,7 +285,65 @@ class FSDPVLLMShardingManager(BaseShardingManager):
 
         patch_vllm_moe_model_weight_loader(model)
         device = get_device_id()  # used when fsdp2 set cpu_offload_policy
-        loaded_params = model.load_weights(((name, param.to(device, non_blocking=True).full_tensor() if isinstance(param, DTensor) else param) for name, param in updated_params.items()))
+
+        # Detect if NCCL backend lacks allgather_into_tensor_coalesced (e.g. GH200).
+        # We MUST avoid full_tensor() entirely in this case — a failed collective
+        # corrupts NCCL sequence counters, desynchronizing ranks for all subsequent ops.
+        import os
+        import torch.distributed as dist
+        try:
+            from torch.distributed.tensor.placement_types import Shard
+        except ImportError:
+            from torch.distributed._tensor.placement_types import Shard
+
+        _use_manual_allgather = os.environ.get('VERL_MANUAL_ALLGATHER', '').lower() in ('1', 'true')
+        if not _use_manual_allgather and torch.cuda.is_available():
+            _gpu_name = torch.cuda.get_device_name(0)
+            if 'GH200' in _gpu_name or 'GH100' in _gpu_name:
+                _use_manual_allgather = True
+        if _use_manual_allgather:
+            logger.info("Using manual all_gather for FSDP→vLLM weight sync (coalesced allgather unsupported)")
+
+        def _dtensor_to_full(param, device):
+            """Convert DTensor to full tensor. Uses manual all_gather when the
+            NCCL backend doesn't support allgather_into_tensor_coalesced."""
+            param = param.to(device, non_blocking=True)
+            if not _use_manual_allgather:
+                return param.full_tensor()
+            # Manual path: handles uneven sharding via pad-gather-strip
+            local_tensor = param._local_tensor.contiguous()
+            pg = param.device_mesh.get_group()
+            world_size = dist.get_world_size(pg)
+            if world_size <= 1:
+                return local_tensor
+            for placement in param.placements:
+                if isinstance(placement, Shard):
+                    shard_dim = placement.dim
+                    local_size = local_tensor.shape[shard_dim]
+                    # Exchange shard sizes to handle uneven sharding
+                    size_t = torch.tensor([local_size], device=local_tensor.device, dtype=torch.long)
+                    all_sizes = [torch.empty_like(size_t) for _ in range(world_size)]
+                    dist.all_gather(all_sizes, size_t, group=pg)
+                    all_sizes = [s.item() for s in all_sizes]
+                    max_size = max(all_sizes)
+                    # Pad to uniform shape
+                    if local_size < max_size:
+                        pad_shape = list(local_tensor.shape)
+                        pad_shape[shard_dim] = max_size - local_size
+                        local_padded = torch.cat(
+                            [local_tensor, torch.zeros(pad_shape, dtype=local_tensor.dtype, device=local_tensor.device)],
+                            dim=shard_dim)
+                    else:
+                        local_padded = local_tensor
+                    # Gather uniform-sized tensors
+                    gathered = [torch.empty_like(local_padded) for _ in range(world_size)]
+                    dist.all_gather(gathered, local_padded, group=pg)
+                    # Strip padding and concatenate
+                    parts = [g.narrow(shard_dim, 0, all_sizes[i]) for i, g in enumerate(gathered)]
+                    return torch.cat(parts, dim=shard_dim)
+            return local_tensor
+
+        loaded_params = model.load_weights(((name, _dtensor_to_full(param, device) if isinstance(param, DTensor) else param) for name, param in updated_params.items()))
 
         self.base_sync_done = True
         logger.info(f"vLLM load weights, loaded_params: {len(loaded_params) if loaded_params else -1}")

@@ -17,12 +17,12 @@ POINT_DISTANCE_THRESHOLD = 0.04
 
 
 def norm_coordinate(action, width, height):
-    if 'candidate_bbox' in action and len(action['candidate_bbox']) == 4: # fix bug
+    if 'candidate_bbox' in action and action['candidate_bbox'] is not None and len(action['candidate_bbox']) == 4: # fix bug
         x, y, w, h = action['candidate_bbox']
         action['candidate_bbox'] = [[x / width, y / height, w / width, h / height]]
-    if 'coordinate' in action:
+    if 'coordinate' in action and action['coordinate'] is not None:
         action['coordinate'] = [action['coordinate'][0]/width, action['coordinate'][1]/height]
-    if 'coordinate2' in action:
+    if 'coordinate2' in action and action['coordinate2'] is not None:
         action['coordinate2'] = [action['coordinate2'][0]/width, action['coordinate2'][1]/height]
     return action
 
@@ -108,25 +108,42 @@ def check_response_match(pred_action, current_check_pam, width, height, resized_
         return False, False
     elif current_check_pam['action'] == 'system_button':
         if pred_action['action'] == 'system_button':
-            return True, current_check_pam['button'].lower().strip() == pred_action['button'].lower().strip()
+            pred_btn = pred_action.get('button')
+            gt_btn = current_check_pam.get('button')
+            if pred_btn is None or gt_btn is None:
+                return True, False
+            return True, gt_btn.lower().strip() == pred_btn.lower().strip()
         else:
             return False, False
     elif current_check_pam['action'] in ['type', 'answer', 'key']:
         if pred_action['action'] == 'type':
-            return True, check_text(pred_action['text'], current_check_pam['text'], text_retrict=text_retrict)
+            pred_txt = pred_action.get('text')
+            gt_txt = current_check_pam.get('text')
+            if pred_txt is None or gt_txt is None:
+                return True, False
+            return True, check_text(pred_txt, gt_txt, text_retrict=text_retrict)
         else:
             return False, False
     elif current_check_pam['action'] == 'open':
         if pred_action['action'] == 'open':
-            return True, check_text(pred_action['text'], current_check_pam['text'], text_retrict=text_retrict)
+            pred_txt = pred_action.get('text')
+            gt_txt = current_check_pam.get('text')
+            if pred_txt is None or gt_txt is None:
+                return True, False
+            return True, check_text(pred_txt, gt_txt, text_retrict=text_retrict)
         else:
             return False, False
     elif current_check_pam['action'] == 'swipe':
         if pred_action['action'] == 'swipe':
-            if 'direction' in current_check_pam:
+            if 'direction' in current_check_pam and current_check_pam['direction'] is not None:
                 gt_direction = current_check_pam['direction']
-            else:
+            elif current_check_pam.get('coordinate') is not None and current_check_pam.get('coordinate2') is not None:
                 gt_direction = predict_direction(current_check_pam['coordinate'], current_check_pam['coordinate2'])
+            else:
+                return True, False  # Cannot determine ground truth direction
+            # Check if pred_action has valid coordinates for direction prediction
+            if pred_action.get('coordinate') is None or pred_action.get('coordinate2') is None:
+                return True, False  # Type matches but cannot determine predicted direction
             direction = predict_direction(pred_action['coordinate'], pred_action['coordinate2'])
             if gt_direction == 'down':
                 gt_direction = 'up'
@@ -137,7 +154,12 @@ def check_response_match(pred_action, current_check_pam, width, height, resized_
             return False, False
     elif current_check_pam['action'] in ['long_press', 'click']:
         if pred_action['action'] == current_check_pam['action']:
-            return True, check_click(pred_action['coordinate'], current_check_pam.get('candidate_bbox', []), gt_point=current_check_pam['coordinate'])
+            # Check if coordinates are valid
+            pred_coord = pred_action.get('coordinate')
+            gt_coord = current_check_pam.get('coordinate')
+            if pred_coord is None or gt_coord is None:
+                return True, False  # Type matches but cannot compare coordinates
+            return True, check_click(pred_coord, current_check_pam.get('candidate_bbox', []), gt_point=gt_coord)
         else:
             return False, False
     return False, False

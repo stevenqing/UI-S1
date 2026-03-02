@@ -1,0 +1,334 @@
+# GUI-360° Benchmark 工程化解读
+
+## 一、项目概览
+
+GUI-360° 是一个面向**桌面端计算机使用代理（Computer-Using Agents, CUAs）**的大规模数据集与评测套件，由南京大学、Microsoft、浙大-UIUC联合开发。其核心目标是解决桌面GUI智能体领域三个关键瓶颈：真实任务稀缺、缺乏自动化数据采集管道、缺少统一的多任务评测基准。
+
+**关键数字：**
+
+- **120万+** 执行动作步骤（action steps）
+- **13,750** 条成功轨迹（trajectories）用于训练，**3,439** 条用于测试
+- **62,170** 条失败轨迹（可用于强化学习）
+- **210,736** 张截图，**1770万** 个标注的UI元素
+- 覆盖 **Word（41%）、Excel（31.6%）、PowerPoint（27.4%）**
+- 混合 **GUI操作 + API调用** 的动作空间
+
+---
+
+## 二、支持的三大任务
+
+| 任务 | 输入 | 输出 | 工程用途 |
+|------|------|------|----------|
+| **GUI Grounding** | 截图 + 当前步骤的自然语言计划 | 目标元素的屏幕坐标 (x, y) | 训练模型精确定位UI元素 |
+| **Screen Parsing** | 截图（干净，无标注） | 所有可交互控件的列表 `[{name, bbox}]` | 训练屏幕理解/元素检测模型 |
+| **Action Prediction** | 用户指令 + 截图 + 可选a11y信息 | 下一步动作调用（函数+参数+状态） | 训练端到端的GUI Agent |
+
+三个任务**共享同一数据分区**（80% train / 20% test），来自同一批轨迹的不同视角。
+
+---
+
+## 三、数据集结构（工程重点）
+
+### 3.1 顶层目录结构
+
+```
+GUI-360°/
+├── 📦 train/              # 成功轨迹（训练集）
+├── 🧪 test/               # 成功轨迹（测试集）
+├── ❌ fail/               # 失败轨迹（可用于RL/对比学习）
+├── ⚙️ processed_data/     # 按任务处理好的SFT-ready数据
+│   ├── action_prediction_train_resize/        # 纯视觉动作预测
+│   ├── action_prediction_train_resize_a11y/   # 视觉+a11y动作预测
+│   ├── grounding_resize/                      # GUI Grounding
+│   └── screen_parsing_train_resize/           # Screen Parsing
+└── 📄 template/           # Office应用环境模板文件
+```
+
+### 3.2 原始轨迹数据组织
+
+```
+test/  (或 train/)
+├── data/
+│   ├── <domain>/          # word / excel / ppt
+│   │   ├── <category>/    # 任务类别（如formatting, data_entry等）
+│   │   │   └── success/
+│   │   │       └── *.jsonl    # 每条轨迹一个JSONL文件
+└── image/
+    ├── <domain>/
+    │   ├── <category>/
+    │   │   └── success/
+    │   │       └── *.png      # 对应的截图文件
+```
+
+### 3.3 单步执行的JSON Schema（核心数据结构）
+
+每一个执行步骤（step）是一个结构化JSON对象，包含以下关键字段：
+
+```json
+{
+  "execution_id": "word_1_1",        // 唯一执行标识
+  "app_domain": "Word",              // 应用域
+  "request": "将第一行文字加粗",       // 自然语言任务描述
+  "template": "word_template_01",     // 使用的环境模板
+
+  "step_id": 3,                       // 当前步骤索引
+  "total_steps": 7,                   // 总步骤数
+
+  "evaluation": {                     // 自动评估结果
+    "reasoning": "...",
+    "evidence": "...",
+    "sub_scores": [...],
+    "completeness": "success"
+  },
+
+  "step": {
+    "screenshots": {                  // 多视角截图
+      "clean": "path/to/clean.png",           // 干净截图
+      "full_desktop": "path/to/desktop.png",  // 全屏桌面
+      "annotated": "path/to/annotated.png",   // SoM标注版
+      "selected_controls": "path/to/sel.png"  // 选中控件高亮
+    },
+
+    "ui_tree": [                      // UI层级树
+      {
+        "id": "ctrl_001",
+        "name": "Bold",
+        "control_type": "Button",
+        "bbox": [120, 45, 145, 65],   // [x1, y1, x2, y2]
+        "children": [...]
+      }
+    ],
+
+    "control_infos": [                // a11y API提取的控件元数据
+      {
+        "name": "Bold",
+        "type": "Button",
+        "bbox": [120, 45, 145, 65],
+        "semantic_text": "Toggle Bold formatting"
+      }
+    ],
+
+    "observation": "当前文档已打开，光标位于第一行",   // Agent的观察描述
+    "thought": "需要先选中第一行文字，再点击加粗按钮",  // Agent的推理过程
+
+    "action": {                       // 执行的动作
+      "function": "click",            // 函数类型
+      "args": {
+        "x": 132,
+        "y": 55,
+        "button": "left",
+        "double": false
+      },
+      "target_coords": [132, 55],
+      "status": "CONTINUE"            // CONTINUE 或 FINISH
+    }
+  }
+}
+```
+
+### 3.4 动作空间（Action Space）
+
+#### GUI通用动作
+
+| 动作 | 说明 | 参数示例 |
+|------|------|----------|
+| `click` | 鼠标点击 | `(x, y, button, double, modifier)` |
+| `type` | 键盘输入 | `(text, key, position)` |
+| `drag` | 拖拽 | `(x0, y0, x1, y1, button, duration)` |
+| `wheel_mouse_input` | 滚轮 | `(x, y, wheel_distance)` |
+
+#### 应用特定API（通过MCP Server暴露）
+
+| 应用 | API示例 | 说明 |
+|------|---------|------|
+| **Word** | `insert_table`, `select_text`, `set_font`, `save_as` | 文档级语义操作 |
+| **Excel** | `set_cell_value`, `auto_fill`, `reorder_columns`, `table2markdown` | 表格级操作 |
+| **PowerPoint** | `set_background_color`, `save_as` | 幻灯片级操作 |
+
+**工程意义：** 混合动作空间意味着模型需要学会在"精确但通用的GUI操作"和"高效但特定的API调用"之间选择。训练数据中GUI操作占约81%，API操作占约19%。
+
+---
+
+## 四、如何使用这个数据集
+
+### 4.1 直接使用 processed_data 做SFT
+
+`processed_data/` 目录已经将原始轨迹转换为各任务的标准训练格式，**最适合快速上手**：
+
+```python
+# 示例：加载 grounding 数据
+import json
+from pathlib import Path
+
+data_dir = Path("processed_data/grounding_resize/")
+samples = []
+for jsonl_file in data_dir.glob("**/*.jsonl"):
+    with open(jsonl_file) as f:
+        for line in f:
+            samples.append(json.loads(line))
+
+# 每个sample包含:
+# - 截图路径（已resize）
+# - 自然语言指令（Agent的thought）
+# - 目标坐标（ground truth bbox中心点）
+```
+
+#### 两种Action Prediction输入模态
+
+1. **Visual-only** (`action_prediction_train_resize/`):
+   - 输入: 原始截图 + 用户指令
+   - 坐标表示: 绝对像素坐标
+   - 适用于: 训练端到端视觉推理能力
+
+2. **Visual+A11y** (`action_prediction_train_resize_a11y/`):
+   - 输入: 截图 + a11y控件列表（带SoM标注）
+   - 坐标表示: 元素ID + 名称（不需要坐标预测）
+   - 适用于: 降低视觉grounding难度，专注动作语义
+
+### 4.2 从原始轨迹构建自定义数据
+
+如果需要自定义数据处理逻辑，使用 `convertor/` 目录中的工具：
+
+```bash
+# 仓库提供了转换脚本，将原始轨迹转为各任务格式
+cd GUI-360
+python convertor/<task_specific_converter>.py \
+    --input_dir ./train \
+    --output_dir ./my_processed_data
+```
+
+### 4.3 运行评测
+
+```bash
+# GUI Grounding 评测
+python evaluation.py \
+    --root_dir ./test \
+    --type grounding \
+    --model_type gpt \
+    --model_name gpt-4o \
+    --threads 5
+
+# Action Prediction（纯视觉）
+python evaluation.py \
+    --root_dir ./test \
+    --type action_prediction \
+    --model_type qwen2.5_vl_7b \
+    --model_name Qwen/Qwen2.5-VL-7B-Instruct \
+    --api_url http://localhost:19806/v1
+
+# Action Prediction（视觉+A11y）
+python evaluation.py \
+    --root_dir ./test \
+    --type action_prediction_a11y \
+    --model_type gpt \
+    --model_name gpt-4o
+
+# Screen Parsing
+python evaluation.py \
+    --root_dir ./test \
+    --type screen_parsing \
+    --model_type omniparser
+```
+
+### 4.4 利用失败轨迹做RL
+
+`fail/` 目录包含 **62,170条失败轨迹**（1,093,525步），这是一个非常有价值的信号源：
+
+```python
+# 构建 (成功, 失败) 对比对，用于 DPO / RLHF
+success_trajs = load_from("train/")
+fail_trajs = load_from("fail/")
+
+# 按相同 request 配对
+pairs = []
+for s in success_trajs:
+    matching_fails = [f for f in fail_trajs 
+                      if f["request"] == s["request"]]
+    for f in matching_fails:
+        pairs.append({"chosen": s, "rejected": f})
+```
+
+---
+
+## 五、评测指标速览
+
+| 任务 | 指标 | 计算方式 |
+|------|------|----------|
+| **GUI Grounding** | Accuracy | 预测坐标是否落在GT bbox内 |
+| **Screen Parsing** | Precision / Recall / F1 | IoU>0.5的一对一匹配 |
+| | Mean IoU | 匹配对的平均IoU |
+| | Text Similarity | 名称的sentence embedding余弦相似度 |
+| **Action Prediction** | Function Accuracy | 函数类型精确匹配 |
+| | Argument Accuracy | 参数正确性（坐标在bbox内 或 精确匹配） |
+| | Status Accuracy | CONTINUE/FINISH状态匹配 |
+| | Step Success Rate | 三者同时正确 |
+
+---
+
+## 六、Benchmark结果的工程启示
+
+### 关键发现
+
+1. **通用VLM在GUI Grounding上表现很差：** GPT-4o仅9.38%，说明桌面截图的高分辨率、密集UI布局对通用模型是巨大挑战。
+
+2. **专用预训练大幅提升：** UI-TARS-1.5 达62.27%，但距离实用仍有差距。
+
+3. **SFT效果显著：** 在GUI-360°上微调后，7B模型从35-62%提升到**82%+**，接近可部署水平。
+
+4. **Action Prediction是真正的瓶颈：** 纯视觉模式下，最好的模型也只有约50%的step success rate。主要失败原因是参数预测（尤其是坐标），而非函数类型。
+
+5. **A11y信息的价值：** 提供a11y元数据后，GPT-4o从3.12%→36.71%（12倍提升），说明结构化UI语义信息可以极大降低视觉grounding负担。
+
+### 工程建议
+
+- **如果你在做GUI Agent：** 优先考虑混合方案（视觉+a11y），纯视觉路线目前还不成熟
+- **如果你在训练视觉grounding模型：** GUI-360°是目前最大规模的桌面端数据集，SFT效果已验证
+- **如果你在做screen parsing：** OmniParser系列是目前的SOTA，但F1仅0.4左右，仍有很大改进空间
+- **如果你在做RL for agents：** 6万+失败轨迹是非常稀缺的资源，可用于构建对比学习/过程奖励信号
+
+---
+
+## 七、数据采集管线（可复用设计）
+
+GUI-360°的数据采集架构本身也值得学习：
+
+```
+Query Acquisition → TrajAgent执行 → 评估与后处理
+     ↓                  ↓                ↓
+ 4阶段管线           多Agent架构        LLM-as-Judge
+ (源→模板→实例化     MAgent(规划)       EvaAgent验证
+  →质量过滤)        EAgent(执行)       86%人类一致性
+                    +MCP Server
+                    +Recorder
+```
+
+**TrajAgent的两阶段执行策略：**
+1. 第一轮用GPT-4o执行全部任务
+2. 第一轮失败的任务由GPT-4.1重新执行
+3. 整体成功率从~12%提升到~26%
+
+这个"级联模型"策略在工程上非常实用——用较便宜的模型先过一遍，再用更强的模型处理难例。
+
+---
+
+## 八、快速接入路径
+
+```
+场景A: 快速评测你的VLM/Agent模型
+  → 下载 test/ 数据 → 参照evaluation.py跑评测
+
+场景B: 用GUI-360°做SFT
+  → 下载 processed_data/ → 直接接入你的训练pipeline
+
+场景C: 构建更好的训练数据
+  → 下载 train/ + fail/ → 自定义数据处理逻辑
+
+场景D: 扩展到新应用
+  → 参考 template/ 设计新环境模板
+  → 复用TrajAgent架构做自动化采集
+```
+
+**数据集地址：** https://huggingface.co/datasets/vyokky/GUI-360  
+**代码仓库：** https://github.com/2020-qqtcg/GUI-360  
+**论文：** https://arxiv.org/abs/2511.04307  
+**协议：** MIT License

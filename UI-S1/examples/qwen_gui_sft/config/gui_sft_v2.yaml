@@ -1,0 +1,80 @@
+hydra:
+  searchpath:
+    - file:///scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/trainer/config
+
+defaults:
+  - sft_trainer
+  - _self_
+
+# ============================================
+# UI-S1 GUI SFT Configuration v2 - Anti-Overfitting
+# ============================================
+
+# Data configuration - Use single dataset
+data:
+  train_files: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/ui_s1_train_sft.parquet
+  val_files: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/ui_s1_eval_sft.parquet
+  train_batch_size: 32  # Global batch size
+  micro_batch_size_per_gpu: 1
+  max_length: 8192
+  truncation: error
+  balance_dp_token: False
+  multiturn:
+    enable: true
+    messages_key: messages
+    tools_key: tools
+    enable_thinking_key: enable_thinking
+  custom_cls:
+    path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/utils/dataset/gui_multiturn_sft_dataset.py
+    name: GUIMultiTurnSFTDataset
+  trust_remote_code: true
+
+# Model configuration - Full fine-tuning with aggressive regularization
+model:
+  partial_pretrain: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/checkpoints/Qwen2.5-VL-7B-Instruct
+  strategy: fsdp2
+  fsdp_config:
+    model_dtype: fp32
+    wrap_policy:
+      min_num_params: 0
+    cpu_offload: False
+    offload_params: False
+  enable_gradient_checkpointing: True
+  trust_remote_code: True
+  # Full fine-tuning, no LoRA
+  lora_rank: 0
+  lora_alpha: 16
+  target_modules: all-linear
+  use_liger: False
+  external_lib: null
+  use_shm: False
+
+# Optimizer configuration - Aggressive regularization to prevent overfitting
+optim:
+  lr: 1e-6  # Much lower learning rate (was 5e-6)
+  betas: [0.9, 0.98]  # Higher beta2 for more stable training
+  weight_decay: 0.3  # Much higher weight decay for strong regularization
+  warmup_steps_ratio: 0.05  # Shorter warmup
+  clip_grad: 0.3  # More aggressive gradient clipping
+  lr_scheduler: cosine
+
+# Training configuration - Early stopping setup
+trainer:
+  default_local_dir: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/train/checkpoints/gui_sft
+  default_hdfs_dir: null
+  resume_path: null
+  project_name: gui-sft
+  experiment_name: qwenvl_uis1_full_v2_lowlr
+  total_epochs: 1  # Only 1 epoch to prevent overfitting
+  total_training_steps: null
+  logger: ['console', 'wandb']
+  seed: 42
+  save_freq: 10  # Save more frequently
+  test_freq: 5   # Validate more frequently
+  nnodes: 1
+  n_gpus_per_node: 4
+  max_ckpt_to_keep: 5  # Keep more checkpoints
+
+# Sequence parallelism
+ulysses_sequence_parallel_size: 1
+use_remove_padding: False

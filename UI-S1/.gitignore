@@ -1,0 +1,47 @@
+# Checkpoints & model weights
+checkpoints/
+train/checkpoints/
+train_GUI_360/checkpoints/
+
+# Datasets (large, downloaded)
+datasets/AndroidControl/
+datasets/GUI-360/
+datasets/ui_s1_dataset/
+
+# Training outputs & logs
+outputs/
+wandb/
+train/logs/
+train/wandb/
+train_GUI_360/logs/
+train_GUI_360/data/
+train_GUI_360/llamafactory/data/
+train_GUI_360/llamafactory/output/
+train_GUI_360/GUI-360-eval/results/
+evaluation/results/
+
+# Build artifacts
+build/
+verl.egg-info/
+__pycache__/
+*.pyc
+
+# SLURM & log files
+slurm-*.out
+*.err
+install_scripts/slurm-*.out
+install_scripts/qwen3_eval/*.out
+install_scripts/qwen3_eval/*.err
+install_scripts/qwen3_eval/*.log
+
+# System / IDE
+.claude/
+core
+claude_debug.log
+.env
+
+# Backup files
+*.bak
+
+# Images symlink (points to datasets/AndroidControl/images)
+images

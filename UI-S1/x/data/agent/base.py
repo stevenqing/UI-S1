@@ -8,12 +8,12 @@ from x.qwen.image import resize_coordinate
 def deal_with_coordinate(action_content, image_ele):
     width, height = image_ele['width'], image_ele['height']
     resized_width, resized_height = image_ele['resized_width'], image_ele['resized_height']
-    
-    if 'coordinate' in action_content:
+
+    if 'coordinate' in action_content and action_content['coordinate'] is not None and all(v is not None for v in action_content['coordinate']):
         action_content['coordinate'] = resize_coordinate(action_content['coordinate'], (width, height), (resized_width, resized_height))
         action_content['coordinate'] = list(map(round, action_content['coordinate']))
-    if 'coordinate2' in action_content:
-        action_content['coordinate2'] = resize_coordinate(action_content['coordinate2'], (width, height), (resized_width, resized_height)) 
+    if 'coordinate2' in action_content and action_content['coordinate2'] is not None and all(v is not None for v in action_content['coordinate2']):
+        action_content['coordinate2'] = resize_coordinate(action_content['coordinate2'], (width, height), (resized_width, resized_height))
         action_content['coordinate2'] = list(map(round, action_content['coordinate2']))
     return action_content
 

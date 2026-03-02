@@ -72,7 +72,8 @@ def process_line(line, args):
             # print("Action Minicpm:", action_minicpm)
             # print("Action Type:", action_type)
             history_list.append(low_instruction)
-            pred_action = map_action_space2qwenvl(action_minicpm,[width, height])
+            # OS-Atlas outputs 0-1000 normalized coordinates
+            pred_action = map_action_space2qwenvl(action_minicpm, [width, height], coordinate_format="relative_1000")
 
             type_match, extract_match = evaluate_android_control_action(
                 pred_action,

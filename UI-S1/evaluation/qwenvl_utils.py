@@ -10,11 +10,83 @@ import requests
 import torch
 from PIL import Image
 import sys, os
+from typing import List, Dict, Any, Optional, Tuple, Union
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from x.qwen.image import smart_resize
 END_POINT = "http://localhost:8000/v1"  # Replace with actual endpoint
 BBOX_ENLARGE_FACTOR = 1.2
 POINT_DISTANCE_THRESHOLD = 0.04
+
+
+def process_vision_info(
+    messages: List[Dict[str, Any]]
+) -> Tuple[Optional[List[Image.Image]], Optional[List[Any]]]:
+    """
+    Extract images and videos from Qwen-format messages.
+
+    This function processes messages in the Qwen chat format and extracts
+    any image or video content for use with the model processor.
+
+    Args:
+        messages: List of message dicts with 'role' and 'content' keys.
+                  Content can be a string or list of content blocks.
+
+    Returns:
+        Tuple of (image_inputs, video_inputs):
+        - image_inputs: List of PIL Images or None if no images
+        - video_inputs: List of video objects or None if no videos
+    """
+    image_inputs = []
+    video_inputs = []
+
+    for message in messages:
+        content = message.get("content", [])
+
+        # Handle string content (no images/videos)
+        if isinstance(content, str):
+            continue
+
+        # Handle list of content blocks
+        for block in content:
+            if isinstance(block, str):
+                continue
+
+            if isinstance(block, dict):
+                # Handle image content
+                if "image" in block:
+                    image_path = block["image"]
+                    if isinstance(image_path, str):
+                        # Load image from path or URL
+                        if image_path.startswith("data:"):
+                            # Base64 encoded image
+                            # Extract base64 data after the comma
+                            base64_data = image_path.split(",", 1)[1]
+                            image_data = base64.b64decode(base64_data)
+                            from io import BytesIO
+                            image = Image.open(BytesIO(image_data))
+                        elif image_path.startswith(("http://", "https://")):
+                            # URL - fetch the image
+                            response = requests.get(image_path, timeout=30)
+                            from io import BytesIO
+                            image = Image.open(BytesIO(response.content))
+                        else:
+                            # Local file path
+                            image = Image.open(image_path)
+                        image_inputs.append(image)
+                    elif isinstance(image_path, Image.Image):
+                        # Already a PIL Image
+                        image_inputs.append(image_path)
+
+                # Handle video content
+                elif "video" in block:
+                    video_path = block["video"]
+                    video_inputs.append(video_path)
+
+    # Return None instead of empty lists to match Qwen's behavior
+    return (
+        image_inputs if image_inputs else None,
+        video_inputs if video_inputs else None
+    )
 import base64
 from io import BytesIO
 def image_to_data_url(image):
@@ -213,14 +285,15 @@ def call_mobile_agent_vllm(messages, model_name='qwen25vl_7b_1im_high_nlp_v9.7.1
     # print(messages)
     assert screenshot_ptr == len(screenshot_list)
     output = ''
-    for i in range(32768):
+    max_retries = 5
+    for i in range(max_retries):
         try:
             from openai import OpenAI
             bot = OpenAI(
                 # defaults to os.environ.get("OPENAI_API_KEY")
                 api_key="EMPTY",
-                base_url=END_POINT, 
-                timeout=30
+                base_url=END_POINT,
+                timeout=600
             )
             # # if os.environ.get('SEARCH_MODE','') or retry_flag:
             # if os.environ.get('SEARCH_MODE',''):
@@ -234,14 +307,17 @@ def call_mobile_agent_vllm(messages, model_name='qwen25vl_7b_1im_high_nlp_v9.7.1
             # logging.error(chat_completion_from_url)
             output = chat_completion_from_url.choices[0].message.content
             print(output)
-        except:
+        except Exception as e:
             traceback.print_exc()
-            print("Network Error:")
+            print(f"Network Error (attempt {i+1}/{max_retries}):")
             try:
                 print(output)
             except:
                 print("Request Failed")
-            time.sleep(2)
+            if i < max_retries - 1:
+                time.sleep(5)
+            else:
+                print(f"Max retries ({max_retries}) exceeded, skipping this request.")
         else:
             break
 

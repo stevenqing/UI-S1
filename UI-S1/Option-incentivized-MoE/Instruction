@@ -1,0 +1,512 @@
+# Deep Covering Options for Long-Horizon Web Agent Training
+
+> **Research Note** — Transferring spectral graph-based option discovery to GUI agent agentic training on GUI-360° and AndroidWorld benchmarks.
+
+---
+
+## 1. Core Physical Intuition
+
+### 1.1 The Resistor Network Analogy
+
+The state space of an RL agent can be understood as a **resistor network**:
+
+- Each state is a node; reachability between states is a wire.
+- The second smallest eigenvalue of the graph Laplacian, $\lambda_2$ (algebraic connectivity), corresponds to the network's **equivalent conductance** — how freely a random walk flows across the entire network.
+- The **second eigenvector** $f$ assigns a "voltage" to each node. The pair of nodes with the maximum and minimum $f$ values are the two endpoints of the **highest equivalent resistance** — the bottleneck where information/flow is hardest to transmit.
+
+**Adding an option = wiring a shortcut across the bottleneck.** This shortcut directly bridges the highest-resistance endpoints, maximally boosting global conductance.
+
+### 1.2 Why This Solves Long-Horizon Problems
+
+Long-horizon training fails because the path from start to goal is a **long series of resistors** in series. The equivalent resistance is enormous, so the gradient signal (the "current") is effectively zero by the time it propagates back to early decisions.
+
+$$\text{Long chain: } R_{\text{total}} = R_1 + R_2 + \cdots + R_{25} \quad \Rightarrow \quad \text{signal } \approx 0$$
+
+Inserting shortcuts (macros) at bottleneck points converts serial segments into shorter sub-chains:
+
+$$\text{With macros: } R_{\text{effective}} = R_{\text{seg1}} + R_{\text{seg2}} + R_{\text{seg3}} + R_{\text{seg4}} \quad \ll \quad R_{\text{total}}$$
+
+Each macro's internal policy is pre-trained (low internal resistance), so the high-level planner operates on a much shorter effective horizon.
+
+### 1.3 Iterative Bottleneck Elimination
+
+After adding one shortcut, the original bottleneck is relieved and $\lambda_2$ increases. Recomputing $f$ reveals the **next bottleneck** (the new weakest link). Adding another shortcut there further tightens the graph. This iterative process transforms a "long chain" topology into a "tight cluster" topology, step by step.
+
+| Layer | Physical Analogy | Algorithmic Counterpart |
+|-------|-----------------|------------------------|
+| Global structure | Equivalent conductance of the network | $\lambda_2$ (upper bound on cover time) |
+| Bottleneck identification | Node pair with maximum equivalent resistance | $\arg\max f$ and $\arg\min f$ |
+| Bottleneck repair | Wiring a new conductor | Generating an option connecting the two ends |
+
+**Key insight: we find "hard-to-reach" places in connectivity space, not Euclidean space.** Two UI states may be spatially close on screen but functionally distant if they require many precise intermediate steps to transition between.
+
+---
+
+## 2. Deep Covering Options — Method Summary
+
+### 2.1 Original Covering Options (Tabular, Jinnai et al. 2019b)
+
+1. Compute the second smallest eigenvalue $\lambda_2$ and eigenvector $f$ of the graph Laplacian exactly.
+2. Identify $v_i = \arg\max f$ and $v_j = \arg\min f$ — the most "distant" state pair in connectivity space.
+3. Create two point options: one from $v_i$ to $v_j$, one from $v_j$ to $v_i$.
+4. Add the shortcut edge $(v_i, v_j)$ to the graph. Repeat.
+
+**Limitation:** Requires full adjacency matrix; point options (single-state initiation/termination) are useless in continuous spaces.
+
+### 2.2 Deep Covering Options (Jinnai et al. ICLR 2020)
+
+Extends to large/continuous state spaces via four modifications:
+
+**Step 1 — Approximate eigenfunction with neural network.** Replace the constrained optimization (Eq. 2) with an unconstrained objective (Eq. 5, Wu et al. 2019):
+
+$$\tilde{G}(f) = \frac{1}{2}\mathbb{E}_{(s,s')\sim H}\left[(f(s)-f(s'))^2\right] + \eta \cdot \mathbb{E}_{s\sim\rho, s'\sim\rho}\left[(f(s)^2-1)(f(s')^2-1) + f(s)^2 f(s')^2\right]$$
+
+- Only requires **sampled state transitions** $H$, not the full graph.
+- The repulsive term (weighted by $\eta$) prevents the trivial constant solution.
+- $f$ is parameterized by a neural network, optimized with standard gradient descent.
+
+**Step 2 — Region-based termination.** Set termination set = states where $f(s) < k\text{-th percentile}$ (not a single point).
+
+**Step 3 — Complementary initiation.** Initiation set = complement of termination set.
+
+**Step 4 — Pseudo-reward training.** Train option policy with $r_o = f(s) - f(s')$, encouraging movement toward the termination set (low-$f$ region).
+
+---
+
+## 3. Transfer to LLM MoE Tool Agent
+
+### 3.1 Conceptual Mapping
+
+| Deep Covering Options | MoE Tool Agent |
+|----------------------|----------------|
+| State-space graph $G$ | Task embedding space neighborhood graph |
+| Node = state | Node = task type / query cluster |
+| Edge = one-step transition | Edge = similar tasks needing similar tool chains |
+| Option = temporally extended action | Expert = sub-network specialized for a tool-calling pattern |
+| Initiation set | Router gate activation region (which queries route to this expert) |
+| Termination set | Target capability coverage region |
+| Cover time | Training efficiency across all task types |
+| $\lambda_2$ | Expert coverage "connectivity" — are there large task regions with no competent expert? |
+| Pseudo-reward $r_o$ | Expert specialization signal |
+
+### 3.2 Connectivity-Aware Expert Discovery
+
+Standard MoE training uses **load balancing loss** to ensure uniform token distribution across experts. This only cares about "uniform," not "covered."
+
+**Transferred insight:** Build a k-NN graph in task embedding space, compute the Laplacian's second eigenvector $f$. The extreme-$f$ regions are the **coverage bottlenecks** — task types that no current expert handles well.
+
+**Progressive expert specialization (analogous to iterative option discovery):**
+
+```
+Phase 1: Train base model (no expert specialization)
+Phase 2: Compute f on task embedding graph → identify coverage bottleneck
+Phase 3: Add new expert, target = extreme-f task cluster
+Phase 4: Re-sample routing statistics with augmented MoE
+Phase 5: Recompute f → find new bottleneck → repeat
+```
+
+### 3.3 Connectivity-Aware Routing Loss
+
+Augment the standard auxiliary loss:
+
+$$\mathcal{L}_{\text{aux}} = \alpha \cdot \text{LoadBalance} + \beta \cdot (-\lambda_2(\text{expert-augmented task graph}))$$
+
+Minimizing $-\lambda_2$ maximizes connectivity of the augmented graph, equivalent to minimizing the maximum distance from any task type to a competent expert.
+
+### 3.4 Pseudo-Reward for Tool Chain Discovery
+
+For an expert, its pseudo-reward is: after executing a tool chain, the task moves from a high-$f$ region to a low-$f$ region. This encourages experts to **discover new tool combinations that solve the currently worst-covered task types**.
+
+---
+
+## 4. Application to Web Agent Long-Horizon Training
+
+### 4.1 The Long-Horizon Problem in Web Agents
+
+A typical long-horizon web task (e.g., "book a hotel on Airbnb for next week in Tokyo"):
+
+```
+search → filter dates → filter price → browse results → click detail →
+check reviews → go back to compare → select → fill guest info → pay → confirm
+```
+
+~15–25 steps. The fundamental problems:
+
+1. **Reward only at the final step** (booking success/failure).
+2. **No intermediate signal** to indicate whether the agent is on the right track.
+3. **RL gradient** must backpropagate through 25 transitions — by step 1, it's pure noise.
+4. **Compounding error**: with per-step accuracy $p = 0.9$, success probability $= 0.9^{25} = 0.07$.
+
+### 4.2 How Covering Options Solve This
+
+**Cut the long chain into short segments at the right places:**
+
+```
+Before:  s₁ →→→→→→→→→→→→→→→→→→→→→→→→→ goal
+              25 steps, signal cannot propagate
+
+After:   s₁ →→→ m₁ →→→ m₂ →→→ m₃ →→→ goal
+          ~5 steps each, signal propagates within each segment
+```
+
+Each macro (option) is a pre-trained sub-policy that reliably completes ~5 steps. The high-level policy learns a 4-step decision sequence instead of 25 steps.
+
+**Compounding error reduction**: $0.9^{25} = 0.07$ → $0.9^{5} = 0.59$ per segment, with macro internal reliability further boosting each segment.
+
+**Key: macros are placed at connectivity bottlenecks, not at uniform intervals.** The Laplacian analysis finds where the state-space graph is "thinnest" — these are the transitions where random/untrained agents most often fail.
+
+---
+
+## 5. Concrete Implementation on GUI-360° and AndroidWorld
+
+### 5.1 Benchmark Characteristics
+
+**GUI-360°** (Desktop):
+- Windows Office applications (Word, Excel, PowerPoint)
+- 1.2M executed action steps across thousands of trajectories
+- Hybrid GUI+API action space
+- Observations: full-resolution screenshots + accessibility metadata
+- Task examples: create pivot table → format → insert chart → export
+
+**AndroidWorld** (Mobile):
+- 116 tasks across 20 real Android apps, dynamically parameterized
+- Average ~14 steps; hard tasks >20 steps
+- Binary reward (complete/fail), tight step budgets (10–30 steps)
+- Observations: screenshot (2400×1080) + accessibility tree
+- One misstep can preclude task completion
+
+**Shared pain points:** long-horizon + sparse reward + compounding error.
+
+### 5.2 Step 0 — State Representation (How to Build the Graph)
+
+**Approach A (Lightweight, recommended first):** Structured features from accessibility tree:
+
+```python
+# AndroidWorld
+state_id = hash(
+    app_name,
+    current_activity,
+    focused_element_type,
+    visible_clickable_elements_count,
+    scroll_position_bucket
+)
+
+# GUI-360
+state_id = hash(
+    app_name,          # Word / Excel / PowerPoint
+    window_title,
+    active_ribbon_tab,
+    dialog_state,      # None / dialog_name
+    selected_elements_type
+)
+```
+
+**Approach B (Representation learning):** Encode screenshots with a lightweight vision encoder (e.g., SigLIP), build k-NN graph in embedding space. More expressive but introduces approximation noise.
+
+### 5.3 Step 1 — Collect Transition Data
+
+**AndroidWorld:**
+
+```python
+for task in androidworld_tasks:
+    for episode in range(N_episodes):
+        env.reset(task)
+        trajectory = []
+        while not done:
+            action = agent.act(screenshot, a11y_tree)  # or random policy
+            next_obs = env.step(action)
+            trajectory.append((state_id(obs), action, state_id(next_obs)))
+        all_transitions.extend(trajectory)
+```
+
+**GUI-360° (major advantage: data already exists):**
+
+```python
+# GUI-360 provides 1.2M action steps — no extra rollouts needed
+for trajectory in gui360_train_set:
+    for step in trajectory:
+        s_id = extract_state_id(step.screenshot, step.a11y_metadata)
+        s_next_id = extract_state_id(step.next_screenshot, step.next_a11y)
+        all_transitions.append((s_id, step.action, s_next_id))
+```
+
+### 5.4 Step 2 — Compute Eigenfunction and Identify Bottlenecks
+
+Train a small network to approximate the second eigenfunction $f$ using Wu et al.'s method on sampled transition pairs:
+
+```python
+f_net = MLP(input_dim=state_embed_dim, hidden_dims=[256, 256], output_dim=1)
+optimizer = Adam(f_net.parameters(), lr=1e-3)
+eta = 1.0  # Lagrange multiplier for repulsive term
+
+for epoch in range(num_epochs):
+    # Sample batch of transitions and random state pairs
+    s, s_next = sample_transitions(all_transitions, batch_size)
+    s_rand1, s_rand2 = sample_random_states(all_states, batch_size)
+    
+    # Smoothness term: connected states should have similar f values
+    smoothness = 0.5 * ((f_net(s) - f_net(s_next)) ** 2).mean()
+    
+    # Repulsive term: prevent trivial constant solution
+    f_r1, f_r2 = f_net(s_rand1), f_net(s_rand2)
+    repulsive = ((f_r1**2 - 1) * (f_r2**2 - 1) + f_r1**2 * f_r2**2).mean()
+    
+    loss = smoothness + eta * repulsive
+    loss.backward()
+    optimizer.step()
+
+# Bottleneck identification
+f_values = {s: f_net(s).item() for s in all_states}
+threshold = np.percentile(list(f_values.values()), k)  # k=10 for Android, k=30 for desktop
+bottleneck_states = {s for s, v in f_values.items() if v < threshold}
+```
+
+### 5.5 Expected Bottleneck Locations
+
+**AndroidWorld typical bottlenecks:**
+
+| Bottleneck Type | Example | Why It's a Bottleneck |
+|----------------|---------|----------------------|
+| Deep settings navigation | Settings → Apps → [app] → Permissions → Storage | 5+ consecutive precise clicks |
+| Cross-app transitions | Calendar → Contacts → back to Calendar | Requires correct app-switching sequence |
+| Form submission flows | Fill multi-field form → scroll → check box → submit | Multi-step + scroll + precise grounding |
+| Long-list item selection | Find specific contact name in a scrollable list | Requires scrolling to correct position |
+
+**GUI-360° typical bottlenecks:**
+
+| Bottleneck Type | Example | Why It's a Bottleneck |
+|----------------|---------|----------------------|
+| Ribbon navigation chains | Home tab → Insert → Chart type → configure | Multi-layer menu nesting |
+| Dialog chains | Format Cells → switch internal tab → set params → OK | Precise intra-dialog operations |
+| Compound operations | Select region → right-click → Paste Special → choose option | Right-click menu + sub-menu |
+| Cross-sheet references | Click cell → type formula → navigate to Sheet2 → reference → return | Cross-sheet navigation |
+
+### 5.6 Step 3 — Construct Macros
+
+**Method A — Extract from successful trajectories (SFT-based, no RL needed):**
+
+```python
+# Find trajectory segments that cross the bottleneck boundary
+crossing_segments = []
+
+for traj in successful_trajectories:
+    for i, state in enumerate(traj.states):
+        if state not in bottleneck_states:
+            # Find where this trajectory enters the bottleneck region
+            for j in range(i + 1, len(traj.states)):
+                if traj.states[j] in bottleneck_states:
+                    segment = traj[i:j+1]  # (states, actions) sub-sequence
+                    crossing_segments.append(segment)
+                    break
+
+# SFT a macro sub-policy on these crossing segments
+macro_dataset = format_as_sft_data(crossing_segments)
+macro_policy = finetune_vlm(base_model, macro_dataset)
+```
+
+**Method B — RL with pseudo-reward (for bootstrapping from scratch):**
+
+```python
+# Short-horizon RL is tractable because macros are ~5-8 steps
+pseudo_reward = lambda s, s_next: f_net(s) - f_net(s_next)
+# Positive reward for moving toward low-f region (termination set)
+
+macro_policy = train_rl(
+    env=env,
+    reward_fn=pseudo_reward,
+    termination_fn=lambda s: f_net(s) < threshold,
+    max_steps=10  # Short horizon → RL works
+)
+```
+
+### 5.7 Step 4 — Hierarchical Training
+
+```
+High-level policy action space:
+    = {primitive actions} ∪ {macros}
+    = {click, type, scroll, back, home, app_launch, ...
+       macro_navigate_deep_settings,
+       macro_fill_and_submit_form,
+       macro_cross_app_switch,
+       macro_ribbon_chart_insert, ...}
+
+Execution:
+    if high_level_policy selects primitive action:
+        execute single step
+    if high_level_policy selects macro:
+        macro_policy takes control until termination condition
+        (enters bottleneck_states or max_steps exceeded)
+```
+
+**Effective horizon reduction:**
+
+| Benchmark | Original Horizon | With 3 Macros | Budget |
+|-----------|-----------------|---------------|--------|
+| AndroidWorld (avg) | ~14 steps | ~5 high-level decisions | 10–30 steps |
+| AndroidWorld (hard) | >20 steps | ~8 high-level decisions | 10–30 steps |
+| GUI-360° (complex) | 15–20 steps | ~6 high-level decisions | varies |
+
+### 5.8 Step 5 — Iterate
+
+```
+Repeat 2-3 times:
+    1. Rollout with augmented agent (primitives + current macros)
+    2. Recompute f on new transition data
+    3. Previous bottlenecks are now resolved → f identifies NEW bottlenecks
+    4. Generate new macros for new bottlenecks
+    5. Add to macro library
+```
+
+The macro library stabilizes after 2–3 iterations, typically yielding 3–6 macros per app domain.
+
+---
+
+## 6. Positioning Against Existing Methods
+
+### 6.1 Comparison with Current SOTA Approaches
+
+| Method | How It Handles Long-Horizon | Weakness |
+|--------|---------------------------|----------|
+| Reward shaping | Hand-designed intermediate rewards | Task-specific, labor-intensive |
+| Hindsight relabeling | Relabel failed trajectories as successes for sub-goals | Hard to define "partial success" in web tasks |
+| Curriculum learning | Train on short tasks first, gradually increase length | Requires task difficulty ordering |
+| Hierarchical reflection (Minitap, MobileUse) | Retry and reflect after errors at inference time | Token-expensive; fixes symptoms not causes |
+| GRPO / trajectory-level RL (Step-GUI, MobileRL) | End-to-end RL with trajectory rewards | Still suffers from long credit assignment chain |
+| **Covering options (ours)** | **Auto-find bottlenecks, build shortcuts at training time** | **Task-agnostic, no reward signal needed** |
+
+### 6.2 Complementarity with Inference-Time Methods
+
+Minitap (100% on AndroidWorld) uses multi-agent + hierarchical reflection + post-validation — it fixes errors **after** they happen through retry.
+
+Our approach reduces errors **before** they happen by shortening the effective horizon. The two are **complementary**:
+
+```
+Covering options:  shorten horizon → fewer opportunities for errors
+    +
+Reflection/retry:  catch and fix the remaining rare errors
+    =
+Multiplicative improvement in success rate
+```
+
+---
+
+## 7. Multi-Agent Extension (MA-GUI)
+
+For multi-agent GUI automation with role-specialized agents:
+
+### 7.1 Per-Agent Macro Discovery
+
+Each agent independently analyzes its own UI state transitions and discovers macros for its own operational bottlenecks:
+
+```
+Agent A (data entry specialist):
+    → discovers macro_fill_form, macro_navigate_spreadsheet
+
+Agent B (navigation specialist):
+    → discovers macro_cross_app_switch, macro_deep_settings
+```
+
+### 7.2 Cross-Agent Coordination Bottlenecks
+
+Some bottlenecks only manifest in the **joint** state space — one agent must complete an action before another can proceed:
+
+```
+Example: Agent A must complete login → Agent B can then navigate to settings
+```
+
+These coordination bottlenecks appear in the joint transition graph's Laplacian analysis. Joint macros can address them:
+
+```
+joint_macro = (Agent A: macro_login) → (Agent B: macro_navigate_settings)
+```
+
+### 7.3 Effective Hierarchy
+
+```
+Original: Each agent does 10-15 primitive actions, coordinated
+          Joint space: 10^15 × 10^15 = intractable
+
+With macros: Each agent does 3-4 macro-level decisions
+             Joint space: 4^3 × 4^3 = manageable with simple RL or search
+```
+
+---
+
+## 8. Minimal Viable Experiment (Proof of Concept)
+
+A concrete experimental plan requiring **no RL**, purely data-driven:
+
+### 8.1 Setup
+
+1. **Dataset**: GUI-360° train set (1.2M action steps, readily available).
+2. **Task subset**: Select complex tasks requiring >15 steps from GUI-360°-Bench.
+3. **Baseline**: SFT-tuned VLM (e.g., Qwen2.5-VL-7B) on GUI-360° action prediction.
+
+### 8.2 Pipeline
+
+```
+Step 1: Extract state transitions from GUI-360° trajectories
+        → Build state-transition graph using accessibility metadata hashing
+
+Step 2: Train f_net on sampled transitions (~30 min on single GPU)
+        → Visualize f values across UI states
+
+Step 3: Identify top-3 bottlenecks by f-value analysis
+        → Sanity check: do they correspond to known hard transitions?
+        (e.g., dialog chains, ribbon navigation, cross-sheet operations)
+
+Step 4: Extract crossing segments from successful trajectories
+        → SFT 3 macro sub-policies (one per bottleneck)
+
+Step 5: Evaluate on GUI-360°-Bench complex subset
+        → Compare: base VLM  vs  base VLM + 3 macros
+        → Metric: action prediction success rate, task completion rate
+```
+
+### 8.3 Success Criteria
+
+1. **Qualitative**: $f$-identified bottlenecks match human intuition about hard UI transitions.
+2. **Quantitative**: Macro-augmented agent shows >10% improvement in success rate on complex (>15 step) tasks.
+3. **Efficiency**: Effective decision horizon measurably shortened (count high-level decisions per task).
+
+### 8.4 Extension to AndroidWorld
+
+After validating on GUI-360°, extend to AndroidWorld:
+
+1. Collect rollout data from baseline agent on AndroidWorld's 116 tasks.
+2. Build transition graph from rollouts.
+3. Repeat Steps 2–5 above.
+4. Focus evaluation on the "hard" subset (>20 steps, cross-app workflows).
+
+---
+
+## 9. Theoretical Justification Summary
+
+The complete theoretical chain:
+
+$$\text{Cover time bound: } E[C(G)] \leq \frac{n}{2} \cdot \frac{\ln n}{\lambda_2}(1+o(1))$$
+
+$$\Downarrow$$
+
+$$\text{Maximize } \lambda_2 \text{ by greedily adding edges between } \arg\max f \text{ and } \arg\min f$$
+
+$$\Downarrow$$
+
+$$\text{Each added edge = an option/macro connecting distant UI states}$$
+
+$$\Downarrow$$
+
+$$\text{Reduced cover time } \Rightarrow \text{ faster exploration } \Rightarrow \text{ faster convergence of RL/SFT}$$
+
+The deep covering options objective function (Eq. 5) is an unconstrained approximation of the covering options objective, which has **provable guarantees** on cover time reduction. The approximation enables scaling to large state spaces via neural network parameterization while preserving the theoretical motivation.
+
+---
+
+## 10. Key References
+
+- Jinnai, Y., Park, J.W., Machado, M.C., & Konidaris, G. (2020). *Exploration in Reinforcement Learning with Deep Covering Options.* ICLR 2020.
+- Jinnai, Y., Park, J.W., Abel, D., & Konidaris, G. (2019). *Discovering Options for Exploration by Minimizing Cover Time.* ICML 2019.
+- Wu, Y., Tucker, G., & Nachum, O. (2019). *The Laplacian in RL: Learning Representations with Efficient Approximations.* ICLR 2019.
+- Ghosh, A. & Boyd, S. (2006). *Growing Well-Connected Graphs.* IEEE CDC.
+- Mu, J. et al. (2025). *GUI-360°: A Comprehensive Dataset and Benchmark for Computer-Using Agents.* arXiv 2511.04307.
+- Rawles, C. et al. (2024). *AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents.* arXiv 2405.14573.

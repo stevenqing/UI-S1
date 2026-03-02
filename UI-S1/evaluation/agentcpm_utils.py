@@ -10,7 +10,7 @@ from PIL import Image
 END_POINT = "http://localhost:8000/v1/"  # Replace with actual endpoint
 
 # system prompt
-ACTION_SCHEMA = json.load(open('/evaluation/agentcpm_schema.json', encoding="utf-8"))
+ACTION_SCHEMA = json.load(open('/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/evaluation/agentcpm_schema.json', encoding="utf-8"))
 items = list(ACTION_SCHEMA.items())
 insert_index = 3
 items.insert(insert_index, ("required", ["thought"])) # enable/disable thought by setting it to "required"/"optional"
@@ -90,7 +90,7 @@ def predict(model_name: str,text_prompt: str, image: Image.Image):
             bot = OpenAI(
                 # defaults to os.environ.get("OPENAI_API_KEY")
                 api_key="EMPTY",
-                base_url=END_POINT, '
+                base_url=END_POINT,
                 timeout=30
             )
             # # if os.environ.get('SEARCH_MODE','') or retry_flag:
@@ -121,16 +121,19 @@ import math
 
 import json
 
-def map_action_space2qwenvl(agent_action, screen_size=(1080, 1920)) -> dict:
+def map_action_space2qwenvl(agent_action, screen_size=(1080, 1920), coordinate_format="relative_1000") -> dict:
     """
     将 agent 输出的 JSON 字符串动作映射到 RAW_SPACE 定义的动作空间。
-    
+
     Args:
         agent_action_str: str, 来自智能体的动作 JSON 字符串
         screen_size: (width, height), 屏幕分辨率，默认 1080x1920
-    
+        coordinate_format: str, 坐标格式，可选值:
+            - "relative_1000": 坐标在 [0, 1000] 范围内 (默认)
+            - "absolute": 坐标已经是像素值，不需要转换
+
     Returns:
-       
+
        if dict: 格式为 {"action": ..., "arg": ...} 的动作，出错时返回 wait 或 terminate failure
     """
     if not isinstance(agent_action, dict):
@@ -142,10 +145,15 @@ def map_action_space2qwenvl(agent_action, screen_size=(1080, 1920)) -> dict:
     width, height = screen_size
 
     def to_pixels(loc):
-        """将 [0,1000] 范围的相对坐标转为像素坐标"""
-        x = int(loc[0] * width / 1000)
-        y = int(loc[1] * height / 1000)
-        return [x, y]
+        """根据 coordinate_format 转换坐标"""
+        if coordinate_format == "absolute":
+            # 坐标已经是像素值，直接返回
+            return [int(loc[0]), int(loc[1])]
+        else:
+            # 默认: 将 [0,1000] 范围的相对坐标转为像素坐标
+            x = int(loc[0] * width / 1000)
+            y = int(loc[1] * height / 1000)
+            return [x, y]
 
     # 1. STATUS 优先级最高
     status = agent_action.get("STATUS")
@@ -169,11 +177,22 @@ def map_action_space2qwenvl(agent_action, screen_size=(1080, 1920)) -> dict:
     if type_text is not None:
         return {"action": "type", "text": type_text}
 
+    # 3.5. OPEN_APP: 打开应用
+    open_app = agent_action.get("OPEN_APP")
+    if open_app is not None:
+        return {"action": "open", "text": open_app}
+
     # 4. to: 移动或滑动
     to = agent_action.get("to")
     point = agent_action.get("POINT")
     if to and point:
-        start = to_pixels(point)
+        # Special case: for directional scrolls, [500, 500] is hardcoded as normalized center
+        # even when coordinate_format="absolute" for click coordinates
+        if isinstance(to, str) and point == [500, 500] and coordinate_format == "absolute":
+            # Scroll center is always normalized, convert to actual screen center
+            start = [width // 2, height // 2]
+        else:
+            start = to_pixels(point)
         if isinstance(to, str):
             # 方向滑动
             swipe_distance = 200  # 滑动距离（像素）

@@ -404,10 +404,12 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                     batch.meta_info["global_token_num"] = torch.sum(batch.batch["attention_mask"], dim=-1).tolist()
                     # recompute old_log_probs
                     with _timer("old_log_prob", timing_raw):
-                        
+                        import datetime
+                        print(f"[{datetime.datetime.now()}] ===== ENTERING OLD_LOG_PROB COMPUTATION =====", flush=True)
                         raw_batch_size = len(batch)
                         pad_batch, _ = pad_dataproto_to_divisor(batch, self.actor_rollout_wg.world_size)
                         old_log_prob = self.actor_rollout_wg.compute_log_prob(pad_batch)
+                        print(f"[{datetime.datetime.now()}] ===== OLD_LOG_PROB COMPLETED =====", flush=True)
                         old_log_prob = old_log_prob.slice(0, raw_batch_size)
 
                         entropys = old_log_prob.batch["entropys"]
@@ -501,7 +503,10 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                             else:
                                 pad_batch, _ = pad_dataproto_to_divisor(batch, self.actor_rollout_wg.world_size*self.config.actor_rollout_ref.actor.ppo_mini_batch_size)
                             print('pad_batch size:', len(pad_batch))
+                            import datetime
+                            print(f"[{datetime.datetime.now()}] ===== ENTERING ACTOR UPDATE (FSDP gradient computation) =====", flush=True)
                             actor_output = self.actor_rollout_wg.update_actor(pad_batch)
+                            print(f"[{datetime.datetime.now()}] ===== ACTOR UPDATE COMPLETED =====", flush=True)
                             actor_output = actor_output.slice(0, raw_batch_size)
                         actor_output_metrics = reduce_metrics(actor_output.meta_info["metrics"])
                         metrics.update(actor_output_metrics)

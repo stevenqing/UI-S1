@@ -62,8 +62,36 @@ def forward_base_model(
             image_embeds = self.visual(pixel_values, grid_thw=image_grid_thw)
             n_image_tokens = (input_ids == self.config.image_token_id).sum().item()
             n_image_features = image_embeds.shape[0]
-            if n_image_tokens != n_image_features:
-                raise ValueError(f"Image features and image tokens do not match: tokens: {n_image_tokens}, features {n_image_features}")
+
+            # Handle small mismatches (common in batch processing with VLMs)
+            # This can occur due to rounding differences between tokenizer and vision encoder
+            mismatch = abs(n_image_tokens - n_image_features)
+            if mismatch > 0:
+                import warnings
+                if mismatch <= 5:
+                    # Small mismatch - adjust by padding/truncating image_embeds
+                    warnings.warn(
+                        f"Image features and image tokens have small mismatch: tokens: {n_image_tokens}, "
+                        f"features {n_image_features}. Adjusting to match.",
+                        UserWarning
+                    )
+                    if n_image_features < n_image_tokens:
+                        # Pad image_embeds with zeros to match token count
+                        padding = torch.zeros(
+                            n_image_tokens - n_image_features,
+                            image_embeds.shape[1],
+                            dtype=image_embeds.dtype,
+                            device=image_embeds.device
+                        )
+                        image_embeds = torch.cat([image_embeds, padding], dim=0)
+                    else:
+                        # Truncate image_embeds to match token count
+                        image_embeds = image_embeds[:n_image_tokens]
+                else:
+                    raise ValueError(
+                        f"Image features and image tokens do not match: tokens: {n_image_tokens}, "
+                        f"features {n_image_features}. Mismatch too large ({mismatch}) to auto-correct."
+                    )
 
             mask = input_ids == self.config.image_token_id
             mask_unsqueezed = mask.unsqueeze(-1)

@@ -1,6 +1,6 @@
 hydra:
   searchpath:
-    - file://verl/trainer/config
+    - file:///scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/trainer/config
 
 defaults:
   - ppo_trainer
@@ -14,7 +14,7 @@ data:
   data.filter_overlong_prompts: True
   reward_fn_key: data_source
   custom_cls:
-    path: verl/utils/dataset/rl_dataset.py
+    path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/utils/dataset/rl_dataset.py
     name: TrajDataset
 
 actor_rollout_ref:

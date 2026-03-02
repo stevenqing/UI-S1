@@ -346,6 +346,21 @@ class RayWorkerGroup(WorkerGroup):
                     env_vars["MASTER_ADDR"] = self._master_addr
                     env_vars["MASTER_PORT"] = self._master_port
 
+                # Propagate file-based rendezvous if configured
+                rendezvous_file = os.environ.get("VERL_RENDEZVOUS_FILE", "")
+                if rank == 0:
+                    print(f"[DEBUG] base.py: VERL_RENDEZVOUS_FILE={rendezvous_file}")
+                if rendezvous_file:
+                    env_vars["VERL_RENDEZVOUS_FILE"] = rendezvous_file
+
+                # Propagate NCCL and Gloo configuration for multi-node
+                nccl_socket_ifname = os.environ.get("NCCL_SOCKET_IFNAME", "")
+                if nccl_socket_ifname:
+                    env_vars["NCCL_SOCKET_IFNAME"] = nccl_socket_ifname
+                gloo_socket_ifname = os.environ.get("GLOO_SOCKET_IFNAME", "")
+                if gloo_socket_ifname:
+                    env_vars["GLOO_SOCKET_IFNAME"] = gloo_socket_ifname
+
                 import re
 
                 cia_name = type(ray_cls_with_init.cls).__name__
@@ -364,6 +379,17 @@ class RayWorkerGroup(WorkerGroup):
                 self._worker_names.append(name)
 
                 if rank == 0:
+                    # CRITICAL FIX: Wait for rank 0 worker to be fully initialized before polling for register_center.
+                    # The worker's __new__() method creates the register_center actor, but ray_cls_with_init() returns
+                    # immediately (async). In multi-node setup, this causes a race condition where we poll for
+                    # register_center before it's created. We use get_cuda_visible_devices() as a synchronization point
+                    # to ensure the worker is ready.
+                    try:
+                        ray.get(worker.get_cuda_visible_devices.remote(), timeout=60)
+                        logging.info("Rank 0 worker initialized, now waiting for register_center actor.")
+                    except Exception as e:
+                        logging.warning(f"Failed to sync with rank 0 worker: {e}. Proceeding with register_center polling.")
+
                     register_center_actor = None
                     actor_name = f"{self.name_prefix}_register_center"
                     start_time = time.time()

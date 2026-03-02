@@ -15,9 +15,13 @@
 The main entry point to run the PPO algorithm
 """
 
+import os
+
+# NCCL environment variables are set in verl/__init__.py (before torch import)
+# This file inherits those settings.
+
 import json
 import logging
-import os
 import warnings
 from dataclasses import asdict
 from typing import Union
@@ -66,6 +70,21 @@ from verl.utils.model import compute_position_id_with_mask
 from verl.utils.py_functional import convert_to_regular_types
 from verl.workers.sharding_manager.fsdp_ulysses import FSDPUlyssesShardingManager
 
+# MoE (Mixture of Experts) imports
+try:
+    from verl.models.moe import (
+        MoEConfig,
+        MoEVLMWrapper,
+        TextOnlyRouter,
+        ExpertLoRACollection,
+        MoEExpertApplier,
+        InstructionFeatureExtractor,
+        MoELoss,
+    )
+    MOE_AVAILABLE = True
+except ImportError:
+    MOE_AVAILABLE = False
+
 logger = logging.getLogger(__file__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
 
@@ -103,10 +122,126 @@ class ActorRolloutRefWorker(Worker):
         self.config = config
         import torch.distributed
 
+        # DIAG: Log at the very start of worker init to track all workers
+        rank_env = os.environ.get("RANK", "NOT_SET")
+        print(f"[DIAG] Worker starting: RANK={rank_env}, role={role}, is_dist_initialized={torch.distributed.is_initialized()}")
+        import sys; sys.stdout.flush()
+
         if not torch.distributed.is_initialized():
             rank = int(os.environ.get("RANK", 0))
             world_size = int(os.environ.get("WORLD_SIZE", 1))
-            torch.distributed.init_process_group(backend=f"cpu:gloo,{get_device_name()}:{get_nccl_backend()}", rank=rank, world_size=world_size)
+            master_addr = os.environ.get("MASTER_ADDR", "NOT_SET")
+            master_port = os.environ.get("MASTER_PORT", "NOT_SET")
+
+            # NCCL and Gloo env vars are now set at module level (before torch import) for proper initialization
+            # Log current configuration for debugging
+            nccl_ifname = os.environ.get("NCCL_SOCKET_IFNAME", "not_set")
+            gloo_ifname = os.environ.get("GLOO_SOCKET_IFNAME", "not_set")
+            nccl_net = os.environ.get("NCCL_NET", "not_set")
+            nccl_ib_disable = os.environ.get("NCCL_IB_DISABLE", "not_set")
+            print(f"[DIAG] Rank {rank} NCCL_NET={nccl_net}, NCCL_IB_DISABLE={nccl_ib_disable}")
+            print(f"[DIAG] Rank {rank} NCCL_SOCKET_IFNAME={nccl_ifname}, GLOO_SOCKET_IFNAME={gloo_ifname}")
+            import sys; sys.stdout.flush()
+
+            # Try file-based rendezvous first, fall back to TCP if env var not set
+            rendezvous_file = os.environ.get("VERL_RENDEZVOUS_FILE", "")
+            if rendezvous_file:
+                init_method = f"file://{rendezvous_file}"
+                print(f"[DIAG] Rank {rank} using file-based rendezvous: {init_method}")
+            else:
+                init_method = "env://"
+                print(f"[DIAG] Rank {rank} using TCP rendezvous. MASTER_ADDR={master_addr}, MASTER_PORT={master_port}")
+
+            # Try NCCL backend first - with proper NCCL_SOCKET_IFNAME it should work
+            # Fall back to Gloo if NCCL fails
+            # NCCL requires device_id parameter for proper initialization
+            # On GH200/ARM64 systems with HPE Slingshot, NCCL socket transport may have issues
+            # Try Gloo first if VERL_USE_GLOO is set
+            use_gloo = os.environ.get("VERL_USE_GLOO", "0") == "1"
+            if use_gloo:
+                backend = "gloo"
+                use_nccl = False
+                print(f"[DIAG] Rank {rank} using Gloo backend (VERL_USE_GLOO=1)")
+            else:
+                backend = get_nccl_backend()
+                use_nccl = True
+
+            # Set CUDA device before init to prevent "device_ids unknown" warnings and potential hangs
+            # Ray may set CUDA_VISIBLE_DEVICES to limit visible GPUs per worker
+            cuda_visible = os.environ.get("CUDA_VISIBLE_DEVICES", "not_set")
+            device_count = torch.cuda.device_count()
+            print(f"[DIAG] Rank {rank} CUDA_VISIBLE_DEVICES={cuda_visible}, device_count={device_count}")
+            import sys; sys.stdout.flush()
+
+            # If Ray has limited us to 1 GPU, use device 0
+            # Otherwise compute local_rank from global rank
+            if device_count == 1:
+                local_rank = 0
+            else:
+                n_gpus_per_node = int(os.environ.get("VERL_N_GPUS_PER_NODE", device_count))
+                local_rank = rank % n_gpus_per_node
+
+            import torch
+            torch.cuda.set_device(local_rank)
+            device_id = torch.cuda.current_device()
+
+            import datetime
+            import socket
+            hostname = socket.gethostname()
+
+            # Check if we can connect to MASTER_ADDR:MASTER_PORT (for non-rank-0)
+            if rank != 0 and master_addr != "NOT_SET" and master_port != "NOT_SET":
+                try:
+                    test_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                    test_socket.settimeout(5)
+                    result = test_socket.connect_ex((master_addr, int(master_port)))
+                    test_socket.close()
+                    if result == 0:
+                        print(f"[DIAG] Rank {rank} (host={hostname}) can connect to MASTER_ADDR={master_addr}:{master_port}")
+                    else:
+                        print(f"[DIAG] Rank {rank} (host={hostname}) CANNOT connect to MASTER_ADDR={master_addr}:{master_port} (error={result})")
+                except Exception as e:
+                    print(f"[DIAG] Rank {rank} (host={hostname}) connection test to {master_addr}:{master_port} failed: {e}")
+                import sys; sys.stdout.flush(); sys.stderr.flush()
+
+            # Add a timeout to detect hangs - increased to 60 min for large FSDP operations
+            # Default 10 min (600s) is too short for multi-node all-gather
+            init_timeout = datetime.timedelta(minutes=60)
+
+            # Set environment variables for env:// init method
+            os.environ["MASTER_ADDR"] = master_addr
+            os.environ["MASTER_PORT"] = master_port
+            os.environ["WORLD_SIZE"] = str(world_size)
+            os.environ["RANK"] = str(rank)
+
+            print(f"[DIAG] Rank {rank} (host={hostname}) using env:// init method. MASTER_ADDR={master_addr}, MASTER_PORT={master_port}")
+            import sys; sys.stdout.flush(); sys.stderr.flush()
+
+            print(f"[DIAG] Rank {rank} (host={hostname}) initializing process group. WORLD_SIZE={world_size}, backend={backend}, local_rank={local_rank}, device_id={device_id}")
+            import sys; sys.stdout.flush(); sys.stderr.flush()
+
+            # Use env:// init method - this lets PyTorch handle store creation internally
+            # which might handle network binding better than explicit TCPStore
+            if use_nccl:
+                torch.distributed.init_process_group(
+                    backend=backend,
+                    init_method="env://",
+                    world_size=world_size,
+                    rank=rank,
+                    timeout=init_timeout,
+                    device_id=torch.device(f"cuda:{local_rank}")
+                )
+            else:
+                # Gloo doesn't support device_id
+                torch.distributed.init_process_group(
+                    backend=backend,
+                    init_method="env://",
+                    world_size=world_size,
+                    rank=rank,
+                    timeout=init_timeout
+                )
+            print(f"[DIAG] Rank {rank} (host={hostname}) process group initialized successfully")
+            import sys; sys.stdout.flush(); sys.stderr.flush()
 
         # build device mesh for FSDP
         world_size = torch.distributed.get_world_size()
@@ -123,6 +258,22 @@ class ActorRolloutRefWorker(Worker):
         self.ulysses_sharding_manager = FSDPUlyssesShardingManager(self.ulysses_device_mesh)
         self._lora_rank = self.config.model.get("lora_rank", 0)
         self._is_lora = self._lora_rank > 0
+
+        # MoE configuration
+        moe_config = self.config.model.get("moe", {})
+        self._is_moe = moe_config.get("enabled", False) and MOE_AVAILABLE
+        if self._is_moe:
+            self._moe_config = moe_config
+            if torch.distributed.get_rank() == 0:
+                print(f"[MoE] MoE enabled with {moe_config.get('num_experts', 4)} experts")
+        else:
+            self._moe_config = None
+
+        # MoE components (initialized later in init_model)
+        self._moe_router = None
+        self._moe_expert_collection = None
+        self._moe_feature_extractor = None
+        self._moe_loss_fn = None
 
         self.role = role
         assert self.role in ["actor", "rollout", "ref", "actor_rollout", "actor_rollout_ref"]
@@ -264,7 +415,22 @@ class ActorRolloutRefWorker(Worker):
                 # Convert config to regular Python types before creating PEFT model
                 lora_config = {"task_type": TaskType.CAUSAL_LM, "r": self.config.model.lora_rank, "lora_alpha": self.config.model.lora_alpha, "target_modules": convert_to_regular_types(self.config.model.target_modules), "bias": "none"}
                 actor_module = get_peft_model(actor_module, LoraConfig(**lora_config))
-        torch.distributed.barrier()
+        # DIAG: Log before barrier to identify hang point
+        import time
+        barrier_start = time.time()
+        print(f"[DIAG] Rank {self.rank} reaching barrier after model init at t={barrier_start:.1f}. MASTER_ADDR={os.environ.get('MASTER_ADDR', 'NOT_SET')}, MASTER_PORT={os.environ.get('MASTER_PORT', 'NOT_SET')}")
+        import sys; sys.stdout.flush()
+
+        # Use barrier with timeout to identify which ranks are missing
+        try:
+            # Wait with a 10 minute timeout for all ranks to reach the barrier
+            torch.distributed.barrier()
+            barrier_end = time.time()
+            print(f"[DIAG] Rank {self.rank} passed barrier after {barrier_end - barrier_start:.1f}s, proceeding to FSDP wrap")
+        except Exception as e:
+            print(f"[DIAG] Rank {self.rank} barrier failed with error: {e}")
+            raise
+        import sys; sys.stdout.flush()
 
         if self.rank == 0:
             print_model_size(actor_module)
@@ -295,12 +461,16 @@ class ActorRolloutRefWorker(Worker):
 
         fsdp_mesh = self.device_mesh
         sharding_strategy = get_sharding_strategy(fsdp_mesh)
+        print(f"[DIAG] Rank {self.rank} device_mesh={fsdp_mesh}, sharding_strategy={sharding_strategy}")
+        import sys; sys.stdout.flush()
 
         # TODO: add transformer policy
         # We force reference policy to use CPUOffload to save memory.
         # We force turn off CPUOffload for actor because it causes incorrect results when using grad accumulation
         cpu_offload = None if role == "actor" else CPUOffload(offload_params=True)
         fsdp_strategy = self.config.actor.strategy
+        print(f"[DIAG] Rank {self.rank} about to create FSDP wrapper (strategy={fsdp_strategy}, role={role}, sync_module_states=True)")
+        import sys; sys.stdout.flush()
         if fsdp_strategy == "fsdp":
             actor_module_fsdp = FSDP(
                 actor_module,
@@ -337,6 +507,9 @@ class ActorRolloutRefWorker(Worker):
             actor_module_fsdp = actor_module
         else:
             raise NotImplementedError(f"not implement {fsdp_strategy}")
+
+        print(f"[DIAG] Rank {self.rank} FSDP wrapper created successfully")
+        import sys; sys.stdout.flush()
 
         if enable_activation_offload:
             enable_activation_offloading(actor_module_fsdp, fsdp_strategy, enable_gradient_checkpointing)
@@ -380,6 +553,85 @@ class ActorRolloutRefWorker(Worker):
 
         return actor_module_fsdp, actor_optimizer, actor_lr_scheduler, actor_model_config
 
+    def _init_moe_components(self, hidden_size: int, num_layers: int, device: str = 'cuda'):
+        """
+        Initialize MoE components (router, expert LoRAs, etc.).
+
+        Called after model is built when MoE is enabled.
+
+        Args:
+            hidden_size: Model hidden dimension
+            num_layers: Number of transformer layers
+            device: Device to place MoE components on
+        """
+        if not self._is_moe:
+            return
+
+        moe_cfg = self._moe_config
+
+        # Initialize Router
+        self._moe_router = TextOnlyRouter(
+            hidden_size=hidden_size,
+            num_experts=moe_cfg.get('num_experts', 4),
+            router_hidden=moe_cfg.get('router_hidden', 256),
+            top_k=moe_cfg.get('top_k', 1),
+            dropout=moe_cfg.get('router_dropout', 0.1),
+            temperature=moe_cfg.get('router_temperature', 1.0),
+        ).to(device)
+
+        # Initialize Expert LoRA Collection
+        target_modules = moe_cfg.get('target_modules', ['q_proj', 'v_proj'])
+        if isinstance(target_modules, (list, tuple)):
+            target_modules = list(target_modules)
+        else:
+            target_modules = [target_modules]
+
+        self._moe_expert_collection = ExpertLoRACollection(
+            num_layers=num_layers,
+            hidden_size=hidden_size,
+            num_experts=moe_cfg.get('num_experts', 4),
+            target_modules=target_modules,
+            lora_r=moe_cfg.get('expert_lora_r', 16),
+            lora_alpha=moe_cfg.get('expert_lora_alpha', 32),
+            lora_dropout=moe_cfg.get('expert_lora_dropout', 0.05),
+        ).to(device)
+
+        # Initialize Feature Extractor
+        self._moe_feature_extractor = InstructionFeatureExtractor(
+            pooling_strategy=moe_cfg.get('pooling_strategy', 'mean'),
+        ).to(device)
+
+        # Initialize MoE Loss
+        self._moe_loss_fn = MoELoss(
+            num_experts=moe_cfg.get('num_experts', 4),
+            balance_weight=moe_cfg.get('balance_weight', 0.1),
+            balance_type=moe_cfg.get('balance_type', 'mse'),
+            z_loss_weight=moe_cfg.get('z_loss_weight', 0.0),
+        )
+
+        # Log parameter counts
+        if self.rank == 0:
+            router_params = sum(p.numel() for p in self._moe_router.parameters())
+            expert_params = sum(p.numel() for p in self._moe_expert_collection.parameters())
+            print(f"[MoE] Initialized with hidden_size={hidden_size}, num_layers={num_layers}")
+            print(f"[MoE] Router parameters: {router_params:,}")
+            print(f"[MoE] Expert LoRA parameters: {expert_params:,}")
+            print(f"[MoE] Total MoE parameters: {router_params + expert_params:,}")
+
+        log_gpu_memory_usage("After MoE components init", logger=logger)
+
+    def _get_moe_trainable_params(self):
+        """Get list of trainable MoE parameters."""
+        if not self._is_moe:
+            return []
+
+        params = []
+        if self._moe_router is not None:
+            params.extend(list(self._moe_router.parameters()))
+        if self._moe_expert_collection is not None:
+            params.extend(list(self._moe_expert_collection.parameters()))
+        return params
+
     def _build_rollout(self, trust_remote_code=False):
         from torch.distributed.device_mesh import init_device_mesh
 
@@ -387,7 +639,26 @@ class ActorRolloutRefWorker(Worker):
         infer_tp = self.config.rollout.tensor_model_parallel_size
         dp = self.world_size // infer_tp
         assert self.world_size % infer_tp == 0, f"rollout world_size: {self.world_size} is not divisible by infer_tp: {infer_tp}"
-        rollout_device_mesh = init_device_mesh(device_name, mesh_shape=(dp, infer_tp), mesh_dim_names=["dp", "infer_tp"])
+        try:
+            rollout_device_mesh = init_device_mesh(device_name, mesh_shape=(dp, infer_tp), mesh_dim_names=["dp", "infer_tp"])
+        except RuntimeError as e:
+            if "split_group" in str(e) or "does not support splitting" in str(e):
+                # PyTorch >= 2.9 changed DeviceMesh to use split_group (ncclCommSplit)
+                # which fails when the default process group was created via init_process_group
+                # rather than DeviceMesh. Workaround: temporarily remove bound_device_id so
+                # DeviceMesh falls back to the new_group path.
+                import torch.distributed as dist
+                logger.warning(f"init_device_mesh split_group failed, using new_group fallback for PyTorch >= 2.9")
+                default_pg = dist.distributed_c10d._get_default_group()
+                old_bound = getattr(default_pg, "bound_device_id", None)
+                default_pg.bound_device_id = None
+                try:
+                    rollout_device_mesh = init_device_mesh(device_name, mesh_shape=(dp, infer_tp), mesh_dim_names=["dp", "infer_tp"])
+                finally:
+                    if old_bound is not None:
+                        default_pg.bound_device_id = old_bound
+            else:
+                raise
         rollout_name = self.config.rollout.name
         if rollout_name == "hf":
             from verl.workers.rollout import HFRollout
@@ -523,6 +794,26 @@ class ActorRolloutRefWorker(Worker):
             if fsdp_version(self.actor_module_fsdp) == 1:
                 self.actor_module = self.actor_module_fsdp._fsdp_wrapped_module
 
+            # Initialize MoE components if enabled
+            if self._is_moe and self._is_actor:
+                hidden_size = self.actor_model_config.hidden_size
+                num_layers = self.actor_model_config.num_hidden_layers
+                self._init_moe_components(hidden_size, num_layers, device=f'cuda:{get_device_id()}')
+
+                # Add MoE parameters to optimizer if we have one
+                if self.actor_optimizer is not None:
+                    moe_params = self._get_moe_trainable_params()
+                    if moe_params:
+                        # Add MoE params to existing optimizer
+                        for param in moe_params:
+                            param.requires_grad = True
+                        self.actor_optimizer.add_param_group({
+                            'params': moe_params,
+                            'lr': self.config.actor.optim.lr,
+                        })
+                        if self.rank == 0:
+                            print(f"[MoE] Added {len(moe_params)} MoE parameter groups to optimizer")
+
             if self._is_offload_param:
                 offload_fsdp_model_to_cpu(self.actor_module_fsdp)
                 log_gpu_memory_usage("After offload actor model during init", logger=logger)
@@ -536,7 +827,24 @@ class ActorRolloutRefWorker(Worker):
             with open_dict(self.config.actor):
                 self.config.actor.use_remove_padding = use_remove_padding
                 self.config.actor.use_fused_kernels = use_fused_kernels
-            self.actor = DataParallelPPOActor(config=self.config.actor, actor_module=self.actor_module_fsdp, actor_optimizer=self.actor_optimizer)
+
+            # Prepare MoE components to pass to actor
+            moe_components = None
+            if self._is_moe:
+                moe_components = {
+                    'router': self._moe_router,
+                    'expert_collection': self._moe_expert_collection,
+                    'feature_extractor': self._moe_feature_extractor,
+                    'loss_fn': self._moe_loss_fn,
+                    'config': self._moe_config,
+                }
+
+            self.actor = DataParallelPPOActor(
+                config=self.config.actor,
+                actor_module=self.actor_module_fsdp,
+                actor_optimizer=self.actor_optimizer,
+                moe_components=moe_components,
+            )
 
         if self._is_rollout:
             self.rollout, self.rollout_sharding_manager = self._build_rollout(trust_remote_code=self.config.model.get("trust_remote_code", False))
@@ -626,12 +934,65 @@ class ActorRolloutRefWorker(Worker):
 
         return output
 
+    def _detect_batch_expert(self, prompts: DataProto) -> int:
+        """
+        Detect the dominant expert for a batch based on instruction text.
+
+        For rollout, we use batch-level routing for simplicity.
+
+        Args:
+            prompts: DataProto containing the batch
+
+        Returns:
+            expert_idx: The index of the dominant expert for this batch
+        """
+        if not self._is_moe:
+            return 0
+
+        # Try to get instruction text from prompts
+        instructions = []
+        if hasattr(prompts, 'non_tensor_batch') and 'instruction' in prompts.non_tensor_batch:
+            instructions = prompts.non_tensor_batch['instruction']
+        elif hasattr(prompts, 'non_tensor_batch') and 'raw_prompt' in prompts.non_tensor_batch:
+            instructions = prompts.non_tensor_batch['raw_prompt']
+
+        if not instructions:
+            return 0  # Default expert
+
+        # Count instruction types
+        type_counts = {0: 0, 1: 0, 2: 0, 3: 0}  # click, type, navigate, scroll
+        for instr in instructions:
+            if isinstance(instr, str):
+                instr_lower = instr.lower()
+                if any(kw in instr_lower for kw in ['click', 'tap', 'press', 'select']):
+                    type_counts[0] += 1
+                elif any(kw in instr_lower for kw in ['type', 'enter', 'input', 'write', 'fill']):
+                    type_counts[1] += 1
+                elif any(kw in instr_lower for kw in ['scroll', 'swipe', 'drag']):
+                    type_counts[3] += 1
+                elif any(kw in instr_lower for kw in ['navigate', 'go to', 'open', 'launch']):
+                    type_counts[2] += 1
+                else:
+                    type_counts[0] += 1  # Default to click
+
+        # Return the most common type
+        dominant_expert = max(type_counts, key=type_counts.get)
+        return dominant_expert
+
     @register(dispatch_mode=Dispatch.DP_COMPUTE_PROTO)
     def generate_sequences(self, prompts: DataProto):
         # Support all hardwares
         prompts = prompts.to(get_device_id())
 
         assert self._is_rollout
+
+        # MoE: Determine which expert to use for this batch
+        if self._is_moe and self._moe_expert_collection is not None:
+            dominant_expert = self._detect_batch_expert(prompts)
+            if self.rank == 0:
+                print(f"[MoE Rollout] Using expert {dominant_expert} for batch")
+            # Store for potential later use
+            prompts.meta_info['moe_expert_idx'] = dominant_expert
 
         meta_info = {
             "eos_token_id": self.generation_config.eos_token_id if self.generation_config is not None else self.tokenizer.eos_token_id,
@@ -776,6 +1137,39 @@ class ActorRolloutRefWorker(Worker):
             dist.barrier()
             log_with_rank(f"[rank-{self.rank}]: Saved LoRA adapter to: {lora_save_path}", rank=dist.get_rank(), logger=logger, log_only_rank_0=True)
 
+        # Save MoE components if enabled
+        if self._is_moe and self._moe_router is not None:
+            moe_save_path = os.path.join(local_path, "moe")
+            if dist.get_rank() == 0:
+                os.makedirs(moe_save_path, exist_ok=True)
+
+                # Save router
+                router_path = os.path.join(moe_save_path, "router.pt")
+                torch.save(self._moe_router.state_dict(), router_path)
+
+                # Save expert collection
+                expert_path = os.path.join(moe_save_path, "experts.pt")
+                torch.save(self._moe_expert_collection.state_dict(), expert_path)
+
+                # Save MoE config
+                moe_config_path = os.path.join(moe_save_path, "moe_config.json")
+                moe_config_dict = {
+                    'num_experts': self._moe_config.get('num_experts', 4),
+                    'top_k': self._moe_config.get('top_k', 1),
+                    'expert_lora_r': self._moe_config.get('expert_lora_r', 16),
+                    'expert_lora_alpha': self._moe_config.get('expert_lora_alpha', 32),
+                    'target_modules': list(self._moe_config.get('target_modules', ['q_proj', 'v_proj'])),
+                    'router_hidden': self._moe_config.get('router_hidden', 256),
+                    'hidden_size': self.actor_model_config.hidden_size,
+                    'num_layers': self.actor_model_config.num_hidden_layers,
+                }
+                with open(moe_config_path, 'w') as f:
+                    json.dump(moe_config_dict, f, indent=2)
+
+                print(f"[MoE] Saved MoE checkpoint to {moe_save_path}")
+
+            dist.barrier()
+
         if self._is_offload_param:
             offload_fsdp_model_to_cpu(self.actor_module_fsdp)
 
@@ -787,6 +1181,33 @@ class ActorRolloutRefWorker(Worker):
             load_fsdp_model_to_gpu(self.actor_module_fsdp)
 
         self.checkpoint_manager.load_checkpoint(local_path=local_path, hdfs_path=hdfs_path, del_local_after_load=del_local_after_load)
+
+        # Load MoE components if enabled
+        if self._is_moe and self._moe_router is not None:
+            moe_load_path = os.path.join(local_path, "moe")
+            if os.path.exists(moe_load_path):
+                # Load router
+                router_path = os.path.join(moe_load_path, "router.pt")
+                if os.path.exists(router_path):
+                    state_dict = torch.load(router_path, map_location='cpu')
+                    self._moe_router.load_state_dict(state_dict)
+                    self._moe_router.to(f'cuda:{get_device_id()}')
+                    if self.rank == 0:
+                        print(f"[MoE] Loaded router from {router_path}")
+
+                # Load expert collection
+                expert_path = os.path.join(moe_load_path, "experts.pt")
+                if os.path.exists(expert_path):
+                    state_dict = torch.load(expert_path, map_location='cpu')
+                    self._moe_expert_collection.load_state_dict(state_dict)
+                    self._moe_expert_collection.to(f'cuda:{get_device_id()}')
+                    if self.rank == 0:
+                        print(f"[MoE] Loaded experts from {expert_path}")
+
+                dist.barrier()
+            else:
+                if self.rank == 0:
+                    print(f"[MoE] No MoE checkpoint found at {moe_load_path}")
 
         if self._is_offload_param:
             offload_fsdp_model_to_cpu(self.actor_module_fsdp)

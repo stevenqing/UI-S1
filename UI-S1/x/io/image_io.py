@@ -86,18 +86,27 @@ class ImageIO(object):
     def __init__(self,):
         self.bucket = {}
         self.retry_num = 10
-        
-    
+
+    def _resolve_path(self, image_url):
+        """Resolve relative paths like /datasets/AndroidControl/images/xxx.png to absolute paths"""
+        if image_url.startswith('/datasets/'):
+            project_root = os.environ.get('PROJECT_ROOT', '/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1')
+            resolved = os.path.join(project_root, image_url.lstrip('/'))
+            return resolved
+        return image_url
+
     def check_exists(self, image_url):
         if isinstance(image_url, Path):
             image_url = str(image_url.absolute())
+        image_url = self._resolve_path(image_url)
         if os.path.isfile(image_url):
             return True
         return False
-        
+
     def __call__(self, image_url, auto_retry=True, debug=False):
         if isinstance(image_url, Path):
             image_url = str(image_url.absolute())
+        image_url = self._resolve_path(image_url)
         for i in range(self.retry_num):
             try:
                 if image_url.startswith("http://") or image_url.startswith("https://"):
@@ -160,21 +169,41 @@ class ImageIO(object):
         return video_tensors, num_frames
 
 class ImageIO2(object):
+    # Base path for resolving relative image paths like /images/xxx.png
+    IMAGE_BASE_PATH = os.environ.get('IMAGE_BASE_PATH', '/lus/lfs1aip2/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/AndroidControl')
+
     def __init__(self,):
         self.retry_num = 10
 
-    
+    def _resolve_path(self, image_url):
+        """Resolve relative paths like /images/xxx.png or /datasets/AndroidControl/images/xxx.png to absolute paths"""
+        if image_url.startswith('/images/'):
+            # Convert /images/xxx.png to {IMAGE_BASE_PATH}/images/xxx.png
+            resolved = os.path.join(self.IMAGE_BASE_PATH, image_url.lstrip('/'))
+            return resolved
+        elif image_url.startswith('/datasets/'):
+            # Convert /datasets/AndroidControl/images/xxx.png to {PROJECT_ROOT}/datasets/AndroidControl/images/xxx.png
+            project_root = os.environ.get('PROJECT_ROOT', '/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1')
+            resolved = os.path.join(project_root, image_url.lstrip('/'))
+            return resolved
+        return image_url
+
     def check_exists(self, image_url):
         if isinstance(image_url, Path):
             image_url = str(image_url.absolute())
 
+        image_url = self._resolve_path(image_url)
         if os.path.isfile(image_url):
             return True
         return False
-        
+
     def __call__(self, image_url, auto_retry=True, debug=False):
         if isinstance(image_url, Path):
             image_url = str(image_url.absolute())
+
+        # Resolve relative paths
+        image_url = self._resolve_path(image_url)
+
         for i in range(self.retry_num):
             try:
                 if image_url.startswith("http://") or image_url.startswith("https://"):

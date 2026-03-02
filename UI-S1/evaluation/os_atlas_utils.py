@@ -9,7 +9,7 @@ from PIL import Image
 
 END_POINT = "http://localhost:8000/v1/"  # Replace with actual endpoint
 # system prompt
-ACTION_SCHEMA = json.load(open('/evaluation/agentcpm_schema.json', encoding="utf-8"))
+ACTION_SCHEMA = json.load(open('/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/evaluation/agentcpm_schema.json', encoding="utf-8"))
 items = list(ACTION_SCHEMA.items())
 insert_index = 3
 items.insert(insert_index, ("required", ["thought"])) # enable/disable thought by setting it to "required"/"optional"
@@ -74,14 +74,15 @@ def predict(model_name, instruction, low_instruction, history,image):
 
     # response = requests.post('http://47.239.63.127:8000/v1/chat/completions', headers=headers, json=payload)
     # print(response)
-    for i in range(32768):
+    max_retries = 5  # Limit retries to avoid infinite loops
+    for i in range(max_retries):
         try:
             from openai import OpenAI
             bot = OpenAI(
                 # defaults to os.environ.get("OPENAI_API_KEY")
                 api_key="EMPTY",
-                base_url=END_POINT, 
-                timeout=30
+                base_url=END_POINT,
+                timeout=120  # Increased timeout for long generations
             )
             # # if os.environ.get('SEARCH_MODE','') or retry_flag:
             # if os.environ.get('SEARCH_MODE',''):
@@ -97,7 +98,7 @@ def predict(model_name, instruction, low_instruction, history,image):
             return output
         except:
             traceback.print_exc()
-            print("Network Error:")
+            print(f"Network Error (retry {i+1}/{max_retries}):")
             try:
                 print(output)
             except:
@@ -105,6 +106,10 @@ def predict(model_name, instruction, low_instruction, history,image):
             time.sleep(2)
         else:
             break
+    else:
+        # All retries exhausted, return empty to skip this task
+        print(f"Max retries ({max_retries}) exhausted, skipping task")
+        return ""
 
 import math
 

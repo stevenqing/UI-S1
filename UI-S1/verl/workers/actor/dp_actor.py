@@ -51,11 +51,42 @@ logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
 
 
 class DataParallelPPOActor(BasePPOActor):
-    def __init__(self, config, actor_module: nn.Module, actor_optimizer: torch.optim.Optimizer = None):
-        """When optimizer is None, it is Reference Policy"""
+    def __init__(self, config, actor_module: nn.Module, actor_optimizer: torch.optim.Optimizer = None, moe_components: dict = None):
+        """When optimizer is None, it is Reference Policy
+
+        Args:
+            config: Actor configuration
+            actor_module: The actor model (FSDP wrapped)
+            actor_optimizer: The optimizer
+            moe_components: Optional dict with MoE components:
+                - router: TextOnlyRouter
+                - expert_collection: ExpertLoRACollection
+                - feature_extractor: InstructionFeatureExtractor
+                - loss_fn: MoELoss
+                - config: MoE configuration dict
+        """
         super().__init__(config)
         self.actor_module = actor_module
         self.actor_optimizer = actor_optimizer
+
+        # MoE components
+        self._is_moe = moe_components is not None
+        if self._is_moe:
+            self._moe_router = moe_components['router']
+            self._moe_expert_collection = moe_components['expert_collection']
+            self._moe_feature_extractor = moe_components['feature_extractor']
+            self._moe_loss_fn = moe_components['loss_fn']
+            self._moe_config = moe_components['config']
+            self._moe_expert_applier = None  # Will be created when needed
+            if torch.distributed.get_rank() == 0:
+                print(f"[MoE] DataParallelPPOActor initialized with MoE support")
+        else:
+            self._moe_router = None
+            self._moe_expert_collection = None
+            self._moe_feature_extractor = None
+            self._moe_loss_fn = None
+            self._moe_config = None
+            self._moe_expert_applier = None
 
         self.use_remove_padding = self.config.get("use_remove_padding", False)
         if torch.distributed.get_rank() == 0:
@@ -78,6 +109,84 @@ class DataParallelPPOActor(BasePPOActor):
             else entropy_from_logits
         )
         self.device_name = get_device_name()
+
+        # MoE tracking
+        self._current_routing_weights = None
+        self._current_top_k_indices = None
+        self._moe_hooks = []
+
+    def _detect_instruction_type(self, instruction_text: str) -> int:
+        """
+        Detect instruction type from text for routing.
+
+        Returns:
+            expert_idx: 0=click, 1=type, 2=navigate, 3=scroll
+        """
+        instruction_lower = instruction_text.lower() if instruction_text else ""
+
+        if any(kw in instruction_lower for kw in ['click', 'tap', 'press', 'select']):
+            return 0  # click expert
+        elif any(kw in instruction_lower for kw in ['type', 'enter', 'input', 'write', 'fill']):
+            return 1  # type expert
+        elif any(kw in instruction_lower for kw in ['scroll', 'swipe', 'drag']):
+            return 3  # scroll expert
+        elif any(kw in instruction_lower for kw in ['navigate', 'go to', 'open', 'launch', 'back', 'home']):
+            return 2  # navigate expert
+        else:
+            return 0  # default to click
+
+    def _compute_moe_routing(self, hidden_states: torch.Tensor, instruction_mask: torch.Tensor = None):
+        """
+        Compute MoE routing from hidden states.
+
+        Args:
+            hidden_states: [B, seq_len, hidden_size]
+            instruction_mask: [B, seq_len] boolean mask for instruction tokens
+
+        Returns:
+            routing_weights: [B, num_experts]
+            top_k_indices: [B, top_k]
+            top_k_weights: [B, top_k]
+        """
+        if not self._is_moe or self._moe_router is None:
+            return None, None, None
+
+        # Extract instruction features
+        if instruction_mask is None:
+            # Use all tokens if no mask provided
+            instruction_mask = torch.ones(
+                hidden_states.shape[:2],
+                dtype=torch.bool,
+                device=hidden_states.device
+            )
+
+        instruction_features = self._moe_feature_extractor(hidden_states, instruction_mask)
+
+        # Compute routing
+        router_output = self._moe_router(instruction_features)
+
+        self._current_routing_weights = router_output.routing_weights
+        self._current_top_k_indices = router_output.top_k_indices
+
+        return (
+            router_output.routing_weights,
+            router_output.top_k_indices,
+            router_output.top_k_weights,
+        )
+
+    def _get_moe_balance_loss(self) -> torch.Tensor:
+        """Get MoE balance loss for the current batch."""
+        if not self._is_moe or self._current_routing_weights is None:
+            return torch.tensor(0.0)
+
+        # Compute balance loss
+        loss_output = self._moe_loss_fn(
+            lm_loss=torch.tensor(0.0),  # We just want the balance loss
+            routing_weights=self._current_routing_weights,
+            router_logits=None,
+        )
+
+        return loss_output.balance_loss if loss_output.balance_loss is not None else torch.tensor(0.0)
 
     def _forward_micro_batch(self, micro_batch, temperature, calculate_entropy=False) -> Tuple[torch.Tensor, torch.Tensor]:
         """
@@ -437,6 +546,15 @@ class DataParallelPPOActor(BasePPOActor):
                         loss = policy_loss * (len(data) / self.config.ppo_mini_batch_size)
                     else:
                         loss = policy_loss / self.gradient_accumulation
+
+                    # Add MoE balance loss if MoE is enabled
+                    if self._is_moe and self._current_routing_weights is not None:
+                        moe_balance_loss = self._get_moe_balance_loss()
+                        if moe_balance_loss.requires_grad:
+                            balance_weight = self._moe_config.get('balance_weight', 0.1)
+                            loss = loss + moe_balance_loss * balance_weight
+                            metrics["actor/moe_balance_loss"] = moe_balance_loss.detach().item()
+
                     loss.backward()
 
                     data = {

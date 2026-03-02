@@ -1,0 +1,96 @@
+hydra:
+  searchpath:
+    - file:///scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/trainer/config
+
+defaults:
+  - sft_trainer
+  - _self_
+
+# ============================================
+# GUI-360 SFT Configuration V5 - Stable Multi-Node
+# ============================================
+# Key improvements for multi-node stability:
+# 1. bfloat16 instead of fp32
+#    - Reduces communication data size by 50%
+# 2. micro_batch_size_per_gpu=2
+#    - Reduces gradient sync frequency (fewer steps)
+# 3. 2 nodes instead of 4
+#    - Simpler communication topology
+#
+# Note: Sequence parallelism disabled due to FlashAttention2
+# compatibility issues with current transformers version.
+#
+# Based on v4 A11y + Thinking approach:
+# - SoM annotated screenshots with numbered labels
+# - Element list in prompt
+# - element_id based actions
+# - Reasoning/thinking traces from raw data
+# ============================================
+
+# Data configuration
+data:
+  train_files: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/train_GUI_360/data/gui360_train_sft_a11y_thinking.parquet
+  val_files: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/train_GUI_360/data/gui360_eval_sft_a11y_thinking.parquet
+  train_batch_size: 128  # Reduced for 2 nodes (8 GPUs)
+  micro_batch_size_per_gpu: 1  # Keep at 1 due to long sequences (max_length=16384)
+  max_length: 16384
+  truncation: error
+  balance_dp_token: False
+  multiturn:
+    enable: true
+    messages_key: messages
+    tools_key: tools
+    enable_thinking_key: enable_thinking
+  custom_cls:
+    path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/utils/dataset/gui_multiturn_sft_dataset.py
+    name: GUIMultiTurnSFTDataset
+  trust_remote_code: true
+
+# Model configuration - Full fine-tuning with FSDP
+model:
+  partial_pretrain: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/checkpoints/Qwen2.5-VL-7B-Instruct
+  strategy: fsdp2
+  fsdp_config:
+    model_dtype: bfloat16  # Reduced precision for less communication
+    wrap_policy:
+      min_num_params: 0
+    cpu_offload: False
+    offload_params: False
+  enable_gradient_checkpointing: True
+  trust_remote_code: True
+  lora_rank: 0
+  lora_alpha: 16
+  target_modules: all-linear
+  use_liger: False
+  external_lib: null
+  use_shm: False
+
+# Optimizer configuration
+optim:
+  lr: 1e-6
+  betas: [0.9, 0.95]
+  weight_decay: 0.2
+  warmup_steps_ratio: 0.05
+  clip_grad: 0.5
+  lr_scheduler: cosine
+
+# Training configuration
+trainer:
+  default_local_dir: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/train_GUI_360/checkpoints/gui360_sft_v5_sp
+  default_hdfs_dir: null
+  resume_path: null
+  project_name: gui360-sft
+  experiment_name: gui360_sft_v5_sp
+  total_epochs: 2
+  total_training_steps: null
+  logger: ['console', 'wandb']
+  seed: 42
+  save_freq: 25
+  test_freq: 25
+  nnodes: 2
+  n_gpus_per_node: 4
+  max_ckpt_to_keep: 15
+
+# Sequence parallelism - ENABLED after fixing transformers 4.57 compatibility
+ulysses_sequence_parallel_size: 4  # SP within node (4 GPUs)
+use_remove_padding: True  # Required for sequence parallel

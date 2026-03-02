@@ -1,0 +1,163 @@
+# GUI-360 RL Training with f_pseudo Reward Shaping
+#
+# Uses eigenfunction-based pseudo rewards to encourage bottleneck crossing:
+#   r_total = r_action_match + lambda * f_pseudo
+#   f_pseudo(t) = f(s_t) - f(s_{t+1})
+#
+# Prerequisites:
+#   1. Train f_net (Task 3): outputs/fnet/gui360/{app}/f_values.npz
+#   2. Precompute f_pseudo: python scripts/precompute_f_pseudo.py
+#      → outputs/f_pseudo/f_pseudo_map.json
+#
+# Usage:
+#   python -m verl.trainer.main_dapo \
+#     --config-path train_GUI_360/config \
+#     --config-name gui360_rl_f_pseudo
+
+hydra:
+  searchpath:
+    - file:///scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+# ============================================================================
+# Data Configuration
+# ============================================================================
+data:
+  max_prompt_length: 8192
+  max_response_length: 1024
+  train_batch_size: 4
+  return_raw_chat: False
+  filter_overlong_prompts: True
+  reward_fn_key: data_source
+
+  custom_cls:
+    path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/verl/utils/dataset/rl_dataset.py
+    name: TrajDataset
+
+  # Update this path to your GUI-360 RL training data
+  train_files: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/ui_s1_dataset/ui_s1_train.jsonl
+  val_files: null
+
+# ============================================================================
+# Model Configuration (Actor + Rollout + Reference)
+# ============================================================================
+actor_rollout_ref:
+  model:
+    path: Qwen/Qwen2.5-VL-7B-Instruct
+    trust_remote_code: true
+    enable_gradient_checkpointing: true
+
+  actor:
+    strategy: fsdp
+    ppo_mini_batch_size: 64
+    ppo_micro_batch_size_per_gpu: 2
+
+    optim:
+      lr: 1e-5
+      weight_decay: 0.01
+      lr_warmup_steps_ratio: 0.1
+
+    ppo_epochs: 1
+    grad_clip: 0.5
+    clip_ratio: 0.1
+
+    use_kl_loss: true
+    kl_loss_coef: 0.1
+    kl_loss_type: low_var_kl
+    loss_agg_mode: token-mean
+
+    fsdp_config:
+      param_offload: false
+      optimizer_offload: false
+      fsdp_size: -1
+
+  rollout:
+    name: vllm
+    mode: sync
+    temperature: 1.0
+    top_p: 1.0
+    do_sample: true
+    n: 4
+    tensor_model_parallel_size: 1
+    gpu_memory_utilization: 0.5
+    max_num_batched_tokens: 32768
+    enforce_eager: true
+    free_cache_engine: true
+    load_format: dummy_dtensor
+
+    val_kwargs:
+      temperature: 0
+      do_sample: false
+      n: 1
+
+  ref:
+    strategy: fsdp
+    fsdp_config:
+      param_offload: true
+
+# ============================================================================
+# Algorithm Configuration
+# ============================================================================
+algorithm:
+  # Use UIS1 advantage estimator for trajectory-level RL
+  adv_estimator: uis1
+  norm_adv_by_std_in_grpo: true
+
+  gamma: 0.99
+  lam: 1.0
+
+  use_kl_in_reward: false
+  kl_penalty: kl
+
+  patch_threshold: 0
+  hint: false
+  actions_only: null
+
+  uis1:
+    episode_advantage_w: 1.0
+    step_advantage_w: 1.0
+    mode: mean_norm
+
+  filter_groups:
+    enable: true
+    max_num_gen_batches: 10
+    metric: seq_final_reward
+    std_threshold: 0.1
+
+# ============================================================================
+# Trainer Configuration
+# ============================================================================
+trainer:
+  total_epochs: 10
+  balance_batch: true
+
+  project_name: gui360_rl_f_pseudo
+  experiment_name: f_pseudo_lambda_0.1
+  logger:
+    - console
+    - wandb
+
+  save_freq: 500
+  default_local_dir: checkpoints/${trainer.project_name}/${trainer.experiment_name}
+
+  val_before_train: false
+  test_freq: 100
+
+  nnodes: 1
+  n_gpus_per_node: 8
+
+# ============================================================================
+# Reward Model Configuration
+# ============================================================================
+reward_model:
+  enable: false
+  # Use the f_pseudo reward manager
+  reward_manager: f_pseudo_dapo
+
+  # Pass f_pseudo-specific kwargs to the reward manager constructor
+  reward_kwargs:
+    f_pseudo_path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/outputs/f_pseudo/f_pseudo_map.json
+    f_pseudo_lambda: 0.1

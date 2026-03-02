@@ -1,0 +1,10 @@
+  Processing train/excel... 4348 episodes
+  Processing train/word... 5633 episodes
+  Processing train/ppt... 3769 episodes
+  train total: 13750 episodes -> /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/GUI-360/rl_data/gui360_train.jsonl
+  Processing test/excel... 1087 episodes
+  Processing test/word... 1409 episodes
+  Processing test/ppt... 943 episodes
+  test total: 3439 episodes -> /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/GUI-360/rl_data/gui360_test.jsonl
+  Val small: 50 episodes -> /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/GUI-360/rl_data/gui360_val_small.jsonl
+Done!

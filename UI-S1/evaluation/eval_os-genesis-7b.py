@@ -17,6 +17,7 @@ from agentcpm_utils import map_action_space2qwenvl
 from os_genesis_utils import (build_history_actions_str, os_gensis_2minicpm,
                             predict)
 from PIL import Image
+
 from qwenvl_utils import evaluate_android_control_action
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -67,14 +68,17 @@ def process_line(line, args):
                 history=history,
                 image=image
             )
-            
-            # print("Model Response:", model_response)
+
+            print("=== Model Response ===")
+            print(model_response[:500])
+            print("=== End Response ===")
             action_minicpm = os_gensis_2minicpm(model_response)
             print("Action Minicpm:", action_minicpm)
             # print("Action Minicpm:", action_minicpm)
             # print("Action Type:", action_type)
             history_list.append(low_instruction)
-            pred_action = map_action_space2qwenvl(action_minicpm,[width, height])
+            # OS-Genesis outputs absolute pixel coordinates
+            pred_action = map_action_space2qwenvl(action_minicpm, [width, height], coordinate_format="absolute")
             print(pred_action)
 
             type_match, extract_match = evaluate_android_control_action(

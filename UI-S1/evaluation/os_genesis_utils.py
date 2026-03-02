@@ -11,7 +11,7 @@ from PIL import Image
 END_POINT = "http://localhost:8000/v1"  # Replace with actual endpoint
 
 # system prompt
-ACTION_SCHEMA = json.load(open('/evaluation/agentcpm_schema.json', encoding="utf-8"))
+ACTION_SCHEMA = json.load(open('/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/evaluation/agentcpm_schema.json', encoding="utf-8"))
 items = list(ACTION_SCHEMA.items())
 insert_index = 3
 items.insert(insert_index, ("required", ["thought"])) # enable/disable thought by setting it to "required"/"optional"
@@ -98,8 +98,8 @@ def predict(model_name, instruction, low_instruction, history,image):
             bot = OpenAI(
                 # defaults to os.environ.get("OPENAI_API_KEY")
                 api_key="EMPTY",
-                base_url=END_POINT, 
-                timeout=30
+                base_url=END_POINT,
+                timeout=300  # Increased timeout for long generations
             )
             # # if os.environ.get('SEARCH_MODE','') or retry_flag:
             # if os.environ.get('SEARCH_MODE',''):
@@ -109,7 +109,7 @@ def predict(model_name, instruction, low_instruction, history,image):
             # else:
             kwargs = {'extra_body': {"top_k": 1}} # TODO
             # print(kwargs)
-            chat_completion_from_url = bot.chat.completions.create(model=model_name, messages=messages, **kwargs)
+            chat_completion_from_url = bot.chat.completions.create(model=model_name, messages=messages, max_tokens=512, **kwargs)
             # logging.error(chat_completion_from_url)
             output = chat_completion_from_url.choices[0].message.content
             return output
@@ -164,17 +164,7 @@ def os_gensis_2minicpm(action_str):
 
         elif action_type == "scroll":
             result["POINT"] = [500, 500]  # set default start point
-            #if USE_LOW_INSTRUCTION, reverse the direction
             direction = action_dict.get("direction", "down").strip().lower()
-            if USE_LOW_INSTRUCTION:
-                if direction == "up":
-                    direction = "down"
-                elif direction == "down":
-                    direction = "up"
-                elif direction == "left":
-                    direction = "right"
-                elif direction == "right":
-                    direction = "left"
             result["to"] = direction
         elif action_type == "open_app":
             result["OPEN_APP"] = action_dict.get("app_name", "")

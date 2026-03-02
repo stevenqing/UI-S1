@@ -11,7 +11,7 @@ from PIL import Image
 END_POINT = "http://localhost:8000/v1/"  # Replace with actual endpoint
 
 # system prompt
-ACTION_SCHEMA = json.load(open('/evaluation/agentcpm_schema.json', encoding="utf-8"))
+ACTION_SCHEMA = json.load(open('/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/evaluation/agentcpm_schema.json', encoding="utf-8"))
 items = list(ACTION_SCHEMA.items())
 insert_index = 3
 items.insert(insert_index, ("required", ["thought"])) # enable/disable thought by setting it to "required"/"optional"
@@ -69,7 +69,7 @@ def predict(model_name,instruction, low_instruction, history_list, image):
             history_str_list.append({
                 "role": "user",
                 "content": [
-                    {"type": "image_url", "image_url": image_url}
+                    {"type": "image_url", "image_url": {"url": image_url}}
                 ]
             })
             # 助手动作

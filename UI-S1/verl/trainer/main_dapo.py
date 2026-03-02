@@ -158,10 +158,29 @@ class TaskRunner:
         train_sampler = create_rl_sampler(config.data, train_dataset)
 
         # Initialize the PPO trainer.
-        if config.trainer.project_name == "gui_traj_grpo":
+        # Check if MoE is enabled
+        moe_enabled = config.actor_rollout_ref.model.get('moe', {}).get('enabled', False)
+
+        # Determine trainer class: explicit config > MoE > TrajDataset detection > project name > default
+        trainer_cls_name = config.trainer.get('trainer_cls', None)
+        if trainer_cls_name == 'traj_dapo':
+            train_cls = RayTrajDAPOTrainer
+        elif trainer_cls_name == 'moe_traj_dapo' or moe_enabled:
+            # Use MoE-enhanced trainer
+            from verl.trainer.ppo.moe_dapo_trainer import MoERayTrajDAPOTrainer
+            train_cls = MoERayTrajDAPOTrainer
+            print(f"[MoE] Using MoERayTrajDAPOTrainer with {config.actor_rollout_ref.model.moe.num_experts} experts")
+        elif trainer_cls_name == 'ppo':
+            from verl.trainer.ppo.ray_trainer import RayPPOTrainer
+            train_cls = RayPPOTrainer
+        elif config.trainer.project_name.startswith("gui_traj_grpo"):
+            train_cls = RayTrajDAPOTrainer
+        elif hasattr(config.data, 'custom_cls') and config.data.custom_cls.get('name', '') == 'TrajDataset':
             train_cls = RayTrajDAPOTrainer
         else:
+            from verl.trainer.ppo.ray_trainer import RayPPOTrainer
             train_cls = RayPPOTrainer
+        print(f"Using trainer class: {train_cls.__name__}")
         trainer = train_cls(
             config=config,
             tokenizer=tokenizer,
