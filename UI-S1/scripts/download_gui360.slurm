@@ -13,7 +13,7 @@
 source /home/a5l/shuqing.a5l/miniconda3/bin/activate ui-s1
 
 # Set HuggingFace token to avoid rate limiting
-export HF_TOKEN="***REMOVED***"
+export HF_TOKEN="${HF_TOKEN:-$(cat ~/.hf_token 2>/dev/null)}"
 
 # Set variables
 DATASET_DIR="/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/datasets/GUI-360"

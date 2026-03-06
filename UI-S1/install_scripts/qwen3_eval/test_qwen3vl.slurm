@@ -37,7 +37,7 @@ export XDG_CACHE_HOME="$SCRATCH_BASE/cache"
 mkdir -p "$HF_HOME" "$XDG_CACHE_HOME"
 
 # HuggingFace token
-export HF_TOKEN="***REMOVED***"
+export HF_TOKEN="${HF_TOKEN:-$(cat ~/.hf_token 2>/dev/null)}"
 
 # Disable vLLM V1 engine to avoid multiprocessing spawn issue with heredoc
 export VLLM_USE_V1=0
