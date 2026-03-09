@@ -1,0 +1,67 @@
+# MoE SFT v3 Training Configuration — Context-Aware Router
+#
+# Key changes from v2:
+#   - router_type: text_only → context_aware (step-level dynamic routing)
+#   - top_k: 6 → 1 (hard routing for vLLM multi-LoRA compatibility)
+#   - Uses vision + text features for routing (each step routes differently)
+#
+# The ContextAwareRouter pools vision tokens (screenshot features) and
+# text tokens (instruction + action history) from the base model's hidden
+# states, enabling per-step routing within the same trajectory.
+
+# === Base Model ===
+model_name_or_path: "checkpoints/Qwen2.5-VL-7B-Instruct"
+torch_dtype: "bfloat16"
+attn_implementation: "flash_attention_2"
+
+# === MoE Configuration ===
+moe:
+  num_experts: 6
+  top_k: 1                         # hard routing for vLLM compatibility
+  expert_lora_r: 16
+  expert_lora_alpha: 32
+  expert_lora_dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "v_proj"
+  router_hidden: 256
+  router_dropout: 0.1
+  router_temperature: 1.0
+  pooling_strategy: "mean"
+  use_vectorized_routing: false     # hard routing, no need for vectorized
+  router_type: "context_aware"     # NEW: vision+text step-level routing
+  balance_weight: 0.1
+  balance_type: "entropy"
+  z_loss_weight: 0.01
+
+# === Training Data ===
+data:
+  train_file: "train_GUI_360/llamafactory/data/gui360_train.json"
+  data_format: "sharegpt"
+  max_seq_length: 4096
+  image_min_pixels: 256
+  image_max_pixels: 1003520
+
+# === Training Hyperparameters ===
+training:
+  output_dir: "train_GUI_360/moe_sft/output/moe_sft_v3"
+  num_train_epochs: 3
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  max_grad_norm: 0.5
+  bf16: true
+  gradient_checkpointing: false
+  dataloader_num_workers: 4
+  logging_steps: 10
+  save_steps: 200
+  save_total_limit: 10
+  seed: 42
+  report_to: "wandb"
+  run_name: "moe_sft_v3_context_aware"
+
+# === DeepSpeed ===
+deepspeed: "train_GUI_360/moe_sft/ds_z2_config.json"

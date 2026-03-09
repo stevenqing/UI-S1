@@ -577,6 +577,253 @@ def compute_routing_diversity(routing_weights: torch.Tensor) -> float:
     return unique_experts / routing_weights.size(1)
 
 
+class ContextAwareRouter(nn.Module):
+    """
+    Context-aware router using vision + text features for step-level routing.
+
+    Unlike TextOnlyRouter which uses only instruction text, this router
+    combines visual features (from screenshot tokens) with text features
+    (instruction + action history) to make per-step routing decisions.
+
+    This enables different routing for different steps in the same trajectory,
+    since each step has a different screenshot and accumulated history.
+
+    Coexists with TextOnlyRouter; selected via MoEConfig.router_type.
+
+    Args:
+        hidden_size: Base model hidden dimension (e.g., 3584 for Qwen2.5-VL-7B)
+        num_experts: Number of expert LoRAs
+        router_hidden: Hidden dimension of router MLP (default: 256)
+        top_k: Number of experts to select per sample (default: 1)
+        dropout: Dropout rate in router MLP (default: 0.1)
+        temperature: Softmax temperature (default: 1.0)
+        noise_std: Training noise standard deviation (default: 0.0)
+    """
+
+    def __init__(
+        self,
+        hidden_size: int,
+        num_experts: int = 4,
+        router_hidden: int = 256,
+        top_k: int = 1,
+        dropout: float = 0.1,
+        temperature: float = 1.0,
+        noise_std: float = 0.0,
+    ):
+        super().__init__()
+
+        self.hidden_size = hidden_size
+        self.num_experts = num_experts
+        self.top_k = top_k
+        self.temperature = temperature
+        self.noise_std = noise_std
+
+        if top_k > num_experts:
+            raise ValueError(
+                f"top_k ({top_k}) cannot be greater than num_experts ({num_experts})"
+            )
+
+        # Separate projections for vision and text features
+        self.vision_proj = nn.Linear(hidden_size, router_hidden)
+        self.text_proj = nn.Linear(hidden_size, router_hidden)
+
+        # Router MLP: concatenated features -> expert logits
+        self.router = nn.Sequential(
+            nn.Linear(router_hidden * 2, router_hidden),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(router_hidden, num_experts),
+        )
+
+        self._init_weights()
+
+    def _init_weights(self):
+        """Initialize with small weights for near-uniform initial routing."""
+        for module in [self.vision_proj, self.text_proj]:
+            nn.init.xavier_uniform_(module.weight, gain=0.1)
+            if module.bias is not None:
+                nn.init.zeros_(module.bias)
+        for module in self.router:
+            if isinstance(module, nn.Linear):
+                nn.init.xavier_uniform_(module.weight, gain=0.1)
+                if module.bias is not None:
+                    nn.init.zeros_(module.bias)
+
+    def forward(
+        self,
+        vision_features: torch.Tensor,
+        text_features: torch.Tensor,
+        return_all: bool = True,
+    ) -> RouterOutput:
+        """
+        Compute routing from vision + text features.
+
+        Args:
+            vision_features: [B, hidden_size] Pooled vision token representations
+            text_features: [B, hidden_size] Pooled text token representations
+            return_all: Whether to return full RouterOutput (default: True)
+
+        Returns:
+            RouterOutput (same interface as TextOnlyRouter)
+        """
+        # Ensure dtype matches router weights
+        router_dtype = self.vision_proj.weight.dtype
+        if vision_features.dtype != router_dtype:
+            vision_features = vision_features.to(router_dtype)
+        if text_features.dtype != router_dtype:
+            text_features = text_features.to(router_dtype)
+
+        # Project vision and text features
+        v = self.vision_proj(vision_features)   # [B, router_hidden]
+        t = self.text_proj(text_features)       # [B, router_hidden]
+
+        # Combine and route
+        combined = torch.cat([v, t], dim=-1)    # [B, router_hidden * 2]
+        router_logits = self.router(combined)   # [B, num_experts]
+
+        # Add noise during training for exploration
+        if self.training and self.noise_std > 0:
+            noise = torch.randn_like(router_logits) * self.noise_std
+            router_logits = router_logits + noise
+
+        # Apply temperature scaling
+        scaled_logits = router_logits / self.temperature
+
+        # Softmax to get routing probabilities
+        routing_weights = F.softmax(scaled_logits, dim=-1)  # [B, num_experts]
+
+        # Top-k selection
+        top_k_weights, top_k_indices = routing_weights.topk(self.top_k, dim=-1)
+
+        # Renormalize top-k weights
+        top_k_weights = top_k_weights / (top_k_weights.sum(dim=-1, keepdim=True) + 1e-10)
+
+        return RouterOutput(
+            routing_weights=routing_weights,
+            top_k_weights=top_k_weights,
+            top_k_indices=top_k_indices,
+            router_logits=router_logits,
+        )
+
+    def extra_repr(self) -> str:
+        return (
+            f"hidden_size={self.hidden_size}, "
+            f"num_experts={self.num_experts}, "
+            f"top_k={self.top_k}, "
+            f"temperature={self.temperature}"
+        )
+
+
+def create_vision_mask(
+    input_ids: torch.Tensor,
+    tokenizer: PreTrainedTokenizer,
+) -> torch.Tensor:
+    """
+    Create mask marking vision tokens (<|vision_start|> to <|vision_end|>).
+
+    For Qwen2.5-VL format:
+        <|vision_start|><|image_pad|>...<|vision_end|>
+
+    Marks all tokens between (inclusive) vision_start and vision_end.
+
+    Args:
+        input_ids: [B, seq_len] Token IDs
+        tokenizer: Tokenizer with special token mappings
+
+    Returns:
+        vision_mask: [B, seq_len] Boolean mask
+    """
+    batch_size, seq_len = input_ids.shape
+    mask = torch.zeros_like(input_ids, dtype=torch.bool)
+
+    try:
+        vision_start_id = tokenizer.convert_tokens_to_ids('<|vision_start|>')
+        vision_end_id = tokenizer.convert_tokens_to_ids('<|vision_end|>')
+
+        if vision_start_id == tokenizer.unk_token_id:
+            vision_start_id = None
+        if vision_end_id == tokenizer.unk_token_id:
+            vision_end_id = None
+    except Exception:
+        vision_start_id = None
+        vision_end_id = None
+
+    if vision_start_id is None or vision_end_id is None:
+        return mask
+
+    for i in range(batch_size):
+        ids = input_ids[i].tolist()
+        in_vision = False
+        for j, token_id in enumerate(ids):
+            if token_id == vision_start_id:
+                in_vision = True
+            if in_vision:
+                mask[i, j] = True
+            if token_id == vision_end_id:
+                in_vision = False
+
+    return mask
+
+
+def create_text_context_mask(
+    input_ids: torch.Tensor,
+    tokenizer: PreTrainedTokenizer,
+) -> torch.Tensor:
+    """
+    Create mask for all text tokens after <|vision_end|> until <|im_end|>.
+
+    Covers instruction text + action history for the current turn.
+    This differs from create_instruction_mask in that it captures ALL text
+    context (not just instruction), enabling the router to consider
+    accumulated action history.
+
+    Args:
+        input_ids: [B, seq_len] Token IDs
+        tokenizer: Tokenizer with special token mappings
+
+    Returns:
+        text_context_mask: [B, seq_len] Boolean mask
+    """
+    batch_size, seq_len = input_ids.shape
+    mask = torch.zeros_like(input_ids, dtype=torch.bool)
+
+    try:
+        vision_end_id = tokenizer.convert_tokens_to_ids('<|vision_end|>')
+        im_end_id = tokenizer.convert_tokens_to_ids('<|im_end|>')
+
+        if vision_end_id == tokenizer.unk_token_id:
+            vision_end_id = None
+        if im_end_id == tokenizer.unk_token_id:
+            im_end_id = None
+    except Exception:
+        vision_end_id = None
+        im_end_id = None
+
+    for i in range(batch_size):
+        ids = input_ids[i].tolist()
+
+        # Find last vision_end (for multi-turn, use the last one)
+        text_start = 0
+        if vision_end_id is not None:
+            for j in range(len(ids) - 1, -1, -1):
+                if ids[j] == vision_end_id:
+                    text_start = j + 1
+                    break
+
+        # Find im_end after text_start
+        text_end = seq_len
+        if im_end_id is not None:
+            for j in range(text_start, len(ids)):
+                if ids[j] == im_end_id:
+                    text_end = j
+                    break
+
+        if text_start < text_end:
+            mask[i, text_start:text_end] = True
+
+    return mask
+
+
 if __name__ == "__main__":
     # Quick test
     print("Testing TextOnlyRouter...")

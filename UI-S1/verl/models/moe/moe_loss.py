@@ -236,9 +236,11 @@ class RouterZLoss(nn.Module):
         Returns:
             z_loss: Scalar loss value
         """
-        # log(sum(exp(logits))) for each sample, then mean
+        # ST-MoE z-loss: mean(logsumexp(logits)^2)
+        # The square ensures the loss penalizes large logit magnitudes
+        # regardless of sign (prevents logits drifting to large negatives).
         log_z = torch.logsumexp(router_logits, dim=-1)  # [B]
-        z_loss = log_z.mean()
+        z_loss = (log_z ** 2).mean()
 
         return z_loss * self.z_loss_weight
 

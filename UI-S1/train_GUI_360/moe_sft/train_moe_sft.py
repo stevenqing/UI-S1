@@ -408,6 +408,7 @@ def main():
         router_temperature=moe_cfg.get("router_temperature", 1.0),
         pooling_strategy=moe_cfg.get("pooling_strategy", "mean"),
         use_vectorized_routing=moe_cfg.get("use_vectorized_routing", True),
+        router_type=moe_cfg.get("router_type", "text_only"),
         balance_weight=moe_cfg.get("balance_weight", 0.0),
         balance_type=moe_cfg.get("balance_type", "mse"),
         z_loss_weight=moe_cfg.get("z_loss_weight", 0.0),

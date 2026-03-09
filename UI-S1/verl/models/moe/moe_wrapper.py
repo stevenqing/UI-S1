@@ -53,9 +53,12 @@ from transformers import PreTrainedModel, PreTrainedTokenizer
 
 from verl.models.moe.router import (
     TextOnlyRouter,
+    ContextAwareRouter,
     RouterOutput,
     InstructionFeatureExtractor,
     create_instruction_mask,
+    create_vision_mask,
+    create_text_context_mask,
 )
 from verl.models.moe.expert_lora import (
     MoELoRALinear,
@@ -98,24 +101,12 @@ class MoEConfig:
     # Inference mode
     use_vectorized_routing: bool = False
 
+    # Router type: 'text_only' (original) or 'context_aware' (vision+text)
+    router_type: str = 'text_only'
+
     def to_dict(self) -> dict:
         """Convert to dictionary."""
-        return {
-            'num_experts': self.num_experts,
-            'top_k': self.top_k,
-            'expert_lora_r': self.expert_lora_r,
-            'expert_lora_alpha': self.expert_lora_alpha,
-            'expert_lora_dropout': self.expert_lora_dropout,
-            'target_modules': self.target_modules,
-            'router_hidden': self.router_hidden,
-            'router_dropout': self.router_dropout,
-            'router_temperature': self.router_temperature,
-            'pooling_strategy': self.pooling_strategy,
-            'balance_weight': self.balance_weight,
-            'balance_type': self.balance_type,
-            'z_loss_weight': self.z_loss_weight,
-            'use_vectorized_routing': self.use_vectorized_routing,
-        }
+        return {k: getattr(self, k) for k in self.__dataclass_fields__}
 
     @classmethod
     def from_dict(cls, d: dict) -> "MoEConfig":
@@ -236,20 +227,36 @@ class MoEVLMWrapper(nn.Module):
         """Initialize router, MoE loss, and replace target modules with MoELoRALinear."""
         config = self.moe_config
 
-        # 1. Router
-        self.router = TextOnlyRouter(
-            hidden_size=self.hidden_size,
-            num_experts=config.num_experts,
-            router_hidden=config.router_hidden,
-            top_k=config.top_k,
-            dropout=config.router_dropout,
-            temperature=config.router_temperature,
-        )
+        # 1. Router (selected by router_type)
+        if config.router_type == 'context_aware':
+            self.router = ContextAwareRouter(
+                hidden_size=self.hidden_size,
+                num_experts=config.num_experts,
+                router_hidden=config.router_hidden,
+                top_k=config.top_k,
+                dropout=config.router_dropout,
+                temperature=config.router_temperature,
+            )
+        else:
+            # Default: text_only (original behavior)
+            self.router = TextOnlyRouter(
+                hidden_size=self.hidden_size,
+                num_experts=config.num_experts,
+                router_hidden=config.router_hidden,
+                top_k=config.top_k,
+                dropout=config.router_dropout,
+                temperature=config.router_temperature,
+            )
 
-        # 2. Feature Extractor
+        # 2. Feature Extractors
         self.feature_extractor = InstructionFeatureExtractor(
             pooling_strategy=config.pooling_strategy,
         )
+        if config.router_type == 'context_aware':
+            # Separate extractor for vision features
+            self.vision_feature_extractor = InstructionFeatureExtractor(
+                pooling_strategy=config.pooling_strategy,
+            )
 
         # 3. MoE Loss
         self.moe_loss = MoELoss(
@@ -389,21 +396,28 @@ class MoEVLMWrapper(nn.Module):
         else:
             raise ValueError("Cannot get hidden states from base model")
 
-        # ---- Create instruction mask if not provided ----
-        if instruction_mask is None:
-            if instruction_texts is not None and self.tokenizer is not None:
-                from verl.models.moe.router import create_instruction_mask_from_text
-                instruction_mask = create_instruction_mask_from_text(
-                    input_ids, self.tokenizer, instruction_texts
-                )
-            elif self.tokenizer is not None:
-                instruction_mask = create_instruction_mask(input_ids, self.tokenizer)
-            else:
-                instruction_mask = torch.ones_like(input_ids, dtype=torch.bool)
-
         # ---- Compute routing ----
-        instruction_features = self.feature_extractor(hidden_states, instruction_mask)
-        router_output = self.router(instruction_features)
+        if self.moe_config.router_type == 'context_aware':
+            # Context-aware routing: use vision + text features
+            vision_mask = create_vision_mask(input_ids, self.tokenizer)
+            text_mask = create_text_context_mask(input_ids, self.tokenizer)
+            vision_features = self.vision_feature_extractor(hidden_states, vision_mask)
+            text_features = self.feature_extractor(hidden_states, text_mask)
+            router_output = self.router(vision_features, text_features)
+        else:
+            # Original text_only routing (unchanged)
+            if instruction_mask is None:
+                if instruction_texts is not None and self.tokenizer is not None:
+                    from verl.models.moe.router import create_instruction_mask_from_text
+                    instruction_mask = create_instruction_mask_from_text(
+                        input_ids, self.tokenizer, instruction_texts
+                    )
+                elif self.tokenizer is not None:
+                    instruction_mask = create_instruction_mask(input_ids, self.tokenizer)
+                else:
+                    instruction_mask = torch.ones_like(input_ids, dtype=torch.bool)
+            instruction_features = self.feature_extractor(hidden_states, instruction_mask)
+            router_output = self.router(instruction_features)
 
         # ---- Pass 2: Forward with expert LoRAs enabled ----
         self._set_routing_weights(router_output.routing_weights)
@@ -496,21 +510,27 @@ class MoEVLMWrapper(nn.Module):
 
         hidden_states = base_outputs.hidden_states[-1]
 
-        # Create instruction mask if needed
-        if instruction_mask is None:
-            if instruction_texts is not None and self.tokenizer is not None:
-                from verl.models.moe.router import create_instruction_mask_from_text
-                instruction_mask = create_instruction_mask_from_text(
-                    input_ids, self.tokenizer, instruction_texts
-                )
-            elif self.tokenizer is not None:
-                instruction_mask = create_instruction_mask(input_ids, self.tokenizer)
-            else:
-                instruction_mask = torch.ones_like(input_ids, dtype=torch.bool)
-
         # Compute routing
-        instruction_features = self.feature_extractor(hidden_states, instruction_mask)
-        router_output = self.router(instruction_features)
+        if self.moe_config.router_type == 'context_aware':
+            vision_mask = create_vision_mask(input_ids, self.tokenizer)
+            text_mask = create_text_context_mask(input_ids, self.tokenizer)
+            vision_features = self.vision_feature_extractor(hidden_states, vision_mask)
+            text_features = self.feature_extractor(hidden_states, text_mask)
+            router_output = self.router(vision_features, text_features)
+        else:
+            # Original text_only routing (unchanged)
+            if instruction_mask is None:
+                if instruction_texts is not None and self.tokenizer is not None:
+                    from verl.models.moe.router import create_instruction_mask_from_text
+                    instruction_mask = create_instruction_mask_from_text(
+                        input_ids, self.tokenizer, instruction_texts
+                    )
+                elif self.tokenizer is not None:
+                    instruction_mask = create_instruction_mask(input_ids, self.tokenizer)
+                else:
+                    instruction_mask = torch.ones_like(input_ids, dtype=torch.bool)
+            instruction_features = self.feature_extractor(hidden_states, instruction_mask)
+            router_output = self.router(instruction_features)
 
         # Set routing for generation (LoRA enabled)
         self._set_routing_weights(router_output.routing_weights)
@@ -552,6 +572,8 @@ class MoEVLMWrapper(nn.Module):
         self.base_model.eval()
         self.router.train(mode)
         self.feature_extractor.train(mode)
+        if hasattr(self, 'vision_feature_extractor'):
+            self.vision_feature_extractor.train(mode)
         for m in self._moe_linear_modules:
             for lora in m.expert_loras:
                 lora.train(mode)

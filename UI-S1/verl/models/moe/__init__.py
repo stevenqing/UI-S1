@@ -36,12 +36,19 @@ Usage:
 
 from verl.models.moe.router import (
     TextOnlyRouter,
+    ContextAwareRouter,
     RouterOutput,
     InstructionFeatureExtractor,
     create_instruction_mask,
     create_instruction_mask_from_text,
+    create_vision_mask,
+    create_text_context_mask,
     compute_routing_entropy,
     compute_routing_diversity,
+)
+
+from verl.models.moe.standalone_router import (
+    StandaloneRouter,
 )
 
 from verl.models.moe.expert_lora import (
@@ -108,12 +115,17 @@ from verl.models.moe.state_representation import (
 __all__ = [
     # Router
     "TextOnlyRouter",
+    "ContextAwareRouter",
     "RouterOutput",
     "InstructionFeatureExtractor",
     "create_instruction_mask",
     "create_instruction_mask_from_text",
+    "create_vision_mask",
+    "create_text_context_mask",
     "compute_routing_entropy",
     "compute_routing_diversity",
+    # Standalone Router
+    "StandaloneRouter",
     # Expert LoRA
     "LoRALayer",
     "MoELoRALinear",
