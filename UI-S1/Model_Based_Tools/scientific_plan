@@ -1,0 +1,349 @@
+# MA-GUI Research Plan: PAMARL
+> Position-Aware Multi-Agent RL for Long-Horizon GUI Tasks
+
+---
+
+## 一、Research Question
+
+**在 role-specialized sequential multi-agent 系统中，每个 agent 的 Shapley credit 是 trajectory position 的函数，而非静态常数。基于此的 position-aware credit assignment 能否系统性地改善 long-horizon 任务表现？**
+
+与 SHARP/Dr.MAMR 的核心区别：现有方法做 static credit assignment，我们发现并利用 credit 的 trajectory-position 依赖性——这是 long-horizon task 里 role specialization 的必然结构。
+
+---
+
+## 二、已有实验发现
+
+### 问题定位
+- func_match 86%，args_match 仅 11%——坐标是主要瓶颈
+- SFT v3 验证单模型能力冲突：grounding +9pp 但 action 崩到 3%
+- Long trajectory（16+步）TSR = 0.4%，错误指数累积
+
+### 失败分解（2,301 条失败轨迹）
+```
+41.4% Action 错误 (V2)     ← 短轨迹主导，step 1 占 51.6%，click↔type = 55%
+38.9% Grounding 错误 (V3)  ← 长轨迹主导，随步数 33%→49%
+16.7% Args 错误
+ 3.1% Status 错误
+```
+
+### 核心 empirical 发现（Pre-test 1/3）
+```
+φ_V3(step 1) = +16.5pp → φ_V3(step 7) = +38.9pp  （2.4× 增长）
+Fix Action：短轨迹 +21.9pp，长轨迹 +32.6pp
+Fix Ground：短轨迹 +17.7pp，长轨迹 +48.9pp      ← 完美交叉
+交叉点在 medium→long 之间
+```
+
+### Observer（状态追踪）
+```
+Zero-shot: +1.34pp TSR（天花板 +8.8pp）
+Observer 价值 75% 来自历史累积
+贡献份额随长度递增：6%→11%→24%
+```
+
+### 当前基线
+| 条件 | TSR | coord_match |
+|------|:---:|:-----------:|
+| V2 only | 15.8% | 57.9% |
+| V2+V3 greedy | 28.8% | 81.6% |
+| V2+V3+Observer (zero-shot) | 30.3% | — |
+| Perfect Verify+Recovery ceiling | 43.9% | — |
+| Full framework ceiling | 60.6% | — |
+
+---
+
+## 三、方法：PAMARL
+
+### 三层架构
+
+```
+Layer 1: Role Specialization（已实现）
+  V2 (action) + V3 (grounding) 分离
+  → TSR 16%→28.8%
+
+Layer 2: Structured Temporal Communication（Observer SFT 待做）
+  共享状态文档，累积 Δstate 历史
+  → zero-shot +1.34pp，SFT 目标 +8.8pp
+
+Layer 3: Position-Aware Credit Assignment（核心贡献）
+  φ_i(t) weighted advantage，分 agent 训练
+  → 待实验验证
+```
+
+### φ(t) 函数（离线估计，参数化拟合）
+
+```python
+φ_V2(t) = max(0.2,  1 / (1 + 0.3 * t))   # 随 t 递减
+φ_V3(t) = max(0.3,  1 - exp(-0.2 * t))    # 随 t 递增
+φ_Obs(t) = max(0.1, t * (1-exp(-0.2*t)) / Z)  # 累积效应
+# 每步归一化：φ_V2 + φ_V3 + φ_Obs = 1
+```
+
+### Composite Reward
+
+```python
+# 两个模型的 reward 信号完全分离
+R_V2(t) = φ_V2(t) * R_traj              # position-weighted sparse
+         + λ * func_match_score(t)        # dense：action type 对不对
+         + λ * NEAR_MISS_CREDIT.get(      # near-miss gradient
+             (pred_func, gt_func), 0.0)
+         + γ * progress_delta(t)
+
+R_V3(t) = φ_V3(t) * R_traj              # position-weighted sparse
+         + λ * soft_coord_score(t)        # dense：坐标距离 GT
+         - 0.5 * (agree≥0.9 and wrong)   # confident-wrong 惩罚
+         + γ * progress_delta(t)
+
+# NEAR_MISS_CREDIT（解决 click↔type 梯度断层）
+{("click","type"): 0.15, ("type","click"): 0.15,
+ ("click","double_click"): 0.1, ...}
+```
+
+### 训练 Loop
+
+```
+每个 iteration：
+
+1. 联合 Rollout（V2+V3+Observer，N 条轨迹）
+   - Observer 在 step 4+ 激活
+   - V3 使用 Adaptive K（agree≥0.9 → K=1，否则 K=5）
+
+2. 分 Agent 计算 Advantage
+   - V2 buffer：func_name token mask，φ_V2(t) 加权
+   - V3 buffer：坐标序列完整梯度，φ_V3(t) 加权
+   - Baseline：group-normalized（GRPO 风格，无需 value network）
+   - V3 late-step（t≥8）samples 额外 2× 权重
+
+3. 分开 Backward（梯度不交叉）
+   optimizer_V2 → 只更新 V2.LoRA（func_name tokens）
+   optimizer_V3 → 只更新 V3.LoRA（coordinate tokens）
+
+4. 每 500 steps 重估 φ(t)
+   - 用当前 checkpoint 跑 mini oracle experiment
+   - EMA 平滑更新：φ_new = 0.9*φ_old + 0.1*φ_estimated
+```
+
+### 解决的五个技术问题
+
+| 问题 | Fix |
+|------|-----|
+| φ(t) 估计噪声 | 参数化函数拟合，不用点估计 |
+| φ(t) 随训练变化 | 每 500 steps EMA 重估 |
+| V2/V3 样本不对等 | V3 late-step 2× oversample |
+| VLong 正样本稀疏 | Composite reward = sparse + dense + progress |
+| 早期能力退化 | φ(t) 加下界（0.2/0.3） |
+
+---
+
+## 四、完整实验 Plan
+
+### Phase 1：基础设施（当前，2 周）
+
+**目标**：修复 V2 action 最大瓶颈 + 构建 Observer SFT 数据
+
+**P1-A：V2 Action RL**
+- 实现 near-miss partial credit reward（click↔type 混淆 = 55% of action errors）
+- Step-1 reward amplification（51.6% action errors 在 step 1）
+- 稀有 action 3-5× oversample（summary 0%，save_as 22%）
+- 在 verl reward 模块注册 `gui360_v2action` data source
+- **验证指标**：func_match 从 88.3% → 92%+
+
+**P1-B：Observer SFT 数据构建**
+- 从成功轨迹提取 (screenshot, action, Δstate) 三元组
+- 标注重点：状态变化 + 任务进度（历史 > 当前，D8 结论）
+- Excel domain 优先（Observer 在 Excel 收益最大 +2.7pp）
+- 目标：10K+ 高质量训练样本
+
+**Go/No-Go**：V2 func_match ≥ 91% → 进入 Phase 2
+
+---
+
+### Phase 2：PAMARL 核心实验（+3 周）
+
+**目标**：验证 position-aware credit assignment 的核心 claim
+
+**F1：PAMARL vs Uniform Reward 对比训练**
+
+实验设计：
+```
+条件 A：Uniform reward（GRPO baseline，V2/V3 同等 advantage）
+条件 B：PAMARL（φ(t) weighted advantage + composite reward）
+条件 C：Only dense reward（无 position weighting，消融）
+条件 D：Only position weighting（无 dense reward，消融）
+```
+
+评估重点（按轨迹长度分层）：
+```
+Short (1-3步)：B ≈ A（prediction：差异 < 2pp）
+Medium (4-7步)：B > A（prediction：+3-5pp）
+Long (8-15步)：B >> A（prediction：+8-12pp）
+VLong (16+步)：B >> A（prediction：最大收益区）
+```
+
+**核心 falsifiable prediction**：PAMARL 在 Long/VLong 上的 TSR lift 应显著大于 Short，而 Uniform 在各长度上的 lift 相对均匀。
+
+**F2：φ(t) 函数稳定性分析**
+
+- 在 Excel/PPT/Word 三个 domain 分别估计 φ_V3(t)
+- 检验函数形状是否跨 domain 稳定
+- 如果稳定 → framework 是 task-agnostic 的（更强的 claim）
+- 如果有差异 → domain-specific φ(t) 有价值（更细粒度的贡献）
+
+**Go/No-Go**：Long TSR 提升 ≥ 5pp → 进入 Phase 3
+
+---
+
+### Phase 3：Observer SFT + 完整系统（+5 周）
+
+**目标**：Layer 2 接入 trained Observer，测完整 PAMARL 系统
+
+**E1：Observer SFT 训练**
+- 用 Phase 1 构建的数据训练 Observer（SFT，基于 V2 base）
+- 训练目标：生成对 history 有用的 Δstate 描述（D8 结论）
+- 专项评估：long trajectory（8+步）的 TSR 变化
+- **Prediction**：Observer SFT 的收益应集中在长轨迹（E2-offline 已支持）
+
+**Pre-test 2 补完（信息论验证）**
+- 重跑 D1 并保存 Observer 文本输出
+- 测量 I(Observer_output; future_TSR | history)
+- 验证 Δstate > state 的 mutual information claim
+- 这是 Layer 2 唯一缺失的理论支撑
+
+**完整 PAMARL 系统**
+- V2 RL（Phase 1）+ V3 RL（Phase 2）+ Observer SFT（Phase 3）
+- 全量 3,233 条 trajectory eval
+- **预期 TSR**：~42%
+
+---
+
+### Phase 4：Verification + A11y（+8 周）
+
+**目标**：打破 long-horizon 的 error cascade，接近系统天花板
+
+**Visual Verifier SFT**
+- 用 paired trajectory 分叉点提取真实 fail transitions（不用 scrambled pairs）
+- 训练 before/after 截图对比的 binary classifier
+- 目标：recall 从 18% → 60%+
+- Checkpoint + rollback 机制（每次 verification pass 后保存状态）
+- **预期 TSR**：+10-15pp（Eval C8 ceiling = 43.9%）
+
+**A11y mode fallback**
+- 当 V3 agreement < 0.5 时切换到 element_id prediction
+- 利用 a11y semantic matching 替代坐标定位
+- Eval C5 显示 62% 的 hard cases 可用此方法解决
+- 训练数据：101,800 a11y training samples（已有）
+
+---
+
+## 五、时间线与预期结果
+
+| 阶段 | 工作 | 预期 TSR | 关键指标 |
+|------|------|:--------:|---------|
+| 现在 | V2+V3 baseline | 28.8% | coord_match 81.6% |
+| +2 周 | Phase 1（V2 RL + Observer data） | ~31% | func_match ≥ 91% |
+| +3 周 | Phase 2（PAMARL F1/F2） | ~37% | Long TSR lift ≥ 5pp |
+| +5 周 | Phase 3（Observer SFT + 完整系统） | ~42% | Long TSR 显著提升 |
+| +8 周 | Phase 4（Verifier + A11y） | ~50% | VLong TSR > 5% |
+
+---
+
+## 六、论文贡献框架
+
+```
+1. Problem
+   Long-horizon GUI task 的指数衰减无法靠单步精度解决
+   现有 multi-agent 方法（SHARP, Dr.MAMR）做 static credit assignment
+
+2. Finding（数据驱动）
+   Agent 的 Shapley credit 随 trajectory position 系统性变化
+   Pre-test 1：φ_V3 增长 2.4×（step 1→7）
+   Pre-test 3：oracle fix 收益完美交叉（action↔grounding）
+
+3. Method：PAMARL
+   Position-aware credit assignment + role-separated training
+   V2/V3 用不同 label（func_match vs coord_match）分 buffer 训练
+   φ(t) 参数化函数，composite reward 解决稀疏信号
+
+4. Result
+   Long trajectory TSR 系统性提升
+   Short trajectory 差异小（符合理论预测）
+
+5. Analysis
+   φ(t) 跨 domain 稳定性 → 框架泛化性
+   消融实验定位各组件贡献
+   Pre-test 2 提供 communication protocol 的信息论支撑
+
+6. Broader Impact
+   不只是 GUI agent——适用于任何 role-specialized
+   sequential multi-agent 系统（外科手术团队、multi-step reasoning 等）
+```
+
+---
+
+## 七、与现有工作的定位
+
+| 方法 | Credit Assignment | Long-horizon | Role Specialization |
+|------|:-----------------:|:------------:|:-------------------:|
+| SHARP (2026) | Shapley，静态 | 部分 | Planner-Worker |
+| Dr.MAMR (2025) | Shapley-inspired，静态 | ✗ | Meta-Reasoning |
+| SCAR (2025) | Token-level，单模型 | ✗ | ✗ |
+| **PAMARL（我们）** | **Shapley，动态 φ(t)** | **✓ 核心** | **Action+Grounding+Observer** |
+
+**核心差异**：我们是第一个提出并实证 credit 的 trajectory-position 依赖性，并把它用于 role-specialized multi-agent training 的工作。这个发现来自 GUI agent 的数据，但框架是通用的。
+
+---
+
+## 八、数据基础设施
+
+### 训练数据
+| Dataset | Trajs | Steps | Size |
+|---------|:-----:|:-----:|:----:|
+| GUI-360 Full | 13,750 | 105,368 | 56 MB (JSONL) + 588 GB (images) |
+| GUI-360 Subset (fast validation) | 2,000 | 16,786 | 9 MB (JSONL) |
+| GUI-360 Test | 3,439 | — | 14 MB |
+| GUI-360 Val Small | 50 | — | 257 KB |
+
+Fast validation subset: stratified by domain × length, 稀有 action 3x oversampled.
+路径: `datasets/GUI-360/rl_data/gui360_train_subset_2000.jsonl`
+
+### 评估数据
+| Eval | Source | Trajectories | Purpose |
+|------|--------|:------------:|---------|
+| Eval A | GUI-360 test | 3,233 | V2-only vs V2+V3 baseline |
+| D1 | GUI-360 test | 3,133 | V2+V3+Observer AR |
+| D6/D7 | Eval A offline | — | Failure taxonomy × length |
+| D10 | Eval A offline | — | V2 action confusion matrix |
+| Pre-test 1/3 | Eval A offline | — | Shapley credit estimation |
+
+### 模型
+| Model | Base | Role | Checkpoint |
+|-------|------|------|-----------|
+| V2 | Qwen2.5-VL-7B SFT v2 | Action prediction | GUI-360 SFT |
+| V3 | Qwen2.5-VL-7B SFT v3 | Grounding | GUI-360 SFT + grounding data |
+| Observer | V2 (zero-shot) | State tracking | — (SFT planned) |
+
+### RL 框架
+- veRL (Bytedance) + DAPO/GRPO
+- MoE support: 4 experts, LoRA-based, lazy init
+- Reward plugins: `gui360`, `gui_traj`, `f_pseudo`
+- 训练规模: 8 nodes × 4 GPUs = 32 GPUs
+
+---
+
+## 九、已完成的诊断实验索引
+
+| Eval | 状态 | 核心结论 | 脚本 |
+|------|:----:|---------|------|
+| D0 | ✅ | Observer ceiling +8.8pp, state confusion = 38.9% | `eval_d0_*` |
+| D1 | ✅ | Zero-shot Observer +1.34pp, 2.3:1 win ratio | `eval_d1_observer_ar.py` |
+| D2 | ✅ | Prompted Observer -0.9pp → prompt engineering 天花板 | `eval_d2_prompted_observer.py` |
+| D4 | ✅ | Planner ceiling limited, primary target 仅 4.9% | `eval_d4_d6_d7_offline.py` |
+| D6 | ✅ | **Action 错误 41.4% > Grounding 错误 38.9%** | `eval_d4_d6_d7_offline.py` |
+| D7 | ✅ | Grounding 错误随长度递增 33%→49% | `eval_d4_d6_d7_offline.py` |
+| D8 | ✅ | **History = 75% of Observer value** | `eval_d8_info_transfer.py` |
+| D9 | ✅ | Zero-shot Critic 无用 (precision 9.8%) | `eval_d9_critic_zeroshot.py` |
+| D10 | ✅ | **click↔type = 55% of action errors**, step 1 = 51.6% | `eval_d10_v2_action_diagnosis.py` |
+| E2-offline | ✅ | Observer Shapley share 6%→24% with length | `eval_e2_offline_observer_length.py` |
+| Pre-test 1 | ✅ | **φ_V3 monotonically increasing** (16.5→38.9pp) | `eval_pretest1_shapley_credit.py` |
+| Pre-test 3 | ✅ | **Oracle fix 收益完美交叉** (ratio 1.24→0.67) | `eval_pretest3_counterfactual.py` |
+| Pre-test 2 | 待做 | Observer 信息论 — 需要 observer 文本数据 | — |

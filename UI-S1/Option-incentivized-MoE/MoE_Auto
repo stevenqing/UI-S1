@@ -1,0 +1,656 @@
+# MoE Auto: Cross-Modal Binding Diagnosis for GUI Agents
+
+> Base model: Qwen2.5-VL-7B-Instruct. SFT model: GUI-360 SFT v2 (ckpt-796).
+
+---
+
+## 1. 原始假设与排除实验
+
+### 1.1 起点
+
+GUI agent 在 long-horizon 任务上 TSR≈10%。原假设：单模型处理多维 state 时 attention 被分散 → multi-agent decomposition 可解决。F4 hard-partition 实验曾报告 +5pp。
+
+### 1.2 已排除方向
+
+| 方向 | 实验 | 结果 | 判定 |
+|---|---|---|---|
+| Inference-time decomposition | Exp 0: CoT/Decomp/RandDesc (GUI-360+AC, SFT+Base) | CoT 4/6 条件 hurt; Decomp 在 GUI-360 和 AC Base 上 hurt; RandDesc≈Decomp（纯 format noise） | ❌ 排除 |
+| Hard-partition (F4) | Exp 0b: HardDecomp/SoftDecomp/HardV_Only | Base 上 HardDecomp -10.3pp; hard partition 剥夺 task 理解能力 | ❌ F4 +5pp 是 artifact |
+| Attention allocation 管理 | Phase 0: D1 correct/incorrect attention, D2 step position, D3 intervention | correct≈incorrect (diff<0.5pp); suppress_image -6pp; boost_task 无效 | ❌ attention 分配正常 |
+
+Exp 0 核心数据 (⚠️ 含 FINISH samples, Base 因 FINISH 而膨胀，见 §8):
+
+| Condition | GUI-360 SFT full | GUI-360 Base full | AC SFT TSR | AC Base TSR |
+|---|---|---|---|---|
+| C0 (baseline) | 28.1% | 36.7% | 3.4% | 15.4% |
+| CoT | 28.6 (+0.5) | 34.3 (-2.4) | 4.1 (+0.7) | 13.6 (-1.8) |
+| Decomp | 25.3 (-2.8) | 35.1 (-1.6) | 5.1 (+1.7) | 14.2 (-1.2) |
+
+> 注：排除 FINISH 后 SFT v2 C0 = 33.6% > Base = 31.9%，与 original eval 排名一致。详见 §8。
+
+Exp 0b 核心数据 (GUI-360 full test, 26284 steps):
+
+| Condition | SFT full | Base full |
+|---|---|---|
+| C0 | 30.8% | 43.5% |
+| HardDecomp | 31.1 (+0.3) | 33.2 (-10.3) |
+| SoftDecomp | 30.2 (-0.6) | 42.5 (-1.0) |
+
+---
+
+## 2. Probing Diagnostic (Phase 1)
+
+> 300 samples, key layers [0,4,9,14,19,24,27]. 在 GUI-360 和 AC 上分别验证。
+
+### Probe A: Visual Feature Quality (target vs non-target image token classification)
+
+| Layer | GUI-360 SFT | GUI-360 Base | AC Base |
+|---|---|---|---|
+| 14 | 0.857 | 0.841 | 0.863 |
+| 19 | 0.834 | 0.830 | **0.875** |
+| 27 | 0.795 | 0.800 | 0.829 |
+
+**→ AUC 0.80-0.88：visual feature 足够 discriminative。NOT bottleneck。**
+
+### Probe B: Coordinate Regression (last token → GT click)
+
+| Layer | GUI-360 SFT R² / Hit | GUI-360 Base R² / Hit | AC Base R² / Hit |
+|---|---|---|---|
+| 24 | 0.13 / 9.7% | -0.33 / 6.5% | 0.63 / 17.8% |
+| 27 | 0.22 / 14.5% | -0.28 / 12.9% | 0.34 / 10.0% |
+
+**→ Spatial info 弱 (R²<0.7, Hit≤18%)。Secondary bottleneck。**
+
+### Probe C: Cross-Modal Alignment (target-task sim vs nontarget-task sim)
+
+| Layer | GUI-360 SFT gap | GUI-360 Base gap | AC Base gap |
+|---|---|---|---|
+| 0 | -0.123 | -0.125 | -0.067 |
+| 19 | -0.064 | -0.060 | +0.017 |
+| 27 | **-0.102** | **-0.112** | **-0.048** |
+
+**所有 layer gap 为负（L27 除外 AC L19）。Non-target 比 target 跟 task text 更 similar。**
+
+**→ Cross-Modal Binding 完全失败。PRIMARY BOTTLENECK。**
+
+原因：VLM pretrain 做的是 caption-level alignment，不是 element-level alignment。"settings icon" 这种 fine-grained text-image 对齐从未被训练。
+
+---
+
+## 3. Binding Validation (Phase 1.5)
+
+> Oracle GT 信息 bypass binding，验证 probing 结论能否转化为 accuracy 提升。
+
+### GUI-360 (SFT model, 500 samples)
+
+| Condition | Full Match | Func Match | Δ Full | Δ Func |
+|---|---|---|---|---|
+| baseline | 29.6% | 62.0% | — | — |
+| **redbox** (画红框标注 GT) | **39.4%** | **77.6%** | **+9.8pp** | **+15.6pp** |
+| texthint (prompt 加 GT thought) | 31.0% | 66.4% | +1.4pp | +4.4pp |
+| crop (裁切到 GT 区域 40%) | 26.8% | 76.8% | -2.8pp | +14.8pp |
+
+### AC (Base model, 500 samples)
+
+| Condition | Type Match | Extract Match | Δ Extract |
+|---|---|---|---|
+| baseline | 86.4% | 69.4% | — |
+| **redbox** | 89.0% | **77.8%** | **+8.4pp** |
+| **texthint** | **93.2%** | **85.6%** | **+16.2pp** |
+| crop | 56.4% | 45.4% | -24.0pp |
+
+**关键结论：**
+- Redbox 在两个数据集上都 +8~10pp → **binding IS bottleneck，修复有 ~10pp headroom**
+- Texthint 在 GUI-360 几乎无效 (+1.4pp) 但在 AC +16.2pp → AC 的 step_instruction 极其具体，几乎等于 grounding oracle
+- Crop 在 mobile 上致命 (-24pp) → 排除 crop-based 方案
+
+---
+
+## 4. Binding Trainability (Phase 1.75)
+
+### Exp D: Grounding LoRA (200 samples, rank=16, 1 epoch)
+
+| Layer | Before gap | After gap | Δ |
+|---|---|---|---|
+| 14 | -0.088 | -0.126 | -0.037 (worse) |
+| 27 | -0.102 | -0.092 | +0.010 (marginal) |
+
+**→ 直接训 coordinate regression 不改善 representation-level binding。**
+
+### Exp E: Top-K Similarity (模型把 task text 绑定到哪些 image tokens?)
+
+| Dataset | %target in Top-10 | Best Target Rank |
+|---|---|---|
+| GUI-360 (SFT) | ~5% | 90-190 |
+| AC (Base) | 5-7% | 44-110 |
+
+**→ 近乎随机。Target 在 representation 中被 buried。**
+
+### Exp F: Linear Binding Probe (concat(image, task) vs image-only)
+
+| Dataset | Layer | AUC_img | AUC_concat | Δ AUC |
+|---|---|---|---|---|
+| GUI-360 SFT | 27 | 0.769 | 0.859 | **+0.090** |
+| AC Base | 27 | 0.793 | 0.883 | **+0.090** |
+
+**→ Task text 信息 IS available in representation space — 模型 just doesn't use it。Light binding adapter 可行。**
+
+---
+
+## 4.5 Per-Sample Binding Correlation (Phase 1.8)
+
+> 不给模型任何 GT。事后分析 per-sample binding quality (cos_sim(target_img, task) - cos_sim(nontarget_img, task)) 与 prediction accuracy 的相关性。如果 corr > 0 且显著 → binding IS the bottleneck（因果证据，不依赖 oracle GT 泄露）。
+
+**方法**: 每个 sample 做两次 forward pass：(1) output_hidden_states → 提取 binding quality per layer；(2) model.generate → 预测动作 → evaluate。
+
+**判定标准**:
+| 结果 | Spearman ρ | Binned pattern | 判定 |
+|---|---|---|---|
+| Binding IS bottleneck | ρ > 0.15, p < 0.01 | good >> poor (monotonic) | 因果确认 |
+| Binding NOT bottleneck | ρ ≈ 0, p > 0.05 | bins 无差异 | 需重新定位 |
+
+**结果**:
+
+### GUI-360 (Base model, N=340)
+
+| Layer | Spearman ρ | p-value | Sig | Binned: good / medium / poor |
+|---|---|---|---|---|
+| 0 | -0.007 | 0.90 | ns | 35.9% / 34.5% / 40.8% |
+| 4 | +0.042 | 0.44 | ns | 40.4% / 39.6% / 36.4% |
+| 9 | +0.025 | 0.65 | ns | 37.3% / 36.1% / 39.6% |
+| 14 | +0.033 | 0.54 | ns | 32.5% / 43.8% / 34.5% |
+| 19 | +0.046 | 0.40 | ns | 38.0% / 43.4% / 29.7% |
+| **24** | **+0.127** | **0.019** | **\*** | **44.4% / 31.6% / 23.5%** |
+| 27 | +0.012 | 0.83 | ns | 33.7% / 42.9% / 37.5% |
+
+### AC (Base model, N=500)
+
+| Layer | Spearman ρ | p-value | Sig | Binned: good / medium / poor |
+|---|---|---|---|---|
+| 0 | -0.071 | 0.11 | ns | 50.9% / 61.0% / 48.6% |
+| 4 | -0.056 | 0.21 | ns | 55.5% / 60.2% / 42.4% |
+| 9 | -0.042 | 0.35 | ns | 54.8% / 60.6% / 45.8% |
+| 14 | -0.036 | 0.42 | ns | 54.8% / 62.6% / 50.0% |
+| 19 | -0.058 | 0.19 | ns | 56.9% / 54.7% / 59.1% |
+| 24 | -0.048 | 0.28 | ns | 56.5% / 57.5% / 50.0% (n=2) |
+| **27** | **+0.111** | **0.013** | **\*** | **59.8% / 55.6% / 48.1%** |
+
+### 解读
+
+1. **GUI-360 L24**: ρ=+0.127 (p=0.019)，单调 good(44.4%) >> poor(23.5%)，但 **L27 信号消失** → binding 信号在 late layers 被覆盖
+2. **AC L27**: ρ=+0.111 (p=0.013)，单调 good(59.8%) > medium(55.6%) > poor(48.1%)
+3. 两个数据集 **最显著层不同** (GUI-360: L24, AC: L27)，但方向一致（正相关）
+4. Effect size 偏弱 (ρ ≈ 0.11-0.13)，未达到 ρ>0.15 的 "strong" 判定
+
+**VERDICT: Binding is a PARTIAL bottleneck — 有统计显著性但 effect size 不大。**
+
+- Binding gap 与 accuracy 正相关，但只解释 ~1-2% variance
+- 这与 Phase 1.5 的 redbox +9.8pp 并不矛盾：oracle redbox 是 extreme intervention (100% binding fix)，而自然 binding variance 较小
+- 意味着 binding 是 **necessary but not sufficient** — 还需其他因素（coordinate regression, action knowledge）
+
+```
+# 产出
+evaluation/results/binding_corr_gui360_base_20260328_143755/
+evaluation/results/binding_corr_ac_base_20260328_145034/
+```
+
+---
+
+## 4.7 Full Error Decomposition (Phase 1.9)
+
+> 不做新 probing。用 model.generate 收集完整 pred/gt（function, coordinate, bbox, text），offline 做 detailed error taxonomy。
+
+### GUI-360 (Base model, N=500)
+
+| Error mode | N | % |
+|---|---|---|
+| Correct | 200 | 40.0% |
+| Parse failure | 29 | 5.8% |
+| **Wrong function** | **125** | **25.0%** |
+| **Right func, wrong params** | **146** | **29.2%** |
+
+**Wrong function 细分** (125 errors):
+
+| GT → Pred | N | 说明 |
+|---|---|---|
+| type → click | 35 | 最大混淆对：模型把 type 当 click |
+| click → type/select_text/... | 38 | click 被分散到多种 action |
+| complex → click | ~25 | drag/select_text/summary 全部 collapse 到 click |
+| 其他 (empty GT) | 25 | GT function 为空的 complex action |
+
+**Click coordinate error 细分** (140 click errors):
+
+| 子类 | N | % | 说明 |
+|---|---|---|---|
+| moderate_miss (50-200px) | 61 | 43.6% | 点到了 adjacent element |
+| far_miss_random (>30% diag) | 48 | 34.3% | 坐标跟 GT 无关 |
+| far_miss_wrong_element | 20 | 14.3% | 200-500px, 点到了错误 element |
+| near_miss (<30px expand) | 11 | 7.9% | 差一点点就对了 |
+
+Click coordinate distance: **median=199px**, p25=93px, p75=446px, max=858px
+
+### AC (Base model, N=500, click-only)
+
+| Error mode | N | % |
+|---|---|---|
+| Correct | 276 | 55.2% |
+| **Parse failure** | **146** | **29.2%** |
+| Wrong function | 12 | 2.4% |
+| Right func, wrong params | 66 | 13.2% |
+
+**Click coordinate error 细分** (66 click errors):
+
+| 子类 | N | % |
+|---|---|---|
+| no_coordinate | 37 | 56.1% |
+| far_miss_random | 15 | 22.7% |
+| far_miss_wrong_element | 13 | 19.7% |
+| moderate_miss | 1 | 1.5% |
+
+Click coordinate distance: **median=903px** (极远)
+
+### 关键结论
+
+1. **GUI-360 没有 single dominant bottleneck** — wrong function (25%) 和 wrong params (29%) 同样大
+   - Wrong function: type/click 混淆 + complex action collapse to click
+   - Click errors: **far miss >> near miss (48.6% vs 7.9%)** → 点到 wrong element, 不是 precision 问题
+   - moderate_miss (43.6%) 在 adjacent element 范围 → binding 相关
+
+2. **AC 的 dominant bottleneck 是 output format** (29.2% parse failure)
+   - 去掉 parse failure 后 276/354 = **78% correct**
+   - Base 模型不懂 tool_call format → SFT 可直接解决
+
+3. **Binding 的定位更精确了**：
+   - Click error 中 far miss 占主导 → 确认是 **element selection failure (binding)**，不是 coordinate precision
+   - 但 wrong function 同样大 → binding fix 最多解决一半问题
+   - Redbox +9.8pp 恰好对应 click error 中的 binding 部分 (~29.2% × 34% ≈ 10pp)
+
+```
+# 产出
+evaluation/results/error_decomp_gui360_base_20260328_154706/
+evaluation/results/error_decomp_ac_base_20260328_154706/
+```
+
+---
+
+## 5. 跨数据集一致性总结
+
+| Diagnostic | GUI-360 | AC | 一致？ |
+|---|:---:|:---:|:---:|
+| Probe A AUC | 0.80-0.86 | 0.875 | ✅ |
+| Probe B BBox Hit | 14.5% | 17.8% | ✅ |
+| Probe C gap (L27) | -0.10 | -0.048 | ✅ 都是负 |
+| Exp E %target top-K | ~5% | 5-7% | ✅ |
+| Exp F Δ AUC | +0.05~0.09 | +0.07~0.09 | ✅ |
+| Redbox | +9.8pp | +8.4pp | ✅ |
+| Texthint | +1.4pp | +16.2pp | ⚡ AC instruction 信息量大 |
+| Crop | -2.8pp/+14.8pp | -24.0pp | ❌ mobile 不适用 |
+| Error: dominant mode | Wrong func (25%) | Parse fail (29%) | ⚡ 不同 bottleneck |
+| Error: click far miss | 48.6% | 96.6% | ✅ 都是 wrong element |
+
+**Cross-modal binding 是 click error 的 primary cause (far miss >> near miss)。但 GUI-360 的 wrong function 同样大 — binding fix 最多解决约一半错误。**
+
+---
+
+## 6. Phase 2 方案
+
+已排除：
+- ~~Prompt-level hint~~ (Exp B: texthint 在 GUI-360 无效)
+- ~~Direct grounding SFT~~ (Exp D: 不改善 representation binding)
+- ~~Crop-based~~ (mobile 致命)
+
+优先方案：
+
+| Priority | 方案 | 依据 |
+|---|---|---|
+| **1** | **Contrastive grounding loss**: L_bind = -log(sim(target_img, task) / Σ sim(all_img, task)) | Exp F 证明信息存在；需要 representation-level objective 激活它 |
+| **1.5** | **Subtask instruction generation** → 用高质量 instruction 作为 binding proxy | AC texthint +16.2pp；如果模型能自生成好的 instruction，binding 可大幅缓解 |
+| **2** | **Cross-attention binding adapter**: FFN 后加轻量 cross-attention | 另一种 representation-level 方案 |
+| **3** | **Function-specialized MoE adapter** (soft MoE for binding) | 更复杂，备选 |
+
+---
+
+## 7. Stage-wise LoRA 实验结果 (Exp 2 & 5)
+
+### 7.1 实验设置
+
+测试 "composition granularity mismatch" 假设：uniform LoRA 是否次优，分阶段分配 rank 是否更好。
+
+| Condition | Encode (L0-9) | Bind (L10-18) | Ground (L19-27) | Total rank units |
+|-----------|:---:|:---:|:---:|:---:|
+| A (uniform) | r=16 | r=16 | r=16 | 448 |
+| B (stage-equal, control) | r=16 | r=16 | r=16 | 448 |
+| C (probe-guided) | r=8 | r=24 | r=16 | 440 |
+
+训练：4 nodes × 4 GPUs, 101700 samples, 1 epoch, lr=1.5e-5, cosine, batch=64 effective.
+
+### 7.2 Training Loss
+
+| Condition | Final Loss | Avg Train Loss | 耗时 |
+|-----------|:---:|:---:|:---:|
+| A (uniform) | 0.173 | 0.250 | 3h52m |
+| B (stage-equal) | 0.172 | 0.250 | 3h57m |
+| C (probe-guided) | 0.191 | 0.281 | 3h50m |
+
+**A ≈ B**（相同 rank）。**C loss 更高** — encode 组 rank=8 限制了 visual feature 学习能力。
+
+### 7.3 Error Decomposition (GUI-360, 500 samples)
+
+| Metric | Base (Phase 1.9) | A (uniform) | B (stage-equal) | C (probe-guided) |
+|--------|:---:|:---:|:---:|:---:|
+| **Correct** | **40.0%** | 28.4% | 29.4% | 30.8% |
+| Parse failure | 5.8% | 0.8% | 1.0% | 1.6% |
+| Wrong function | 25.0% | 30.0% | 29.4% | 28.4% |
+| Wrong params | 29.2% | 40.8% | 40.2% | 39.2% |
+| Click far miss | 48.6% | 51.3% | 49.6% | 49.0% |
+| Click moderate miss | 43.6% | 41.0% | 42.3% | 46.8% |
+| Click mean dist | — | 308.1px | 291.7px | **282.7px** |
+
+**关键发现：**
+- LoRA models 正确率 all < base (28-31% vs 40%) — SFT on GUI-360 train set 反而降低 test accuracy
+- Parse failure 大幅下降 (5.8% → ~1%) — LoRA 学会了 output format
+- C 在三者中最好：最高正确率 (30.8%)，最小 click distance (282.7px)
+- C 的 moderate_miss 比例最高 (46.8%)，far_miss 最低 — grounding 精度有所改善
+
+### 7.4 Weight Analysis (Exp 5)
+
+| Model | encode norm | bind norm | ground norm | encode eff_rank | bind eff_rank | ground eff_rank |
+|-------|:---:|:---:|:---:|:---:|:---:|:---:|
+| SVD r256 (full SFT) | 0.268 | 0.271 | 0.296 | 219.5 | 223.7 | 219.4 |
+| A (uniform r=16) | 0.072 | 0.088 | 0.102 | 13.4 | 13.2 | 12.8 |
+| B (stage-equal r=16) | 0.071 | 0.088 | 0.101 | 13.3 | 13.1 | 12.8 |
+| C (probe-guided) | 0.064 | 0.075 | 0.090 | 6.9 | 6.8 | 6.5 |
+
+**规律（all models 一致）：**
+- **Frob norm 单调递增**: encode < bind < ground → deeper layers change more during SFT
+- **No stage clustering**: within-group vs across-group cosine similarity gap ≈ 0 (|gap| < 0.001)
+- **Layer 27 特殊**: 所有 model 中 L27 effective rank 最低、norm 最高 → 最 specialized
+
+### 7.5 结论 (⚠️ 已修正 — 原结论被 FINISH confound 误导，见 §8.7)
+
+~~❌ Stage-wise LoRA 不支持 composition granularity mismatch 假设~~ → **⚠️ 部分成立**
+
+原始结论 (含 FINISH): LoRA < Base → LoRA SFT 无效
+**修正结论 (排除 FINISH, §8.7): C > B > A > Base → LoRA SFT 有效，probe-guided 最优**
+
+有效发现:
+1. A ≈ B 完全可重复 — 实验有效
+2. **C (probe-guided) 在 FINISH-excluded 上最好: 35.1% vs Base 31.2% (+3.9pp)**
+3. Weight analysis 无 stage clustering — 层间不自发聚类
+4. Frob norm 梯度（encode < bind < ground）说明 deeper layers change more
+5. **所有 LoRA 模型的 FINISH 准确率 = 0%** — 与 SFT v2 相同的 catastrophic narrowing pattern
+
+核心问题不是 LoRA 效果差，而是 **catastrophic narrowing**: SFT 在 click/type 上改善的同时完全丧失了 FINISH/rare function 能力。这指向 MoE 按 action type 路由（而非 layer stage）的必要性。
+
+---
+
+## 8. Eval Setup Discrepancy Analysis
+
+### 8.1 问题
+
+Exp 0 C0: SFT v2 = 28.1% < Base = 36.7%
+Original GUI-360-eval: SFT v2 = 46.9% > Base = 18.1%
+
+为什么排名反转？
+
+### 8.2 Root Cause: Sample Composition
+
+Original eval (19,046 samples) applies three filters:
+1. `task_type in data["step"]["tags"]` — 只含 action_visual 标注的 steps
+2. `function != "drag"` — 排除 drag
+3. `action.get("rectangle", {})` — 必须有 GT bounding box
+
+Exp 0 (26,279 samples) — 使用完整 parquet，无 filter。多出的 ~7,200 samples 包括：
+- **3,902 FINISH samples** (gt_function="", status="FINISH")
+- 397 drag samples
+- ~2,900 non-tagged / no-rectangle samples
+
+**FINISH samples 上 SFT v2 catastrophically fails**:
+- SFT v2: func_match=42.1%, **full_match=0.0%** (总是输出 `args: {"coordinate": [null, null]}` 而非 `{}`)
+- Base: func_match=67.4%, **full_match=67.4%** (正确输出 `args: {}`)
+
+### 8.3 逐步去除 confound 后的排名
+
+| Filter | SFT v2 | Base | Winner |
+|---|---|---|---|
+| All (Exp 0) | 28.1% | 36.7% | Base +8.6pp |
+| Excl. FINISH + drag | 33.6% | 31.9% | **SFT +1.7pp** ✓ |
+| Click + type + wheel only | 35.6% | 32.3% | **SFT +3.3pp** ✓ |
+| Click bbox accuracy | 47.2% | 34.8% | **SFT +12.4pp** ✓ |
+| Original eval (full criteria) | 46.9% | 18.1% | SFT +28.8pp |
+
+排除 FINISH 后立即恢复 SFT > Base。
+
+### 8.4 Eval Criteria Differences
+
+| 维度 | Original eval | Exp 0 |
+|---|---|---|
+| Click coordinate | gt_rect (bbox from data) or L∞ 25px | parquet bbox or L2 50px |
+| Click other args | ✅ button, double, pressed (normalized) | ❌ 不检查 |
+| Status match | ✅ required for success | ❌ 不检查 |
+| Type text | 检查 keys/text | 检查 text |
+| Drag | excluded (no rectangle) | included |
+
+Other args check 对 base 影响最大：base 经常不输出 button/double → normalized 后与 GT 不匹配。这解释了 base 从 34.8% (Exp 0 bbox) 降到 18.1% (original full criteria) 的 gap。
+
+### 8.5 Per-Function Analysis (Exp 0 C0)
+
+| GT Function | % of data | SFT v2 full% | Base full% | Delta |
+|---|---|---|---|---|
+| click | 60.9% | 43.0% | 40.4% | SFT +2.6 |
+| type | 16.4% | 8.8% | 0.1% | SFT +8.7 |
+| FINISH ("") | 14.8% | **0.0%** | **67.4%** | Base +67.4 |
+| wheel_mouse_input | 1.3% | 27.4% | 61.6% | Base +34.2 |
+| select_text | 1.9% | 0.0% | 34.3% | Base +34.3 |
+| insert_table | 0.3% | 0.0% | 69.6% | Base +69.6 |
+
+**SFT v2 只在 click/type 上优于 base**，在所有其他 function 上均被 base 碾压。这反映 SFT 的 catastrophic narrowing — 过度专注 click 而丧失了其他能力。
+
+### 8.6 Exp α: FINISH-Excluded Error Decomposition (SFT v2 vs Base)
+
+排除 FINISH 和 drag 后 (N≈22,137)：
+
+| Metric | SFT v2 | Base |
+|---|---|---|
+| **Full match** | **33.6%** | **31.9%** |
+| Function match | 61.5% | 69.8% |
+| Wrong function | 29.7% | 21.5% |
+| Right func wrong args | 36.7% | 46.7% |
+
+**Per-function (excl. FINISH/drag)**:
+
+| Function | n | SFT v2 | Base | Δ |
+|---|---|---|---|---|
+| click | 16,022 | 43.0% | 40.5% | SFT +2.5 |
+| type | 4,311 | 8.8% | 0.1% | SFT +8.7 |
+| wheel | 335 | 27.4% | 61.6% | Base +34.2 |
+| select_text | 505 | 0.0% | 34.3% | Base +34.3 |
+| set_font | 116 | 0.0% | 28.4% | Base +28.4 |
+| insert_table | 79 | 0.0% | 69.6% | Base +69.6 |
+| (9 more) | ... | 0.0% | >0% | Base wins |
+
+**SFT confusion pattern**: SFT predicts "click" for 63.1% of wheel GT, 38.4% of type GT.
+
+**→ Catastrophic narrowing confirmed**: SFT 只擅长 click/type (77.3% of data)，对 10+ 种 rare functions 完全丧失能力。这不是 binding 问题 — 是 **catastrophic forgetting of action diversity**。
+
+### 8.7 Exp β: Stage-wise LoRA FINISH-Excluded Re-evaluation
+
+重新评估 §7.3 的 error decomposition 结果，排除 FINISH:
+
+| Model | All (500) | FINISH-excl | Δ vs Base (excl) |
+|---|---|---|---|
+| Base | 35.6% | 31.2% | — |
+| A (uniform) | 26.6% | 32.0% | +0.8pp |
+| B (stage-equal) | 27.6% | 33.2% | +2.0pp |
+| **C (probe-guided)** | 29.2% | **35.1%** | **+3.9pp** |
+
+**Per-function (top 3)**:
+
+| Function | n | Base | A | B | C |
+|---|---|---|---|---|---|
+| click | 301 | 39.5% | 39.2% | 40.5% | 41.9% |
+| type | 84 | 0.0% | 17.9% | 19.0% | 22.6% |
+| FINISH | 75 | 64.0% | 0.0% | 0.0% | 0.0% |
+
+**→ 排除 FINISH 后排名完全反转: C > B > A > Base**
+
+LoRA SFT 确实有效 — C (probe-guided) 比 Base 高 3.9pp。§7.5 的 "LoRA 降低 accuracy" 结论被推翻，完全由 FINISH confound 驱动。
+
+### 8.8 结论与行动
+
+1. **Exp 0 的数字本身没有 bug** — 它测的是 different thing (全量 steps vs 筛选后 steps)
+2. **Exp 0 的排名反转完全由 FINISH samples 驱动** — 排除后 SFT > Base
+3. **原始 eval 的优势在于**: 只测 action-relevant steps，且 criteria 更严格
+4. **SFT v2 的 FINISH 处理 broken**: 总是输出 coordinate 即使 function=""。训练数据的 FINISH GT 是 `args: {}`，但模型似乎 generalize 为 "总是包含 coordinate"
+5. **Stage-wise LoRA 重新评估**: 排除 FINISH 后 C > B > A > Base (§8.7)，**C 的 probe-guided allocation 确实有效** (+3.9pp over Base)
+6. **Catastrophic narrowing 是 SFT 的核心问题** (§8.6): SFT 只学了 click/type，丧失了 10+ 种 rare function 能力
+7. **后续实验必须排除 FINISH samples** 或使用 original eval pipeline
+8. **MoE 设计方向**: 不应按 layer stage 路由（已证伪），应按 **action type** 路由 — 不同 expert 负责不同 function group，保持 rare function 能力
+
+---
+
+## 9. RL as Unified Fix: Theory & Exp γ
+
+### 9.1 Root Cause Analysis
+
+两个 confirmed 问题共享一个 root cause — **SFT 的 per-token CE loss 与 task success 不对齐**:
+
+| 问题 | CE loss 为什么解决不了 | RL 为什么能解决 |
+|---|---|---|
+| Catastrophic narrowing | click 占 61% → CE gradient 被 click dominate → rare functions 遗忘 | Trajectory reward 不 care action type frequency, 只 care trajectory 成功与否 → naturally balanced |
+| Cross-modal binding | CE loss 在 output tokens 上, 不提供 representation-level binding gradient (Exp D 确认) | Trajectory success requires correct grounding → policy gradient 传播到 representation → implicit binding signal |
+
+### 9.2 Exp γ Results: RL Diagnostic on AC (1000 steps, 7 action types)
+
+> V6 (Base→RL, SP+GiGPO+SPWA step 120), UI-S1-GRPO (earlier RL), Base (Qwen2.5-VL-7B-Instruct)
+> 单步评估: 给模型 system prompt (action space) + goal + screenshot，预测 action
+
+#### Overall
+
+| Model | TypeM | ExtractM | ParseF | Active | Narrowing Gap |
+|---|---|---|---|---|---|
+| Base | 69.8% | 57.0% | 0.0% | 6/7 | **+57.3pp** |
+| UI-S1-GRPO | 69.3% | 56.4% | 0.0% | 6/7 | +52.1pp |
+| **V6 step120** | 58.7% | 48.0% | 0.0% | 6/7 | **+25.1pp** |
+
+#### Per-Function Type Match
+
+| Function | n | Base | V6 | UI-S1-GRPO | V6 vs Base |
+|---|---|---|---|---|---|
+| click | 567 | 91.5% | 67.0% | 88.5% | **-24.5** |
+| type | 86 | 91.9% | 86.0% | 90.7% | -5.9 |
+| open | 66 | 13.6% | **71.2%** | 10.6% | **+57.6** |
+| system_button | 64 | 35.9% | 40.6% | **48.4%** | +4.7 |
+| swipe | 136 | 34.6% | 33.1% | **39.7%** | -1.5 |
+| wait | 72 | 29.2% | 20.8% | 29.2% | -8.3 |
+| long_press | 9 | 0.0% | 0.0% | 0.0% | 0.0 |
+
+#### Click Error Decomposition
+
+| Error type | Base (170 err) | V6 (280 err) | UI-S1 (183 err) |
+|---|---|---|---|
+| wrong_action | 28.2% | **66.8%** | 35.5% |
+| far_miss_random | 37.6% | 14.3% | 31.1% |
+| far_miss_wrong_elem | 28.8% | 17.1% | 29.0% |
+| moderate_miss | 5.3% | 1.4% | 4.4% |
+
+Click distance (among coord errors): Base median=814px, V6=709px, UI-S1=780px
+
+### 9.3 Exp γ 解读
+
+**关键发现 1: V6 显著降低了 narrowing (gap 57→25pp)**
+
+V6 的 narrowing gap = 25.1pp，远小于 Base (57.3pp) 和 UI-S1-GRPO (52.1pp)。
+最突出的是 **open: 13.6% → 71.2%** (+57.6pp) — RL 让模型学会了何时应该 "open" app。
+
+**关键发现 2: V6 的 click accuracy 大幅下降 (-24.5pp)**
+
+V6 在 click 上从 91.5% 掉到 67.0%，click error 中 66.8% 是 wrong_action (预测了非 click 的 action)。
+V6 学会了"不要什么都预测 click"，但矫枉过正 — 太多 click 被错误分类为其他 action。
+
+**关键发现 3: UI-S1-GRPO ≈ Base**
+
+UI-S1-GRPO 几乎没有改变 per-function 分布，narrowing gap (52.1pp) 接近 Base (57.3pp)。
+只有 system_button 有 notable 改善 (+12.5pp)。这说明 GRPO 训练不足以解决 narrowing。
+
+**关键发现 4: V6 的 overall accuracy 更低，但 distribution 更 balanced**
+
+| Metric | Base | V6 | UI-S1-GRPO |
+|---|---|---|---|
+| Overall TypeM | **69.8%** | 58.7% | 69.3% |
+| Non-click avg TypeM | 34.2% | **42.0%** | 36.4% |
+| Narrowing gap | 57.3pp | **25.1pp** | 52.1pp |
+
+V6 牺牲了 click accuracy 换来了 action diversity。这与 trajectory-level RL 的预期一致：
+trajectory success 需要 ALL action types → RL push 模型学 rare actions → 但 click 过度矫正。
+
+**→ V6 部分解决了 narrowing 但引入了新的 click regression。**
+
+### 9.4 Implications for Next Steps
+
+1. **RL 确实能降低 narrowing** — V6 gap 25pp vs Base 57pp 证明 trajectory reward 有效
+2. **但 current RL (SP+GiGPO) 的 trade-off 不理想** — click -24.5pp 太大
+3. **单步评估 caveat**: 这里用的是 single-step eval (每步独立), V6 是 multi-turn RL 训练的。V6 在 trajectory-level eval 上表现可能不同（因为有 history context）
+4. **open 的巨大改善** (+57.6pp) 说明 RL 确实学了 "action selection policy"，不只是 grounding
+5. **Potential fix**: action-balanced reward (对 rare action 给更高 reward weight) 或 curriculum (先学 rare actions)
+
+```
+# 产出
+evaluation/results/exp_gamma_base_20260329_064557/
+evaluation/results/exp_gamma_v6_step120_20260329_064557/
+evaluation/results/exp_gamma_uis1_grpo_20260329_064557/
+```
+
+---
+
+## 实验文件索引
+
+```
+# 数据
+evaluation/dataset/ac_diagnostic_click_steps.parquet     # 4865 AC click steps
+
+# Exp 0/0b
+evaluation/eval_exp0_cot_vs_decomp.py
+evaluation/eval_exp0b_f4_replication.py
+
+# Phase 0 Attention
+evaluation/attention_diagnostic.py
+
+# Phase 1 Probing
+evaluation/probing_diagnostic.py
+
+# Phase 1.5/1.75 Binding
+evaluation/binding_analysis.py
+evaluation/eval_binding_validation.py       # GUI-360
+evaluation/eval_binding_validation_ac.py    # AC
+evaluation/train_micro_grounding.py         # Exp D
+
+# Phase 1.8 Binding Correlation
+evaluation/binding_accuracy_correlation.py  # per-sample binding vs accuracy
+scripts/eval/run_binding_correlation.slurm
+
+# Phase 1.9 Error Decomposition
+evaluation/error_decomposition.py           # full error taxonomy
+scripts/eval/run_error_decomp_gui360.slurm
+scripts/eval/run_error_decomp_ac.slurm
+
+# Stage-wise LoRA Experiment (Exp 2)
+evaluation/stagewise_lora_train.py             # A/B/C training
+evaluation/lora_weight_analysis.py             # Exp 5 weight analysis
+scripts/eval/run_stagewise_lora.slurm          # multi-node training
+scripts/eval/run_lora_weight_analysis.slurm
+scripts/eval/run_error_decomp_lora.slurm       # eval with LoRA
+
+# Exp γ: RL Diagnostic on AC
+evaluation/eval_exp_gamma_rl_diagnostic.py     # V6/Base/UI-S1 step-level eval
+scripts/eval/eval_exp_gamma_rl_diagnostic.slurm
+
+# 结果
+evaluation/results/exp0_gui360_*/
+evaluation/results/ac_probing_base_20260328_132308/
+evaluation/results/ac_binding_base_20260328_132308/
+evaluation/results/ac_binding_val_base_20260328_131023/
+evaluation/results/stagewise_lora_{A,B,C}_20260328_171908/  # trained LoRA
+evaluation/results/error_decomp_gui360_{A,B,C}_20260329_*/  # error decomp
+evaluation/results/lora_analysis_{condA,condC,extracted_lora_fullsft_r256}_*/
+```
