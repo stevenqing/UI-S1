@@ -37,6 +37,84 @@ logger = logging.getLogger(__file__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "INFO"))
 
 
+def _patch_all_gather_dtensor():
+    """Patch _all_gather_dtensor to avoid allgather_into_tensor_coalesced.
+
+    The default DTensor redistribute path uses funcol.all_gather_tensor which
+    calls C++ allgather_into_tensor_coalesced — unsupported on some NCCL builds.
+
+    This patch replaces it with dist.all_gather_into_tensor (Python binding),
+    which uses pg._allgather_base — universally supported.
+    """
+    import copy
+    import torch.distributed as dist
+    from torch.distributed._tensor import DTensor, Replicate
+    from torch.distributed.fsdp import _shard_utils
+
+    _orig_fn = _shard_utils._all_gather_dtensor
+
+    def _patched_all_gather_dtensor(tensor, root_mesh):
+        # Get the local shard and shard placement
+        local_tensor = tensor.to_local()
+        mesh = tensor.device_mesh
+        logical_shape = list(tensor.shape)
+
+        # Find shard dim from placements
+        shard_dim = 0
+        for p in tensor.placements:
+            if p.is_shard():
+                shard_dim = p.dim
+                break
+
+        # Get process group (last mesh dim for FSDP)
+        pg = mesh.get_group(mesh_dim=mesh.ndim - 1)
+        world_size = dist.get_world_size(pg)
+
+        # Compute padded chunk size (same logic as DTensor _to_replicate_tensor)
+        logical_dim_size = logical_shape[shard_dim]
+        full_chunk_size = (logical_dim_size + world_size - 1) // world_size
+        local_dim_size = local_tensor.shape[shard_dim]
+
+        # Pad local tensor to full_chunk_size if needed (for uniform all_gather)
+        if local_dim_size < full_chunk_size:
+            pad_size = full_chunk_size - local_dim_size
+            pad_widths = [0] * (2 * local_tensor.ndim)
+            pad_idx = 2 * (local_tensor.ndim - 1 - shard_dim) + 1
+            pad_widths[pad_idx] = pad_size
+            local_tensor = torch.nn.functional.pad(local_tensor, pad_widths)
+
+        if not local_tensor.is_contiguous():
+            local_tensor = local_tensor.contiguous()
+
+        # Allocate output and all_gather
+        gathered_shape = list(local_tensor.shape)
+        gathered_shape[shard_dim] *= world_size
+        gathered = torch.empty(gathered_shape, dtype=local_tensor.dtype, device=local_tensor.device)
+
+        # Use Python binding (not functional collective → avoids coalesced C++ path)
+        dist.all_gather_into_tensor(gathered, local_tensor, group=pg)
+
+        # Always trim to logical shape (gathered may have padding from uneven sharding)
+        if gathered.shape[shard_dim] > logical_dim_size:
+            gathered = gathered.narrow(shard_dim, 0, logical_dim_size)
+
+        return gathered
+
+    _shard_utils._all_gather_dtensor = _patched_all_gather_dtensor
+
+    # Also patch the imported reference in _fsdp_extensions
+    from torch.distributed.fsdp import _fsdp_extensions
+    _orig_ext_fn = _fsdp_extensions._all_gather_dtensor
+    _fsdp_extensions._all_gather_dtensor = _patched_all_gather_dtensor
+    logger.info("Patched _all_gather_dtensor to use dist.all_gather_into_tensor")
+
+    def _restore():
+        _shard_utils._all_gather_dtensor = _orig_fn
+        _fsdp_extensions._all_gather_dtensor = _orig_ext_fn
+
+    return _restore
+
+
 class FSDPCheckpointManager(BaseCheckpointManager):
     """
     Manage FSDP checkpointing in SPMD training.
@@ -103,6 +181,11 @@ class FSDPCheckpointManager(BaseCheckpointManager):
         # every rank download its own checkpoint
         state_dict_cfg = ShardedStateDictConfig(offload_to_cpu=True if is_cuda_available else False) if self.should_load_model else None
         optim_cfg = ShardedOptimStateDictConfig(offload_to_cpu=True if is_cuda_available else False) if self.should_load_optimizer else None
+
+        # Patch _all_gather_dtensor to avoid allgather_into_tensor_coalesced
+        # (unsupported by some NCCL backends, e.g. Cray)
+        _restore_fn = _patch_all_gather_dtensor()
+
         with get_fsdp_state_ctx(self.model, StateDictType.SHARDED_STATE_DICT, state_dict_cfg, optim_cfg):
             if self.should_load_model:
                 remote_model_path = os.path.join(local_path, f"model_world_size_{self.world_size}_rank_{self.rank}.pt")
@@ -117,6 +200,9 @@ class FSDPCheckpointManager(BaseCheckpointManager):
                 optimizer_state_dict = torch.load(local_optim_path, weights_only=False)
                 self.optimizer.load_state_dict(optimizer_state_dict)
                 log_with_rank(f"Loaded optimizer from {remote_optim_path}", rank=self.rank, logger=logger)
+
+        # Restore original _all_gather_dtensor
+        _restore_fn()
 
         if self.should_load_extra:
             remote_extra_state_path = os.path.join(local_path, f"extra_state_world_size_{self.world_size}_rank_{self.rank}.pt")

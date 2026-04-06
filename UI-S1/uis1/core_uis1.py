@@ -61,6 +61,85 @@ def compute_step_discounted_returns(batch, gamma):
     return all_returns
 
 # ---------------------------------------------------------- #
+# ------------- SP + GiGPO Advantage Computation ---------- #
+# ---------------------------------------------------------- #
+
+def compute_sp_gigpo_advantage(
+    sp_scores,        # (bs,) — SP for each step's rollout (numpy)
+    response_mask,    # (bs, response_length) — torch tensor
+    index,            # (bs,) — prompt UID (uid)
+    step_index,       # (bs,) — step_id
+    is_hindsight=None, # (bs,) — bool array, True for hindsight rollouts
+    epsilon=1e-6,
+    normalize=True,   # mean_std vs mean_only
+):
+    """Compute GiGPO-style cross-trajectory advantage using SP scores.
+
+    Groups by (uid, step_id) — all K rollouts at the same step of the same
+    prompt share the same GT screenshot, forming natural anchor groups.
+    Within each group: advantage = (SP_i - mean(SP)) / (std(SP) + eps)
+
+    When is_hindsight is provided:
+    - Baseline (mean/std) is computed from NORMAL rollouts only
+    - Hindsight rollouts get advantage=0 (they don't participate in PPO loss,
+      only serve as donors for OPD Phase 2 auxiliary CE loss)
+    This prevents hindsight rollouts from polluting group statistics.
+
+    Args:
+        sp_scores: np.array (bs,) — Sequential Progress score per step
+        response_mask: torch.Tensor (bs, response_length)
+        index: np.array (bs,) — prompt UIDs
+        step_index: np.array (bs,) — step IDs within trajectory
+        is_hindsight: np.array (bs,) — bool, True for hindsight rollouts (optional)
+        epsilon: float — small value for numerical stability
+        normalize: bool — if True, divide by std; if False, only subtract mean
+
+    Returns:
+        advantages: torch.Tensor (bs, response_length)
+    """
+    response_length = response_mask.shape[-1]
+    scores = torch.tensor(sp_scores, dtype=torch.float32)
+
+    # Group by (uid, step_id)
+    group2indices = defaultdict(list)
+    bsz = scores.shape[0]
+    for i in range(bsz):
+        key = f"{index[i]}-{step_index[i]}"
+        group2indices[key].append(i)
+
+    with torch.no_grad():
+        for key, indices in group2indices.items():
+            # Compute baseline from normal rollouts only (exclude hindsight)
+            if is_hindsight is not None:
+                normal_indices = [i for i in indices if not is_hindsight[i]]
+            else:
+                normal_indices = indices
+
+            if len(normal_indices) == 0:
+                # All rollouts are hindsight — set all to 0
+                for idx in indices:
+                    scores[idx] = 0.0
+                continue
+
+            normal_scores = scores[normal_indices]
+            mean = normal_scores.mean()
+            std = normal_scores.std() if len(normal_indices) > 1 else torch.tensor(1.0)
+
+            for idx in indices:
+                # Hindsight rollouts get advantage=0: they don't participate in PPO
+                if is_hindsight is not None and is_hindsight[idx]:
+                    scores[idx] = 0.0
+                elif normalize and std > epsilon:
+                    scores[idx] = (scores[idx] - mean) / (std + epsilon)
+                else:
+                    scores[idx] = scores[idx] - mean
+
+        advantages = scores.unsqueeze(-1).expand(-1, response_length) * response_mask
+
+    return advantages
+
+
+# ---------------------------------------------------------- #
 # ---------------- Core Functions of uis1 ----------------- #
 # ---------------------------------------------------------- #
 

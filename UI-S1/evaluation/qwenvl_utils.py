@@ -167,9 +167,9 @@ def enlarge_bbox(bbox_list, scale_factor=1.2)->np.ndarray:
 def norm_coordinate(action, width, height):
     if 'candidate_bbox' in action:
         action['candidate_bbox'] = [[_[0]/width, _[1]/height, _[2]/width, _[3]/height] for _ in action['candidate_bbox']]
-    if 'coordinate' in action:
+    if 'coordinate' in action and action['coordinate'] is not None:
         action['coordinate'] = [action['coordinate'][0]/width, action['coordinate'][1]/height]
-    if 'coordinate2' in action:
+    if 'coordinate2' in action and action['coordinate2'] is not None:
         action['coordinate2'] = [action['coordinate2'][0]/width, action['coordinate2'][1]/height]
     return action
 

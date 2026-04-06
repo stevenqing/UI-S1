@@ -84,6 +84,7 @@ class AdvantageEstimator(str, Enum):
     OPO = "opo"
     GRPO_PASSK = "grpo_passk"
     UIS1 = 'uis1'
+    SP_GIGPO = 'sp_gigpo'
 
 
 class AdaptiveKLController:

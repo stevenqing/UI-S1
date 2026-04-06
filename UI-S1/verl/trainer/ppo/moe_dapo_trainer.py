@@ -102,6 +102,9 @@ class MoETrainerConfig:
     use_vectorized_routing: bool = False
     freeze_router_epochs: int = 0  # Optionally freeze router for initial epochs
 
+    # Warm-start: path to converted SFT LoRA checkpoint for expert initialization
+    moe_checkpoint: Optional[str] = None
+
     # Logging settings
     log_routing_matrix_freq: int = 100  # Log routing matrix every N steps
     log_expert_grads: bool = False
@@ -265,8 +268,8 @@ class MoERayTrajDAPOTrainer(RayTrajDAPOTrainer):
 
     def _validate_moe_config(self):
         """Validate MoE configuration."""
-        if self.moe_config.num_experts < 2:
-            raise ValueError(f"num_experts must be >= 2, got {self.moe_config.num_experts}")
+        if self.moe_config.num_experts < 1:
+            raise ValueError(f"num_experts must be >= 1, got {self.moe_config.num_experts}")
 
         if self.moe_config.top_k > self.moe_config.num_experts:
             raise ValueError(
@@ -376,6 +379,49 @@ class MoERayTrajDAPOTrainer(RayTrajDAPOTrainer):
         print(f"[MoE] Router parameters: {router_params:,}")
         print(f"[MoE] Expert LoRA parameters: {expert_params:,}")
         print(f"[MoE] Total MoE parameters: {router_params + expert_params:,}")
+
+        # Load warm-start checkpoint if configured
+        if self.moe_config.moe_checkpoint:
+            self._load_moe_warmstart(self.moe_config.moe_checkpoint)
+
+    def _load_moe_warmstart(self, checkpoint_dir: str):
+        """Load MoE warm-start weights from converted SFT checkpoint.
+
+        This loads pre-trained expert LoRA weights and router into the
+        already-initialized MoE components. The checkpoint is expected
+        in the format produced by convert_sft_lora_to_moe.py.
+
+        Args:
+            checkpoint_dir: Path to warm-start checkpoint directory
+        """
+        if not os.path.exists(checkpoint_dir):
+            print(f"[MoE] WARNING: Warm-start checkpoint not found: {checkpoint_dir}")
+            return
+
+        print(f"[MoE] Loading warm-start from {checkpoint_dir}")
+
+        # Load router
+        router_path = os.path.join(checkpoint_dir, 'router.pt')
+        if os.path.exists(router_path):
+            router_state = torch.load(router_path, map_location='cpu')
+            self._router.load_state_dict(router_state)
+            print(f"[MoE] Loaded router from warm-start")
+
+        # Load expert weights
+        experts_dir = os.path.join(checkpoint_dir, 'experts')
+        if os.path.exists(experts_dir):
+            self._expert_collection.load_experts_separately(experts_dir, load_format='peft')
+            print(f"[MoE] Loaded {self.moe_config.num_experts} experts from warm-start")
+        else:
+            print(f"[MoE] WARNING: No experts directory at {experts_dir}")
+
+        # Log source info
+        config_path = os.path.join(checkpoint_dir, 'moe_config.json')
+        if os.path.exists(config_path):
+            with open(config_path) as f:
+                warmstart_config = json.load(f)
+            print(f"[MoE] Warm-start source: {warmstart_config.get('source_checkpoint', 'unknown')}")
+            print(f"[MoE] Warm-start perturbation: {warmstart_config.get('perturbation_std', 'unknown')}")
 
     def _compute_instruction_mask(
         self,
@@ -606,8 +652,38 @@ class MoERayTrajDAPOTrainer(RayTrajDAPOTrainer):
             self._expert_collection.load_experts_separately(experts_dir, load_format='peft')
             print(f"[MoE] Loaded experts from {experts_dir}")
 
+    def _upload_moe_to_hf(self, moe_dir: str, step: int):
+        """Upload MoE checkpoint to HuggingFace Hub.
+
+        Reads from config:
+          trainer.hf_repo_id: str  — e.g. "shuqing/ui-s1-moe-rl"
+          trainer.hf_private: bool — default True
+        """
+        hf_repo = self.config.trainer.get('hf_repo_id', None)
+        if not hf_repo:
+            return
+
+        try:
+            from huggingface_hub import HfApi
+            api = HfApi()
+
+            private = self.config.trainer.get('hf_private', True)
+            api.create_repo(repo_id=hf_repo, private=private, exist_ok=True)
+
+            experiment = self.config.trainer.experiment_name
+            path_in_repo = f"{experiment}/global_step_{step}/moe"
+            api.upload_folder(
+                folder_path=moe_dir,
+                repo_id=hf_repo,
+                path_in_repo=path_in_repo,
+                repo_type="model",
+            )
+            print(f"[MoE] Uploaded checkpoint to HF: {hf_repo}/{path_in_repo}")
+        except Exception as e:
+            print(f"[MoE] WARNING: HF upload failed (training continues): {e}")
+
     def _save_checkpoint(self):
-        """Override to include MoE checkpoint."""
+        """Override to include MoE checkpoint, HF upload, and cleanup old checkpoints."""
         # Call parent checkpoint saving
         super()._save_checkpoint()
 
@@ -616,6 +692,23 @@ class MoERayTrajDAPOTrainer(RayTrajDAPOTrainer):
             checkpoint_dir = self.config.trainer.default_local_dir
             step_dir = os.path.join(checkpoint_dir, f'global_step_{self.global_steps}')
             self.save_moe_checkpoint(step_dir)
+
+            # Upload MoE to HuggingFace (if hf_repo_id is set in config)
+            moe_dir = os.path.join(step_dir, 'moe')
+            self._upload_moe_to_hf(moe_dir, self.global_steps)
+
+        # Clean up old global_step directories (actor + moe + data)
+        max_ckpt = self.config.trainer.get("max_ckpt_to_keep", None)
+        if max_ckpt and isinstance(max_ckpt, int) and max_ckpt > 0:
+            import glob
+            import shutil
+            checkpoint_dir = self.config.trainer.default_local_dir
+            step_dirs = sorted(glob.glob(os.path.join(checkpoint_dir, "global_step_*")),
+                               key=lambda x: int(x.split("_")[-1]))
+            if len(step_dirs) > max_ckpt:
+                for old_dir in step_dirs[:-max_ckpt]:
+                    print(f"[MoE] Removing old checkpoint: {old_dir}")
+                    shutil.rmtree(old_dir, ignore_errors=True)
 
     def _load_checkpoint(self):
         """Override to include MoE checkpoint loading."""

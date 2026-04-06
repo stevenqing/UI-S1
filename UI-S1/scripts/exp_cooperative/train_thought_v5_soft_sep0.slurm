@@ -68,6 +68,7 @@ srun --ntasks-per-node=1 bash -c '
         --num_agents 2 \
         --soft_routing \
         --init_sep 0.0 \
+        --resume_coop_checkpoint '"$OUTPUT_DIR"'/checkpoint-700/cooperative \
         --bind_weight 0.0 \
         --per_device_batch_size 1 \
         --gradient_accumulation_steps 8 \

@@ -176,12 +176,20 @@ class FPseudoDAPORewardManager(DAPORewardManager):
                     reward_extra_info["overlong"].append(overlong_reward < 0)
 
             # --- f_pseudo reward shaping ---
+            # f_pseudo_map uses 1-indexed step keys ("1","2",...) from transitions.jsonl,
+            # while the RL trainer sets step_id = si (0-indexed).
+            # Fix: map si → si+1 for lookup, and skip the last step (no next state).
             f_pseudo = 0.0
             if self.f_pseudo_map and self.f_pseudo_lambda != 0.0:
                 execution_id = data_item.non_tensor_batch.get("execution_id", "")
-                step_id = data_item.non_tensor_batch.get("step_id", "")
-                if execution_id:
-                    f_pseudo = self._lookup_f_pseudo(execution_id, step_id)
+                step_id = data_item.non_tensor_batch.get("step_id", -1)
+                num_steps = ground_truth.get("num_steps", 0) if isinstance(ground_truth, dict) else 0
+                if execution_id and step_id >= 0:
+                    # Last step has no next state → no f_pseudo
+                    if num_steps > 0 and step_id >= num_steps - 1:
+                        f_pseudo = 0.0
+                    else:
+                        f_pseudo = self._lookup_f_pseudo(execution_id, step_id + 1)
 
             f_pseudo_bonus = self.f_pseudo_lambda * f_pseudo
             reward += f_pseudo_bonus

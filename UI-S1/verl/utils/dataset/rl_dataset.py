@@ -752,6 +752,11 @@ class TrajDataset(Qwen25VLNoRolloutDataset):
     def __getitem__(self, item):
         line = self.dataframe[self._remap_index(item)]
         def fix_line(line):
+            override_ds = self.config.get('override_data_source', None)
+            if override_ds:
+                line['data_source'] = override_ds
+            elif 'data_source' not in line:
+                line['data_source'] = 'gui360'
             for step in line['steps']:
                 check_options = copy.deepcopy(step['action_content'])
                 if 'annotation' in step:
@@ -766,7 +771,11 @@ class TrajDataset(Qwen25VLNoRolloutDataset):
                 step['check_options'] = check_options
                 
             return line
-        return {"line": np.array(fix_line(line), dtype=object)}
+        fixed = fix_line(line)
+        return {
+            "line": np.array(fixed, dtype=object),
+            "data_source": fixed.get('data_source', 'gui360'),
+        }
     
 
 def stratified_sample(turns, k):

@@ -130,7 +130,7 @@ class JsonFormat(BaseFormatAbs):
         model_response += model_result['action']
         return model_response
     
-    def gen_next_round(self, line, state, previous_model_response=None):
+    def gen_next_round(self, line, state, previous_model_response=None, hindsight=False):
         '''
         用于构建静态评测
         '''
@@ -197,6 +197,14 @@ class JsonFormat(BaseFormatAbs):
             raise
         
         messages[-1]['content'].append(image_ele)
+
+        # Hindsight visual conditioning: inject s_{t+1} screenshot
+        if hindsight and si + 1 < len(line['steps']):
+            next_step = line['steps'][si + 1]
+            messages[-1]['content'].append({"text": "Screenshot after correct action:\n"})
+            messages[-1]['content'].append(
+                make_qwen_image_item(next_step['screenshot'], image=next_step.get('screenshot_pil', None))
+            )
 
         messages_with_response = copy.deepcopy(messages)
         if self.hint:

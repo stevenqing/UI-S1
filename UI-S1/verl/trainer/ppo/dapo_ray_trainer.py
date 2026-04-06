@@ -68,6 +68,24 @@ from verl.trainer.ppo.ray_trainer import (AdvantageEstimator, RayPPOTrainer,
                                           compute_response_mask)
 
 
+def recombine_outputs(normal_output, explorer_output, normal_idxs, explorer_idxs):
+    """Merge normal and explorer DataProto outputs back into original index order."""
+    if normal_output is not None and explorer_output is not None:
+        combined = DataProto.concat([normal_output, explorer_output])
+        # Map each original position to its position in the combined array
+        total = len(normal_idxs) + len(explorer_idxs)
+        reorder_indices = [0] * total
+        for local_i, orig_i in enumerate(normal_idxs):
+            reorder_indices[orig_i] = local_i
+        for local_i, orig_i in enumerate(explorer_idxs):
+            reorder_indices[orig_i] = len(normal_idxs) + local_i
+        return combined.select_idxs(reorder_indices)
+    elif normal_output is not None:
+        return normal_output
+    else:
+        return explorer_output
+
+
 class RayTrajDAPOTrainer(RayPPOTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -163,9 +181,12 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                         reward_extra_infos_dict[key].extend(lst)
                     test_batch.non_tensor_batch.update({k: np.array(v) for k, v in result["reward_extra_info"].items()})
                 data_source_lst.append(test_batch.non_tensor_batch.get("data_source", ["unknown"] * reward_tensor.shape[0]))
+                # Collect traj_uid and step_id for validation SP computation
+                if 'traj_uid' in test_batch.non_tensor_batch:
+                    reward_extra_infos_dict.setdefault('_val_traj_uid', []).extend(test_batch.non_tensor_batch['traj_uid'].tolist() if hasattr(test_batch.non_tensor_batch['traj_uid'], 'tolist') else list(test_batch.non_tensor_batch['traj_uid']))
+                if 'step_id' in test_batch.non_tensor_batch:
+                    reward_extra_infos_dict.setdefault('_val_step_id', []).extend(test_batch.non_tensor_batch['step_id'].tolist() if hasattr(test_batch.non_tensor_batch['step_id'], 'tolist') else list(test_batch.non_tensor_batch['step_id']))
                 failed_num += mr_gen.apply_response(test_batch)
-        # print("data_source_lst",data_source_lst)
-        # print("failed_num",failed_num)
         self._maybe_log_val_generations(inputs=sample_inputs, outputs=sample_outputs, scores=sample_scores)
         # dump generations
         # print("sample_inputs",sample_inputs)
@@ -182,6 +203,8 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
             )
 
         for key_info, lst in reward_extra_infos_dict.items():
+            if key_info.startswith('_val_'):  # internal keys for SP computation, may differ in length
+                continue
             assert len(lst) == 0 or len(lst) == len(sample_scores), f"{key_info}: {len(lst)=}, {len(sample_scores)=}"
         # print("reward_extra_infos_dict", reward_extra_infos_dict)
         # print("sample_scores",len(sample_scores),sample_scores)
@@ -197,6 +220,22 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
         metric_dict["val-aux/gui_traj_action_match/extract_match/mean"] = sum(reward_extra_infos_dict['extract_match']) / len(reward_extra_infos_dict['extract_match'])
         metric_dict["val-aux/gui_traj_action_match/type_match/mean"] = sum(reward_extra_infos_dict['type_match']) / len(reward_extra_infos_dict['type_match'])
         metric_dict["val-aux/gui_traj_action_match/format_score/mean"] = np.mean(reward_extra_infos_dict['format_score'])
+        # Compute validation SP if extract_match and trajectory info are available
+        if 'extract_match' in reward_extra_infos_dict and '_val_traj_uid' in reward_extra_infos_dict and '_val_step_id' in reward_extra_infos_dict:
+            try:
+                from verl.utils.reward_score.sp_reward import compute_sequential_progress
+                class _MiniBatch:
+                    def __init__(self, ntb):
+                        self.non_tensor_batch = ntb
+                mini = _MiniBatch({
+                    'traj_uid': np.array(reward_extra_infos_dict['_val_traj_uid']),
+                    'step_id': np.array(reward_extra_infos_dict['_val_step_id']),
+                    'extract_match': np.array(reward_extra_infos_dict['extract_match']),
+                })
+                val_sp_scores, _ = compute_sequential_progress(mini)
+                metric_dict["val-core/sequential_progress/mean"] = np.mean(val_sp_scores)
+            except Exception as e:
+                print(f"Warning: Could not compute validation SP: {e}")
         # for data_source, var2metric2val in data_src2var2metric2val.items():
         #     core_var = "acc" if "acc" in var2metric2val else "reward"
         #     for var_name, metric2val in var2metric2val.items():
@@ -264,7 +303,7 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                     # generate a batch
                     with _timer("gen", timing_raw):
                         traj_batch: DataProto = DataProto.from_single_dict(batch_dict)
-                        mr_gen = MultiRoundGenerator(traj_batch, rollout_n=self.config.actor_rollout_ref.rollout.n, msg_man=self.msg_man, patch_threshold=self.config.algorithm.patch_threshold,actions_only=self.config.algorithm.actions_only,hint=self.config.algorithm.hint)
+                        mr_gen = MultiRoundGenerator(traj_batch, rollout_n=self.config.actor_rollout_ref.rollout.n, msg_man=self.msg_man, patch_threshold=self.config.algorithm.patch_threshold,actions_only=self.config.algorithm.actions_only,hint=self.config.algorithm.hint,hindsight_fraction=self.config.algorithm.get('hindsight_fraction', 0.0),explorer_fraction=self.config.algorithm.get('explorer_fraction', 0.0))
                         for _step, step_batch in enumerate(tqdm(mr_gen.fetch_batch(), desc="Rollout batched steps")):
                         # pop those keys for generation
                             total_step_num += len(step_batch["input_ids"])
@@ -285,16 +324,54 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
 
                        
                             gen_batch.meta_info['n'] = 1
-                            # padding
                             gen_size = len(gen_batch)
-                            gen_batch_padded, pad_size = pad_dataproto_to_divisor(gen_batch, self.actor_rollout_wg.world_size)
-                            if not self.async_rollout_mode:
-                                gen_batch_output = self.actor_rollout_wg.generate_sequences(gen_batch_padded) # TODO do not need pad
+
+                            # --- D4: Split explorer / normal for terminate suppression ---
+                            is_explorer = step_batch.non_tensor_batch.get('is_explorer', None)
+                            if is_explorer is not None and np.any(is_explorer):
+                                explorer_idxs = [i for i in range(gen_size) if is_explorer[i]]
+                                normal_idxs = [i for i in range(gen_size) if not is_explorer[i]]
+
+                                normal_output = None
+                                explorer_output = None
+
+                                # Generate normal rollouts
+                                if normal_idxs:
+                                    normal_batch = gen_batch.select_idxs(normal_idxs)
+                                    normal_padded, _ = pad_dataproto_to_divisor(normal_batch, self.actor_rollout_wg.world_size)
+                                    if not self.async_rollout_mode:
+                                        normal_output = self.actor_rollout_wg.generate_sequences(normal_padded)
+                                    else:
+                                        self.async_rollout_manager.wake_up()
+                                        normal_output = self.async_rollout_manager.generate_sequences(normal_padded)
+                                        self.async_rollout_manager.sleep()
+                                    normal_output = normal_output.slice(0, len(normal_idxs))
+
+                                # Generate explorer rollouts with terminate suppressed
+                                if explorer_idxs:
+                                    explorer_batch = gen_batch.select_idxs(explorer_idxs)
+                                    explorer_batch.meta_info['suppress_terminate'] = True
+                                    explorer_padded, _ = pad_dataproto_to_divisor(explorer_batch, self.actor_rollout_wg.world_size)
+                                    if not self.async_rollout_mode:
+                                        explorer_output = self.actor_rollout_wg.generate_sequences(explorer_padded)
+                                    else:
+                                        self.async_rollout_manager.wake_up()
+                                        explorer_output = self.async_rollout_manager.generate_sequences(explorer_padded)
+                                        self.async_rollout_manager.sleep()
+                                    explorer_output = explorer_output.slice(0, len(explorer_idxs))
+
+                                # Recombine in original order
+                                gen_batch_output = recombine_outputs(normal_output, explorer_output, normal_idxs, explorer_idxs)
                             else:
-                                self.async_rollout_manager.wake_up()
-                                gen_batch_output = self.async_rollout_manager.generate_sequences(gen_batch_padded)
-                                self.async_rollout_manager.sleep()
-                            gen_batch_output = gen_batch_output.slice(0, gen_size)
+                                # Fallback: no explorers, generate all normally
+                                gen_batch_padded, pad_size = pad_dataproto_to_divisor(gen_batch, self.actor_rollout_wg.world_size)
+                                if not self.async_rollout_mode:
+                                    gen_batch_output = self.actor_rollout_wg.generate_sequences(gen_batch_padded)
+                                else:
+                                    self.async_rollout_manager.wake_up()
+                                    gen_batch_output = self.async_rollout_manager.generate_sequences(gen_batch_padded)
+                                    self.async_rollout_manager.sleep()
+                                gen_batch_output = gen_batch_output.slice(0, gen_size)
                             timing_raw.update(gen_batch_output.meta_info["timing"])
                             gen_batch_output.meta_info.pop("timing", None)
 
@@ -322,7 +399,17 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                             # set response
                             error_step_num += mr_gen.apply_response(step_batch)
                     new_batch = DataProto.concat(step_batch_list)
-                    if self.config.algorithm.adv_estimator == AdvantageEstimator.UIS1:
+
+                    # === SP Reward Computation ===
+                    if self.config.algorithm.adv_estimator == AdvantageEstimator.SP_GIGPO:
+                        from verl.utils.reward_score.sp_reward import compute_sequential_progress
+                        sp_scores, first_error_steps = compute_sequential_progress(new_batch)
+                        new_batch.non_tensor_batch['sp_scores'] = sp_scores
+                        # Broadcast first_error_steps to per-sample array
+                        fe_arr = np.array([first_error_steps[uid] for uid in new_batch.non_tensor_batch['traj_uid']], dtype=np.int64)
+                        new_batch.non_tensor_batch['first_error_steps'] = fe_arr
+
+                    if self.config.algorithm.adv_estimator in (AdvantageEstimator.UIS1, AdvantageEstimator.SP_GIGPO):
                         step_rewards_tensor = core_uis1.compute_step_discounted_returns(
                             batch=new_batch,
                             gamma=self.config.algorithm.gamma
@@ -397,6 +484,33 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                                     kept_traj_idxs.append(idx)
                             # traj_bsz = self.config.data.train_batch_size * self.config.actor_rollout_ref.rollout.n
                             batch = batch[kept_traj_idxs]
+
+                    # === OPD Phase 1: Safe Substitution at step_id=0 ===
+                    if self.config.algorithm.get('use_opd', False) and 'extract_match' in batch.non_tensor_batch:
+                        from uis1.opd import compute_opd_substitution, compute_opd_targets
+                        batch, opd_metrics = compute_opd_substitution(
+                            batch,
+                            opd_fraction=self.config.algorithm.get('opd_fraction', 0.5),
+                        )
+                        metrics.update(opd_metrics)
+
+                        # === OPD Phase 2: Compute auxiliary imitation targets (all steps) ===
+                        if self.config.algorithm.get('opd_aux_coef', 0) > 0:
+                            batch, opd_target_metrics = compute_opd_targets(batch)
+                            metrics.update(opd_target_metrics)
+
+                    # === V7: Visual Hindsight Conditioning ===
+                    hindsight_aux_coef = self.config.algorithm.get('hindsight_aux_coef', 0.0)
+                    if hindsight_aux_coef > 0 and 'raw_messages' in batch.non_tensor_batch:
+                        from uis1.opd import construct_hindsight_batch
+                        hs_max_samples = self.config.algorithm.get('hindsight_max_samples', 8)
+                        hindsight_data, hs_metrics = construct_hindsight_batch(
+                            batch, self.msg_man, max_samples=hs_max_samples,
+                        )
+                        metrics.update(hs_metrics)
+                        if hindsight_data is not None:
+                            batch.meta_info['hindsight_data'] = hindsight_data
+                            batch.meta_info['hindsight_aux_coef'] = hindsight_aux_coef
 
                     # ======= update batch =========
                     batch.batch["response_mask"] = compute_response_mask(batch)
@@ -485,6 +599,23 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                             uis1_mode=self.config.algorithm.uis1.mode,
                         )
 
+                    # === SPWA Weighting ===
+                    if self.config.algorithm.get('use_spwa', False) and 'sp_scores' in batch.non_tensor_batch:
+                        from verl.utils.reward_score.sp_reward import compute_spwa_weights
+                        spwa_weights = compute_spwa_weights(
+                            sp_scores=batch.non_tensor_batch['sp_scores'],
+                            first_error_steps={uid: fe for uid, fe in zip(
+                                batch.non_tensor_batch['traj_uid'],
+                                batch.non_tensor_batch['first_error_steps']
+                            )},
+                            traj_uids=batch.non_tensor_batch['traj_uid'],
+                            step_ids=batch.non_tensor_batch['step_id'],
+                            decay=self.config.algorithm.get('spwa_decay', 0.5),
+                        )
+                        batch.non_tensor_batch['spwa_weights'] = spwa_weights
+                        spwa_tensor = torch.tensor(spwa_weights, dtype=torch.float32).unsqueeze(-1).expand_as(batch.batch['advantages'])
+                        batch.batch['advantages'] = batch.batch['advantages'] * spwa_tensor
+
                     # update critic
                     if self.use_critic:
                         with _timer("update_critic", timing_raw):
@@ -497,6 +628,7 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                         # update actor
                         with _timer("update_actor", timing_raw):
                             batch.meta_info["multi_turn"] = self.config.actor_rollout_ref.rollout.multi_turn.enable
+                            batch.meta_info["opd_aux_coef"] = self.config.algorithm.get('opd_aux_coef', 0)
                             raw_batch_size = len(batch)
                             if self.config.actor_rollout_ref.actor.use_fixed_num_mini_batches:
                                 pad_batch, _ = pad_dataproto_to_divisor(batch, self.actor_rollout_wg.world_size*self.config.actor_rollout_ref.actor.fixed_num_mini_batches*self.config.actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu)
@@ -550,6 +682,28 @@ class RayTrajDAPOTrainer(RayPPOTrainer):
                         "training/epoch": epoch,
                     }
                 )
+                # SP metrics
+                if batch is not None and 'sp_scores' in batch.non_tensor_batch:
+                    metrics["training/sp_mean"] = np.mean(batch.non_tensor_batch['sp_scores'])
+                    metrics["training/sp_std"] = np.std(batch.non_tensor_batch['sp_scores'])
+                    if 'spwa_weights' in batch.non_tensor_batch:
+                        metrics["training/spwa_mean"] = np.mean(batch.non_tensor_batch['spwa_weights'])
+                # Explorer metrics (D4)
+                if batch is not None and 'is_explorer' in batch.non_tensor_batch:
+                    exp = batch.non_tensor_batch['is_explorer'].astype(bool)
+                    metrics["training/n_explorer_samples"] = int(np.sum(exp))
+                    if 'sp_scores' in batch.non_tensor_batch and np.sum(exp) > 0:
+                        metrics["training/explorer_sp_mean"] = float(np.mean(batch.non_tensor_batch['sp_scores'][exp]))
+                    if 'sp_scores' in batch.non_tensor_batch and np.sum(~exp) > 0:
+                        metrics["training/non_explorer_sp_mean"] = float(np.mean(batch.non_tensor_batch['sp_scores'][~exp]))
+                # Hindsight metrics
+                if batch is not None and 'is_hindsight' in batch.non_tensor_batch:
+                    hs = batch.non_tensor_batch['is_hindsight'].astype(bool)
+                    metrics["training/n_hindsight_samples"] = int(np.sum(hs))
+                    if 'sp_scores' in batch.non_tensor_batch and np.sum(hs) > 0:
+                        metrics["training/hindsight_sp_mean"] = float(np.mean(batch.non_tensor_batch['sp_scores'][hs]))
+                    if 'sp_scores' in batch.non_tensor_batch and np.sum(~hs) > 0:
+                        metrics["training/normal_sp_mean"] = float(np.mean(batch.non_tensor_batch['sp_scores'][~hs]))
                 # collect metrics
                 metrics.update(compute_data_metrics(batch=batch, use_critic=self.use_critic))
                 metrics.update(compute_timing_metrics(batch=batch, timing_raw=timing_raw))

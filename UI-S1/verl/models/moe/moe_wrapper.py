@@ -85,6 +85,12 @@ class MoEConfig:
         default_factory=lambda: ['q_proj', 'v_proj']
     )
 
+    # Selective MoE: which target_modules get MoE treatment (None = all)
+    moe_modules: Optional[List[str]] = None
+    # Standard LoRA config for non-MoE modules (used in hybrid mode)
+    standard_lora_r: int = 32
+    standard_lora_alpha: int = 64
+
     # Router configuration
     router_hidden: int = 256
     router_dropout: float = 0.1
@@ -266,8 +272,9 @@ class MoEVLMWrapper(nn.Module):
             z_loss_weight=config.z_loss_weight,
         )
 
-        # 4. Replace target modules with MoELoRALinear
+        # 4. Replace target modules with MoELoRALinear (and standard LoRA for hybrid)
         self._moe_linear_modules: List[MoELoRALinear] = []
+        self._std_linear_modules: List[MoELoRALinear] = []
         self._replace_target_modules()
 
     def _find_layers(self) -> nn.ModuleList:
@@ -294,10 +301,24 @@ class MoEVLMWrapper(nn.Module):
         raise ValueError("Could not find transformer layers in base model")
 
     def _replace_target_modules(self):
-        """Replace target nn.Linear modules with MoELoRALinear."""
+        """Replace target nn.Linear modules with MoELoRALinear.
+
+        In hybrid mode (moe_modules is set), MoE-designated modules get
+        MoELoRALinear with num_experts experts and moe_r rank. Standard modules
+        get MoELoRALinear with 1 expert and standard_r rank (mathematically
+        identical to standard LoRA, but uses the same code path).
+        """
         config = self.moe_config
         layers = self._find_layers()
-        replaced = 0
+
+        # Determine which modules get MoE vs standard LoRA
+        # None = all modules are MoE (original behavior), [] = no MoE modules
+        if config.moe_modules is not None:
+            moe_module_set = set(config.moe_modules)
+        else:
+            moe_module_set = set(config.target_modules)
+        replaced_moe = 0
+        replaced_std = 0
 
         for layer_idx, layer in enumerate(layers):
             for module_name in config.target_modules:
@@ -316,33 +337,60 @@ class MoEVLMWrapper(nn.Module):
                 if original_linear is None or not isinstance(original_linear, nn.Linear):
                     continue
 
-                # Create MoELoRALinear replacement
-                moe_linear = MoELoRALinear(
-                    base_linear=original_linear,
-                    num_experts=config.num_experts,
-                    r=config.expert_lora_r,
-                    alpha=config.expert_lora_alpha,
-                    dropout=config.expert_lora_dropout,
-                )
+                is_moe = module_name in moe_module_set
 
-                # Replace in parent module
-                setattr(parent, module_name, moe_linear)
-                self._moe_linear_modules.append(moe_linear)
-                replaced += 1
+                if is_moe:
+                    moe_linear = MoELoRALinear(
+                        base_linear=original_linear,
+                        num_experts=config.num_experts,
+                        r=config.expert_lora_r,
+                        alpha=config.expert_lora_alpha,
+                        dropout=config.expert_lora_dropout,
+                    )
+                    setattr(parent, module_name, moe_linear)
+                    self._moe_linear_modules.append(moe_linear)
+                    replaced_moe += 1
+                else:
+                    # Standard LoRA: 1 expert, higher rank
+                    std_linear = MoELoRALinear(
+                        base_linear=original_linear,
+                        num_experts=1,
+                        r=config.standard_lora_r,
+                        alpha=config.standard_lora_alpha,
+                        dropout=config.expert_lora_dropout,
+                    )
+                    setattr(parent, module_name, std_linear)
+                    self._std_linear_modules.append(std_linear)
+                    replaced_std += 1
 
         logger.info(
-            f"Replaced {replaced} Linear modules with MoELoRALinear "
-            f"({config.num_experts} experts, r={config.expert_lora_r})"
+            f"Replaced {replaced_moe} MoE modules "
+            f"({config.num_experts} experts, r={config.expert_lora_r}) + "
+            f"{replaced_std} standard LoRA modules "
+            f"(1 expert, r={config.standard_lora_r})"
         )
 
     def _set_routing_weights(self, routing_weights: torch.Tensor):
-        """Set routing weights on all MoELoRALinear modules."""
+        """Set routing weights on all MoELoRALinear modules.
+
+        MoE modules get the full [B, num_experts] routing weights.
+        Standard LoRA modules get constant ones [B, 1] (always-on single expert).
+        """
         for m in self._moe_linear_modules:
             m.set_routing_weights(routing_weights)
+
+        if self._std_linear_modules:
+            batch_size = routing_weights.shape[0]
+            ones = torch.ones(batch_size, 1, device=routing_weights.device,
+                              dtype=routing_weights.dtype)
+            for m in self._std_linear_modules:
+                m.set_routing_weights(ones)
 
     def _clear_routing_weights(self):
         """Clear routing weights (MoELoRALinear acts as plain Linear)."""
         for m in self._moe_linear_modules:
+            m.set_routing_weights(None)
+        for m in self._std_linear_modules:
             m.set_routing_weights(None)
 
     def forward(
@@ -551,10 +599,13 @@ class MoEVLMWrapper(nn.Module):
         return generated_ids, router_output
 
     def get_trainable_parameters(self) -> List[nn.Parameter]:
-        """Get list of trainable parameters (router + expert LoRAs in MoELoRALinear)."""
+        """Get list of trainable parameters (router + MoE expert LoRAs + standard LoRAs)."""
         params = []
         params.extend(list(self.router.parameters()))
         for m in self._moe_linear_modules:
+            for lora in m.expert_loras:
+                params.extend(list(lora.parameters()))
+        for m in self._std_linear_modules:
             for lora in m.expert_loras:
                 params.extend(list(lora.parameters()))
         return params
@@ -577,11 +628,39 @@ class MoEVLMWrapper(nn.Module):
         for m in self._moe_linear_modules:
             for lora in m.expert_loras:
                 lora.train(mode)
+        for m in self._std_linear_modules:
+            for lora in m.expert_loras:
+                lora.train(mode)
         return self
 
     def eval(self):
         """Set evaluation mode."""
         return self.train(False)
+
+    # ── Proxy methods for HF Trainer compatibility ──
+
+    def gradient_checkpointing_enable(self, gradient_checkpointing_kwargs=None):
+        """Proxy to base_model for HF Trainer compatibility."""
+        self.base_model.gradient_checkpointing_enable(
+            gradient_checkpointing_kwargs=gradient_checkpointing_kwargs)
+
+    def gradient_checkpointing_disable(self):
+        """Proxy to base_model for HF Trainer compatibility."""
+        self.base_model.gradient_checkpointing_disable()
+
+    def enable_input_require_grads(self):
+        """Proxy to base_model for HF Trainer compatibility."""
+        self.base_model.enable_input_require_grads()
+
+    @property
+    def config(self):
+        """Proxy to base_model.config for HF Trainer compatibility."""
+        return self.base_model.config
+
+    @property
+    def device(self):
+        """Proxy to base_model.device for HF Trainer compatibility."""
+        return self.base_model.device
 
     def save_moe_checkpoint(self, save_dir: str):
         """
@@ -676,17 +755,38 @@ class MoEVLMWrapper(nn.Module):
         if not os.path.exists(experts_dir):
             return
 
+        self._load_experts_from_peft_dir(experts_dir)
+
+    def _load_experts_from_peft_dir(self, experts_dir: str):
+        """Load expert LoRA weights from a directory of PEFT checkpoints.
+
+        Each expert is stored in experts_dir/expert_{i}/ with adapter_model.bin
+        or adapter_model.safetensors.
+
+        Args:
+            experts_dir: Directory containing expert_{0..N-1} subdirectories
+        """
+        config = self.moe_config
         layers = self._find_layers()
+
         for expert_idx in range(config.num_experts):
             expert_dir = os.path.join(experts_dir, f'expert_{expert_idx}')
-            adapter_path = os.path.join(expert_dir, 'adapter_model.bin')
-            if not os.path.exists(adapter_path):
-                logger.warning(f"Expert {expert_idx} not found at {expert_dir}")
-                continue
 
-            peft_state_dict = torch.load(adapter_path, map_location='cpu')
+            # Try .bin then .safetensors
+            adapter_path = os.path.join(expert_dir, 'adapter_model.bin')
+            if os.path.exists(adapter_path):
+                peft_state_dict = torch.load(adapter_path, map_location='cpu')
+            else:
+                safetensor_path = os.path.join(expert_dir, 'adapter_model.safetensors')
+                if os.path.exists(safetensor_path):
+                    from safetensors.torch import load_file
+                    peft_state_dict = load_file(safetensor_path)
+                else:
+                    logger.warning(f"Expert {expert_idx} not found at {expert_dir}")
+                    continue
 
             module_idx = 0
+            loaded = 0
             for layer_idx in range(len(layers)):
                 for module_name in config.target_modules:
                     if module_idx >= len(self._moe_linear_modules):
@@ -705,11 +805,187 @@ class MoEVLMWrapper(nn.Module):
                     b_key = f"{prefix}.lora_B.weight"
                     if a_key in peft_state_dict:
                         lora_layer.lora_A.data.copy_(peft_state_dict[a_key])
+                        loaded += 1
                     if b_key in peft_state_dict:
                         lora_layer.lora_B.data.copy_(peft_state_dict[b_key])
+                        loaded += 1
                     module_idx += 1
 
+            logger.info(f"Expert {expert_idx}: loaded {loaded} weight tensors")
+
         logger.info(f"Loaded experts from {experts_dir}")
+
+    def load_moe_warmstart(self, checkpoint_dir: str):
+        """
+        Load MoE warm-start checkpoint (converted from SFT LoRA).
+
+        This loads pre-trained expert weights and router from the format
+        created by convert_sft_lora_to_moe.py:
+            checkpoint_dir/
+            ├── router.pt
+            ├── moe_config.json
+            └── experts/expert_{0-3}/adapter_model.bin
+
+        Args:
+            checkpoint_dir: Path to warm-start checkpoint directory
+        """
+        if not os.path.exists(checkpoint_dir):
+            logger.warning(f"Warm-start checkpoint not found: {checkpoint_dir}")
+            return
+
+        logger.info(f"Loading MoE warm-start from {checkpoint_dir}")
+
+        # Load router weights
+        router_path = os.path.join(checkpoint_dir, 'router.pt')
+        if os.path.exists(router_path):
+            router_state = torch.load(router_path, map_location='cpu')
+            self.router.load_state_dict(router_state)
+            logger.info(f"Loaded router from warm-start checkpoint")
+
+        # Load expert weights
+        experts_dir = os.path.join(checkpoint_dir, 'experts')
+        if os.path.exists(experts_dir):
+            self._load_experts_from_peft_dir(experts_dir)
+        else:
+            logger.warning(f"No experts directory found at {experts_dir}")
+
+        # Log config info if available
+        config_path = os.path.join(checkpoint_dir, 'moe_config.json')
+        if os.path.exists(config_path):
+            with open(config_path) as f:
+                warmstart_config = json.load(f)
+            logger.info(
+                f"Warm-start config: r={warmstart_config.get('expert_lora_r')}, "
+                f"alpha={warmstart_config.get('expert_lora_alpha')}, "
+                f"modules={warmstart_config.get('target_modules')}, "
+                f"source={warmstart_config.get('source_checkpoint', 'unknown')}"
+            )
+
+    def save_selective_checkpoint(self, save_dir: str):
+        """
+        Save hybrid MoE checkpoint as flat state_dict.
+
+        Saves router state_dict + all LoRA weights (MoE and standard) as a
+        single flat state_dict, plus moe_config.json for reconstruction.
+
+        Args:
+            save_dir: Directory to save checkpoint
+        """
+        os.makedirs(save_dir, exist_ok=True)
+
+        # Save router
+        torch.save(
+            self.router.state_dict(),
+            os.path.join(save_dir, 'router.pt')
+        )
+
+        # Save all LoRA weights as flat state_dict
+        lora_state_dict = {}
+        config = self.moe_config
+        layers = self._find_layers()
+        moe_module_set = set(config.moe_modules) if config.moe_modules is not None else set(config.target_modules)
+
+        moe_idx = 0
+        std_idx = 0
+        for layer_idx in range(len(layers)):
+            for module_name in config.target_modules:
+                is_moe = module_name in moe_module_set
+
+                if is_moe:
+                    if moe_idx >= len(self._moe_linear_modules):
+                        continue
+                    moe_linear = self._moe_linear_modules[moe_idx]
+                    for expert_idx, lora_layer in enumerate(moe_linear.expert_loras):
+                        prefix = f"moe.layer_{layer_idx}.{module_name}.expert_{expert_idx}"
+                        lora_state_dict[f"{prefix}.lora_A"] = lora_layer.lora_A.data.clone()
+                        lora_state_dict[f"{prefix}.lora_B"] = lora_layer.lora_B.data.clone()
+                    moe_idx += 1
+                else:
+                    if std_idx >= len(self._std_linear_modules):
+                        continue
+                    std_linear = self._std_linear_modules[std_idx]
+                    lora_layer = std_linear.expert_loras[0]
+                    prefix = f"std.layer_{layer_idx}.{module_name}"
+                    lora_state_dict[f"{prefix}.lora_A"] = lora_layer.lora_A.data.clone()
+                    lora_state_dict[f"{prefix}.lora_B"] = lora_layer.lora_B.data.clone()
+                    std_idx += 1
+
+        torch.save(lora_state_dict, os.path.join(save_dir, 'lora_weights.pt'))
+
+        # Save config
+        with open(os.path.join(save_dir, 'moe_config.json'), 'w') as f:
+            json.dump(config.to_dict(), f, indent=2)
+
+        logger.info(
+            f"Saved selective checkpoint to {save_dir}: "
+            f"{moe_idx} MoE modules, {std_idx} standard modules, "
+            f"{len(lora_state_dict)} weight tensors"
+        )
+
+    def load_selective_checkpoint(self, load_dir: str):
+        """
+        Load hybrid MoE checkpoint from flat state_dict.
+
+        Args:
+            load_dir: Directory containing checkpoint
+        """
+        # Load router
+        router_path = os.path.join(load_dir, 'router.pt')
+        if os.path.exists(router_path):
+            state_dict = torch.load(router_path, map_location='cpu')
+            self.router.load_state_dict(state_dict)
+            logger.info(f"Loaded router from {router_path}")
+
+        # Load LoRA weights
+        lora_path = os.path.join(load_dir, 'lora_weights.pt')
+        if not os.path.exists(lora_path):
+            logger.warning(f"No lora_weights.pt found in {load_dir}")
+            return
+
+        lora_state_dict = torch.load(lora_path, map_location='cpu')
+        config = self.moe_config
+        layers = self._find_layers()
+        moe_module_set = set(config.moe_modules) if config.moe_modules is not None else set(config.target_modules)
+
+        loaded = 0
+        moe_idx = 0
+        std_idx = 0
+        for layer_idx in range(len(layers)):
+            for module_name in config.target_modules:
+                is_moe = module_name in moe_module_set
+
+                if is_moe:
+                    if moe_idx >= len(self._moe_linear_modules):
+                        continue
+                    moe_linear = self._moe_linear_modules[moe_idx]
+                    for expert_idx, lora_layer in enumerate(moe_linear.expert_loras):
+                        prefix = f"moe.layer_{layer_idx}.{module_name}.expert_{expert_idx}"
+                        a_key = f"{prefix}.lora_A"
+                        b_key = f"{prefix}.lora_B"
+                        if a_key in lora_state_dict:
+                            lora_layer.lora_A.data.copy_(lora_state_dict[a_key])
+                            loaded += 1
+                        if b_key in lora_state_dict:
+                            lora_layer.lora_B.data.copy_(lora_state_dict[b_key])
+                            loaded += 1
+                    moe_idx += 1
+                else:
+                    if std_idx >= len(self._std_linear_modules):
+                        continue
+                    std_linear = self._std_linear_modules[std_idx]
+                    lora_layer = std_linear.expert_loras[0]
+                    prefix = f"std.layer_{layer_idx}.{module_name}"
+                    a_key = f"{prefix}.lora_A"
+                    b_key = f"{prefix}.lora_B"
+                    if a_key in lora_state_dict:
+                        lora_layer.lora_A.data.copy_(lora_state_dict[a_key])
+                        loaded += 1
+                    if b_key in lora_state_dict:
+                        lora_layer.lora_B.data.copy_(lora_state_dict[b_key])
+                        loaded += 1
+                    std_idx += 1
+
+        logger.info(f"Loaded {loaded} weight tensors from {load_dir}")
 
     def get_routing_statistics(
         self,

@@ -89,6 +89,15 @@ def default_compute_score(data_source, solution_str, ground_truth, extra_info=No
     elif data_source in ["gui_traj_action_match","android_world","android_control"]:
         from . import gui_traj
         res = gui_traj.gui_action_match_compute_score(solution_str, ground_truth, extra_info=extra_info)
+    elif data_source in ["gui360"]:
+        from .gui360 import gui360_compute_score
+        res = gui360_compute_score(solution_str, ground_truth, extra_info=extra_info)
+    elif data_source in ["gui360_binary"]:
+        from .gui360_binary import gui360_binary_compute_score
+        res = gui360_binary_compute_score(solution_str, ground_truth, extra_info=extra_info)
+    elif data_source in ["gui360_pamarl"]:
+        from .gui360_pamarl import gui360_pamarl_compute_score
+        res = gui360_pamarl_compute_score(solution_str, ground_truth, extra_info=extra_info)
     elif data_source in ["gui_traj_action_match_memory"]:
         from . import gui_traj_memory
         res = gui_traj_memory.gui_action_match_compute_score(solution_str, ground_truth, extra_info=extra_info)

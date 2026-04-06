@@ -55,7 +55,7 @@ def predict_direction(start, end):
             return 'up'
         
 def check_click(click, candidate_bbox, gt_point):
-    if len(candidate_bbox):
+    if candidate_bbox and len(candidate_bbox):
         candidate_bbox = enlarge_bbox(candidate_bbox, scale_factor=BBOX_ENLARGE_FACTOR)
         for bbox in candidate_bbox:
             if (bbox[0] <= click[0] <= bbox[2]) and (bbox[1] <= click[1] <= bbox[3]):

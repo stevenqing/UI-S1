@@ -163,6 +163,9 @@ class vLLMRollout(BaseRollout):
 
         self.pad_token_id = tokenizer.pad_token_id
 
+        # D4: Pre-tokenize "terminate" for explorer rollout suppression
+        self._terminate_token_ids = tokenizer.encode('terminate', add_special_tokens=False)
+
     @contextmanager
     def update_sampling_params(self, **kwargs):
         # update sampling params
@@ -226,7 +229,18 @@ class vLLMRollout(BaseRollout):
             }
         else:
             kwargs = {}
-        
+
+        # D4: Suppress terminate for explorer rollouts
+        # Use logits_processors (engine-agnostic) instead of bad_words
+        # (which requires update_from_tokenizer only called in V1 engine)
+        if prompts.meta_info.get('suppress_terminate', False):
+            ban_ids = self._terminate_token_ids
+            def _suppress_terminate(token_ids, logits):
+                for tid in ban_ids:
+                    logits[tid] = float('-inf')
+                return logits
+            kwargs['logits_processors'] = [_suppress_terminate]
+
         lora_requests = None
         if self.lora_kwargs:
             # self.inference_engine.llm_engine.list_loras

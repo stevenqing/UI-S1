@@ -290,6 +290,38 @@ def compute_advantage(data: DataProto, adv_estimator, gamma=1.0, lam=1.0, num_re
             )
         data.batch['advantages'] = advantages
         data.batch['returns'] = returns
+    elif adv_estimator == AdvantageEstimator.SP_GIGPO:
+        # Use step-level extract_match (binary 0/1) instead of trajectory-level SP
+        # for GiGPO grouping — gives correct per-step credit assignment
+        extract_match = data.non_tensor_batch['extract_match']
+        step_scores = np.array([1.0 if m else 0.0 for m in extract_match], dtype=np.float32)
+        sp_gigpo_advantages = core_uis1.compute_sp_gigpo_advantage(
+            sp_scores=step_scores,
+            response_mask=data.batch['response_mask'],
+            index=data.non_tensor_batch['uid'],
+            step_index=data.non_tensor_batch['step_id'],
+            is_hindsight=data.non_tensor_batch.get('is_hindsight', None),
+        )
+        # Optionally combine with UIS1 step-discounted advantages
+        if config and config.get('combine_with_uis1', False):
+            uis1_advantages, _ = core_uis1.compute_uis1_outcome_advantage(
+                token_level_rewards=data.batch['token_level_rewards'],
+                step_rewards=data.batch['step_rewards'],
+                response_mask=data.batch['response_mask'],
+                index=data.non_tensor_batch['uid'],
+                traj_index=data.non_tensor_batch['traj_uid'],
+                step_index=data.non_tensor_batch['step_id'],
+                step_advantage_w=step_advantage_w,
+                episode_advantage_w=episode_advantage_w,
+                mode=uis1_mode,
+            )
+            sp_w = config.get('sp_gigpo_w', 1.0)
+            uis1_w = config.get('uis1_w', 0.5)
+            advantages = sp_w * sp_gigpo_advantages + uis1_w * uis1_advantages
+        else:
+            advantages = sp_gigpo_advantages
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = advantages
     else:
         # handle all other adv estimator type other than GAE and GRPO
         adv_estimator_fn = core_algos.get_adv_estimator_fn(adv_estimator)
@@ -373,7 +405,8 @@ class RayPPOTrainer:
             AdvantageEstimator.RLOO,
             AdvantageEstimator.OPO,
             AdvantageEstimator.REINFORCE_PLUS_PLUS_BASELINE,
-            AdvantageEstimator.UIS1
+            AdvantageEstimator.UIS1,
+            AdvantageEstimator.SP_GIGPO,
         ]:
             self.use_critic = False
         else:

@@ -19,6 +19,7 @@ from qwen_vl_utils import process_vision_info
 from torch.utils.data import Dataset
 from transformers import PreTrainedTokenizer, ProcessorMixin
 from x.data.agent.json import JsonFormat
+from x.data.agent.sftv2 import SFTv2Format
 from x.io import JsonWrap
 from x.parallel.parallel_task import ParallelTask
 from x.qwen.data_format import slim_messages
@@ -170,38 +171,58 @@ class QwenMessages2Inputs():
 
 
 class StdTrajectory():
-    def __init__(self, line,actions_only,hint) -> None:
+    def __init__(self, line,actions_only,hint,hindsight=False,explorer=False) -> None:
         self.line = line[()]
         self.num_steps = len(self.line['steps'])
         from x.data.agent.space.std_space import RAW_SPACE
-        self.fm = JsonFormat(RAW_SPACE, add_thought=True, force_add_thought=True,actions_only=actions_only,hint=hint)
+        self.fm = SFTv2Format(RAW_SPACE)
         self.state = None
+        self.hindsight = hindsight
+        self.explorer = explorer
 
     def get_next(self, model_response):
-        state = self.fm.gen_next_round(self.line, self.state, previous_model_response=model_response)
+        state = self.fm.gen_next_round(self.line, self.state, previous_model_response=model_response, hindsight=self.hindsight)
         if state is None:
             return "Finished"
         return state
  
 class MultiRoundGenerator():
-    def __init__(self, batch: DataProto, rollout_n, msg_man, patch_threshold=0,actions_only=None,hint=False) -> None:
+    def __init__(self, batch: DataProto, rollout_n, msg_man, patch_threshold=0,actions_only=None,hint=False,hindsight_fraction=0.0,explorer_fraction=0.0) -> None:
         self.rollout_n = rollout_n
         batch.non_tensor_batch["uid"] = np.array([str(uuid.uuid4()) for _ in range(len(batch.non_tensor_batch["line"]))], dtype=object)
-        
+
         repeat_batch = batch.repeat(repeat_times=self.rollout_n, interleave=True) # need set rollout kwargs to 1
         self.batch = repeat_batch
         traj_uid = np.array([str(uuid.uuid4()) for _ in range(len(self.batch))], dtype=object)
         self.batch.non_tensor_batch["traj_uid"] = traj_uid
         self.task_queue = [StdTrajectory(line,actions_only,hint) for line in self.batch.non_tensor_batch["line"]]
+
+        # Mark first N rollouts per K-group as hindsight
+        n_hindsight = int(hindsight_fraction * rollout_n)
+        for i in range(len(self.task_queue)):
+            group_idx = i % rollout_n  # position within K-group
+            if group_idx < n_hindsight:
+                self.task_queue[i].hindsight = True
+
+        # D4: Mark last N rollouts per K-group as explorers (suppress terminate)
+        # Explorers take the LAST slots to avoid overlap with hindsight (first slots)
+        n_explorer = int(explorer_fraction * rollout_n)
+        for i in range(len(self.task_queue)):
+            group_idx = i % rollout_n
+            if group_idx >= rollout_n - n_explorer:
+                self.task_queue[i].explorer = True
+
         self.finished = [False for i in range(len(self.task_queue))]
         self.current_response = [None for i in range(len(self.task_queue))]
         self.error_num = [0 for i in range(len(self.task_queue))]
         self.msg_man = msg_man
         from x.data.agent.space.std_space import RAW_SPACE
-        self.fm = JsonFormat(RAW_SPACE, add_thought=True, force_add_thought=True)
+        self.fm = SFTv2Format(RAW_SPACE)
         self.patch_threshold = patch_threshold
         self.hint = hint
-        print('Finish generator init')
+        self.hindsight_fraction = hindsight_fraction
+        self.explorer_fraction = explorer_fraction
+        print(f'Finish generator init (hindsight_fraction={hindsight_fraction}, n_hindsight_per_group={n_hindsight}, explorer_fraction={explorer_fraction}, n_explorer_per_group={n_explorer})')
 
 
     def _fetch_next(self, ptr):
@@ -237,8 +258,13 @@ class MultiRoundGenerator():
                     row_dict['uid'] = self.batch.non_tensor_batch['uid'][ptr]
                     row_dict['traj_uid'] = self.batch.non_tensor_batch['traj_uid'][ptr]
                     row_dict['step_id'] = state['step_id']
+                    if 'extra_info' in row_dict:
+                        row_dict['extra_info']['step_num'] = state['step_id'] + 1  # 1-based
                     row_dict['execution_id'] = self.task_queue[ptr].line.get('execution_id', '')
-                    row_dict['data_source'] = self.batch.non_tensor_batch['data_source'][ptr] if 'data_source' in self.batch.non_tensor_batch else "gui_traj_action_match"
+                    if 'data_source' in self.batch.non_tensor_batch:
+                        row_dict['data_source'] = self.batch.non_tensor_batch['data_source'][ptr]
+                    else:
+                        row_dict['data_source'] = self.task_queue[ptr].line.get('data_source', 'gui360')
                     row_dict['reward_model'] = {
                         "style": "rule",
                         "ground_truth": {
@@ -247,6 +273,25 @@ class MultiRoundGenerator():
                             'thought': state['thought'],
                             }
                     }
+                    row_dict['is_hindsight'] = self.task_queue[ptr].hindsight
+                    row_dict['is_explorer'] = self.task_queue[ptr].explorer
+
+                    # Store raw messages and next screenshot path for hindsight aux loss
+                    # Wrap in dict to prevent numpy from creating 2D arrays
+                    # (message lists have different lengths at different steps)
+                    row_dict['raw_messages'] = {'msgs': copy.deepcopy(state['messages'])}
+                    line = self.task_queue[ptr].line
+                    step_id = state['step_id']
+                    if step_id + 1 < len(line['steps']):
+                        row_dict['next_screenshot_path'] = line['steps'][step_id + 1]['screenshot']
+                    else:
+                        row_dict['next_screenshot_path'] = None
+                    # Store pre-computed pi_V description of s_{t+1} for dual-channel hindsight
+                    if step_id < len(line['steps']):
+                        row_dict['next_desc_t1'] = line['steps'][step_id].get('desc_t1', None)
+                    else:
+                        row_dict['next_desc_t1'] = None
+
                     batch.append(row_dict)
             if len(batch) == 0:
                 break

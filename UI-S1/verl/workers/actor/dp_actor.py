@@ -23,6 +23,7 @@ import os
 from typing import Tuple
 
 import torch
+import torch.nn.functional as F
 from torch import nn
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
 
@@ -188,11 +189,12 @@ class DataParallelPPOActor(BasePPOActor):
 
         return loss_output.balance_loss if loss_output.balance_loss is not None else torch.tensor(0.0)
 
-    def _forward_micro_batch(self, micro_batch, temperature, calculate_entropy=False) -> Tuple[torch.Tensor, torch.Tensor]:
+    def _forward_micro_batch(self, micro_batch, temperature, calculate_entropy=False, return_logits=False) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Returns:
             entropy: # (bs, response_len)
             log_probs: # (bs, response_len)
+            logits_response (optional): # (bs, response_len, vocab_size) — only when return_logits=True
         """
         response_length = micro_batch["responses"].size(-1)
         multi_modal_inputs = {}
@@ -271,7 +273,7 @@ class DataParallelPPOActor(BasePPOActor):
 
                     # if use_sp: ((total_nnz / sp) + pad) ; if not use_sp: (batch, seqlen)
                     inplace_backward = True
-                    if calculate_entropy:
+                    if calculate_entropy or return_logits:
                         inplace_backward = False
                     log_probs = logprobs_from_logits(
                         logits=logits_rmpad,
@@ -322,6 +324,17 @@ class DataParallelPPOActor(BasePPOActor):
                     entropy = full_entropy.squeeze(-1)[:, -response_length - 1 : -1]  # (bsz, response_length)
                 log_probs = full_log_probs.squeeze(-1)[:, -response_length - 1 : -1]  # (bsz, response_length)
 
+                # pad logits back for auxiliary loss if requested
+                logits_response = None
+                if return_logits and not self.use_fused_kernels and not self.use_ulysses_sp:
+                    full_logits = pad_input(
+                        hidden_states=logits_rmpad,  # (total_nnz, vocab_size)
+                        indices=indices,
+                        batch=batch_size,
+                        seqlen=seqlen,
+                    )  # (bs, seqlen, vocab_size)
+                    logits_response = full_logits[:, -response_length - 1 : -1, :]  # (bs, response_length, vocab_size)
+
             else:  # not using rmpad and no ulysses sp
                 extra_args = {}
                 if self.use_fused_kernels:
@@ -348,6 +361,10 @@ class DataParallelPPOActor(BasePPOActor):
                     if calculate_entropy:
                         entropy = verl_F.entropy_from_logits(logits)  # (bsz, response_length)
 
+                logits_response = logits if (return_logits and not self.use_fused_kernels) else None
+
+            if return_logits:
+                return entropy, log_probs, logits_response
             return entropy, log_probs
 
     def _optimizer_step(self):
@@ -447,6 +464,14 @@ class DataParallelPPOActor(BasePPOActor):
             select_keys.append("loss_mask")
         if self.config.use_kl_loss:
             select_keys.append("ref_log_prob")
+        opd_aux_coef = data.meta_info.get("opd_aux_coef", 0)
+        if opd_aux_coef > 0 and "opd_target_responses" in data.batch.keys():
+            select_keys.extend(["opd_target_responses", "opd_target_mask"])
+
+        # V7: Extract hindsight data before `data` variable gets shadowed in loops
+        _hindsight_data = data.meta_info.get('hindsight_data', None)
+        _hindsight_aux_coef = data.meta_info.get('hindsight_aux_coef', 0)
+
         batch = data.select(batch_keys=select_keys).batch
         has_multi_modal_inputs = "multi_modal_inputs" in data.non_tensor_batch.keys()
 
@@ -509,7 +534,15 @@ class DataParallelPPOActor(BasePPOActor):
                     calculate_entropy = False
                     if entropy_coeff != 0:
                         calculate_entropy = True
-                    entropy, log_prob = self._forward_micro_batch(micro_batch=data, temperature=temperature, calculate_entropy=calculate_entropy)
+                    need_logits = opd_aux_coef > 0 and "opd_target_responses" in data
+                    if need_logits:
+                        entropy, log_prob, logits_response = self._forward_micro_batch(
+                            micro_batch=data, temperature=temperature,
+                            calculate_entropy=calculate_entropy, return_logits=True)
+                    else:
+                        entropy, log_prob = self._forward_micro_batch(
+                            micro_batch=data, temperature=temperature,
+                            calculate_entropy=calculate_entropy)
 
                     pg_loss, pg_clipfrac, ppo_kl, pg_clipfrac_lower = compute_policy_loss(
                         old_log_prob=old_log_prob,
@@ -547,6 +580,29 @@ class DataParallelPPOActor(BasePPOActor):
                     else:
                         loss = policy_loss / self.gradient_accumulation
 
+                    # OPD auxiliary imitation loss (Phase 2)
+                    if need_logits and logits_response is not None:
+                        opd_target = data["opd_target_responses"]  # (bs, response_length)
+                        opd_mask = data["opd_target_mask"]          # (bs,)
+
+                        if opd_mask.sum() > 0:
+                            # Cross-entropy: model output vs correct response tokens
+                            opd_ce = F.cross_entropy(
+                                logits_response.reshape(-1, logits_response.size(-1)),
+                                opd_target.reshape(-1).long(),
+                                reduction='none'
+                            ).reshape_as(opd_target)
+
+                            # Mask: only OPD samples, only valid response tokens
+                            opd_loss_mask = opd_mask.unsqueeze(-1) * response_mask
+                            opd_aux_loss = (opd_ce * opd_loss_mask).sum() / opd_loss_mask.sum().clamp(min=1)
+
+                            if self.config.use_dynamic_bsz:
+                                loss = loss + opd_aux_coef * opd_aux_loss * (len(data) / self.config.ppo_mini_batch_size)
+                            else:
+                                loss = loss + opd_aux_coef * opd_aux_loss / self.gradient_accumulation
+                            metrics["actor/opd_aux_loss"] = opd_aux_loss.detach().item()
+
                     # Add MoE balance loss if MoE is enabled
                     if self._is_moe and self._current_routing_weights is not None:
                         moe_balance_loss = self._get_moe_balance_loss()
@@ -564,6 +620,56 @@ class DataParallelPPOActor(BasePPOActor):
                         "actor/pg_clipfrac_lower": pg_clipfrac_lower.detach().item(),
                     }
                     append_to_dict(metrics, data)
+
+                # V7: Hindsight visual conditioning (aux-loss-level s_{t+1} injection)
+                # Only on first mini-batch of first epoch to avoid redundant computation
+                if _hindsight_data is not None and _hindsight_aux_coef > 0 and epoch == 0 and batch_idx == 0:
+                    # Free PPO activation memory before hindsight forward passes
+                    torch.cuda.empty_cache()
+
+                    device = get_device_id()
+                    hs_mm_inputs = _hindsight_data['multi_modal_inputs']
+                    hs_response_length = _hindsight_data['responses'].size(1)
+                    hs_batch_size = _hindsight_data['input_ids'].size(0)
+                    micro_bs = self.config.ppo_micro_batch_size_per_gpu
+                    n_hs_micro = max(1, (hs_batch_size + micro_bs - 1) // micro_bs)
+
+                    for i in range(n_hs_micro):
+                        start = i * micro_bs
+                        end = min(start + micro_bs, hs_batch_size)
+
+                        # Move only current micro-batch to GPU
+                        h_data = {
+                            'input_ids': _hindsight_data['input_ids'][start:end].to(device),
+                            'attention_mask': _hindsight_data['attention_mask'][start:end].to(device),
+                            'position_ids': _hindsight_data['position_ids'][start:end].to(device),
+                            'responses': _hindsight_data['responses'][start:end].to(device),
+                            'multi_modal_inputs': hs_mm_inputs[start:end],
+                        }
+
+                        _, _, h_logits = self._forward_micro_batch(
+                            micro_batch=h_data, temperature=1.0,
+                            calculate_entropy=False, return_logits=True)
+
+                        if h_logits is not None:
+                            h_target = h_data['responses']
+                            h_ce = F.cross_entropy(
+                                h_logits.reshape(-1, h_logits.size(-1)),
+                                h_target.reshape(-1).long(),
+                                reduction='none'
+                            ).reshape(end - start, hs_response_length)
+
+                            h_mask = _hindsight_data['response_mask'][start:end].to(device)
+                            h_loss = (h_ce * h_mask).sum() / h_mask.sum().clamp(min=1)
+
+                            scaled_loss = _hindsight_aux_coef * h_loss / n_hs_micro
+                            scaled_loss.backward()
+
+                            metrics['actor/hindsight_aux_loss'] = h_loss.detach().item()
+
+                        # Free micro-batch memory immediately
+                        del h_data
+                        torch.cuda.empty_cache()
 
                 grad_norm = self._optimizer_step()
                 data = {"actor/grad_norm": grad_norm.detach().item()}
