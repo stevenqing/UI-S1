@@ -276,6 +276,19 @@ class CooperativeTrainer(Trainer):
             logs["nontarget_sim"] = round(
                 self._nontarget_sim_sum / self._bind_sample_count, 6)
 
+        # Log gate values for cooperative communication (v6)
+        if self.cooperative_model.cooperative_comm:
+            gates_av, gates_va = [], []
+            for m in self.cooperative_model.coop_modules:
+                if hasattr(m, 'gate_av'):
+                    gates_av.append(torch.sigmoid(m.gate_av).item())
+                    gates_va.append(torch.sigmoid(m.gate_va).item())
+            if gates_av:
+                logs["gate_av_mean"] = round(sum(gates_av) / len(gates_av), 6)
+                logs["gate_va_mean"] = round(sum(gates_va) / len(gates_va), 6)
+                logs["gate_av_max"] = round(max(gates_av), 6)
+                logs["gate_va_max"] = round(max(gates_va), 6)
+
         self._act_loss_sum = 0.0
         self._act_loss_count = 0
         self._bind_loss_sum = 0.0
@@ -348,6 +361,10 @@ def main():
                         help="Use learned soft routing instead of hard torch.where")
     parser.add_argument("--init_sep", type=float, default=0.0,
                         help="Initial sep value (0=shared, 2=near-separated)")
+    parser.add_argument("--cooperative_comm", action="store_true",
+                        help="Enable per-layer cooperative communication (v6)")
+    parser.add_argument("--gate_init", type=float, default=-3.0,
+                        help="Initial gate logit (sigmoid(-3)~0.05)")
     # Binding loss (optional boost, default off — thought CE is primary signal)
     parser.add_argument("--bind_weight", type=float, default=0.0)
     parser.add_argument("--bind_layer", type=int, default=27)
@@ -382,7 +399,8 @@ def main():
     # ── Wrap with cooperative LoRA ──
     print(f"Wrapping with cooperative LoRA (r={args.lora_r}, "
           f"targets={args.target_modules}, num_agents={args.num_agents}, "
-          f"soft_routing={args.soft_routing}, init_sep={args.init_sep})...")
+          f"soft_routing={args.soft_routing}, init_sep={args.init_sep}, "
+          f"cooperative_comm={args.cooperative_comm}, gate_init={args.gate_init})...")
     model = CooperativeVLMWrapper(
         base_model=base_model,
         lora_r=args.lora_r,
@@ -395,6 +413,8 @@ def main():
         num_agents=args.num_agents,
         soft_routing=args.soft_routing,
         init_sep=args.init_sep,
+        cooperative_comm=args.cooperative_comm,
+        gate_init=args.gate_init,
     )
 
     # ── Resume from cooperative checkpoint (if provided) ──
@@ -432,6 +452,8 @@ def main():
         "num_agents": args.num_agents,
         "soft_routing": args.soft_routing,
         "init_sep": args.init_sep,
+        "cooperative_comm": args.cooperative_comm,
+        "gate_init": args.gate_init,
         "lora_r": args.lora_r,
         "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout,

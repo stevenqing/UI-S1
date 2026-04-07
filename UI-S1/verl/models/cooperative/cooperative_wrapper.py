@@ -71,6 +71,8 @@ class CooperativeVLMWrapper(nn.Module):
         num_agents: int = 2,
         soft_routing: bool = False,
         init_sep: float = 0.0,
+        cooperative_comm: bool = False,
+        gate_init: float = -3.0,
     ):
         super().__init__()
         self.base_model = base_model
@@ -80,6 +82,8 @@ class CooperativeVLMWrapper(nn.Module):
         self.num_agents = num_agents
         self.soft_routing = soft_routing
         self.init_sep = init_sep
+        self.cooperative_comm = cooperative_comm
+        self.gate_init = gate_init
 
         if target_modules is None:
             target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"]
@@ -137,7 +141,9 @@ class CooperativeVLMWrapper(nn.Module):
                 original = getattr(parent, module_name)
                 coop_linear = CooperativeLoRALinear(
                     original, r, alpha, dropout, num_agents=self.num_agents,
-                    soft_routing=soft_routing, init_sep=init_sep)
+                    soft_routing=soft_routing, init_sep=init_sep,
+                    cooperative_comm=self.cooperative_comm,
+                    gate_init=self.gate_init)
                 setattr(parent, module_name, coop_linear)
                 self.coop_modules.append(coop_linear)
 
@@ -612,6 +618,16 @@ class CooperativeVLMWrapper(nn.Module):
             if sep_state:
                 torch.save(sep_state, os.path.join(output_dir, "lora_sep.pt"))
 
+        # Save communication params (v6)
+        comm_state = {}
+        for name, param in self.named_parameters():
+            if not param.requires_grad:
+                continue
+            if any(k in name for k in ['W_av', 'W_va', 'gate_av', 'gate_va']):
+                comm_state[name] = param.data.clone().cpu()
+        if comm_state:
+            torch.save(comm_state, os.path.join(output_dir, "lora_comm.pt"))
+
         # Save config
         config = {
             "target_modules": self.target_modules,
@@ -623,6 +639,8 @@ class CooperativeVLMWrapper(nn.Module):
             "lora_a_params": sum(v.numel() for v in a_state.values()),
             "soft_routing": self.soft_routing,
             "init_sep": self.init_sep,
+            "cooperative_comm": self.cooperative_comm,
+            "gate_init": self.gate_init,
         }
         if t_state:
             config["lora_t_params"] = sum(v.numel() for v in t_state.values())
@@ -631,6 +649,13 @@ class CooperativeVLMWrapper(nn.Module):
                 name: torch.sigmoid(param).item()
                 for name, param in sep_state.items()
             }
+        if comm_state:
+            gate_values = {}
+            for name, param in comm_state.items():
+                if "gate" in name:
+                    gate_values[name] = round(torch.sigmoid(param).item(), 6)
+            config["gate_values"] = gate_values
+            config["comm_params"] = sum(v.numel() for v in comm_state.values())
         with open(os.path.join(output_dir, "cooperative_config.json"), "w") as f:
             json.dump(config, f, indent=2)
 
@@ -684,3 +709,14 @@ class CooperativeVLMWrapper(nn.Module):
                     loaded += 1
             if loaded > 0:
                 print(f"Loaded {loaded} sep params from checkpoint")
+
+        # Load communication params (v6)
+        comm_path = os.path.join(checkpoint_dir, "lora_comm.pt")
+        if os.path.exists(comm_path) and self.cooperative_comm:
+            comm_state = torch.load(comm_path, map_location="cpu", weights_only=True)
+            loaded = 0
+            for name, param in self.named_parameters():
+                if name in comm_state:
+                    param.data.copy_(comm_state[name].to(param.device))
+                    loaded += 1
+            print(f"Loaded {loaded} communication params from checkpoint")

@@ -72,13 +72,19 @@ def load_model(base_model_path, coop_checkpoint_path, device):
     soft_routing = coop_config.get("soft_routing", False)
     init_sep = coop_config.get("init_sep", 0.0)
 
+    # Auto-detect cooperative communication (v6) from config
+    cooperative_comm = coop_config.get("cooperative_comm", False)
+    gate_init = coop_config.get("gate_init", -3.0)
+
     print(f"[GPU {device}] Wrapping cooperative LoRA (r={r}, "
           f"targets={coop_config['target_modules']}, num_agents={num_agents}"
-          f"{', soft_routing=True' if soft_routing else ''})...")
+          f"{', soft_routing=True' if soft_routing else ''}"
+          f"{', cooperative_comm=True' if cooperative_comm else ''})...")
     model = CooperativeVLMWrapper(
         base_model=base_model, lora_r=r, lora_alpha=r * 2, lora_dropout=0.0,
         target_modules=coop_config["target_modules"], bind_weight=0.0,
-        num_agents=num_agents, soft_routing=soft_routing, init_sep=init_sep)
+        num_agents=num_agents, soft_routing=soft_routing, init_sep=init_sep,
+        cooperative_comm=cooperative_comm, gate_init=gate_init)
     model.load_cooperative_checkpoint(coop_checkpoint_path)
     model.eval()
 

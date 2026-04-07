@@ -47,11 +47,14 @@ class CooperativeLoRALinear(nn.Module):
         num_agents: int = 2,
         soft_routing: bool = False,
         init_sep: float = 0.0,
+        cooperative_comm: bool = False,
+        gate_init: float = -3.0,
     ):
         super().__init__()
         self.base_linear = base_linear
         self.num_agents = num_agents
         self.soft_routing = soft_routing
+        self.cooperative_comm = cooperative_comm
         # Freeze base weights
         self.base_linear.weight.requires_grad = False
         if self.base_linear.bias is not None:
@@ -89,6 +92,13 @@ class CooperativeLoRALinear(nn.Module):
         # Learnable separation parameter for soft routing (2-agent only)
         if soft_routing and num_agents == 2:
             self.sep = nn.Parameter(torch.tensor(init_sep))
+
+        # Per-layer cooperative communication (v6, 2-agent only)
+        if cooperative_comm and num_agents == 2:
+            self.W_av = nn.Parameter(torch.zeros(r, r, device=device))   # A→V projection
+            self.W_va = nn.Parameter(torch.zeros(r, r, device=device))   # V→A projection
+            self.gate_av = nn.Parameter(torch.tensor(gate_init, device=device))  # sigmoid(-3)≈0.05
+            self.gate_va = nn.Parameter(torch.tensor(gate_init, device=device))
 
         # Token mask set externally before forward
         self._token_mask: Optional[torch.Tensor] = None
@@ -130,14 +140,17 @@ class CooperativeLoRALinear(nn.Module):
         dtype = x_drop.dtype
 
         # Compute ALL deltas for all tokens (all stay in autograd graph)
-        delta_v = F.linear(
-            F.linear(x_drop, self.lora_A_v.to(dtype)),
-            self.lora_B_v.to(dtype)
-        ) * self.scaling
-        delta_a = F.linear(
-            F.linear(x_drop, self.lora_A_a.to(dtype)),
-            self.lora_B_a.to(dtype)
-        ) * self.scaling
+        h_v = F.linear(x_drop, self.lora_A_v.to(dtype))    # [B, S, r]
+        h_a = F.linear(x_drop, self.lora_A_a.to(dtype))    # [B, S, r]
+
+        if self.cooperative_comm and hasattr(self, 'W_av'):
+            g_av = torch.sigmoid(self.gate_av)
+            g_va = torch.sigmoid(self.gate_va)
+            h_v = h_v + g_av * F.linear(h_a, self.W_av.to(dtype))  # V sees A
+            h_a = h_a + g_va * F.linear(h_v, self.W_va.to(dtype))  # A sees V
+
+        delta_v = F.linear(h_v, self.lora_B_v.to(dtype)) * self.scaling
+        delta_a = F.linear(h_a, self.lora_B_a.to(dtype)) * self.scaling
 
         # Expand mask to match hidden dim: [B, seq_len] -> [B, seq_len, 1]
         mask = token_mask.unsqueeze(-1)
@@ -174,4 +187,8 @@ class CooperativeLoRALinear(nn.Module):
         if self.soft_routing and hasattr(self, "sep"):
             s = torch.sigmoid(self.sep).item()
             parts.append(f", soft_routing=True, s={s:.4f}")
+        if self.cooperative_comm and hasattr(self, "gate_av"):
+            g_av = torch.sigmoid(self.gate_av).item()
+            g_va = torch.sigmoid(self.gate_va).item()
+            parts.append(f", comm=True, g_av={g_av:.4f}, g_va={g_va:.4f}")
         return "".join(parts)

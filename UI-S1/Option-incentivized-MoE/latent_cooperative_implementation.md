@@ -742,3 +742,299 @@ If the 3-agent separation works as designed:
 | Coop v3 ep2 (2-agent) | 2 adapters | 1.3B | 46.1% |
 | Coop v4 (3-agent) | 3 adapters | 1.9B | ≥47.4% (target) |
 
+---
+
+## 14. Cooperative LoRA v5: Learned Soft Routing
+
+### 14.1 Motivation
+
+V3 uses hard routing via `torch.where(mask, delta_v, delta_a)` — image tokens use only LoRA_V, text tokens use only LoRA_A. This sharp discontinuity means each adapter sees zero gradient from the other token type. Some cross-specialization sharing could help (e.g., LoRA_V could benefit from some text signal for visual grounding, LoRA_A from some visual signal for spatial reasoning).
+
+V4 (3-agent) was catastrophic (5.1% AP), so v5 returns to the 2-agent design and instead makes the routing boundary learnable.
+
+### 14.2 Design
+
+Replace hard `torch.where` with a learnable weighted sum controlled by a per-module scalar `sep` parameter:
+
+```python
+s = sigmoid(sep)          # per-module learnable scalar
+mask_f = mask.float()     # 1.0=image, 0.0=text
+
+# Image tokens: w_v=s, w_a=1-s  (at s=1: pure V, like hard routing)
+# Text tokens:  w_v=1-s, w_a=s  (at s=1: pure A, like hard routing)
+w_v = mask_f * s + (1 - mask_f) * (1 - s)
+w_a = mask_f * (1 - s) + (1 - mask_f) * s
+delta = w_v * delta_v + w_a * delta_a
+```
+
+Properties:
+- `s = 0.5` (sep=0): Fully shared — both adapters contribute equally to all tokens
+- `s = 1.0` (sep→+∞): Fully separated — equivalent to hard routing (v3)
+- Each of the 196 modules (7 targets × 28 layers) gets its own `sep` — the model learns that e.g. attention keys need stronger separation than FFN
+- Cost: 196 extra scalar params — negligible
+
+### 14.3 Implementation
+
+| File | Changes |
+|------|---------|
+| `verl/models/cooperative/cooperative_lora.py` | Added `soft_routing` bool, `init_sep` float, `self.sep = nn.Parameter(torch.tensor(init_sep))`, soft weighted-sum in forward |
+| `verl/models/cooperative/cooperative_wrapper.py` | Pass-through of `soft_routing`/`init_sep`, saves `lora_sep.pt` + `sep_values` in config, loads `lora_sep.pt` on resume |
+| `train_cooperative.py` | `--soft_routing` (store_true), `--init_sep` (float, default 0.0) |
+| `evaluation/eval_cooperative_batch.py` | Auto-detects `soft_routing` and `init_sep` from `cooperative_config.json` |
+
+Backward compatible: `soft_routing=False` (default) preserves exact v3/v4 behavior.
+
+### 14.4 Experiment Conditions
+
+| Condition | Init | Epochs | LR | Description |
+|-----------|------|--------|-----|------------|
+| **B** (main) | sep=0.0 (shared start) | 2 | 1e-5 | Model learns separation from scratch |
+| **C** (ablation) | sep=2.0 (near-separated) | 2 | 1e-5 | Start near hard routing, relax if needed |
+| **D** (ablation) | Load v3 ep2, sep=2.0 | 1 | 5e-6 | Fine-tune existing v3 with soft routing |
+
+All conditions: r=256, alpha=512, 7 target modules, 4 nodes × 4 GPUs = 128 effective batch size.
+
+### 14.5 Training Status
+
+Condition B (job 3642660) ran to epoch 0.92 before NCCL timeout (cluster instability). Loss trajectory:
+
+| Epoch | Loss |
+|-------|------|
+| 0.01 | ~2.5 |
+| 0.50 | ~2.3 |
+| 0.92 | ~2.2 |
+
+Checkpoint-700 saved with sep values all ~0.5 (barely moved from init_sep=0.0 → s=sigmoid(0)=0.5). Expected — the model needs more training to learn meaningful separation.
+
+Jobs resubmitted with resume (3642658, 3642659, 3642660) — still PENDING in queue due to cluster maintenance.
+
+---
+
+## 15. Error Analysis v2 (Corrected for 500-char Save Truncation)
+
+### 15.0 Methodology Correction
+
+**Critical bug in v1 analysis**: The eval script saves responses truncated to 500 characters (`response[:500]`), but evaluates success on the full in-memory response. Our v1 analysis re-parsed the *saved* truncated responses, causing massive false "parse_error" counts:
+
+| Model | Reported parse_error (v1) | Due to 500-char truncation | Real parse_error |
+|---|---|---|---|
+| Coop v3 | 1,819 (17.7%) | 1,643 (99.9%) | **2** |
+| SVD | 249 (2.5%) | 125 (86.2%) | **20** |
+
+**Why coop was hit harder**: Cooperative responses are `<thought>~200-400 chars</thought><tool_call>{JSON}</tool_call>` — the thought alone consumes most of the 500-char budget, so `</tool_call>` gets cut off. SVD responses are just `<tool_call>{JSON}</tool_call>` (~150-200 chars), rarely truncated.
+
+**The v1 conclusion that "parse failure is the main gap source" was wrong.** V2 uses a lenient parser that reconstructs truncated JSON.
+
+Script: `evaluation/analysis_wrong_coordinate_v2.py`
+
+### 15.1 Error Type Breakdown (Coarse)
+
+| Error Type | Coop v3 ep2 | % of Failures | SVD LoRA r256 | % of Failures |
+|---|---|---|---|---|
+| **wrong_coordinate** | 5,465 | 53.2% | 6,029 | 60.2% |
+| **wrong_function** | **2,380** | **23.2%** | 1,933 | 19.3% |
+| format_error | 1,440 | 14.0% | 935 | 9.3% |
+| wrong_args | 979 | 9.5% | 1,113 | 11.1% |
+
+### 15.1b Error Type Breakdown (Fine-grained)
+
+| Error Type | Coop v3 | SVD | Diff |
+|---|---|---|---|
+| wrong_coordinate | 5,024 | 5,512 | **SVD +488** |
+| wrong_function | 2,380 | 1,933 | **Coop +447** |
+| empty_function | 825 | 747 | Coop +78 |
+| wrong_arg_text | 475 | 549 | SVD +74 |
+| wrong_coordinate+wrong_args | 441 | 517 | SVD +76 |
+| missing_coordinate | 414 | 84 | **Coop +330** |
+| parse_error (real) | 201 | 104 | Coop +97 |
+
+### 15.1c Parse Recovery Statistics
+
+The lenient parser successfully recovered most truncated responses:
+
+| Parse Status | Coop | SVD |
+|---|---|---|
+| full_parse (complete JSON) | 8,445 | 9,761 |
+| function_only (fn name extracted) | 774 | 118 |
+| regex_extract (fn + coord from regex) | 584 | 21 |
+| reconstructed_parse (JSON completed) | 217 | 5 |
+| empty response | 174 | 104 |
+| parse_error (truly unparseable) | 27 | 0 |
+
+Even after recovery, coop has 774 `function_only` cases (coordinate not extractable from truncated response). These are classified as `missing_coordinate` — the model likely generated a valid coordinate, but it was cut off at save time.
+
+### 15.2 Gap Decomposition (Corrected)
+
+Total gap: SVD 9,036 - Coop 8,782 = **254 samples (1.33%)**
+
+| Error Category | Coop-unique fails | SVD-unique fails | Net contribution |
+|---|---|---|---|
+| wrong_coordinate | 1,081 | 1,110 | **SVD +29** (SVD better) |
+| **wrong_function** | **382** | 216 | **Coop +166** (Coop worse) |
+| format_error | 180 | 64 | Coop +116 |
+| wrong_args | 142 | 141 | Coop +1 |
+| **Total** | **1,785** | **1,531** | **Coop +254** |
+
+**The dominant gap source is wrong_function (+166), not parse errors or coordinates.**
+
+Coop's thought-induced function distribution shift causes it to over-predict structured APIs at the expense of click/type accuracy. This matches the §12 analysis.
+
+### 15.3 Function Confusion Matrix (Top-10)
+
+| GT → Predicted | Coop | SVD | Diff | Pattern |
+|---|---|---|---|---|
+| click → type | 751 | 694 | +57 | Bidirectional |
+| type → click | 579 | 493 | +86 | Bidirectional |
+| wheel → click | 127 | 157 | -30 | SVD over-clicks |
+| **click → select_text** | **113** | 34 | **+79** | Coop over-uses API |
+| **click → wheel_mouse** | **95** | 24 | **+71** | Coop over-uses API |
+| select_text → click | 81 | 94 | -13 | SVD over-clicks |
+| **click → select_table_range** | **71** | 25 | **+46** | Coop over-uses API |
+| select_text → type | 63 | 88 | -25 | SVD confuses more |
+| type → select_text | 62 | 17 | +45 | Coop over-uses API |
+| click → drag | 43 | 5 | +38 | Coop over-uses API |
+
+**Clear pattern**: Coop over-predicts structured APIs (select_text, wheel_mouse_input, select_table_range, drag) in place of click/type. This improves recall on those rare functions (§15.5) but hurts precision on the dominant operations.
+
+### 15.4 Wrong Coordinate Distance Distribution
+
+| Distance (px) | Coop v3 (N=5,465) | SVD (N=6,029) |
+|---|---|---|
+| 0-20 (near-miss) | 137 (2.5%) | 128 (2.1%) |
+| 20-50 | 714 (13.1%) | 885 (14.7%) |
+| 50-100 | 1,002 (18.3%) | 1,175 (19.5%) |
+| 100-200 | 1,095 (20.0%) | 1,149 (19.1%) |
+| 200-500 | 1,624 (29.7%) | 1,747 (29.0%) |
+| 500+ (far-miss) | 893 (16.3%) | 945 (15.7%) |
+
+| Statistic | Coop v3 | SVD |
+|---|---|---|
+| Mean | 257.8 px | 249.6 px |
+| Median | 178.1 px | 170.7 px |
+| P75 | 391.2 px | 378.5 px |
+| P90 | 601.2 px | 585.4 px |
+
+SVD has 564 more coordinate errors but slightly smaller distance when wrong. Distributions are similar — the difference is count, not severity.
+
+### 15.5 Success Rate by Function Type
+
+| Function | Total | Coop v3 | SVD | Delta |
+|---|---|---|---|---|
+| click | 14,467 | 51.6% | **53.2%** | -1.6% |
+| type | 3,411 | 27.3% | **29.8%** | -2.5% |
+| **select_text** | 496 | **49.6%** | 44.0% | **+5.6%** |
+| **set_font** | 96 | **54.2%** | 36.5% | **+17.7%** |
+| **select_table** | 29 | **37.9%** | 17.2% | **+20.7%** |
+| **select_paragraph** | 49 | **18.4%** | 8.2% | **+10.2%** |
+
+Cooperative strongly outperforms on structured API operations where thought helps identify the correct non-obvious function. But these are only 3.5% of samples (670/19,046).
+
+### 15.6 By Region, Step Position, Domain
+
+**UI Region**: Ribbon best (51-53%), content area worst (45-46%). Gap consistent across regions.
+
+**Step Position**: Both degrade on later steps (47.6%→44.5% coop, 48.7%→46.4% SVD). Gap widens from 1.1% to 1.9%.
+
+**Domain**: Gap consistent — Excel +1.5%, PPT +1.5%, Word +1.0%.
+
+### 15.7 Differential Analysis
+
+| Category | Count | % |
+|---|---|---|
+| Both succeed | 7,251 | 38.1% |
+| Both fail | 8,479 | 44.5% |
+| Only Coop fails | 1,785 | 9.4% |
+| Only SVD fails | 1,531 | 8.0% |
+| **Oracle ensemble** | **10,567** | **55.5%** |
+
+### 15.8 Per-Sample Differential Analysis (v3)
+
+Script: `evaluation/analysis_differential_v3.py` — per-sample side-by-side comparison with lenient JSON parser.
+
+#### Coop-Only Failures (N=1,785): SVD correct, Coop wrong
+
+| Coarse Error | Count | % |
+|---|---|---|
+| wrong_coordinate | 1,081 | 60.6% |
+| wrong_function | 382 | 21.4% |
+| format_error | 180 | 10.1% |
+| wrong_args | 142 | 8.0% |
+
+Top function confusions: click→type 127, type→click 84, click→wheel_mouse 27, click→select_text 27, click→select_table_range 15, click→drag 14
+
+Coordinate error distance (N=1,081): **mean=224px, median=146px**. 22.7% are near-miss (<50px), 37.6% medium (50-200px).
+
+#### SVD-Only Failures (N=1,531): Coop correct, SVD wrong
+
+| Coarse Error | Count | % |
+|---|---|---|
+| wrong_coordinate | 1,110 | 72.5% |
+| wrong_function | 216 | 14.1% |
+| wrong_args | 141 | 9.2% |
+| format_error | 64 | 4.2% |
+
+Top function confusions: click→type 80, type→click 42, select_text→type 17, wheel→click 16, select_text→click 15, set_font→type 9
+
+Coordinate error distance (N=1,110): **mean=199px, median=97px**. 25.5% near-miss (<50px), 40.5% medium (50-200px).
+
+#### Key Differential Findings
+
+**1. SVD's unique failures are dominated by wrong_coordinate (72.5%), coop's by a mix of coordinate (60.6%) + function (21.4%).**
+
+This means: when SVD is wrong and coop is right, it's mostly because SVD clicked the wrong place but coop's thought helped it find the right location. When coop is wrong and SVD is right, it's more varied — wrong coordinates + wrong function selection.
+
+**2. SVD's coordinate errors when it uniquely fails are CLOSER to the target (mean 199px vs 224px, median 97px vs 146px).**
+
+SVD's unique fails are more "almost right" near-misses. Coop's unique fails include thought-misdirected clicks that land further away.
+
+**3. Function confusion is asymmetric:**
+
+| Confusion | Coop-unique | SVD-unique | Pattern |
+|---|---|---|---|
+| click→type | 127 | 80 | Coop over-confuses |
+| click→select_text | 27 | 0 | **Coop-only** |
+| click→wheel_mouse | 27 | 2 | **Coop-only** |
+| click→select_table_range | 15 | 2 | **Coop-only** |
+| click→drag | 14 | 0 | **Coop-only** |
+| select_text→type | 0 | 17 | **SVD-only** |
+| select_text→click | 0 | 15 | **SVD-only** |
+| set_font→type | 0 | 9 | **SVD-only** |
+
+Coop uniquely confuses click with structured APIs (select_text, wheel, select_table_range, drag). SVD uniquely confuses structured APIs with click/type. This is the precision-recall tradeoff: coop has better recall on structured APIs but worse precision on click.
+
+**4. Where coop uniquely helps (SVD-only fails, by GT function):**
+- click: 1,170 samples (mostly coordinate errors — thought aids spatial reasoning)
+- select_text: 51 samples (thought identifies correct API)
+- set_font: 22 (thought reasons about font operation)
+- select_table: 7, select_paragraph: 6 (thought identifies structured API)
+
+**5. Both-fail analysis (N=8,479):**
+- Both wrong_coordinate (N=4,034): SVD closer to target 41.0% vs coop 37.2%
+- Both wrong_function (N=1,294): **87.5% predict the SAME wrong function** — these are inherently hard samples
+- Error type agreement: 77.9% same coarse error type — most hard samples are hard for both models
+
+### 15.9 Corrected Conclusions
+
+1. **The gap is NOT a format problem.** Real parse errors are negligible. The v1 "parse_error" finding was an artifact of 500-char save truncation.
+
+2. **The gap has two components:**
+   - **wrong_function (+166 net)**: Coop over-predicts structured APIs at the expense of click. Thought biases the function prior.
+   - **format_error (+116 net)**: empty_function and missing_coordinate. Likely partially an analysis artifact (truncated saves).
+   - **Coordinate is near-balanced (+29 net)**: 1,081 coop-unique vs 1,110 svd-unique.
+
+3. **Thought helps coordinate localization more than it hurts**: SVD's unique failures are 72.5% coordinate errors — thought genuinely helps the model find the right UI element. But when thought misdirects, it misdirects further (mean 224px vs 199px for SVD's misses).
+
+4. **Strong complementarity persists**: Oracle ensemble 55.5%. The 8,479 both-fail samples have 77.9% same error type, confirming they're inherently hard. The 3,316 differential samples (1,785 + 1,531) represent genuine model-specific strengths.
+
+5. **The function confusion is the actionable signal for v5**: Coop's click→{select_text, wheel_mouse, select_table_range, drag} false positives total ~83 unique failures. If v5's soft routing can suppress the function prior shift while preserving coordinate grounding, it could close the gap.
+
+### 15.10 Implications for V5 Soft Routing
+
+1. **The coordinate grounding benefit is real**: Coop rescues 1,110 samples via better coordinate prediction (SVD-only fails, 72.5% wrong_coordinate). V5 soft routing should preserve this by keeping some cross-modality sharing (s < 1).
+
+2. **The function selection hurt is the target**: Coop loses 382 samples via wrong function (coop-only fails). Per-layer soft routing could learn to maintain tighter separation (s→1) in the layers responsible for function token generation.
+
+3. **empty_function (825 coop vs 747 SVD) is a genuine model behavior**: The model outputs `{"function": "", "status": "FINISH"}` — premature termination. This might improve with soft routing if shared adapter weights provide richer context for the stop decision.
+
+4. **87.5% of both-fail wrong_function cases predict the SAME wrong function**: This suggests the base model's function prior is the bottleneck, not just the adapter routing. V5 may not fix these — they need better training data or prompting.
+
