@@ -1638,3 +1638,83 @@ r=128（vs v3 的 r=256）：快速迭代验证 communication 机制，训练时
 3. 监控 gate 值变化曲线（关键指标）
 4. Epoch-1 checkpoint 做快速 eval，确认无 regression
 5. 完整 eval + error analysis，与 v3/SVD 对比 function confusion matrix
+
+---
+
+## 13. v5b (Soft Routing, init_sep=2.0) 实验结果
+
+> **Job**: 3642658 | **Status**: COMPLETED | **Time**: 3h45m (4 nodes × 4 GPUs)
+> **Date**: 2026-04-07
+> **Output**: `train_GUI_360/llamafactory/output/cooperative_thought_v5_soft_sep2/`
+
+### 13.1 实验配置
+
+| 参数 | 值 |
+|------|-----|
+| init_sep | **2.0** (sigmoid=0.8808, near-separated) |
+| soft_routing | True |
+| r / alpha | 256 / 512 |
+| target_modules | q/k/v/o_proj + gate/up/down_proj (7 modules × 28 layers = **196 sep params**) |
+| data | gui360_train_thought.jsonl |
+| lr | 1e-5, cosine, warmup 3% |
+| batch | 16 GPUs × 1 × 8 grad_accum = 128 |
+| epochs | 2.0 |
+
+### 13.2 核心结论：Sep 几乎没有学习
+
+| 指标 | 值 |
+|------|-----|
+| 初始 sigmoid(sep) | **0.8808** (all 196 modules) |
+| 训练后 min | 0.8806 |
+| 训练后 max | 0.8815 |
+| 训练后 mean | 0.8810 |
+| **总变化幅度** | **< 0.001** |
+
+**196 个 sep scalar 在 2 个 epoch 训练后几乎没有偏离初始值。** SFT gradient 对 cooperation boundary 的信号太弱。
+
+### 13.3 Per-Layer Sep 分布
+
+```
+Layer  Mean Sep    Trend
+─────  ─────────   ─────
+L0-2   0.8808      ▁ 最低（early layers）
+L3-6   0.8809      ▂
+L7-10  0.8811      ▄ 开始上升
+L11-16 0.8812      ▅ 最高（middle layers）
+L17-20 0.8812      ▅
+L21-24 0.8811      ▃ 开始回落
+L25-27 0.8808      ▁ 回到最低（final layers）
+```
+
+微弱趋势：中间层 (11-19) sep 略高于首尾层，暗示中间层有微弱的 specialization 需求。但变化量级太小（0.0004），不具统计显著性。
+
+**Module 类型趋势**: MLP gate_proj 始终略高于 attention modules（~0.0002），同样微不足道。
+
+### 13.4 训练曲线
+
+| 阶段 | train loss | ce_loss | eval ce_loss |
+|------|-----------|---------|-------------|
+| Step 5 (ep 0.01) | 10.76 | 1.35 | — |
+| Step 50 (ep 0.10) | 2.79 | 0.34 | — |
+| Epoch 0.5 | ~2.10 | ~0.25 | 0.30 |
+| Epoch 1.0 | ~2.05 | ~0.23 | 0.30 |
+| **Epoch 2.0** | **2.05** | **0.24** | **0.30** |
+
+### 13.5 诊断：为什么 Sep 不学？
+
+v5 的 forward: `delta = s·delta_v + (1-s)·delta_a`
+
+∂L/∂sep 需要通过 `delta_v - delta_a` 的差异传播，但：
+1. delta_v 和 delta_a 使用相同 input x → 训练早期高度相关 → 差异小 → 梯度小
+2. 196 个 scalar 共享全局 CE loss → 每个 sep 的信号被稀释
+3. Scalar 容量极低 — 只能控制"用多少 V vs A"，不能控制**交换什么信息**
+
+### 13.6 对 v6 设计的启示
+
+| v5 的问题 | v6 的解法 |
+|-----------|-----------|
+| Scalar sep 容量不足 | r×r 矩阵 W_av/W_va（128² = 16K params/module） |
+| 只控制混合比例 | 控制**信息交换内容**（learned linear projection） |
+| 梯度信号弱 | Communication 直接影响 h_v/h_a → 梯度更直接 |
+| 无法区分方向 | 独立的 gate_av / gate_va 控制双向通信 |
+| 所有层相同行为 | 每层独立 gate → 自动发现 cooperation topology |

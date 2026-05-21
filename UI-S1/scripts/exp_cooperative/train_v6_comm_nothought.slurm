@@ -4,9 +4,9 @@
 #SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/scripts/exp_cooperative/logs/train_v6_nothought_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --partition=workq
-#SBATCH --nodes=4
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=72
+#SBATCH --cpus-per-task=288
 #SBATCH --mem=0
 #SBATCH --gres=gpu:4
 
@@ -14,8 +14,8 @@
 # Cooperative LoRA v6 — Per-layer communication
 # WITHOUT thought data (pure action SFT)
 # r=128, 7 target modules, cooperative_comm
-# 4 nodes × 4 GPUs = 16 GPUs
-# Effective batch size: 16 * 1 * 8 = 128
+# 8 nodes × 4 GPUs = 32 GPUs
+# Effective batch size: 32 * 1 * 8 = 256
 # ============================================
 
 set -e
@@ -67,7 +67,7 @@ srun --ntasks-per-node=1 bash -c '
         --target_modules q_proj k_proj v_proj o_proj gate_proj up_proj down_proj \
         --num_agents 2 \
         --cooperative_comm \
-        --gate_init -3.0 \
+        --gate_init -1.5 \
         --bind_weight 0.0 \
         --per_device_batch_size 1 \
         --gradient_accumulation_steps 8 \

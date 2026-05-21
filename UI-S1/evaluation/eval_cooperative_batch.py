@@ -75,16 +75,21 @@ def load_model(base_model_path, coop_checkpoint_path, device):
     # Auto-detect cooperative communication (v6) from config
     cooperative_comm = coop_config.get("cooperative_comm", False)
     gate_init = coop_config.get("gate_init", -3.0)
+    gate_type = coop_config.get("gate_type", "sigmoid")
+    # v7 routing mode (default "hard" for backward compat with v3-v6 ckpts)
+    routing_mode = coop_config.get("routing_mode", "hard")
 
     print(f"[GPU {device}] Wrapping cooperative LoRA (r={r}, "
           f"targets={coop_config['target_modules']}, num_agents={num_agents}"
           f"{', soft_routing=True' if soft_routing else ''}"
-          f"{', cooperative_comm=True' if cooperative_comm else ''})...")
+          f"{f', cooperative_comm=True, gate_type={gate_type}' if cooperative_comm else ''}"
+          f", routing_mode={routing_mode})...")
     model = CooperativeVLMWrapper(
         base_model=base_model, lora_r=r, lora_alpha=r * 2, lora_dropout=0.0,
         target_modules=coop_config["target_modules"], bind_weight=0.0,
         num_agents=num_agents, soft_routing=soft_routing, init_sep=init_sep,
-        cooperative_comm=cooperative_comm, gate_init=gate_init)
+        cooperative_comm=cooperative_comm, gate_init=gate_init,
+        gate_type=gate_type, routing_mode=routing_mode)
     model.load_cooperative_checkpoint(coop_checkpoint_path)
     model.eval()
 
@@ -351,10 +356,16 @@ def main():
     parser.add_argument("--max_samples", type=int, default=0)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--max_new_tokens", type=int, default=512)
+    parser.add_argument("--inference_mode", type=str, default="hard",
+        choices=["hard", "v_only", "t_only", "merge"],
+        help="Routing override: hard (v6.5), v_only, t_only, merge")
     args = parser.parse_args()
 
     device = f"cuda:{args.gpu_id}"
     model, processor, dev = load_model(args.base_model, args.coop_checkpoint, device)
+
+    if args.inference_mode != "hard":
+        model.set_inference_mode(args.inference_mode)
 
     # Load data
     print(f"[Shard {args.shard_id}] Loading {args.eval_type} data...")

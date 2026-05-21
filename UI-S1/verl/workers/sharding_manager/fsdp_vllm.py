@@ -123,14 +123,13 @@ class FSDPVLLMShardingManager(BaseShardingManager):
                             lora_params = {name: param.full_tensor().detach().cpu() if hasattr(param, "full_tensor") else param.detach().cpu() for name, param in lora_params.items()}
                         else:
                             model = peft_model.base_model.model
-                            orig_dev = "cpu" if "cpu" in str(next(model.parameters()).device) else get_device_name()
-                            model = model.to("cpu")
+                            # FSDP2: DTensors need GPU for full_tensor() all_gather.
+                            # Gather on GPU, then move to CPU. Do NOT model.to("cpu") first.
                             for name, param in model.state_dict().items():
                                 if any(x in name for x in ["_flat_param", "lora_"]):
                                     continue
                                 name = name.replace("_fsdp_wrapped_module.", "").replace(".base_layer", "")
                                 lora_params[name] = param.full_tensor().detach().cpu() if hasattr(param, "full_tensor") else param.detach().cpu()
-                            model = model.to(orig_dev)
                     get_torch_device().empty_cache()
             else:
                 if self.base_sync_done:

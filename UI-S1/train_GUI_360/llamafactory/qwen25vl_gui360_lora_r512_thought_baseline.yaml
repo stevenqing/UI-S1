@@ -1,0 +1,57 @@
+### model
+model_name_or_path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/checkpoints/Qwen2.5-VL-7B-Instruct
+image_max_pixels: 1003520
+video_max_pixels: 16384
+trust_remote_code: true
+
+### method — vanilla LoRA r=512 baseline for cooperative v6.5 comparison
+# Parameter-matched: cooperative v6.5 uses 2 × r=256 adapters (V + A)
+# => r=512 single LoRA gives comparable main LoRA capacity
+# Note: cooperative v6.5 also has W_comm + gates (~25M extra params);
+# this baseline has no such overhead, so is slightly param-disadvantaged.
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 512
+lora_alpha: 1024
+lora_dropout: 0.05
+lora_target: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+gradient_checkpointing: true
+
+### dataset — same thought data as cooperative v6.5
+dataset: gui360_thought_train
+dataset_dir: train_GUI_360/llamafactory/data
+template: qwen2_vl
+cutoff_len: 4096
+preprocessing_num_workers: 16
+dataloader_num_workers: 8
+
+### output
+output_dir: train_GUI_360/llamafactory/output/gui360_lora_r512_thought_baseline
+logging_steps: 10
+save_steps: 100
+save_total_limit: 5
+plot_loss: true
+overwrite_output_dir: true
+save_only_model: false
+report_to: none
+run_name: gui360_lora_r512_thought_baseline
+
+### train — eff_bs = 8 nodes * 4 gpu * pdbs=1 * grad_accum=4 = 128
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-5
+num_train_epochs: 4.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+weight_decay: 0.0
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+eval_dataset: gui360_thought_val
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100

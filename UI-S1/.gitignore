@@ -3,23 +3,61 @@ checkpoints/
 train/checkpoints/
 train_GUI_360/checkpoints/
 
-# Datasets (large, downloaded)
+# Datasets (large, downloaded or generated)
 datasets/AndroidControl/
 datasets/GUI-360/
+datasets/GUI-Odyssey/
 datasets/ui_s1_dataset/
+datasets/cooperative_thought/*.jsonl
+datasets/cooperative_thought/logs/
+datasets/cooperative_thought_ac/
+datasets/cooperative_thought_odyssey/
+data/
 
 # Training outputs & logs
 outputs/
 wandb/
 train/logs/
 train/wandb/
+train/moe_rl_v5/logs/
+train/sp_gigpo/
 train_GUI_360/logs/
 train_GUI_360/data/
 train_GUI_360/llamafactory/data/
 train_GUI_360/llamafactory/output/
 train_GUI_360/GUI-360-eval/results/
 train_GUI_360/moe_sft/output/
+train_GUI_360/moe_rl/
+
+# Evaluation results (keep scripts, exclude outputs)
 evaluation/results/
+evaluation/analysis_results/
+evaluation/analysis_results_v2/
+evaluation/analysis_results_v3/
+evaluation/analysis_results_v64_vs_v3/
+evaluation/evaluation/
+gui_odyssey_eval/logs/
+gui_odyssey_eval/results/
+
+# Logs & results (generic)
+**/logs/
+**/results/
+
+# Training outputs & checkpoints in version dirs
+**/output/
+**/outputs/
+**/outputs_gt_history/
+
+# Data files in version dirs (local paths, not portable)
+v12_gui_360/data/
+v15_gui_360/data/
+v16_task_vector_merge/data/
+v17_self_evolve/data/
+
+# Large model weight files
+*.pt
+*.safetensors
+*.bin
 
 # Build artifacts
 build/
@@ -30,16 +68,18 @@ __pycache__/
 # SLURM & log files
 slurm-*.out
 *.err
+*.log
 install_scripts/slurm-*.out
 install_scripts/qwen3_eval/*.out
 install_scripts/qwen3_eval/*.err
 install_scripts/qwen3_eval/*.log
 
-# System / IDE
+# System / IDE / temp
 .claude/
 core
 claude_debug.log
 .env
+tmp*/
 
 # Backup files
 *.bak

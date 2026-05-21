@@ -1,0 +1,8 @@
+{
+  "n_total": 6482,
+  "n_has_coord": 4136,
+  "n_coord_correct": 1276,
+  "n_action_correct": 3846,
+  "n_parse_fail": 543,
+  "normalization": "original_image_space (fixed)"
+}

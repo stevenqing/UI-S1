@@ -268,6 +268,7 @@ class OSGenesisAdapter(ModelAdapter):
 
 ADAPTERS = {
     'os-atlas': OSAtlasAdapter,
+    'os-atlas-base': OSAtlasAdapter,
     'ui-tars': UITarsAdapter,
     'os-genesis': OSGenesisAdapter,
 }

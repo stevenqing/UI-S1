@@ -344,7 +344,8 @@ class RLHFDataset(Dataset):
 
         resized_width, resized_height = images[-1].size
         width, height = raw_images[-1]['width'], raw_images[-1]['height']
-        row_dict['extra_info'] = {}
+        if not isinstance(row_dict.get('extra_info'), dict):
+            row_dict['extra_info'] = {}
         row_dict['extra_info']['resized_width'] = resized_width
         row_dict['extra_info']['resized_height'] = resized_height
         row_dict['extra_info']['width'] = width

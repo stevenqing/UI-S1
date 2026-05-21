@@ -55,15 +55,14 @@ while ! curl -s http://localhost:8000/health > /dev/null 2>&1; do
 done
 echo "vLLM server is ready!"
 
-cd $PROJECT_ROOT/scripts/eval/ac
+cd $PROJECT_ROOT/evaluation
 
-python eval_a_ar_trajectory.py \
+python eval_qwenvl.py \
     --model_name $MODEL_NAME \
     --jsonl_file $DATASET_PATH \
     --output_dir $OUTPUT_DIR \
     --n_history_image_limit 2 \
-    --max_workers 4 \
-    --max_episodes 50
+    --max_workers 4
 
 EVAL_EXIT=$?
 

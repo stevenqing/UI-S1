@@ -1,0 +1,192 @@
+# Cooperative LoRA GRPO for AndroidControl
+# v10 verl recipe — dual-adapter sequential grounder→actor training
+
+# Top-level custom reward function (verl's get_custom_reward_fn reads from config root)
+custom_reward_function:
+  path: v10/verl_recipe/reward_fn.py
+  name: compute_score
+
+ray_init:
+  num_cpus: 32
+
+data:
+  train_files: ${oc.env:TRAIN_PARQUET,data/ac_train.parquet}
+  val_files: ${oc.env:VAL_PARQUET,data/ac_val.parquet}
+  train_batch_size: 32  # scale with 32 GPUs: 1 prompt/GPU → 8 samples/GPU after K=8
+  val_batch_size: null
+  max_prompt_length: 8192  # actual prompts are ~5K tokens (text + image)
+  max_response_length: 256
+  shuffle: true
+  seed: 42
+  trust_remote_code: true
+  prompt_key: prompt
+  image_key: images
+  filter_overlong_prompts: true
+  dataloader_num_workers: 4
+  reward_fn_key: data_source
+
+actor_rollout_ref:
+  hybrid_engine: true
+
+  model:
+    path: ${oc.env:MODEL_PATH,Qwen/Qwen2.5-VL-7B-Instruct}
+    trust_remote_code: true
+    use_remove_padding: false
+    use_fused_kernels: false
+    use_liger: false
+    use_shm: false
+    enable_gradient_checkpointing: true
+    # LoRA config (first adapter = grounder)
+    lora_rank: 128
+    lora_alpha: 256
+    target_modules:
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+
+  actor:
+    strategy: fsdp2
+    ppo_mini_batch_size: 8
+    ppo_micro_batch_size: null  # use _per_gpu instead
+    ppo_micro_batch_size_per_gpu: 2
+    ppo_epochs: 1
+    clip_ratio: 0.2
+    clip_ratio_low: null
+    clip_ratio_high: null
+    entropy_coeff: 0.0
+    entropy_checkpointing: false
+    use_kl_loss: true
+    kl_loss_coef: 0.001
+    kl_loss_type: low_var_kl
+    loss_agg_mode: token-mean
+    use_dynamic_bsz: false
+    use_torch_compile: false
+    use_fixed_num_mini_batches: false
+    fixed_num_mini_batches: 1
+    entropy_from_logits_with_chunking: false
+    ulysses_sequence_parallel_size: 1
+    grad_clip: 1.0
+
+    fsdp_config:
+      fsdp_size: -1  # use all GPUs in one FSDP group
+      wrap_policy: {}
+      mixed_precision:
+        param_dtype: bf16
+        reduce_dtype: fp32
+        buffer_dtype: fp32
+      reshard_after_forward: true
+      forward_prefetch: false
+      offload_policy: false
+
+    checkpoint:
+      load_contents: [model, optimizer, extra]
+      save_contents: [model, optimizer, extra]
+
+    optim:
+      lr: 1.0e-5  # fallback (overridden by cooperative LRs)
+      weight_decay: 0.01
+      betas: [0.9, 0.999]
+      lr_warmup_steps_ratio: 0.03
+      warmup_style: cosine
+      min_lr_ratio: 0.0
+      total_training_steps: null  # auto-computed
+
+  ref:
+    fsdp_config:
+      fsdp_size: -1
+      wrap_policy: {}
+      mixed_precision:
+        param_dtype: bf16
+        reduce_dtype: fp32
+      reshard_after_forward: true
+    log_prob_micro_batch_size: null  # use _per_gpu instead
+    log_prob_micro_batch_size_per_gpu: 4
+    log_prob_max_token_len_per_gpu: 16384
+    log_prob_use_dynamic_bsz: false
+    ulysses_sequence_parallel_size: 1
+    use_remove_padding: false
+    use_fused_kernels: false
+
+  rollout:
+    name: vllm
+    mode: sync
+    n: 8  # K=8 for GRPO
+    temperature: 1.0
+    top_p: 0.95
+    max_new_tokens: 256
+    prompt_length: 8192
+    response_length: 256
+    max_model_len: 8448  # prompt + response
+    dtype: bfloat16
+    gpu_memory_utilization: 0.4
+    tensor_parallel_size: 1
+    tensor_model_parallel_size: 1
+    enforce_eager: true
+    free_cache_engine: false
+    enable_chunked_prefill: false
+    disable_log_stats: true
+    load_format: dummy_dtensor
+    log_prob_micro_batch_size: null  # use _per_gpu instead
+    log_prob_micro_batch_size_per_gpu: 8
+    log_prob_max_token_len_per_gpu: 16384
+    log_prob_use_dynamic_bsz: false
+
+    val_kwargs:
+      n: 1  # no repeated sampling for validation
+      do_sample: false
+      temperature: 0.0
+      max_new_tokens: 256
+
+    multi_turn:
+      enable: false
+
+  # Cooperative-specific config (under actor_rollout_ref for worker access)
+  cooperative:
+    enable: true
+    grounder_lr: 1.0e-5
+    actor_lr: 5.0e-6
+    grounder_max_tokens: 256
+    actor_max_tokens: 256
+
+algorithm:
+  adv_estimator: grpo
+  use_kl_in_reward: false  # KL as loss term, not reward penalty
+  gamma: 1.0
+  lam: 1.0
+  norm_adv_by_std_in_grpo: true
+
+reward_model:
+  enable: false
+  reward_manager: naive
+  custom_reward_function:
+    path: v10/verl_recipe/reward_fn.py
+    name: compute_score
+  reward_kwargs: {}
+  launch_reward_fn_async: false
+
+trainer:
+  total_epochs: 4
+  total_training_steps: null  # auto-computed from dataset
+  project_name: coop_grpo_ac
+  experiment_name: v10_verl_ac
+  logger: wandb
+  n_gpus_per_node: ${oc.env:GPUS_PER_NODE,4}
+  nnodes: ${oc.env:NNODES,2}
+  save_freq: 100
+  test_freq: 50
+  balance_batch: true
+  val_before_train: true
+  val_only: false
+  del_local_ckpt_after_load: false
+  critic_warmup: 0
+  log_val_generations: 5
+  device: cuda
+  resume_mode: auto
+  resume_from_path: null
+
+  default_local_dir: ${oc.env:OUTPUT_DIR,output/coop_grpo_ac}
+  default_hdfs_dir: null

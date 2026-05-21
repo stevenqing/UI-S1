@@ -32,6 +32,7 @@ VLLM_PORT="${VLLM_PORT:-8000}"
 # Model path mapping
 declare -A MODEL_PATHS=(
     ["os-atlas"]="$PROJECT_DIR/checkpoints/OS-Atlas-Pro-7B"
+    ["os-atlas-base"]="$PROJECT_DIR/checkpoints/OS-Atlas-Base-7B"
     ["ui-tars"]="$PROJECT_DIR/checkpoints/UI-TARS-7B-DPO"
     ["os-genesis"]="$PROJECT_DIR/checkpoints/OS-Genesis-7B-AC"
 )
@@ -42,6 +43,7 @@ declare -A MODEL_PATHS=(
 # vLLM V1 env per model
 declare -A VLLM_V1_ENV=(
     ["os-atlas"]="VLLM_USE_V1=0"
+    ["os-atlas-base"]="VLLM_USE_V1=0"
     ["ui-tars"]=""
     ["os-genesis"]="VLLM_USE_V1=0"
 )
