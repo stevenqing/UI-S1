@@ -668,3 +668,107 @@ route_lr = 1e-3
 - [MobileRL / ADAGRPO](https://arxiv.org/abs/2509.18119) — GUI Agent 在线 RL
 - [Inner Monologue](https://arxiv.org/abs/2207.05608) (CoRL 2022) — 具身推理语言规划
 - [ReAct](https://arxiv.org/abs/2210.17527) (2023) — 推理与行动协同
+
+---
+
+## V17.2: Standard Generation + Phase-Gradient Routing + Multi-Reward
+
+### V17.1 失败分析
+
+V17.1 训练 23 步，所有 loss=0, reward=0, 零梯度。根因：自定义 autoregressive generation loop 的 per-token hard routing 在推理时强制单 Expert 输出，破坏了 SFT warmup 后（随机初始化）的输出质量。表现为双峰输出长度（3-19 tokens EOS 或 406 tokens 截断）。
+
+### 核心设计改变
+
+**关键洞察**："不同的 reward 去更新 module 的不同部分" — 分离生成质量（用标准生成）和梯度特化（用 phase routing 在训练 backward），增加细粒度 reward 路由到不同模块。
+
+### 三层架构
+
+#### 第一层：标准生成（解决输出崩溃）
+
+用 `model.generate()` 替换自定义 autoregressive loop：
+- 推理时不使用 phase routing — cooperative LoRA 使用自然学习的 soft routing
+- 两个 Expert 自然参与所有 token 生成 → 连贯输出
+- 停止条件：`eos_token_id` + `</tool_call>` (ID 151658) + `max_new_tokens=512`
+- 生成后解析 aux_a/aux_b/decision 三阶段
+
+#### 第二层：Phase-Gradient Routing（Expert 特化通过 backward pass）
+
+训练 forward 时保持 phase_mask hard routing（已有实现）：
+- 生成后从生成的 token 计算 phase mask
+- 训练 forward：`model.set_phase_mask(full_mask)` → hard routing r=0.9/0.1
+- 梯度自然非对称流动：aux_a tokens → 90% 梯度到 Expert A，aux_b → 90% 到 Expert B
+
+**效果**：生成是 cooperative（两个 Expert），但学习是 specialized（每个 Expert 主要从 "自己的" aux phase 学习）。
+
+#### 第三层：Multi-Reward（不同 reward → 不同模块）
+
+三个 reward 通道通过 phase-specific advantage 影响不同参数：
+
+| Reward | Signal | Magnitude | Target |
+|--------|--------|-----------|--------|
+| `r_decision` | action correctness (format+type+coord) | 0-1 | All params (base advantage) |
+| `r_structure` | valid 3-phase format, both aux non-empty | 0 or 0.1 | All params (added to total reward) |
+| `r_aux_utility` | aux predicts correct action type | 0-0.3 | Expert A/B (via phase-specific advantage boost) |
+
+**Phase-specific advantage（核心创新）**：
+
+```python
+# GRPO 标准 advantage
+base_advantage = grpo_advantage(total_rewards_across_K)  # [K]
+
+# Per-token phase-specific advantage
+for token at position t:
+    if phase_mask[t] in (0, 1):  # aux_a or aux_b tokens
+        advantage[t] = base_advantage + aux_utility_weight * aux_utility_bonus
+    else:  # decision tokens (phase 2)
+        advantage[t] = base_advantage
+```
+
+当 backward 流过 phase-masked forward 时：
+- aux_a tokens 的 **boosted advantage** → **9x 梯度到 Expert A** (r=0.9)
+- aux_b tokens 的 **boosted advantage** → **9x 梯度到 Expert B** (r=0.1)
+- decision tokens 的 base advantage → 按 learned routing 分配
+
+### Aux Utility Reward
+
+```python
+def compute_aux_utility(aux_a_text, aux_b_text, gt_action):
+    gt_type = gt_action["action"]
+    bonus = 0.0
+    for aux_text in [aux_a_text, aux_b_text]:
+        lower = aux_text.lower()
+        if gt_type == "click" and "click" in lower: bonus += 0.15
+        elif gt_type == "type" and ("type" in lower or "input" in lower): bonus += 0.15
+        elif gt_type in ("swipe","drag") and any(w in lower for w in ["swipe","scroll","drag"]): bonus += 0.15
+    return min(bonus, 0.3)
+```
+
+**非 GT 泄露**：(1) reward 在生成后计算，不输入模型，(2) RL 本身就使用 GT 计算 reward。
+
+### 修改文件
+
+| 文件 | 改动 |
+|------|------|
+| `train_aux_decision_rl.py` | 替换生成方法、多 reward、phase-specific advantage、截断处理、logging |
+| `scripts/train_v17.slurm` | `--max_new_tokens 512`, `--aux_utility_weight 0.15`, 移除 `--max_aux_tokens` |
+| `v17_design.md` | 新增本节 |
+
+### 不修改的文件
+
+- `dual_aux_cooperative_lora.py` — phase_mask routing 已正常工作
+- `v12_gui_360/reward.py` — 不变
+- SFT warmup checkpoint — 复用 `checkpoints/v17_dual_aux_sft_warmup/epoch-0`
+
+### 超参数
+
+```python
+# V17.2 新增/修改
+max_new_tokens = 512          # 全响应最大长度（aux + decision）
+aux_utility_weight = 0.15     # aux_utility advantage boost 权重
+# 移除: max_aux_tokens, min_aux_tokens, aux_len_bonus（V17.1 遗留，不再使用）
+```
+
+### 验证计划
+
+1. RL 训练前几步应该看到：非零 reward（模型输出可解析 action — debug job 已确认）、非零 advantage → 非零 loss → grad_norm > 0
+2. 训练 25 步后：保存 checkpoint，评估，对比 V15 baseline (20.8% TSR)

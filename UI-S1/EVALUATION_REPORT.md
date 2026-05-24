@@ -13,6 +13,7 @@ This report consolidates all evaluation results across models, datasets, and eva
 | **OS-Atlas-Pro-7B** | Foundation | 7B | Pre-trained + grounding | Relative [0,1000] |
 | **UI-TARS-7B-DPO** | Fine-tuned | 7B | SFT + DPO | Relative [0,1000] |
 | **OS-Genesis-7B-AC** | Fine-tuned | 7B | SFT on AndroidControl | Absolute pixel (JSON) |
+| **UGround (SeeAct-V)** | Fine-tuned | 7B | Grounding pre-train | Relative [0,1000] |
 
 ---
 
@@ -117,6 +118,7 @@ Dataset: 3,233 trajectories, 19,046 total steps. Desktop office apps (PPT, Word,
 | OS-Atlas-Pro-7B | no-stop | 0.022 | 0.053 | 0.160 | 13.7% |
 | OS-Genesis-7B-AC | stop | 0.003 | 0.011 | 0.011 | 3.7% |
 | OS-Genesis-7B-AC | no-stop | 0.003 | 0.011 | 0.022 | 1.7% |
+| UGround (SeeAct-V) | stop | 0.029 | — | — | 18.7% |
 | UI-TARS-7B-DPO | stop | — | — | — | — |
 | UI-TARS-7B-DPO | no-stop | — | — | — | — |
 
@@ -239,9 +241,10 @@ Context mode: subtask_isolated | Inference: HF Transformers (not vLLM, for hidde
 | Rank | Model | TSR (stop) | Step SR (stop) |
 |:----:|-------|:----------:|:--------------:|
 | 1 | **GUI-360 SFT v2** | **16.2%** | **55.3%** |
-| 2 | Qwen2.5-VL Base | 1.6% | 22.1% |
+| 2 | UGround (SeeAct-V) | 2.9% | 18.7% |
 | 3 | OS-Atlas-Pro-7B | 2.1% | 14.5% |
-| 4 | OS-Genesis-7B-AC | 0.3% | 3.7% |
+| 4 | Qwen2.5-VL Base | 1.6% | 22.1% |
+| 5 | OS-Genesis-7B-AC | 0.3% | 3.7% |
 
 ### 6.3 Key Observations
 

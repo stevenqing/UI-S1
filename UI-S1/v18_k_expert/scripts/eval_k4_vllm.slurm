@@ -1,0 +1,106 @@
+#!/bin/bash
+#SBATCH --job-name=ev_v18_k4_vllm
+#SBATCH --output=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/eval_k4_vllm_%j.log
+#SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/eval_k4_vllm_%j.err
+#SBATCH --time=03:00:00
+#SBATCH --partition=workq
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=72
+#SBATCH --mem=0
+#SBATCH --gres=gpu:4
+
+# ============================================
+# V18: Eval K=4 SVD-extracted via vLLM
+# Merge cooperative LoRA → HF model → vLLM serve
+# ============================================
+
+set -e
+
+export PATH="/scratch/a5l/shuqing.a5l/miniconda/envs/qwen3-eval/bin:$PATH"
+export CONDA_DEFAULT_ENV=qwen3-eval
+export CUDA_HOME="/opt/nvidia/hpc_sdk/Linux_aarch64/24.11/cuda/12.6"
+export LD_LIBRARY_PATH="$CUDA_HOME/targets/sbsa-linux/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
+
+PROJECT_ROOT="/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1"
+BASE_MODEL="$PROJECT_ROOT/checkpoints/Qwen2.5-VL-7B-Instruct"
+TEST_DATA="$PROJECT_ROOT/v12_gui_360/data/gui360_test_1000_balanced.jsonl"
+EVAL_SCRIPT="$PROJECT_ROOT/v13_gui_360/eval_gui360_template.py"
+
+cd "$PROJECT_ROOT"
+export PYTHONPATH="$PROJECT_ROOT:$PYTHONPATH"
+
+COOP_DIR="$PROJECT_ROOT/checkpoints/v18_svd_k4_7mod"
+MERGED_DIR="$PROJECT_ROOT/checkpoints/v18_k4_7mod_merged"
+MODEL_NAME="v18_k4_7mod"
+EVAL_DIR="$PROJECT_ROOT/v18_k_expert/outputs/eval_k4_7mod_vllm"
+mkdir -p "$EVAL_DIR"
+
+echo "=========================================="
+echo "V18: Eval K=4 SVD-Extracted (vLLM)"
+echo "  Checkpoint: $COOP_DIR"
+echo "  Job ID: ${SLURM_JOB_ID}"
+echo "  Start:  $(date)"
+echo "=========================================="
+
+# Step 1: Merge cooperative LoRA into base model (if not already done)
+if [ ! -f "$MERGED_DIR/config.json" ]; then
+    echo "Merging cooperative LoRA into base model..."
+    python "$PROJECT_ROOT/v18_k_expert/merge_k_expert_to_hf.py" \
+        --base_model "$BASE_MODEL" \
+        --coop_checkpoint "$COOP_DIR" \
+        --output_dir "$MERGED_DIR"
+    echo "Merge complete."
+else
+    echo "Merged model already exists at $MERGED_DIR"
+fi
+
+# Step 2: Start vLLM server
+echo ""
+echo "Starting vLLM server..."
+python -m vllm.entrypoints.openai.api_server \
+    --model "$MERGED_DIR" \
+    --served-model-name "$MODEL_NAME" \
+    --port 8000 \
+    --tensor-parallel-size 4 \
+    --max-model-len 32768 \
+    --trust-remote-code \
+    --gpu-memory-utilization 0.9 \
+    --limit-mm-per-prompt '{"image": 2}' \
+    &
+VLLM_PID=$!
+
+WAIT_COUNT=0
+while [ $WAIT_COUNT -lt 600 ]; do
+    if curl -s http://localhost:8000/health > /dev/null 2>&1; then
+        echo "vLLM ready after ${WAIT_COUNT}s"
+        break
+    fi
+    sleep 5
+    WAIT_COUNT=$((WAIT_COUNT + 5))
+done
+
+if [ $WAIT_COUNT -ge 600 ]; then
+    echo "ERROR: vLLM failed to start"
+    kill $VLLM_PID 2>/dev/null || true
+    exit 1
+fi
+
+# Step 3: Eval
+python "$EVAL_SCRIPT" \
+    --test_data "$TEST_DATA" \
+    --api_url "http://localhost:8000/v1" \
+    --model_name "$MODEL_NAME" \
+    --output_dir "$EVAL_DIR" \
+    --threads 64
+
+echo ""
+echo "Results:"
+cat "$EVAL_DIR"/eval_summary_*.json 2>/dev/null || true
+
+# Cleanup
+kill $VLLM_PID 2>/dev/null || true
+pkill -f "vllm.entrypoints" 2>/dev/null || true
+wait $VLLM_PID 2>/dev/null || true
+
+echo "Done: $(date)"

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""V17.1 Dual-Aux RL — Phase-Conditional Hard Routing.
+"""V17.2 Dual-Aux RL — Standard Generation + Phase-Gradient Routing + Multi-Reward.
 
 Three-phase generation: <aux_a>...</aux_a><aux_b>...</aux_b><decision>...</decision>
-  - Phase-conditional hard routing: aux_a → Expert A, aux_b → Expert B, decision → learned
-  - Custom autoregressive generation loop with mid-sequence routing switch
-  - Diversity loss on r-space expert outputs
-  - SFT warmup teaches format; RL learns aux content
+  - Standard model.generate() with soft routing (no per-token phase routing during inference)
+  - Phase-gradient routing during training backward: phase_mask hard routing r=0.9/0.1
+  - Multi-reward: r_decision + r_structure + r_aux_utility (phase-specific advantage)
+  - SFT warmup teaches format; RL learns aux content + decision quality
 
 Usage:
   srun --ntasks-per-node=1 bash -c '
@@ -295,10 +295,15 @@ class EpisodeDataset(Dataset):
 # Prompt formatting
 # ═════════════════════════════════════════════════════════════════════
 
+def _safe_coord(coord):
+    """Return coord only if it's a valid [x,y] with non-None values."""
+    return coord if coord and coord[0] is not None and coord[1] is not None else None
+
+
 def format_gt_action_for_history(gt_action: Dict, step_id: int) -> str:
     """Convert GT action dict to GUI-360 history format."""
     atype = gt_action.get("action", "")
-    coord = gt_action.get("coordinate")
+    coord = _safe_coord(gt_action.get("coordinate"))
 
     if atype == "click":
         if coord:
@@ -318,8 +323,8 @@ def format_gt_action_for_history(gt_action: Dict, step_id: int) -> str:
         return f"Step {step_id}: type()"
 
     elif atype in ("swipe", "drag"):
-        start = gt_action.get("coordinate")
-        end = gt_action.get("endCoordinate")
+        start = _safe_coord(gt_action.get("coordinate"))
+        end = _safe_coord(gt_action.get("endCoordinate"))
         if start and end:
             return (f"Step {step_id}: drag(start_coordinate=[{int(start[0])}, {int(start[1])}], "
                     f"end_coordinate=[{int(end[0])}, {int(end[1])}])")
@@ -419,7 +424,29 @@ def compute_kl_penalty(
 
 
 # ═════════════════════════════════════════════════════════════════════
-# V17.1 Trainer
+# Aux Utility Reward (V17.2)
+# ═════════════════════════════════════════════════════════════════════
+
+def compute_aux_utility(aux_a_text: str, aux_b_text: str, gt_action: Dict) -> float:
+    """Reward aux for mentioning correct action type.
+
+    Not GT leakage: reward is computed AFTER generation, and RL already uses GT.
+    """
+    gt_type = gt_action.get("action", "")
+    bonus = 0.0
+    for aux_text in [aux_a_text, aux_b_text]:
+        lower = aux_text.lower()
+        if gt_type == "click" and "click" in lower:
+            bonus += 0.15
+        elif gt_type == "type" and ("type" in lower or "input" in lower):
+            bonus += 0.15
+        elif gt_type in ("swipe", "drag") and any(w in lower for w in ["swipe", "scroll", "drag"]):
+            bonus += 0.15
+    return min(bonus, 0.3)
+
+
+# ═════════════════════════════════════════════════════════════════════
+# V17.2 Trainer
 # ═════════════════════════════════════════════════════════════════════
 
 class V17DualAuxRLTrainer:
@@ -709,32 +736,27 @@ class V17DualAuxRLTrainer:
             logger.info(f"Stop config: eos_ids={stop_ids}, stop_strings=['</decision>']")
         return self._stop_config_cache
 
-    # -- custom phase-aware generation -------------------------------------
-
-    def _detect_phase(self, text: str) -> int:
-        """Detect current generation phase from decoded text so far.
-
-        Returns: 0=aux_a, 1=aux_b, 2=decision
-        """
-        if AUX_B_CLOSE in text or DECISION_OPEN in text:
-            return 2
-        if AUX_A_CLOSE in text or AUX_B_OPEN in text:
-            return 1
-        return 0
+    # -- standard generation (V17.2) --------------------------------------
 
     @torch.no_grad()
-    def _generate_k_samples_phase_aware(
+    def _generate_k_samples_standard(
         self, messages: list, image: Image.Image, K: int, max_new_tokens: int,
     ) -> Tuple[torch.Tensor, int, dict]:
-        """Generate K samples with phase-aware routing.
+        """Standard generation with soft routing. No phase routing during inference.
 
-        Uses custom autoregressive loop that switches routing at phase boundaries.
-        K samples are batched — each tracks its own phase independently.
+        Both experts contribute to all tokens naturally → coherent output.
+        Phase routing only happens during training backward pass.
         """
         inputs = self._tokenize_for_generation(messages, image)
         prompt_len = inputs["input_ids"].shape[1]
 
-        # Repeat inputs K times
+        # Clear any phase mask — use natural soft routing
+        self.model.clear_phase_mask()
+        self.model.set_routing_noise(self.args.routing_noise_scale)
+        self._set_grad_checkpointing(False)
+        self.model.eval()
+
+        # Repeat for K samples
         gen_inputs = {}
         for k, v in inputs.items():
             if isinstance(v, torch.Tensor):
@@ -743,127 +765,29 @@ class V17DualAuxRLTrainer:
             else:
                 gen_inputs[k] = v
 
-        noise_std = self.args.routing_noise_scale
-        self.model.set_routing_noise(noise_std)
-        self._set_grad_checkpointing(False)
-        self.model.eval()
-
         stop_cfg = self._get_stop_config()
-        tokenizer = self.processor.tokenizer
-        total_max = self.args.max_aux_tokens + max_new_tokens
-        stop_token_ids = set(stop_cfg["eos_token_id"])
-
-        # Prepare for autoregressive generation
-        input_ids = gen_inputs["input_ids"]  # [K, prompt_len]
-        past_key_values = None
-
-        # Track per-sample state
-        current_phases = [0] * K  # Start in aux_a
-        finished = [False] * K
-        decoded_texts = [""] * K
-
-        # Build initial forward kwargs (full prompt, no past_key_values)
-        fwd_kwargs = {
-            "input_ids": input_ids,
-            "attention_mask": torch.ones_like(input_ids),
-        }
-        for k_name in ("pixel_values", "image_grid_thw"):
-            if k_name in gen_inputs:
-                fwd_kwargs[k_name] = gen_inputs[k_name]
-
-        # Initial forward: set all to phase 0 (aux_a) since prompt ends with <aux_a>\n
-        self.model.set_phase_mask_global(0)
 
         t_gen = time.time()
 
         with torch.amp.autocast("cuda", dtype=torch.bfloat16):
-            # First forward pass to get past_key_values
-            outputs = self.model.base_model(**fwd_kwargs, use_cache=True)
-            past_key_values = outputs.past_key_values
-            logits = outputs.logits[:, -1, :]  # [K, vocab]
-
-            for step_idx in range(total_max):
-                # Sample next token
-                if self.args.temperature > 0:
-                    probs = torch.softmax(logits / self.args.temperature, dim=-1)
-                    if self.args.top_p < 1.0:
-                        sorted_probs, sorted_idx = torch.sort(probs, descending=True)
-                        cumsum = torch.cumsum(sorted_probs, dim=-1)
-                        mask = cumsum - sorted_probs > self.args.top_p
-                        sorted_probs[mask] = 0.0
-                        sorted_probs = sorted_probs / sorted_probs.sum(dim=-1, keepdim=True)
-                        # Scatter back
-                        probs = torch.zeros_like(probs).scatter_(1, sorted_idx, sorted_probs)
-                    next_tokens = torch.multinomial(probs, num_samples=1)  # [K, 1]
-                else:
-                    next_tokens = logits.argmax(dim=-1, keepdim=True)
-
-                # Append to input_ids
-                input_ids = torch.cat([input_ids, next_tokens], dim=-1)
-
-                # Check stopping conditions per sample
-                all_done = True
-                for ki in range(K):
-                    if finished[ki]:
-                        continue
-                    tok_id = next_tokens[ki, 0].item()
-                    if tok_id in stop_token_ids:
-                        finished[ki] = True
-                        continue
-
-                    # Decode recent tokens to check phase transitions
-                    # Only decode the new token for efficiency
-                    new_tok_text = tokenizer.decode(
-                        [tok_id], skip_special_tokens=False
-                    )
-                    decoded_texts[ki] += new_tok_text
-
-                    # Check for stop string
-                    if DECISION_CLOSE in decoded_texts[ki]:
-                        finished[ki] = True
-                        continue
-
-                    # Detect phase
-                    new_phase = self._detect_phase(decoded_texts[ki])
-                    current_phases[ki] = new_phase
-                    all_done = False
-
-                if all_done:
-                    break
-
-                # Per-sample phase routing: each sample gets its own phase
-                phase_tensor = torch.tensor(
-                    current_phases, device=self.device, dtype=torch.long
-                )
-                # Finished samples default to decision phase (2)
-                for ki in range(K):
-                    if finished[ki]:
-                        phase_tensor[ki] = 2
-                self.model.set_phase_mask_global(phase_tensor)
-
-                # Forward with past_key_values (only new token)
-                attn_mask = torch.ones(
-                    K, input_ids.shape[1], device=self.device, dtype=torch.long
-                )
-                outputs = self.model.base_model(
-                    input_ids=next_tokens,
-                    attention_mask=attn_mask,
-                    past_key_values=past_key_values,
-                    use_cache=True,
-                )
-                past_key_values = outputs.past_key_values
-                logits = outputs.logits[:, -1, :]
+            output_ids = self.model.base_model.generate(
+                **gen_inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=True,
+                temperature=self.args.temperature,
+                top_p=self.args.top_p,
+                eos_token_id=stop_cfg["eos_token_id"],
+            )
 
         if self.rank == 0:
-            logger.info(f"    K={K} phase-aware gen {time.time()-t_gen:.1f}s "
-                        f"tokens={input_ids.shape[-1]-prompt_len}")
+            logger.info(f"    K={K} standard gen {time.time()-t_gen:.1f}s "
+                        f"tokens={output_ids.shape[-1]-prompt_len}")
 
         self.model.set_routing_noise(0.0)
-        self.model.clear_phase_mask()
         self.model.train()
         self._set_grad_checkpointing(True)
 
-        return input_ids, prompt_len, inputs
+        return output_ids, prompt_len, inputs
 
     # -- log prob computation (same as V13) --------------------------------
 
@@ -973,17 +897,15 @@ class V17DualAuxRLTrainer:
         advantage: float,
         phase_mask: torch.Tensor,
         mask: torch.Tensor,
+        aux_utility: float = 0.0,
     ) -> torch.Tensor:
-        """Compute per-token advantage — uniform across all phases.
+        """Compute per-token advantage with phase-specific aux_utility boost.
 
-        AT-GRPO per-phase normalization (in compute_policy_loss) handles
-        gradient balancing. Any scalar discount applied here would be
-        cancelled by the subsequent normalization:
-            normalize(c * x) = normalize(x)  for scalar c > 0
-
-        Aux length incentive is handled via reward bonus (not advantage
-        scaling), which survives normalization because it shifts the
-        trajectory's relative ranking among K samples.
+        Base advantage from GRPO applied to all tokens. If aux_utility > 0,
+        aux_a and aux_b tokens get an additional boost proportional to
+        aux_utility_weight * aux_utility. This creates asymmetric gradient:
+        - aux tokens with boosted advantage → stronger gradient to their expert
+        - decision tokens with base advantage → gradient to learned routing
         """
         resp_len = mask.shape[0]
 
@@ -995,15 +917,29 @@ class V17DualAuxRLTrainer:
                 pad_len = resp_len - phase_mask.shape[0]
                 phase_mask = F.pad(phase_mask, (0, pad_len), value=2)
 
-        # Uniform advantage: all phases get the same raw advantage
-        # AT-GRPO normalization in compute_policy_loss balances gradients
-        return torch.full_like(mask, float(advantage))
+        # Start with uniform base advantage
+        weighted = torch.full_like(mask, float(advantage))
+
+        # Boost aux tokens with aux_utility signal
+        if aux_utility > 0 and self.args.aux_utility_weight > 0:
+            aux_mask = (phase_mask == 0) | (phase_mask == 1)  # aux_a or aux_b
+            weighted[aux_mask] += self.args.aux_utility_weight * aux_utility
+
+        return weighted
 
     # -- episode rollout ---------------------------------------------------
 
     @torch.no_grad()
     def generate_episode_rollouts(self, episode: Dict) -> Optional[Dict]:
-        """Generate K rollouts for each step, compute advantages."""
+        """Generate K rollouts for each step, compute multi-reward advantages.
+
+        V17.2 multi-reward:
+          r_decision: action correctness (format+type+coord), 0-1
+          r_structure: valid 3-phase format, 0 or 0.1
+          r_aux_utility: aux predicts correct action type, 0-0.3 (stored separately)
+          total_reward = r_decision + r_structure (affects K-sample ranking)
+          aux_utility stored per-sample for phase-specific advantage boost
+        """
         args = self.args
         K = args.num_samples
         goal = episode["goal"]
@@ -1036,7 +972,7 @@ class V17DualAuxRLTrainer:
             messages = build_step_messages(goal, action_history, screenshot)
 
             try:
-                output_ids, prompt_len, inputs = self._generate_k_samples_phase_aware(
+                output_ids, prompt_len, inputs = self._generate_k_samples_standard(
                     messages, image, K, args.max_new_tokens
                 )
             except Exception as e:
@@ -1053,7 +989,7 @@ class V17DualAuxRLTrainer:
             aux_b_texts = []
             truncated = []
             phase_masks = []
-            total_max = args.max_aux_tokens + args.max_new_tokens
+            aux_utility_scores = []
 
             for k in range(K):
                 resp_ids = output_ids[k, prompt_len:]
@@ -1061,7 +997,7 @@ class V17DualAuxRLTrainer:
                     resp_ids, skip_special_tokens=True
                 )
                 step_texts.append(text)
-                is_trunc = (resp_ids.shape[0] >= total_max)
+                is_trunc = (resp_ids.shape[0] >= args.max_new_tokens)
                 truncated.append(is_trunc)
 
                 # Parse dual-aux and decision
@@ -1076,49 +1012,57 @@ class V17DualAuxRLTrainer:
                 )
                 phase_masks.append(pm)
 
-                if is_trunc:
-                    step_rewards.append(0.0)
-                    all_rewards[k, si] = 0.0
-                else:
-                    # Reward from decision quality
-                    reward, _ = compute_step_reward(
-                        decision_text, gt_action, image_w, image_h,
-                        w_format=args.w_format,
-                        w_type=args.w_type,
-                        w_content=args.w_content,
-                    )
-                    # Aux length reward bonus — survives AT-GRPO normalization
-                    # because it shifts the trajectory's relative ranking among
-                    # K samples (baked into reward, not advantage scaling)
-                    if args.aux_len_bonus > 0 and args.min_aux_tokens > 0:
-                        aux_a_tok_len = (pm == 0).sum().item()
-                        aux_b_tok_len = (pm == 1).sum().item()
-                        min_t = args.min_aux_tokens
-                        bonus = (min(aux_a_tok_len, min_t) / min_t
-                                 + min(aux_b_tok_len, min_t) / min_t) * args.aux_len_bonus
-                        reward += bonus
+                # --- Truncation handling: try to parse partial decision ---
+                if is_trunc and not decision_text:
+                    # Look for <tool_call> even without </decision>
+                    tc_match = re.search(r"<tool_call>\s*(\{.*)", text, re.DOTALL)
+                    if tc_match:
+                        decision_text = tc_match.group(0)
 
-                    step_rewards.append(reward)
-                    all_rewards[k, si] = reward
+                # --- Multi-reward computation ---
+                # r_decision: action correctness
+                r_decision, _ = compute_step_reward(
+                    decision_text, gt_action, image_w, image_h,
+                    w_format=args.w_format,
+                    w_type=args.w_type,
+                    w_content=args.w_content,
+                )
+                if is_trunc and not decision_text:
+                    r_decision = 0.0
+
+                # r_structure: valid 3-phase format with non-empty content
+                r_structure = 0.1 if (aux_a_text and aux_b_text and decision_text) else 0.0
+
+                # r_aux_utility: aux predicts correct action type
+                r_aux_utility = compute_aux_utility(aux_a_text, aux_b_text, gt_action)
+                aux_utility_scores.append(r_aux_utility)
+
+                # total_reward = r_decision + r_structure (affects K-sample ranking)
+                total_reward = r_decision + r_structure
+                step_rewards.append(total_reward)
+                all_rewards[k, si] = total_reward
 
             n_trunc = sum(truncated)
             if self.rank == 0 and n_trunc > 0:
                 logger.info(f"    truncated: {n_trunc}/{K}")
 
-            # Log sample content
+            # Log sample content (always show sample 0, even if truncated)
             if self.rank == 0 and si == 0:
                 for k_show in range(min(2, K)):
-                    if not truncated[k_show]:
-                        logger.info(f"    [sample {k_show}] aux_a: {aux_a_texts[k_show][:80]}...")
-                        logger.info(f"    [sample {k_show}] aux_b: {aux_b_texts[k_show][:80]}...")
-                        logger.info(f"    [sample {k_show}] reward: {step_rewards[k_show]:.3f}")
+                    logger.info(f"    [sample {k_show}] text: {step_texts[k_show][:300]}...")
+                    logger.info(f"    [sample {k_show}] aux_a: {aux_a_texts[k_show][:80]}...")
+                    logger.info(f"    [sample {k_show}] aux_b: {aux_b_texts[k_show][:80]}...")
+                    logger.info(f"    [sample {k_show}] r_decision={step_rewards[k_show]:.3f} "
+                                f"r_aux_util={aux_utility_scores[k_show]:.3f} "
+                                f"trunc={truncated[k_show]}")
 
-            # Compute log probs for non-truncated samples
+            # Compute log probs for samples with parseable output
             old_tok_lps = [None] * K
             masks = [None] * K
             ref_tok_lps = [None] * K
             for k in range(K):
-                if truncated[k]:
+                # Skip samples with zero reward AND truncated (nothing to learn from)
+                if truncated[k] and step_rewards[k] == 0.0:
                     continue
                 tok_lp, mask, _ = self._compute_token_log_probs(
                     output_ids[k], prompt_len, inputs, with_grad=False,
@@ -1147,6 +1091,7 @@ class V17DualAuxRLTrainer:
                 "aux_a_texts": aux_a_texts,
                 "aux_b_texts": aux_b_texts,
                 "phase_masks": phase_masks,
+                "aux_utility_scores": aux_utility_scores,
                 "gt_action": gt_action,
                 "image_w": image_w,
                 "image_h": image_h,
@@ -1213,6 +1158,8 @@ class V17DualAuxRLTrainer:
         aux_b_len_sum = 0.0
         n_aux_a = 0
         n_aux_b = 0
+        aux_util_sum = 0.0
+        n_aux_util = 0
 
         total_seqs = sum(ep["num_steps"] * K for ep in batch_rollouts)
         total_seqs = max(total_seqs, 1)
@@ -1231,7 +1178,8 @@ class V17DualAuxRLTrainer:
                     adv = advantages[k, si]
                     all_rewards.append(ep["rewards"][k, si])
 
-                    if step_data.get("truncated", [False] * K)[k]:
+                    # Skip if no log probs computed (truncated+zero reward)
+                    if step_data["old_tok_lps"][k] is None:
                         n_zero_adv += 1
                         continue
 
@@ -1241,7 +1189,7 @@ class V17DualAuxRLTrainer:
 
                     advs_abs.append(abs(adv))
 
-                    # Track aux lengths
+                    # Track aux lengths and aux utility
                     aux_a_text = step_data.get("aux_a_texts", [""] * K)[k]
                     aux_b_text = step_data.get("aux_b_texts", [""] * K)[k]
                     if aux_a_text:
@@ -1250,6 +1198,10 @@ class V17DualAuxRLTrainer:
                     if aux_b_text:
                         aux_b_len_sum += len(aux_b_text.split())
                         n_aux_b += 1
+
+                    aux_utility = step_data.get("aux_utility_scores", [0.0] * K)[k]
+                    aux_util_sum += aux_utility
+                    n_aux_util += 1
 
                     phase_mask = step_data["phase_masks"][k]
 
@@ -1264,9 +1216,9 @@ class V17DualAuxRLTrainer:
 
                     old_tok_lp = step_data["old_tok_lps"][k]
 
-                    # Phase-aware advantage weighting
+                    # Phase-aware advantage weighting with aux_utility boost
                     adv_weighted = self._compute_phase_weighted_advantage(
-                        adv, phase_mask, mask,
+                        adv, phase_mask, mask, aux_utility=aux_utility,
                     )
 
                     pg_loss, clip_frac, approx_kl = compute_policy_loss(
@@ -1351,6 +1303,7 @@ class V17DualAuxRLTrainer:
             "mean_aux_b_len": aux_b_len_sum / max(n_aux_b, 1),
             "aux_a_nonempty_frac": n_aux_a / max(n_total, 1),
             "aux_b_nonempty_frac": n_aux_b / max(n_total, 1),
+            "mean_aux_utility": aux_util_sum / max(n_aux_util, 1),
             "n_seqs": n_seqs,
         }
 
@@ -1368,12 +1321,12 @@ class V17DualAuxRLTrainer:
             {
                 "global_step": self.global_step,
                 "v17_config": {
-                    "max_aux_tokens": self.args.max_aux_tokens,
-                    "aux_len_bonus": self.args.aux_len_bonus,
+                    "version": "v17.2",
+                    "max_new_tokens": self.args.max_new_tokens,
                     "diversity_weight": self.args.diversity_weight,
                     "aux_a_hard_route": self.args.aux_a_hard_route,
                     "aux_b_hard_route": self.args.aux_b_hard_route,
-                    "min_aux_tokens": self.args.min_aux_tokens,
+                    "aux_utility_weight": self.args.aux_utility_weight,
                 },
             },
             os.path.join(ckpt_dir, "training_state.pt"),
@@ -1414,7 +1367,7 @@ class V17DualAuxRLTrainer:
                 messages = build_step_messages(goal, action_history, screenshot)
 
                 try:
-                    output_ids, prompt_len, inputs = self._generate_k_samples_phase_aware(
+                    output_ids, prompt_len, inputs = self._generate_k_samples_standard(
                         messages, image, 1, self.args.max_new_tokens
                     )
                 except Exception:
@@ -1475,15 +1428,14 @@ class V17DualAuxRLTrainer:
 
         if self.rank == 0:
             logger.info("=" * 60)
-            logger.info("V17.1 Dual-Aux RL — Phase-Conditional Hard Routing")
+            logger.info("V17.2 Dual-Aux RL — Standard Gen + Phase-Gradient + Multi-Reward")
             logger.info(f"  K={args.num_samples}  temp={args.temperature}")
             logger.info(f"  num_comm_rounds={args.num_comm_rounds}")
             logger.info(f"  routing_noise_scale={args.routing_noise_scale}")
-            logger.info(f"  max_aux_tokens={args.max_aux_tokens}")
-            logger.info(f"  min_aux_tokens={args.min_aux_tokens}")
-            logger.info(f"  aux_len_bonus={args.aux_len_bonus}")
+            logger.info(f"  max_new_tokens={args.max_new_tokens}")
             logger.info(f"  aux_a_hard_route={args.aux_a_hard_route}")
             logger.info(f"  aux_b_hard_route={args.aux_b_hard_route}")
+            logger.info(f"  aux_utility_weight={args.aux_utility_weight}")
             logger.info(f"  diversity_weight={args.diversity_weight}")
             logger.info(f"  spwa_decay={args.spwa_decay}  match_threshold={args.match_threshold}  step_adv_weight={args.step_adv_weight}")
             logger.info(f"  grad_accum={args.gradient_accumulation_steps}")
@@ -1563,6 +1515,7 @@ class V17DualAuxRLTrainer:
                                 f"rw={metrics['routing_w']:.3f} "
                                 f"aux_a={metrics['mean_aux_a_len']:.0f} "
                                 f"aux_b={metrics['mean_aux_b_len']:.0f} "
+                                f"aux_util={metrics['mean_aux_utility']:.3f} "
                                 f"t={time.time()-t_ep:.1f}s"
                             )
 
@@ -1593,7 +1546,8 @@ class V17DualAuxRLTrainer:
                 )
                 for k in ["pg_loss", "mean_reward", "mean_sp", "kl",
                            "diversity_loss", "nonzero_adv_frac", "routing_w",
-                           "balance_loss", "mean_aux_a_len", "mean_aux_b_len"]:
+                           "balance_loss", "mean_aux_a_len", "mean_aux_b_len",
+                           "mean_aux_utility"]:
                     vals = epoch_metrics.get(k, [0])
                     logger.info(f"  avg {k}: {np.mean(vals):.4f}")
                 logger.info(f"{'='*60}")
@@ -1616,7 +1570,7 @@ class V17DualAuxRLTrainer:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="V17.1 Dual-Aux RL — Phase-Conditional Hard Routing")
+        description="V17.2 Dual-Aux RL — Standard Gen + Phase-Gradient + Multi-Reward")
 
     # Model
     parser.add_argument("--model_path", type=str, required=True)
@@ -1644,23 +1598,25 @@ def main():
     parser.add_argument("--routing_noise_scale", type=float, default=0.5)
     parser.add_argument("--image_max_pixels", type=int, default=602112)
 
-    # V17.1 Dual-Aux specific
-    parser.add_argument("--max_aux_tokens", type=int, default=150,
-                        help="Maximum total tokens for aux_a + aux_b phases")
-    parser.add_argument("--min_aux_tokens", type=int, default=20,
-                        help="Target min tokens per aux phase (for length bonus ramp)")
-    parser.add_argument("--aux_len_bonus", type=float, default=0.01,
-                        help="Reward bonus per aux phase for reaching min_aux_tokens "
-                             "(max bonus = 2 * aux_len_bonus when both aux >= min)")
-    parser.add_argument("--aux_adv_discount", type=float, default=1.0,
-                        help="(Deprecated with AT-GRPO, kept for compatibility)")
+    # V17.2 Dual-Aux specific
     parser.add_argument("--aux_a_hard_route", type=float, default=0.9,
-                        help="Hard routing value for Expert A during aux_a phase")
+                        help="Hard routing value for Expert A during aux_a phase (training only)")
     parser.add_argument("--aux_b_hard_route", type=float, default=0.1,
                         help="Hard routing value for Expert A during aux_b phase "
-                             "(Expert B gets 1-this)")
+                             "(Expert B gets 1-this, training only)")
+    parser.add_argument("--aux_utility_weight", type=float, default=0.15,
+                        help="Weight for aux_utility advantage boost on aux tokens")
     parser.add_argument("--diversity_weight", type=float, default=0.03,
                         help="Weight for diversity loss (L_div)")
+    # Deprecated V17.1 args (kept for backward compat with old configs)
+    parser.add_argument("--max_aux_tokens", type=int, default=150,
+                        help="(Deprecated in V17.2, ignored)")
+    parser.add_argument("--min_aux_tokens", type=int, default=20,
+                        help="(Deprecated in V17.2, ignored)")
+    parser.add_argument("--aux_len_bonus", type=float, default=0.0,
+                        help="(Deprecated in V17.2, ignored)")
+    parser.add_argument("--aux_adv_discount", type=float, default=1.0,
+                        help="(Deprecated in V17.2, ignored)")
 
     # RL
     parser.add_argument("--num_samples", type=int, default=8, help="K rollouts per step")
@@ -1668,8 +1624,8 @@ def main():
     parser.add_argument("--top_p", type=float, default=0.95)
     parser.add_argument("--clip_range", type=float, default=0.2)
     parser.add_argument("--kl_coef", type=float, default=0.001)
-    parser.add_argument("--max_new_tokens", type=int, default=256,
-                        help="Max tokens for decision phase")
+    parser.add_argument("--max_new_tokens", type=int, default=512,
+                        help="Max tokens for full response (aux_a + aux_b + decision)")
 
     # Advantage mode
     parser.add_argument("--advantage_mode", type=str, default="sp",

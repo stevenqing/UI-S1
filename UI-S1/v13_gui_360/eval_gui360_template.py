@@ -71,6 +71,93 @@ If you think the task is finished, you can output status as "FINISH" and take no
 Only **ONE** action should be taken at a time. If the instruction could apply to multiple elements, choose the most relevant one based on the context provided by the screenshot and previous actions.
 """
 
+USER_PROMPT_TEMPLATE_PLAN = """You are a helpful assistant. Given a screenshot of the current screen, user instruction and history of actions, you need to decide the next action to take.
+
+The instruction is:
+{instruction}
+
+The history of actions are:
+{history}
+
+Your plan for completing this task:
+{plan}
+
+The actions supported are:
+{actions}
+Important: All coordinate parameters for a predicted action must be absolute pixel positions on the screen, e.g., click(coordinate=[100, 200], button='left', double=False, pressed=None)
+
+First, review your plan and identify which step you are currently on based on the history. Then analyze the screenshot to understand the current state. Determine what action should be taken next to follow your plan.
+
+Then output your action within <tool_call></tool_call> tag like:
+<tool_call>
+{{
+  "function": "<function name>",
+  "args": {{}},
+  "status": "CONTINUE"
+}}
+</tool_call>
+
+If you think the task is finished, you can output status as "FINISH" and take no action. Like:
+<tool_call>
+{{
+  "function": "",
+  "args": {{}},
+  "status": "FINISH"
+}}
+</tool_call>
+
+Only **ONE** action should be taken at a time. If the instruction could apply to multiple elements, choose the most relevant one based on the context provided by the screenshot and previous actions.
+"""
+
+USER_PROMPT_TEMPLATE_GUIDED = """You are a helpful assistant. Given a screenshot of the current screen, user instruction, history of actions, and an advisor's suggestion, you need to decide the next action to take.
+
+The instruction is:
+{instruction}
+
+The history of actions are:
+{history}
+
+An advisor suggests the following for this step:
+{guidance}
+
+The actions supported are:
+{actions}
+Important: All coordinate parameters for a predicted action must be absolute pixel positions on the screen, e.g., click(coordinate=[100, 200], button='left', double=False, pressed=None)
+
+Consider the advisor's suggestion along with the screenshot and history. Then decide the best action to take.
+
+Output your action within <tool_call></tool_call> tag like:
+<tool_call>
+{{
+  "function": "<function name>",
+  "args": {{}},
+  "status": "CONTINUE"
+}}
+</tool_call>
+
+If you think the task is finished, you can output status as "FINISH" and take no action. Like:
+<tool_call>
+{{
+  "function": "",
+  "args": {{}},
+  "status": "FINISH"
+}}
+</tool_call>
+
+Only **ONE** action should be taken at a time. If the instruction could apply to multiple elements, choose the most relevant one based on the context provided by the screenshot and previous actions.
+"""
+
+PLAN_GENERATION_PROMPT = """You are a helpful assistant that plans GUI actions. Given a screenshot of the current screen and a user instruction, generate a step-by-step plan to complete the task.
+
+The instruction is:
+{instruction}
+
+The actions supported are:
+{actions}
+
+List the specific steps needed to accomplish this task, considering what you see on the screen. Be specific about what to click, type, or drag at each step. Output your plan as a numbered list.
+"""
+
 # IMPORTANT: Must be identical to SUPPORTED_ACTIONS in train_trajectory_rl.py
 SUPPORTED_ACTIONS = """<action>
 - click
@@ -214,24 +301,69 @@ def _format_action_for_history(action: Optional[Dict], step_id: int) -> str:
         return f"Step {step_id}: {atype}()"
 
 
-def build_step_prompt(goal: str, screenshot_path: str, step_idx: int, history: List[str]) -> List[dict]:
+def _encode_screenshot(screenshot_path: str, image_max_pixels: Optional[int] = None) -> str:
+    """Load screenshot, optionally resize, and return base64-encoded PNG."""
+    img = Image.open(screenshot_path).convert("RGB")
+    if image_max_pixels:
+        w, h = img.size
+        current_pixels = w * h
+        if current_pixels > image_max_pixels:
+            scale = (image_max_pixels / current_pixels) ** 0.5
+            new_w, new_h = int(w * scale), int(h * scale)
+            img = img.resize((new_w, new_h), Image.LANCZOS)
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    return base64.b64encode(buf.getvalue()).decode("utf-8")
+
+
+def build_plan_prompt(goal: str, screenshot_path: str,
+                      image_max_pixels: Optional[int] = None) -> List[dict]:
+    """Build messages for plan generation (step 0 only)."""
+    prompt_text = PLAN_GENERATION_PROMPT.format(
+        instruction=goal,
+        actions=SUPPORTED_ACTIONS,
+    )
+
+    b64 = _encode_screenshot(screenshot_path, image_max_pixels)
+    user_content = [
+        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+        {"type": "text", "text": prompt_text},
+    ]
+    return [{"role": "user", "content": user_content}]
+
+
+def build_step_prompt(goal: str, screenshot_path: str, step_idx: int, history: List[str],
+                      plan: Optional[str] = None, guidance: Optional[str] = None,
+                      image_max_pixels: Optional[int] = None) -> List[dict]:
     """Build messages for a single step using GUI-360 template."""
     history_text = "\n".join(history) if history else "None"
 
-    prompt_text = USER_PROMPT_TEMPLATE.format(
-        instruction=goal,
-        history=history_text,
-        actions=SUPPORTED_ACTIONS,
-    )
+    if guidance:
+        prompt_text = USER_PROMPT_TEMPLATE_GUIDED.format(
+            instruction=goal,
+            history=history_text,
+            guidance=guidance,
+            actions=SUPPORTED_ACTIONS,
+        )
+    elif plan:
+        prompt_text = USER_PROMPT_TEMPLATE_PLAN.format(
+            instruction=goal,
+            history=history_text,
+            plan=plan,
+            actions=SUPPORTED_ACTIONS,
+        )
+    else:
+        prompt_text = USER_PROMPT_TEMPLATE.format(
+            instruction=goal,
+            history=history_text,
+            actions=SUPPORTED_ACTIONS,
+        )
 
     # Build multimodal message
     user_content = []
 
-    # Add screenshot as base64
-    img = Image.open(screenshot_path).convert("RGB")
-    buf = BytesIO()
-    img.save(buf, format="PNG")
-    b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+    # Add screenshot as base64 (optionally resized)
+    b64 = _encode_screenshot(screenshot_path, image_max_pixels)
     user_content.append({
         "type": "image_url",
         "image_url": {"url": f"data:image/png;base64,{b64}"}
@@ -251,6 +383,10 @@ def evaluate_episode(
     stop_on_error: bool = True,
     match_threshold: float = 0.5,
     gt_history: bool = False,
+    history_mode: str = "full",
+    use_plan: bool = False,
+    guidances: Optional[List[str]] = None,
+    image_max_pixels: Optional[int] = None,
 ) -> Dict[str, Any]:
     """Evaluate a single episode autoregressively (or with GT history)."""
     episode_id = episode["episode_id"]
@@ -263,13 +399,40 @@ def evaluate_episode(
     first_error_step = None
     correct_steps = 0
 
+    # Generate plan at the beginning if use_plan is enabled
+    plan = None
+    if use_plan and steps:
+        try:
+            plan_messages = build_plan_prompt(goal, steps[0]["screenshot"], image_max_pixels)
+            plan_response = client.chat.completions.create(
+                model=model_name,
+                messages=plan_messages,
+                max_tokens=512,
+                temperature=0.0,
+            )
+            plan = plan_response.choices[0].message.content or ""
+        except Exception as e:
+            print(f"  [ep {episode_id}] plan generation error: {e}")
+            plan = None
+
     for i, step in enumerate(steps):
         gt_action = step["action"]
         screenshot = step["screenshot"]
         image_w = step.get("image_w", 1040)
         image_h = step.get("image_h", 736)
 
-        messages = build_step_prompt(goal, screenshot, i, history)
+        # Apply history mode: truncate history for ablation
+        if history_mode == "none":
+            visible_history = []
+        elif history_mode.startswith("last_"):
+            n_keep = int(history_mode.split("_")[1])
+            visible_history = history[-n_keep:] if len(history) > n_keep else list(history)
+        else:  # "full"
+            visible_history = history
+
+        step_guidance = guidances[i] if guidances and i < len(guidances) else None
+        messages = build_step_prompt(goal, screenshot, i, visible_history, plan=plan,
+                                     guidance=step_guidance, image_max_pixels=image_max_pixels)
 
         try:
             response = client.chat.completions.create(
@@ -359,9 +522,19 @@ def main():
     parser.add_argument("--output_dir", required=True)
     parser.add_argument("--threads", type=int, default=128)
     parser.add_argument("--match_threshold", type=float, default=0.5)
-    parser.add_argument("--stop_on_error", action="store_true", default=True)
+    parser.add_argument("--stop_on_error", action="store_true", default=False,
+                        help="Stop evaluating an episode after the first error step")
     parser.add_argument("--gt_history", action="store_true", default=False,
                         help="Use GT actions for history (teacher-forced). Evaluates all steps.")
+    parser.add_argument("--history_mode", type=str, default="full",
+                        choices=["full", "none", "last_3", "last_5"],
+                        help="History ablation: full=all history, none=no history, last_N=keep last N entries")
+    parser.add_argument("--use_plan", action="store_true", default=False,
+                        help="Generate a task plan before execution and include it in each step prompt")
+    parser.add_argument("--guidance_file", type=str, default=None,
+                        help="Path to pre-generated per-step guidance JSON (from generate_step_guidance.py)")
+    parser.add_argument("--image_max_pixels", type=int, default=None,
+                        help="Resize images to at most this many pixels before sending to API (e.g., 602112)")
     parser.add_argument("--start", type=int, default=0,
                         help="Start index for episode slicing (for parallel sharding)")
     parser.add_argument("--end", type=int, default=None,
@@ -380,6 +553,13 @@ def main():
 
     client = OpenAI(base_url=args.api_url, api_key="dummy")
 
+    # Load pre-generated guidance if provided
+    guidance_data = None
+    if args.guidance_file:
+        with open(args.guidance_file) as f:
+            guidance_data = json.load(f)
+        print(f"Loaded guidance for {len(guidance_data)} episodes from {args.guidance_file}")
+
     os.makedirs(args.output_dir, exist_ok=True)
 
     # Evaluate
@@ -391,13 +571,17 @@ def main():
     total_reward = 0.0
 
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
-        futures = {
-            executor.submit(
+        futures = {}
+        for ep in episodes:
+            ep_guidances = None
+            if guidance_data and ep["episode_id"] in guidance_data:
+                ep_guidances = guidance_data[ep["episode_id"]].get("guidances")
+            futures[executor.submit(
                 evaluate_episode, client, args.model_name, ep,
-                args.stop_on_error, args.match_threshold, args.gt_history
-            ): ep["episode_id"]
-            for ep in episodes
-        }
+                args.stop_on_error, args.match_threshold, args.gt_history,
+                args.history_mode, args.use_plan, ep_guidances,
+                args.image_max_pixels,
+            )] = ep["episode_id"]
 
         pbar = tqdm(total=len(episodes), desc="Evaluating")
         for future in as_completed(futures):
@@ -433,6 +617,8 @@ def main():
         "match_threshold": args.match_threshold,
         "stop_on_error": args.stop_on_error,
         "gt_history": args.gt_history,
+        "history_mode": args.history_mode,
+        "use_plan": args.use_plan,
         "prompt_format": "gui360_template",
     }
 
@@ -451,6 +637,7 @@ def main():
     print(f"  Episodes: {n}")
     if args.gt_history:
         print(f"  Mode:     GT History (teacher-forced)")
+    print(f"  History:  {args.history_mode}")
     print(f"{'='*50}")
 
 
