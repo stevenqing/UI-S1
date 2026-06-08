@@ -1,0 +1,48 @@
+{
+  "oracle_tsr": 22.4,
+  "oracle_step_sr": 65.86,
+  "oracle_successful_episodes": 224,
+  "total_episodes": 1000,
+  "oracle_correct_steps": 4938,
+  "total_steps": 7498,
+  "agents": [
+    "type_recovery",
+    "click_recovery",
+    "swipe_navigation",
+    "minimal_next_step",
+    "escape_finish",
+    "spreadsheet_formula"
+  ],
+  "per_agent": {
+    "type_recovery": {
+      "tsr": 9.3,
+      "step_sr": 39.26,
+      "unique_contributions": 161
+    },
+    "click_recovery": {
+      "tsr": 8.6,
+      "step_sr": 40.01,
+      "unique_contributions": 153
+    },
+    "swipe_navigation": {
+      "tsr": 10.4,
+      "step_sr": 40.49,
+      "unique_contributions": 93
+    },
+    "minimal_next_step": {
+      "tsr": 10.4,
+      "step_sr": 41.28,
+      "unique_contributions": 155
+    },
+    "escape_finish": {
+      "tsr": 8.0,
+      "step_sr": 42.36,
+      "unique_contributions": 127
+    },
+    "spreadsheet_formula": {
+      "tsr": 12.0,
+      "step_sr": 43.54,
+      "unique_contributions": 149
+    }
+  }
+}

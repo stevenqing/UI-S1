@@ -393,6 +393,14 @@ class V18KExpertGSPOTrainer:
                 logger.info(f"Loading SFT checkpoint: {args.sft_checkpoint}")
             self.model.load_cooperative(args.sft_checkpoint, device=self.device)
 
+        # Break softmax symmetry: reinitialize route weights with random values
+        if getattr(args, 'route_init_std', 0) > 0:
+            if self.rank == 0:
+                logger.info(f"Reinitializing route weights with N(0, {args.route_init_std}) "
+                            f"to break softmax symmetry")
+            for param in self.model.route_weights:
+                param.data.normal_(0, args.route_init_std)
+
         # Snapshot initial cooperative weights as ref model for KL penalty
         if args.kl_coef > 0:
             self._ref_state = {
@@ -695,6 +703,200 @@ class V18KExpertGSPOTrainer:
 
         return output_ids, prompt_len, inputs
 
+    # -- batched generation for different prompts (steps 1+) ---------------
+
+    @torch.no_grad()
+    def _generate_batched_different_prompts(
+        self,
+        messages_list: List[list],
+        image: Image.Image,
+        max_new_tokens: int,
+    ) -> Tuple[List[torch.Tensor], List[int], List[dict]]:
+        """Batched generation for different prompts sharing the same image.
+
+        Returns:
+            output_ids_list: List of [1, prompt_len+resp_len] tensors (unpadded)
+            prompt_lens: original prompt lengths
+            inputs_list: original (unpadded) input dicts for log-prob computation
+        """
+        # 1. Tokenize each prompt individually
+        inputs_list = []
+        prompt_lens = []
+        for messages in messages_list:
+            inputs = self._tokenize_for_generation(messages, image)
+            inputs_list.append(inputs)
+            prompt_lens.append(inputs["input_ids"].shape[1])
+
+        B = len(inputs_list)
+        if B == 0:
+            return [], [], []
+
+        if B == 1:
+            stop_cfg = self._get_stop_config()
+            with torch.amp.autocast("cuda", dtype=torch.bfloat16):
+                output_ids = self.model.generate(
+                    **inputs_list[0],
+                    max_new_tokens=max_new_tokens,
+                    temperature=self.args.temperature,
+                    top_p=self.args.top_p,
+                    do_sample=True,
+                    eos_token_id=stop_cfg["eos_token_id"],
+                    stop_strings=stop_cfg["stop_strings"],
+                    tokenizer=stop_cfg["tokenizer"],
+                )
+            return [output_ids], prompt_lens, inputs_list
+
+        # 2. Left-pad input_ids and attention_mask to max length
+        max_len = max(prompt_lens)
+        pad_id = self.processor.tokenizer.pad_token_id
+        if pad_id is None:
+            pad_id = 0
+
+        batched_ids = []
+        batched_attn = []
+        for inp, plen in zip(inputs_list, prompt_lens):
+            ids = inp["input_ids"][0]  # [seq_len]
+            pad_len = max_len - plen
+            if pad_len > 0:
+                ids_padded = torch.cat([
+                    torch.full((pad_len,), pad_id, dtype=ids.dtype, device=ids.device),
+                    ids,
+                ])
+                attn = torch.cat([
+                    torch.zeros(pad_len, dtype=torch.long, device=ids.device),
+                    torch.ones(plen, dtype=torch.long, device=ids.device),
+                ])
+            else:
+                ids_padded = ids
+                attn = torch.ones(plen, dtype=torch.long, device=ids.device)
+            batched_ids.append(ids_padded)
+            batched_attn.append(attn)
+
+        batched_ids = torch.stack(batched_ids)    # [B, max_len]
+        batched_attn = torch.stack(batched_attn)  # [B, max_len]
+
+        # 3. Repeat pixel_values and image_grid_thw for batch
+        gen_inputs = {"input_ids": batched_ids, "attention_mask": batched_attn}
+        for key in ("pixel_values", "image_grid_thw"):
+            if key in inputs_list[0]:
+                val = inputs_list[0][key]
+                rep = [B] + [1] * (val.dim() - 1)
+                gen_inputs[key] = val.repeat(*rep)
+
+        # 4. Generate
+        stop_cfg = self._get_stop_config()
+        with torch.amp.autocast("cuda", dtype=torch.bfloat16):
+            output_ids = self.model.generate(
+                **gen_inputs,
+                max_new_tokens=max_new_tokens,
+                temperature=self.args.temperature,
+                top_p=self.args.top_p,
+                do_sample=True,
+                eos_token_id=stop_cfg["eos_token_id"],
+                stop_strings=stop_cfg["stop_strings"],
+                tokenizer=stop_cfg["tokenizer"],
+            )
+        # output_ids: [B, max_len + max_resp_len]
+
+        # 5. Un-pad: remove left padding for each trajectory
+        output_ids_list = []
+        for i in range(B):
+            pad_len = max_len - prompt_lens[i]
+            unpadded = output_ids[i, pad_len:]  # [prompt_len_i + resp_len_i]
+            output_ids_list.append(unpadded.unsqueeze(0))  # [1, seq_len]
+
+        return output_ids_list, prompt_lens, inputs_list
+
+    # -- batched log-prob computation --------------------------------------
+
+    def _batch_compute_token_log_probs(
+        self,
+        full_ids_list: List[torch.Tensor],
+        prompt_lens: List[int],
+        inputs_list: List[dict],
+        with_grad: bool = False,
+    ) -> List[torch.Tensor]:
+        """Batch compute token log probs for sequences sharing the same image."""
+        B = len(full_ids_list)
+        if B == 0:
+            return []
+        if B == 1:
+            tok_lp, mask, _ = self._compute_token_log_probs(
+                full_ids_list[0], prompt_lens[0], inputs_list[0], with_grad=with_grad
+            )
+            return [tok_lp]
+
+        # Right-pad to max sequence length
+        max_seq = max(ids.shape[0] for ids in full_ids_list)
+        batched_ids = []
+        batched_attn = []
+        for ids in full_ids_list:
+            pad_len = max_seq - ids.shape[0]
+            if pad_len > 0:
+                ids_p = torch.cat([ids, torch.full((pad_len,), self.pad_id, dtype=ids.dtype, device=ids.device)])
+                attn = torch.cat([torch.ones(ids.shape[0], dtype=torch.long, device=ids.device),
+                                  torch.zeros(pad_len, dtype=torch.long, device=ids.device)])
+            else:
+                ids_p = ids
+                attn = torch.ones(ids.shape[0], dtype=torch.long, device=ids.device)
+            batched_ids.append(ids_p)
+            batched_attn.append(attn)
+
+        batched_ids = torch.stack(batched_ids)
+        batched_attn = torch.stack(batched_attn)
+
+        fwd_kwargs = {"input_ids": batched_ids, "attention_mask": batched_attn}
+        for key in ("pixel_values", "image_grid_thw"):
+            if key in inputs_list[0]:
+                val = inputs_list[0][key]
+                rep = [B] + [1] * (val.dim() - 1)
+                fwd_kwargs[key] = val.repeat(*rep)
+
+        ctx = torch.enable_grad() if with_grad else torch.no_grad()
+        with ctx:
+            with torch.amp.autocast("cuda", dtype=torch.bfloat16):
+                outputs = self.model.forward(**fwd_kwargs)
+
+            logits = outputs.logits  # [B, max_seq, vocab]
+            results = []
+            for i in range(B):
+                plen = prompt_lens[i]
+                seq_len = full_ids_list[i].shape[0]
+                resp_logits = logits[i:i+1, plen - 1:seq_len - 1, :]
+                resp_labels = batched_ids[i:i+1, plen:seq_len]
+                log_p = F.log_softmax(resp_logits, dim=-1)
+                tok_lp = torch.gather(log_p, -1, resp_labels.unsqueeze(-1)).squeeze(-1)
+                results.append(tok_lp.squeeze(0))
+
+        return results
+
+    def _batch_compute_ref_log_probs(
+        self,
+        full_ids_list: List[torch.Tensor],
+        prompt_lens: List[int],
+        inputs_list: List[dict],
+    ) -> List[torch.Tensor]:
+        """Batch compute reference log probs (single weight-swap)."""
+        # Swap in ref weights (once for entire batch)
+        current_state = {}
+        for name, param in self.model.named_parameters():
+            if name in self._ref_state:
+                current_state[name] = param.data.clone()
+                param.data.copy_(self._ref_state[name])
+
+        self.model.eval()
+        results = self._batch_compute_token_log_probs(
+            full_ids_list, prompt_lens, inputs_list, with_grad=False
+        )
+
+        # Restore current weights
+        for name, param in self.model.named_parameters():
+            if name in current_state:
+                param.data.copy_(current_state[name])
+        self.model.train()
+
+        return results
+
     # -- on-policy trajectory rollout --------------------------------------
 
     @torch.no_grad()
@@ -779,7 +981,7 @@ class V18KExpertGSPOTrainer:
 
             trajectories.append(traj)
 
-        # -- Steps 1+: sequential per trajectory --
+        # -- Steps 1+: batched generation per step --
         for t in range(1, T):
             if all(traj["stopped"] for traj in trajectories):
                 for traj in trajectories:
@@ -805,36 +1007,47 @@ class V18KExpertGSPOTrainer:
                     traj["outputs"].append(None)
                 continue
 
+            # Collect active trajectories
+            active_indices = [k for k, tr in enumerate(trajectories) if not tr["stopped"]]
+
+            # Append zeros for already-stopped trajectories
             for k, traj in enumerate(trajectories):
                 if traj["stopped"]:
                     traj["step_rewards"].append(0.0)
                     traj["outputs"].append(None)
-                    continue
 
-                messages = build_step_messages(goal, traj["history"], screenshot)
-                inputs = self._tokenize_for_generation(messages, image)
-                prompt_len = inputs["input_ids"].shape[1]
+            # Build messages for each active trajectory
+            messages_list = [
+                build_step_messages(goal, trajectories[k]["history"], screenshot)
+                for k in active_indices
+            ]
 
-                stop_cfg = self._get_stop_config()
+            # Batched generation for all active trajectories at this step
+            try:
+                t_gen = time.time()
+                gen_results, gen_prompt_lens, gen_inputs_list = \
+                    self._generate_batched_different_prompts(
+                        messages_list, image, args.max_new_tokens
+                    )
+                if self.rank == 0:
+                    logger.info(
+                        f"  step {t} batched B={len(active_indices)} "
+                        f"gen {time.time()-t_gen:.1f}s"
+                    )
+            except Exception as e:
+                logger.warning(f"Batched generation failed at step {t}: {e}")
+                for k in active_indices:
+                    trajectories[k]["stopped"] = True
+                    trajectories[k]["step_rewards"].append(0.0)
+                    trajectories[k]["outputs"].append(None)
+                continue
 
-                try:
-                    with torch.amp.autocast("cuda", dtype=torch.bfloat16):
-                        output_ids = self.model.generate(
-                            **inputs,
-                            max_new_tokens=args.max_new_tokens,
-                            temperature=args.temperature,
-                            top_p=args.top_p,
-                            do_sample=True,
-                            eos_token_id=stop_cfg["eos_token_id"],
-                            stop_strings=stop_cfg["stop_strings"],
-                            tokenizer=stop_cfg["tokenizer"],
-                        )
-                except Exception as e:
-                    logger.warning(f"Generation failed at traj {k} step {t}: {e}")
-                    traj["stopped"] = True
-                    traj["step_rewards"].append(0.0)
-                    traj["outputs"].append(None)
-                    continue
+            # Process each result
+            for idx, k in enumerate(active_indices):
+                traj = trajectories[k]
+                output_ids = gen_results[idx]
+                prompt_len = gen_prompt_lens[idx]
+                inputs = gen_inputs_list[idx]
 
                 resp_ids = output_ids[0, prompt_len:]
                 is_trunc = (resp_ids.shape[0] >= args.max_new_tokens)
@@ -848,7 +1061,8 @@ class V18KExpertGSPOTrainer:
                     )
                     reward, _ = compute_step_reward(
                         text, gt_action, image_w, image_h,
-                        w_format=args.w_format, w_type=args.w_type, w_content=args.w_content,
+                        w_format=args.w_format, w_type=args.w_type,
+                        w_content=args.w_content,
                     )
 
                 correct = (reward >= args.match_threshold)
@@ -1031,28 +1245,37 @@ class V18KExpertGSPOTrainer:
                 f"  first_errors: {first_errors.tolist()}"
             )
 
-        # 3. Cache old log probs (and ref log probs if KL enabled)
-        for k, traj in enumerate(trajectories):
-            traj["old_log_probs"] = []
+        # 3. Cache old log probs (batched per step for efficiency)
+        for traj in trajectories:
+            traj["old_log_probs"] = [None] * len(traj["outputs"])
             if args.kl_coef > 0:
-                traj["ref_log_probs"] = []
-            for t in range(len(traj["outputs"])):
-                if traj["outputs"][t] is not None:
-                    output_ids, prompt_len, inputs = traj["outputs"][t]
-                    tok_lp, mask, _ = self._compute_token_log_probs(
-                        output_ids[0], prompt_len, inputs, with_grad=False
-                    )
-                    traj["old_log_probs"].append(tok_lp.detach())
+                traj["ref_log_probs"] = [None] * len(traj["outputs"])
 
-                    if args.kl_coef > 0:
-                        ref_lp, _ = self._compute_ref_log_probs(
-                            output_ids[0], prompt_len, inputs
-                        )
-                        traj["ref_log_probs"].append(ref_lp.detach())
-                else:
-                    traj["old_log_probs"].append(None)
-                    if args.kl_coef > 0:
-                        traj["ref_log_probs"].append(None)
+        for t in range(T):
+            # Collect valid outputs at step t (same image → can batch)
+            valid_items = []
+            for k, traj in enumerate(trajectories):
+                if t < len(traj["outputs"]) and traj["outputs"][t] is not None:
+                    output_ids, prompt_len, inputs = traj["outputs"][t]
+                    valid_items.append((k, output_ids[0], prompt_len, inputs))
+
+            if not valid_items:
+                continue
+
+            ids_list = [item[1] for item in valid_items]
+            plens = [item[2] for item in valid_items]
+            inps = [item[3] for item in valid_items]
+
+            tok_lps = self._batch_compute_token_log_probs(
+                ids_list, plens, inps, with_grad=False
+            )
+            for idx, (k, _, _, _) in enumerate(valid_items):
+                trajectories[k]["old_log_probs"][t] = tok_lps[idx].detach()
+
+            if args.kl_coef > 0:
+                ref_lps = self._batch_compute_ref_log_probs(ids_list, plens, inps)
+                for idx, (k, _, _, _) in enumerate(valid_items):
+                    trajectories[k]["ref_log_probs"][t] = ref_lps[idx].detach()
 
         # 4. Per-step policy loss with pre-computed advantages
         loss_result = self.compute_per_step_loss(trajectories, T, advantages_matrix)
@@ -1286,6 +1509,11 @@ class V18KExpertGSPOTrainer:
                     if self.rank == 0:
                         logger.info(f"  ep {ep_idx} skipped (no signal or failed)")
 
+                # Per-episode barrier: prevent skipped episodes from causing
+                # one rank to race far ahead and timeout at all_reduce.
+                if self.world_size > 1:
+                    dist.barrier()
+
                 # Gradient accumulation boundary
                 if (ep_idx + 1) % args.gradient_accumulation_steps == 0:
                     scale = 1.0 / args.gradient_accumulation_steps
@@ -1441,6 +1669,9 @@ def main():
                         help="Weight for diversity loss (pairwise cosine sim)")
     parser.add_argument("--routing_noise_scale", type=float, default=0.3,
                         help="Noise std added to routing logits for exploration")
+    parser.add_argument("--route_init_std", type=float, default=0.0,
+                        help="If >0, reinitialize route weights with N(0, std) after loading "
+                             "checkpoint to break softmax symmetry (0=keep loaded values)")
     parser.add_argument("--image_max_pixels", type=int, default=602112)
 
     # RL (on-policy + per-step PPO)

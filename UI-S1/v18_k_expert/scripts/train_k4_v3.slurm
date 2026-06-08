@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=v18_k4_top2
-#SBATCH --output=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_%j.log
-#SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_%j.err
+#SBATCH --job-name=v18_k4_v3
+#SBATCH --output=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_v3_%j.log
+#SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_v3_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --partition=workq
 #SBATCH --nodes=4
@@ -11,14 +11,19 @@
 #SBATCH --gres=gpu:4
 
 # ============================================
-# V18: K=4 Expert Cooperative LoRA RL Training (top2 comm)
+# V18 K=4 Expert v3: Fix diversity loss .detach() bug
 #
-# Optimizations:
-# 1. Batched generation for steps 1+ (was sequential per trajectory)
-# 2. Batched log-prob computation per step (was K×T sequential)
-# 3. Per-episode barrier (prevents skip-induced NCCL desync)
-# 4. Bucketed single all_reduce (replaces 1120 per-param calls)
-# 5. TSortedDistributedSampler (groups similar-T episodes)
+# v1/v2 both failed because:
+#   1. [BUG] _last_expert_outputs cached with .detach()
+#      → diversity loss had ZERO gradient → experts never pushed apart
+#   2. [BUG] routing noise only applied in self.training mode
+#      → generation (eval) had no noise → all trajectories identical
+#   3. [BUG] compute_balance_loss returned fake stats when weight=0
+#
+# v3 fixes:
+#   1. Remove .detach() from expert output caching
+#   2. Apply routing noise in both train and eval mode
+#   3. Always compute real routing stats for monitoring
 # ============================================
 
 set -e
@@ -35,15 +40,16 @@ export GLOO_TIMEOUT_SECONDS=7200
 mkdir -p "${PROJECT_DIR}/v18_k_expert/scripts/logs"
 
 echo "=========================================="
-echo "V18: K=4 Expert Cooperative LoRA RL (top2 comm)"
+echo "V18: K=4 Expert v3 (fix .detach() bug)"
 echo "=========================================="
 echo "Job ID:  ${SLURM_JOB_ID}"
 echo "Nodes:   ${SLURM_NNODES}"
 echo "Master:  ${MASTER_ADDR}"
 echo "Start:   $(date)"
+echo "Fixes: diversity grad, eval noise, real stats"
 echo "=========================================="
 
-OUTPUT_DIR="${PROJECT_DIR}/checkpoints/v18_rl_k4_top2"
+OUTPUT_DIR="${PROJECT_DIR}/checkpoints/v18_rl_k4_v3"
 SFT_CKPT="${PROJECT_DIR}/checkpoints/v18_svd_k4_7mod"
 
 srun --ntasks-per-node=1 bash -c '
@@ -74,9 +80,10 @@ srun --ntasks-per-node=1 bash -c '
         --lora_dropout 0.05 \
         --target_modules q_proj k_proj v_proj o_proj gate_proj up_proj down_proj \
         --num_comm_rounds 2 \
-        --balance_weight 0.01 \
-        --diversity_weight 0.001 \
-        --routing_noise_scale 0.5 \
+        --balance_weight 0.0 \
+        --diversity_weight 0.01 \
+        --routing_noise_scale 1.0 \
+        --route_init_std 0.01 \
         --image_max_pixels 602112 \
         --num_trajectories 8 \
         --temperature 1.0 \

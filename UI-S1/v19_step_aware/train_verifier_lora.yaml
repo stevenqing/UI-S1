@@ -1,0 +1,51 @@
+### model — start from base SFT checkpoint (already understands GUI actions)
+model_name_or_path: /scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/train_GUI_360/llamafactory/output/gui360_balanced_full_sft/checkpoint-272
+image_max_pixels: 1003520
+video_max_pixels: 16384
+trust_remote_code: true
+
+### method — LoRA SFT for verification (binary YES/NO task)
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 128
+lora_alpha: 256
+lora_target: all
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+
+### dataset — 30K verification samples (15K pos + 15K neg)
+dataset: verify_train
+dataset_dir: train_GUI_360/llamafactory/data
+template: qwen2_vl
+cutoff_len: 4096
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### output
+output_dir: v19_step_aware/output/verifier_lora_r128
+logging_steps: 10
+save_steps: 200
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: true
+save_only_model: false
+report_to: none
+run_name: verifier_lora_r128
+
+### train — eff_bs = 1 node * 4 gpu * 4 * 4 = 64
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-5
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+eval_dataset: verify_val
+per_device_eval_batch_size: 4
+eval_strategy: steps
+eval_steps: 200

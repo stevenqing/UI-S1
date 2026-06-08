@@ -261,7 +261,9 @@ class KExpertCooperativeLoRALinear(nn.Module):
             logits = F.linear(x_drop, w.t())  # [B, S, K]
 
             # Add noise for exploration during RL rollouts
-            if self._routing_noise_std > 0 and self.training:
+            # Apply in both train and eval: during generation (eval mode),
+            # noise ensures different routing → different trajectories → RL signal
+            if self._routing_noise_std > 0:
                 noise = torch.randn_like(logits) * self._routing_noise_std
                 logits = logits + noise
 
@@ -278,8 +280,10 @@ class KExpertCooperativeLoRALinear(nn.Module):
         h = [F.linear(x_drop, self.lora_A[i].to(dtype)) for i in range(K)]  # K × [B, S, r]
 
         # Cache expert outputs before communication for diversity loss
+        # NOTE: do NOT detach here — diversity loss needs gradients to flow
+        # back through A matrices to push experts apart.
         if self._cache_expert_outputs and self.training:
-            self._last_expert_outputs = [hi.detach() for hi in h]
+            self._last_expert_outputs = list(h)
 
         # 3. Communication (topology-dependent)
         h = self._apply_communication(h, weights)

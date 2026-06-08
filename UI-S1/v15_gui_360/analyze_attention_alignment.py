@@ -84,29 +84,26 @@ def find_image_token_positions(input_ids, processor):
 def find_coordinate_tokens(input_ids, generated_ids, processor):
     """Find token positions of coordinate values in generated output.
 
-    Looks for patterns like [520, 400] or "coordinate": [520, 400]
-    Returns list of (token_idx_in_full_seq, is_x_coord).
+    Looks for patterns like [520, 400] or multi-line JSON coordinate arrays.
+    Returns list of token indices (in the full sequence) and predicted coords.
     """
-    # Decode generated tokens
-    gen_text = processor.tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     prompt_len = input_ids.shape[1]
+    gen_tokens = generated_ids[0][prompt_len:].tolist()
 
-    # Find coordinate pattern in text
-    coord_match = re.search(r'\[(\d+),\s*(\d+)\]', gen_text)
+    # Decode ONLY the response part
+    resp_text = processor.tokenizer.decode(gen_tokens, skip_special_tokens=True)
+
+    # Find coordinate pattern in response text (may span multiple lines)
+    coord_match = re.search(r'\[\s*(\d+)\s*,\s*(\d+)\s*\]', resp_text, re.DOTALL)
     if not coord_match:
         return [], None, None
 
     pred_x = int(coord_match.group(1))
     pred_y = int(coord_match.group(2))
 
-    # Find token positions by searching for the coordinate string
-    coord_str = coord_match.group(0)  # e.g., "[520, 400]"
-    coord_start_char = coord_match.start()
-
-    # Map character positions to token positions in generated text
+    # Map character positions to token positions in response
     coord_token_indices = []
     char_count = 0
-    gen_tokens = generated_ids[0][prompt_len:].tolist()
 
     for tok_idx, tok_id in enumerate(gen_tokens):
         tok_text = processor.tokenizer.decode([tok_id])
@@ -333,6 +330,10 @@ def analyze_sample(model, processor, screenshot_path, goal, history_text,
             coord_indices, px, py = find_coordinate_tokens(
                 inputs["input_ids"], gen_output, processor
             )
+
+            if img_start is None or not coord_indices:
+                print(f"  [attention] img_start={img_start}, img_end={img_end}, "
+                      f"coord_indices={coord_indices}, seq_len={gen_output.shape[1]}")
 
             if img_start is not None and coord_indices:
                 attn_x, attn_y, attn_map = compute_attention_center_of_mass(

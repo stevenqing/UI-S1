@@ -315,10 +315,7 @@ class KExpertCooperativeVLMWrapper(nn.Module):
         K = self.num_experts
         dev = next(self.parameters()).device
 
-        if self.balance_weight <= 0:
-            return torch.tensor(0.0, device=dev), {"routing_entropy": math.log(K)}
-
-        # Collect mean routing weights across all modules
+        # Collect mean routing weights across all modules (always, for monitoring)
         all_weights = []
         for m in self.coop_modules:
             if m._last_routing_weights is not None:
@@ -334,7 +331,7 @@ class KExpertCooperativeVLMWrapper(nn.Module):
         eps = 1e-8
         neg_entropy = (p * torch.log(p + eps)).sum()
 
-        # Stats
+        # Stats (always computed for monitoring)
         entropy = -neg_entropy.item()
         stats = {
             "routing_entropy": entropy,
@@ -344,15 +341,26 @@ class KExpertCooperativeVLMWrapper(nn.Module):
         for k in range(K):
             stats[f"expert_{k}_usage"] = p[k].item()
 
+        if self.balance_weight <= 0:
+            return torch.tensor(0.0, device=dev), stats
+
         return neg_entropy, stats
 
     # -- Diversity loss (new in V18) ---------------------------------------
 
     def compute_diversity_loss(self) -> torch.Tensor:
-        """Mean pairwise cosine similarity between expert outputs.
+        """Pairwise cosine similarity of expert-specific A matrix components.
 
-        L = mean_{i<j} cos_sim(h_i_flat, h_j_flat)
-        Minimizing L pushes expert representations apart.
+        Old approach: cos_sim on bfloat16 expert *outputs* — failed because
+        SVD perturbations (noise_scale=0.1) are below bfloat16 precision,
+        making all expert outputs bitwise identical → cos_sim=1.0, grad=0.
+
+        New approach: cos_sim on A matrices in float32 (parameter precision),
+        with the shared mean subtracted so we only measure the expert-specific
+        deviations. Gradients flow directly to A parameters.
+
+        L = mean_{i<j, modules} cos_sim(A_i - A_mean, A_j - A_mean)
+        Minimizing L pushes expert A matrices apart.
         """
         K = self.num_experts
         dev = next(self.parameters()).device
@@ -361,21 +369,28 @@ class KExpertCooperativeVLMWrapper(nn.Module):
             return torch.tensor(0.0, device=dev)
 
         cos_sims = []
+        tri_mask = torch.triu(
+            torch.ones(K, K, device=dev, dtype=torch.bool), diagonal=1
+        )
+
         for module in self.coop_modules:
-            eo = module._last_expert_outputs
-            if eo is None or len(eo) < 2:
+            if len(module.lora_A) < 2:
                 continue
 
-            # Stack and flatten: [K, B*S*r]
-            eo_flat = torch.stack(eo, dim=0).reshape(K, -1)
-            eo_norm = F.normalize(eo_flat, dim=-1)
+            # A matrices in float32 (parameter precision, no bfloat16 loss)
+            A_stack = torch.stack(
+                [a.float() for a in module.lora_A]
+            )  # [K, r, in_f]
 
-            # Pairwise cosine similarity
-            sim = eo_norm @ eo_norm.t()  # [K, K]
+            # Subtract mean to isolate expert-specific deviations
+            # (the shared A_avg component dominates cos_sim otherwise)
+            A_mean = A_stack.mean(dim=0, keepdim=True)  # [1, r, in_f]
+            delta = (A_stack - A_mean).reshape(K, -1)   # [K, r*in_f]
 
-            # Upper triangular (i < j) — exclude diagonal
-            mask = torch.triu(torch.ones(K, K, device=dev, dtype=torch.bool), diagonal=1)
-            upper = sim[mask]
+            delta_norm = F.normalize(delta, dim=-1)
+            sim = delta_norm @ delta_norm.t()  # [K, K]
+
+            upper = sim[tri_mask]
             if upper.numel() > 0:
                 cos_sims.append(upper.mean())
 

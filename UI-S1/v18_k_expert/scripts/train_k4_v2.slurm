@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=v18_k4_top2
-#SBATCH --output=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_%j.log
-#SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_%j.err
+#SBATCH --job-name=v18_k4_v2
+#SBATCH --output=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_v2_%j.log
+#SBATCH --error=/scratch/a5l/shuqing.a5l/MobileAgent/UI-S1/v18_k_expert/scripts/logs/train_k4_v2_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --partition=workq
 #SBATCH --nodes=4
@@ -11,14 +11,18 @@
 #SBATCH --gres=gpu:4
 
 # ============================================
-# V18: K=4 Expert Cooperative LoRA RL Training (top2 comm)
+# V18 K=4 Expert v2: Fix routing differentiation
 #
-# Optimizations:
-# 1. Batched generation for steps 1+ (was sequential per trajectory)
-# 2. Batched log-prob computation per step (was K×T sequential)
-# 3. Per-episode barrier (prevents skip-induced NCCL desync)
-# 4. Bucketed single all_reduce (replaces 1120 per-param calls)
-# 5. TSortedDistributedSampler (groups similar-T episodes)
+# Root cause of v1 failure:
+#   - balance_weight=0.01 locked routing to uniform (entropy ≈ log(4))
+#   - route_weights=zeros + softmax = stable equilibrium
+#   - RL signal too weak to break symmetry
+#
+# Fixes:
+#   1. balance_weight=0 (stop fighting differentiation)
+#   2. route_init_std=0.01 (random init breaks softmax symmetry)
+#   3. routing_noise=1.0 (stronger exploration)
+#   4. diversity_weight=0.01 (push expert outputs apart)
 # ============================================
 
 set -e
@@ -35,15 +39,16 @@ export GLOO_TIMEOUT_SECONDS=7200
 mkdir -p "${PROJECT_DIR}/v18_k_expert/scripts/logs"
 
 echo "=========================================="
-echo "V18: K=4 Expert Cooperative LoRA RL (top2 comm)"
+echo "V18: K=4 Expert v2 (symmetry-breaking fix)"
 echo "=========================================="
 echo "Job ID:  ${SLURM_JOB_ID}"
 echo "Nodes:   ${SLURM_NNODES}"
 echo "Master:  ${MASTER_ADDR}"
 echo "Start:   $(date)"
+echo "Key changes: balance=0, route_init_std=0.01, noise=1.0, div=0.01"
 echo "=========================================="
 
-OUTPUT_DIR="${PROJECT_DIR}/checkpoints/v18_rl_k4_top2"
+OUTPUT_DIR="${PROJECT_DIR}/checkpoints/v18_rl_k4_v2"
 SFT_CKPT="${PROJECT_DIR}/checkpoints/v18_svd_k4_7mod"
 
 srun --ntasks-per-node=1 bash -c '
@@ -74,9 +79,10 @@ srun --ntasks-per-node=1 bash -c '
         --lora_dropout 0.05 \
         --target_modules q_proj k_proj v_proj o_proj gate_proj up_proj down_proj \
         --num_comm_rounds 2 \
-        --balance_weight 0.01 \
-        --diversity_weight 0.001 \
-        --routing_noise_scale 0.5 \
+        --balance_weight 0.0 \
+        --diversity_weight 0.01 \
+        --routing_noise_scale 1.0 \
+        --route_init_std 0.01 \
         --image_max_pixels 602112 \
         --num_trajectories 8 \
         --temperature 1.0 \
