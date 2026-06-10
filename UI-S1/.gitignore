@@ -43,6 +43,11 @@ gui_odyssey_eval/results/
 **/logs/
 **/results/
 
+# CHORUS N0/N1 generated artifacts
+chorus-n0n1/data/
+chorus-n0n1/cache/
+chorus-n0n1/runs/
+
 # Training outputs & checkpoints in version dirs
 **/output/
 **/outputs/

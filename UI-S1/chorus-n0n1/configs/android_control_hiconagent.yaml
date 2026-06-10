@@ -1,0 +1,36 @@
+run:
+  name: phase_a_android_control_hiconagent
+  seed: 20260610
+  output_root: chorus-n0n1/runs
+
+benchmark:
+  name: android_control
+  split: high_level
+  jsonl: datasets/android_control_evaluation_std.jsonl
+  image_root: datasets/AndroidControl/images
+  expected_paper_step_sr: null
+  expected_paper_grounding: null
+  tolerance_points: 1.5
+
+model:
+  id: hiconagent_3b
+  served_name: hiconagent-3b
+  checkpoint_path: null
+  api_url: http://localhost:8000/v1
+  max_tokens: 1024
+  temperature: 0.0
+  top_p: 1.0
+  logprobs: true
+
+official:
+  repo: iLearn-Lab/CVPR26-HiconAgent
+  local_path: chorus-n0n1/data/external/CVPR26-HiconAgent
+  eval_entry: AndroidControl_evaluation.py
+  matching_policy: evaluation/qwenvl_utils.py:evaluate_android_control_action
+
+phase_a:
+  max_episodes: null
+  threads: 8
+  require_logprobs: true
+  truncation_invalid_threshold: 0.01
+  qualitative_examples: 10

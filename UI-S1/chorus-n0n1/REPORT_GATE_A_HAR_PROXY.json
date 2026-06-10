@@ -1,0 +1,44 @@
+{
+  "status": "IN_PROGRESS",
+  "results_jsonl": "/home/aiscuser/UI-S1/UI-S1/related_work/har/outputs/gui_odyssey_paper/full_har_gui_odyssey_20260610.jsonl",
+  "expected_episodes": 1666,
+  "summary": {
+    "episodes": 4,
+    "total_steps": 62,
+    "steps_evaluated": 62,
+    "correct_steps": 42,
+    "step_sr_percent": 67.74193548387096,
+    "progress_step_sr_percent": 67.74193548387096,
+    "evaluated_step_sr_percent": 67.74193548387096,
+    "tsr_percent": 0.0,
+    "success_count": 0,
+    "by_category": {
+      "General_Tool": {
+        "paper_column": "Tool",
+        "episodes": 3,
+        "steps": 46,
+        "step_sr_percent": 63.04347826086956,
+        "tsr_percent": 0.0
+      },
+      "Social_Sharing": {
+        "paper_column": "Social",
+        "episodes": 1,
+        "steps": 16,
+        "step_sr_percent": 81.25,
+        "tsr_percent": 0.0
+      }
+    },
+    "truncation": {
+      "generations": 124,
+      "truncated_generations": 0,
+      "truncated_generation_percent": 0.0,
+      "action_generations": 62,
+      "truncated_action_generations": 0,
+      "truncated_action_percent": 0.0
+    },
+    "paper_gui_odyssey_overall_percent": 62.31,
+    "delta_vs_paper_overall_points": 5.431935483870959
+  },
+  "sota_proxy": true,
+  "hiconagent_status": "checkpoint_unavailable"
+}
