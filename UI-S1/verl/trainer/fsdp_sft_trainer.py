@@ -203,8 +203,16 @@ class FSDPSFTTrainer:
         if self.config.ulysses_sequence_parallel_size > 1:
             assert self.use_remove_padding, "Sequence parallel is only supported when remove_padding is enabled"
 
-        # Detect if this is a vision-language model
-        is_vision_model = hasattr(config, "vision_config") or "qwen2_vl" in config.__class__.__name__.lower() or "qwen2.5_vl" in config.__class__.__name__.lower()
+        # Detect if this is a vision-language model. Some text-only configs expose
+        # a vision_config attribute set to None, so do not use hasattr here.
+        model_type = str(getattr(config, "model_type", "")).lower()
+        config_name = config.__class__.__name__.lower()
+        is_vision_model = (
+            getattr(config, "vision_config", None) is not None
+            or "qwen2_vl" in config_name
+            or "qwen2.5_vl" in config_name
+            or model_type in {"qwen2_vl", "qwen2_5_vl", "qwen3_vl"}
+        ) and model_type not in {"qwen3_5"}
 
         # This may be very large
         init_context = get_init_weight_context_manager(use_meta_tensor=not config.tie_word_embeddings, mesh=self.device_mesh)

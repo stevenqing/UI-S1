@@ -277,8 +277,20 @@ class MultiTurnSFTDataset(Dataset):
             else:
                 raise ValueError(f"Unknown role: {cur_messages['role']}")
 
-        # Validate and convert tokens
-        input_ids, loss_mask, attention_mask = self._validate_and_convert_tokens(full_tokens[0], concat_tokens, concat_loss_mask, concat_attention_mask)
+        # Validate and convert tokens. Newer transformers returns BatchEncoding,
+        # where integer indexing yields a tokenizers.Encoding object rather than
+        # the tensor of input ids.
+        if hasattr(full_tokens, "get") and full_tokens.get("input_ids") is not None:
+            full_input_ids = full_tokens["input_ids"]
+            if isinstance(full_input_ids, torch.Tensor) and full_input_ids.ndim > 1:
+                full_input_ids = full_input_ids[0]
+            elif isinstance(full_input_ids, list) and full_input_ids and isinstance(full_input_ids[0], list):
+                full_input_ids = torch.tensor(full_input_ids[0], dtype=torch.long)
+            elif isinstance(full_input_ids, list):
+                full_input_ids = torch.tensor(full_input_ids, dtype=torch.long)
+        else:
+            full_input_ids = full_tokens[0]
+        input_ids, loss_mask, attention_mask = self._validate_and_convert_tokens(full_input_ids, concat_tokens, concat_loss_mask, concat_attention_mask)
 
         # Handle sequence length
         sequence_length = input_ids.shape[0]

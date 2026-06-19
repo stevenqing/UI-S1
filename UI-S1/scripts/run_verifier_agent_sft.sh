@@ -20,6 +20,13 @@ LR=${LR:-1e-5}
 LORA_RANK=${LORA_RANK:-32}
 LORA_ALPHA=${LORA_ALPHA:-64}
 LOGGER=${LOGGER:-console}
+MODEL_DTYPE=${MODEL_DTYPE:-fp32}
+TRANSFORMER_LAYER_CLS=${TRANSFORMER_LAYER_CLS:-Qwen3_5DecoderLayer}
+
+case "$OUTPUT_DIR" in
+  /*) ;;
+  *) OUTPUT_DIR="$PROJECT_DIR/$OUTPUT_DIR" ;;
+esac
 
 CONFIG_DIR="$OUTPUT_DIR/config"
 CHECKPOINT_DIR="$OUTPUT_DIR/checkpoints"
@@ -45,6 +52,17 @@ if [[ ! -x "$PYTHON_BIN" ]]; then
   echo "Missing executable PYTHON_BIN=$PYTHON_BIN" >&2
   exit 1
 fi
+
+"$PYTHON_BIN" - <<'PY'
+import sys
+from packaging import version
+import transformers
+minimum = version.parse("5.12.1")
+current = version.parse(transformers.__version__)
+if current < minimum:
+    raise SystemExit(f"transformers>={minimum} is required for Qwen3.5, found {transformers.__version__}. Run: /home/aiscuser/.local/bin/uv pip install --python .venv/bin/python 'transformers==5.12.1'")
+print(f"Transformers: {transformers.__version__}")
+PY
 
 cat > "$CONFIG_DIR/$CONFIG_NAME.yaml" <<CONFIGEOF
 hydra:
@@ -77,8 +95,9 @@ model:
   partial_pretrain: $MODEL_PATH
   strategy: fsdp2
   fsdp_config:
-    model_dtype: fp32
+    model_dtype: $MODEL_DTYPE
     wrap_policy:
+      transformer_layer_cls_to_wrap: [$TRANSFORMER_LAYER_CLS]
       min_num_params: 0
     cpu_offload: False
     offload_params: False
@@ -127,10 +146,12 @@ echo "Config:       $CONFIG_DIR/$CONFIG_NAME.yaml"
 echo "GPUs:         $N_GPUS"
 echo "LoRA rank:    $LORA_RANK"
 echo "Max length:   $MAX_LENGTH"
+echo "Model dtype:   $MODEL_DTYPE"
+echo "FSDP layer:    $TRANSFORMER_LAYER_CLS"
 
 cd "$PROJECT_DIR"
 
-torchrun --nproc_per_node="$N_GPUS" --master_port="$MASTER_PORT" \
+"$PYTHON_BIN" -m torch.distributed.run --nproc_per_node="$N_GPUS" --master_port="$MASTER_PORT" \
   -m verl.trainer.fsdp_sft_trainer \
   --config-path="$CONFIG_DIR" \
   --config-name="$CONFIG_NAME" \

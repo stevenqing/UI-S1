@@ -93,10 +93,12 @@ def summarize(rows: list[JsonDict]) -> JsonDict:
     assistant_lengths = []
     for row in rows:
         messages = row.get("messages", [])
-        if len(messages) >= 2:
-            user_lengths.append(len(str(messages[1].get("content", ""))))
-        if len(messages) >= 3:
-            assistant_lengths.append(len(str(messages[2].get("content", ""))))
+        for message in messages:
+            role = message.get("role")
+            if role == "user":
+                user_lengths.append(len(str(message.get("content", ""))))
+            elif role == "assistant":
+                assistant_lengths.append(len(str(message.get("content", ""))))
     return {
         "rows": len(rows),
         "decisions": dict(decisions.most_common()),

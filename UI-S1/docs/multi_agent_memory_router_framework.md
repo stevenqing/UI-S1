@@ -328,6 +328,7 @@ model: checkpoints/Qwen3.5-9B
 method: LoRA SFT
 lora_rank: 32
 max_length: 8192
+model_dtype: fp32
 train file: train_balanced.parquet
 val file: dev.parquet
 dataset class: GUIMultiTurnSFTDataset

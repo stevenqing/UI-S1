@@ -146,7 +146,11 @@ def packet_for_row(row: JsonDict, score: float) -> JsonDict:
 
 
 def user_prompt(packet: JsonDict) -> str:
-    return "Verify this multi-agent candidate packet and choose a route:\n" + json.dumps(packet, ensure_ascii=False, indent=2)
+    return (
+        VERIFIER_SYSTEM_PROMPT
+        + "\n\nVerify this multi-agent candidate packet and choose a route:\n"
+        + json.dumps(packet, ensure_ascii=False, indent=2)
+    )
 
 
 def row_record(row: JsonDict, score: float) -> JsonDict:
@@ -154,7 +158,6 @@ def row_record(row: JsonDict, score: float) -> JsonDict:
     target = decision_label(row)
     return {
         "messages": [
-            {"role": "system", "content": VERIFIER_SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt(packet)},
             {"role": "assistant", "content": json.dumps(target, ensure_ascii=False)},
         ],
