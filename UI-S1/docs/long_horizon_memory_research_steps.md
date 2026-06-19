@@ -772,3 +772,86 @@ Next experiment:
 Mine the remaining false positives for the specificity-aware scorer.
 The residual errors are mostly system_button->click and system_button->system_button transitions, suggesting the next verifier should reason about whether a candidate is task-progressing or just another valid navigation action.
 ```
+
+## Step 14: Add Instruction Task-Progress Features
+
+Question:
+
+```text
+Can we reduce remaining false positives by checking whether the memory-induced candidate is compatible with the current instruction intent?
+```
+
+Motivation from Step 13 false positives:
+
+```text
+At threshold 0.90, remaining false positives were mostly unresolved/negative cases.
+Dominant transitions: system_button->click, system_button->system_button, and click->swipe.
+The issue is no longer generic wrong-memory agreement; it is whether the candidate is actually task-progressing for the current instruction.
+```
+
+Implemented features:
+
+```text
+scripts/train_counterfactual_memory_utility.py --progress-features
+instruction intents: empty, home, back, scroll, type, click_open, terminate, adjust, other
+candidate/no-history/distractor action compatibility with each intent
+candidate-specific instruction match
+empty-instruction candidate-change risk
+navigation-intent candidate click/swipe risk
+```
+
+Artifacts:
+
+```text
+datasets/counterfactual_memory_utility_progress_only
+datasets/counterfactual_memory_utility_specificity_progress
+datasets/counterfactual_memory_utility_repair_specificity_progress
+datasets/counterfactual_memory_utility_candidate_repair_specificity_progress
+datasets/counterfactual_memory_utility_specificity_progress_error_analysis
+```
+
+Held-out test comparison:
+
+| model | AP | precision@0.50 | recall@0.50 | precision@0.70 | recall@0.70 | precision@0.90 | recall@0.90 | regressions@0.90 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| candidate + repair + specificity | 0.8318 | 0.5128 | 0.9524 | 0.5263 | 0.9524 | 0.5714 | 0.9524 | 5 |
+| progress only | 0.6978 | 0.4762 | 0.9524 | 0.5135 | 0.9048 | 0.5588 | 0.9048 | 5 |
+| specificity + progress | 0.8443 | 0.5250 | 1.0000 | 0.5676 | 1.0000 | 0.5714 | 0.9524 | 5 |
+| repair + specificity + progress | 0.8074 | 0.5526 | 1.0000 | 0.5714 | 0.9524 | 0.5588 | 0.9048 | 5 |
+| candidate + repair + specificity + progress | 0.8050 | 0.5526 | 1.0000 | 0.5405 | 0.9524 | 0.5588 | 0.9048 | 5 |
+
+Selected model:
+
+```text
+specificity + progress
+```
+
+Reason:
+
+```text
+It has the best AP, preserves recall 1.0000 through threshold 0.70, and reaches precision 0.5714 / recall 0.9524 at threshold 0.90.
+Adding repair and generic candidate features on top of specificity+progress hurts AP, so the next-stage verifier should stay minimal.
+```
+
+Weight sanity check:
+
+```text
+Positive: candidate-specific scroll match, distractor matches no-history type, candidate differs from no-history and distractor.
+Negative: click with empty instruction, candidate equals no-history, candidate matches distractor value/type, task-intent no-history system_button -> candidate task-action overactivation.
+```
+
+Interpretation:
+
+```text
+Task-progress features help, but only when paired with specificity.
+The research direction is now a two-test router: memory-specificity first, instruction-progress compatibility second.
+This is still fully non-OCR and uses only counterfactual candidates plus current instruction text.
+```
+
+Next experiment:
+
+```text
+Use specificity+progress as the default non-OCR scorer.
+Mine its remaining false positives and check whether they are annotation ambiguity, unresolved all-wrong cases, or true memory regressions.
+Then evaluate per-capability thresholds rather than a single global threshold.
+```

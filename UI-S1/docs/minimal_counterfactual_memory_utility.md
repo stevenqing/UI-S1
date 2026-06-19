@@ -555,6 +555,56 @@ Analyze the remaining false positives for specificity-aware routing.
 The next verifier should distinguish task-progressing repair from generic navigation changes.
 ```
 
+## Instruction Task-Progress Increment
+
+Implemented progress features:
+
+```text
+scripts/train_counterfactual_memory_utility.py --progress-features
+datasets/counterfactual_memory_utility_progress_only
+datasets/counterfactual_memory_utility_specificity_progress
+datasets/counterfactual_memory_utility_repair_specificity_progress
+datasets/counterfactual_memory_utility_candidate_repair_specificity_progress
+```
+
+The features classify current instruction intent and compare candidate/no-history/wrong-memory action compatibility:
+
+```text
+empty, home, back, scroll, type, click_open, terminate, adjust, other
+```
+
+Held-out test result:
+
+| model | AP | precision@0.50 | recall@0.50 | precision@0.70 | recall@0.70 | precision@0.90 | recall@0.90 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| candidate + repair + specificity | 0.8318 | 0.5128 | 0.9524 | 0.5263 | 0.9524 | 0.5714 | 0.9524 |
+| progress only | 0.6978 | 0.4762 | 0.9524 | 0.5135 | 0.9048 | 0.5588 | 0.9048 |
+| specificity + progress | 0.8443 | 0.5250 | 1.0000 | 0.5676 | 1.0000 | 0.5714 | 0.9524 |
+| repair + specificity + progress | 0.8074 | 0.5526 | 1.0000 | 0.5714 | 0.9524 | 0.5588 | 0.9048 |
+| candidate + repair + specificity + progress | 0.8050 | 0.5526 | 1.0000 | 0.5405 | 0.9524 | 0.5588 | 0.9048 |
+
+Conclusion:
+
+```text
+The best next-stage scorer is specificity + progress, not the full feature stack.
+This is an important simplicity result: once specificity is available, broad repair/candidate features can overfit or reintroduce false positives.
+```
+
+Selected operating points for specificity + progress:
+
+| threshold | predicted | precision | recall | regressions |
+|---:|---:|---:|---:|---:|
+| 0.50 | 40 | 0.5250 | 1.0000 | 7 |
+| 0.70 | 37 | 0.5676 | 1.0000 | 5 |
+| 0.90 | 35 | 0.5714 | 0.9524 | 5 |
+| 0.99 | 28 | 0.6071 | 0.8095 | 2 |
+
+Updated method:
+
+```text
+memory-specificity test + instruction-progress compatibility test
+```
+
 Each row:
 
 ```json

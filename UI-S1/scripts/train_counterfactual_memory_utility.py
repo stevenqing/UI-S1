@@ -194,6 +194,65 @@ def fallback_system_button(value: str) -> bool:
     return value in {"home", "back", "recent_apps", "recent apps", "app_switch", "app switch"}
 
 
+def has_phrase(text: str, phrases: list[str]) -> bool:
+    return any(phrase in text for phrase in phrases)
+
+
+def instruction_intents(text: str) -> set[str]:
+    normalized = normalize_text(text)
+    intents: set[str] = set()
+    if not normalized:
+        intents.add("empty")
+        return intents
+    if has_phrase(normalized, ["home screen", "return to home", "go home", "home button"]):
+        intents.add("home")
+    if has_phrase(normalized, ["go back", "previous screen", "return to the previous", "back to the previous", "navigate back"]):
+        intents.add("back")
+    if has_phrase(normalized, ["scroll", "swipe"]):
+        intents.add("scroll")
+    if has_phrase(normalized, ["type", "enter", "input", "search query", "search for", "write"]):
+        intents.add("type")
+    if has_phrase(normalized, ["tap", "click", "select", "choose", "press", "open", "launch"]):
+        intents.add("click_open")
+    if has_phrase(normalized, ["finish", "complete", "done", "task completed"]):
+        intents.add("terminate")
+    if has_phrase(normalized, ["volume", "brightness", "slider", "lowest setting", "highest setting", "adjust"]):
+        intents.add("adjust")
+    if not intents:
+        intents.add("other")
+    return intents
+
+
+def action_matches_intent(action: JsonDict | None, intent: str) -> bool:
+    current_type = action_type(action)
+    current_button = button_name(action)
+    if intent == "empty":
+        return False
+    if intent == "home":
+        return current_type == "system_button" and current_button == "home"
+    if intent == "back":
+        return current_type == "system_button" and current_button == "back"
+    if intent == "scroll":
+        return current_type == "swipe"
+    if intent == "type":
+        return current_type == "type"
+    if intent == "click_open":
+        return current_type in {"click", "open", "long_press"}
+    if intent == "terminate":
+        return current_type == "terminate"
+    if intent == "adjust":
+        return current_type in {"click", "swipe"}
+    return False
+
+
+def action_matches_any_intent(action: JsonDict | None, intents: set[str]) -> bool:
+    return any(action_matches_intent(action, intent) for intent in intents)
+
+
+def instruction_text(row: JsonDict) -> str:
+    return str((row.get("current_state_parts", {}) or {}).get("instruction", ""))
+
+
 def text_overlap_features(row: JsonDict, memory_key: str) -> dict[str, Any]:
     parts = row.get("current_state_parts", {}) or {}
     metadata = row.get("metadata", {}) or {}
@@ -484,7 +543,75 @@ def specificity_features(row: JsonDict, memory_key: str) -> dict[str, Any]:
     return features
 
 
-def auxiliary_features(row: JsonDict, memory_key: str, use_candidate_features: bool, use_screen_features: bool, use_repair_features: bool, use_specificity_features: bool) -> dict[str, Any]:
+def progress_features(row: JsonDict, memory_key: str) -> dict[str, Any]:
+    no_action = row.get("pred_actions", {}).get("no_history")
+    cand_action = candidate_action(row, memory_key)
+    dist_action = distractor_action(row, memory_key)
+    no_type = action_type(no_action)
+    cand_type = action_type(cand_action)
+    dist_type = action_type(dist_action)
+    no_button = button_name(no_action)
+    cand_button = button_name(cand_action)
+    dist_button = button_name(dist_action)
+    instruction = instruction_text(row)
+    intents = instruction_intents(instruction)
+    candidate_matches = action_matches_any_intent(cand_action, intents)
+    no_matches = action_matches_any_intent(no_action, intents)
+    dist_matches = action_matches_any_intent(dist_action, intents)
+    has_navigation_intent = bool(intents & {"home", "back"})
+    has_task_intent = bool(intents & {"scroll", "type", "click_open", "adjust", "terminate"})
+    features: dict[str, Any] = {
+        "progress_instruction_len": len(normalize_text(instruction).split()),
+        "progress_instruction_empty": int("empty" in intents),
+        "progress_has_navigation_intent": int(has_navigation_intent),
+        "progress_has_task_intent": int(has_task_intent),
+        "progress_candidate_matches_any_intent": int(candidate_matches),
+        "progress_no_history_matches_any_intent": int(no_matches),
+        "progress_distractor_matches_any_intent": int(dist_matches),
+        "progress_candidate_match_gain": int(candidate_matches and not no_matches),
+        "progress_candidate_match_regression": int(no_matches and not candidate_matches),
+        "progress_candidate_specific_match_gain": int(candidate_matches and not no_matches and not dist_matches),
+        "progress_distractor_matches_but_candidate_does_not": int(dist_matches and not candidate_matches),
+        "progress_candidate_is_click_with_empty_instruction": int("empty" in intents and cand_type == "click"),
+        "progress_candidate_differs_with_empty_instruction": int("empty" in intents and not exact_candidate_match(cand_action, no_action)),
+        "progress_system_to_click_with_empty_instruction": int("empty" in intents and no_type == "system_button" and cand_type == "click"),
+        "progress_navigation_intent_candidate_click": int(has_navigation_intent and cand_type == "click"),
+        "progress_navigation_intent_candidate_swipe": int(has_navigation_intent and cand_type == "swipe"),
+        "progress_navigation_intent_candidate_system": int(has_navigation_intent and cand_type == "system_button"),
+        "progress_navigation_intent_button_match": int(has_navigation_intent and candidate_matches),
+        "progress_task_intent_candidate_system_button": int(has_task_intent and cand_type == "system_button"),
+        "progress_task_intent_no_system_candidate_task": int(has_task_intent and no_type == "system_button" and task_action_type(cand_type)),
+        "progress_candidate_button_equals_no": int(bool(cand_button or no_button) and cand_button == no_button),
+        "progress_candidate_button_equals_distractor": int(bool(cand_button or dist_button) and cand_button == dist_button),
+        "progress_candidate_type_equals_intentless_empty_change": int("empty" in intents and cand_type != no_type),
+        "progress_no_history_type=" + no_type: 1,
+        "progress_candidate_type=" + cand_type: 1,
+        "progress_distractor_type=" + dist_type: 1,
+        "progress_candidate_button=" + (cand_button or "none"): 1,
+        "progress_no_button=" + (no_button or "none"): 1,
+        "progress_distractor_button=" + (dist_button or "none"): 1,
+    }
+    for intent in sorted(intents):
+        features[f"progress_intent={intent}"] = 1
+        features[f"progress_candidate_matches_{intent}"] = int(action_matches_intent(cand_action, intent))
+        features[f"progress_no_history_matches_{intent}"] = int(action_matches_intent(no_action, intent))
+        features[f"progress_distractor_matches_{intent}"] = int(action_matches_intent(dist_action, intent))
+        features[f"progress_candidate_specific_matches_{intent}"] = int(
+            action_matches_intent(cand_action, intent)
+            and not action_matches_intent(no_action, intent)
+            and not action_matches_intent(dist_action, intent)
+        )
+    progress_proxy = 0.0
+    progress_proxy += 1.0 if candidate_matches else 0.0
+    progress_proxy -= 1.0 if no_matches and not candidate_matches else 0.0
+    progress_proxy -= 0.5 if dist_matches and not candidate_matches else 0.0
+    progress_proxy -= 0.5 if "empty" in intents and not exact_candidate_match(cand_action, no_action) else 0.0
+    progress_proxy -= 0.5 if has_navigation_intent and cand_type in {"click", "swipe", "type"} else 0.0
+    features["progress_proxy_score"] = progress_proxy
+    return features
+
+
+def auxiliary_features(row: JsonDict, memory_key: str, use_candidate_features: bool, use_screen_features: bool, use_repair_features: bool, use_specificity_features: bool, use_progress_features: bool) -> dict[str, Any]:
     features: dict[str, Any] = {}
     if use_candidate_features:
         features.update(candidate_features(row, memory_key))
@@ -492,18 +619,20 @@ def auxiliary_features(row: JsonDict, memory_key: str, use_candidate_features: b
         features.update(repair_features(row, memory_key))
     if use_specificity_features:
         features.update(specificity_features(row, memory_key))
+    if use_progress_features:
+        features.update(progress_features(row, memory_key))
     if use_screen_features:
         features.update(text_overlap_features(row, memory_key))
     return features
 
 
-def build_pair_dataset(rows: list[JsonDict], use_candidate_features: bool = False, use_screen_features: bool = False, use_repair_features: bool = False, use_specificity_features: bool = False) -> tuple[list[str], list[dict[str, Any]], list[int]]:
+def build_pair_dataset(rows: list[JsonDict], use_candidate_features: bool = False, use_screen_features: bool = False, use_repair_features: bool = False, use_specificity_features: bool = False, use_progress_features: bool = False) -> tuple[list[str], list[dict[str, Any]], list[int]]:
     texts = []
     feature_rows = []
     labels = []
     def add(row: JsonDict, memory_key: str, label: int) -> None:
         texts.append(pair_text(row, memory_key))
-        feature_rows.append(auxiliary_features(row, memory_key, use_candidate_features, use_screen_features, use_repair_features, use_specificity_features))
+        feature_rows.append(auxiliary_features(row, memory_key, use_candidate_features, use_screen_features, use_repair_features, use_specificity_features, use_progress_features))
         labels.append(label)
     for row in rows:
         label = row.get("utility_label")
@@ -527,26 +656,26 @@ def combine_features(text_matrix: Any, feature_matrix: Any | None) -> Any:
     return hstack([text_matrix, feature_matrix]).tocsr()
 
 
-def train_model(train_rows: list[JsonDict], use_candidate_features: bool, use_screen_features: bool, use_repair_features: bool, use_specificity_features: bool) -> dict[str, Any]:
-    texts, feature_rows, labels = build_pair_dataset(train_rows, use_candidate_features=use_candidate_features, use_screen_features=use_screen_features, use_repair_features=use_repair_features, use_specificity_features=use_specificity_features)
+def train_model(train_rows: list[JsonDict], use_candidate_features: bool, use_screen_features: bool, use_repair_features: bool, use_specificity_features: bool, use_progress_features: bool) -> dict[str, Any]:
+    texts, feature_rows, labels = build_pair_dataset(train_rows, use_candidate_features=use_candidate_features, use_screen_features=use_screen_features, use_repair_features=use_repair_features, use_specificity_features=use_specificity_features, use_progress_features=use_progress_features)
     vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_features=200000, sublinear_tf=True)
     text_train = vectorizer.fit_transform(texts)
     feature_vectorizer = None
     feature_train = None
-    if use_candidate_features or use_screen_features or use_repair_features or use_specificity_features:
+    if use_candidate_features or use_screen_features or use_repair_features or use_specificity_features or use_progress_features:
         feature_vectorizer = DictVectorizer(sparse=True)
         feature_train = feature_vectorizer.fit_transform(feature_rows)
     x_train = combine_features(text_train, feature_train)
     classifier = LogisticRegression(max_iter=2000, class_weight="balanced", solver="liblinear")
     classifier.fit(x_train, labels)
-    return {"vectorizer": vectorizer, "feature_vectorizer": feature_vectorizer, "classifier": classifier, "use_candidate_features": use_candidate_features, "use_screen_features": use_screen_features, "use_repair_features": use_repair_features, "use_specificity_features": use_specificity_features}
+    return {"vectorizer": vectorizer, "feature_vectorizer": feature_vectorizer, "classifier": classifier, "use_candidate_features": use_candidate_features, "use_screen_features": use_screen_features, "use_repair_features": use_repair_features, "use_specificity_features": use_specificity_features, "use_progress_features": use_progress_features}
 
 
 def score_rows(model: dict[str, Any], rows: list[JsonDict]) -> np.ndarray:
     texts = [pair_text(row, "true_memory") for row in rows]
     text_matrix = model["vectorizer"].transform(texts)
     feature_matrix = None
-    if model.get("use_candidate_features") or model.get("use_screen_features") or model.get("use_repair_features") or model.get("use_specificity_features"):
+    if model.get("use_candidate_features") or model.get("use_screen_features") or model.get("use_repair_features") or model.get("use_specificity_features") or model.get("use_progress_features"):
         feature_rows = [
             auxiliary_features(
                 row,
@@ -555,6 +684,7 @@ def score_rows(model: dict[str, Any], rows: list[JsonDict]) -> np.ndarray:
                 bool(model.get("use_screen_features")),
                 bool(model.get("use_repair_features")),
                 bool(model.get("use_specificity_features")),
+                bool(model.get("use_progress_features")),
             )
             for row in rows
         ]
@@ -672,6 +802,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--screen-features", action="store_true")
     parser.add_argument("--repair-features", action="store_true")
     parser.add_argument("--specificity-features", action="store_true")
+    parser.add_argument("--progress-features", action="store_true")
     parser.add_argument("--ocr-cache", default="")
     return parser.parse_args()
 
@@ -690,6 +821,7 @@ def main() -> None:
         use_screen_features=args.screen_features,
         use_repair_features=args.repair_features,
         use_specificity_features=args.specificity_features,
+        use_progress_features=args.progress_features,
     )
     results = {}
     for split in ["train", "dev", "test"]:
