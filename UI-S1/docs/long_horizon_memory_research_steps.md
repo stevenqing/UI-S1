@@ -855,3 +855,67 @@ Use specificity+progress as the default non-OCR scorer.
 Mine its remaining false positives and check whether they are annotation ambiguity, unresolved all-wrong cases, or true memory regressions.
 Then evaluate per-capability thresholds rather than a single global threshold.
 ```
+
+## Step 15: Reframe As Cross-Benchmark Research Method
+
+Question:
+
+```text
+Is this a real research method, and can it be useful across benchmarks?
+```
+
+Answer:
+
+```text
+The method is research-level if the invariant object is counterfactual memory utility, not benchmark-specific features.
+The current evidence supports structural cross-benchmark portability for GUI-Odyssey and AndroidControl.
+It does not yet prove trained-scorer transfer across all benchmarks.
+```
+
+New protocol document:
+
+```text
+docs/cross_benchmark_memory_router_research_protocol.md
+```
+
+New audit script:
+
+```text
+scripts/audit_cross_benchmark_memory_method.py
+```
+
+Adapter fix:
+
+```text
+scripts/analyze_trajectory_segments.py now preserves AndroidControl step_instruction in canonical text_fields.instruction.
+```
+
+Audit result on canonical segmented episodes:
+
+| benchmark | episodes | steps | instruction rate | screenshot rate | segmentation | interventions | specificity | progress | core ready | full ready |
+|---|---:|---:|---:|---:|---|---|---|---|---|---|
+| AndroidControl eval | 200 | 1067 | 99.5% | 100.0% | yes | yes | yes | yes | yes | yes |
+| GUI-Odyssey train sample | 500 | 7705 | 100.0% | 100.0% | yes | yes | yes | yes | yes | yes |
+
+Interpretation:
+
+```text
+The core intervention method is portable because both benchmarks expose goal, screenshot/current state, normalized action, trajectory order, and step-level instruction.
+Specificity is portable because wrong memory can be sampled from the same canonical segment pool.
+Progress is portable when step-level instruction exists; AndroidControl eval has it once the adapter preserves step_instruction.
+```
+
+Important limitation:
+
+```text
+This is not yet a cross-benchmark transfer result.
+The next evidence must train on one benchmark and evaluate unchanged on another, then run prospective routed evaluation.
+```
+
+Next experiment:
+
+```text
+Run AndroidControl behavior interventions under no_history / segment_summary / full_history / wrong_summary.
+Build AndroidControl CMU rows.
+Evaluate GUI-Odyssey -> AndroidControl and AndroidControl -> GUI-Odyssey transfer for specificity+progress.
+```

@@ -605,6 +605,40 @@ Updated method:
 memory-specificity test + instruction-progress compatibility test
 ```
 
+## Cross-Benchmark Research Check
+
+The method should be evaluated as a benchmark-agnostic intervention protocol, not as a GUI-Odyssey feature recipe.
+
+Reference:
+
+```text
+docs/cross_benchmark_memory_router_research_protocol.md
+scripts/audit_cross_benchmark_memory_method.py
+```
+
+Current structural audit:
+
+| benchmark | instruction rate | screenshot rate | core ready | full ready |
+|---|---:|---:|---|---|
+| AndroidControl eval | 99.5% | 100.0% | yes | yes |
+| GUI-Odyssey train sample | 100.0% | 100.0% | yes | yes |
+
+Claim status:
+
+```text
+Defensible now: context intervention + specificity/progress tests are structurally portable across GUI-Odyssey and AndroidControl.
+Not yet defensible: a scorer trained on GUI-Odyssey transfers to every GUI benchmark.
+```
+
+Next required evidence:
+
+```text
+AndroidControl behavior-validation run.
+Cross-benchmark CMU training/evaluation.
+Leave-one-benchmark-out thresholds.
+Prospective routed evaluation on target benchmark.
+```
+
 Each row:
 
 ```json

@@ -284,15 +284,18 @@ def adapt_android_control(episode: JsonDict, line_index: int) -> JsonDict:
     steps = []
     for step_index, step in enumerate(episode.get("steps", [])):
         action = normalize_action(step.get("action_content", {}))
+        action_args = action.get("args", {}) if isinstance(action.get("args"), dict) else {}
         if action["type"] == "open" and action.get("args", {}).get("text"):
             apps.append(action["args"]["text"])
+        instruction = step.get("step_instruction", "") or ""
+        observation = action_args.get("text", "") if isinstance(action_args.get("text"), str) else ""
         steps.append(
             canonical_step(
                 step_index,
                 str(step.get("screenshot", "")),
                 action,
-                {"instruction": "", "thought": "", "observation": "", "context": "", "history": ""},
-                {"bbox": first_bbox(step), "coordinate": action_coordinate(action), "ui_element_text": action.get("args", {}).get("text"), "a11y": None},
+                {"instruction": instruction, "thought": "", "observation": observation, "context": "", "history": ""},
+                {"bbox": first_bbox(step), "coordinate": action_coordinate(action), "ui_element_text": action_args.get("text"), "a11y": None},
             )
         )
     return {

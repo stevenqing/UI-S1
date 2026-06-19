@@ -194,31 +194,30 @@ route_reason
 condition_value_match
 ```
 
-Needed new fields:
+Updated needed fields:
 
 ```text
-ocr_tokens
-screen_caption
-visible_text_contains_carried_value
-visible_text_goal_overlap
-keyboard_or_text_field_visible
-list_or_detail_state
-app_surface_signature
 carried_value_in_goal
 carried_value_in_current_instruction
-carried_value_in_screen
 segment_summary_current_instruction_overlap
-segment_summary_screen_overlap
 segment_summary_goal_slot_overlap
 no_history_candidate_type
 segment_candidate_type
+wrong_summary_candidate_type
 no_history_vs_segment_action_type_agree
+segment_vs_wrong_action_type_agree
+segment_vs_wrong_exact_candidate_agree
+segment_candidate_specificity_score
 no_history_text_value_overlap_with_carried_values
 segment_text_value_overlap_with_carried_values
 no_history_is_semantically_plausible_but_exact_value_wrong
+current_instruction_intent
+candidate_matches_instruction_intent
+no_history_matches_instruction_intent
+wrong_summary_matches_instruction_intent
 ```
 
-These features can be generated automatically from existing fields plus OCR/visual captioning. They are closer to the first-principles question: whether memory contains missing action-relevant information.
+These features can be generated automatically from behavior-intervention outputs plus canonical trajectory fields. OCR/visual captioning can remain optional supporting evidence, but the current primary non-OCR signal is whether segment memory induces a candidate that is both specific relative to wrong memory and compatible with current instruction progress.
 
 ## Training Objectives
 
@@ -303,7 +302,7 @@ Input:
 ```text
 [goal]
 [current instruction]
-[screen OCR/caption]
+[optional screen OCR/caption]
 [segment summary]
 [carried values]
 ```
@@ -416,18 +415,27 @@ hard-case clusters -> suggest new capability/memory schema refinements
 
 ## Immediate Next Implementation
 
-1. Add OCR/screen-caption extraction for routing examples.
-2. Add carried-value overlap features.
-3. Add candidate-disagreement features using stored no_history and segment_summary predictions.
-4. Train a two-stage router:
-   - hard-state detector,
-   - memory utility ranker.
-5. Evaluate routed utility offline before running another expensive vLLM pass.
+1. Treat the current best non-OCR scorer as the default minimal method:
+  - memory specificity,
+  - instruction-progress compatibility.
+2. Run the same behavior-intervention protocol on AndroidControl:
+  - no_history,
+  - segment_summary,
+  - full_history,
+  - wrong_summary.
+3. Build AndroidControl CMU rows with the same script used for GUI-Odyssey.
+4. Evaluate cross-benchmark transfer:
+  - train GUI-Odyssey -> test AndroidControl,
+  - train AndroidControl -> test GUI-Odyssey,
+  - mixed train -> leave-one-benchmark-out.
+5. Add GUI-360 canonical adapter, then repeat the structural audit and behavior validation.
+6. Evaluate routed utility offline before running another expensive prospective vLLM pass.
 
 The next artifact should be:
 
 ```text
-datasets/long_horizon_routing_data_qwen3_qwen35/routing_examples_enriched.jsonl
-datasets/long_horizon_router_enriched/router_training_report.md
-datasets/long_horizon_router_enriched/routed_utility_report.md
+docs/cross_benchmark_memory_router_research_protocol.md
+datasets/android_control_counterfactual_memory_utility
+datasets/cross_benchmark_memory_router_transfer
+datasets/gui360_counterfactual_memory_audit
 ```
