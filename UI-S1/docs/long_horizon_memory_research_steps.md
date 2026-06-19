@@ -1139,3 +1139,84 @@ Turn the binary accept/reject cascade into a three-way router:
 2. reject to no_history when no_history/full_history/wrong agree against segment,
 3. escalate to full_history or replan when all candidates are unstable or all known contexts fail.
 ```
+
+## Step 19: Multi-Route Policy Evaluation
+
+Question:
+
+```text
+Does the cascade become a useful router when it can choose no_history, segment_summary, full_history, or replan?
+```
+
+New script:
+
+```text
+scripts/evaluate_memory_router_policy.py
+```
+
+Metrics are separated into two families:
+
+```text
+action_accuracy: whether the selected context would be correct according to the behavior table
+route_accuracy: whether the selected route matches the oracle route category
+```
+
+This separation matters because:
+
+```text
+always_full_history can have high action accuracy, but it is not selective and has high context cost.
+replan is a correct route decision for all-condition failures, but it is not a direct next-action success.
+```
+
+Oracle route distribution on GUI-Odyssey test:
+
+| oracle route | count |
+|---|---:|
+| no_history | 4159 |
+| replan | 322 |
+| full_history | 23 |
+| segment_summary | 21 |
+| nonspecific segment success mapped to no_history | 19 |
+
+Key test results at threshold 0.70:
+
+| policy | action acc | route acc | avg cost | non-default rate | segment P/R | full P/R | replan P/R | segment regressions | full rescues |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| always_no_history | 0.9153 | 0.9195 | 1.0000 | 0.0000 | 0.0000/0.0000 | 0.0000/0.0000 | 0.0000/0.0000 | 0 | 0 |
+| always_segment_summary | 0.9186 | 0.0046 | 1.2000 | 1.0000 | 0.0046/1.0000 | 0.0000/0.0000 | 0.0000/0.0000 | 25 | 0 |
+| always_full_history | 0.9221 | 0.0051 | 2.0000 | 1.0000 | 0.0000/0.0000 | 0.0051/1.0000 | 0.0000/0.0000 | 0 | 23 |
+| base segment else no_history | 0.9188 | 0.9230 | 1.0016 | 0.0081 | 0.5676/1.0000 | 0.0000/0.0000 | 0.0000/0.0000 | 5 | 0 |
+| verified else no_history | 0.9188 | 0.9230 | 1.0013 | 0.0064 | 0.6207/0.8571 | 0.0000/0.0000 | 0.0000/0.0000 | 2 | 0 |
+| verified else full_history | 0.9190 | 0.9232 | 1.0015 | 0.0066 | 0.6207/0.8571 | 1.0000/0.0435 | 0.0000/0.0000 | 2 | 1 |
+
+Interpretation:
+
+```text
+Always full_history is the action-accuracy upper static baseline in this split, but it doubles context cost and is not a selective memory policy.
+The learned policies use non-default context on less than 1% of examples and improve route accuracy over always_no_history.
+Full-history fallback recovers only one test case, so full_history is currently more useful as a verifier than as a frequent route.
+```
+
+Selected prospective policy for GUI-Odyssey:
+
+```text
+specificity+progress threshold 0.70
+accept segment_summary only if segment_summary and full_history have the same action type
+otherwise route to no_history
+reserve full_history/replan for future explicit hard-state detector rather than using it opportunistically
+```
+
+Why this follows first principles:
+
+```text
+Memory should be used only when it is specific, task-progressing, and independently supported.
+Full-history should not be used merely because it sometimes improves aggregate accuracy; it should be used when the router has evidence that compact memory is insufficient.
+Replan should be a separate detector for all-condition failures, not a byproduct of memory-score rejection.
+```
+
+Next experiment:
+
+```text
+Train an explicit hard-state detector for full_history/replan targets, using oracle_full_history and oracle_replan labels.
+Keep segment-memory activation as the specificity+progress+consistency cascade.
+```

@@ -749,6 +749,44 @@ full-history consistency verifies candidate validity
 failed verification routes to no_history, full_history, or replan depending on candidate agreement structure
 ```
 
+## Multi-Route Policy Result
+
+Implemented multi-route policy evaluation:
+
+```text
+scripts/evaluate_memory_router_policy.py
+datasets/counterfactual_memory_utility_specificity_progress_policy
+```
+
+The evaluation separates:
+
+```text
+action accuracy
+route decision accuracy
+average context cost
+segment memory precision/recall
+full-history route recall
+replan route recall
+```
+
+Key GUI-Odyssey test result at threshold 0.70:
+
+| policy | action acc | route acc | avg cost | non-default rate | segment P/R | regressions |
+|---|---:|---:|---:|---:|---:|---:|
+| always_no_history | 0.9153 | 0.9195 | 1.0000 | 0.0000 | 0.0000/0.0000 | 0 |
+| always_full_history | 0.9221 | 0.0051 | 2.0000 | 1.0000 | 0.0000/0.0000 | 0 |
+| base segment else no_history | 0.9188 | 0.9230 | 1.0016 | 0.0081 | 0.5676/1.0000 | 5 |
+| verified else no_history | 0.9188 | 0.9230 | 1.0013 | 0.0064 | 0.6207/0.8571 | 2 |
+| verified else full_history | 0.9190 | 0.9232 | 1.0015 | 0.0066 | 0.6207/0.8571 | 2 |
+
+Conclusion:
+
+```text
+The best current policy is still selective and low-cost.
+Always full_history has higher raw action accuracy on this split, but it is expensive and not a router.
+Full-history fallback adds only one recovered test case, so full_history should remain primarily a verifier until we train a dedicated hard-state/full-history detector.
+```
+
 Each row:
 
 ```json
