@@ -787,6 +787,68 @@ Always full_history has higher raw action accuracy on this split, but it is expe
 Full-history fallback adds only one recovered test case, so full_history should remain primarily a verifier until we train a dedicated hard-state/full-history detector.
 ```
 
+## Verifier As Agent
+
+The verifier should be an agentic module, not a scalar classifier.
+
+Reference:
+
+```text
+docs/multi_agent_memory_router_framework.md
+```
+
+Implemented verifier-agent data:
+
+```text
+scripts/build_verifier_agent_data.py
+datasets/verifier_agent_gui_odyssey_all
+datasets/verifier_agent_gui_odyssey_hard
+```
+
+Implemented verifier-agent evaluator:
+
+```text
+scripts/evaluate_verifier_agent.py
+```
+
+The verifier receives a candidate packet from multiple agents:
+
+```text
+Local Context Agent
+Segment Memory Agent
+Full History Agent
+Distractor Memory Probe Agent
+```
+
+and outputs:
+
+```text
+use_no_history
+commit_segment
+use_full_history
+replan
+```
+
+Hard-only GUI-Odyssey verifier data:
+
+| split | commit_segment | use_full_history | replan |
+|---|---:|---:|---:|
+| train | 160 | 173 | 2684 |
+| dev | 26 | 29 | 340 |
+| test | 21 | 23 | 341 |
+
+Rule-agent baselines are weak on hard-only test:
+
+```text
+best rule macro F1: 0.2162
+```
+
+This supports the next training step:
+
+```text
+train a Verifier Agent with class-balanced sampling and strict JSON decision targets
+```
+
 Each row:
 
 ```json

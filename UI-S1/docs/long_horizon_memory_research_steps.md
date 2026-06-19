@@ -1217,6 +1217,102 @@ Replan should be a separate detector for all-condition failures, not a byproduct
 Next experiment:
 
 ```text
-Train an explicit hard-state detector for full_history/replan targets, using oracle_full_history and oracle_replan labels.
-Keep segment-memory activation as the specificity+progress+consistency cascade.
+Train an explicit Verifier Agent, not just another scalar classifier.
+The verifier agent should inspect the multi-context candidate packet and output use_no_history / commit_segment / use_full_history / replan with reason codes.
+```
+
+## Step 20: Reframe The Verifier As An Agent
+
+Question:
+
+```text
+Can the verifier be an agentic decision module so the method becomes a multi-agent framework rather than a single router?
+```
+
+Answer:
+
+```text
+Yes. The verifier should not predict a new GUI action. It should adjudicate candidates proposed by specialized context agents.
+```
+
+New framework document:
+
+```text
+docs/multi_agent_memory_router_framework.md
+```
+
+Agent roles:
+
+```text
+Local Context Agent: proposes no_history candidate
+Segment Memory Agent: proposes segment_summary candidate
+Full History Agent: proposes full_history candidate and validity support
+Distractor Memory Probe Agent: proposes wrong_summary candidate for specificity testing
+Verifier Agent: chooses use_no_history / commit_segment / use_full_history / replan with reason codes
+Execution Coordinator: executes the verifier-selected route
+```
+
+Why this avoids earlier two-agent failures:
+
+```text
+The verifier agent does not receive an OOD guided prompt to generate a low-level coordinate.
+It receives structured candidate packets and outputs a JSON route decision.
+```
+
+Implemented data builder:
+
+```text
+scripts/build_verifier_agent_data.py
+datasets/verifier_agent_gui_odyssey_all
+datasets/verifier_agent_gui_odyssey_hard
+```
+
+Verifier-agent JSON decision schema:
+
+```json
+{
+  "decision": "use_no_history | commit_segment | use_full_history | replan",
+  "selected_condition": "no_history | segment_summary | full_history | null",
+  "confidence": "high | medium | low",
+  "reason_codes": ["..."],
+  "rationale": "short explanation"
+}
+```
+
+Hard-only target distribution:
+
+| split | commit_segment | use_full_history | replan |
+|---|---:|---:|---:|
+| train | 160 | 173 | 2684 |
+| dev | 26 | 29 | 340 |
+| test | 21 | 23 | 341 |
+
+Implemented evaluator:
+
+```text
+scripts/evaluate_verifier_agent.py
+```
+
+Rule-agent baselines on hard-only test:
+
+| baseline | accuracy | macro F1 | failure mode |
+|---|---:|---:|---|
+| commit if segment/full same type | 0.0468 | 0.0261 | misses replan/full-history decisions |
+| three-way commit/full/replan rule | 0.1403 | 0.2045 | over-commits segment on hard replan cases |
+| specificity+progress+full-support rule | 0.0675 | 0.2162 | weak replan separation |
+
+Interpretation:
+
+```text
+Rule agents are weak on hard verifier cases.
+The missing capability is not another scalar feature; it is candidate-packet reasoning over commit/full-history/replan alternatives.
+This justifies training a Verifier Agent.
+```
+
+Next experiment:
+
+```text
+Train a class-balanced SFT Verifier Agent on datasets/verifier_agent_gui_odyssey_hard.
+Evaluate JSON validity, macro F1, commit_segment precision/recall, use_full_history recall, and replan recall.
+Compare against the rule-agent baselines above.
 ```

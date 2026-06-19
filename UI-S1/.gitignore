@@ -43,6 +43,7 @@ gui_odyssey_eval/results/
 datasets/android_control_train1000_eval1543.jsonl
 datasets/bottleneck_validation_train/
 datasets/counterfactual_memory_utility*/
+datasets/verifier_agent*/
 datasets/long_horizon_router_training_summary.md
 datasets/long_horizon_router*/
 datasets/long_horizon_routing_data_qwen3_qwen35/
