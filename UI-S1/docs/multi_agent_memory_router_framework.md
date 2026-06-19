@@ -274,6 +274,65 @@ Loss:
 standard SFT / JSON decision imitation
 ```
 
+Prepared balanced SFT data:
+
+```text
+scripts/prepare_verifier_agent_sft_data.py
+datasets/verifier_agent_gui_odyssey_sft_balanced
+```
+
+Balanced train split:
+
+| decision | train rows |
+|---|---:|
+| commit_segment | 1024 |
+| use_full_history | 1024 |
+| replan | 1024 |
+
+Original-distribution evaluation splits:
+
+| split | rows | commit_segment | use_full_history | replan |
+|---|---:|---:|---:|---:|
+| dev | 395 | 26 | 29 | 340 |
+| test | 385 | 21 | 23 | 341 |
+
+Generated SFT files:
+
+```text
+datasets/verifier_agent_gui_odyssey_sft_balanced/train_balanced.parquet
+datasets/verifier_agent_gui_odyssey_sft_balanced/dev.parquet
+datasets/verifier_agent_gui_odyssey_sft_balanced/test.parquet
+datasets/verifier_agent_gui_odyssey_sft_balanced/dev_balanced.parquet
+datasets/verifier_agent_gui_odyssey_sft_balanced/test_balanced.parquet
+```
+
+Training entrypoint:
+
+```bash
+bash scripts/run_verifier_agent_sft.sh
+```
+
+Useful overrides:
+
+```bash
+MODEL_PATH=/path/to/text-model \
+N_GPUS=4 \
+OUTPUT_DIR=outputs/verifier_agent_sft_qwen35 \
+bash scripts/run_verifier_agent_sft.sh
+```
+
+Default configuration:
+
+```text
+model: checkpoints/Qwen3.5-9B
+method: LoRA SFT
+lora_rank: 32
+max_length: 8192
+train file: train_balanced.parquet
+val file: dev.parquet
+dataset class: GUIMultiTurnSFTDataset
+```
+
 Primary metrics:
 
 ```text

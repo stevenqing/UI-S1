@@ -1316,3 +1316,81 @@ Train a class-balanced SFT Verifier Agent on datasets/verifier_agent_gui_odyssey
 Evaluate JSON validity, macro F1, commit_segment precision/recall, use_full_history recall, and replan recall.
 Compare against the rule-agent baselines above.
 ```
+
+## Step 21: Prepare Class-Balanced Verifier Agent SFT Data
+
+Question:
+
+```text
+How do we train the Verifier Agent without it collapsing to the majority replan class?
+```
+
+Implementation:
+
+```text
+scripts/prepare_verifier_agent_sft_data.py
+scripts/run_verifier_agent_sft.sh
+```
+
+Input:
+
+```text
+datasets/verifier_agent_gui_odyssey_hard
+```
+
+Output:
+
+```text
+datasets/verifier_agent_gui_odyssey_sft_balanced
+```
+
+Balanced training split:
+
+| decision | rows |
+|---|---:|
+| commit_segment | 1024 |
+| use_full_history | 1024 |
+| replan | 1024 |
+
+Original-distribution evaluation splits:
+
+| split | rows | commit_segment | use_full_history | replan |
+|---|---:|---:|---:|---:|
+| dev | 395 | 26 | 29 | 340 |
+| test | 385 | 21 | 23 | 341 |
+
+Data format:
+
+```text
+JSONL with messages/packet/target/metadata for inspection.
+Parquet with messages JSON string for VERL GUIMultiTurnSFTDataset training.
+```
+
+Training command:
+
+```bash
+bash scripts/run_verifier_agent_sft.sh
+```
+
+Default training setup:
+
+```text
+text-only Qwen3.5-9B LoRA SFT
+train_balanced.parquet -> dev.parquet
+max_length 8192
+lora_rank 32
+strict JSON verifier decision target
+```
+
+Evaluation after training:
+
+```text
+Use scripts/evaluate_verifier_agent.py on model outputs.
+Report JSON validity, macro F1, commit_segment precision/recall, use_full_history recall, and replan recall.
+```
+
+Success criterion:
+
+```text
+Beat the best rule-agent hard-only macro F1 of 0.2162 while maintaining useful commit_segment precision.
+```

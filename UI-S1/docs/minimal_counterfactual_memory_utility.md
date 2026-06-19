@@ -849,6 +849,29 @@ This supports the next training step:
 train a Verifier Agent with class-balanced sampling and strict JSON decision targets
 ```
 
+Prepared SFT data and training entrypoint:
+
+```text
+scripts/prepare_verifier_agent_sft_data.py
+scripts/run_verifier_agent_sft.sh
+datasets/verifier_agent_gui_odyssey_sft_balanced
+```
+
+Balanced train split:
+
+```text
+commit_segment: 1024
+use_full_history: 1024
+replan: 1024
+```
+
+Original dev/test are preserved for realistic evaluation:
+
+```text
+dev rows: 395
+test rows: 385
+```
+
 Each row:
 
 ```json
