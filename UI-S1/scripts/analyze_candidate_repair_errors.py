@@ -82,6 +82,7 @@ def summarize_bucket(rows: list[JsonDict]) -> JsonDict:
     return {
         "n": len(rows),
         "utility_labels": Counter(row.get("utility_label") for row in rows),
+        "condition_value_match_pattern": Counter(json.dumps(row.get("condition_value_match", {}), sort_keys=True) for row in rows),
         "no_to_segment_transition": Counter(transition(row, "no_history", "segment_summary") for row in rows),
         "no_to_wrong_transition": Counter(transition(row, "no_history", "wrong_summary") for row in rows),
         "segment_matches_wrong_candidate": Counter(str(same_candidate(row, "segment_summary", "wrong_summary")) for row in rows),
@@ -162,6 +163,18 @@ def write_report(path: Path, summary: JsonDict) -> None:
         for bucket_name in ["true_positives", "false_positives", "false_negatives"]:
             bucket = threshold_result[bucket_name]
             lines.append(f"### {bucket_name}")
+            lines.append("")
+            lines.append("Utility labels:")
+            for key, value in list(bucket["utility_labels"].items())[:10]:
+                lines.append(f"- {key}: {value}")
+            lines.append("")
+            lines.append("Dominant capabilities:")
+            for key, value in list(bucket["dominant_capability"].items())[:10]:
+                lines.append(f"- {key}: {value}")
+            lines.append("")
+            lines.append("Condition value-match patterns:")
+            for key, value in list(bucket["condition_value_match_pattern"].items())[:6]:
+                lines.append(f"- `{key}`: {value}")
             lines.append("")
             lines.append("Top no_history -> segment_summary transitions:")
             for key, value in list(bucket["no_to_segment_transition"].items())[:10]:

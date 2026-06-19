@@ -991,3 +991,70 @@ Next experiment:
 Do not add per-capability thresholds until each capability has enough memory-positive dev support.
 Instead, mine false positives under the global high-recall threshold and separate annotation ambiguity from true memory regressions.
 ```
+
+## Step 17: GUI-Odyssey False-Positive Taxonomy
+
+Question:
+
+```text
+At the selected high-recall GUI-Odyssey operating point, what kind of errors remain?
+```
+
+Script update:
+
+```text
+scripts/analyze_candidate_repair_errors.py now reports utility labels, dominant capabilities, and condition-value-match patterns for each TP/FP/FN bucket.
+```
+
+Operating point:
+
+```text
+specificity + progress scorer
+global threshold 0.70
+test precision 0.5676
+test recall 1.0000
+```
+
+False-positive taxonomy:
+
+| FP type | count | meaning |
+|---|---:|---|
+| unresolved | 10 | all context conditions fail; memory routing cannot solve this alone |
+| negative | 5 | no_history succeeds but segment_summary fails; true memory regression |
+| summary_insufficient | 1 | full history succeeds but segment summary fails |
+
+False-positive condition patterns:
+
+| pattern | count |
+|---|---:|
+| all four conditions fail | 10 |
+| no_history/full_history/wrong_summary succeed, segment_summary fails | 3 |
+| no_history/wrong_summary succeed, segment_summary/full_history fail | 2 |
+| full_history succeeds only | 1 |
+
+False-positive capabilities:
+
+| capability | count |
+|---|---:|
+| navigate_system | 8 |
+| configure_edit | 3 |
+| commit_submit | 2 |
+| search | 1 |
+| browse_scan | 1 |
+| interact | 1 |
+
+Interpretation:
+
+```text
+Specificity+progress is no longer mainly failing because wrong memory induces the same candidate.
+Most remaining false positives are all-condition failures where the segment candidate looks like a plausible repair but is still wrong.
+This means the next GUI-Odyssey module should not be another memory feature. It should be a candidate-validity / replan detector.
+```
+
+Next experiment:
+
+```text
+Train or rule-test an unresolved/replan detector on top of specificity+progress.
+Inputs should include candidate parse/missingness, no/segment/wrong candidate disagreement shape, capability, instruction intent, and whether all candidates look unsupported or unstable.
+Target should separate memory-positive from unresolved and segment-regression cases.
+```

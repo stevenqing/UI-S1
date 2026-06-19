@@ -670,6 +670,43 @@ specificity + progress + global threshold
 
 is currently more reliable than sparse per-capability calibration.
 
+## GUI-Odyssey Remaining Error Taxonomy
+
+At the selected high-recall global threshold:
+
+```text
+specificity + progress threshold 0.70
+precision 0.5676
+recall 1.0000
+```
+
+False positives are:
+
+| FP type | count |
+|---|---:|
+| unresolved, all conditions fail | 10 |
+| negative, segment memory regresses no_history | 5 |
+| summary insufficient, full history only helps | 1 |
+
+Dominant FP capability:
+
+```text
+navigate_system: 8 / 16
+```
+
+Conclusion:
+
+```text
+The next bottleneck is not memory specificity.
+It is candidate validity / replan detection: many false positives are cases where the memory-induced candidate is specific and instruction-compatible but still wrong under every context.
+```
+
+Next GUI-Odyssey module:
+
+```text
+unresolved-or-replan detector on top of specificity + progress
+```
+
 Each row:
 
 ```json
