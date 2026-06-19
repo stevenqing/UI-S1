@@ -1119,6 +1119,8 @@ Interpretation:
 Full-history consistency is a useful candidate-validity verifier.
 It improves precision and strongly reduces segment regressions, but it trades away recall.
 This is exactly the expected shape for a second-stage commit verifier.
+Simulated full-history fallback recovers very few additional cases: at threshold 0.70, it recovers 1 test case and 0 dev cases after segment rejection.
+So full_history should not become a common default route; its current value is mostly as an independent support signal for whether to commit the segment candidate.
 ```
 
 Updated first-principles decomposition:

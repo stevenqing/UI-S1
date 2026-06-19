@@ -163,15 +163,16 @@ def write_report(path: Path, report: JsonDict) -> None:
     for split, split_result in report["splits"].items():
         lines.append(f"## {split.title()}")
         lines.append("")
-        lines.append("| threshold | filter | base predicted | accepted | rejected | precision | recall | routed_acc | regressions | rejected unresolved |")
-        lines.append("|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|")
+        lines.append("| threshold | filter | base predicted | accepted | rejected | precision | recall | routed_acc | regressions | rejected unresolved | rejected no-history wrong | rejected full-history-only |")
+        lines.append("|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
         for threshold_result in split_result:
             threshold = threshold_result["threshold"]
             for filter_name, metrics in threshold_result["filters"].items():
                 lines.append(
                     f"| {threshold:.2f} | {filter_name} | {metrics['base_predicted_memory']} | {metrics['accepted_memory']} | "
                     f"{metrics['rejected_by_filter']} | {metrics['precision']:.4f} | {metrics['recall']:.4f} | "
-                    f"{metrics['routed_acc']:.4f} | {metrics['regressions']} | {metrics['rejected_unresolved']} |"
+                    f"{metrics['routed_acc']:.4f} | {metrics['regressions']} | {metrics['rejected_unresolved']} | "
+                    f"{metrics['rejected_no_history_wrong']} | {metrics['rejected_full_history_only']} |"
                 )
         lines.append("")
     lines.append("## Interpretation")

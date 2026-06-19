@@ -738,6 +738,7 @@ Conclusion:
 ```text
 Full-history consistency should be treated as a commit verifier, not as another memory feature.
 It gives a controllable precision/regression improvement at the cost of recall.
+Full-history fallback itself recovers very few extra cases in this run, so the primary gain is safer commitment, not frequent full-history routing.
 ```
 
 Updated policy direction:
