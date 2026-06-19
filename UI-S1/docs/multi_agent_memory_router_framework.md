@@ -344,6 +344,51 @@ replan recall
 invalid JSON rate
 ```
 
+### Overnight Post-Train Runbook
+
+Implemented post-train automation:
+
+```text
+scripts/generate_verifier_agent_predictions.py
+scripts/run_verifier_agent_post_train.sh
+```
+
+After SFT finishes, run:
+
+```bash
+RUN_DIR=outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048 \
+BASE_MODEL=checkpoints/Qwen3.5-9B \
+bash scripts/run_verifier_agent_post_train.sh
+```
+
+Or let it wait for the final checkpoint:
+
+```bash
+WAIT_FOR_CHECKPOINT=1 \
+RUN_DIR=outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048 \
+bash scripts/run_verifier_agent_post_train.sh
+```
+
+The script will:
+
+```text
+1. locate the latest global_step_* checkpoint,
+2. reject DCP-only checkpoints and require the final HF/PEFT checkpoint,
+3. generate verifier decisions for dev/test/dev_balanced/test_balanced,
+4. evaluate JSON decisions with scripts/evaluate_verifier_agent.py,
+5. write post_train_summary.md with accuracy, macro F1, class precision/recall, and invalid JSON count.
+```
+
+Expected output:
+
+```text
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/run_info.json
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/dev_predictions.jsonl
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/test_predictions.jsonl
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/*_eval/verifier_eval_report.md
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/post_train_summary.md
+```
+
 ### Stage 2: Calibrated Deployment With Coordinator
 
 Use Stage A proposal score before invoking verifier:

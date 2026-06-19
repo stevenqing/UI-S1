@@ -1395,3 +1395,63 @@ Success criterion:
 ```text
 Beat the best rule-agent hard-only macro F1 of 0.2162 while maintaining useful commit_segment precision.
 ```
+
+## Step 22: Prepare Overnight Post-Train Evaluation
+
+Question:
+
+```text
+Once SFT finishes overnight, what should run next automatically?
+```
+
+Implemented scripts:
+
+```text
+scripts/generate_verifier_agent_predictions.py
+scripts/run_verifier_agent_post_train.sh
+```
+
+Post-train flow:
+
+```text
+1. find latest final checkpoint under the SFT run directory,
+2. load base Qwen3.5 plus trained checkpoint/adapter,
+3. generate verifier-agent JSON decisions for dev/test/dev_balanced/test_balanced,
+4. evaluate with scripts/evaluate_verifier_agent.py in predictions mode,
+5. write a compact post_train_summary.md.
+```
+
+Command after training:
+
+```bash
+RUN_DIR=outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048 \
+BASE_MODEL=checkpoints/Qwen3.5-9B \
+bash scripts/run_verifier_agent_post_train.sh
+```
+
+Optional waiting mode:
+
+```bash
+WAIT_FOR_CHECKPOINT=1 \
+WAIT_SECONDS=21600 \
+RUN_DIR=outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048 \
+bash scripts/run_verifier_agent_post_train.sh
+```
+
+Expected summary metrics:
+
+```text
+JSON validity / invalid prediction count
+macro F1
+commit_segment precision/recall
+use_full_history precision/recall
+replan precision/recall
+original-distribution dev/test and balanced diagnostic dev/test
+```
+
+Important checkpoint note:
+
+```text
+The script rejects DCP-only checkpoints.
+Use the final HF/PEFT checkpoint saved at the last training step, or convert a DCP checkpoint before inference.
+```
