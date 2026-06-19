@@ -639,6 +639,37 @@ Leave-one-benchmark-out thresholds.
 Prospective routed evaluation on target benchmark.
 ```
 
+## GUI-Odyssey Thresholding Result
+
+Per-capability thresholding was tested on GUI-Odyssey using dev-selected thresholds:
+
+```text
+scripts/evaluate_memory_router_thresholds.py
+datasets/counterfactual_memory_utility_specificity_progress_thresholds*
+```
+
+Result:
+
+```text
+Per-capability thresholds do not reliably improve test behavior because memory-positive dev support is too sparse.
+The safest current policy is a single global threshold for the specificity+progress scorer.
+```
+
+Recommended GUI-Odyssey operating points:
+
+| dev target | test predicted | test precision | test recall | regressions |
+|---:|---:|---:|---:|---:|
+| 0.60 | 40 | 0.5250 | 1.0000 | 7 |
+| 0.70 | 18 | 0.7778 | 0.6667 | 1 |
+
+This is another useful simplicity result:
+
+```text
+specificity + progress + global threshold
+```
+
+is currently more reliable than sparse per-capability calibration.
+
 Each row:
 
 ```json

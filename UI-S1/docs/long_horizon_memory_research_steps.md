@@ -919,3 +919,75 @@ Run AndroidControl behavior interventions under no_history / segment_summary / f
 Build AndroidControl CMU rows.
 Evaluate GUI-Odyssey -> AndroidControl and AndroidControl -> GUI-Odyssey transfer for specificity+progress.
 ```
+
+## Step 16: GUI-Odyssey Per-Capability Thresholding
+
+Question:
+
+```text
+Can we improve GUI-Odyssey memory activation by selecting thresholds per dominant capability instead of using one global threshold?
+```
+
+Motivation:
+
+```text
+The remaining GUI-Odyssey positives are not evenly distributed across capabilities.
+Test positives are concentrated in browse_scan, search, interact, navigate_system, and select_target.
+This suggests per-capability thresholds might recover hard cases while avoiding false activations in low-yield capabilities.
+```
+
+Script:
+
+```text
+scripts/evaluate_memory_router_thresholds.py
+```
+
+Input scorer:
+
+```text
+datasets/counterfactual_memory_utility_specificity_progress/memory_utility_model.joblib
+```
+
+Outputs:
+
+```text
+datasets/counterfactual_memory_utility_specificity_progress_thresholds
+datasets/counterfactual_memory_utility_specificity_progress_thresholds_min5
+datasets/counterfactual_memory_utility_specificity_progress_thresholds_min10
+```
+
+Result on GUI-Odyssey test, thresholds selected only on dev:
+
+| target precision | policy | support rule | predicted | precision | recall | regressions |
+|---:|---|---|---:|---:|---:|---:|
+| 0.50 | global | n/a | 45 | 0.4667 | 1.0000 | 7 |
+| 0.50 | per capability | min dev positives 2 | 45 | 0.4667 | 1.0000 | 7 |
+| 0.60 | global | n/a | 40 | 0.5250 | 1.0000 | 7 |
+| 0.60 | per capability | min dev positives 2 | 44 | 0.4773 | 1.0000 | 7 |
+| 0.70 | global | n/a | 18 | 0.7778 | 0.6667 | 1 |
+| 0.70 | per capability | min dev positives 2 | 38 | 0.5000 | 0.9048 | 6 |
+| 0.70 | per capability | min dev positives 5 | 29 | 0.6207 | 0.8571 | 3 |
+| 0.70 | per capability | min dev positives 10 | 18 | 0.7778 | 0.6667 | 1 |
+
+Interpretation:
+
+```text
+Per-capability thresholding is not currently a reliable improvement on GUI-Odyssey.
+The dev positives per capability are too sparse, so per-capability thresholds overfit.
+The conservative min-positive setting collapses back to the global threshold.
+```
+
+Selected operating policy for now:
+
+```text
+Use the global specificity+progress threshold selected on dev.
+For high recall: target 0.60 dev threshold gives test precision 0.5250 / recall 1.0000.
+For higher precision: target 0.70 dev threshold gives test precision 0.7778 / recall 0.6667.
+```
+
+Next experiment:
+
+```text
+Do not add per-capability thresholds until each capability has enough memory-positive dev support.
+Instead, mine false positives under the global high-recall threshold and separate annotation ambiguity from true memory regressions.
+```
