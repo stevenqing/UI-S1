@@ -1377,7 +1377,7 @@ Default training setup:
 ```text
 text-only Qwen3.5-9B LoRA SFT
 train_balanced.parquet -> dev.parquet
-max_length 8192
+max_length 2048
 lora_rank 32
 model_dtype fp32
 strict JSON verifier decision target
