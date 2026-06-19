@@ -707,6 +707,47 @@ Next GUI-Odyssey module:
 unresolved-or-replan detector on top of specificity + progress
 ```
 
+## Full-History Consistency Cascade
+
+Implemented a cascade evaluation:
+
+```text
+scripts/evaluate_memory_router_cascade.py
+datasets/counterfactual_memory_utility_specificity_progress_cascade
+```
+
+The first-principles split is:
+
+```text
+memory utility scorer: should segment memory be considered?
+candidate-validity verifier: does full history support the segment candidate?
+```
+
+Result:
+
+| threshold | filter | test precision | test recall | regressions |
+|---:|---|---:|---:|---:|
+| 0.70 | none | 0.5676 | 1.0000 | 5 |
+| 0.70 | segment_full_same_type | 0.6207 | 0.8571 | 2 |
+| 0.70 | segment_full_same_type_not_wrong_type | 0.6667 | 0.6667 | 2 |
+| 0.90 | none | 0.5714 | 0.9524 | 5 |
+| 0.90 | segment_full_same_type | 0.6296 | 0.8095 | 2 |
+
+Conclusion:
+
+```text
+Full-history consistency should be treated as a commit verifier, not as another memory feature.
+It gives a controllable precision/regression improvement at the cost of recall.
+```
+
+Updated policy direction:
+
+```text
+specificity + progress proposes memory
+full-history consistency verifies candidate validity
+failed verification routes to no_history, full_history, or replan depending on candidate agreement structure
+```
+
 Each row:
 
 ```json

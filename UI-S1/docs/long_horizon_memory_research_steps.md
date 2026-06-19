@@ -1058,3 +1058,82 @@ Train or rule-test an unresolved/replan detector on top of specificity+progress.
 Inputs should include candidate parse/missingness, no/segment/wrong candidate disagreement shape, capability, instruction intent, and whether all candidates look unsupported or unstable.
 Target should separate memory-positive from unresolved and segment-regression cases.
 ```
+
+## Step 18: Full-History Consistency As Candidate-Validity Verifier
+
+First-principles question:
+
+```text
+If segment memory proposes a candidate, can a stronger raw-history context independently support that candidate?
+```
+
+Rationale:
+
+```text
+The memory utility scorer estimates whether segment memory is useful.
+It does not guarantee that the segment candidate is valid.
+The remaining false positives are mostly unresolved all-condition failures or segment regressions, so the next variable is candidate validity.
+```
+
+New script:
+
+```text
+scripts/evaluate_memory_router_cascade.py
+```
+
+Policy structure:
+
+```text
+stage 1: specificity + progress score decides whether segment memory looks useful
+stage 2: full-history consistency filter decides whether segment candidate is valid enough to commit
+```
+
+Candidate-validity filters tested:
+
+```text
+segment_exists
+segment_full_same_type
+segment_full_exact
+segment_full_same_type_not_wrong_type
+segment_full_exact_not_wrong_exact
+```
+
+Dev/test comparison for the selected GUI-Odyssey scorer:
+
+| split | threshold | filter | accepted | precision | recall | regressions |
+|---|---:|---|---:|---:|---:|---:|
+| dev | 0.70 | none | 36 | 0.6111 | 0.8462 | 3 |
+| dev | 0.70 | segment_full_same_type | 29 | 0.6897 | 0.7692 | 0 |
+| dev | 0.70 | segment_full_same_type_not_wrong_type | 20 | 0.9000 | 0.6923 | 0 |
+| test | 0.70 | none | 37 | 0.5676 | 1.0000 | 5 |
+| test | 0.70 | segment_full_same_type | 29 | 0.6207 | 0.8571 | 2 |
+| test | 0.70 | segment_full_same_type_not_wrong_type | 21 | 0.6667 | 0.6667 | 2 |
+| dev | 0.90 | none | 32 | 0.6562 | 0.8077 | 3 |
+| dev | 0.90 | segment_full_same_type | 26 | 0.7692 | 0.7692 | 0 |
+| test | 0.90 | none | 35 | 0.5714 | 0.9524 | 5 |
+| test | 0.90 | segment_full_same_type | 27 | 0.6296 | 0.8095 | 2 |
+
+Interpretation:
+
+```text
+Full-history consistency is a useful candidate-validity verifier.
+It improves precision and strongly reduces segment regressions, but it trades away recall.
+This is exactly the expected shape for a second-stage commit verifier.
+```
+
+Updated first-principles decomposition:
+
+```text
+memory utility: does segment memory produce a specific, progress-compatible repair?
+candidate validity: does a stronger context support the segment candidate?
+policy: accept memory if both pass; otherwise reject to no-history or escalate to full-history/replan.
+```
+
+Next experiment:
+
+```text
+Turn the binary accept/reject cascade into a three-way router:
+1. accept segment memory,
+2. reject to no_history when no_history/full_history/wrong agree against segment,
+3. escalate to full_history or replan when all candidates are unstable or all known contexts fail.
+```
