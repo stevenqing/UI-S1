@@ -39,6 +39,17 @@ evaluation/evaluation/
 gui_odyssey_eval/logs/
 gui_odyssey_eval/results/
 
+# Generated memory-router / bottleneck-validation artifacts
+datasets/android_control_train1000_eval1543.jsonl
+datasets/bottleneck_validation_train/
+datasets/counterfactual_memory_utility*/
+datasets/long_horizon_router_training_summary.md
+datasets/long_horizon_router*/
+datasets/long_horizon_routing_data_qwen3_qwen35/
+datasets/model_bottleneck_validation*/
+datasets/schema_discovery*/
+datasets/segmentation*/
+
 # Logs & results (generic)
 **/logs/
 **/results/
