@@ -14,8 +14,10 @@ EVAL_OUT=${EVAL_OUT:-$RUN_DIR/post_train_eval}
 CHECKPOINT=${CHECKPOINT:-}
 DTYPE=${DTYPE:-bf16}
 DEVICE=${DEVICE:-cuda}
-MAX_NEW_TOKENS=${MAX_NEW_TOKENS:-192}
+MAX_NEW_TOKENS=${MAX_NEW_TOKENS:-96}
+BATCH_SIZE=${BATCH_SIZE:-8}
 LIMIT=${LIMIT:-0}
+SKIP_EXISTING=${SKIP_EXISTING:-0}
 WAIT_FOR_CHECKPOINT=${WAIT_FOR_CHECKPOINT:-0}
 WAIT_SECONDS=${WAIT_SECONDS:-21600}
 POLL_SECONDS=${POLL_SECONDS:-300}
@@ -69,6 +71,9 @@ cat > "$EVAL_OUT/run_info.json" <<JSON
   "data_dir": "$DATA_DIR",
   "dtype": "$DTYPE",
   "device": "$DEVICE",
+  "max_new_tokens": $MAX_NEW_TOKENS,
+  "batch_size": $BATCH_SIZE,
+  "skip_existing": $SKIP_EXISTING,
   "limit": $LIMIT
 }
 JSON
@@ -78,26 +83,37 @@ run_split() {
   local data_file="$DATA_DIR/${split}.jsonl"
   local pred_file="$EVAL_OUT/${split}_predictions.jsonl"
   local out_dir="$EVAL_OUT/${split}_eval"
+  local metrics_file="$out_dir/verifier_eval_metrics.json"
   if [[ ! -f "$data_file" ]]; then
     echo "skip missing $data_file" >&2
     return 0
   fi
-  echo "Generating $split predictions..."
-  "$PYTHON_BIN" scripts/generate_verifier_agent_predictions.py \
-    --base-model "$BASE_MODEL" \
-    --checkpoint "$CHECKPOINT" \
-    --data "$data_file" \
-    --output "$pred_file" \
-    --dtype "$DTYPE" \
-    --device "$DEVICE" \
-    --max-new-tokens "$MAX_NEW_TOKENS" \
-    ${LIMIT:+--limit "$LIMIT"}
+  if [[ "$SKIP_EXISTING" == "1" && -f "$pred_file" && -f "$metrics_file" ]]; then
+    echo "Skipping $split; predictions and metrics already exist."
+    return 0
+  fi
+  if [[ "$SKIP_EXISTING" == "1" && -f "$pred_file" ]]; then
+    echo "Skipping $split generation; predictions already exist."
+  else
+    echo "Generating $split predictions..."
+    "$PYTHON_BIN" scripts/generate_verifier_agent_predictions.py \
+      --base-model "$BASE_MODEL" \
+      --checkpoint "$CHECKPOINT" \
+      --data "$data_file" \
+      --output "$pred_file" \
+      --dtype "$DTYPE" \
+      --device "$DEVICE" \
+      --max-new-tokens "$MAX_NEW_TOKENS" \
+      --batch-size "$BATCH_SIZE" \
+      ${LIMIT:+--limit "$LIMIT"}
+  fi
   echo "Evaluating $split predictions..."
   "$PYTHON_BIN" scripts/evaluate_verifier_agent.py \
     --data "$data_file" \
     --predictions "$pred_file" \
     --output-dir "$out_dir" \
-    --mode predictions
+    --mode predictions \
+    ${LIMIT:+--limit "$LIMIT"}
 }
 
 run_split dev
@@ -105,12 +121,14 @@ run_split test
 run_split dev_balanced
 run_split test_balanced
 
-"$PYTHON_BIN" - <<PY
+POST_TRAIN_EVAL_OUT="$EVAL_OUT" POST_TRAIN_CHECKPOINT="$CHECKPOINT" "$PYTHON_BIN" - <<'PY'
 import json
+import os
 from pathlib import Path
-root = Path('$EVAL_OUT')
+root = Path(os.environ['POST_TRAIN_EVAL_OUT'])
+checkpoint_name = Path(os.environ['POST_TRAIN_CHECKPOINT']).name
 lines = ['# Verifier Agent Post-Train Evaluation', '']
-lines.append(f'Checkpoint: `{Path("$CHECKPOINT").name}`')
+lines.append(f'Checkpoint: `{checkpoint_name}`')
 lines.append('')
 lines.append('| split | accuracy | macro F1 | commit P/R | full P/R | replan P/R | invalid pred |')
 lines.append('|---|---:|---:|---:|---:|---:|---:|')

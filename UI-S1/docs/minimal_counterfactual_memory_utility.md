@@ -872,6 +872,26 @@ dev rows: 395
 test rows: 385
 ```
 
+Trained Verifier Agent result:
+
+```text
+checkpoint: outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/checkpoints/global_step_144
+test accuracy: 0.9325
+test macro F1: 0.6350
+best rule-agent macro F1: 0.2162
+```
+
+Per-route test behavior:
+
+```text
+commit_segment P/R/F1: 0.6364 / 1.0000 / 0.7778
+use_full_history P/R/F1: 0.8182 / 0.7826 / 0.8000
+replan P/R/F1: 0.9877 / 0.9384 / 0.9624
+invalid predictions: 6 / 385
+```
+
+This validates the main pivot from scalar routing rules to an agentic verifier over normalized candidate packets.
+
 Each row:
 
 ```json

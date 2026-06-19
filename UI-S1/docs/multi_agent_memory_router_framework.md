@@ -374,10 +374,20 @@ The script will:
 ```text
 1. locate the latest global_step_* checkpoint,
 2. reject DCP-only checkpoints and require the final HF/PEFT checkpoint,
-3. generate verifier decisions for dev/test/dev_balanced/test_balanced,
+3. generate verifier decisions for dev/test/dev_balanced/test_balanced with batched non-thinking Qwen inference,
 4. evaluate JSON decisions with scripts/evaluate_verifier_agent.py,
 5. write post_train_summary.md with accuracy, macro F1, class precision/recall, and invalid JSON count.
 ```
+
+Useful runtime controls:
+
+```text
+BATCH_SIZE=8
+MAX_NEW_TOKENS=96
+SKIP_EXISTING=1
+```
+
+`SKIP_EXISTING=1` resumes a partial run by skipping splits that already have both predictions and metrics.
 
 Expected output:
 
@@ -387,6 +397,32 @@ outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/dev_predicti
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/test_predictions.jsonl
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/*_eval/verifier_eval_report.md
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/post_train_summary.md
+```
+
+### Post-Train Results
+
+Verifier Agent SFT completed successfully:
+
+```text
+checkpoint: outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/checkpoints/global_step_144
+final val/loss: 0.0057
+```
+
+Post-train evaluation:
+
+| split | accuracy | macro F1 | commit P/R | full P/R | replan P/R | invalid pred |
+|---|---:|---:|---:|---:|---:|---:|
+| dev | 0.9038 | 0.5844 | 0.6571/0.8846 | 0.7619/0.5517 | 0.9521/0.9353 | 5 |
+| test | 0.9325 | 0.6350 | 0.6364/1.0000 | 0.8182/0.7826 | 0.9877/0.9384 | 6 |
+| dev_balanced | 0.7917 | 0.5913 | 0.9587/0.9062 | 0.9577/0.5312 | 0.6250/0.9375 | 0 |
+| test_balanced | 0.8880 | 0.6672 | 0.9209/1.0000 | 0.9796/0.7500 | 0.8125/0.9141 | 3 |
+
+Interpretation:
+
+```text
+The trained Verifier Agent beats the best rule-agent hard-only macro F1 of 0.2162 by a large margin: test macro F1 is 0.6350.
+The agent preserves high replan quality on the original hard test distribution and recovers the rare commit_segment/use_full_history routes.
+Remaining invalid predictions are small in count and mostly malformed escaped JSON for replan decisions, not missing route knowledge.
 ```
 
 ### Stage 2: Calibrated Deployment With Coordinator

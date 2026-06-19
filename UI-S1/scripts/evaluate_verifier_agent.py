@@ -176,6 +176,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mode", choices=["predictions", "commit_if_segment_full_same_type", "commit_if_segment_full_same_type_else_full_or_replan", "commit_if_specific_progress_and_full_support", "three_way_commit_full_or_replan"], default="commit_if_segment_full_same_type")
     parser.add_argument("--predictions", default="", help="Optional JSONL of model outputs for mode=predictions")
     parser.add_argument("--threshold", type=float, default=0.70)
+    parser.add_argument("--limit", type=int, default=0)
     return parser.parse_args()
 
 
@@ -184,6 +185,8 @@ def main() -> None:
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     rows = iter_jsonl(Path(args.data))
+    if args.limit > 0:
+        rows = rows[: args.limit]
     gold = [str(row.get("target", {}).get("decision", "invalid")) for row in rows]
     if args.mode == "predictions":
         pred = load_prediction_decisions(Path(args.predictions))

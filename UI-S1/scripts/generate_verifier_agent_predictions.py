@@ -48,6 +48,8 @@ def load_model(base_model: Path, checkpoint: Path, dtype: torch.dtype, device: s
         raise ValueError(f"{checkpoint} is a sharded DCP checkpoint, not an inference-ready HF/PEFT checkpoint")
     tokenizer_source = checkpoint if (checkpoint / "tokenizer_config.json").exists() else base_model
     tokenizer = AutoTokenizer.from_pretrained(str(tokenizer_source), trust_remote_code=True)
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token = tokenizer.eos_token
     is_adapter = (checkpoint / "adapter_config.json").exists()
     if is_adapter:
         if PeftModel is None:
@@ -57,6 +59,7 @@ def load_model(base_model: Path, checkpoint: Path, dtype: torch.dtype, device: s
     else:
         model_source = checkpoint if (checkpoint / "config.json").exists() else base_model
         model = AutoModelForCausalLM.from_pretrained(str(model_source), torch_dtype=dtype, trust_remote_code=True)
+    model.generation_config.pad_token_id = tokenizer.pad_token_id
     model.eval()
     model.to(device)
     return tokenizer, model
@@ -75,6 +78,7 @@ def generate_one(tokenizer: Any, model: Any, messages: list[JsonDict], device: s
     encoded = tokenizer.apply_chat_template(
         prompt_messages,
         add_generation_prompt=True,
+        enable_thinking=False,
         tokenize=True,
         return_tensors="pt",
         return_dict=True,
@@ -94,6 +98,43 @@ def generate_one(tokenizer: Any, model: Any, messages: list[JsonDict], device: s
     return tokenizer.decode(generated, skip_special_tokens=True).strip()
 
 
+def generate_batch(
+    tokenizer: Any,
+    model: Any,
+    message_batches: list[list[JsonDict]],
+    device: str,
+    max_new_tokens: int,
+) -> list[str]:
+    prompts = [
+        tokenizer.apply_chat_template(
+            prompt_from_messages(messages),
+            add_generation_prompt=True,
+            enable_thinking=False,
+            tokenize=False,
+        )
+        for messages in message_batches
+    ]
+    previous_padding_side = tokenizer.padding_side
+    tokenizer.padding_side = "left"
+    try:
+        encoded = tokenizer(prompts, padding=True, return_tensors="pt")
+    finally:
+        tokenizer.padding_side = previous_padding_side
+    encoded = {key: value.to(device) for key, value in encoded.items()}
+    prompt_len = encoded["input_ids"].shape[-1]
+    with torch.inference_mode():
+        output = model.generate(
+            **encoded,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            temperature=None,
+            top_p=None,
+            use_cache=True,
+        )
+    generated = output[:, prompt_len:]
+    return tokenizer.batch_decode(generated, skip_special_tokens=True)
+
+
 def write_jsonl(path: Path, rows: list[JsonDict]) -> None:
     with path.open("w", encoding="utf-8") as handle:
         for row in rows:
@@ -109,6 +150,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dtype", default="bf16")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--max-new-tokens", type=int, default=192)
+    parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--limit", type=int, default=0)
     return parser.parse_args()
 
@@ -121,17 +163,27 @@ def main() -> None:
     if args.limit > 0:
         rows = rows[: args.limit]
     outputs = []
-    for index, row in enumerate(rows):
-        text = generate_one(tokenizer, model, row.get("messages", []), device, args.max_new_tokens)
-        outputs.append({
-            "index": index,
-            "assistant": text,
-            "decision": parse_decision_text(text),
-            "target": row.get("target"),
-            "metadata": row.get("metadata"),
-        })
-        if (index + 1) % 25 == 0:
-            print(f"generated {index + 1}/{len(rows)}")
+    batch_size = max(1, args.batch_size)
+    for start in range(0, len(rows), batch_size):
+        batch = rows[start : start + batch_size]
+        texts = generate_batch(
+            tokenizer,
+            model,
+            [row.get("messages", []) for row in batch],
+            device,
+            args.max_new_tokens,
+        )
+        for offset, (row, text) in enumerate(zip(batch, texts, strict=True)):
+            text = text.strip()
+            index = start + offset
+            outputs.append({
+                "index": index,
+                "assistant": text,
+                "decision": parse_decision_text(text),
+                "target": row.get("target"),
+                "metadata": row.get("metadata"),
+            })
+        print(f"generated {min(start + batch_size, len(rows))}/{len(rows)}")
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     write_jsonl(output_path, outputs)

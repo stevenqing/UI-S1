@@ -1455,3 +1455,45 @@ Important checkpoint note:
 The script rejects DCP-only checkpoints.
 Use the final HF/PEFT checkpoint saved at the last training step, or convert a DCP checkpoint before inference.
 ```
+
+## Step 23: Evaluate Trained Verifier Agent
+
+Question:
+
+```text
+Did the trained Verifier Agent actually beat the weak rule-agent baselines on hard GUI-Odyssey cases?
+```
+
+Training result:
+
+```text
+run: outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048
+checkpoint: checkpoints/global_step_144
+final val/loss: 0.0057
+```
+
+Inference fix:
+
+```text
+Qwen3.5 chat template enables thinking by default.
+Verifier generation must pass enable_thinking=False so the generated continuation matches SFT targets: empty think block followed by strict JSON.
+Batched generation is required; one-sample HF generation was too slow for the full post-train run.
+```
+
+Post-train metrics:
+
+| split | accuracy | macro F1 | commit P/R | full P/R | replan P/R | invalid pred |
+|---|---:|---:|---:|---:|---:|---:|
+| dev | 0.9038 | 0.5844 | 0.6571/0.8846 | 0.7619/0.5517 | 0.9521/0.9353 | 5 |
+| test | 0.9325 | 0.6350 | 0.6364/1.0000 | 0.8182/0.7826 | 0.9877/0.9384 | 6 |
+| dev_balanced | 0.7917 | 0.5913 | 0.9587/0.9062 | 0.9577/0.5312 | 0.6250/0.9375 | 0 |
+| test_balanced | 0.8880 | 0.6672 | 0.9209/1.0000 | 0.9796/0.7500 | 0.8125/0.9141 | 3 |
+
+Conclusion:
+
+```text
+Success criterion passed.
+Best rule-agent hard-only test macro F1: 0.2162.
+Trained Verifier Agent hard-only test macro F1: 0.6350.
+This supports the multi-agent framework claim: context agents propose candidates, while a trained verifier agent adjudicates commit_segment / use_full_history / replan decisions.
+```
