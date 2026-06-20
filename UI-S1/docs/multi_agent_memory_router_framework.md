@@ -397,6 +397,9 @@ outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/dev_predicti
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/test_predictions.jsonl
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/*_eval/verifier_eval_report.md
 outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/post_train_summary.md
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/runtime_summary.md
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/coordinator_eval/*/verifier_safety_gate_commands.jsonl
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/coordinator_eval/*/coordinator_report.md
 ```
 
 ### Post-Train Results
@@ -423,6 +426,65 @@ Interpretation:
 The trained Verifier Agent beats the best rule-agent hard-only macro F1 of 0.2162 by a large margin: test macro F1 is 0.6350.
 The agent preserves high replan quality on the original hard test distribution and recovers the rare commit_segment/use_full_history routes.
 Remaining invalid predictions are small in count and mostly malformed escaped JSON for replan decisions, not missing route knowledge.
+```
+
+### Runtime Coordinator Layer
+
+Recovered runtime scripts:
+
+```text
+scripts/verifier_agent_runtime.py
+scripts/apply_verifier_agent_coordinator.py
+scripts/evaluate_verifier_agent_coordinator.py
+```
+
+The Verifier Agent is used as an execution safety gate:
+
+| verifier decision | coordinator command |
+|---|---|
+| use_no_history | execute no_history_agent candidate |
+| commit_segment | execute segment_memory_agent candidate |
+| use_full_history | execute full_history_agent candidate |
+| replan | emit replan_request; do not execute |
+| invalid | emit replan_request; do not execute |
+
+Agent-facing command format:
+
+```json
+{
+  "status": "execute|replan",
+  "verifier_decision": "commit_segment",
+  "selected_agent": "segment_memory_agent",
+  "selected_condition": "segment_summary",
+  "action": {"action": "type", "text": "..."},
+  "replan_request": null
+}
+```
+
+For replan cases, `action` is null and `replan_request` contains the task, memory, all candidate agents, computed evidence, the raw verifier output, and recommended next steps:
+
+```text
+generate_alternative_candidate
+recover_missing_carried_value
+rewrite_current_instruction
+rerun_verifier_on_new_packet
+```
+
+Historical hard-split coordinator replay from the trained checkpoint:
+
+| split | policy | execute rate | action acc all | executed acc | unsafe exec | replan abstain recall |
+|---|---|---:|---:|---:|---:|---:|
+| dev | verifier_safety_gate | 0.1418 | 0.0987 | 0.6964 | 0.3036 | 0.9500 |
+| test | verifier_safety_gate | 0.1429 | 0.1013 | 0.7091 | 0.2909 | 0.9560 |
+| test | always_full_history | 1.0000 | 0.1351 | 0.1351 | 0.8649 | 0.0000 |
+| test | oracle_coordinator | 0.1143 | 0.1143 | 1.0000 | 0.0000 | 1.0000 |
+
+Interpretation:
+
+```text
+The verifier helps the agent by approving a small set of high-confidence actions and withholding most replan states.
+Do not map replan back to no_history or full_history; that destroys the safety behavior.
+The next runtime component is a replan resolver that produces a new candidate packet when the verifier refuses the current candidates.
 ```
 
 ### Stage 2: Calibrated Deployment With Coordinator

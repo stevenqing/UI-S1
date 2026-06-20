@@ -892,6 +892,29 @@ invalid predictions: 6 / 385
 
 This validates the main pivot from scalar routing rules to an agentic verifier over normalized candidate packets.
 
+Runtime usage:
+
+```text
+scripts/verifier_agent_runtime.py
+scripts/apply_verifier_agent_coordinator.py
+scripts/evaluate_verifier_agent_coordinator.py
+```
+
+The verifier should be used as a safety gate:
+
+```text
+approved route -> execute selected candidate action
+replan/invalid -> emit replan_request for another candidate source
+```
+
+Historical hard-test coordinator replay:
+
+```text
+verifier_safety_gate execute_rate: 0.1429
+verifier_safety_gate executed_action_accuracy: 0.7091
+verifier_safety_gate replan_abstain_recall: 0.9560
+```
+
 Each row:
 
 ```json

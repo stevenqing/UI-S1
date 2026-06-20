@@ -1497,3 +1497,70 @@ Best rule-agent hard-only test macro F1: 0.2162.
 Trained Verifier Agent hard-only test macro F1: 0.6350.
 This supports the multi-agent framework claim: context agents propose candidates, while a trained verifier agent adjudicates commit_segment / use_full_history / replan decisions.
 ```
+
+## Step 24: Recover Runtime Coordinator Usage
+
+Question:
+
+```text
+How do we use the trained verifier to help the actual agent, not only report route macro F1?
+```
+
+Recovered implementation:
+
+```text
+scripts/verifier_agent_runtime.py
+scripts/apply_verifier_agent_coordinator.py
+scripts/evaluate_verifier_agent_coordinator.py
+```
+
+Post-train runbook now also writes coordinator artifacts:
+
+```text
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/coordinator_eval/<split>/verifier_safety_gate_commands.jsonl
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/coordinator_eval/<split>/command_summary.json
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/coordinator_eval/<split>/coordinator_report.md
+outputs/verifier_agent_sft_qwen35_4gpu_fp32_len2048/post_train_eval/runtime_summary.md
+```
+
+Runtime rule:
+
+```text
+use_no_history -> execute no_history candidate
+commit_segment -> execute segment_memory candidate
+use_full_history -> execute full_history candidate
+replan/invalid -> abstain and emit replan_request
+```
+
+Historical hard-split coordinator replay:
+
+| split | policy | execute rate | action acc all | executed acc | unsafe exec | replan abstain recall |
+|---|---|---:|---:|---:|---:|---:|
+| dev | verifier_safety_gate | 0.1418 | 0.0987 | 0.6964 | 0.3036 | 0.9500 |
+| test | verifier_safety_gate | 0.1429 | 0.1013 | 0.7091 | 0.2909 | 0.9560 |
+| test | always_full_history | 1.0000 | 0.1351 | 0.1351 | 0.8649 | 0.0000 |
+| test | oracle_coordinator | 0.1143 | 0.1143 | 1.0000 | 0.0000 | 1.0000 |
+
+Interpretation:
+
+```text
+The verifier's useful online role is a safety gate and escalation detector.
+It approves a small number of high-confidence candidate actions and withholds most states that need replanning.
+Forced fallback from replan to no_history/full_history is not the intended use.
+```
+
+Recovered validation in the current workspace:
+
+```text
+python3 py_compile: passed
+bash -n runbook: passed
+git diff --check: passed
+synthetic apply/evaluate coordinator CLI: passed
+```
+
+Limitation of the current restored workspace:
+
+```text
+The generated checkpoint/output directories are not present locally, so full 385-row coordinator replay cannot be regenerated here without rerunning or restoring those artifacts.
+The runtime code and docs now match the previously established coordinator design and can regenerate commands when predictions/checkpoints are available.
+```
