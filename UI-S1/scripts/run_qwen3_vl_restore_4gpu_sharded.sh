@@ -106,7 +106,7 @@ merged.mkdir(parents=True, exist_ok=True)
 rows = []
 summaries = {}
 progress = {}
-for shard_dir in sorted(base.glob('shard_*')):
+for shard_dir in sorted(path for path in base.glob('shard_*') if path.is_dir()):
     result_path = shard_dir / 'model_behavior_results.jsonl'
     if not result_path.exists():
         raise SystemExit(f'missing {result_path}')

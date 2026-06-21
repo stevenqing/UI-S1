@@ -82,7 +82,10 @@ from verl.utils.ulysses import (
 from verl.workers.sharding_manager.fsdp_ulysses import FSDPUlyssesShardingManager
 
 if is_cuda_available:
-    from flash_attn.bert_padding import index_first_axis, pad_input, rearrange, unpad_input
+    try:
+        from flash_attn.bert_padding import index_first_axis, pad_input, rearrange, unpad_input
+    except ImportError:
+        index_first_axis = pad_input = rearrange = unpad_input = None
 elif is_npu_available:
     from transformers.integrations.npu_flash_attention import index_first_axis, pad_input, rearrange, unpad_input
 
@@ -113,6 +116,8 @@ class FSDPSFTTrainer:
         # Set sequence parallel size
         self.config.ulysses_sequence_parallel_size = getattr(self.config, "ulysses_sequence_parallel_size", 1)
         self.use_remove_padding = getattr(self.config, "use_remove_padding", False)
+        if self.use_remove_padding and any(fn is None for fn in [index_first_axis, pad_input, rearrange, unpad_input]):
+            raise ImportError("flash_attn is required when use_remove_padding=True on CUDA")
         if self.device_mesh.get_rank() == 0:
             print(f"Using sequence parallel size: {self.config.ulysses_sequence_parallel_size}")
             print(f"Using remove padding: {self.use_remove_padding}")
@@ -193,6 +198,7 @@ class FSDPSFTTrainer:
         log_gpu_memory_usage("Before model allocation", logger=logger)
 
         trust_remote_code = self.config.model.trust_remote_code
+        attn_implementation = self.config.model.get("attn_implementation", "eager")
         torch_dtype = self.config.model.fsdp_config.get("model_dtype", "fp32")
         torch_dtype = PrecisionType.to_dtype(torch_dtype)
         # load config first
@@ -225,7 +231,7 @@ class FSDPSFTTrainer:
                     local_model_path,
                     config=config,
                     torch_dtype=torch_dtype,
-                    attn_implementation="flash_attention_2",
+                    attn_implementation=attn_implementation,
                     trust_remote_code=trust_remote_code,
                 )
             else:
@@ -234,7 +240,7 @@ class FSDPSFTTrainer:
                     local_model_path,
                     config=config,
                     torch_dtype=torch_dtype,
-                    attn_implementation="flash_attention_2",
+                    attn_implementation=attn_implementation,
                     trust_remote_code=trust_remote_code,
                 )
 

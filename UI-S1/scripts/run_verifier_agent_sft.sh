@@ -22,6 +22,7 @@ LORA_ALPHA=${LORA_ALPHA:-64}
 LOGGER=${LOGGER:-console}
 MODEL_DTYPE=${MODEL_DTYPE:-fp32}
 TRANSFORMER_LAYER_CLS=${TRANSFORMER_LAYER_CLS:-Qwen3_5DecoderLayer}
+MODEL_ATTN_IMPLEMENTATION=${MODEL_ATTN_IMPLEMENTATION:-eager}
 
 case "$OUTPUT_DIR" in
   /*) ;;
@@ -103,6 +104,7 @@ model:
     offload_params: False
   enable_gradient_checkpointing: True
   trust_remote_code: True
+  attn_implementation: $MODEL_ATTN_IMPLEMENTATION
   lora_rank: $LORA_RANK
   lora_alpha: $LORA_ALPHA
   target_modules: all-linear
@@ -148,6 +150,7 @@ echo "LoRA rank:    $LORA_RANK"
 echo "Max length:   $MAX_LENGTH"
 echo "Model dtype:   $MODEL_DTYPE"
 echo "FSDP layer:    $TRANSFORMER_LAYER_CLS"
+echo "Attention:     $MODEL_ATTN_IMPLEMENTATION"
 
 cd "$PROJECT_DIR"
 
