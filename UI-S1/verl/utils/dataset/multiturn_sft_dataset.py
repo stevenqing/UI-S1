@@ -17,6 +17,7 @@ Multi-turn SFT dataset that supports training on conversation data with multiple
 """
 
 import logging
+import os
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
@@ -201,11 +202,12 @@ class MultiTurnSFTDataset(Dataset):
         full_tokens_list = full_tokens.tolist()
 
         if len(concat_tokens) != len(full_tokens_list) or not all(a == b for a, b in zip(concat_tokens, full_tokens_list)):
-            logging.warning(
-                f"Token mismatch detected! Full tokenization length: {len(full_tokens_list)}, Concatenated tokens length: {len(concat_tokens)}. Using concatenated version."
-                # f"full tokens text: {self.tokenizer.decode(full_tokens_list)}"
-                # f"concat tokens text: {self.tokenizer.decode(concat_tokens)}"
-            )
+            if os.environ.get("VERL_LOG_TOKEN_MISMATCH", "0") == "1":
+                logging.warning(
+                    f"Token mismatch detected! Full tokenization length: {len(full_tokens_list)}, Concatenated tokens length: {len(concat_tokens)}. Using concatenated version."
+                    # f"full tokens text: {self.tokenizer.decode(full_tokens_list)}"
+                    # f"concat tokens text: {self.tokenizer.decode(concat_tokens)}"
+                )
             return (
                 torch.tensor(concat_tokens, dtype=torch.long),
                 torch.tensor(concat_loss_mask, dtype=torch.long),

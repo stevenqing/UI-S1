@@ -23,6 +23,8 @@ LOGGER=${LOGGER:-console}
 MODEL_DTYPE=${MODEL_DTYPE:-fp32}
 TRANSFORMER_LAYER_CLS=${TRANSFORMER_LAYER_CLS:-Qwen3_5DecoderLayer}
 MODEL_ATTN_IMPLEMENTATION=${MODEL_ATTN_IMPLEMENTATION:-eager}
+SAVE_FREQ=${SAVE_FREQ:--1}
+TEST_FREQ=${TEST_FREQ:-100}
 
 case "$OUTPUT_DIR" in
   /*) ;;
@@ -128,8 +130,8 @@ trainer:
   total_training_steps: null
   logger: ['$LOGGER']
   seed: 17
-  save_freq: -1
-  test_freq: 100
+  save_freq: $SAVE_FREQ
+  test_freq: $TEST_FREQ
   nnodes: 1
   n_gpus_per_node: $N_GPUS
   max_ckpt_to_keep: 3
@@ -151,6 +153,9 @@ echo "Max length:   $MAX_LENGTH"
 echo "Model dtype:   $MODEL_DTYPE"
 echo "FSDP layer:    $TRANSFORMER_LAYER_CLS"
 echo "Attention:     $MODEL_ATTN_IMPLEMENTATION"
+echo "Save freq:     $SAVE_FREQ"
+echo "Test freq:     $TEST_FREQ"
+echo "Log file:      $LOG_DIR/${EXPERIMENT_NAME}.log"
 
 cd "$PROJECT_DIR"
 
@@ -158,4 +163,4 @@ cd "$PROJECT_DIR"
   -m verl.trainer.fsdp_sft_trainer \
   --config-path="$CONFIG_DIR" \
   --config-name="$CONFIG_NAME" \
-  2>&1 | tee "$LOG_DIR/${EXPERIMENT_NAME}.log"
+  > "$LOG_DIR/${EXPERIMENT_NAME}.log" 2>&1
