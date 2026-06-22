@@ -602,7 +602,22 @@ The concrete CLI for offline replay is:
   --safety-mode balanced
 ```
 
-Full-distribution GUI-Odyssey replay with checkpoint `global_step_144`:
+Full-distribution GUI-Odyssey replay with checkpoint `global_step_144`.
+
+Primary metric is strict episode success: an episode succeeds only if all evaluated steps in that episode are correct. Immediate `replan` is counted as failure until a resolver solves it.
+
+| policy | split | episode success | delta vs no_history | resolver-oracle episode success | step/action acc | step delta | hard unsafe exec |
+|---|---|---:|---:|---:|---:|---:|---:|
+| no_history baseline | dev | 0.7751 | 0 | n/a | 0.9316 | 0 | n/a |
+| hybrid raw | dev | 0.7886 | +9 | 0.9925 | 0.9376 | +27 | 8 |
+| hybrid balanced | dev | 0.7886 | +9 | 0.9955 | 0.9376 | +27 | 4 |
+| hybrid high_precision | dev | 0.7811 | +4 | 0.9970 | 0.9352 | +16 | 3 |
+| no_history baseline | test | 0.7796 | 0 | n/a | 0.9284 | 0 | n/a |
+| hybrid raw | test | 0.7946 | +10 | 0.9835 | 0.9338 | +23 | 20 |
+| hybrid balanced | test | 0.7946 | +10 | 0.9925 | 0.9336 | +22 | 9 |
+| hybrid high_precision | test | 0.7931 | +9 | 0.9955 | 0.9322 | +16 | 5 |
+
+Step/action-level diagnostics:
 
 | policy | split | immediate action acc | delta vs no_history | execute rate | hard executed acc | hard unsafe exec | replan count | missed executable |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -647,9 +662,9 @@ Generated split sizes:
 
 Resolver upper-bound on top of balanced hybrid policy:
 
-| split | balanced hybrid acc | if resolver solves 25% replan | 50% | 75% | oracle |
-|---|---:|---:|---:|---:|---:|
-| dev | 0.9376 | 0.9530 | 0.9684 | 0.9837 | 0.9991 |
-| test | 0.9336 | 0.9497 | 0.9657 | 0.9818 | 0.9979 |
+| split | balanced episode success | resolver oracle episode success | balanced step/action acc | resolver oracle step/action acc |
+|---|---:|---:|---:|---:|
+| dev | 0.7886 | 0.9955 | 0.9376 | 0.9991 |
+| test | 0.7946 | 0.9925 | 0.9336 | 0.9979 |
 
-This makes the resolver the most promising next performance lever. Even a modest 25% replan recovery rate would be a much larger gain than further tuning the verifier safety filter.
+This makes the resolver the most promising next performance lever. The balanced verifier already improves strict test episode success by 10 episodes over no-history. If a resolver solves the remaining replan requests, the oracle upper bound is 0.9925 episode success on test.

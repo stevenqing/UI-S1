@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -100,6 +101,18 @@ def write_summary(path: Path, all_rows: list[JsonDict], hard_keys: set[tuple[Any
     hard_commands = [command for command in commands if command.get("hybrid_hard_state")]
     hard_execute = [command for command in hard_commands if command.get("status") == "execute"]
     hard_correct = [command for command in hard_execute if command.get("known_correct")]
+    baseline_by_episode: dict[str, list[bool]] = defaultdict(list)
+    command_by_episode: dict[str, list[bool]] = defaultdict(list)
+    resolver_oracle_by_episode: dict[str, list[bool]] = defaultdict(list)
+    for row, command in zip(all_rows, commands, strict=True):
+        episode_id = str((row.get("metadata", {}) or {}).get("episode_id", "unknown"))
+        baseline_by_episode[episode_id].append(condition_value_match(row, "no_history"))
+        command_correct = command.get("status") == "execute" and bool(command.get("known_correct"))
+        command_by_episode[episode_id].append(command_correct)
+        resolver_oracle_by_episode[episode_id].append(command_correct or command.get("status") == "replan")
+    baseline_episode_success = sum(all(values) for values in baseline_by_episode.values())
+    hybrid_episode_success = sum(all(values) for values in command_by_episode.values())
+    resolver_oracle_episode_success = sum(all(values) for values in resolver_oracle_by_episode.values())
     summary = {
         **base_summary,
         "policy": "hybrid_no_history_then_verifier",
@@ -108,6 +121,14 @@ def write_summary(path: Path, all_rows: list[JsonDict], hard_keys: set[tuple[Any
         "easy_state_count": len(all_rows) - len(hard_keys),
         "baseline_no_history_correct": baseline_no_history_correct,
         "baseline_no_history_action_accuracy": baseline_no_history_correct / len(all_rows) if all_rows else 0.0,
+        "episode_count": len(baseline_by_episode),
+        "baseline_no_history_episode_success": baseline_episode_success,
+        "baseline_no_history_episode_success_rate": baseline_episode_success / len(baseline_by_episode) if baseline_by_episode else 0.0,
+        "hybrid_episode_success": hybrid_episode_success,
+        "hybrid_episode_success_rate": hybrid_episode_success / len(command_by_episode) if command_by_episode else 0.0,
+        "delta_episode_success_vs_no_history": hybrid_episode_success - baseline_episode_success,
+        "resolver_oracle_episode_success": resolver_oracle_episode_success,
+        "resolver_oracle_episode_success_rate": resolver_oracle_episode_success / len(resolver_oracle_by_episode) if resolver_oracle_by_episode else 0.0,
         "delta_correct_vs_no_history": len([command for command in commands if command.get("known_correct")]) - baseline_no_history_correct,
         "hard_execute_count": len(hard_execute),
         "hard_executed_action_accuracy": len(hard_correct) / len(hard_execute) if hard_execute else 0.0,
