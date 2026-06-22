@@ -24,7 +24,14 @@ WAIT_SECONDS=${WAIT_SECONDS:-21600}
 POLL_SECONDS=${POLL_SECONDS:-300}
 
 latest_checkpoint() {
-  find "$RUN_DIR/checkpoints" -maxdepth 1 -type d -name 'global_step_*' 2>/dev/null | sort -V | tail -1
+  find "$RUN_DIR/checkpoints" -maxdepth 1 -type d -name 'global_step_*' 2>/dev/null \
+    | while read -r checkpoint_dir; do
+        if [[ ! -f "$checkpoint_dir/.dcp_checkpoint" ]]; then
+          echo "$checkpoint_dir"
+        fi
+      done \
+    | sort -V \
+    | tail -1
 }
 
 wait_for_checkpoint() {

@@ -561,3 +561,95 @@ The next required evidence is:
 ```text
 train the verifier agent and show it beats rule-agent baselines on hard GUI-Odyssey cases, then transfer the same packet protocol to AndroidControl.
 ```
+
+## Runtime Integration After Qwen3.5 Verifier SFT
+
+The trained verifier should be used as a selective hard-state safety gate, not as a full replacement for the base GUI actor.
+
+Recommended online policy:
+
+```text
+1. Local Context Agent always proposes no_history action.
+2. Cheap hard-state detector decides whether the current state needs arbitration.
+3. If not hard, execute no_history immediately.
+4. If hard, build the candidate packet:
+  - no_history_agent
+  - segment_memory_agent
+  - full_history_agent
+  - distractor_memory_agent
+5. Run Verifier Agent on the packet.
+6. Execution Coordinator:
+  - commit_segment/use_full_history -> execute selected candidate if safety filter passes
+  - replan/invalid/rejected executable route -> emit replan_request
+7. Resolver Agent consumes replan_request and generates a new candidate packet.
+```
+
+The important design rule is:
+
+```text
+replan is an escalation signal, not a fallback to no_history or full_history.
+```
+
+The concrete CLI for offline replay is:
+
+```bash
+.venv/bin/python scripts/apply_verifier_agent_hybrid_policy.py \
+  --all-data datasets/verifier_agent_gui_odyssey_all_restore_20260620/test.jsonl \
+  --hard-data datasets/verifier_agent_gui_odyssey_hard_restore_20260620/test.jsonl \
+  --hard-predictions outputs/verifier_agent_sft_qwen35_retrain_bf16_mb4_len2048_8gpu_epoch_ckpt/post_train_eval/test_predictions.jsonl \
+  --output outputs/verifier_agent_sft_qwen35_retrain_bf16_mb4_len2048_8gpu_epoch_ckpt/hybrid_policy/balanced/test/hybrid_commands.jsonl \
+  --summary outputs/verifier_agent_sft_qwen35_retrain_bf16_mb4_len2048_8gpu_epoch_ckpt/hybrid_policy/balanced/test/hybrid_summary.json \
+  --safety-mode balanced
+```
+
+Full-distribution GUI-Odyssey replay with checkpoint `global_step_144`:
+
+| policy | split | immediate action acc | delta vs no_history | execute rate | hard executed acc | hard unsafe exec | replan count | missed executable |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| no_history baseline | dev | 0.9316 | 0 | 1.0000 | n/a | n/a | 0 | n/a |
+| hybrid raw | dev | 0.9376 | +27 | 0.9394 | 0.7714 | 8 | 271 | 0 |
+| hybrid balanced | dev | 0.9376 | +27 | 0.9385 | 0.8710 | 4 | 275 | 0 |
+| hybrid high_precision | dev | 0.9352 | +16 | 0.9358 | 0.8421 | 3 | 287 | 9 |
+| no_history baseline | test | 0.9284 | 0 | 1.0000 | n/a | n/a | 0 | n/a |
+| hybrid raw | test | 0.9338 | +23 | 0.9385 | 0.5349 | 20 | 263 | 2 |
+| hybrid balanced | test | 0.9336 | +22 | 0.9357 | 0.7097 | 9 | 275 | 5 |
+| hybrid high_precision | test | 0.9322 | +16 | 0.9333 | 0.7619 | 5 | 285 | 10 |
+
+Deployment recommendation:
+
+```text
+Use balanced mode by default: it keeps almost all raw-mode gains while removing most unsafe hard-state executions.
+Use high_precision mode when safety is much more important than immediate recovery.
+Use raw mode only when immediate success is more important than avoiding unsafe hard-state execution.
+```
+
+This gives a direct improvement over the no-history agent on the full distribution while preserving the multi-agent safety claim. The next performance gain should come from the resolver agent: every hard-state `replan_request` is a chance to recover an otherwise failing step.
+
+## Resolver Agent Training Target
+
+The next agent should consume `replan_request` and emit a corrected low-level GUI action. We prepared this dataset with:
+
+```bash
+.venv/bin/python scripts/prepare_resolver_agent_sft_data.py \
+  --hard-dir datasets/verifier_agent_gui_odyssey_hard_restore_20260620 \
+  --hybrid-dir outputs/verifier_agent_sft_qwen35_retrain_bf16_mb4_len2048_8gpu_epoch_ckpt/hybrid_policy \
+  --mode balanced \
+  --output-dir datasets/resolver_agent_gui_odyssey_balanced_20260622
+```
+
+Generated split sizes:
+
+| split | rows | main target actions |
+|---|---:|---|
+| train | 2225 | terminate:1086, swipe:341, system_button:332, click:241, type:223 |
+| dev | 275 | terminate:123, swipe:45, system_button:39, type:37, click:28 |
+| test | 275 | terminate:135, click:52, system_button:40, swipe:26, type:22 |
+
+Resolver upper-bound on top of balanced hybrid policy:
+
+| split | balanced hybrid acc | if resolver solves 25% replan | 50% | 75% | oracle |
+|---|---:|---:|---:|---:|---:|
+| dev | 0.9376 | 0.9530 | 0.9684 | 0.9837 | 0.9991 |
+| test | 0.9336 | 0.9497 | 0.9657 | 0.9818 | 0.9979 |
+
+This makes the resolver the most promising next performance lever. Even a modest 25% replan recovery rate would be a much larger gain than further tuning the verifier safety filter.
