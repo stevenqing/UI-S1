@@ -2,7 +2,7 @@
 
 Key differences from AC's evaluate_android_control_action:
 - GT coordinates are in [0,1000] normalized space (not pixel space).
-- Predicted coordinates are in resized pixel space (model output) — must convert to [0,1000].
+- Predicted coordinates from the GUI-Odyssey/Qwen action template are also in [0,1000].
 - Click matching uses sam2_bbox (in [0,1000]) OR Euclidean distance <= 140 (in [0,1000] space).
 - Scroll matching compares derived directions.
 - Text matching uses ANLS >= 0.5 (Levenshtein).
@@ -38,20 +38,17 @@ def get_scroll_direction(coord1, coord2):
 
 
 def pred_coord_to_1k(coord, resized_width, resized_height):
-    """Convert predicted coordinate from resized pixel space to [0,1000] space.
+    """Return predicted coordinate in [0,1000] space.
 
     Args:
-        coord: [x, y] in resized pixel space.
-        resized_width: Width of the resized image.
-        resized_height: Height of the resized image.
+        coord: [x, y] in the GUI-Odyssey/Qwen normalized coordinate system.
+        resized_width: Unused; kept for compatibility with older callers.
+        resized_height: Unused; kept for compatibility with older callers.
 
     Returns:
         [x, y] in [0,1000] space.
     """
-    return [
-        coord[0] / resized_width * 1000,
-        coord[1] / resized_height * 1000,
-    ]
+    return [coord[0], coord[1]]
 
 
 def enlarge_bbox_1k(bbox, scale_factor=BBOX_ENLARGE_FACTOR):
@@ -102,7 +99,7 @@ def evaluate_odyssey_action(pred_action, gt_check, resized_width, resized_height
 
     Args:
         pred_action: Dict from model output, e.g. {"action": "click", "coordinate": [x,y]}.
-                     Coordinates are in resized pixel space.
+                 Coordinates are in [0,1000] space.
         gt_check: Dict with GT action + check_options, e.g.
                   {"action": "click", "coordinate": [x,y], "candidate_bbox": [[x1,y1,x2,y2]]}.
                   Coordinates are in [0,1000] space.

@@ -13,7 +13,7 @@ import sys, os
 from typing import List, Dict, Any, Optional, Tuple, Union
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from x.qwen.image import smart_resize
-END_POINT = "http://localhost:8000/v1"  # Replace with actual endpoint
+END_POINT = os.environ.get("QWENVL_ENDPOINT", "http://localhost:8000/v1")
 BBOX_ENLARGE_FACTOR = 1.2
 POINT_DISTANCE_THRESHOLD = 0.04
 
@@ -302,6 +302,9 @@ def call_mobile_agent_vllm(messages, model_name='qwen25vl_7b_1im_high_nlp_v9.7.1
             #     kwargs = {'extra_body': {"top_k": 500}, 'temperature': 10.0}
             # else:
             kwargs = {'extra_body': {"top_k": 1}} # TODO
+            max_tokens = os.environ.get("QWENVL_MAX_TOKENS")
+            if max_tokens:
+                kwargs['max_tokens'] = int(max_tokens)
             # print(kwargs)
             chat_completion_from_url = bot.chat.completions.create(model=model_name, messages=messages, **kwargs)
             # logging.error(chat_completion_from_url)

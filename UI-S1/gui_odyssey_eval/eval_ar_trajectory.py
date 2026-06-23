@@ -93,11 +93,15 @@ def length_bucket(n):
         return 'vlong(16+)'
 
 
-def load_odyssey_trajectories(jsonl_path, max_episodes=None):
+def load_odyssey_trajectories(jsonl_path, max_episodes=None, start_episode=0, end_episode=None):
     """Load GUI-Odyssey episodes from JSONL (output of convert_to_eval_format.py)."""
     data = []
     with open(jsonl_path) as f:
-        for line in f:
+        for idx, line in enumerate(f):
+            if idx < start_episode:
+                continue
+            if end_episode is not None and idx >= end_episode:
+                break
             episode = json.loads(line.strip())
             data.append(episode)
             if max_episodes and len(data) >= max_episodes:
@@ -159,19 +163,28 @@ def process_episode(episode, args):
                 model_name=args.model_name,
             )
 
-            pred = safe_parse_response(fm, model_response)
-            pred_action = pred['action_content']
+            parse_ok = True
+            parse_error = ''
+            try:
+                pred = safe_parse_response(fm, model_response)
+                pred_action = pred['action_content']
 
-            type_match, extract_match = evaluate_odyssey_action(
-                pred_action, current_check,
-                resized_width, resized_height,
-            )
-            type_match = bool(type_match)
-            extract_match = bool(extract_match)
+                type_match, extract_match = evaluate_odyssey_action(
+                    pred_action, current_check,
+                    resized_width, resized_height,
+                )
+                type_match = bool(type_match)
+                extract_match = bool(extract_match)
+            except Exception as parse_exc:
+                pred_action = None
+                type_match = False
+                extract_match = False
+                parse_ok = False
+                parse_error = repr(parse_exc)
 
             # Compute pred coordinate in [0,1000] space for downstream analysis
             p_coord_1k = None
-            pred_coord_raw = pred_action.get('coordinate')
+            pred_coord_raw = pred_action.get('coordinate') if isinstance(pred_action, dict) else None
             if pred_coord_raw and isinstance(pred_coord_raw, (list, tuple)) and len(pred_coord_raw) >= 2:
                 try:
                     p_coord_1k = pred_coord_to_1k(
@@ -188,6 +201,9 @@ def process_episode(episode, args):
                 'type_match': type_match,
                 'extract_match': extract_match,
                 'pred_action': pred_action,
+                'raw_response': model_response,
+                'parse_ok': parse_ok,
+                'parse_error': parse_error,
                 'gt_action': gt_action,
                 'gt_action_type': gt_action['action'],
                 'resized_width': resized_width,
@@ -234,15 +250,34 @@ def main(args):
 
     os.makedirs(args.output_dir, exist_ok=True)
 
-    # Clear previous results
     out_path = os.path.join(args.output_dir, 'trajectory_results.jsonl')
-    if os.path.exists(out_path):
+    completed_episode_ids = set()
+    if args.resume and os.path.exists(out_path):
+        with open(out_path, encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    episode_id = json.loads(line).get('episode_id')
+                except json.JSONDecodeError:
+                    continue
+                if episode_id is not None:
+                    completed_episode_ids.add(episode_id)
+        print(f"Resume mode: loaded {len(completed_episode_ids)} completed episodes from {out_path}")
+    elif os.path.exists(out_path):
         os.remove(out_path)
 
     data = load_odyssey_trajectories(
         jsonl_path=args.jsonl_file,
         max_episodes=args.max_episodes,
+        start_episode=args.start_episode,
+        end_episode=args.end_episode,
     )
+    if completed_episode_ids:
+        before_resume_filter = len(data)
+        data = [ep for ep in data if ep.get('episode_id') not in completed_episode_ids]
+        print(f"Resume mode: skipped {before_resume_filter - len(data)} completed episodes")
     print(f"Loaded {len(data)} episodes. Starting evaluation...")
 
     results = []
@@ -307,8 +342,12 @@ def main(args):
     summary = {
         'model': args.model_name,
         'split': args.split_name,
+        'start_episode': args.start_episode,
+        'end_episode': args.end_episode,
         'total_episodes': len(results),
         **metrics,
+        'step_success_rate': metrics.get('scattered_progress', 0),
+        'episode_success_rate': metrics.get('tsr', 0),
         'action_type_stats': action_stats,
         'length_bucket_stats': length_metrics,
         'category_stats': category_metrics,
@@ -360,7 +399,13 @@ if __name__ == '__main__':
                         help='Number of parallel workers')
     parser.add_argument('--max_episodes', type=int, default=None,
                         help='Limit episodes for testing')
+    parser.add_argument('--start_episode', type=int, default=0,
+                        help='Start episode index, inclusive')
+    parser.add_argument('--end_episode', type=int, default=None,
+                        help='End episode index, exclusive')
     parser.add_argument('--no_stop', action='store_true',
                         help='Continue evaluating all steps after errors (no stop-on-error)')
+    parser.add_argument('--resume', action='store_true',
+                        help='Keep existing trajectory_results.jsonl and skip completed episode_id rows')
     args = parser.parse_args()
     main(args)
