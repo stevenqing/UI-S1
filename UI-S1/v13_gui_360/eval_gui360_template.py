@@ -387,6 +387,7 @@ def evaluate_episode(
     use_plan: bool = False,
     guidances: Optional[List[str]] = None,
     image_max_pixels: Optional[int] = None,
+    max_tokens: int = 1024,
 ) -> Dict[str, Any]:
     """Evaluate a single episode autoregressively (or with GT history)."""
     episode_id = episode["episode_id"]
@@ -438,7 +439,7 @@ def evaluate_episode(
             response = client.chat.completions.create(
                 model=model_name,
                 messages=messages,
-                max_tokens=1024,
+                max_tokens=max_tokens,
                 temperature=0.0,
             )
             pred_text = response.choices[0].message.content or ""
@@ -535,6 +536,10 @@ def main():
                         help="Path to pre-generated per-step guidance JSON (from generate_step_guidance.py)")
     parser.add_argument("--image_max_pixels", type=int, default=None,
                         help="Resize images to at most this many pixels before sending to API (e.g., 602112)")
+    parser.add_argument("--max_tokens", type=int, default=1024,
+                        help="Maximum tokens to generate per step")
+    parser.add_argument("--request_timeout", type=float, default=None,
+                        help="OpenAI client request timeout in seconds")
     parser.add_argument("--start", type=int, default=0,
                         help="Start index for episode slicing (for parallel sharding)")
     parser.add_argument("--end", type=int, default=None,
@@ -551,7 +556,10 @@ def main():
     print(f"Loaded {len(episodes)} episodes from {args.test_data} "
           f"(shard [{args.start}:{args.end}] of {total_loaded})")
 
-    client = OpenAI(base_url=args.api_url, api_key="dummy")
+    client_kwargs = {"base_url": args.api_url, "api_key": "dummy"}
+    if args.request_timeout is not None:
+        client_kwargs["timeout"] = args.request_timeout
+    client = OpenAI(**client_kwargs)
 
     # Load pre-generated guidance if provided
     guidance_data = None
@@ -580,7 +588,7 @@ def main():
                 evaluate_episode, client, args.model_name, ep,
                 args.stop_on_error, args.match_threshold, args.gt_history,
                 args.history_mode, args.use_plan, ep_guidances,
-                args.image_max_pixels,
+                args.image_max_pixels, args.max_tokens,
             )] = ep["episode_id"]
 
         pbar = tqdm(total=len(episodes), desc="Evaluating")
@@ -619,6 +627,8 @@ def main():
         "gt_history": args.gt_history,
         "history_mode": args.history_mode,
         "use_plan": args.use_plan,
+        "max_tokens": args.max_tokens,
+        "request_timeout": args.request_timeout,
         "prompt_format": "gui360_template",
     }
 

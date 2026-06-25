@@ -300,6 +300,21 @@ class IterativeCooperativeVLMWrapper(nn.Module):
         mean_w = w_sum / w_count if w_count > 0 else 0.5
         return loss, mean_w
 
+    def get_route_values_for_loss(self) -> Optional[torch.Tensor]:
+        """Return differentiable mean token routing values for route loss.
+
+        Shape is [batch, seq_len]. Modules whose routing fallback is a constant
+        0.5 are ignored because they do not carry gradient to route weights.
+        """
+        route_tensors = []
+        for module in self.coop_modules:
+            route = getattr(module, "_last_routing_weights_for_loss", None)
+            if route is not None and route.requires_grad:
+                route_tensors.append(route.squeeze(-1))
+        if not route_tensors:
+            return None
+        return torch.stack(route_tensors, dim=0).mean(dim=0)
+
     # -- Trainable parameter count -----------------------------------------
 
     def count_trainable_params(self) -> Dict[str, int]:
@@ -333,8 +348,6 @@ class IterativeCooperativeVLMWrapper(nn.Module):
         route_state = {}
         comm_state = {}
         for name, param in self.named_parameters():
-            if not param.requires_grad:
-                continue
             if "route_weights" in name:
                 route_state[name] = param.data.cpu()
             elif "comm_" in name:

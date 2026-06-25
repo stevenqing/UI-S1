@@ -83,6 +83,7 @@ class IterativeCooperativeLoRALinear(nn.Module):
 
         # Cache last routing weights for balance loss computation
         self._last_routing_weights: Optional[torch.Tensor] = None
+        self._last_routing_weights_for_loss: Optional[torch.Tensor] = None
 
         # Gate recording for CoPDA phase scores (V14)
         self._record_gates: bool = False
@@ -121,6 +122,7 @@ class IterativeCooperativeLoRALinear(nn.Module):
         # If no route weight set, pass through base only (ref model mode)
         if self._route_weight is None:
             self._last_routing_weights = None
+            self._last_routing_weights_for_loss = None
             return base_out
 
         x_drop = self.lora_dropout(x)
@@ -145,6 +147,7 @@ class IterativeCooperativeLoRALinear(nn.Module):
                 device=x_drop.device, dtype=dtype,
             )
         self._last_routing_weights = r.detach()
+        self._last_routing_weights_for_loss = r if r.requires_grad else None
 
         # Dual low-rank projections
         h_1 = F.linear(x_drop, self.lora_A_1.to(dtype))  # [B, S, r]

@@ -288,7 +288,7 @@ class V15TrajectoryGSPOTrainer:
     # -- model (V13 IterativeCooperativeVLMWrapper, shared B) ---------------
 
     def _setup_model(self):
-        from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+        from transformers import AutoConfig, AutoProcessor, Qwen2_5_VLForConditionalGeneration
         from v13_gui_360.iterative_cooperative_wrapper import IterativeCooperativeVLMWrapper
 
         args = self.args
@@ -302,8 +302,11 @@ class V15TrajectoryGSPOTrainer:
 
         if self.rank == 0:
             logger.info(f"Loading base model: {args.model_path}")
+        config = AutoConfig.from_pretrained(args.model_path, trust_remote_code=True)
+        self._patch_legacy_mrope_config(config)
         base_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
             args.model_path,
+            config=config,
             torch_dtype=torch.bfloat16,
             trust_remote_code=True,
         )
@@ -342,6 +345,22 @@ class V15TrajectoryGSPOTrainer:
             logger.info(f"Model ready (V13 shared B): {counts['total']:,} trainable params "
                         f"(lora={counts['lora']:,}, route={counts['route_weights']:,}, "
                         f"comm={counts['comm']:,})")
+
+    @staticmethod
+    def _patch_legacy_mrope_config(config):
+        """Make Qwen2.5-VL checkpoints with legacy mrope load in newer transformers.
+
+        vLLM performs this compatibility replacement internally. HF training does
+        not, and recent transformers builds can raise KeyError('mrope') during
+        model construction. The checkpoint weights are unchanged; only the loaded
+        config object is normalized for this process.
+        """
+        for candidate in (config, getattr(config, "text_config", None)):
+            if candidate is None:
+                continue
+            rope_scaling = getattr(candidate, "rope_scaling", None)
+            if isinstance(rope_scaling, dict) and rope_scaling.get("rope_type") == "mrope":
+                rope_scaling["rope_type"] = "default"
 
     # -- resume from RL checkpoint -----------------------------------------
 

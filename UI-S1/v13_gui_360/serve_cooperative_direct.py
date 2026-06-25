@@ -37,7 +37,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel as PydanticBaseModel
 from typing import List, Union
 from PIL import Image
-from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+from transformers import AutoConfig, AutoProcessor, Qwen2_5_VLForConditionalGeneration
 
 sys.stdout.reconfigure(line_buffering=True)
 
@@ -84,6 +84,14 @@ class ChatCompletionResponse(PydanticBaseModel):
 
 def load_models(args):
     global WORKERS, PROCESSOR, MODEL_NAME
+    def patch_legacy_mrope_config(config):
+        for candidate in (config, getattr(config, "text_config", None)):
+            if candidate is None:
+                continue
+            rope_scaling = getattr(candidate, "rope_scaling", None)
+            if isinstance(rope_scaling, dict) and rope_scaling.get("rope_type") == "mrope":
+                rope_scaling["rope_type"] = "default"
+
     MODEL_NAME = args.served_model_name or "cooperative"
 
     num_gpus = args.num_gpus if args.num_gpus > 0 else torch.cuda.device_count()
@@ -98,11 +106,12 @@ def load_models(args):
 
     for gpu_id in range(num_gpus):
         print(f"  Loading replica on GPU {gpu_id}...")
+        config = AutoConfig.from_pretrained(args.base_model, trust_remote_code=True)
+        patch_legacy_mrope_config(config)
         base_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-            args.base_model, torch_dtype=torch.bfloat16,
+            args.base_model, config=config, torch_dtype=torch.bfloat16,
             trust_remote_code=True, device_map={"": gpu_id},
         )
-
         if args.version == "v14":
             from v14_gui_360.cooperative_wrapper import IterativeCooperativeVLMWrapper
             model = IterativeCooperativeVLMWrapper(

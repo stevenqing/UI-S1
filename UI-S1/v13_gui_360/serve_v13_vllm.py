@@ -398,7 +398,7 @@ def main():
     if args.served_model_name:
         server_args.extend(["--served-model-name", args.served_model_name])
 
-    from vllm.utils.argparse_utils import FlexibleArgumentParser
+    from vllm.utils import FlexibleArgumentParser
     from vllm.entrypoints.openai.cli_args import (
         make_arg_parser, validate_parsed_serve_args,
     )

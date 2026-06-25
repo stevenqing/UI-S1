@@ -1,0 +1,1 @@
+"""Offline visual-transition optimization utilities for GUI-360."""
