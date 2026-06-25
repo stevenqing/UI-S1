@@ -14,6 +14,7 @@ end_coordinate. Everything else in the assistant target is treated as WHAT.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import json
 import os
 import sys
@@ -143,6 +144,17 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
         super().__init__(args)
         if args.disable_gradient_checkpointing:
             self._set_grad_checkpointing(False)
+        self._initial_comm_params = {
+            name: param.detach().float().clone()
+            for name, param in self.model.named_parameters()
+            if "comm_" in name
+        }
+        if args.behavior_anchor_weight > 0:
+            # Reference/current log-prob anchors must not compare different
+            # dropout masks. Gradients still flow in eval mode.
+            self.model.eval()
+        if args.comm_loss_weight > 0:
+            self.model.enable_gate_recording()
 
     def _setup_optimizer(self):
         self._apply_trainable_mode()
@@ -167,6 +179,12 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
                 )
             elif mode == "where_heavy":
                 trainable = "route_weights" in name or "lora_A_2" in name
+            elif mode == "comm_gate_only":
+                trainable = "comm_gate" in name
+            elif mode == "comm_21_only":
+                trainable = "comm_gate_21" in name or "comm_W_21" in name
+            elif mode == "comm_only":
+                trainable = "comm_" in name
             else:
                 raise ValueError(f"Unknown trainable_mode: {mode}")
             param.requires_grad = trainable
@@ -179,6 +197,12 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
                     counts["where_A"] += param.numel()
                 elif "lora_B" in name:
                     counts["shared_B"] += param.numel()
+                elif "comm_gate" in name:
+                    counts["comm_gate"] += param.numel()
+                elif "comm_W_21" in name:
+                    counts["comm_w21"] += param.numel()
+                elif "comm_W_12" in name:
+                    counts["comm_w12"] += param.numel()
                 elif "comm_" in name:
                     counts["comm"] += param.numel()
                 else:
@@ -224,6 +248,97 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
         full_ids = torch.cat([prompt_inputs["input_ids"][0], response_ids], dim=0)
         return prompt_inputs, full_ids, role_labels, prompt_len
 
+    def comm_gate_l2_loss(self) -> torch.Tensor:
+        if self.args.comm_l2_weight <= 0 or not self._initial_comm_params:
+            return torch.tensor(0.0, device=self.device)
+        terms = []
+        for name, param in self.model.named_parameters():
+            if name in self._initial_comm_params and param.requires_grad:
+                ref = self._initial_comm_params[name].to(param.device)
+                terms.append((param.float() - ref).pow(2).mean())
+        if not terms:
+            return torch.tensor(0.0, device=self.device)
+        return torch.stack(terms).mean()
+
+    @contextmanager
+    def use_initial_comm_gates(self):
+        if not self._initial_comm_params:
+            yield
+            return
+
+        saved_params = {}
+        with torch.no_grad():
+            for name, param in self.model.named_parameters():
+                if name not in self._initial_comm_params:
+                    continue
+                saved_params[name] = param.detach().clone()
+                ref = self._initial_comm_params[name].to(device=param.device, dtype=param.dtype)
+                param.copy_(ref)
+        try:
+            yield
+        finally:
+            with torch.no_grad():
+                for name, param in self.model.named_parameters():
+                    if name in saved_params:
+                        param.copy_(saved_params[name].to(device=param.device, dtype=param.dtype))
+
+    def reference_response_logp(
+        self,
+        fwd_kwargs: Dict[str, torch.Tensor],
+        resp_labels: torch.Tensor,
+        prompt_len: int,
+    ) -> Optional[torch.Tensor]:
+        if self.args.behavior_anchor_weight <= 0:
+            return None
+        with self.use_initial_comm_gates():
+            with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
+                ref_outputs = self.model.forward(**fwd_kwargs)
+                ref_logits = ref_outputs.logits[:, prompt_len - 1:-1, :]
+                ref_logp = F.log_softmax(ref_logits.float(), dim=-1)
+                ref_token_logp = torch.gather(
+                    ref_logp,
+                    -1,
+                    resp_labels.unsqueeze(-1),
+                ).squeeze(-1)
+        return ref_token_logp.detach()
+
+    def comm_direction_loss(
+        self,
+        prompt_len: int,
+        role_labels: torch.Tensor,
+    ) -> Tuple[torch.Tensor, float, float, float, float]:
+        gates = self.model.get_comm_gate_values_for_loss()
+        zero = torch.tensor(0.0, device=self.device)
+        if gates is None:
+            return zero, 0.5, 0.5, 0.5, 0.5
+
+        start = prompt_len - 1
+        end = start + int(role_labels.shape[0])
+        g12 = gates["g_12"][:, start:end].squeeze(0)
+        g21 = gates["g_21"][:, start:end].squeeze(0)
+        if g12.shape[0] != role_labels.shape[0] or g21.shape[0] != role_labels.shape[0]:
+            return zero, 0.5, 0.5, 0.5, 0.5
+
+        where_mask = role_labels == 0
+        what_mask = role_labels == 1
+        loss_terms = []
+        g12_where = 0.5
+        g21_where = 0.5
+        g12_what = 0.5
+        g21_what = 0.5
+        if where_mask.any():
+            diff_where = g21[where_mask].float() - g12[where_mask].float()
+            loss_terms.append(F.relu(self.args.comm_margin - diff_where).mean())
+            g12_where = float(g12[where_mask].detach().float().mean().item())
+            g21_where = float(g21[where_mask].detach().float().mean().item())
+        if what_mask.any():
+            g12_what = float(g12[what_mask].detach().float().mean().item())
+            g21_what = float(g21[what_mask].detach().float().mean().item())
+
+        if not loss_terms:
+            return zero, g12_where, g21_where, g12_what, g21_what
+        return torch.stack(loss_terms).mean(), g12_where, g21_where, g12_what, g21_what
+
     def train_one_row(self, row: Dict[str, Any]) -> Optional[Dict[str, float]]:
         args = self.args
         prompt_inputs, full_ids, role_labels, prompt_len = self.prepare_example(row)
@@ -235,12 +350,14 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
             if key in prompt_inputs:
                 fwd_kwargs[key] = prompt_inputs[key]
 
+        resp_labels = ids[:, prompt_len:]
+        ref_token_logp = self.reference_response_logp(fwd_kwargs, resp_labels, prompt_len)
+
         with torch.amp.autocast("cuda", dtype=torch.bfloat16):
             outputs = self.model.forward(**fwd_kwargs)
             logits = outputs.logits
 
             resp_logits = logits[:, prompt_len - 1:-1, :]
-            resp_labels = ids[:, prompt_len:]
             token_loss = F.cross_entropy(
                 resp_logits.reshape(-1, resp_logits.shape[-1]),
                 resp_labels.reshape(-1),
@@ -248,6 +365,12 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
             ).view_as(resp_labels)
             lm_mask = (resp_labels != self.pad_id).float()
             lm_loss = (token_loss * lm_mask).sum() / lm_mask.sum().clamp(min=1.0)
+            behavior_anchor_loss = torch.tensor(0.0, device=self.device)
+            if ref_token_logp is not None:
+                current_token_logp = -token_loss.float()
+                behavior_anchor_loss = (
+                    (current_token_logp - ref_token_logp.float()).pow(2) * lm_mask
+                ).sum() / lm_mask.sum().clamp(min=1.0)
 
             route_values = self.model.get_route_values_for_loss()
             route_loss = torch.tensor(0.0, device=self.device)
@@ -268,8 +391,19 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
                 if (role_labels == 0).any():
                     route_where_mean = float(route_resp[role_labels == 0].detach().mean().item())
 
+            comm_loss, g12_where, g21_where, g12_what, g21_what = self.comm_direction_loss(
+                prompt_len, role_labels
+            )
+            comm_l2 = self.comm_gate_l2_loss()
+
             row_weight = min(float(row.get("weight") or 1.0), args.weight_clip)
-            total_loss = row_weight * (lm_loss + args.route_loss_weight * route_loss)
+            total_loss = row_weight * (
+                args.lm_loss_weight * lm_loss
+                + args.route_loss_weight * route_loss
+                + args.comm_loss_weight * comm_loss
+                + args.comm_l2_weight * comm_l2
+                + args.behavior_anchor_weight * behavior_anchor_loss
+            )
 
         total_loss.backward()
 
@@ -279,6 +413,13 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
             "total_loss": float(total_loss.detach().item()),
             "route_what_mean": route_what_mean,
             "route_where_mean": route_where_mean,
+            "comm_loss": float(comm_loss.detach().item()),
+            "comm_l2": float(comm_l2.detach().item()),
+            "behavior_anchor_loss": float(behavior_anchor_loss.detach().item()),
+            "g12_where": g12_where,
+            "g21_where": g21_where,
+            "g12_what": g12_what,
+            "g21_what": g21_what,
             "n_what_tokens": float(n_what),
             "n_where_tokens": float(n_where),
             "row_weight": float(row_weight),
@@ -354,9 +495,13 @@ class WhereWhatRoutedSFTTrainer(V15TrajectoryGSPOTrainer):
                         f"E{epoch} S{self.global_step} "
                         f"lm={np.mean(recent.get('lm_loss', [0.0])):.4f} "
                         f"route={np.mean(recent.get('route_loss', [0.0])):.4f} "
+                        f"comm={np.mean(recent.get('comm_loss', [0.0])):.4f} "
+                        f"anchor={np.mean(recent.get('behavior_anchor_loss', [0.0])):.5f} "
                         f"total={np.mean(recent.get('total_loss', [0.0])):.4f} "
                         f"r_what={np.mean(recent.get('route_what_mean', [0.5])):.3f} "
                         f"r_where={np.mean(recent.get('route_where_mean', [0.5])):.3f} "
+                        f"g21w={np.mean(recent.get('g21_where', [0.5])):.3f} "
+                        f"g12w={np.mean(recent.get('g12_where', [0.5])):.3f} "
                         f"gnorm={grad_norm.item() if isinstance(grad_norm, torch.Tensor) else grad_norm:.2f} "
                         f"valid={accum_count}/{args.gradient_accumulation_steps} "
                         f"skipped={skipped} t={time.time() - t_row:.1f}s"
@@ -401,13 +546,26 @@ def main() -> None:
     parser.add_argument("--num_comm_rounds", type=int, default=2)
     parser.add_argument("--balance_weight", type=float, default=0.0)
     parser.add_argument("--image_max_pixels", type=int, default=602112)
+    parser.add_argument("--lm_loss_weight", type=float, default=1.0)
     parser.add_argument("--route_loss_weight", type=float, default=0.2)
     parser.add_argument(
         "--trainable_mode",
-        choices=["all", "route_only", "route_a_only", "where_heavy"],
+        choices=[
+            "all",
+            "route_only",
+            "route_a_only",
+            "where_heavy",
+            "comm_gate_only",
+            "comm_21_only",
+            "comm_only",
+        ],
         default="all",
     )
     parser.add_argument("--weight_clip", type=float, default=2.0)
+    parser.add_argument("--comm_loss_weight", type=float, default=0.0)
+    parser.add_argument("--comm_margin", type=float, default=0.05)
+    parser.add_argument("--comm_l2_weight", type=float, default=0.0)
+    parser.add_argument("--behavior_anchor_weight", type=float, default=0.0)
     parser.add_argument("--disable_gradient_checkpointing", action=argparse.BooleanOptionalAction, default=True)
 
     parser.add_argument("--lora_lr", type=float, default=1e-5)

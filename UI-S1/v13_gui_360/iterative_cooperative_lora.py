@@ -87,6 +87,8 @@ class IterativeCooperativeLoRALinear(nn.Module):
 
         # Gate recording for CoPDA phase scores (V14)
         self._record_gates: bool = False
+        self._last_comm_gate_records = None
+        self._last_comm_gate_records_for_loss = None
 
         # Inference mode override: None (normal), "expert_1_only", "expert_2_only"
         self._inference_mode: Optional[str] = None
@@ -123,6 +125,8 @@ class IterativeCooperativeLoRALinear(nn.Module):
         if self._route_weight is None:
             self._last_routing_weights = None
             self._last_routing_weights_for_loss = None
+            self._last_comm_gate_records = None
+            self._last_comm_gate_records_for_loss = None
             return base_out
 
         x_drop = self.lora_dropout(x)
@@ -148,6 +152,8 @@ class IterativeCooperativeLoRALinear(nn.Module):
             )
         self._last_routing_weights = r.detach()
         self._last_routing_weights_for_loss = r if r.requires_grad else None
+        self._last_comm_gate_records = None
+        self._last_comm_gate_records_for_loss = None
 
         # Dual low-rank projections
         h_1 = F.linear(x_drop, self.lora_A_1.to(dtype))  # [B, S, r]
@@ -157,6 +163,8 @@ class IterativeCooperativeLoRALinear(nn.Module):
         if self._comm_params is not None and not self._disable_comm:
             T = self._comm_params['T']
             gate_accum = 0
+            gate_records = []
+            gate_records_for_loss = []
             for t in range(T):
                 # Expert 1 receives from expert 2
                 g_12 = torch.sigmoid(
@@ -172,9 +180,22 @@ class IterativeCooperativeLoRALinear(nn.Module):
 
                 if self._record_gates:
                     gate_accum = gate_accum + g_12.detach() + g_21.detach()
+                    gate_records.append({
+                        "round": t,
+                        "g_12": g_12.detach(),
+                        "g_21": g_21.detach(),
+                    })
+                    if g_12.requires_grad or g_21.requires_grad:
+                        gate_records_for_loss.append({
+                            "round": t,
+                            "g_12": g_12,
+                            "g_21": g_21,
+                        })
 
             if self._record_gates:
                 self._last_gate_mean = gate_accum / (2 * T)  # [B, S, 1]
+                self._last_comm_gate_records = gate_records
+                self._last_comm_gate_records_for_loss = gate_records_for_loss
 
         # Blend in r-space, single B matmul
         if self._inference_mode == "expert_1_only":

@@ -4,6 +4,9 @@ Goal: improve the current offline GUI-360 evaluation without online environment 
 
 The benchmark uses GT screenshots and `stop_on_error`, so V23 optimizes prefix survival on expert states rather than online recovery.
 
+The consolidated OPD/self-distillation direction and full experiment history are
+in [`opd_self_distillation.md`](opd_self_distillation.md).
+
 ## Current Tools
 
 ```text
@@ -15,6 +18,7 @@ train_offline_grpo.py            Train from fixed matcher-scored candidates with
 build_where_what_dataset.py      Decompose GUI actions into WHAT and WHERE expert supervision.
 train_where_what_routed_sft.py   Train full tool calls with token-level WHAT/WHERE route supervision.
 train_route_pairwise.py          Route-only pairwise preference training on fixed matcher hard negatives.
+analyze_comm_gate_information.py Diagnose WHAT/WHERE information carried by V13 comm gates.
 ```
 
 ## Generated Artifacts
@@ -104,6 +108,44 @@ outputs/v23_visual_transition/eval_route_pairwise_step5_balanced_vllm_200_stop/
 
 outputs/v23_visual_transition/eval_route_pairwise_step10_balanced_vllm_200_stop/
   eval_summary_*.json                 # 18.5 TSR / 66.73 StepSR on first 200
+
+outputs/v23_visual_transition/comm_gate_info_current_best_128/
+  comm_gate_information_report.md      # current-best comm gates are near-constant around 0.501
+
+checkpoints/v23_comm_gate_only_from_best_short/
+  epoch-0_step-5/
+  epoch-0_step-10/                     # opens g21>g12 on WHERE, but negative 200-slice
+
+outputs/v23_visual_transition/comm_gate_info_comm_gate_only_step10_128/
+  comm_gate_information_report.md      # WHERE (g21-g12) rises from ~0.00004 to ~0.0203
+
+outputs/v23_visual_transition/eval_comm_gate_step5_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 18.0 TSR / 66.53 StepSR on first 200
+
+outputs/v23_visual_transition/eval_comm_gate_step10_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 18.5 TSR / 67.00 StepSR on first 200
+
+checkpoints/v23_comm_gate_anchor_from_best_short/
+  epoch-0_step-5/
+  epoch-0_step-10/                     # behavior-anchored comm gate, still below current best
+
+outputs/v23_visual_transition/eval_comm_gate_anchor_step5_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 17.5 TSR / 66.19 StepSR on first 200
+
+outputs/v23_visual_transition/eval_comm_gate_anchor_step10_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 18.5 TSR / 67.20 StepSR on first 200
+
+checkpoints/v23_comm21_anchor_from_best_short/
+  epoch-0_step-10/                     # trains g21 + W21 with behavior anchor, negative 200-slice
+
+outputs/v23_visual_transition/eval_comm21_step10_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 18.5 TSR / 66.87 StepSR on first 200
+
+checkpoints/v23_comm_gate_ultraweak_anchor_from_best_short/
+  epoch-0_step-10/                     # ultraweak comm gate, still negative 200-slice
+
+outputs/v23_visual_transition/eval_comm_gate_ultraweak_step10_balanced_vllm_200_stop/
+  eval_summary_*.json                  # 18.0 TSR / 67.20 StepSR on first 200
 
 outputs/v23_visual_transition/full_sft_step250_hard_states/
   hard_states.jsonl                   # 1181 hard rows from full SFT step250 eval
@@ -231,6 +273,16 @@ Negative follow-up: continuing route-only from the same step-10 checkpoint with 
 
 Neutral/negative follow-up: `train_route_pairwise.py` implements frozen-expert route-only pairwise preference training from routed step-5 using GT positives and valid matcher-failing hard negatives (`click->click`, `type->click`, `click->type`). The first 10-step run did not beat route-only step-10 on the first 200 balanced episodes: step-5 checkpoint gets 18.0% TSR / 67.20% StepSR / 31.92% progress, and step-10 gets 18.5% TSR / 66.73% StepSR / 31.65% progress, below route-only step-10's 18.5% TSR / 67.72% StepSR / 32.48% progress. The script remains useful for future pair-selection/objective variants, but this exact objective should not be full-evaluated.
 
+Comm-gate diagnostic: current-best communication gates carry almost no WHAT/WHERE role information. On 128 train rows, all global gate means sit near 0.501 and WHERE `(g21-g12)` is only 0.00004. `comm_gate_only` training from current best can mechanically open the intended WHAT-to-WHERE channel: step-10 raises WHERE `(g21-g12)` to 0.0203. However, this direct directional objective underperforms route-only step-10 on the first 200 balanced episodes: step-5 gets 18.0% TSR / 66.53% StepSR / 31.34% progress, and step-10 gets 18.5% TSR / 67.00% StepSR / 32.06% progress. Do not full-eval this exact comm-gate objective.
+
+Behavior-anchored comm-gate follow-up: `comm_gate_only` with LM loss disabled and a token-logprob anchor to the initial route-only step-10 checkpoint improves over direct comm-gate step-10 but still remains below current best. First 200 balanced episodes: anchored step-5 gets 17.5% TSR / 66.19% StepSR / 31.16% progress; anchored step-10 gets 18.5% TSR / 67.20% StepSR / 32.25% progress. Current best route-only step-10 remains 18.5% TSR / 67.72% StepSR / 32.48% progress on the same slice. Do not full-eval this branch.
+
+Comm message follow-up: `comm_21_only` lets WHAT-to-WHERE gate and message matrix (`comm_gate_21`, `comm_W_21`) move together under the same token-logprob behavior anchor. This did not help: step-10 gets 18.5% TSR / 66.87% StepSR / 31.96% progress on the first 200 balanced episodes, worse than anchored gate-only and current best. Do not full-eval this branch.
+
+Ultraweak comm-gate follow-up: reducing the directional pressure (`margin=0.005`, `comm_loss_weight=0.2`, stronger behavior anchor) keeps gate movement much smaller but still does not recover the current best: step-10 gets 18.0% TSR / 67.20% StepSR / 31.95% progress on the first 200 balanced episodes. This suggests post-hoc communication-gate shaping is not the right improvement lever unless the communication objective is tied to actual outcome-correcting states rather than global WHERE-token role labels.
+
 Primary diagnostic: first-error depth, premature terminate rate, progress, TSR on 200-episode slices before full 1000 eval.
 
-Done: train hard states, hard replay, K8 matcher candidates, WHAT/WHERE routed SFT, route-only continuation, and a first route-pairwise preference probe are available. The online/offline GRPO path is not the current best direction because candidate actor updates damaged output format. Next experiments should avoid continuing from route-only step-10 directly and should not full-eval the current pairwise run. Prefer either early-checkpoint selection around routed step-5 route-only (`step-5` vs `step-10`) or a new pairwise variant with better positive/negative construction and an explicit anchor to preserve route-only step-10 behavior, with 200-episode slices before any full 1000 eval.
+Current conclusion for communication experiments: the current best has near-constant comm gates, and supervised gate shaping can open the WHAT-to-WHERE channel mechanically, but every tested comm-gate variant underperforms route-only step-10 on the 200-slice. Do not continue global comm-gate role supervision. If revisiting communication, use targeted hard-state supervision tied to fixed first-error repairs, not all coordinate tokens.
+
+Done: train hard states, hard replay, K8 matcher candidates, WHAT/WHERE routed SFT, route-only continuation, route-pairwise probing, comm-gate information probing, and behavior-anchored comm-gate probing are available. The online/offline GRPO path is not the current best direction because candidate actor updates damaged output format. Next experiments should avoid continuing from route-only step-10 directly and should not full-eval the current pairwise or comm-gate-only runs. The next promising direction is no longer simply opening comm gates globally; it should either target comm-gate updates only on states current-best gets wrong, or use a much stronger teacher constraint / selective layer schedule, with 200-episode slices before any full 1000 eval.

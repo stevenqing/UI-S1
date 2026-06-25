@@ -315,6 +315,31 @@ class IterativeCooperativeVLMWrapper(nn.Module):
             return None
         return torch.stack(route_tensors, dim=0).mean(dim=0)
 
+    def get_comm_gate_values_for_loss(self) -> Optional[Dict[str, torch.Tensor]]:
+        """Return differentiable mean communication gates for comm-gate losses.
+
+        Returns a dict with `g_12` and `g_21`, each shaped [batch, seq_len].
+        Gate tensors are available only when gate recording is enabled before
+        the forward pass.
+        """
+        g12_tensors = []
+        g21_tensors = []
+        for module in self.coop_modules:
+            records = getattr(module, "_last_comm_gate_records_for_loss", None) or []
+            for record in records:
+                g12 = record.get("g_12")
+                g21 = record.get("g_21")
+                if g12 is not None and g12.requires_grad:
+                    g12_tensors.append(g12.squeeze(-1))
+                if g21 is not None and g21.requires_grad:
+                    g21_tensors.append(g21.squeeze(-1))
+        if not g12_tensors or not g21_tensors:
+            return None
+        return {
+            "g_12": torch.stack(g12_tensors, dim=0).mean(dim=0),
+            "g_21": torch.stack(g21_tensors, dim=0).mean(dim=0),
+        }
+
     # -- Trainable parameter count -----------------------------------------
 
     def count_trainable_params(self) -> Dict[str, int]:
