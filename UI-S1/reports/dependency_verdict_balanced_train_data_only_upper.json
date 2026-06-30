@@ -1,0 +1,1877 @@
+{
+  "schema_version": 1,
+  "thresholds": {
+    "min_value_len": 4,
+    "min_unique_chars": 3,
+    "min_alpha_numeric_chars": 3,
+    "null_model_shuffles": 128,
+    "null_model_seed": 41,
+    "null_model_margin": 0.02,
+    "routine_entropy_floor": 0.35,
+    "routine_min_support": 3,
+    "legal_forced_max_actions": 1,
+    "long_horizon_min_distance": 3,
+    "no_interference_min_distance": 3,
+    "persistent_visible_fraction": 0.5,
+    "missing_ocr_is_available": true,
+    "q1_battlefield_share_min": 0.15,
+    "q1_no_battlefield_share_max": 0.1,
+    "q2_min_distance_ge3_n": 30,
+    "q3_failure_lift_eps": 0.0,
+    "q3_min_memory_44_fraction": 0.01
+  },
+  "bucket_counts": {
+    "given": 939,
+    "coincidence": 0,
+    "noise": 193,
+    "onscreen_a11y": 0,
+    "onscreen_ocr": 0,
+    "default": 0,
+    "clipboard": 0,
+    "resurfaced": 0,
+    "derivable": 0,
+    "forced": 0,
+    "routine": 277,
+    "adjacent": 53,
+    "nointerf": 0,
+    "persistent": 0,
+    "survivor": 116
+  },
+  "bucket_total": 1578,
+  "null_model": {
+    "actual_reuse_rate": 1.0,
+    "null_mean_reuse_rate": 0.023243843333370158,
+    "null_p95_reuse_rate": 0.032,
+    "shuffles": 128,
+    "passed": true
+  },
+  "q1": {
+    "candidate_total": 1578,
+    "survivor_n": 116,
+    "battlefield_share": 0.07351077313054499
+  },
+  "q2": {
+    "distance_histogram": {
+      "3": 22,
+      "4": 16,
+      "5": 12,
+      "6": 21,
+      "7": 11,
+      "8": 7,
+      "9": 7,
+      "10": 3,
+      "11": 2,
+      "12": 3,
+      "13": 1,
+      "14": 3,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "21": 2,
+      "23": 1
+    },
+    "distance_ge3_n": 116,
+    "distance_ge3_share": 1.0
+  },
+  "q3": {
+    "available": false,
+    "reason": "prediction rows not supplied"
+  },
+  "verdict": {
+    "label": "NO_BATTLEFIELD",
+    "reason": "Q1 battlefield share below pre-registered no-battlefield threshold"
+  },
+  "candidate_rows_preview": [
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:6:vk_control}b:2:4:0",
+        "episode_id": "gui360-balanced:train:6",
+        "app": "gui360-balanced",
+        "tag": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:6:step2",
+        "consume_step_uid": "gui360-balanced:train:6:step4",
+        "produce_index": 2,
+        "consume_index": 4,
+        "produce_step_id": 2,
+        "consume_step_id": 4,
+        "distance": 2,
+        "value": "{VK_CONTROL}b",
+        "normalized_value": "vk_control}b",
+        "field_role": "fn:type|task:enhance-the-front-slide",
+        "produce_role": "fn:type|task:enhance-the-front-slide",
+        "consume_role": "fn:type|task:enhance-the-front-slide",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is well-positioned to create an eye-catching effect in the PowerPoint presentation.",
+        "instruction": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is well-positioned to create an eye-catching effect in the PowerPoint presentation.",
+        "layer0_bucket": "given",
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "given",
+      "metadata": {}
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:19:the mathematical constant pi (π) has been known since ancient times. the earliest recorded approximations date back to babylon and egypt around 1900 bc. the greek mathematician archimedes (287–212 bc) was the first to rigorously calculate its value. over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics:1:6:1",
+        "episode_id": "gui360-balanced:train:19",
+        "app": "gui360-balanced",
+        "tag": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:19:step1",
+        "consume_step_uid": "gui360-balanced:train:19:step6",
+        "produce_index": 1,
+        "consume_index": 6,
+        "produce_step_id": 1,
+        "consume_step_id": 6,
+        "distance": 5,
+        "value": "The mathematical constant pi (π) has been known since ancient times. The earliest recorded approximations date back to Babylon and Egypt around 1900 BC. The Greek mathematician Archimedes (287–212 BC) was the first to rigorously calculate its value. Over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics.",
+        "normalized_value": "the mathematical constant pi (π) has been known since ancient times. the earliest recorded approximations date back to babylon and egypt around 1900 bc. the greek mathematician archimedes (287–212 bc) was the first to rigorously calculate its value. over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics",
+        "field_role": "fn:type|task:add-content-about-the",
+        "produce_role": "fn:type|task:add-content-about-the",
+        "consume_role": "fn:type|task:add-content-about-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "survivor",
+      "metadata": {}
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:3:2",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step3",
+        "produce_index": 1,
+        "consume_index": 3,
+        "produce_step_id": 1,
+        "consume_step_id": 3,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:8:3",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step8",
+        "produce_index": 1,
+        "consume_index": 8,
+        "produce_step_id": 1,
+        "consume_step_id": 8,
+        "distance": 7,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:9:4",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step9",
+        "produce_index": 1,
+        "consume_index": 9,
+        "produce_step_id": 1,
+        "consume_step_id": 9,
+        "distance": 8,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:10:5",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step10",
+        "produce_index": 1,
+        "consume_index": 10,
+        "produce_step_id": 1,
+        "consume_step_id": 10,
+        "distance": 9,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:11:6",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 1,
+        "consume_index": 11,
+        "produce_step_id": 1,
+        "consume_step_id": 11,
+        "distance": 10,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:12:7",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 1,
+        "consume_index": 12,
+        "produce_step_id": 1,
+        "consume_step_id": 12,
+        "distance": 11,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:13:8",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 1,
+        "consume_index": 13,
+        "produce_step_id": 1,
+        "consume_step_id": 13,
+        "distance": 12,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:17:9",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 1,
+        "consume_index": 17,
+        "produce_step_id": 1,
+        "consume_step_id": 17,
+        "distance": 16,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:18:10",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 1,
+        "consume_index": 18,
+        "produce_step_id": 1,
+        "consume_step_id": 18,
+        "distance": 17,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:8:11",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step8",
+        "produce_index": 3,
+        "consume_index": 8,
+        "produce_step_id": 3,
+        "consume_step_id": 8,
+        "distance": 5,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:9:12",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step9",
+        "produce_index": 3,
+        "consume_index": 9,
+        "produce_step_id": 3,
+        "consume_step_id": 9,
+        "distance": 6,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:10:13",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step10",
+        "produce_index": 3,
+        "consume_index": 10,
+        "produce_step_id": 3,
+        "consume_step_id": 10,
+        "distance": 7,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:11:14",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 3,
+        "consume_index": 11,
+        "produce_step_id": 3,
+        "consume_step_id": 11,
+        "distance": 8,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:12:15",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 3,
+        "consume_index": 12,
+        "produce_step_id": 3,
+        "consume_step_id": 12,
+        "distance": 9,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:13:16",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 3,
+        "consume_index": 13,
+        "produce_step_id": 3,
+        "consume_step_id": 13,
+        "distance": 10,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:17:17",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 3,
+        "consume_index": 17,
+        "produce_step_id": 3,
+        "consume_step_id": 17,
+        "distance": 14,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:18:18",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 3,
+        "consume_index": 18,
+        "produce_step_id": 3,
+        "consume_step_id": 18,
+        "distance": 15,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:9:19",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step9",
+        "produce_index": 8,
+        "consume_index": 9,
+        "produce_step_id": 8,
+        "consume_step_id": 9,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:10:20",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step10",
+        "produce_index": 8,
+        "consume_index": 10,
+        "produce_step_id": 8,
+        "consume_step_id": 10,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:11:21",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 8,
+        "consume_index": 11,
+        "produce_step_id": 8,
+        "consume_step_id": 11,
+        "distance": 3,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:12:22",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 8,
+        "consume_index": 12,
+        "produce_step_id": 8,
+        "consume_step_id": 12,
+        "distance": 4,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:13:23",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 8,
+        "consume_index": 13,
+        "produce_step_id": 8,
+        "consume_step_id": 13,
+        "distance": 5,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:17:24",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 8,
+        "consume_index": 17,
+        "produce_step_id": 8,
+        "consume_step_id": 17,
+        "distance": 9,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:18:25",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 8,
+        "consume_index": 18,
+        "produce_step_id": 8,
+        "consume_step_id": 18,
+        "distance": 10,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:10:26",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step10",
+        "produce_index": 9,
+        "consume_index": 10,
+        "produce_step_id": 9,
+        "consume_step_id": 10,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:11:27",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 9,
+        "consume_index": 11,
+        "produce_step_id": 9,
+        "consume_step_id": 11,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:12:28",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 9,
+        "consume_index": 12,
+        "produce_step_id": 9,
+        "consume_step_id": 12,
+        "distance": 3,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:13:29",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 9,
+        "consume_index": 13,
+        "produce_step_id": 9,
+        "consume_step_id": 13,
+        "distance": 4,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:17:30",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 9,
+        "consume_index": 17,
+        "produce_step_id": 9,
+        "consume_step_id": 17,
+        "distance": 8,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:18:31",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 9,
+        "consume_index": 18,
+        "produce_step_id": 9,
+        "consume_step_id": 18,
+        "distance": 9,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:11:32",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 10,
+        "consume_index": 11,
+        "produce_step_id": 10,
+        "consume_step_id": 11,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:12:33",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 10,
+        "consume_index": 12,
+        "produce_step_id": 10,
+        "consume_step_id": 12,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:13:34",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 10,
+        "consume_index": 13,
+        "produce_step_id": 10,
+        "consume_step_id": 13,
+        "distance": 3,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:17:35",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 10,
+        "consume_index": 17,
+        "produce_step_id": 10,
+        "consume_step_id": 17,
+        "distance": 7,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:18:36",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 10,
+        "consume_index": 18,
+        "produce_step_id": 10,
+        "consume_step_id": 18,
+        "distance": 8,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:12:37",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 11,
+        "consume_index": 12,
+        "produce_step_id": 11,
+        "consume_step_id": 12,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:13:38",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 11,
+        "consume_index": 13,
+        "produce_step_id": 11,
+        "consume_step_id": 13,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:17:39",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 11,
+        "consume_index": 17,
+        "produce_step_id": 11,
+        "consume_step_id": 17,
+        "distance": 6,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:18:40",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 11,
+        "consume_index": 18,
+        "produce_step_id": 11,
+        "consume_step_id": 18,
+        "distance": 7,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:12:13:41",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step12",
+        "consume_step_uid": "gui360-balanced:train:32:step13",
+        "produce_index": 12,
+        "consume_index": 13,
+        "produce_step_id": 12,
+        "consume_step_id": 13,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:12:17:42",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step12",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 12,
+        "consume_index": 17,
+        "produce_step_id": 12,
+        "consume_step_id": 17,
+        "distance": 5,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:12:18:43",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step12",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 12,
+        "consume_index": 18,
+        "produce_step_id": 12,
+        "consume_step_id": 18,
+        "distance": 6,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:13:17:44",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step13",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 13,
+        "consume_index": 17,
+        "produce_step_id": 13,
+        "consume_step_id": 17,
+        "distance": 4,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:13:18:45",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step13",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 13,
+        "consume_index": 18,
+        "produce_step_id": 13,
+        "consume_step_id": 18,
+        "distance": 5,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a:15:19:46",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step15",
+        "consume_step_uid": "gui360-balanced:train:32:step19",
+        "produce_index": 15,
+        "consume_index": 19,
+        "produce_step_id": 15,
+        "consume_step_id": 19,
+        "distance": 4,
+        "value": "{VK_CONTROL}a",
+        "normalized_value": "vk_control}a",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": "given",
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "given",
+      "metadata": {}
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:17:18:47",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step17",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 17,
+        "consume_index": 18,
+        "produce_step_id": 17,
+        "consume_step_id": 18,
+        "distance": 1,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-the",
+        "entropy": 0.15109697051711368,
+        "support": 46
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:1:4:48",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step1",
+        "consume_step_uid": "gui360-balanced:train:34:step4",
+        "produce_index": 1,
+        "consume_index": 4,
+        "produce_step_id": 1,
+        "consume_step_id": 4,
+        "distance": 3,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-conducting",
+        "entropy": 0.0,
+        "support": 6
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:1:6:49",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step1",
+        "consume_step_uid": "gui360-balanced:train:34:step6",
+        "produce_index": 1,
+        "consume_index": 6,
+        "produce_step_id": 1,
+        "consume_step_id": 6,
+        "distance": 5,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "routine",
+      "metadata": {
+        "routine_key": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.\tfn:type|task:create-presentation-on-conducting",
+        "entropy": 0.0,
+        "support": 6
+      }
+    }
+  ],
+  "analysis_note": "Data-only upper bound: no OCR/a11y availability exclusion; missing OCR is treated as not visible, so survivors are an upper bound, not confirmed true dependencies."
+}

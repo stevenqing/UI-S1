@@ -1,0 +1,28 @@
+repo: vyokky/GUI-360
+seed: 41
+shards:
+  - app: excel
+    tag: in_app
+    splits: [test, fail]
+models:
+  test:
+    name: checkpoints/gui360-fullparam-sft-step250
+    api_url: http://localhost:8000/v1
+  strong:
+    name: checkpoints/Qwen2.5-VL-72B-Instruct
+    api_url: http://localhost:8001/v1
+  sft:
+    path: checkpoints/gui360-fullparam-sft-step250
+difficulty:
+  k: 10
+  gate_rho: 0.30
+divergence:
+  alpha: 0.65
+  tau_init: 0.50
+  audit_n: 100
+  agree_min: 0.80
+recovery:
+  precision_min: 0.90
+  lexicon: [error, cannot, invalid, failed, warning, unable]
+gate_eps: 1.0
+bootstrap_B: 2000

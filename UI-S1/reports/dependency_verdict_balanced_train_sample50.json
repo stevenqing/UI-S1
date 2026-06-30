@@ -1,0 +1,1258 @@
+{
+  "schema_version": 1,
+  "thresholds": {
+    "min_value_len": 4,
+    "min_unique_chars": 3,
+    "min_alpha_numeric_chars": 3,
+    "null_model_shuffles": 128,
+    "null_model_seed": 41,
+    "null_model_margin": 0.02,
+    "routine_entropy_floor": 0.35,
+    "routine_min_support": 3,
+    "legal_forced_max_actions": 1,
+    "long_horizon_min_distance": 3,
+    "no_interference_min_distance": 3,
+    "persistent_visible_fraction": 0.5,
+    "missing_ocr_is_available": true,
+    "q1_battlefield_share_min": 0.15,
+    "q1_no_battlefield_share_max": 0.1,
+    "q2_min_distance_ge3_n": 30,
+    "q3_failure_lift_eps": 0.0,
+    "q3_min_memory_44_fraction": 0.01
+  },
+  "bucket_counts": {
+    "given": 0,
+    "coincidence": 0,
+    "noise": 0,
+    "onscreen_a11y": 0,
+    "onscreen_ocr": 34,
+    "default": 0,
+    "clipboard": 0,
+    "resurfaced": 0,
+    "derivable": 0,
+    "forced": 0,
+    "routine": 0,
+    "adjacent": 0,
+    "nointerf": 0,
+    "persistent": 0,
+    "survivor": 0
+  },
+  "bucket_total": 34,
+  "null_model": {
+    "actual_reuse_rate": 1.0,
+    "null_mean_reuse_rate": 0.04824056729645259,
+    "null_p95_reuse_rate": 0.13636363636363635,
+    "shuffles": 128,
+    "passed": true
+  },
+  "q1": {
+    "candidate_total": 34,
+    "survivor_n": 0,
+    "battlefield_share": 0.0
+  },
+  "q2": {
+    "distance_histogram": {},
+    "distance_ge3_n": 0,
+    "distance_ge3_share": 0.0
+  },
+  "q3": {
+    "available": false,
+    "reason": "prediction rows not supplied"
+  },
+  "verdict": {
+    "label": "NO_BATTLEFIELD",
+    "reason": "Q1 battlefield share below pre-registered no-battlefield threshold"
+  },
+  "candidate_rows_preview": [
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:6:vk_control}b:2:4:0",
+        "episode_id": "gui360-balanced:train:6",
+        "app": "gui360-balanced",
+        "tag": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:6:step2",
+        "consume_step_uid": "gui360-balanced:train:6:step4",
+        "produce_index": 2,
+        "consume_index": 4,
+        "produce_step_id": 2,
+        "consume_step_id": 4,
+        "distance": 2,
+        "value": "{VK_CONTROL}b",
+        "normalized_value": "vk_control}b",
+        "field_role": "fn:type|task:enhance-the-front-slide",
+        "produce_role": "fn:type|task:enhance-the-front-slide",
+        "consume_role": "fn:type|task:enhance-the-front-slide",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is well-positioned to create an eye-catching effect in the PowerPoint presentation.",
+        "instruction": "Enhance the front slide (Slide 1) by ensuring the text is bold and the image is well-positioned to create an eye-catching effect in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:19:the mathematical constant pi (π) has been known since ancient times. the earliest recorded approximations date back to babylon and egypt around 1900 bc. the greek mathematician archimedes (287–212 bc) was the first to rigorously calculate its value. over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics:1:6:1",
+        "episode_id": "gui360-balanced:train:19",
+        "app": "gui360-balanced",
+        "tag": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:19:step1",
+        "consume_step_uid": "gui360-balanced:train:19:step6",
+        "produce_index": 1,
+        "consume_index": 6,
+        "produce_step_id": 1,
+        "consume_step_id": 6,
+        "distance": 5,
+        "value": "The mathematical constant pi (π) has been known since ancient times. The earliest recorded approximations date back to Babylon and Egypt around 1900 BC. The Greek mathematician Archimedes (287–212 BC) was the first to rigorously calculate its value. Over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics.",
+        "normalized_value": "the mathematical constant pi (π) has been known since ancient times. the earliest recorded approximations date back to babylon and egypt around 1900 bc. the greek mathematician archimedes (287–212 bc) was the first to rigorously calculate its value. over centuries, mathematicians from various cultures refined the calculation of pi, making it one of the most famous and important constants in mathematics",
+        "field_role": "fn:type|task:add-content-about-the",
+        "produce_role": "fn:type|task:add-content-about-the",
+        "consume_role": "fn:type|task:add-content-about-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content about the history of pi to Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:3:2",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step3",
+        "produce_index": 1,
+        "consume_index": 3,
+        "produce_step_id": 1,
+        "consume_step_id": 3,
+        "distance": 2,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:8:3",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step8",
+        "produce_index": 1,
+        "consume_index": 8,
+        "produce_step_id": 1,
+        "consume_step_id": 8,
+        "distance": 7,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:1:17:4",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step1",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 1,
+        "consume_index": 17,
+        "produce_step_id": 1,
+        "consume_step_id": 17,
+        "distance": 16,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:8:5",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step8",
+        "produce_index": 3,
+        "consume_index": 8,
+        "produce_step_id": 3,
+        "consume_step_id": 8,
+        "distance": 5,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:3:17:6",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step3",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 3,
+        "consume_index": 17,
+        "produce_step_id": 3,
+        "consume_step_id": 17,
+        "distance": 14,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:8:17:7",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step8",
+        "consume_step_uid": "gui360-balanced:train:32:step17",
+        "produce_index": 8,
+        "consume_index": 17,
+        "produce_step_id": 8,
+        "consume_step_id": 17,
+        "distance": 9,
+        "value": "Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:10:8",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step10",
+        "produce_index": 9,
+        "consume_index": 10,
+        "produce_step_id": 9,
+        "consume_step_id": 10,
+        "distance": 1,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:11:9",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 9,
+        "consume_index": 11,
+        "produce_step_id": 9,
+        "consume_step_id": 11,
+        "distance": 2,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:12:10",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 9,
+        "consume_index": 12,
+        "produce_step_id": 9,
+        "consume_step_id": 12,
+        "distance": 3,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:9:18:11",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step9",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 9,
+        "consume_index": 18,
+        "produce_step_id": 9,
+        "consume_step_id": 18,
+        "distance": 9,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:11:12",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step11",
+        "produce_index": 10,
+        "consume_index": 11,
+        "produce_step_id": 10,
+        "consume_step_id": 11,
+        "distance": 1,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:12:13",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 10,
+        "consume_index": 12,
+        "produce_step_id": 10,
+        "consume_step_id": 12,
+        "distance": 2,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:10:18:14",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step10",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 10,
+        "consume_index": 18,
+        "produce_step_id": 10,
+        "consume_step_id": 18,
+        "distance": 8,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:12:15",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step12",
+        "produce_index": 11,
+        "consume_index": 12,
+        "produce_step_id": 11,
+        "consume_step_id": 12,
+        "distance": 1,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:11:18:16",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step11",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 11,
+        "consume_index": 18,
+        "produce_step_id": 11,
+        "consume_step_id": 18,
+        "distance": 7,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial:12:18:17",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step12",
+        "consume_step_uid": "gui360-balanced:train:32:step18",
+        "produce_index": 12,
+        "consume_index": 18,
+        "produce_step_id": 12,
+        "consume_step_id": 18,
+        "distance": 6,
+        "value": "{VK_CONTROL}a{DEL}Healing of an Extraction Socket\n\nDefinition: The extraction socket is the site in the jawbone where a tooth has been removed.\n\nHealing Stages:\n1. Hemostasis: Blood clot forms immediately after extraction.\n2. Inflammation: White blood cells clean the area (1-3 days).\n3. Proliferation: Granulation tissue forms, new blood vessels develop (1-2 weeks).\n4. Maturation: Bone and soft tissue remodel and mature (weeks to months).\n\nKey Points:\n- Proper care prevents infection and dry socket.\n- Healing time varies by patient and extraction complexity.\n- Good oral hygiene and following dentist instructions are crucial.",
+        "normalized_value": "vk_control}a{del}healing of an extraction socket definition: the extraction socket is the site in the jawbone where a tooth has been removed. healing stages: 1. hemostasis: blood clot forms immediately after extraction. 2. inflammation: white blood cells clean the area (1-3 days). 3. proliferation: granulation tissue forms, new blood vessels develop (1-2 weeks). 4. maturation: bone and soft tissue remodel and mature (weeks to months). key points: - proper care prevents infection and dry socket. - healing time varies by patient and extraction complexity. - good oral hygiene and following dentist instructions are crucial",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:32:vk_control}a:15:19:18",
+        "episode_id": "gui360-balanced:train:32",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on the healing of an extraction socket by adding relevant ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:32:step15",
+        "consume_step_uid": "gui360-balanced:train:32:step19",
+        "produce_index": 15,
+        "consume_index": 19,
+        "produce_step_id": 15,
+        "consume_step_id": 19,
+        "distance": 4,
+        "value": "{VK_CONTROL}a",
+        "normalized_value": "vk_control}a",
+        "field_role": "fn:type|task:create-presentation-on-the",
+        "produce_role": "fn:type|task:create-presentation-on-the",
+        "consume_role": "fn:type|task:create-presentation-on-the",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on the healing of an extraction socket by adding relevant content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:1:4:19",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step1",
+        "consume_step_uid": "gui360-balanced:train:34:step4",
+        "produce_index": 1,
+        "consume_index": 4,
+        "produce_step_id": 1,
+        "consume_step_id": 4,
+        "distance": 3,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:1:6:20",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step1",
+        "consume_step_uid": "gui360-balanced:train:34:step6",
+        "produce_index": 1,
+        "consume_index": 6,
+        "produce_step_id": 1,
+        "consume_step_id": 6,
+        "distance": 5,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:1:13:21",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step1",
+        "consume_step_uid": "gui360-balanced:train:34:step13",
+        "produce_index": 1,
+        "consume_index": 13,
+        "produce_step_id": 1,
+        "consume_step_id": 13,
+        "distance": 12,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:4:6:22",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step4",
+        "consume_step_uid": "gui360-balanced:train:34:step6",
+        "produce_index": 4,
+        "consume_index": 6,
+        "produce_step_id": 4,
+        "consume_step_id": 6,
+        "distance": 2,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:4:13:23",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step4",
+        "consume_step_uid": "gui360-balanced:train:34:step13",
+        "produce_index": 4,
+        "consume_index": 13,
+        "produce_step_id": 4,
+        "consume_step_id": 13,
+        "distance": 9,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:34:introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene:6:13:24",
+        "episode_id": "gui360-balanced:train:34",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on conducting polymers by adding content to Slide 1 in Pow",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:34:step6",
+        "consume_step_uid": "gui360-balanced:train:34:step13",
+        "produce_index": 6,
+        "consume_index": 13,
+        "produce_step_id": 6,
+        "consume_step_id": 13,
+        "distance": 7,
+        "value": "Introduction: Conducting polymers are organic polymers that conduct electricity. Unlike traditional polymers, they have a conjugated backbone that allows for electron mobility.\n\nKey Properties: High electrical conductivity, flexibility, lightweight, tunable properties, and processability.\n\nApplications: Used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings.\n\nExamples: Polyaniline (PANI), polypyrrole (PPy), polythiophene (PT), and polyacetylene.",
+        "normalized_value": "introduction: conducting polymers are organic polymers that conduct electricity. unlike traditional polymers, they have a conjugated backbone that allows for electron mobility. key properties: high electrical conductivity, flexibility, lightweight, tunable properties, and processability. applications: used in flexible electronics, sensors, batteries, solar cells, and antistatic coatings. examples: polyaniline (pani), polypyrrole (ppy), polythiophene (pt), and polyacetylene",
+        "field_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_role": "fn:type|task:create-presentation-on-conducting",
+        "consume_role": "fn:type|task:create-presentation-on-conducting",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "instruction": "Create a presentation on conducting polymers by adding content to Slide 1 in PowerPoint.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:48:welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience:1:3:25",
+        "episode_id": "gui360-balanced:train:48",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on welding procedures by adding content to Slide 1 in the ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:48:step1",
+        "consume_step_uid": "gui360-balanced:train:48:step3",
+        "produce_index": 1,
+        "consume_index": 3,
+        "produce_step_id": 1,
+        "consume_step_id": 3,
+        "distance": 2,
+        "value": "Welding Procedures\n\nIntroduction:\nWelding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. It is widely used in construction, manufacturing, and repair industries.\n\nKey Steps:\n1. Preparation: Clean and align the materials to be welded.\n2. Selection: Choose the appropriate welding method (e.g., MIG, TIG, Stick).\n3. Setup: Adjust equipment settings and safety gear.\n4. Welding: Perform the weld using steady technique and correct parameters.\n5. Inspection: Check weld quality and make necessary corrections.\n\nSafety Precautions:\n- Always wear protective gear (helmet, gloves, apron).\n- Ensure proper ventilation to avoid inhaling fumes.\n- Keep flammable materials away from the work area.\n- Be aware of electrical hazards and hot surfaces.\n\nBest Practices:\n- Maintain equipment regularly.\n- Practice consistent technique for strong, clean welds.\n- Follow manufacturer guidelines and industry standards.\n- Continuously improve skills through training and experience.\n",
+        "normalized_value": "welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience",
+        "field_role": "fn:type|task:create-presentation-on-welding",
+        "produce_role": "fn:type|task:create-presentation-on-welding",
+        "consume_role": "fn:type|task:create-presentation-on-welding",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "instruction": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:48:welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience:1:8:26",
+        "episode_id": "gui360-balanced:train:48",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on welding procedures by adding content to Slide 1 in the ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:48:step1",
+        "consume_step_uid": "gui360-balanced:train:48:step8",
+        "produce_index": 1,
+        "consume_index": 8,
+        "produce_step_id": 1,
+        "consume_step_id": 8,
+        "distance": 7,
+        "value": "Welding Procedures\n\nIntroduction:\nWelding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. It is widely used in construction, manufacturing, and repair industries.\n\nKey Steps:\n1. Preparation: Clean and align the materials to be welded.\n2. Selection: Choose the appropriate welding method (e.g., MIG, TIG, Stick).\n3. Setup: Adjust equipment settings and safety gear.\n4. Welding: Perform the weld using steady technique and correct parameters.\n5. Inspection: Check weld quality and make necessary corrections.\n\nSafety Precautions:\n- Always wear protective gear (helmet, gloves, apron).\n- Ensure proper ventilation to avoid inhaling fumes.\n- Keep flammable materials away from the work area.\n- Be aware of electrical hazards and hot surfaces.\n\nBest Practices:\n- Maintain equipment regularly.\n- Practice consistent technique for strong, clean welds.\n- Follow manufacturer guidelines and industry standards.\n- Continuously improve skills through training and experience.\n",
+        "normalized_value": "welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience",
+        "field_role": "fn:type|task:create-presentation-on-welding",
+        "produce_role": "fn:type|task:create-presentation-on-welding",
+        "consume_role": "fn:type|task:create-presentation-on-welding",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "instruction": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:48:welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience:3:8:27",
+        "episode_id": "gui360-balanced:train:48",
+        "app": "gui360-balanced",
+        "tag": "Create a presentation on welding procedures by adding content to Slide 1 in the ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:48:step3",
+        "consume_step_uid": "gui360-balanced:train:48:step8",
+        "produce_index": 3,
+        "consume_index": 8,
+        "produce_step_id": 3,
+        "consume_step_id": 8,
+        "distance": 5,
+        "value": "Welding Procedures\n\nIntroduction:\nWelding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. It is widely used in construction, manufacturing, and repair industries.\n\nKey Steps:\n1. Preparation: Clean and align the materials to be welded.\n2. Selection: Choose the appropriate welding method (e.g., MIG, TIG, Stick).\n3. Setup: Adjust equipment settings and safety gear.\n4. Welding: Perform the weld using steady technique and correct parameters.\n5. Inspection: Check weld quality and make necessary corrections.\n\nSafety Precautions:\n- Always wear protective gear (helmet, gloves, apron).\n- Ensure proper ventilation to avoid inhaling fumes.\n- Keep flammable materials away from the work area.\n- Be aware of electrical hazards and hot surfaces.\n\nBest Practices:\n- Maintain equipment regularly.\n- Practice consistent technique for strong, clean welds.\n- Follow manufacturer guidelines and industry standards.\n- Continuously improve skills through training and experience.\n",
+        "normalized_value": "welding procedures introduction: welding is a fabrication process that joins materials, usually metals or thermoplastics, by causing coalescence. it is widely used in construction, manufacturing, and repair industries. key steps: 1. preparation: clean and align the materials to be welded. 2. selection: choose the appropriate welding method (e.g., mig, tig, stick). 3. setup: adjust equipment settings and safety gear. 4. welding: perform the weld using steady technique and correct parameters. 5. inspection: check weld quality and make necessary corrections. safety precautions: - always wear protective gear (helmet, gloves, apron). - ensure proper ventilation to avoid inhaling fumes. - keep flammable materials away from the work area. - be aware of electrical hazards and hot surfaces. best practices: - maintain equipment regularly. - practice consistent technique for strong, clean welds. - follow manufacturer guidelines and industry standards. - continuously improve skills through training and experience",
+        "field_role": "fn:type|task:create-presentation-on-welding",
+        "produce_role": "fn:type|task:create-presentation-on-welding",
+        "consume_role": "fn:type|task:create-presentation-on-welding",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "instruction": "Create a presentation on welding procedures by adding content to Slide 1 in the PowerPoint document.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:3:6:28",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step3",
+        "consume_step_uid": "gui360-balanced:train:55:step6",
+        "produce_index": 3,
+        "consume_index": 6,
+        "produce_step_id": 3,
+        "consume_step_id": 6,
+        "distance": 3,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:3:9:29",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step3",
+        "consume_step_uid": "gui360-balanced:train:55:step9",
+        "produce_index": 3,
+        "consume_index": 9,
+        "produce_step_id": 3,
+        "consume_step_id": 9,
+        "distance": 6,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:3:14:30",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step3",
+        "consume_step_uid": "gui360-balanced:train:55:step14",
+        "produce_index": 3,
+        "consume_index": 14,
+        "produce_step_id": 3,
+        "consume_step_id": 14,
+        "distance": 11,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:6:9:31",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step6",
+        "consume_step_uid": "gui360-balanced:train:55:step9",
+        "produce_index": 6,
+        "consume_index": 9,
+        "produce_step_id": 6,
+        "consume_step_id": 9,
+        "distance": 3,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:6:14:32",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step6",
+        "consume_step_uid": "gui360-balanced:train:55:step14",
+        "produce_index": 6,
+        "consume_index": 14,
+        "produce_step_id": 6,
+        "consume_step_id": 14,
+        "distance": 8,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "gui360-balanced:train:55:fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation:9:14:33",
+        "episode_id": "gui360-balanced:train:55",
+        "app": "gui360-balanced",
+        "tag": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide ",
+        "split": "train",
+        "produce_step_uid": "gui360-balanced:train:55:step9",
+        "consume_step_uid": "gui360-balanced:train:55:step14",
+        "produce_index": 9,
+        "consume_index": 14,
+        "produce_step_id": 9,
+        "consume_step_id": 14,
+        "distance": 5,
+        "value": "Fine Arts Chapter 7: Indo-Islamic Architecture\n- Emergence from the fusion of Indian and Islamic traditions\n- Key features: arches, domes, minarets, geometric and floral designs\n- Notable examples: Qutub Minar, Taj Mahal, Red Fort\n- Significance: Symbolizes cultural synthesis and architectural innovation",
+        "normalized_value": "fine arts chapter 7: indo-islamic architecture - emergence from the fusion of indian and islamic traditions - key features: arches, domes, minarets, geometric and floral designs - notable examples: qutub minar, taj mahal, red fort - significance: symbolizes cultural synthesis and architectural innovation",
+        "field_role": "fn:type|task:add-content-related-to",
+        "produce_role": "fn:type|task:add-content-related-to",
+        "consume_role": "fn:type|task:add-content-related-to",
+        "produce_function": "type",
+        "consume_function": "type",
+        "template": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "instruction": "Add content related to 'Fine arts Chapter 7 Indo-Islamic architecture' on Slide 1 in the PowerPoint presentation.",
+        "layer0_bucket": null,
+        "metadata": {
+          "produce_source": "text",
+          "consume_source": "text"
+        }
+      },
+      "bucket": "onscreen_ocr",
+      "metadata": {
+        "ocr_missing": true,
+        "conservative_available": true
+      }
+    }
+  ]
+}
