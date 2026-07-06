@@ -236,6 +236,8 @@ def verdict(counts: Dict[str, Any]) -> Tuple[str, str]:
 
 
 def render_report(counts: Dict[str, Any], phase0_summary: Dict[str, Any], args: argparse.Namespace, full_train_denoms: Dict[str, int], verdict_name: str, verdict_reason: str) -> str:
+    evaluated_states = int(phase0_summary.get("n") or 0)
+    full_train_steps = int(full_train_denoms.get("steps") or 0)
     lines = []
     lines.append("# Re-examination Phase 0 Critical-Step Stratification")
     lines.append("")
@@ -247,7 +249,10 @@ def render_report(counts: Dict[str, Any], phase0_summary: Dict[str, Any], args: 
     lines.append("")
     lines.append("Critical-step definition: bottom-1 / bottom-2 by held-out p_i within each TRAIN task. p_i is estimated from the baseline compound proof feature buckets, not from the state outcome being counted.")
     lines.append("")
-    lines.append("Important coverage note: this report stratifies the existing Phase 0 run, which evaluated a seeded 500-state TRAIN slice (`limit=500`), not the full TRAIN split. Full TRAIN denominators are shown for context; the gate below is for the evaluated Phase 0 slice unless a full run is executed.")
+    if full_train_steps and evaluated_states >= full_train_steps:
+        lines.append("Coverage note: this report stratifies the full TRAIN split Phase 0 run. Full TRAIN denominators are shown below; the gate is evaluated on the full TRAIN split.")
+    else:
+        lines.append(f"Important coverage note: this report stratifies a Phase 0 TRAIN slice with `{evaluated_states}` evaluated states, not the full TRAIN split. Full TRAIN denominators are shown for context; the gate below is for the evaluated Phase 0 slice unless a full run is executed.")
     lines.append("")
     lines.append("## Denominators")
     lines.append("")
