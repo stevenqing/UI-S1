@@ -186,6 +186,27 @@ The next experiment should cross target label and history source:
 
 The starting student must also be evaluated on the same 14,456 states to measure student-relative rescue and regression. Initial screening should use LoRA; only methods that preserve held-out step accuracy should advance to full-parameter confirmation.
 
+## Follow-up implementation status
+
+The pre-registered data matrix is now materialized from the exact 14,456-row formal treatment grid. The A4 core fields (`history`, action key, target text, image, and target ID) match the data used by the completed full-parameter run with zero mismatches.
+
+| Arm | Rows | Diagnostic target accuracy |
+|---|---:|---:|
+| A1 GT target + GT history | 14,456 | 99.88% |
+| A2 marginal-matched random target + GT history | 14,456 | 4.43% |
+| A3 executable actor target + actor history | 11,722 | 26.54% |
+| A4 revision target + revision history | 14,456 | 26.04% |
+| A5 revision target + GT history | 14,456 | 26.04% |
+| A6 GT target + revision history | 14,456 | 99.88% |
+| A7 revision + diagnostic clean prefix | 3,796 | 45.10% |
+| A8 revision + diagnostic dirty prefix | 10,660 | 19.25% |
+| A9 InternVL3-source revisions | 5,391 | 27.62% |
+| A10 Qwen3-VL-source revisions | 9,065 | 25.10% |
+| A11 oracle matcher-correct revisions | 3,764 | 100.00% |
+| A12 oracle matcher-correct + clean prefix | 1,712 | 100.00% |
+
+A matched greedy evaluator, exact shard merger, and student-relative utility analyzer have also passed an eight-row end-to-end smoke test. The next execution step is a full A4 starting-student evaluation, followed by the paired A5 history intervention.
+
 ## Positioning
 
 Trajectory refinement itself is not new. Relevant work includes AgentRefine, Agent-R, STeCa, STeP, GUI-Reflection, UI-Genie, UI-Voyager, STEVE, V-Droid, GAIA, and weak-to-strong trust filtering. The differentiating research object here is the conjunction of:
@@ -202,6 +223,10 @@ Core implementation:
 
 - [Trajectory generation and global revision](../scripts/multiagent_trajectory_revision.py)
 - [Counterfactual revision utility analysis](../scripts/analyze_multiagent_revision_utility.py)
+- [Causal-arm data builder](../scripts/build_revision_causal_arms.py)
+- [Matched starting-student evaluator](../scripts/evaluate_revision_causal_arm.py)
+- [Exact causal-eval shard merger](../scripts/merge_revision_causal_eval.py)
+- [Student-relative utility analysis](../scripts/analyze_student_relative_revision.py)
 - [Full-parameter data and config preparation](../scripts/prepare_multiagent_fullparam_llamafactory.py)
 - [Held-out evaluator](../scripts/evaluate_multiagent_revision_pilot.py)
 - [Exact shard merger](../scripts/merge_multiagent_revision_eval.py)
