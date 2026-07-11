@@ -174,6 +174,11 @@ def render_report(summary: Mapping[str, Any]) -> str:
                 f"- Student action disagreement: **{pct(history['action_disagreement'])}**.",
             ]
         )
+        if history.get("population_standardization"):
+            standardized = history["population_standardization"]
+            lines.append(
+                f"- Actor×prefix population-standardized GT-history delta: **{pp(standardized['gt_minus_revision_history_delta'])}** over a {standardized['population_rows']}-row target population."
+            )
     lines.extend(
         [
             "",
@@ -194,6 +199,7 @@ def main() -> None:
     parser.add_argument("--revision-history-input", required=True)
     parser.add_argument("--revision-history-eval", required=True)
     parser.add_argument("--gt-history-eval")
+    parser.add_argument("--population-input")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--bootstrap-draws", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=42)
@@ -255,7 +261,7 @@ def main() -> None:
         gt = {key: gt_all[key] for key in source}
         revision_correct = [bool(evaluated[key]["student_correct"]) for key in source]
         gt_correct = [bool(gt[key]["student_correct"]) for key in source]
-        summary["history_intervention"] = {
+        history_intervention: dict[str, Any] = {
             "rows": len(source),
             "revision_history_accuracy": sum(revision_correct) / len(source),
             "gt_history_accuracy": sum(gt_correct) / len(source),
@@ -267,6 +273,48 @@ def main() -> None:
                 for key in source
             ) / len(source),
         }
+        stratum_effects: dict[str, Any] = {}
+        for actor in sorted({str(row["actor"]) for row in source.values()}):
+            for clean in (True, False):
+                keys = [
+                    key for key, row in source.items()
+                    if str(row["actor"]) == actor and bool(row["prefix_clean"]) is clean
+                ]
+                if not keys:
+                    continue
+                before = [int(bool(evaluated[key]["student_correct"])) for key in keys]
+                after = [int(bool(gt[key]["student_correct"])) for key in keys]
+                name = f"{actor}:{'clean' if clean else 'dirty'}"
+                stratum_effects[name] = {
+                    "rows": len(keys),
+                    "revision_history_accuracy": sum(before) / len(keys),
+                    "gt_history_accuracy": sum(after) / len(keys),
+                    "delta": (sum(after) - sum(before)) / len(keys),
+                    "wrong_to_right": sum(not b and a for b, a in zip(before, after)),
+                    "right_to_wrong": sum(b and not a for b, a in zip(before, after)),
+                }
+        history_intervention["by_actor_prefix"] = stratum_effects
+        if args.population_input:
+            population_rows = read_jsonl(Path(args.population_input))
+            population_counts = Counter(
+                f"{row['actor']}:{'clean' if bool(row['prefix_clean']) else 'dirty'}"
+                for row in population_rows
+            )
+            if set(population_counts) - set(stratum_effects):
+                raise ValueError("sample lacks a population actor/prefix stratum")
+            population_total = sum(population_counts.values())
+            history_intervention["population_standardization"] = {
+                "population_rows": population_total,
+                "stratum_weights": {
+                    name: count / population_total for name, count in sorted(population_counts.items())
+                },
+                "gt_minus_revision_history_delta": sum(
+                    population_counts[name] / population_total * stratum_effects[name]["delta"]
+                    for name in population_counts
+                ),
+                "note": "standardized over the full actor x diagnostic-prefix distribution",
+            }
+        summary["history_intervention"] = history_intervention
 
     output_dir = Path(args.output_dir)
     write_json(output_dir / "student_relative_revision_summary.json", summary)

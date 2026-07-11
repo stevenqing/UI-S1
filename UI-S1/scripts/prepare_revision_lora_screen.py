@@ -25,6 +25,17 @@ SPECIAL_ARMS = (
     "a10_revision_qwen3_vl_only",
 )
 
+ARM_ROLES = {
+    "a1_gt_target_gt_history": "positive_control",
+    "a2_random_target_gt_history": "negative_control",
+    "a4_revision_target_revision_history": "candidate_unfiltered_treatment",
+    "a5_revision_target_gt_history": "candidate_history_intervention",
+    "a6_gt_target_revision_history": "oracle_context_control",
+    "a7_revision_clean_prefix": "oracle_prefix_control",
+    "a9_revision_internvl3_only": "candidate_source_gate",
+    "a10_revision_qwen3_vl_only": "candidate_source_gate",
+}
+
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.open(encoding="utf-8") if line.strip()]
@@ -90,6 +101,7 @@ def annotate(rows: Sequence[Mapping[str, Any]], screen_arm: str, sampling: str) 
 def summarize(rows: Sequence[Mapping[str, Any]], path: Path, optimizer_steps: int) -> dict[str, Any]:
     return {
         "arm": str(rows[0]["screen_arm"]),
+        "research_role": ARM_ROLES[str(rows[0]["screen_arm"])],
         "rows": len(rows),
         "optimizer_steps": optimizer_steps,
         "gradient_accumulation_steps": len(rows) // optimizer_steps,
@@ -98,6 +110,8 @@ def summarize(rows: Sequence[Mapping[str, Any]], path: Path, optimizer_steps: in
         "actor_counts": dict(Counter(str(row["actor"]) for row in rows)),
         "target_source_counts": dict(Counter(str(row["target_source"]) for row in rows)),
         "history_source_counts": dict(Counter(str(row["history_source"]) for row in rows)),
+        "selection_uses_matcher": any(bool(row.get("selection_uses_matcher")) for row in rows),
+        "oracle_target_used": any(bool(row.get("oracle_target_used")) for row in rows),
         "action_type_counts": dict(Counter(str((row.get("chosen_action") or {}).get("action") or "unknown") for row in rows)),
         "output": str(path),
         "output_sha256": sha256(path),

@@ -207,6 +207,8 @@ The pre-registered data matrix is now materialized from the exact 14,456-row for
 | A11 oracle matcher-correct revisions | 3,764 | 100.00% |
 | A12 oracle matcher-correct + clean prefix | 1,712 | 100.00% |
 
+A7 is a matcher-defined conditional filtering policy and is an oracle diagnostic control. Even if it improves downstream behavior at the same update budget, that would not by itself prove that prefix cleanliness causally causes the gain, because the accepted subset may be easier in other ways.
+
 A matched greedy evaluator, exact shard merger, and student-relative utility analyzer have also passed an eight-row end-to-end smoke test. The next execution step is a full A4 starting-student evaluation, followed by the paired A5 history intervention.
 
 ## Positioning

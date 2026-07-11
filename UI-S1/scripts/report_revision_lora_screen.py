@@ -129,6 +129,12 @@ def main() -> None:
             if metrics_path.exists():
                 metrics = read_jsonl(metrics_path)
                 training = metrics[-1] if metrics else None
+        data_info = data_manifest["arms"].get(arm)
+        oracle_control = bool(
+            data_info and (data_info.get("selection_uses_matcher") or data_info.get("oracle_target_used"))
+        )
+        research_role = str((data_info or {}).get("research_role") or "unclassified")
+        candidate_arm = research_role.startswith("candidate_")
         arms.append({
             "arm": arm,
             "post": str(post_path),
@@ -146,7 +152,11 @@ def main() -> None:
             "step_wrong_to_right": sum(not bool(base_steps[key]["success"]) and bool(post_steps[key]["success"]) for key in base_steps),
             "step_right_to_wrong": sum(bool(base_steps[key]["success"]) and not bool(post_steps[key]["success"]) for key in base_steps),
             "gate": gate,
-            "data": data_manifest["arms"].get(arm),
+            "oracle_control": oracle_control,
+            "research_role": research_role,
+            "candidate_arm": candidate_arm,
+            "deployable_selector": candidate_arm and not oracle_control,
+            "data": data_info,
             "last_training_metrics": training,
         })
     if not arms:
@@ -163,24 +173,28 @@ def main() -> None:
             "baseline_step_accuracy": base_step_accuracy,
             "same_held_out_grid": True,
             "same_training_update_budget": data_manifest["training_policy"]["same_update_budget"],
+            "screening_only": args.shard_count > 1,
+            "held_out_fraction": 1.0 / args.shard_count,
         },
         "arms": arms,
-        "full_eval_candidates": [row["arm"] for row in arms if row["gate"] == "HELPS"],
+        "full_eval_candidates": [
+            row["arm"] for row in arms if row["gate"] == "HELPS" and row["deployable_selector"]
+        ],
     }
     out_dir = Path(args.output_dir)
     write_json(out_dir / "summary.json", summary)
     report_rows = [
-        [row["arm"], pct(row["post_tsr"]), pp(row["tsr_delta"]), pct(row["post_step_accuracy"]), pp(row["step_accuracy_delta"]), row["gate"]]
+        [row["arm"], row["research_role"], pct(row["post_tsr"]), pp(row["tsr_delta"]), pct(row["post_step_accuracy"]), pp(row["step_accuracy_delta"]), row["gate"]]
         for row in arms
     ]
     lines = [
         "# Revision LoRA Equal-Budget Screen",
         "",
-        f"Frozen held-out grid: {len(selected_ids)} episodes / {len(base_steps)} steps. Baseline TSR {pct(base_tsr)}, step accuracy {pct(base_step_accuracy)}.",
+        f"Screening grid: held-out shard {args.shard_index}/{args.shard_count}, {len(selected_ids)} episodes / {len(base_steps)} steps ({pct(1.0 / args.shard_count)} of the full test set). Baseline TSR {pct(base_tsr)}, step accuracy {pct(base_step_accuracy)}.",
         "",
-        table(["arm", "TSR", "ΔTSR", "step acc", "Δstep", "gate"], report_rows),
+        table(["arm", "status", "TSR", "ΔTSR", "step acc", "Δstep", "gate"], report_rows),
         "",
-        "All arms use the same optimizer-step budget. A subset gate is screening evidence only; full 1,000-episode confirmation is required before a method claim.",
+        "All arms use the same optimizer-step budget. Matcher-selected arms are oracle diagnostic controls and cannot be promoted as deployable selectors. Any subset gate is screening evidence only; full 1,000-episode confirmation is required before a method claim.",
         "",
     ]
     (out_dir / "report.md").write_text("\n".join(lines), encoding="utf-8")

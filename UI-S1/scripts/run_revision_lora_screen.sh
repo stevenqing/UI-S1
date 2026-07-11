@@ -26,15 +26,25 @@ ARMS=(
   a10_revision_qwen3_vl_only
 )
 
-mkdir -p "$OUT/logs"
-rm -rf "$OUT/models" "$OUT/eval" "$OUT/report"
-mkdir -p "$OUT/models" "$OUT/eval" "$OUT/report"
+rm -rf "$OUT/models" "$OUT/eval" "$OUT/report" "$OUT/logs"
+mkdir -p "$OUT/models" "$OUT/eval" "$OUT/report" "$OUT/logs"
 
 if ps -p "$PROTECTED_PID" >/dev/null 2>&1; then
   ps -p "$PROTECTED_PID" -o pid=,stat=,etime= > "$OUT/protected_pid_before.txt"
 fi
 
 export PYTHONPATH="$ROOT/train_GUI_360/compat${PYTHONPATH:+:$PYTHONPATH}"
+
+"$PYTHON_BIN" - "$DATA_ROOT/manifest.json" "$MAX_STEPS" <<'PY'
+import json, sys
+manifest=json.load(open(sys.argv[1]))
+expected=int(sys.argv[2])
+if int(manifest['optimizer_steps']) != expected:
+  raise SystemExit(f"manifest optimizer_steps={manifest['optimizer_steps']} != MAX_STEPS={expected}")
+if int(manifest['gradient_accumulation_steps']) != 8:
+  raise SystemExit(f"runner requires gradient_accumulation_steps=8, got {manifest['gradient_accumulation_steps']}")
+print('[preflight] equal update budget validated; A7 is a matcher-defined diagnostic oracle control')
+PY
 
 train_pids=()
 for index in "${!ARMS[@]}"; do
@@ -70,8 +80,11 @@ expected=int(sys.argv[2])
 for arm in sys.argv[3:]:
     path=root/'models'/arm/'final'/'training_state.pt'
     state=torch.load(path,map_location='cpu',weights_only=True)
-  if int(state.get('global_step',-1)) != expected:
+    if int(state.get('global_step',-1)) != expected:
         raise SystemExit(f'{arm}: {state}')
+    adapter=root/'models'/arm/'final'/'cooperative'
+    if not adapter.is_dir():
+        raise SystemExit(f'{arm}: missing adapter directory {adapter}')
 print(f'[train] all arms reached global_step={expected}')
 PY
 
@@ -107,4 +120,4 @@ if ps -p "$PROTECTED_PID" >/dev/null 2>&1; then
   ps -p "$PROTECTED_PID" -o pid=,stat=,etime= > "$OUT/protected_pid_after.txt"
 fi
 
-echo "[complete] equal-budget revision LoRA screen"
+echo "[complete] equal-budget revision LoRA screen on held-out shard ${EVAL_SHARD_INDEX}/${EVAL_SHARD_COUNT}; full-grid confirmation is still required"

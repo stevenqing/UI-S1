@@ -59,6 +59,12 @@ def history_entry(action: Mapping[str, Any] | None, step_number: int, source: st
 
 
 def canonical_action(action: Any) -> dict[str, Any] | None:
+    """Preserve dataset-native control schemas while normalizing when possible.
+
+    The frozen matcher treats actions such as a coordinate-free GT swipe as a
+    valid type-level target. Revised actions remain strictly normalized in
+    ``build_base_steps``; this fallback is for GT/random/actor controls only.
+    """
     if not isinstance(action, Mapping) or not str(action.get("action") or "").strip():
         return None
     normalized = normalize_action(action)
@@ -264,6 +270,9 @@ def summarize_arm(arm: str, rows: Sequence[Mapping[str, Any]], path: Path) -> di
         "selection_uses_matcher": any(bool(row["selection_uses_matcher"]) for row in rows),
         "oracle_target_used": any(bool(row["oracle_target_used"]) for row in rows),
         "diagnostic_label_accuracy": sum(bool(row["diagnostic_matcher_correct"]) for row in rows) / len(rows),
+        "exact_gt_action_key_match_fraction": sum(
+            str(row["chosen_action_key"]) == action_key(row["gt_action"], 25) for row in rows
+        ) / len(rows),
         "prefix_clean_fraction": sum(bool(row["prefix_clean"]) for row in rows) / len(rows),
         "actor_counts": dict(Counter(str(row["actor"]) for row in rows)),
         "action_type_counts": dict(Counter(str(row["chosen_action"].get("action")) for row in rows)),
@@ -274,6 +283,10 @@ def summarize_arm(arm: str, rows: Sequence[Mapping[str, Any]], path: Path) -> di
 
 def validate_reference(rows: Sequence[Mapping[str, Any]], reference_path: Path) -> dict[str, Any]:
     reference_rows = read_jsonl(reference_path)
+    reference_keys = [(str(row["correction_id"]), int(row["step_idx"])) for row in reference_rows]
+    candidate_keys = [(str(row["correction_id"]), int(row["step_idx"])) for row in rows]
+    if reference_keys != candidate_keys:
+        raise ValueError("A4/reference ordered correction-step grid mismatch")
     reference = {
         (str(row["correction_id"]), int(row["step_idx"])): row for row in reference_rows
     }
@@ -282,7 +295,7 @@ def validate_reference(rows: Sequence[Mapping[str, Any]], reference_path: Path) 
     }
     if set(reference) != set(candidate):
         raise ValueError("A4/reference correction-step grid mismatch")
-    fields = ("history", "chosen_action_key", "target_text", "image", "target_id")
+    fields = ("history", "chosen_action_key", "target_text", "image", "target_id", "actor", "corrector")
     mismatches = Counter()
     for key in reference:
         for field in fields:
@@ -293,6 +306,7 @@ def validate_reference(rows: Sequence[Mapping[str, Any]], reference_path: Path) 
         "reference": str(reference_path),
         "reference_sha256": sha256(reference_path),
         "rows": len(reference_rows),
+        "ordered_keys_match": True,
         "core_fields": list(fields),
         "mismatches": dict(mismatches),
         "core_match": True,
