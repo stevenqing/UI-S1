@@ -307,6 +307,7 @@ def main() -> None:
     parser.add_argument("--reference-revision-sft")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--match-threshold", type=float, default=0.5)
+    parser.add_argument("--eval-per-actor-prefix", type=int, default=512)
     args = parser.parse_args()
 
     actor_path = Path(args.actor_trajectories)
@@ -408,6 +409,54 @@ def main() -> None:
         summaries[arm] = summarize_arm(arm, rows, path)
         write_json(path.with_suffix(".summary.json"), summaries[arm])
 
+    evaluation_grid: dict[str, Any] | None = None
+    if args.eval_per_actor_prefix > 0:
+        a4_rows = arm_rows["a4_revision_target_revision_history"]
+        a5_by_key = {
+            (str(row["correction_id"]), int(row["step_idx"])): row
+            for row in arm_rows["a5_revision_target_gt_history"]
+        }
+        selected_keys: set[tuple[str, int]] = set()
+        stratum_counts: dict[str, int] = {}
+        for actor in sorted({str(row["actor"]) for row in a4_rows}):
+            for clean in (True, False):
+                group = [
+                    row for row in a4_rows
+                    if str(row["actor"]) == actor and bool(row["prefix_clean"]) is clean
+                ]
+                if len(group) < args.eval_per_actor_prefix:
+                    raise ValueError(f"insufficient rows for eval stratum {actor}/{clean}: {len(group)}")
+                stratum_rng = random.Random(f"{args.seed}:{actor}:{int(clean)}")
+                stratum_rng.shuffle(group)
+                chosen = group[: args.eval_per_actor_prefix]
+                selected_keys.update((str(row["correction_id"]), int(row["step_idx"])) for row in chosen)
+                stratum_counts[f"{actor}:{'clean' if clean else 'dirty'}"] = len(chosen)
+        eval_a4 = [
+            row for row in a4_rows
+            if (str(row["correction_id"]), int(row["step_idx"])) in selected_keys
+        ]
+        eval_a5 = [
+            a5_by_key[(str(row["correction_id"]), int(row["step_idx"]))]
+            for row in eval_a4
+        ]
+        eval_a4_path = output_dir / "eval_grid_a4_revision_history.jsonl"
+        eval_a5_path = output_dir / "eval_grid_a5_gt_history.jsonl"
+        write_jsonl(eval_a4_path, eval_a4)
+        write_jsonl(eval_a5_path, eval_a5)
+        evaluation_grid = {
+            "design": "equal allocation across actor source x diagnostic prefix cleanliness",
+            "per_stratum": args.eval_per_actor_prefix,
+            "strata": stratum_counts,
+            "rows": len(eval_a4),
+            "paired_keys_match": {
+                (str(row["correction_id"]), int(row["step_idx"])) for row in eval_a4
+            } == {
+                (str(row["correction_id"]), int(row["step_idx"])) for row in eval_a5
+            },
+            "a4": {"path": str(eval_a4_path), "sha256": sha256(eval_a4_path)},
+            "a5": {"path": str(eval_a5_path), "sha256": sha256(eval_a5_path)},
+        }
+
     manifest: dict[str, Any] = {
         "version": "multiagent-revision-causal-arms-v1",
         "seed": args.seed,
@@ -418,6 +467,7 @@ def main() -> None:
         "corrections_sha256": sha256(correction_path),
         "base_usable_steps": len(base_steps),
         "arms": summaries,
+        "starting_student_history_eval_grid": evaluation_grid,
         "notes": {
             "a1_a6": "target/history factorial and controls; GT target arms are oracle controls",
             "a7_a8": "matcher-defined prefix selection; diagnostic, not deployable",

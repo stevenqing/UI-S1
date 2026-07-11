@@ -285,10 +285,12 @@ def prefix_consistency_diagnostics(
 ) -> dict[str, Any]:
     counts: Counter[str] = Counter()
     by_prior_wrong: dict[str, Counter[str]] = {}
+    prefix_strata: dict[tuple[str, int], dict[bool, Counter[str]]] = {}
     expected_steps: set[tuple[str, int]] = set()
 
     for correction in corrections:
         correction_id = str(correction["correction_id"])
+        actor = str(correction["actor"])
         prior_wrong = 0
         for step in sorted(correction["revised_steps"], key=lambda row: int(row["step_idx"])):
             step_idx = int(step["step_idx"])
@@ -304,7 +306,27 @@ def prefix_consistency_diagnostics(
             counts["dirty_prefix_steps"] += int(prior_wrong > 0)
             counts["correct_clean_prefix"] += int(prior_wrong == 0 and revised_correct)
             counts["correct_dirty_prefix"] += int(prior_wrong > 0 and revised_correct)
+            stratum = prefix_strata.setdefault(
+                (actor, step_idx), {True: Counter(), False: Counter()}
+            )[prior_wrong == 0]
+            stratum["steps"] += 1
+            stratum["correct"] += int(revised_correct)
             prior_wrong += int(not revised_correct)
+
+    overlap_weight = 0
+    overlap_difference_sum = 0.0
+    overlap_strata = 0
+    for groups in prefix_strata.values():
+        clean = groups[True]
+        dirty = groups[False]
+        if not clean["steps"] or not dirty["steps"]:
+            continue
+        weight = min(clean["steps"], dirty["steps"])
+        clean_accuracy = clean["correct"] / clean["steps"]
+        dirty_accuracy = dirty["correct"] / dirty["steps"]
+        overlap_difference_sum += weight * (clean_accuracy - dirty_accuracy)
+        overlap_weight += weight
+        overlap_strata += 1
 
     result: dict[str, Any] = {
         "definition": "clean prefix iff every earlier revised action is matcher-correct",
@@ -320,6 +342,12 @@ def prefix_consistency_diagnostics(
         "current_accuracy_given_dirty_prefix": safe_rate(
             counts["correct_dirty_prefix"], counts["dirty_prefix_steps"]
         ),
+        "actor_step_index_overlap_adjustment": {
+            "strata": overlap_strata,
+            "overlap_weighted_steps": overlap_weight,
+            "clean_minus_dirty_accuracy": safe_rate(overlap_difference_sum, overlap_weight),
+            "note": "descriptive overlap weighting within actor and absolute step index; not a causal estimator",
+        },
         "by_prior_wrong_actions": {
             bucket: {
                 "steps": bucket_counts["steps"],
@@ -458,6 +486,7 @@ def render_markdown(summary: Mapping[str, Any]) -> str:
             "",
             f"- Clean-prefix rows: **{prefix['clean_prefix_steps']} / {prefix['steps']} ({pct(prefix['clean_prefix_fraction'])})**; current-label accuracy **{pct(prefix['current_accuracy_given_clean_prefix'])}**.",
             f"- Dirty-prefix rows: **{prefix['dirty_prefix_steps']} / {prefix['steps']} ({pct(prefix['dirty_prefix_fraction'])})**; current-label accuracy **{pct(prefix['current_accuracy_given_dirty_prefix'])}**.",
+            f"- Within actor × absolute-step overlap strata, the weighted clean-minus-dirty accuracy difference remains **{pp(prefix['actor_step_index_overlap_adjustment']['clean_minus_dirty_accuracy'])}** over {prefix['actor_step_index_overlap_adjustment']['overlap_weighted_steps']} overlap-weighted rows. This is descriptive, not causal.",
             "",
             "| prior matcher-wrong revised actions | rows | current-label accuracy |",
             "|---:|---:|---:|",

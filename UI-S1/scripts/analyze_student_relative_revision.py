@@ -205,11 +205,13 @@ def main() -> None:
         source_rows = source_rows[: args.max_rows]
     source = {paired_key(row): row for row in source_rows}
     evaluated_rows = read_jsonl(Path(args.revision_history_eval))
-    evaluated = {paired_key(row): row for row in evaluated_rows}
-    if len(source) != len(source_rows) or len(evaluated) != len(evaluated_rows):
+    evaluated_all = {paired_key(row): row for row in evaluated_rows}
+    if len(source) != len(source_rows) or len(evaluated_all) != len(evaluated_rows):
         raise ValueError("duplicate paired key")
-    if set(source) != set(evaluated):
-        raise ValueError("source/evaluation grid mismatch")
+    missing_evaluated = set(source) - set(evaluated_all)
+    if missing_evaluated:
+        raise ValueError(f"source/evaluation grid missing {list(missing_evaluated)[:10]}")
+    evaluated = {key: evaluated_all[key] for key in source}
 
     joined: list[dict[str, Any]] = []
     pattern_counts: Counter[str] = Counter()
@@ -244,9 +246,13 @@ def main() -> None:
 
     if args.gt_history_eval:
         gt_rows = read_jsonl(Path(args.gt_history_eval))
-        gt = {paired_key(row): row for row in gt_rows}
-        if len(gt) != len(gt_rows) or set(gt) != set(evaluated):
-            raise ValueError("GT-history/revision-history grid mismatch")
+        gt_all = {paired_key(row): row for row in gt_rows}
+        if len(gt_all) != len(gt_rows):
+            raise ValueError("duplicate GT-history paired key")
+        missing_gt = set(source) - set(gt_all)
+        if missing_gt:
+            raise ValueError(f"GT-history grid missing {list(missing_gt)[:10]}")
+        gt = {key: gt_all[key] for key in source}
         revision_correct = [bool(evaluated[key]["student_correct"]) for key in source]
         gt_correct = [bool(gt[key]["student_correct"]) for key in source]
         summary["history_intervention"] = {

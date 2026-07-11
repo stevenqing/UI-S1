@@ -110,6 +110,8 @@ Current-label accuracy falls monotonically with previous matcher-wrong revisions
 | 3 | 17.90% |
 | 4+ | 16.93% |
 
+Within actor × absolute-step strata containing both clean and dirty examples, overlap weighting still gives a **+22.35pp** clean-minus-dirty accuracy difference over 1,588 overlap-weighted rows. This reduces a simple source/position explanation, but remains descriptive rather than causal.
+
 This is a diagnostic proxy rather than an executed transition-equivalence test. It nevertheless exposes an important constraint: globally rewriting actions does not guarantee that the revised action prefix causally reaches the fixed future screenshot.
 
 ## Finding 4: source-relative gain does not imply student utility
