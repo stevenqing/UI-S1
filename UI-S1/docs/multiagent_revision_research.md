@@ -116,6 +116,23 @@ This is a diagnostic proxy rather than an executed transition-equivalence test. 
 
 ## Finding 4: source-relative gain does not imply student utility
 
+The frozen starting checkpoint was evaluated greedily on the exact 14,456 A4 state/history rows used by the formal noisy treatment. Relative to that student:
+
+| Outcome | Count | Fraction |
+|---|---:|---:|
+| Revision rescues student | 881 | 6.09% |
+| Revision regresses student | 4,981 | 34.46% |
+| Both correct | 2,883 | 19.94% |
+| Both wrong | 5,711 | 39.51% |
+
+- Starting-student accuracy: **54.40%**.
+- Revision accuracy: **26.04%**.
+- Net student-relative revision utility: **-28.36pp**.
+- Trajectory-clustered 95% interval: **[-29.58pp, -27.18pp]**.
+- Given a student-correct step, the revision regresses it **63.34%** of the time.
+
+The negative student-relative utility occurs for both sources: -29.18pp for InternVL3-derived revisions and -27.88pp for Qwen3-VL-derived revisions. This directly resolves the earlier apparent paradox: the corrector can improve a very weak source actor while still being dramatically worse than the student that receives the supervision.
+
 The full noisy-SFT run reaches aggregate train loss 0.2131, but held-out performance changes as follows:
 
 | Metric | Baseline | Post | Delta |
@@ -125,7 +142,7 @@ The full noisy-SFT run reaches aggregate train loss 0.2131, but held-out perform
 
 The paired 10,000-draw TSR bootstrap interval is [-20.20pp, -15.50pp]. There are zero task wrong-to-right flips and 178 task right-to-wrong flips.
 
-Being better than weak source actors is not sufficient for a revision set to supervise a stronger starting student.
+Being better than weak source actors is not sufficient for a revision set to supervise a stronger starting student; the same-state measurement now quantifies that gap directly.
 
 ## Confidence caveat
 
@@ -186,7 +203,7 @@ The next experiment should cross target label and history source:
 | A7 | revision | clean prefix only | test sequential contamination |
 | A8 | revision | dirty prefix only | harm control |
 
-The starting student must also be evaluated on the same 14,456 states to measure student-relative rescue and regression. Initial screening should use LoRA; only methods that preserve held-out step accuracy should advance to full-parameter confirmation.
+The starting-student evaluation is complete. Initial training screening uses LoRA; only deployable methods that preserve held-out step accuracy advance to full 1,000-episode and then full-parameter confirmation.
 
 ## Follow-up implementation status
 
@@ -209,7 +226,7 @@ The pre-registered data matrix is now materialized from the exact 14,456-row for
 
 A7 is a matcher-defined conditional filtering policy and is an oracle diagnostic control. Even if it improves downstream behavior at the same update budget, that would not by itself prove that prefix cleanliness causally causes the gain, because the accepted subset may be easier in other ways.
 
-A matched greedy evaluator, exact shard merger, and student-relative utility analyzer have also passed an eight-row end-to-end smoke test. The next execution step is a full A4 starting-student evaluation, followed by the paired A5 history intervention.
+A matched greedy evaluator and exact shard merger completed all 14,456 A4 rows. The paired A5 history intervention and equal-budget LoRA screen are automated in the overnight pipeline.
 
 ## Positioning
 

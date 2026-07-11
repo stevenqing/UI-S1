@@ -268,6 +268,7 @@ def summarize_arm(arm: str, rows: Sequence[Mapping[str, Any]], path: Path) -> di
         "history_source": sorted({str(row["history_source"]) for row in rows}),
         "selection_policy": sorted({str(row["selection_policy"]) for row in rows}),
         "selection_uses_matcher": any(bool(row["selection_uses_matcher"]) for row in rows),
+        "semantic_quality_filter_used": any(bool(row["semantic_quality_filter_used"]) for row in rows),
         "oracle_target_used": any(bool(row["oracle_target_used"]) for row in rows),
         "diagnostic_label_accuracy": sum(bool(row["diagnostic_matcher_correct"]) for row in rows) / len(rows),
         "exact_gt_action_key_match_fraction": sum(
