@@ -81,11 +81,20 @@ def average_precision(labels: Sequence[int], scores: Sequence[float]) -> float |
     return total / positive
 
 
-def find_subsequence(sequence: Sequence[int], target: Sequence[int], limit: int = 8) -> int:
-    for start in range(min(limit, max(0, len(sequence) - len(target))) + 1):
-        if list(sequence[start : start + len(target)]) == list(target):
-            return start
-    raise ValueError(f"candidate tokens not found in suffix: target={list(target)} suffix={list(sequence[:limit+len(target)])}")
+def differing_spans(left: Sequence[int], right: Sequence[int]) -> tuple[int, int, int]:
+    """Return common-prefix end and candidate-specific ends before common suffix."""
+    prefix = 0
+    while prefix < min(len(left), len(right)) and left[prefix] == right[prefix]:
+        prefix += 1
+    suffix = 0
+    max_suffix = min(len(left), len(right)) - prefix
+    while suffix < max_suffix and left[len(left) - suffix - 1] == right[len(right) - suffix - 1]:
+        suffix += 1
+    left_end = len(left) - suffix
+    right_end = len(right) - suffix
+    if prefix >= left_end or prefix >= right_end:
+        raise ValueError("YES/NO tokenizations have no candidate-specific span")
+    return prefix, left_end, right_end
 
 
 def build_messages(row: Mapping[str, Any], answer: str | None = None) -> list[dict[str, Any]]:
@@ -104,34 +113,41 @@ def build_messages(row: Mapping[str, Any], answer: str | None = None) -> list[di
 
 def score_batch(model: Any, processor: Any, device: torch.device, rows: Sequence[Mapping[str, Any]], max_length: int) -> list[dict[str, float]]:
     expanded = [(row, answer) for row in rows for answer in CANDIDATES]
-    prompt_texts = [processor.apply_chat_template(build_messages(row), tokenize=False, add_generation_prompt=True) for row, _ in expanded]
     full_texts = [processor.apply_chat_template(build_messages(row, answer), tokenize=False, add_generation_prompt=False) for row, answer in expanded]
     images = [Image.open(row["image"]).convert("RGB") for row, _ in expanded]
-    prompt_inputs = processor(text=prompt_texts, images=images, return_tensors="pt", padding=True, truncation=True, max_length=max_length)
     full_inputs = processor(text=full_texts, images=images, return_tensors="pt", padding=True, truncation=True, max_length=max_length)
-    prompt_lengths = prompt_inputs["attention_mask"].sum(dim=1).tolist()
     full_lengths = full_inputs["attention_mask"].sum(dim=1).tolist()
+    if any(int(length) >= max_length for length in full_lengths):
+        raise ValueError(f"ranker input reached max_length={max_length}; answer span may be truncated")
     full_inputs = {name: value.to(device) for name, value in full_inputs.items()}
     with torch.inference_mode(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
         logits = model(**full_inputs).logits.float()
     log_probs = torch.log_softmax(logits, dim=-1)
-    sequence_scores = []
     full_ids = full_inputs["input_ids"]
-    for idx, ((_row, answer), prompt_len, full_len) in enumerate(zip(expanded, prompt_lengths, full_lengths)):
-        candidate_ids = processor.tokenizer.encode(answer, add_special_tokens=False)
-        suffix = full_ids[idx, int(prompt_len) : int(full_len)].tolist()
-        offset = find_subsequence(suffix, candidate_ids)
-        start = int(prompt_len) + offset
-        token_scores = [
-            float(log_probs[idx, position - 1, token_id].item())
-            for position, token_id in zip(range(start, start + len(candidate_ids)), candidate_ids)
-        ]
-        sequence_scores.append(sum(token_scores) / len(token_scores))
     output = []
-    for idx in range(0, len(sequence_scores), 2):
-        yes, no = sequence_scores[idx], sequence_scores[idx + 1]
+    for pair_idx in range(len(rows)):
+        yes_idx = 2 * pair_idx
+        no_idx = yes_idx + 1
+        yes_ids = full_ids[yes_idx, : int(full_lengths[yes_idx])].tolist()
+        no_ids = full_ids[no_idx, : int(full_lengths[no_idx])].tolist()
+        start, yes_end, no_end = differing_spans(yes_ids, no_ids)
+        yes = sum(
+            float(log_probs[yes_idx, position - 1, yes_ids[position]].item())
+            for position in range(start, yes_end)
+        )
+        no = sum(
+            float(log_probs[no_idx, position - 1, no_ids[position]].item())
+            for position in range(start, no_end)
+        )
         probability = 1.0 / (1.0 + math.exp(max(-60.0, min(60.0, no - yes))))
-        output.append({"logp_yes": yes, "logp_no": no, "score": probability})
+        output.append({
+            "logp_yes": yes,
+            "logp_no": no,
+            "score": probability,
+            "candidate_start": start,
+            "yes_token_count": yes_end - start,
+            "no_token_count": no_end - start,
+        })
     return output
 
 

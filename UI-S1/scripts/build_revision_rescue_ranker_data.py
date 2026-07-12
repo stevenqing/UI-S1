@@ -78,7 +78,9 @@ Question: Should the global revision replace the starting-student candidate beca
 Answer exactly YES or NO. Say YES only when the revision is clearly a grounded repair; otherwise say NO."""
 
 
-def balanced_train(rows: Sequence[Mapping[str, Any]], positives: int, negatives: int, seed: int) -> list[dict[str, Any]]:
+def balanced_train(
+    rows: Sequence[Mapping[str, Any]], positives: int, negatives: int, seed: int, negative_mode: str
+) -> list[dict[str, Any]]:
     rng = random.Random(seed)
     groups: dict[str, list[Mapping[str, Any]]] = {}
     for row in rows:
@@ -94,7 +96,7 @@ def balanced_train(rows: Sequence[Mapping[str, Any]], positives: int, negatives:
         row["balanced_repeat"] = idx >= len(positive_group)
         output.append(row)
 
-    negative_names = ("regress", "both_correct", "both_wrong")
+    negative_names = ("regress",) if negative_mode == "regress_only" else ("regress", "both_correct", "both_wrong")
     allocations = {name: negatives // len(negative_names) for name in negative_names}
     for name in negative_names[: negatives % len(negative_names)]:
         allocations[name] += 1
@@ -120,6 +122,7 @@ def main() -> None:
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--balanced-positive", type=int, default=2048)
     parser.add_argument("--balanced-negative", type=int, default=2048)
+    parser.add_argument("--negative-mode", choices=["balanced_subtypes", "regress_only"], default="balanced_subtypes")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
@@ -168,7 +171,9 @@ def main() -> None:
         })
 
     splits = {name: [row for row in rows if row["split"] == name] for name in ("train", "dev", "test")}
-    balanced = balanced_train(splits["train"], args.balanced_positive, args.balanced_negative, args.seed)
+    balanced = balanced_train(
+        splits["train"], args.balanced_positive, args.balanced_negative, args.seed, args.negative_mode
+    )
     out_dir = Path(args.output_dir)
     for name, items in splits.items():
         write_jsonl(out_dir / f"{name}.jsonl", items)
@@ -187,6 +192,7 @@ def main() -> None:
         "outcome_counts": {name: dict(Counter(str(row["utility_outcome"]) for row in items)) for name, items in splits.items()},
         "positive_rates": {name: sum(int(row["label"]) for row in items) / len(items) for name, items in splits.items()},
         "balanced_train_rows": len(balanced),
+        "negative_mode": args.negative_mode,
         "balanced_train_labels": dict(Counter(str(row["target_text"]) for row in balanced)),
         "artifacts": {
             name: {"path": str(out_dir / f"{name}.jsonl"), "sha256": sha256(out_dir / f"{name}.jsonl")}
