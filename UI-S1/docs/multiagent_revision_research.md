@@ -144,6 +144,67 @@ The paired 10,000-draw TSR bootstrap interval is [-20.20pp, -15.50pp]. There are
 
 Being better than weak source actors is not sufficient for a revision set to supervise a stronger starting student; the same-state measurement now quantifies that gap directly.
 
+## Finding 5: history mismatch is real but context repair cannot rescue wrong labels
+
+On a paired 2,048-row grid balanced over actor source × diagnostic prefix cleanliness, replacing revised history with GT history changes the frozen starting student's behavior on 39.75% of steps:
+
+- Revision-history student accuracy: 62.11%.
+- GT-history student accuracy: 73.29%.
+- Balanced-grid delta: **+11.18pp**.
+- Population-standardized delta over the full 14,456-row actor×prefix distribution: **+16.47pp**.
+- Wrong→right flips: 281; right→wrong flips: 52.
+
+The effect is concentrated in dirty prefixes: +22.07pp for InternVL3-derived rows and +22.46pp for Qwen3-VL-derived rows. Clean-prefix effects are near zero. This supports the history–screen inconsistency mechanism.
+
+However, the LoRA target × history factorial reveals an interaction rather than two additive harms:
+
+| Effect on held-out step accuracy | Estimate | Episode-bootstrap 95% interval |
+|---|---:|---:|
+| GT history effect given GT target (A1−A6) | +6.67pp | [+4.18pp, +9.15pp] |
+| GT history effect given revision target (A5−A4) | **-11.04pp** | [-14.29pp, -7.75pp] |
+| Revision-label effect under GT history (A5−A1) | **-30.05pp** | [-35.72pp, -24.40pp] |
+| Revision-label effect under revision history (A4−A6) | -12.35pp | [-17.62pp, -7.16pp] |
+| Label × history interaction | **-17.70pp** | [-21.85pp, -13.37pp] |
+
+Correct history helps when targets are correct, but makes wrong revision targets more directly learnable. Noisy revised history partially masks wrong-label supervision rather than repairing it. Therefore, fixing context alone is insufficient; target utility must be gated first.
+
+## Finding 6: equal-budget LoRA controls validate the causal pipeline
+
+All arms use 800 rows, 100 optimizer updates, identical LoRA configuration, and the same frozen 125-episode / 915-step held-out screen:
+
+| Arm | Role | ΔTSR | Δstep | Gate |
+|---|---|---:|---:|---|
+| A1 GT target + GT history | positive control | +1.60pp | +0.44pp | HELPS |
+| A6 GT target + revision history | context control | +0.80pp | -6.23pp | HARMS |
+| A10 Qwen3-VL-source revision | source gate | -16.00pp | -15.30pp | HARMS |
+| A9 InternVL3-source revision | source gate | -16.00pp | -17.27pp | HARMS |
+| A4 revision + revision history | treatment | -17.60pp | -18.58pp | HARMS |
+| A5 revision + GT history | history intervention | -18.40pp | -29.62pp | HARMS |
+| A7 clean-prefix revision | oracle prefix control | -22.40pp | -21.75pp | HARMS |
+| A2 marginal-matched random target | negative control | -23.20pp | -51.04pp | HARMS |
+
+The positive control shows that the trainer and update budget can produce a non-harmful improvement; the random control establishes the expected lower bound. Source-only and prefix-only selection fail because every such subset remains strongly negative relative to the starting student. No deployable candidate advanced to full-grid or full-parameter confirmation.
+
+## Finding 7: metadata-only utility prediction is insufficient
+
+An episode-disjoint logistic gate used source identity, action types, candidate agreement, position, confidence, and non-oracle prefix metadata while excluding GT actions and matcher outcomes. On 1,666 held-out rows:
+
+- Rescue base rate: 4.98%.
+- ROC-AUC: 0.6101.
+- Average precision: 0.0678.
+- Every nonzero-coverage operating point had negative accepted-set net utility.
+
+Simple metadata cannot identify the rare revision rescues. The next selector must semantically inspect the screenshot, goal, history, revision rationale, and actor/revision/student candidate packet.
+
+An episode-disjoint multimodal verifier dataset has therefore been constructed with three conservative decisions:
+
+- `keep_student`: 6,116 train rows before balancing.
+- `use_revision`: 717 train rows before balancing.
+- `replan`: 4,606 train rows before balancing.
+- Balanced training set: 2,048 examples per decision, 6,144 total.
+
+This verifier-agent formulation is now the main positive method direction.
+
 ## Confidence caveat
 
 - 88.11% of usable trajectories have self-reported confidence 0.95.
@@ -226,7 +287,7 @@ The pre-registered data matrix is now materialized from the exact 14,456-row for
 
 A7 is a matcher-defined conditional filtering policy and is an oracle diagnostic control. Even if it improves downstream behavior at the same update budget, that would not by itself prove that prefix cleanliness causally causes the gain, because the accepted subset may be easier in other ways.
 
-A matched greedy evaluator and exact shard merger completed all 14,456 A4 rows. The paired A5 history intervention and equal-budget LoRA screen are automated in the overnight pipeline.
+A matched greedy evaluator and exact shard merger completed all 14,456 A4 rows. The A5 intervention and eight-arm LoRA screen completed automatically and stopped before additional full-parameter training because no deployable arm passed the predeclared gate. The current next stage is semantic candidate-packet verification; an oracle student-rescue LoRA arm is used only to measure its attainable ceiling.
 
 ## Positioning
 
@@ -248,6 +309,10 @@ Core implementation:
 - [Matched starting-student evaluator](../scripts/evaluate_revision_causal_arm.py)
 - [Exact causal-eval shard merger](../scripts/merge_revision_causal_eval.py)
 - [Student-relative utility analysis](../scripts/analyze_student_relative_revision.py)
+- [Target × history factorial analysis](../scripts/analyze_revision_lora_factorial.py)
+- [Metadata utility-gate baseline](../scripts/train_revision_utility_gate.py)
+- [Student-rescue oracle builder](../scripts/build_student_rescue_oracle_arm.py)
+- [Multimodal revision-verifier data builder](../scripts/build_revision_verifier_data.py)
 - [Full-parameter data and config preparation](../scripts/prepare_multiagent_fullparam_llamafactory.py)
 - [Held-out evaluator](../scripts/evaluate_multiagent_revision_pilot.py)
 - [Exact shard merger](../scripts/merge_multiagent_revision_eval.py)
