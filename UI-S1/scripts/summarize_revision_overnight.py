@@ -49,6 +49,10 @@ def main() -> None:
     a4 = optional_json(root / "causal_eval/a4_starting_student/analysis/student_relative_revision_summary.json")
     history = optional_json(root / "causal_analysis/history_intervention/student_relative_revision_summary.json")
     screen = optional_json(root / "lora_screen/report/summary.json")
+    factorial = optional_json(root / "lora_screen/factorial_analysis/summary.json")
+    metadata_gate = optional_json(root / "utility_gate/metadata_v1/summary.json")
+    a13 = optional_json(root / "utility_gate/a13_lora/report/summary.json")
+    verifier = optional_json(root / "revision_verifier/eval/merged.summary.json")
     full_reports = []
     for path_name in sorted(glob.glob(str(root / "lora_screen/full_eval/*/report/summary.json"))):
         payload = read_json(Path(path_name))
@@ -64,6 +68,10 @@ def main() -> None:
         "a4_starting_student": a4 is not None,
         "a5_history_intervention": history is not None,
         "lora_screen": screen is not None,
+        "factorial_analysis": factorial is not None,
+        "metadata_utility_gate": metadata_gate is not None,
+        "oracle_student_rescue_ceiling": a13 is not None,
+        "multimodal_verifier": verifier is not None,
         "full_lora_confirmation": bool(full_reports),
         "fullparam_confirmation": bool(fullparam_reports),
     }
@@ -73,6 +81,10 @@ def main() -> None:
         "a4_starting_student": a4,
         "a5_history_intervention": history,
         "lora_screen": screen,
+        "factorial_analysis": factorial,
+        "metadata_utility_gate": metadata_gate,
+        "oracle_student_rescue_ceiling": a13,
+        "multimodal_verifier": verifier,
         "full_lora_reports": full_reports,
         "fullparam_reports": fullparam_reports,
     }
@@ -133,6 +145,42 @@ def main() -> None:
             "## Full 1,000-Episode LoRA Confirmation",
             "",
             table(["arm", "ΔTSR", "Δstep", "gate"], rows),
+            "",
+        ])
+    if factorial:
+        step_effects = factorial["effects"]["step_accuracy"]
+        lines.extend([
+            "## Target × History Factorial",
+            "",
+            f"GT-history effect with GT targets: **{pp(step_effects['gt_history_effect_given_gt_target'])}**.",
+            f"GT-history effect with revision targets: **{pp(step_effects['gt_history_effect_given_revision_target'])}**.",
+            f"Revision-label effect under GT history: **{pp(step_effects['revision_label_effect_given_gt_history'])}**.",
+            f"Label × history interaction: **{pp(step_effects['label_history_interaction'])}**.",
+            "",
+        ])
+    if metadata_gate:
+        test = metadata_gate["evaluations"]["test"]
+        lines.extend([
+            "## Metadata Utility Gate",
+            "",
+            f"Episode-disjoint test ROC-AUC **{test['roc_auc']:.4f}**, AP **{test['average_precision']:.4f}** at rescue base rate {pct(test['rescue_base_rate'])}.",
+            "No nonzero-coverage operating point achieved positive net accepted utility.",
+            "",
+        ])
+    if a13:
+        arm = a13["arms"][0]
+        lines.extend([
+            "## Oracle Student-Rescue Ceiling",
+            "",
+            f"A13 ΔTSR **{pp(arm['tsr_delta'])}**, Δstep **{pp(arm['step_accuracy_delta'])}**, gate **{arm['gate']}**.",
+            "",
+        ])
+    if verifier:
+        lines.extend([
+            "## Multimodal Verifier Agent",
+            "",
+            f"Decision accuracy **{pct(verifier['accuracy'])}**, macro-F1 **{verifier['macro_f1']:.4f}**, use-revision precision **{pct(verifier['per_class']['use_revision']['precision'])}**, recall **{pct(verifier['per_class']['use_revision']['recall'])}**.",
+            f"Fallback-student routed accuracy **{pct(verifier['fallback_student_accuracy'])}** versus student baseline **{pct(verifier['student_baseline_accuracy'])}**.",
             "",
         ])
     if fullparam_reports:
