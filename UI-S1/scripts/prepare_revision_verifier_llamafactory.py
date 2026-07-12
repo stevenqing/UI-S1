@@ -64,7 +64,7 @@ def main() -> None:
                 "images": [str(image.resolve())],
                 "sample_id": str(row["sample_id"]),
                 "episode_id": str(row["episode_id"]),
-                "decision": str(row["decision"]),
+                "decision": str(row.get("decision") or row.get("target_text") or ""),
             })
         target = data_out / f"{split}.json"
         write_json(target, examples, compact=True)
