@@ -8,7 +8,7 @@ Heterogeneous agents provide diverse GUI failures, but a revision becomes useful
 
 ## Draft abstract
 
-Self-improving GUI agents increasingly rely on synthetic trajectories produced or revised by other agents, yet trajectory diversity and corrector confidence do not establish downstream training value. We conduct a controlled study over 1,573 GUI-360 training episodes and 1,000 held-out episodes using Qwen3-VL and InternVL3 actors, a Qwen3.5 global trajectory corrector, and an 8.29B-parameter GUI student. The actors exhibit 91.68% action disagreement, but unfiltered corrected labels are only 26.04% accurate and full-parameter training reduces held-out task success by 17.80 points. We formalize Counterfactual Revision Utility, separating rescue, regression, preservation, and unresolved outcomes. On the exact 14,456 training states, revisions are 28.36 points worse than the starting student despite being 4.52 points better than their weak source actors. We further identify a teacher-forced prefix-consistency gap: replacing revised histories with ground-truth histories improves frozen-student accuracy by a population-standardized 16.47 points, but a target-by-history factorial shows that clean context makes wrong labels more directly learnable. Finally, we establish a positive oracle ceiling. Training on 25% student-rescue revisions and 75% clean replay improves task success from 18.70% to 21.50% on all 1,000 held-out episodes, with a paired bootstrap interval of [+1.00,+4.60] points, while preserving step accuracy. These results show that useful revision data exists, but source-only, prefix-only, confidence-based, and uncalibrated verifier selection all fail. The findings motivate calibrated student-relative rescue ranking with conservative replay or preference optimization.
+Self-improving GUI agents increasingly rely on synthetic trajectories produced or revised by other agents, yet trajectory diversity and corrector confidence do not establish downstream training value. We conduct a controlled study over 1,573 GUI-360 training episodes and 1,000 held-out episodes using Qwen3-VL and InternVL3 actors, a Qwen3.5 global trajectory corrector, and an 8.29B-parameter GUI student. The actors exhibit 91.68% action disagreement, but unfiltered corrected labels are only 26.04% accurate and full-parameter training reduces held-out task success by 17.80 points. We formalize Counterfactual Revision Utility, separating rescue, regression, preservation, and unresolved outcomes. On the exact 14,456 training states, revisions are 28.36 points worse than the starting student despite being 4.52 points better than their weak source actors. We further identify a teacher-forced prefix-consistency gap: replacing revised histories with ground-truth histories improves frozen-student accuracy by a population-standardized 16.47 points, but a target-by-history factorial shows that clean context makes wrong labels more directly learnable. Training on 25% oracle student-rescue revisions and 75% clean replay improves task success from 18.70% to 21.50% on all 1,000 held-out episodes, with a paired bootstrap interval of [+1.00,+4.60] points. Earlier metadata, verifier, ranker, and transition selectors fail, but a newly frozen Pass@8 fixed-choice study crosses the non-oracle hard-step gate: Qwen3.5-9B obtains +6.36 points rescue-minus-regression utility with interval [+4.53,+8.31]. Scaling the selector to Qwen3.5-35B-A3B does not help, while zero-GPU cross-source consensus reaches +5.37 points. The results identify proposal agreement and student-relative selection—not corrector scale or confidence—as the key bridge from diverse synthetic candidates to useful supervision.
 
 ## Core research questions
 
@@ -16,7 +16,7 @@ Self-improving GUI agents increasingly rely on synthetic trajectories produced o
 2. Is revision quality intrinsic, or conditioned on the source actor and target student?
 3. How does teacher-forced history–screen inconsistency affect revision learning?
 4. Can student-rescue selection plus clean replay recover positive downstream utility?
-5. Can a non-oracle multimodal verifier approximate the oracle utility selector?
+5. Can a non-oracle fixed-choice selector convert Pass@8 proposal diversity into positive student-relative utility, and does selector scale help?
 
 ## Contributions supported by completed evidence
 
@@ -78,6 +78,12 @@ This is an oracle ceiling, not a deployable method claim.
 
 These failures make the contribution sharper: the revision bank contains useful signal, but identifying student rescue is substantially harder than predicting generic correctness or transition proximity.
 
+### C8. Pass@8 proposal selection is positive, but larger correctors are not better
+
+A selector-fresh episode split over 962 cached hard steps evaluates identical anonymized K=8 candidate packets. Qwen3.5-9B obtains locked rescue-minus-regression utility **+6.36pp**, episode-cluster CI **[+4.53,+8.31]pp**, and captures 20.93% of packet-oracle headroom. Qwen3.5-35B-A3B also passes (+4.52pp) but underperforms 9B by 1.84pp (CI [-3.69,+0.00]pp). A zero-GPU cross-source-consensus rule reaches +5.37pp and is not significantly different from 9B.
+
+This changes the boundary from “no non-oracle selector” to “positive hard-step candidate recovery, not yet a full-policy method.” Pass@8 diversity is usable, but selector scale is not the governing mechanism; independent proposal agreement explains much of the gain.
+
 ## Main result table
 
 | Experiment | Scale | ΔTSR | Δstep | Conclusion |
@@ -110,7 +116,7 @@ $$
 
 The threshold is selected on episode-disjoint dev rescue-minus-regression utility, not classification accuracy.
 
-The current GUI student backbone does not satisfy this goal under three binary training variants. A deployable follow-up requires a stronger independent verifier or an action-conditioned transition/world model. Since multiple selector families have now been examined on the original test split, this follow-up must use a newly frozen holdout.
+The current GUI student backbone does not satisfy this goal under three binary training variants. However, frozen fixed-choice inference on a newly frozen selector split does cross the hard-step utility gate. The best model is Qwen3.5-9B rather than Qwen3.5-35B-A3B, and cross-source consensus is competitive. The next causal test therefore moves selection to a disjoint train split and evaluates the validated 25/75 arm on a full held-out policy grid.
 
 ### Conservative action learning
 
@@ -132,7 +138,9 @@ A deployable selector succeeds only if:
 ## Claims that remain unsupported
 
 - Global trajectory correction is universally ineffective.
-- The current oracle selection can be reproduced without matcher labels.
+- Positive critical-step selection necessarily yields positive full-policy TSR after training.
+- Qwen3.5-35B-A3B is a stronger GUI action selector than Qwen3.5-9B.
+- The hard-step selector is safe as an arbitrary-state online router.
 - The 25/75 ratio is universally optimal.
 - Teacher-forced prefix inconsistency is the sole cause of negative transfer.
 - Findings generalize beyond Qwen3.5 and GUI-360 without further experiments.

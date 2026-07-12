@@ -270,15 +270,29 @@ For offline data curation, a GT-action-free gate compared the local $s_t\rightar
 
 The next screenshot contains useful local transition evidence, but simple pixel-change localization is not stable enough to approximate student-relative utility.
 
-## Final selector boundary
+## Finding 12: Pass@8 fixed-choice selection crosses the non-oracle utility gate
 
-The experiment now has a positive learning ceiling but no deployable selector:
+A new selector-fresh, episode-disjoint split was frozen over the 962 cached critical steps before selector inference: 23 smoke, 231 dev, and 708 locked-test steps. Blind packets retain exact actions from four K=8 proposal sources but remove GT, rewards, correctness, source identity, and GT-derived diagnostics. Both dev and locked predictions were completed before either label split was opened.
 
-- **Positive ceiling:** oracle student-rescue selection + 75% clean replay gives full-grid TSR +2.80pp with preserved step accuracy.
-- **Failed non-oracle selectors:** confidence, metadata, source identity, prefix cleanliness, balanced/natural three-way verifier, three binary rankers, and pixel-transition consistency.
-- **Fail-closed decision:** no ranker-selected replay arm is authorized because no dev-locked selector has positive test rescue-minus-regression utility.
+| Selector | Dev utility | Locked utility | Locked 95% episode-cluster CI | Rescue / regress | Oracle capture |
+|---|---:|---:|---:|---:|---:|
+| Qwen3.5-9B fixed-choice | +6.49pp | **+6.36pp** | **[+4.53,+8.31]pp** | 46 / 1 | **20.93%** |
+| Qwen3.5-35B-A3B fixed-choice | +2.60pp | +4.52pp | [+2.93,+6.20]pp | 33 / 1 | 14.88% |
+| Exact plurality | +3.03pp | +3.25pp | [+1.87,+4.73]pp | 25 / 2 | 10.70% |
+| Cross-source consensus | +5.63pp | +5.37pp | [+3.61,+7.25]pp | 39 / 1 | 17.67% |
 
-Because the same test split has now been used to diagnose multiple selector families, further selector tuning should use a newly frozen validation/test partition. The next scientifically defensible method should use an independent stronger multimodal verifier or an action-conditioned transition/world model, then evaluate once on a fresh holdout before applying the validated 25/75 revision-to-clean-replay recipe.
+The locked packet oracle is 30.79% versus a 0.42% frozen-student baseline. Qwen3.5-9B reaches 6.78% selected accuracy. Scaling the selector does not help: 35B-minus-9B is -1.84pp with 95% CI [-3.69,+0.00]pp. The 35B model changes only 34.18% of actions versus 60.03% for 9B. Cross-source consensus is close to 9B (-0.99pp, CI [-2.98,+1.12]pp), showing that repeated independent proposal support explains much of the usable signal.
+
+## Updated selector boundary
+
+The experiment now has both a positive learning ceiling and a positive non-oracle **hard-step candidate-recovery** result:
+
+- **Positive training ceiling:** oracle student-rescue selection + 75% clean replay gives full-grid TSR +2.80pp with preserved step accuracy.
+- **Positive proposal selector:** frozen Qwen3.5-9B selection converts Pass@8 diversity into +6.36pp critical-step utility with a positive locked interval.
+- **Scale hypothesis rejected:** Qwen3.5-35B-A3B is more conservative and does not outperform 9B.
+- **Consensus is a strong control:** zero-GPU cross-source consensus reaches +5.37pp and is not significantly worse than 9B.
+
+This does not establish an arbitrary-state online router: the underlying benchmark episodes are not benchmark-fresh, and the target population was historically selected with GT-conditioned critical diagnostics. The gate authorizes preparation of a new **train-split** 25% selected-revision + 75% clean-replay arm; no dev/locked row may enter training, and full-policy held-out evaluation is still required.
 
 ## Confidence caveat
 

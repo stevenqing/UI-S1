@@ -1,0 +1,133 @@
+{
+  "protocol_version": "pass8-selector-v1",
+  "prompt_version": "pass8-fixed-choice-v1",
+  "frozen_at_utc": "2026-07-12T08:49:19.402513+00:00",
+  "seed": "pass8-selector-frozen-v1-20260213",
+  "gpu_policy": {
+    "allowed_physical_gpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "forbidden_physical_gpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "protected_pid": 1911
+  },
+  "scope": {
+    "targets": 962,
+    "episodes": 543,
+    "k_per_source": 8,
+    "candidate_sources": [
+      "sft_anchor",
+      "qwen3_vl",
+      "qwen35",
+      "llava15"
+    ],
+    "coord_bucket": 25,
+    "split_unit": "episode_id",
+    "splits": {
+      "smoke": {
+        "steps": 23,
+        "episodes": 12,
+        "target_ids_sha256": "59ff1bb6763e136ee4457e853e4ae1feb29dbd15b6f52840860130535e4ba073",
+        "mean_candidates": 16.608695652173914
+      },
+      "dev": {
+        "steps": 231,
+        "episodes": 133,
+        "target_ids_sha256": "fe91ad87ae199e83b87ceb2f62f7c5136b26120485b1d1a6666fc1eb3222f875",
+        "mean_candidates": 14.584415584415584
+      },
+      "locked_test": {
+        "steps": 708,
+        "episodes": 398,
+        "target_ids_sha256": "319364cc14c4ef465244fd7d2ec1d07925bcaca786a2b535d954fd8cd4811642",
+        "mean_candidates": 14.206214689265536
+      }
+    }
+  },
+  "leakage_contract": {
+    "blind_packets_exclude": [
+      "gt_action",
+      "candidate correctness",
+      "reward",
+      "model/source identity",
+      "GT-derived criticality scores"
+    ],
+    "sealed_labels_must_not_be_read_by_selector": true,
+    "locked_test_must_not_be_evaluated_until_all_paired_outputs_are_complete": true,
+    "known_limitations": [
+      "The underlying GUI-360 benchmark test episodes are not benchmark-fresh and were used by earlier studies.",
+      "The 962-step target set was selected previously using GT-derived critical-step diagnostics.",
+      "This split is fresh only for the fixed-choice selector/corrector comparison."
+    ]
+  },
+  "predeclared_gate": {
+    "primary_metric": "(rescue - regress) / locked_test_steps relative to frozen student greedy action",
+    "pass": "net utility > 0, rescue > regress, and episode-cluster bootstrap 95% lower bound > 0",
+    "stronger_model_win": "paired selected-accuracy delta vs current corrector has episode-cluster bootstrap 95% lower bound > 0",
+    "invalid_or_failed_selection": "fall back to BASELINE",
+    "policy_training": "forbidden unless the locked gate passes"
+  },
+  "source_files": {
+    "outputs/multiagent_complementarity/target_ids.json": {
+      "sha256": "509327c7de49565e423afd9d8078631fe1df02a5c2af1440c2682e59870f71ad",
+      "bytes": 265632
+    },
+    "outputs/validation_2k/data/test_episodes.jsonl": {
+      "sha256": "0f6fb7154e259eff9edd5e0cd59c7780293f71750b9a3b501af72c8860c258b5",
+      "bytes": 1513031
+    },
+    "outputs/rl_feasibility/per_step.jsonl": {
+      "sha256": "71ab0df74d5f25a8aba5a77cba15959ca3ae390b6dcc979d4178dc4d67e22cfc",
+      "bytes": 28024817
+    },
+    "outputs/multiagent_complementarity/qwen3_vl_candidates.jsonl": {
+      "sha256": "c3e4e0f6984ac5a106b5dc585ce584e1046e033a08ed4d37086df5fd9e63a6ca",
+      "bytes": 8404978
+    },
+    "outputs/multiagent_complementarity/qwen35_candidates.jsonl": {
+      "sha256": "aaf05b9cc36c081b69f48abcc4b6b7c26a1648fa2ca12fe7f84a40070d4fe08f",
+      "bytes": 9218496
+    },
+    "outputs/multiagent_complementarity/extra_tiers/llava15_candidates.jsonl": {
+      "sha256": "fa168f868559467eca220d49b11eebe9559bac6e64a76e4a39b3299d0a7f005e",
+      "bytes": 8152084
+    }
+  },
+  "artifacts": {
+    "blind/dev.jsonl": {
+      "sha256": "5aa445efa595ccd71a4ae512549656bda4058f0096e1caf7c2cf587d57f726cb",
+      "bytes": 827189
+    },
+    "blind/locked_test.jsonl": {
+      "sha256": "543c39eb72112723560759313ee3cc50180905a315b591a434d95d5432b51dd0",
+      "bytes": 2464724
+    },
+    "blind/smoke.jsonl": {
+      "sha256": "7ebf3b894e6702b6d2efc4c2788e74deb2d002fece287c53e8395634d291dded",
+      "bytes": 91084
+    },
+    "screenshot_namespace.json": {
+      "sha256": "11202ec4918e0ff63525e02548d403552c3b938b2485a85b78d0b87cbfb9e92a",
+      "bytes": 195372
+    },
+    "sealed_labels/dev.jsonl": {
+      "sha256": "fd3d3d22e8caa65551a4bc5c9e8419a8780cde45b16aff633df7945304272922",
+      "bytes": 541115
+    },
+    "sealed_labels/locked_test.jsonl": {
+      "sha256": "5642dab34d52709d06803db95a845a08f12c13b4b125cbaabbd586e55ce5a48f",
+      "bytes": 1626092
+    },
+    "sealed_labels/smoke.jsonl": {
+      "sha256": "f45d2277160d39a8362d5cc65708ffe06e3ce7367f07405d83e9f723bba8f6fc",
+      "bytes": 61617
+    }
+  }
+}

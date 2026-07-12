@@ -1,5 +1,16 @@
 # Change Log
 
+## 2026-07-12: Frozen Pass@8 Selector and Strong-Corrector Study
+
+- Added leakage-resistant blind packet freezing, screenshot/content hashes, sealed labels, paired fixed-choice inference, deterministic support controls, and episode-cluster bootstrap evaluation.
+- Downloaded and verified Qwen3.5-35B-A3B (14 BF16 shards, 71,903,878,016 weight bytes) and served it with vLLM 0.23.0 using TP=4.
+- Enforced physical GPUs 4–7 only; protected PID 1911 remained alive throughout all runs.
+- Frozen 962 critical steps episode-disjoint into 23 smoke, 231 dev, and 708 locked-test steps. Dev and locked predictions were generated before either label split was unsealed.
+- Locked Qwen3.5-9B selector utility: **+6.36pp**, 46 rescue / 1 regress, episode-cluster CI **[+4.53,+8.31]pp**.
+- Locked Qwen3.5-35B-A3B utility: **+4.52pp**; strong-minus-current is -1.84pp, CI [-3.69,+0.00]pp. Larger corrector scale did not improve selection.
+- Zero-GPU cross-source consensus reaches +5.37pp, showing that independent Pass@8 proposal agreement explains much of the usable signal.
+- The predeclared hard-step selector gate passes. Only a new train-split 25% selected-revision + 75% clean-replay arm is authorized; dev/locked rows are excluded from training.
+
 ## 2026-01-30: UI-S1 Training Configuration Fixes
 
 ### Problem 1: Single-Node OOM

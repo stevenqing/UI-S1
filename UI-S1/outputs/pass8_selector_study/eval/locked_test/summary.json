@@ -1,0 +1,196 @@
+{
+  "protocol_version": "pass8-selector-v1",
+  "prompt_version": "pass8-fixed-choice-v1",
+  "split": "locked_test",
+  "match_threshold": 0.85,
+  "paired_complete": true,
+  "selector_models": {
+    "current": "qwen35-9b-selector",
+    "strong": "qwen35-35b-a3b-selector",
+    "exact_plurality": "deterministic:exact_plurality",
+    "cross_source_consensus": "deterministic:cross_source_consensus"
+  },
+  "selectors": {
+    "current": {
+      "steps": 708,
+      "episodes": 398,
+      "baseline_accuracy": 0.00423728813559322,
+      "selector_accuracy": 0.06779661016949153,
+      "oracle_packet_accuracy": 0.307909604519774,
+      "oracle_headroom_over_baseline": 0.3036723163841808,
+      "oracle_headroom_capture": 0.20930232558139536,
+      "selection_regret_to_oracle": 0.2401129943502825,
+      "net_student_relative_utility": 0.0635593220338983,
+      "outcomes": {
+        "rescue": 46,
+        "regress": 1,
+        "preserve_correct": 2,
+        "unresolved": 659
+      },
+      "changed_coverage": 0.6002824858757062,
+      "parse_rate": 0.9858757062146892,
+      "fallback_rate": 0.014124293785310734,
+      "episode_cluster_bootstrap": {
+        "mean": 0.06365238537969654,
+        "lo": 0.0453257790368272,
+        "hi": 0.0830945558739255,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_gate_pass": true
+    },
+    "strong": {
+      "steps": 708,
+      "episodes": 398,
+      "baseline_accuracy": 0.00423728813559322,
+      "selector_accuracy": 0.04943502824858757,
+      "oracle_packet_accuracy": 0.307909604519774,
+      "oracle_headroom_over_baseline": 0.3036723163841808,
+      "oracle_headroom_capture": 0.14883720930232558,
+      "selection_regret_to_oracle": 0.2584745762711864,
+      "net_student_relative_utility": 0.04519774011299435,
+      "outcomes": {
+        "rescue": 33,
+        "regress": 1,
+        "preserve_correct": 2,
+        "unresolved": 672
+      },
+      "changed_coverage": 0.3418079096045198,
+      "parse_rate": 0.9887005649717514,
+      "fallback_rate": 0.011299435028248588,
+      "episode_cluster_bootstrap": {
+        "mean": 0.04523081853479411,
+        "lo": 0.029282576866764276,
+        "hi": 0.06195965417867435,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_gate_pass": true
+    },
+    "exact_plurality": {
+      "steps": 708,
+      "episodes": 398,
+      "baseline_accuracy": 0.00423728813559322,
+      "selector_accuracy": 0.03672316384180791,
+      "oracle_packet_accuracy": 0.307909604519774,
+      "oracle_headroom_over_baseline": 0.3036723163841808,
+      "oracle_headroom_capture": 0.10697674418604651,
+      "selection_regret_to_oracle": 0.2711864406779661,
+      "net_student_relative_utility": 0.03248587570621469,
+      "outcomes": {
+        "rescue": 25,
+        "regress": 2,
+        "preserve_correct": 1,
+        "unresolved": 680
+      },
+      "changed_coverage": 0.2627118644067797,
+      "parse_rate": 1.0,
+      "fallback_rate": 0.0,
+      "episode_cluster_bootstrap": {
+        "mean": 0.03249697870127301,
+        "lo": 0.01867816091954023,
+        "hi": 0.04728789986091794,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_gate_pass": true
+    },
+    "cross_source_consensus": {
+      "steps": 708,
+      "episodes": 398,
+      "baseline_accuracy": 0.00423728813559322,
+      "selector_accuracy": 0.05790960451977401,
+      "oracle_packet_accuracy": 0.307909604519774,
+      "oracle_headroom_over_baseline": 0.3036723163841808,
+      "oracle_headroom_capture": 0.17674418604651163,
+      "selection_regret_to_oracle": 0.25,
+      "net_student_relative_utility": 0.05367231638418079,
+      "outcomes": {
+        "rescue": 39,
+        "regress": 1,
+        "preserve_correct": 2,
+        "unresolved": 666
+      },
+      "changed_coverage": 0.4717514124293785,
+      "parse_rate": 1.0,
+      "fallback_rate": 0.0,
+      "episode_cluster_bootstrap": {
+        "mean": 0.053592923864190456,
+        "lo": 0.03611111111111111,
+        "hi": 0.07246376811594203,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_gate_pass": true
+    }
+  },
+  "paired_deltas": [
+    {
+      "reference": "current",
+      "challenger": "strong",
+      "challenger_minus_reference_accuracy": -0.018361581920903956,
+      "challenger_only_correct": 13,
+      "reference_only_correct": 26,
+      "selected_action_agreement": 0.5353107344632768,
+      "episode_cluster_bootstrap": {
+        "mean": -0.018420767428927644,
+        "lo": -0.036885245901639344,
+        "hi": 0.0,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_stronger_model_win": false
+    },
+    {
+      "reference": "current",
+      "challenger": "exact_plurality",
+      "challenger_minus_reference_accuracy": -0.031073446327683617,
+      "challenger_only_correct": 17,
+      "reference_only_correct": 39,
+      "selected_action_agreement": 0.422316384180791,
+      "episode_cluster_bootstrap": {
+        "mean": -0.031144641463885507,
+        "lo": -0.05174825174825175,
+        "hi": -0.011283497884344146,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_stronger_model_win": false
+    },
+    {
+      "reference": "current",
+      "challenger": "cross_source_consensus",
+      "challenger_minus_reference_accuracy": -0.009887005649717515,
+      "challenger_only_correct": 23,
+      "reference_only_correct": 30,
+      "selected_action_agreement": 0.4152542372881356,
+      "episode_cluster_bootstrap": {
+        "mean": -0.009835178578235706,
+        "lo": -0.029787234042553193,
+        "hi": 0.011157601115760111,
+        "draws": 10000,
+        "sampling_unit": "episode_id",
+        "units": 398
+      },
+      "predeclared_stronger_model_win": false
+    }
+  ],
+  "predeclared_gate": {
+    "primary_metric": "(rescue - regress) / locked_test_steps relative to frozen student greedy action",
+    "pass": "net utility > 0, rescue > regress, and episode-cluster bootstrap 95% lower bound > 0",
+    "stronger_model_win": "paired selected-accuracy delta vs current corrector has episode-cluster bootstrap 95% lower bound > 0",
+    "invalid_or_failed_selection": "fall back to BASELINE",
+    "policy_training": "forbidden unless the locked gate passes"
+  },
+  "scope_limitations": [
+    "The underlying GUI-360 benchmark test episodes are not benchmark-fresh and were used by earlier studies.",
+    "The 962-step target set was selected previously using GT-derived critical-step diagnostics.",
+    "This split is fresh only for the fixed-choice selector/corrector comparison."
+  ]
+}
