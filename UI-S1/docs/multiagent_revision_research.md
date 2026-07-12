@@ -292,7 +292,21 @@ The experiment now has both a positive learning ceiling and a positive non-oracl
 - **Scale hypothesis rejected:** Qwen3.5-35B-A3B is more conservative and does not outperform 9B.
 - **Consensus is a strong control:** zero-GPU cross-source consensus reaches +5.37pp and is not significantly worse than 9B.
 
-This does not establish an arbitrary-state online router: the underlying benchmark episodes are not benchmark-fresh, and the target population was historically selected with GT-conditioned critical diagnostics. The gate authorizes preparation of a new **train-split** 25% selected-revision + 75% clean-replay arm; no dev/locked row may enter training, and full-policy held-out evaluation is still required.
+This does not establish an arbitrary-state online router: the underlying benchmark episodes are not benchmark-fresh, and the target population was historically selected with GT-conditioned critical diagnostics. The gate authorizes a **selector-to-training bridge study**, not direct SFT. No dev/locked row may enter training, and full-policy held-out evaluation is still required.
+
+## Finding 13: positive utility does not imply training-ready label purity
+
+On student-wrong states, choosing another wrong action has utility zero but remains an actively wrong SFT target. Exact post-hoc diagnosis of frozen locked outputs shows:
+
+| GT-free construction | Changed rows | Correct labels | SFT purity | Wilson 95% |
+|---|---:|---:|---:|---:|
+| All Qwen3.5-9B changes | 425 | 46 | **10.82%** | [8.21%,14.14%] |
+| All cross-source-consensus changes | 334 | 39 | **11.68%** | [8.66%,15.56%] |
+| 9B/consensus same-action intersection | 114 | 13 | **11.40%** | [6.79%,18.54%] |
+
+Thus neither consensus nor the 9B/consensus intersection is currently training-ready; the intersection reduces coverage without increasing locked purity. Qwen3.5-9B also enriches actions containing its own exact source by 1.36×, but self-only selections have just 6.99% purity, while Qwen3.5-plus-another-source selections reach 18.52%. This supports independent agreement rather than self-source recognition as the useful mechanism.
+
+Before any selected-revision SFT, two bridge quantities are mandatory: (1) a controlled P100/P80/P60/P40 purity-response curve at fixed 25% revision + 75% clean replay, and (2) aggregate train-split purity for frozen all-9B, consensus, and same-action-intersection constructions. A variant is eligible only if its purity lower confidence bound exceeds the empirically tolerated training-purity threshold. A separate uniformly sampled student-correct control must measure regression risk.
 
 ## Confidence caveat
 
@@ -376,7 +390,7 @@ The pre-registered data matrix is now materialized from the exact 14,456-row for
 
 A7 is a matcher-defined conditional filtering policy and is an oracle diagnostic control. Even if it improves downstream behavior at the same update budget, that would not by itself prove that prefix cleanliness causally causes the gain, because the accepted subset may be easier in other ways.
 
-A matched greedy evaluator and exact shard merger completed all 14,456 A4 rows. The A5 intervention and eight-arm LoRA screen completed automatically and stopped before additional full-parameter training because no deployable arm passed the predeclared gate. The current next stage is semantic candidate-packet verification; an oracle student-rescue LoRA arm is used only to measure its attainable ceiling.
+A matched greedy evaluator and exact shard merger completed all 14,456 A4 rows. The A5 intervention, equal-budget LoRA screens, oracle replay confirmation, and frozen Pass@8 selector study are complete. Candidate-packet verification now passes on hard-step utility, but selected-label purity remains only 10–12%. The current next stage is therefore the pre-registered purity-response/train-purity bridge; formal 25/75 policy training remains blocked until that bridge passes.
 
 ## Positioning
 

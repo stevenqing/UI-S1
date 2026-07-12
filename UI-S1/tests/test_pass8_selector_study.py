@@ -10,6 +10,7 @@ for path in (str(REPO_ROOT), str(SCRIPTS)):
         sys.path.insert(0, path)
 
 from evaluate_pass8_selector import classify
+from analyze_pass8_training_bridge import purity_summary, wilson_interval
 from build_pass8_deterministic_selector import choose
 from run_pass8_selector import extract_selection, packet_digest, walk_forbidden
 
@@ -53,3 +54,19 @@ def test_deterministic_support_rules() -> None:
     ]}
     assert choose(row, "exact_plurality")[0]["candidate_id"] == "C01"
     assert choose(row, "cross_source_consensus")[0]["candidate_id"] == "C02"
+
+
+def test_bridge_purity_summary() -> None:
+    rows = [
+        {"selected_correct": True, "utility_outcome": "rescue"},
+        {"selected_correct": False, "utility_outcome": "unresolved"},
+        {"selected_correct": False, "utility_outcome": "regress"},
+    ]
+    summary = purity_summary(rows)
+    assert summary["rows"] == 3
+    assert summary["selected_correct"] == 1
+    assert summary["label_purity"] == 1 / 3
+    assert summary["student_relative_net_utility"] == 0
+    interval = wilson_interval(1, 3)
+    assert interval is not None
+    assert interval[0] < 1 / 3 < interval[1]

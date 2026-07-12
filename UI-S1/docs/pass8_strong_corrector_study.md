@@ -72,7 +72,7 @@ The confirmatory selector gate passes only if all conditions hold on locked test
 2. rescue count exceeds regress count;
 3. the episode-cluster bootstrap 95% lower bound for $U$ is above zero.
 
-The stronger-model claim additionally requires the episode-cluster bootstrap 95% lower bound of strong-minus-current selected accuracy to be above zero. No policy training is authorized unless the selector gate passes. If it passes, the only pre-authorized training recipe is the previously validated 25% selected revision plus 75% clean replay arm.
+The stronger-model claim additionally requires the episode-cluster bootstrap 95% lower bound of strong-minus-current selected accuracy to be above zero. Passing the selector gate authorizes only a selector-to-training bridge study. If the later purity and regression-safety gates also pass, the sole pre-authorized policy recipe is 25% selected revision plus 75% clean replay.
 
 ## Compute and checkpoint validation
 
@@ -113,8 +113,34 @@ The primary proposal-to-selection hypothesis is supported: non-oracle fixed-choi
 
 Cross-source consensus reaches +5.37pp and is not distinguishable from the 9B selector in their direct paired comparison (-0.99pp, 95% CI [-2.98pp, +1.12pp]). Therefore, much of the usable signal comes from repeated independent proposal support; increasing corrector scale does not explain the gain. Qwen3.5-9B still recovers more total oracle headroom, but its advantage over consensus is not locked-significant.
 
-The predeclared selector gate passes. This authorizes preparation of a **new train-split** arm using 25% selected revisions and 75% clean replay. No dev or locked-test row from this study may enter training, and full-policy held-out evaluation remains mandatory.
+The predeclared selector gate passes. This authorizes frozen **train-split diagnosis and purity-response screening**, not direct policy training. No dev or locked-test row from this study may enter training, and full-policy held-out evaluation remains mandatory after the bridge gates pass.
 
 ## Interpretation boundary
 
-A positive packet oracle is only an existence result. The scientific question is whether visual and historical evidence is sufficient for a non-oracle selector to recover that headroom without regressing correct student actions. A negative result would sharpen the earlier conclusion: candidate diversity exists, but current VLM reasoning—even at substantially larger scale—does not reliably identify useful revisions.
+The positive result establishes non-oracle candidate recovery on a GT-conditioned hard-step population. It does not establish clean SFT supervision or arbitrary-state routing:
+
+- only 3/708 locked rows are student-correct, so 46 rescue / 1 regress is not evidence of general regression safety;
+- the selector is GT-free, but the original 962 critical targets were identified with GT diagnostics;
+- a wrong selection on a student-wrong row has utility zero, yet remains an actively wrong SFT label.
+
+The correct paper claim is therefore narrower and stronger: multi-source proposal diversity supplies both union coverage and an independent-agreement selection signal, but only 20.93% of oracle headroom is recovered and the selected labels are not yet training-ready.
+
+## Selector-to-training bridge
+
+An exact offline diagnostic quantifies the missing bridge:
+
+| GT-free construction | Changed rows | Correct labels | SFT purity | Wilson 95% |
+|---|---:|---:|---:|---:|
+| all Qwen3.5-9B changes | 425 | 46 | 10.82% | [8.21%,14.14%] |
+| all cross-source-consensus changes | 334 | 39 | 11.68% | [8.66%,15.56%] |
+| 9B/consensus same-action intersection | 114 | 13 | 11.40% | [6.79%,18.54%] |
+
+Thus the positive utility gate does **not** authorize direct SFT. The next stage is pre-registered as:
+
+1. measure a controlled P100/P80/P60/P40 purity-response curve under fixed 25% revision + 75% clean replay;
+2. run frozen 9B/consensus construction on a disjoint train split and use the matcher only for aggregate purity diagnosis;
+3. allow a training variant only when its purity lower confidence bound exceeds the empirically tolerated purity threshold, followed by a separate student-correct regression control.
+
+The Qwen3.5 self-source diagnostic also supports the agreement mechanism: 9B selects an action containing its own exact proposal source 46.35% of the time versus 34.09% candidate availability, but self-only selections have only 6.99% purity; Qwen3.5-plus-other-source selections reach 18.52% purity.
+
+The full pre-registration and stop rules are in [Pass@8 Selector → Training Bridge](pass8_selector_to_training_bridge_zh.md).

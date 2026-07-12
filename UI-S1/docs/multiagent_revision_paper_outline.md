@@ -84,6 +84,12 @@ A selector-fresh episode split over 962 cached hard steps evaluates identical an
 
 This changes the boundary from “no non-oracle selector” to “positive hard-step candidate recovery, not yet a full-policy method.” Pass@8 diversity is usable, but selector scale is not the governing mechanism; independent proposal agreement explains much of the gain.
 
+### C9. Candidate-recovery utility is not SFT-label purity
+
+The positive selector gate cannot directly authorize training. Among changed locked actions, Qwen3.5-9B has 46/425 correct labels (10.82% purity), cross-source consensus has 39/334 (11.68%), and their same-action intersection has 13/114 (11.40%). Wrong selections on student-wrong rows contribute zero utility but remain actively wrong SFT targets. The intersection therefore lowers coverage without improving purity on this split.
+
+Qwen3.5-9B selects candidates containing its own exact source 46.35% of the time versus 34.09% availability (1.36× enrichment), yet self-only selections have 6.99% purity and mixed Qwen3.5-plus-other-source selections reach 18.52%. This further identifies independent agreement—not self-selection—as the useful mechanism.
+
 ## Main result table
 
 | Experiment | Scale | ΔTSR | Δstep | Conclusion |
@@ -116,7 +122,7 @@ $$
 
 The threshold is selected on episode-disjoint dev rescue-minus-regression utility, not classification accuracy.
 
-The current GUI student backbone does not satisfy this goal under three binary training variants. However, frozen fixed-choice inference on a newly frozen selector split does cross the hard-step utility gate. The best model is Qwen3.5-9B rather than Qwen3.5-35B-A3B, and cross-source consensus is competitive. The next causal test therefore moves selection to a disjoint train split and evaluates the validated 25/75 arm on a full held-out policy grid.
+The current GUI student backbone does not satisfy this goal under three binary training variants. However, frozen fixed-choice inference on a newly frozen selector split does cross the hard-step utility gate. The best model is Qwen3.5-9B rather than Qwen3.5-35B-A3B, and cross-source consensus is competitive. Before downstream training, the next causal test must bridge selector utility to label purity: estimate a controlled P100/P80/P60/P40 purity-response curve at fixed 25/75, then compare it with aggregate purity bounds from frozen train-split GT-free constructions.
 
 ### Conservative action learning
 
@@ -131,9 +137,11 @@ A deployable selector succeeds only if:
 
 1. Its threshold is fixed using dev only.
 2. Test accepted-set rescue exceeds regression.
-3. A 25/75 selected-revision/replay LoRA arm preserves step accuracy within -1pp.
-4. Full 1,000-episode TSR improves with a paired interval excluding zero.
-5. A second corrector or benchmark reproduces the result.
+3. Its train-split selected-label purity lower bound exceeds the minimum purity tolerated by a controlled 25/75 LoRA curve.
+4. A separate uniformly sampled student-correct control satisfies the -1pp regression guardrail.
+5. A 25/75 selected-revision/replay LoRA arm preserves step accuracy within -1pp.
+6. Full 1,000-episode TSR improves with a paired interval excluding zero.
+7. A second corrector or benchmark reproduces the result.
 
 ## Claims that remain unsupported
 

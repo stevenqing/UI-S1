@@ -1,0 +1,119 @@
+{
+  "scope": {
+    "rows": 708,
+    "episodes": 398,
+    "student_correct_rows": 3,
+    "student_wrong_rows": 705
+  },
+  "training_variants": {
+    "all_9b_changes": {
+      "rows": 425,
+      "selected_correct": 46,
+      "selected_wrong": 379,
+      "label_purity": 0.10823529411764705,
+      "label_purity_wilson95": [
+        0.08213175725568299,
+        0.1413574993200602
+      ],
+      "rescue": 46,
+      "regress": 1,
+      "student_relative_net_utility": 0.10588235294117647
+    },
+    "all_consensus_changes": {
+      "rows": 334,
+      "selected_correct": 39,
+      "selected_wrong": 295,
+      "label_purity": 0.11676646706586827,
+      "label_purity_wilson95": [
+        0.08660360851636222,
+        0.15564451315105765
+      ],
+      "rescue": 39,
+      "regress": 1,
+      "student_relative_net_utility": 0.11377245508982035
+    },
+    "9b_consensus_same_action": {
+      "rows": 114,
+      "selected_correct": 13,
+      "selected_wrong": 101,
+      "label_purity": 0.11403508771929824,
+      "label_purity_wilson95": [
+        0.06786521821254023,
+        0.18536873798024978
+      ],
+      "rescue": 13,
+      "regress": 0,
+      "student_relative_net_utility": 0.11403508771929824
+    }
+  },
+  "qwen35_self_selection": {
+    "self_source": "qwen35",
+    "changed_rows": 425,
+    "selected_with_qwen35_source": 197,
+    "selected_with_qwen35_source_rate": 0.46352941176470586,
+    "selected_cross_source_neighborhood": 140,
+    "selected_cross_source_neighborhood_rate": 0.32941176470588235,
+    "candidate_actions": 9350,
+    "candidate_actions_with_qwen35_source": 3187,
+    "candidate_actions_with_qwen35_source_rate": 0.34085561497326206,
+    "selection_enrichment_over_candidate_rate": 1.3598995920928771,
+    "strata": {
+      "qwen35_only": {
+        "rows": 143,
+        "selected_correct": 10,
+        "selected_wrong": 133,
+        "label_purity": 0.06993006993006994,
+        "label_purity_wilson95": [
+          0.038425096602856826,
+          0.12393680726386087
+        ],
+        "rescue": 10,
+        "regress": 0,
+        "student_relative_net_utility": 0.06993006993006994
+      },
+      "qwen35_mixed": {
+        "rows": 54,
+        "selected_correct": 10,
+        "selected_wrong": 44,
+        "label_purity": 0.18518518518518517,
+        "label_purity_wilson95": [
+          0.10382685542089135,
+          0.30835947782152484
+        ],
+        "rescue": 10,
+        "regress": 1,
+        "student_relative_net_utility": 0.16666666666666666
+      },
+      "no_qwen35": {
+        "rows": 228,
+        "selected_correct": 26,
+        "selected_wrong": 202,
+        "label_purity": 0.11403508771929824,
+        "label_purity_wilson95": [
+          0.07901872202569979,
+          0.16184181734781164
+        ],
+        "rescue": 26,
+        "regress": 0,
+        "student_relative_net_utility": 0.11403508771929824
+      }
+    },
+    "exact_source_set_counts": {
+      "qwen3_vl": 175,
+      "qwen35": 143,
+      "qwen35+qwen3_vl": 41,
+      "sft_anchor": 26,
+      "llava15": 23,
+      "qwen35+qwen3_vl+sft_anchor": 6,
+      "qwen35+sft_anchor": 6,
+      "qwen3_vl+sft_anchor": 4,
+      "llava15+qwen35": 1
+    }
+  },
+  "interpretation": {
+    "utility_is_not_sft_purity": true,
+    "reason": "Wrong selected actions on student-wrong states have zero utility but are actively incorrect SFT labels.",
+    "oracle_revision_purity": 1.0,
+    "unfiltered_revision_accuracy_reference": 0.2604
+  }
+}

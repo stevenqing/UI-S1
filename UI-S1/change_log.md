@@ -10,6 +10,9 @@
 - Locked Qwen3.5-35B-A3B utility: **+4.52pp**; strong-minus-current is -1.84pp, CI [-3.69,+0.00]pp. Larger corrector scale did not improve selection.
 - Zero-GPU cross-source consensus reaches +5.37pp, showing that independent Pass@8 proposal agreement explains much of the usable signal.
 - The predeclared hard-step selector gate passes. Only a new train-split 25% selected-revision + 75% clean-replay arm is authorized; dev/locked rows are excluded from training.
+- Added the selector-to-training bridge diagnosis: all 9B changes are only 10.82% pure, consensus changes 11.68%, and the same-action intersection 11.40%. Positive selector utility therefore does not authorize direct SFT.
+- Qwen3.5-9B self-source selections are enriched 1.36×, but self-only purity is 6.99% versus 18.52% when another source agrees.
+- Formal training is now blocked on two pre-registered bridge quantities: a P100/P80/P60/P40 fixed-25/75 LoRA purity-response curve and train-split GT-free construction purity bounds, plus a separate student-correct regression control.
 
 ## 2026-01-30: UI-S1 Training Configuration Fixes
 

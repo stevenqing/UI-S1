@@ -37,7 +37,7 @@
 
 > **Pass@8 proposal diversity 可以被无 GT selector 稳定转化为 hard-step rescue，但这种能力不随 selector scale 单调增长；独立 proposal agreement 比盲目扩大 corrector 更关键。**
 
-这仍不是 arbitrary-state online router，也不是最终 downstream policy gain。下一步只能在独立 train split 上构造同构候选，并用 25% selected revision + 75% clean replay 做完整 held-out policy confirmation；当前 dev/locked rows 严禁进入训练。
+这仍不是 arbitrary-state online router，也不是最终 downstream policy gain。下一步必须先完成纯度响应曲线与 train-split aggregate purity 的桥接检验；只有纯度下界跨过经验容忍阈值，才允许用 25% selected revision + 75% clean replay 做完整 held-out policy confirmation。当前 dev/locked rows 严禁进入训练。
 
 ---
 
@@ -248,6 +248,27 @@ Frozen-student accuracy 只有 0.42%，packet oracle 为 30.79%。因此最佳 9
 这将研究问题从“训练一个更大的 verifier”改写为：
 
 > **如何设计 proposal distribution 与匿名跨模型 agreement，使 selector 在保持低 regression 的同时提高 oracle-headroom capture？**
+
+### 1.9 Selector Utility 与 SFT Purity 之间的桥
+
+Positive utility 不能直接推出训练数据可用。在 student-wrong population 上，selector 再次选错时 utility 为 0，但该 action 作为 SFT target 仍是主动错误标签。
+
+冻结 locked artifacts 的精确离线统计为：
+
+| GT-free 构造 | Changed rows | Correct labels | SFT purity | Wilson 95% |
+|---|---:|---:|---:|---:|
+| 全部 9B changes | 425 | 46 | 10.82% | [8.21%,14.14%] |
+| 全部 consensus changes | 334 | 39 | 11.68% | [8.66%,15.56%] |
+| 9B/consensus 同动作交集 | 114 | 13 | 11.40% | [6.79%,18.54%] |
+
+因此三种直接构造都不应进入 SFT；intersection 在当前 split 只降低 coverage，没有提高 purity。正式训练前必须并行完成：
+
+1. P100/P80/P60/P40、固定 25/75 的受控 purity-response LoRA curve；
+2. 独立 train split 上冻结 V1 all-9B-change、V2 consensus-change、V3 same-action intersection 的 aggregate purity；
+3. 只有 $LB_{95}(p_v)\ge p_{min}^{train}$ 的 GT-free variant 才可训练；
+4. 另建 student-correct general-state control 测量真实 regression risk。
+
+9B self-source 诊断也支持 agreement 机制：含自身 exact source 的选择被富集 1.36×，但 self-only purity 只有 6.99%；Qwen3.5 与其他来源共同支持时 purity 为 18.52%。
 
 ---
 
@@ -586,3 +607,5 @@ Pass@8 fixed-choice confirmatory gate 预注册为：
 - [Pass@8 中文总结](../pass8_selector_study/EXPERIMENT_SUMMARY_ZH.md)
 - [Pass@8 locked report](../pass8_selector_study/eval/locked_test/report.md)
 - [Pass@8 完整研究设计](../../docs/pass8_strong_corrector_study.md)
+- [Pass@8 Selector → Training Bridge 预登记](../../docs/pass8_selector_to_training_bridge_zh.md)
+- [Pass@8 Bridge 离线诊断](../pass8_selector_study/bridge_diagnostics/locked_v1/report.md)
