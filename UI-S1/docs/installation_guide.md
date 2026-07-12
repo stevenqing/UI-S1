@@ -1,5 +1,7 @@
 # UI-S1 Installation Guide
 
+> **Current research migration:** This document mainly describes the original UI-S1/VERL installation and older vLLM stacks. To reproduce the current Qwen3/Qwen3.5 multi-agent revision, Pass@8, and purity-bridge environments, use [UI-S1当前研究线迁移指南](migration_checkpoints_env_data_zh.md). It pins both uv environments, all required checkpoint revisions, GUI-360 data hashes, ignored frozen artifacts, and CPU-only verification.
+
 ## Overview
 
 UI-S1 is built on top of **VERL** (Volcano Engine Reinforcement Learning, v0.4.0.dev) and uses **Qwen2.5-VL** as the base model for GUI automation via semi-online reinforcement learning. The installation varies depending on your hardware platform.
