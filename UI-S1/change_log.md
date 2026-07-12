@@ -16,6 +16,9 @@
 - Added a complete cross-machine migration guide covering the nested Git layout, two uv environments, exact Hub revisions, GUI-360 export/hash requirements, ignored Pass@8 artifacts, minimal oracle/replay data, new-code symlink integration, and GPU acceptance checks.
 - Added the 34-package `requirements-qwen3-training-extra.txt`; together with the base Qwen3 lock it exactly matches all 191 packages in the live training environment. The Qwen3.5 lock exactly matches all 190 live packages.
 - Added a CPU-only migration verifier for environment versions, model architecture/weight/revision integrity, 13 core data hashes, frozen Pass@8 paths, and 20,072 GUI screenshot files. Both bridge and full profiles pass on the source workspace.
+- Added a deterministic Git-ignored bridge asset bundle containing 62 Pass@8 upstream/frozen and oracle-replay files: 130,025,816 raw bytes compressed to 9,201,720 bytes, SHA256 `04f97f020d264f65121d97c42088af6181e83f670a337f2930c234559f41ab8f`.
+- Added safe bundle restoration with path-traversal rejection, per-file SHA256 validation, keep/restore/conflict behavior, explicit overwrite, and JSON reporting. A full empty-directory restore and source verify-only run both pass 62/62 files.
+- Added a compact missing-assets checklist explaining mandatory copies, whole-directory replacement, already-complete assets, and why seed-42 shuffling is not a universal train-manifest repair.
 
 ## 2026-01-30: UI-S1 Training Configuration Fixes
 

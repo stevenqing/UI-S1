@@ -362,6 +362,29 @@ rsync -aH --partial --info=progress2 \
 
 这些文件被 `.gitignore` 排除，clone后只有小型报告，没有raw packets和selector outputs。为精确续跑，必须从旧机复制。
 
+### 8.0 最快路径：使用已验证资产包
+
+源工作区已经把第8节、第9节和正确train manifest打成一个确定性压缩包：
+
+```text
+outputs/migration_bundle/ui_s1_bridge_missing_assets_v1.tar.gz
+```
+
+- 包内62个文件；
+- 原始130,025,816 bytes；
+- 压缩后9,201,720 bytes；
+- SHA256：`04f97f020d264f65121d97c42088af6181e83f670a337f2930c234559f41ab8f`。
+
+将该文件复制到目标代码根目录后执行：
+
+```bash
+.venv-qwen35-vllm/bin/python scripts/restore_migration_asset_bundle.py \
+  --bundle outputs/migration_bundle/ui_s1_bridge_missing_assets_v1.tar.gz \
+  --root .
+```
+
+恢复器会保留hash正确的文件、补齐缺失文件，并拒绝静默覆盖冲突。详细分类、逐文件hash与覆盖规则见 [缺失资产清单](../outputs/migration_verification/missing_assets_zh.md)。资产包本身不提交Git，必须从原机器或对象存储复制。
+
 ### 8.1 必需文件
 
 ```text

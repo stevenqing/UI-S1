@@ -1,0 +1,401 @@
+{
+  "version": "ui-s1-bridge-missing-assets-v1",
+  "source_git_commit": "30cab6331e178f7249c73dbdc4398d8fd40fc38a",
+  "restore_root": "UI-S1 project root",
+  "groups": {
+    "pass8_upstream_must_copy": [
+      "outputs/rl_feasibility/per_step.jsonl",
+      "outputs/multiagent_complementarity/target_ids.json",
+      "outputs/multiagent_complementarity/qwen3_vl_candidates.jsonl",
+      "outputs/multiagent_complementarity/qwen35_candidates.jsonl",
+      "outputs/multiagent_complementarity/extra_tiers/llava15_candidates.jsonl"
+    ],
+    "pass8_frozen_directory_replace": [
+      "outputs/pass8_selector_study/EXPERIMENT_SUMMARY_ZH.md",
+      "outputs/pass8_selector_study/bridge_diagnostics/locked_v1/report.md",
+      "outputs/pass8_selector_study/bridge_diagnostics/locked_v1/summary.json",
+      "outputs/pass8_selector_study/eval/dev/cross_source_consensus_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/dev/current_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/dev/exact_plurality_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/dev/report.md",
+      "outputs/pass8_selector_study/eval/dev/strong_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/dev/summary.json",
+      "outputs/pass8_selector_study/eval/locked_test/cross_source_consensus_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/locked_test/current_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/locked_test/exact_plurality_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/locked_test/report.md",
+      "outputs/pass8_selector_study/eval/locked_test/strong_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/locked_test/summary.json",
+      "outputs/pass8_selector_study/eval/smoke/current_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/smoke/report.md",
+      "outputs/pass8_selector_study/eval/smoke/strong_per_step.jsonl",
+      "outputs/pass8_selector_study/eval/smoke/summary.json",
+      "outputs/pass8_selector_study/frozen_v1/blind/dev.jsonl",
+      "outputs/pass8_selector_study/frozen_v1/blind/locked_test.jsonl",
+      "outputs/pass8_selector_study/frozen_v1/blind/smoke.jsonl",
+      "outputs/pass8_selector_study/frozen_v1/manifest.json",
+      "outputs/pass8_selector_study/frozen_v1/screenshot_namespace.json",
+      "outputs/pass8_selector_study/frozen_v1/sealed_labels/dev.jsonl",
+      "outputs/pass8_selector_study/frozen_v1/sealed_labels/locked_test.jsonl",
+      "outputs/pass8_selector_study/frozen_v1/sealed_labels/smoke.jsonl",
+      "outputs/pass8_selector_study/runtime/logs/selector_current_dev.log",
+      "outputs/pass8_selector_study/runtime/logs/selector_current_locked_test.log",
+      "outputs/pass8_selector_study/runtime/logs/selector_current_smoke.log",
+      "outputs/pass8_selector_study/runtime/logs/selector_strong_dev.log",
+      "outputs/pass8_selector_study/runtime/logs/selector_strong_locked_test.log",
+      "outputs/pass8_selector_study/runtime/logs/selector_strong_smoke.log",
+      "outputs/pass8_selector_study/runtime/logs/server_current_dev.log",
+      "outputs/pass8_selector_study/runtime/logs/server_current_locked_test.log",
+      "outputs/pass8_selector_study/runtime/logs/server_current_smoke.log",
+      "outputs/pass8_selector_study/runtime/logs/server_qwen35_35b_8735.log",
+      "outputs/pass8_selector_study/runtime/logs/server_qwen35_35b_8735_attempt2.log",
+      "outputs/pass8_selector_study/runtime/logs/server_strong_dev.log",
+      "outputs/pass8_selector_study/runtime/logs/server_strong_locked_test.log",
+      "outputs/pass8_selector_study/runtime/logs/server_strong_smoke.log",
+      "outputs/pass8_selector_study/runtime/selectors/cross_source_consensus/dev.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/cross_source_consensus/locked_test.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/current/dev.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/current/locked_test.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/current/smoke.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/exact_plurality/dev.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/exact_plurality/locked_test.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/strong/dev.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/strong/locked_test.jsonl",
+      "outputs/pass8_selector_study/runtime/selectors/strong/smoke.jsonl"
+    ],
+    "purity_bridge_must_copy": [
+      "outputs/multiagent_trajectory_revision/full_v1/causal_arms/a1_gt_target_gt_history.jsonl",
+      "outputs/multiagent_trajectory_revision/full_v1/causal_arms/a5_revision_target_gt_history.jsonl",
+      "outputs/multiagent_trajectory_revision/full_v1/causal_eval/a5_gt_history_grid/merged.jsonl",
+      "outputs/multiagent_trajectory_revision/full_v1/utility_gate/a13_oracle_student_rescue_gt_history.jsonl",
+      "outputs/multiagent_trajectory_revision/full_v1/utility_gate/a15_student_rescue25_replay75.jsonl"
+    ],
+    "train_manifest_safety_copy": [
+      "outputs/validation_2k/data/train_episodes.jsonl"
+    ]
+  },
+  "files": [
+    {
+      "path": "outputs/multiagent_complementarity/extra_tiers/llava15_candidates.jsonl",
+      "bytes": 8152084,
+      "sha256": "fa168f868559467eca220d49b11eebe9559bac6e64a76e4a39b3299d0a7f005e"
+    },
+    {
+      "path": "outputs/multiagent_complementarity/qwen35_candidates.jsonl",
+      "bytes": 9218496,
+      "sha256": "aaf05b9cc36c081b69f48abcc4b6b7c26a1648fa2ca12fe7f84a40070d4fe08f"
+    },
+    {
+      "path": "outputs/multiagent_complementarity/qwen3_vl_candidates.jsonl",
+      "bytes": 8404978,
+      "sha256": "c3e4e0f6984ac5a106b5dc585ce584e1046e033a08ed4d37086df5fd9e63a6ca"
+    },
+    {
+      "path": "outputs/multiagent_complementarity/target_ids.json",
+      "bytes": 265632,
+      "sha256": "509327c7de49565e423afd9d8078631fe1df02a5c2af1440c2682e59870f71ad"
+    },
+    {
+      "path": "outputs/multiagent_trajectory_revision/full_v1/causal_arms/a1_gt_target_gt_history.jsonl",
+      "bytes": 26946055,
+      "sha256": "03865e32e0bac2b59177d7cf656bacba3837b5666655ec8078e1401fac2db046"
+    },
+    {
+      "path": "outputs/multiagent_trajectory_revision/full_v1/causal_arms/a5_revision_target_gt_history.jsonl",
+      "bytes": 27726919,
+      "sha256": "f10bc370acd8997d830cd944497780d48f939d72e699a6f1b412c5a1a7fd8df3"
+    },
+    {
+      "path": "outputs/multiagent_trajectory_revision/full_v1/causal_eval/a5_gt_history_grid/merged.jsonl",
+      "bytes": 1828270,
+      "sha256": "9e286d50434f68bb7c4a4520f898608a8ee62f9ea5d03a31f7b858f9f48421fd"
+    },
+    {
+      "path": "outputs/multiagent_trajectory_revision/full_v1/utility_gate/a13_oracle_student_rescue_gt_history.jsonl",
+      "bytes": 1668375,
+      "sha256": "fb0e892e6df3d7edc894741dffac7ca3c85007ca9d314046d1b9bfa405352001"
+    },
+    {
+      "path": "outputs/multiagent_trajectory_revision/full_v1/utility_gate/a15_student_rescue25_replay75.jsonl",
+      "bytes": 1698151,
+      "sha256": "7f47ec0eb2a9ae37d01a8af324242cf60aa391a367be1debdadfc427c220242b"
+    },
+    {
+      "path": "outputs/pass8_selector_study/EXPERIMENT_SUMMARY_ZH.md",
+      "bytes": 5435,
+      "sha256": "307325faac5946ff5ffc2ece7ec72cb485ad58be79843df97b43e096f4423404"
+    },
+    {
+      "path": "outputs/pass8_selector_study/bridge_diagnostics/locked_v1/report.md",
+      "bytes": 1523,
+      "sha256": "4a549b28b8d466430d8555f4111760653daced7e3f3a74cbba4abfe9daf74d0c"
+    },
+    {
+      "path": "outputs/pass8_selector_study/bridge_diagnostics/locked_v1/summary.json",
+      "bytes": 3430,
+      "sha256": "bf69de122e2d5cad53524cd773e51b86ee957441161f40bf84f2177685a67dc1"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/cross_source_consensus_per_step.jsonl",
+      "bytes": 131846,
+      "sha256": "1a1218db6a29b872b6b63f1ec22c465dc64a5b617cb8295ff3532fa0a12012b5"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/current_per_step.jsonl",
+      "bytes": 130311,
+      "sha256": "d5ecf9c5669f1c35646db6729e9e0663ff558993de713fa82b3bb17d1c1bc900"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/exact_plurality_per_step.jsonl",
+      "bytes": 129823,
+      "sha256": "a2ec3a2d743063187907239864772b51cdd3e844bc15679b47f18a55f8f54a70"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/report.md",
+      "bytes": 1892,
+      "sha256": "a2296279222a9a7d655000f0d81dcf7bb1ec3c5d00c5cc6d1a29d45f4ed19e91"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/strong_per_step.jsonl",
+      "bytes": 129464,
+      "sha256": "387c61efbdae1d871de2a2eeeb3b3ff27496eed4a5198ae8dfa3dd9b4a557a92"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/dev/summary.json",
+      "bytes": 6705,
+      "sha256": "166f44034345cfddabb82815c6ff4bfbccf69b6d8fc76f806173676c83237caa"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/cross_source_consensus_per_step.jsonl",
+      "bytes": 402757,
+      "sha256": "cc1ce4dbc139ce14a619740405cd282093e9945ae0fb772e9dfd5cfc8504ce88"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/current_per_step.jsonl",
+      "bytes": 395813,
+      "sha256": "ddb768fdcdbf4475c8069391971697c7ad10a9e720f9d65106fe9f6676bcb62d"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/exact_plurality_per_step.jsonl",
+      "bytes": 397016,
+      "sha256": "ff08e37ed3995ae17ad4d4b116f016ce02101c330b9d35d1509aad3039bae72f"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/report.md",
+      "bytes": 1907,
+      "sha256": "d8d2ab9ddd754398fc84d4932e79a65d04634c1cf4ae15d6831f488c719082d3"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/strong_per_step.jsonl",
+      "bytes": 393783,
+      "sha256": "51942f8fb6c009947fcf89cb3e81ba16b5b7d7465c4dc85171e2ccc9d080437f"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/locked_test/summary.json",
+      "bytes": 6787,
+      "sha256": "f70b05b71236122c6e915f4178c5eb74fddf4e184447f479d9a567daa47a6f79"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/smoke/current_per_step.jsonl",
+      "bytes": 13512,
+      "sha256": "12000e3902ddad442e71b580bc4dfc75f52e5608dfc6a67a6e51ab5a76613832"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/smoke/report.md",
+      "bytes": 1087,
+      "sha256": "a0fba888f3f3a22ffe68b30ed757b7ab7952c792f675ad76b0b49c75b263027c"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/smoke/strong_per_step.jsonl",
+      "bytes": 13934,
+      "sha256": "fa92a55360d85e162bf154a9fc85a2d0a6163bad497dbc57fb41972b9c097a81"
+    },
+    {
+      "path": "outputs/pass8_selector_study/eval/smoke/summary.json",
+      "bytes": 2855,
+      "sha256": "c17bd8717a09c67b5b7ec5764405fdbd9f9ba04bc0fa0080c3571cd02436f95f"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/blind/dev.jsonl",
+      "bytes": 827189,
+      "sha256": "5aa445efa595ccd71a4ae512549656bda4058f0096e1caf7c2cf587d57f726cb"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/blind/locked_test.jsonl",
+      "bytes": 2464724,
+      "sha256": "543c39eb72112723560759313ee3cc50180905a315b591a434d95d5432b51dd0"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/blind/smoke.jsonl",
+      "bytes": 91084,
+      "sha256": "7ebf3b894e6702b6d2efc4c2788e74deb2d002fece287c53e8395634d291dded"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/manifest.json",
+      "bytes": 4600,
+      "sha256": "a993d8d18b3ad997622dbd0503257aa624cb7715320729d73a76f888a28df89c"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/screenshot_namespace.json",
+      "bytes": 195372,
+      "sha256": "11202ec4918e0ff63525e02548d403552c3b938b2485a85b78d0b87cbfb9e92a"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/sealed_labels/dev.jsonl",
+      "bytes": 541115,
+      "sha256": "fd3d3d22e8caa65551a4bc5c9e8419a8780cde45b16aff633df7945304272922"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/sealed_labels/locked_test.jsonl",
+      "bytes": 1626092,
+      "sha256": "5642dab34d52709d06803db95a845a08f12c13b4b125cbaabbd586e55ce5a48f"
+    },
+    {
+      "path": "outputs/pass8_selector_study/frozen_v1/sealed_labels/smoke.jsonl",
+      "bytes": 61617,
+      "sha256": "f45d2277160d39a8362d5cc65708ffe06e3ce7367f07405d83e9f723bba8f6fc"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_current_dev.log",
+      "bytes": 440,
+      "sha256": "07460870c0220bdd8567a38d56c9cac8645a6a07ad146d75596b34941f6bfa17"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_current_locked_test.log",
+      "bytes": 953,
+      "sha256": "a190f427d1ded8376341c3ed6ea0d660135c1b26083ec9c5ca21dc4626d97aef"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_current_smoke.log",
+      "bytes": 196,
+      "sha256": "28c37f1eb7d794b3ed25acadf0f746bf39bc4a9b09d41a7963e2376529be70da"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_strong_dev.log",
+      "bytes": 434,
+      "sha256": "637f95dca31a3afebfb3ded0b35c7b73c5b39252e76e85fe2143a3127ab25fa5"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_strong_locked_test.log",
+      "bytes": 928,
+      "sha256": "0877432ef95acc4de823bb39a6c21939d2bfa1422e7a18e6d03eaedeb4dd9624"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/selector_strong_smoke.log",
+      "bytes": 199,
+      "sha256": "83d27553e9c9809f1d213d356188857b14be93a2762640d921c85610b350dd77"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_current_dev.log",
+      "bytes": 47137,
+      "sha256": "da5862825b73a5b609037fba21ca3bb75f804b386f4179703e8aafda98430dd7"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_current_locked_test.log",
+      "bytes": 105862,
+      "sha256": "17d9e53678e110bb99ac71f61b14c051c14a0e7d756138af1725e3818c4fcb32"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_current_smoke.log",
+      "bytes": 22043,
+      "sha256": "aa9b529c0e72d730d815c3fcac4b9c580942e1e15c35e437d26c0f1767fe6bc3"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_qwen35_35b_8735.log",
+      "bytes": 242017,
+      "sha256": "b55c450211a14c1a2fbc25834bfc703c775d6d21904b35a02319af293e7cadbf"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_qwen35_35b_8735_attempt2.log",
+      "bytes": 341057,
+      "sha256": "b1f0a1748f4b3b349153f5bda681e83635be69095ce42923a98532a0820f27e6"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_strong_dev.log",
+      "bytes": 350368,
+      "sha256": "445bb6a8a86f5467bc014904c0bebddd78cdb84d549927aaf6383ac1fb5bec26"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_strong_locked_test.log",
+      "bytes": 407698,
+      "sha256": "17a1476739a65a7107c85168833c9e21a0143f60acfd77a77d06e38f29f8fc5d"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/logs/server_strong_smoke.log",
+      "bytes": 323082,
+      "sha256": "4feca8557dcb7a48e588a95b522fbbb258da31824fe2caf616c1e01d25101b78"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/cross_source_consensus/dev.jsonl",
+      "bytes": 155874,
+      "sha256": "f90b4bfb255ce3f89e5082c822e2ad6c0ef4849ae053aedeae764e2aa29ce69f"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/cross_source_consensus/locked_test.jsonl",
+      "bytes": 478299,
+      "sha256": "46a889de43eba0facb5baba5f5c780a099d0691bb8b3528adb82f5a113789549"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/current/dev.jsonl",
+      "bytes": 308117,
+      "sha256": "a1cf83de5ad509581d689cee1c18b9f438c07350b2cdbf33fe689ffc532a1012"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/current/locked_test.jsonl",
+      "bytes": 928848,
+      "sha256": "5827babaa4c6a491c8262cd43aec53ffcf207a3fa9cdd5f651e5a5d28a7cb474"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/current/smoke.jsonl",
+      "bytes": 31790,
+      "sha256": "c604a52658384ea9233df5f94796250fac52810634fc4c5cef7587e62c285b4d"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/exact_plurality/dev.jsonl",
+      "bytes": 150462,
+      "sha256": "360edc3b5b6714d923c809b1881aa2a0d765f28a5bb2b5a70032a751a7458bc5"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/exact_plurality/locked_test.jsonl",
+      "bytes": 462398,
+      "sha256": "d7bc9257a27dd71c942bf6da14e6993bd901869dab5432496b6648ceaf5265d8"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/strong/dev.jsonl",
+      "bytes": 304076,
+      "sha256": "76e49276202152bb9998cc75ca3de776d0bbd23f0e0f64235651c27aefdf0cb8"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/strong/locked_test.jsonl",
+      "bytes": 922089,
+      "sha256": "8b5fd48087b4f30cc193e4b375872be9aa7edd1cf488c6b66686049eebc2a48b"
+    },
+    {
+      "path": "outputs/pass8_selector_study/runtime/selectors/strong/smoke.jsonl",
+      "bytes": 29232,
+      "sha256": "20e0481ada4671882b2607c614f03e7bad46431ebde894422676173b11d3b54c"
+    },
+    {
+      "path": "outputs/rl_feasibility/per_step.jsonl",
+      "bytes": 28024817,
+      "sha256": "71ab0df74d5f25a8aba5a77cba15959ca3ae390b6dcc979d4178dc4d67e22cfc"
+    },
+    {
+      "path": "outputs/validation_2k/data/train_episodes.jsonl",
+      "bytes": 2496767,
+      "sha256": "7af451fb32cd3df60c19a3f281c4b59cb574300519d0bb7d5e961d0bf9d6958e"
+    }
+  ],
+  "file_count": 62,
+  "total_bytes": 130025816,
+  "notes": [
+    "The train manifest is included as a safety copy; a correct existing hash may be kept.",
+    "GUI screenshots, parquet datasets, environments, and checkpoints are intentionally excluded.",
+    "Pass@8 runtime logs are included because the source directory is only about 14 MB; they are not required for analysis."
+  ],
+  "archive": "ui_s1_bridge_missing_assets_v1.tar.gz",
+  "archive_bytes": 9201720,
+  "archive_sha256": "04f97f020d264f65121d97c42088af6181e83f670a337f2930c234559f41ab8f",
+  "embedded_manifest_sha256": "a0bc2312d8b8578047ba2e575c16023d506b601dd47a03f7a86c80610daa6683",
+  "embedded_sha256s_sha256": "d85edcd8a9cba829477c6273298e214e6e58a457aee77f29276935c49f3b8b94"
+}
