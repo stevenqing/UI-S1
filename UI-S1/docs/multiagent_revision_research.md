@@ -213,12 +213,22 @@ An oracle ceiling selected 800 revision rows where the starting student was wron
 |---|---:|---:|---|
 | 100% / 0% (A13) | -10.40pp | -12.57pp | HARMS |
 | 50% / 50% (A14) | -4.80pp | -4.48pp | HARMS |
-| 25% / 75% (A15) | +1.60pp | -1.75pp | NO CLEAR SIGNAL |
+| 25% / 75% (A15, 125-episode screen) | +1.60pp | -1.75pp | NO CLEAR SIGNAL |
 | 10% / 90% (A16) | -2.40pp | -2.95pp | HARMS |
 
-Clean replay strongly reduces forgetting, but the small screen is non-monotonic and A15's paired TSR interval includes zero. This establishes that utility gating and label correctness are not sufficient for direct action-policy SFT: the accepted-set distribution and preservation objective also matter. A15 is being checked on the full 1,000-episode grid as an oracle ceiling, not a deployable method.
+Clean replay strongly reduces forgetting, but the small screen is non-monotonic. On the complete 1,000-episode / 7,498-step grid, A15 provides the first statistically positive result:
 
-The preferred training direction is therefore conservative preference optimization or replay/KL-regularized updates, not SFT on accepted rescue rows alone.
+- TSR: 18.70% → **21.50%** (**+2.80pp**).
+- Paired 10,000-draw TSR interval: **[+1.00pp, +4.60pp]**.
+- Step accuracy: 57.10% → **57.27%** (+0.17pp).
+- Task wrong→right / right→wrong: 56 / 28.
+- Step wrong→right / right→wrong: 552 / 539.
+
+This validates the central positive hypothesis: a student-relative rescue subset can improve held-out task success when coupled with enough clean replay. A15 remains an oracle ceiling because selection uses matcher/student correctness, but it proves that the heterogeneous revision bank contains real learning signal rather than only noise.
+
+The result also establishes that utility gating and label correctness alone are insufficient: the accepted-set distribution and preservation objective matter. The actionable target is now to approximate A15's oracle selection without GT while maintaining roughly a 1:3 rescue-to-clean replay ratio.
+
+The preferred training direction is therefore calibrated rescue ranking followed by 25% accepted revisions + 75% clean replay, or conservative preference/KL-regularized updates—not SFT on accepted rescue rows alone.
 
 ## Finding 9: verifier class prior exposes a precision–recall failure
 
