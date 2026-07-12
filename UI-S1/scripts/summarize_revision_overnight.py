@@ -53,6 +53,12 @@ def main() -> None:
     metadata_gate = optional_json(root / "utility_gate/metadata_v1/summary.json")
     a13 = optional_json(root / "utility_gate/a13_lora/report/summary.json")
     verifier = optional_json(root / "revision_verifier/eval/merged.summary.json")
+    verifier_natural = optional_json(root / "revision_verifier_natural/eval/merged.summary.json")
+    verifier_calibration = optional_json(root / "revision_verifier/calibration/summary.json")
+    replay_doses = []
+    for path_name in sorted(glob.glob(str(root / "utility_gate/a1*_lora/report/summary.json"))):
+        payload = read_json(Path(path_name)); payload["path"] = path_name; replay_doses.append(payload)
+    a15_full = optional_json(root / "utility_gate/a15_student_rescue25_replay75_lora/full_eval/report/summary.json")
     full_reports = []
     for path_name in sorted(glob.glob(str(root / "lora_screen/full_eval/*/report/summary.json"))):
         payload = read_json(Path(path_name))
@@ -72,6 +78,10 @@ def main() -> None:
         "metadata_utility_gate": metadata_gate is not None,
         "oracle_student_rescue_ceiling": a13 is not None,
         "multimodal_verifier": verifier is not None,
+        "natural_prior_verifier": verifier_natural is not None,
+        "verifier_calibration": verifier_calibration is not None,
+        "replay_dose_ablation": bool(replay_doses),
+        "a15_full_confirmation": a15_full is not None,
         "full_lora_confirmation": bool(full_reports),
         "fullparam_confirmation": bool(fullparam_reports),
     }
@@ -85,6 +95,10 @@ def main() -> None:
         "metadata_utility_gate": metadata_gate,
         "oracle_student_rescue_ceiling": a13,
         "multimodal_verifier": verifier,
+        "natural_prior_verifier": verifier_natural,
+        "verifier_calibration": verifier_calibration,
+        "replay_dose_reports": replay_doses,
+        "a15_full_confirmation": a15_full,
         "full_lora_reports": full_reports,
         "fullparam_reports": fullparam_reports,
     }
@@ -181,6 +195,41 @@ def main() -> None:
             "",
             f"Decision accuracy **{pct(verifier['accuracy'])}**, macro-F1 **{verifier['macro_f1']:.4f}**, use-revision precision **{pct(verifier['per_class']['use_revision']['precision'])}**, recall **{pct(verifier['per_class']['use_revision']['recall'])}**.",
             f"Fallback-student routed accuracy **{pct(verifier['fallback_student_accuracy'])}** versus student baseline **{pct(verifier['student_baseline_accuracy'])}**.",
+            "",
+        ])
+    if verifier_natural:
+        lines.extend([
+            "## Natural-Prior Verifier",
+            "",
+            f"Decision accuracy **{pct(verifier_natural['accuracy'])}**, macro-F1 **{verifier_natural['macro_f1']:.4f}**, use-revision recall **{pct(verifier_natural['per_class']['use_revision']['recall'])}**.",
+            f"Fallback-student routed accuracy **{pct(verifier_natural['fallback_student_accuracy'])}** versus baseline **{pct(verifier_natural['student_baseline_accuracy'])}**.",
+            "",
+        ])
+    if verifier_calibration:
+        locked = verifier_calibration["locked_test_result"]
+        lines.extend([
+            "## Conservative Verifier Calibration",
+            "",
+            f"Locked rule: **{locked['rule']}**; coverage **{pct(locked['coverage'])}**, population utility **{pp(locked['population_net_utility'])}**.",
+            "",
+        ])
+    if replay_doses:
+        dose_rows = []
+        for report in replay_doses:
+            for arm in report.get("arms", []):
+                dose_rows.append([arm["arm"], pp(arm["tsr_delta"]), pp(arm["step_accuracy_delta"]), arm["gate"]])
+        lines.extend([
+            "## Oracle Student-Rescue Replay Dose",
+            "",
+            table(["arm", "ΔTSR", "Δstep", "gate"], dose_rows),
+            "",
+        ])
+    if a15_full:
+        arm = a15_full["arms"][0]
+        lines.extend([
+            "## A15 Full 1,000-Episode Confirmation",
+            "",
+            f"ΔTSR **{pp(arm['tsr_delta'])}**, Δstep **{pp(arm['step_accuracy_delta'])}**, gate **{arm['gate']}**.",
             "",
         ])
     if fullparam_reports:

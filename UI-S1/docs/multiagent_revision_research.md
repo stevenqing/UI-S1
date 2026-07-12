@@ -205,6 +205,40 @@ An episode-disjoint multimodal verifier dataset has therefore been constructed w
 
 This verifier-agent formulation is now the main positive method direction.
 
+## Finding 8: perfect rescue selection still needs replay or conservative optimization
+
+An oracle ceiling selected 800 revision rows where the starting student was wrong and the revision was matcher-correct, with GT histories. Despite 100% target correctness, direct 100-update LoRA SFT still harmed the screen:
+
+| Rescue / clean replay | ΔTSR | Δstep | Gate |
+|---|---:|---:|---|
+| 100% / 0% (A13) | -10.40pp | -12.57pp | HARMS |
+| 50% / 50% (A14) | -4.80pp | -4.48pp | HARMS |
+| 25% / 75% (A15) | +1.60pp | -1.75pp | NO CLEAR SIGNAL |
+| 10% / 90% (A16) | -2.40pp | -2.95pp | HARMS |
+
+Clean replay strongly reduces forgetting, but the small screen is non-monotonic and A15's paired TSR interval includes zero. This establishes that utility gating and label correctness are not sufficient for direct action-policy SFT: the accepted-set distribution and preservation objective also matter. A15 is being checked on the full 1,000-episode grid as an oracle ceiling, not a deployable method.
+
+The preferred training direction is therefore conservative preference optimization or replay/KL-regularized updates, not SFT on accepted rescue rows alone.
+
+## Finding 9: verifier class prior exposes a precision–recall failure
+
+The balanced multimodal verifier fits its training data but is unsafe on the episode-disjoint original-distribution test:
+
+- Decision accuracy 58.58%, macro-F1 0.4572.
+- `use_revision` precision 10.95%, recall 18.07%.
+- Unsafe overwrite rate 3.18%.
+- Fallback-student routed accuracy 54.92% versus 57.20% baseline.
+
+A dev-only search over non-oracle source/type/agreement rules found no rule with at least ten accepted dev examples and positive rescue-minus-regression utility; the fail-closed locked test policy therefore has zero coverage.
+
+An equal-update natural-prior verifier eliminates unsafe overwrites but collapses `use_revision` recall to zero:
+
+- Decision accuracy 65.61%, macro-F1 0.4448.
+- `use_revision` precision/recall 0/0.
+- Fallback-student accuracy exactly preserves the 57.20% baseline.
+
+Thus balanced training over-commits rare revisions, while natural training suppresses them entirely. The next method requires calibrated selective classification/ranking of `use_revision`, not plain balanced three-way SFT.
+
 ## Confidence caveat
 
 - 88.11% of usable trajectories have self-reported confidence 0.95.
