@@ -249,6 +249,37 @@ An equal-update natural-prior verifier eliminates unsafe overwrites but collapse
 
 Thus balanced training over-commits rare revisions, while natural training suppresses them entirely. The next method requires calibrated selective classification/ranking of `use_revision`, not plain balanced three-way SFT.
 
+## Finding 10: calibrated binary rankers still cannot identify positive-utility revisions
+
+Three episode-disjoint multimodal binary rankers were trained to predict whether a revision rescues the starting student. All use continuous conditional $P(\mathrm{YES})/(P(\mathrm{YES})+P(\mathrm{NO}))$ scores and select thresholds using dev rescue-minus-regression utility only.
+
+| Ranker | Train negatives | Repeat policy | Dev AUC / AP | Test AUC / AP | Locked utility gate |
+|---|---|---|---:|---:|---|
+| v1 | regress + both-correct + both-wrong | rescue oversampled | 0.617 / 0.085 | 0.647 / 0.086 | no positive dev threshold |
+| v2 | regress only | rescue oversampled | 0.538 / 0.070 | 0.589 / 0.078 | dev +0.15pp, test **-0.42pp** |
+| v3 | regress only | no repeated examples | 0.466 / 0.054 | 0.523 / 0.056 | no positive dev threshold |
+
+The v2 dev threshold accepts 89 rows with 10 rescues and 8 regressions, but the locked test rule accepts 135 rows with 13 rescues and 20 regressions. Removing repeated rescue examples further reduces ranking quality. Binary re-framing, cost-sensitive negatives, and continuous thresholding therefore do not solve selector generalization with the current backbone.
+
+## Finding 11: simple visual-transition consistency also fails to generalize
+
+For offline data curation, a GT-action-free gate compared the local $s_t\rightarrow s_{t+1}$ pixel-change mass around revision and student click coordinates. The threshold was selected on dev using only future screenshots and candidate coordinates:
+
+- Dev: 54 accepted, 14 rescues, 8 regressions, population utility **+0.44pp**.
+- Locked test: 56 accepted, 14 rescues, 15 regressions, population utility **-0.06pp**.
+
+The next screenshot contains useful local transition evidence, but simple pixel-change localization is not stable enough to approximate student-relative utility.
+
+## Final selector boundary
+
+The experiment now has a positive learning ceiling but no deployable selector:
+
+- **Positive ceiling:** oracle student-rescue selection + 75% clean replay gives full-grid TSR +2.80pp with preserved step accuracy.
+- **Failed non-oracle selectors:** confidence, metadata, source identity, prefix cleanliness, balanced/natural three-way verifier, three binary rankers, and pixel-transition consistency.
+- **Fail-closed decision:** no ranker-selected replay arm is authorized because no dev-locked selector has positive test rescue-minus-regression utility.
+
+Because the same test split has now been used to diagnose multiple selector families, further selector tuning should use a newly frozen validation/test partition. The next scientifically defensible method should use an independent stronger multimodal verifier or an action-conditioned transition/world model, then evaluate once on a fresh holdout before applying the validated 25/75 revision-to-clean-replay recipe.
+
 ## Confidence caveat
 
 - 88.11% of usable trajectories have self-reported confidence 0.95.

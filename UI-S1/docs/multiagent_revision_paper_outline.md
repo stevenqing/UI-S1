@@ -69,6 +69,15 @@ This is an oracle ceiling, not a deployable method claim.
 - Natural-prior verifier: zero unsafe overwrite but zero use-revision recall.
 - Dev-only conservative rules correctly fail closed at zero coverage.
 
+### C7. Failure boundary across calibrated selector families
+
+- Binary v1 reaches test AUC/AP 0.647/0.086 but has no positive-utility dev threshold.
+- Cost-sensitive rescue-vs-regress v2 finds a weak positive dev threshold (+0.15pp) that reverses on test (-0.42pp).
+- Unique non-oversampled v3 falls to near-random test AUC/AP 0.523/0.056.
+- A future-screenshot pixel-transition gate is positive on dev (+0.44pp) but neutral/negative on locked test (-0.06pp).
+
+These failures make the contribution sharper: the revision bank contains useful signal, but identifying student rescue is substantially harder than predicting generic correctness or transition proximity.
+
 ## Main result table
 
 | Experiment | Scale | ΔTSR | Δstep | Conclusion |
@@ -100,6 +109,8 @@ $$
 $$
 
 The threshold is selected on episode-disjoint dev rescue-minus-regression utility, not classification accuracy.
+
+The current GUI student backbone does not satisfy this goal under three binary training variants. A deployable follow-up requires a stronger independent verifier or an action-conditioned transition/world model. Since multiple selector families have now been examined on the original test split, this follow-up must use a newly frozen holdout.
 
 ### Conservative action learning
 

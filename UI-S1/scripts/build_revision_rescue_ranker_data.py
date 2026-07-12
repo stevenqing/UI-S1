@@ -123,6 +123,7 @@ def main() -> None:
     parser.add_argument("--balanced-positive", type=int, default=2048)
     parser.add_argument("--balanced-negative", type=int, default=2048)
     parser.add_argument("--negative-mode", choices=["balanced_subtypes", "regress_only"], default="balanced_subtypes")
+    parser.add_argument("--dataset-version", default="")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
@@ -182,7 +183,7 @@ def main() -> None:
     if any(episode_sets[a] & episode_sets[b] for a, b in (("train", "dev"), ("train", "test"), ("dev", "test"))):
         raise AssertionError("episode leakage")
     summary = {
-        "version": "revision-rescue-ranker-v1",
+        "version": args.dataset_version or ("revision-rescue-ranker-v2-regress" if args.negative_mode == "regress_only" else "revision-rescue-ranker-v1"),
         "task": "binary calibrated student-rescue ranking",
         "features_exclude_gt_and_matcher": True,
         "labels_derived_from_frozen_matcher": True,

@@ -55,6 +55,18 @@ def main() -> None:
     verifier = optional_json(root / "revision_verifier/eval/merged.summary.json")
     verifier_natural = optional_json(root / "revision_verifier_natural/eval/merged.summary.json")
     verifier_calibration = optional_json(root / "revision_verifier/calibration/summary.json")
+    rescue_rankers = []
+    for name, relative in (
+        ("v1", "revision_rescue_ranker/scores"),
+        ("v2_regress", "revision_rescue_ranker_v2_regress/scores"),
+        ("v3_unique", "revision_rescue_ranker_v3_unique/scores"),
+    ):
+        calibration = optional_json(root / relative / "calibration/summary.json")
+        dev_metrics = optional_json(root / relative / "dev.summary.json")
+        test_metrics = optional_json(root / relative / "test.summary.json")
+        if calibration and dev_metrics and test_metrics:
+            rescue_rankers.append({"name": name, "calibration": calibration, "dev": dev_metrics, "test": test_metrics})
+    transition_gate = optional_json(root / "transition_revision_gate/summary.json")
     replay_doses = []
     for path_name in sorted(glob.glob(str(root / "utility_gate/a1*_lora/report/summary.json"))):
         payload = read_json(Path(path_name)); payload["path"] = path_name; replay_doses.append(payload)
@@ -80,6 +92,8 @@ def main() -> None:
         "multimodal_verifier": verifier is not None,
         "natural_prior_verifier": verifier_natural is not None,
         "verifier_calibration": verifier_calibration is not None,
+        "rescue_ranker_ablation": bool(rescue_rankers),
+        "transition_revision_gate": transition_gate is not None,
         "replay_dose_ablation": bool(replay_doses),
         "a15_full_confirmation": a15_full is not None,
         "full_lora_confirmation": bool(full_reports),
@@ -97,6 +111,8 @@ def main() -> None:
         "multimodal_verifier": verifier,
         "natural_prior_verifier": verifier_natural,
         "verifier_calibration": verifier_calibration,
+        "rescue_rankers": rescue_rankers,
+        "transition_revision_gate": transition_gate,
         "replay_dose_reports": replay_doses,
         "a15_full_confirmation": a15_full,
         "full_lora_reports": full_reports,
@@ -211,6 +227,31 @@ def main() -> None:
             "## Conservative Verifier Calibration",
             "",
             f"Locked rule: **{locked['rule']}**; coverage **{pct(locked['coverage'])}**, population utility **{pp(locked['population_net_utility'])}**.",
+            "",
+        ])
+    if rescue_rankers:
+        lines.extend([
+            "## Calibrated Binary Rescue Rankers",
+            "",
+            table(
+                ["ranker", "dev AUC", "dev AP", "test AUC", "test AP", "gate", "test utility"],
+                [
+                    [
+                        item["name"], f"{item['dev']['roc_auc']:.3f}", f"{item['dev']['average_precision']:.3f}",
+                        f"{item['test']['roc_auc']:.3f}", f"{item['test']['average_precision']:.3f}",
+                        item["calibration"]["gate"], pp(item["calibration"]["test"]["population_net_utility"]),
+                    ]
+                    for item in rescue_rankers
+                ],
+            ),
+            "",
+        ])
+    if transition_gate:
+        locked = transition_gate["locked_test"]
+        lines.extend([
+            "## Visual-Transition Revision Gate",
+            "",
+            f"Gate **{transition_gate['gate']}**; accepted {locked['accepted']} test rows with {locked['rescue']} rescues and {locked['regress']} regressions, population utility **{pp(locked['population_net_utility'])}**.",
             "",
         ])
     if replay_doses:
