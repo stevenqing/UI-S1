@@ -33,6 +33,8 @@ def main() -> None:
     parser.add_argument("--output-dir", default="outputs/multiagent_trajectory_revision/full_v1/revision_verifier")
     parser.add_argument("--model-path", default="checkpoints/gui360-fullparam-sft-step250")
     parser.add_argument("--model-output", default="outputs/multiagent_trajectory_revision/full_v1/revision_verifier/model")
+    parser.add_argument("--train-source", default="train_balanced.jsonl")
+    parser.add_argument("--max-steps", type=int, default=0)
     parser.add_argument("--gpus", type=int, default=4)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=8)
     parser.add_argument("--learning-rate", type=float, default=2e-5)
@@ -46,7 +48,7 @@ def main() -> None:
     out_dir = Path(args.output_dir)
     data_out = out_dir / "data"
     split_manifest = {}
-    for split, source_name in (("train", "train_balanced.jsonl"), ("dev", "dev.jsonl"), ("test", "test.jsonl")):
+    for split, source_name in (("train", args.train_source), ("dev", "dev.jsonl"), ("test", "test.jsonl")):
         source_path = source_dir / source_name
         rows = read_jsonl(source_path)
         examples = []
@@ -80,6 +82,8 @@ def main() -> None:
 
     effective_batch = args.gpus * args.gradient_accumulation_steps
     optimizer_steps = (split_manifest["train"]["rows"] + effective_batch - 1) // effective_batch
+    if args.max_steps > 0:
+        optimizer_steps = args.max_steps
     config_path = out_dir / "train_lora.yaml"
     config_path.write_text(f"""### model
 model_name_or_path: {args.model_path}
@@ -119,6 +123,7 @@ per_device_train_batch_size: 1
 gradient_accumulation_steps: {args.gradient_accumulation_steps}
 learning_rate: {args.learning_rate}
 num_train_epochs: 1.0
+{"max_steps: " + str(args.max_steps) if args.max_steps > 0 else ""}
 lr_scheduler_type: cosine
 warmup_ratio: 0.03
 weight_decay: 0.01
@@ -143,6 +148,8 @@ eval_strategy: 'no'
         "gradient_accumulation_steps": args.gradient_accumulation_steps,
         "effective_batch": effective_batch,
         "optimizer_steps": optimizer_steps,
+        "train_source": args.train_source,
+        "max_steps": args.max_steps,
         "finetuning_type": "lora",
         "features_exclude_gt_and_matcher": True,
         "labels_derived_from_frozen_matcher": True,
