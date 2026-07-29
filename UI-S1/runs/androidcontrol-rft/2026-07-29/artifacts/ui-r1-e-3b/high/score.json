@@ -1,0 +1,118 @@
+{
+  "categories": {
+    "android-click": {
+      "action": {
+        "correct": 3931,
+        "total": 4598
+      },
+      "grounding": {
+        "correct": 1793,
+        "total": 4598
+      },
+      "step_success": {
+        "correct": 1605,
+        "total": 4598
+      }
+    },
+    "android-long_press": {
+      "action": {
+        "correct": 0,
+        "total": 7
+      },
+      "grounding": {
+        "correct": 0,
+        "total": 7
+      },
+      "step_success": {
+        "correct": 0,
+        "total": 7
+      }
+    },
+    "android-open_app": {
+      "action": {
+        "correct": 353,
+        "total": 554
+      },
+      "step_success": {
+        "correct": 0,
+        "total": 554
+      },
+      "text": {
+        "correct": 0,
+        "total": 554
+      }
+    },
+    "android-press_back": {
+      "action": {
+        "correct": 84,
+        "total": 315
+      },
+      "step_success": {
+        "correct": 84,
+        "total": 315
+      }
+    },
+    "android-scroll": {
+      "action": {
+        "correct": 235,
+        "total": 1138
+      },
+      "step_success": {
+        "correct": 0,
+        "total": 1138
+      },
+      "text": {
+        "correct": 0,
+        "total": 1138
+      }
+    },
+    "android-type": {
+      "action": {
+        "correct": 463,
+        "total": 569
+      },
+      "step_success": {
+        "correct": 0,
+        "total": 569
+      },
+      "text": {
+        "correct": 0,
+        "total": 569
+      }
+    },
+    "android-wait": {
+      "action": {
+        "correct": 75,
+        "total": 527
+      },
+      "step_success": {
+        "correct": 75,
+        "total": 527
+      }
+    }
+  },
+  "coverage": "COMPLETE",
+  "metrics": {
+    "action": {
+      "accuracy": 0.666969382459782,
+      "correct": 5141,
+      "total": 7708
+    },
+    "grounding": {
+      "accuracy": 0.38935939196525515,
+      "correct": 1793,
+      "total": 4605
+    },
+    "step_success": {
+      "accuracy": 0.22885313959522574,
+      "correct": 1764,
+      "total": 7708
+    },
+    "text": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 2261
+    }
+  },
+  "rows": 7708
+}
