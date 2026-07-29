@@ -15,6 +15,7 @@
 | UI-R1-E-3B | Low | **86.6762 / 78.5451 / 48.5080** | 97.7 / 91.2 / 89.4 | -11.0238 / -12.6549 / -40.8920 pp | 7,708 / 7,708 | PASS |
 | UI-R1-E-3B | High | **66.6969 / 38.9359 / 22.8853** | 83.5 / 78.9 / 69.8 | -16.8031 / -39.9641 / -46.9147 pp | 7,708 / 7,708 | PASS |
 | GUI-R1-3B | Low | **84.4577 / 80.0434 / 56.8889** | 96.9 / 89.9 / 87.3 | -12.4423 / -9.8566 / -30.4111 pp | 7,708 / 7,708 | PASS |
+| GUI-R1-3B | High | **64.2190 / 56.9598 / 38.4276** | 58.0 / 56.2 / 46.6 | +6.2190 / +0.7598 / -8.1724 pp | 7,708 / 7,708 | PASS |
 
 结果来自固定 checkpoint：`KDEGroup/UI-AGILE-3B@84c28b06...`、`KDEGroup/UI-AGILE@de013669...`、`LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` 和 `ritzzai/GUI-R1@e74baccc...`。预测按四个 GPU shard 生成后严格按全局 index 合并；独立 audit 从官方 parquet、原始模型输出和固定 parser 逐行重算指标。未使用 GT output repair。
 
@@ -22,9 +23,8 @@
 
 严格串行队列继续执行：
 
-1. GUI-R1-3B High
-2. GUI-R1-7B Low / High
-3. 原始 UI-R1-3B v1 selected-Low 7,868-step 独立 lane
+1. GUI-R1-7B Low / High
+2. 原始 UI-R1-3B v1 selected-Low 7,868-step 独立 lane
 
 原始 UI-R1 lane 不与统一 7,708-step lane 混报。其发布指标 `94.3 / 82.6 / 88.5` 表示 Type / click Grounding / 两者算术平均，不是 Step SR。发布代码还存在可复核的坐标矛盾：实际 slow-processor grid 为 672x1484，但 `eval_ac.py` 按 644x1484 缩放；本地 runner 同时记录两者并按发布 evaluator 计分。
 
@@ -40,6 +40,8 @@
 - UI-AGILE-7B Low/High score SHA256: `e64ce51215be564f59d922a081a9aa409d8bb49ff2005bd34fb7fc82c7cae08f` / `d5999f117e4530945b77e69af6d90fd88e6bcaa025e1830e880ee7989a5c358b`
 - UI-R1-E-3B Low/High score SHA256: `61e93dc644e98aeb2e519a45a382f751942659521f9a693447e60ea69858247a` / `78fec3850aebdf4d3ecdac0836e2f82b4329978de2b4df727c8e3a17097da476`
 - GUI-R1-3B Low score SHA256: `9d4368656c70b1f811ec60cd4964cc0c14b42ca157031964c8286c05680f744e`
+- GUI-R1-3B High predictions SHA256: `1f5e265c2dc0cece17a4e1eb8afe9a7537858c5be697b02441c067737f581deb`
+- GUI-R1-3B High score SHA256: `d043527c9df03cdd3a0da24ff59834c5e3a828fe1638508aa66a826fec3db9d3`
 - Official AndroidControl source: 20 TFRecord shards plus two split files, 49,930,349,992 bytes, all public GCS MD5 checks PASS
 - Checkpoint/data/source manifest: `artifact_manifest.json`
 - Completed score/audit: `artifacts/ui-agile-3b/low/{score,audit}.json`

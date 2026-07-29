@@ -1,0 +1,14 @@
+{
+  "coverage": "COMPLETE",
+  "data_setting": "high",
+  "data_sha256": "ec70c99046aa4fb1557c61bf2c5d1266f87d4b9dc879128b2de20bf0aca7c72f",
+  "manifest_sha256": "25b567ce7cce9c48766c680df1ef3c19fa9c8f046c4571348d03b3a72b4231da",
+  "metric_counts_sha256": "85078097912d8ac8fe07ea9617f664f30027d49517592c75f611a05c576fd74e",
+  "model_name": "ritzzai/GUI-R1:GUI-R1-3B",
+  "model_revision": "e74baccc4cfa77074e2d53e99a8244ab9fc2ca10",
+  "predictions_sha256": "1f5e265c2dc0cece17a4e1eb8afe9a7537858c5be697b02441c067737f581deb",
+  "rows": 7708,
+  "score_sha256": "d043527c9df03cdd3a0da24ff59834c5e3a828fe1638508aa66a826fec3db9d3",
+  "status": "PASS",
+  "unique_ordered_indices": 7708
+}

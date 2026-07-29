@@ -4,7 +4,7 @@
 
 ## 1. 当前结论
 
-目前有两个 benchmark、三十一个已完成且可审计的模型/设置结果：
+目前有两个 benchmark、三十二个已完成且可审计的模型/设置结果：
 
 1. Mind2Web Cross-Task / SeeClick：论文 anchor 复现通过。
 2. Mind2Web Cross-Task / ShowUI-2B 公共 checkpoint：完整受控结果，但未精确复现论文 ShowUI-ZS anchor。
@@ -37,13 +37,14 @@
 29. AndroidControl-Low / UI-R1-E-3B：官方 7,708-step 完整受控结果，独立审计通过。
 30. AndroidControl-High / UI-R1-E-3B：官方 7,708-step 完整受控结果，独立审计通过。
 31. AndroidControl-Low / GUI-R1-3B：官方 7,708-step 完整受控结果，独立审计通过。
+32. AndroidControl-High / GUI-R1-3B：官方 7,708-step 完整受控结果，独立审计通过。
 
 AndroidControl 论文 Table 5 的 OS-Atlas-7B zero-shot OOD checkpoint 未公开，因此该行精确复现仍为 `BLOCKED`。InfiGUI-R1-3B Low/High 均已完成官方 8,444 行并通过独立严格审计；该 evaluator lane 与 OS-Atlas 7,708-step lane 分开报告。TongUI-3B/7B 和 Qwen2.5-VL-3B/7B 均已完成全部 2,080 行、独立计分和审计。Qwen2.5-VL-7B 两项 anchor delta 略超过 1 pp，因此作为完整受控结果而不是严格 anchor PASS。
 
 | Benchmark | 完成的受控设置 | 精确论文复现 | 当前阻断/运行项 |
 | --- | ---: | ---: | --- |
 | Mind2Web Cross-Task | 12 | 2 | UI-TARS-72B 与 MindAct 均已完成并通过独立审计 |
-| AndroidControl 7,708-step | 17 | 0 | UI-AGILE-3B/7B、UI-R1-E-3B Low/High 与 GUI-R1-3B Low 已完成；其余 3 条 GUI-R1 lane 正在执行 |
+| AndroidControl 7,708-step | 18 | 0 | UI-AGILE-3B/7B、UI-R1-E-3B 与 GUI-R1-3B Low/High 已完成；GUI-R1-7B Low/High 正在执行 |
 | AndroidControl InfiGUI official 8,444-step | 2 | 2 | Low/High 均完成并通过严格审计 |
 
 ## 2. 统一口径
@@ -290,7 +291,7 @@ AndroidControl 论文 Table 5 的 OS-Atlas-7B zero-shot OOD checkpoint 未公开
 | Qwen2.5-VL-3B/7B | **0.00 / 0.00 / 0.00** (Qwen3/7) | **0.00 / 0.00 / 0.00** (Qwen3/7) | Qwen3 [Low](../runs/androidcontrol-pro/2026-07-27/QWEN3_LOW_REPORT.md)/[High](../runs/androidcontrol-pro/2026-07-27/QWEN3_HIGH_REPORT.md)、Qwen7 [Low](../runs/androidcontrol-pro/2026-07-27/QWEN7_LOW_REPORT.md)/[High](../runs/androidcontrol-pro/2026-07-27/QWEN7_HIGH_REPORT.md) 完成 | strict parser；flexible diagnostic 不混报 |
 | TongUI-3B/7B | - | - | **不属于论文 AndroidControl 评测；完整 transfer blocked** | AITW checkpoint 缺 `LONG_PRESS/OPEN_APP/WAIT`；`mobile_use` utility 未接入模型 |
 | UI-AGILE-3B/7B | **89.48/87.58/79.09**（3B）；**87.65/87.95/77.56**（7B） | **76.96/55.85/58.60**（3B）；**79.97/61.98/60.53**（7B） | **Low/High 全部完成并 audit PASS** | anchors：3B Low/High 98.1/91.8/90.8、88.8/85.8/78.7；7B Low/High 98.0/92.2/91.0、91.0/87.2/81.4 |
-| GUI-R1-3B/7B | **84.46/80.04/56.89**（3B）；97.5/91.7/89.7（7B anchor） | 58.0/56.2/46.6；71.6/65.6/51.7 | **GUI-R1-3B Low 完成并 audit PASS；3B High 与 7B Low/High 正在执行** | `ritzzai/GUI-R1@e74baccc...`，官方 `gui_r1` prompt |
+| GUI-R1-3B/7B | **84.46/80.04/56.89**（3B）；97.5/91.7/89.7（7B anchor） | **64.22/56.96/38.43**（3B）；71.6/65.6/51.7（7B anchor） | **GUI-R1-3B Low/High 完成并 audit PASS；7B Low/High 正在执行** | `ritzzai/GUI-R1@e74baccc...`，官方 `gui_r1` prompt；3B High anchor 58.0/56.2/46.6 |
 | UI-R1-E-3B | **86.68/78.55/48.51** | **66.70/38.94/22.89** | **Low/High 完成并 audit PASS** | anchors：Low 97.7/91.2/89.4，High 83.5/78.9/69.8；`LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` |
 | UI-R1-3B v1 original lane | **94.3 / 82.6 / 88.5** | - | **7,868-step selected Low 数据/模型完整，full 待跑** | 数字为 Type / click Grounding / 两者算术平均，绝不是 Step SR；与 7,708-step lane 分开 |
 | InfiGUI-R1-3B | **95.97 / 93.87 / 92.09** | **82.75 / 74.44 / 71.28** | [**完成，PASS**](../runs/androidcontrol-infigui/2026-07-28/FINAL_REPORT.md) | 官方 8,444-step split；Low/High `--require-complete` 独立审计均 PASS；论文 anchor 为 96.0/93.2/92.1 与 82.7/74.4/71.1 |
