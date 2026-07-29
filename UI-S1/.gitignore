@@ -55,6 +55,27 @@ datasets/segmentation*/
 **/logs/
 **/results/
 
+# Local reproducibility-run assets (commit scripts/reports; force-add selected audits)
+runs/**/.venv/
+runs/**/.cache/
+runs/**/model/
+runs/**/models/
+runs/**/data/
+runs/**/repo/
+runs/**/repos/
+runs/**/*-repo/
+runs/**/artifacts/
+runs/continue_*.sh
+runs/**/*.jsonl
+runs/**/*.parquet
+runs/**/*.tfrecord
+runs/**/*.tar
+runs/**/*.tar.gz
+runs/**/*.zip
+runs/**/*.png
+runs/**/*.jpg
+runs/**/*.jpeg
+
 # CHORUS N0/N1 generated artifacts
 chorus-n0n1/data/
 chorus-n0n1/cache/

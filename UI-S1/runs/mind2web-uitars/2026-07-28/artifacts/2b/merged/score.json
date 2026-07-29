@@ -1,0 +1,25 @@
+{
+  "coverage": "COMPLETE",
+  "rows": 2080,
+  "episodes": 252,
+  "parse_success": 1620,
+  "parse_rate": 0.7788461538461539,
+  "parsed_action_counts": {
+    "CLICK": 1620
+  },
+  "parse_errors": {
+    "unsupported Mind2Web action: scroll": 459,
+    "unsupported Mind2Web action: wait": 1
+  },
+  "element_accuracy_micro": 0.23846153846153847,
+  "operation_f1_micro": 0.6514423076923077,
+  "step_success_micro": 0.18846153846153846,
+  "operation_f1_by_category": {
+    "CLICK": 0.7638105975197295,
+    "SELECT": 0.0,
+    "TYPE": 0.0
+  },
+  "macro_element_accuracy": 0.28301061288212004,
+  "macro_operation_f1": 0.6518502259365834,
+  "macro_step_success_rate": 0.22663028746123978
+}

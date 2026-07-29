@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "coverage": "COMPLETE",
+  "rows": 2080,
+  "episodes": 252,
+  "unique_identities": 2080,
+  "model_name": "zai-org/cogagent-chat-hf",
+  "model_revision": "26eec27a44348fbe0c9fad89348cf6a505f5a5ae",
+  "tokenizer_name": "lmsys/vicuna-7b-v1.5",
+  "tokenizer_revision": "3321f76e3f527bd14065daf69dad9344000a201d",
+  "metadata_sha256": "e3dbd288037f14849ca713f92468adaef67f859a3f2f520fffc2b190a82054ef",
+  "predictions_sha256": "baa3738fa9982a5d19d7582753e268cd59bafabaafc1d1b8d65de2baf66ffc04",
+  "score_sha256": "4b1717a05a29b25a2743d3bb965a3196446a533d790ee54ed7f16d7606fc98e4"
+}

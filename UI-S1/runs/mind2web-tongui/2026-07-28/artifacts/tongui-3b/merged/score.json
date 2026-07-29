@@ -1,0 +1,25 @@
+{
+  "rows": 2080,
+  "episodes": 252,
+  "parse_success": 2080,
+  "parse_rate": 1.0,
+  "supported_action_count": 2080,
+  "supported_action_rate": 1.0,
+  "parsed_action_counts": {
+    "CLICK": 1791,
+    "SELECT": 44,
+    "TYPE": 245
+  },
+  "element_accuracy_micro": 0.5360576923076923,
+  "operation_f1_micro": 0.88918303370606,
+  "step_success_micro": 0.48990384615384613,
+  "operation_f1_action_category_macro": 0.6128698792709536,
+  "operation_f1_by_category": {
+    "CLICK": 0.9470124013528749,
+    "SELECT": 0.22224231464737793,
+    "TYPE": 0.6693549218126079
+  },
+  "macro_element_accuracy": 0.5628666614222001,
+  "macro_operation_f1": 0.8920362873810451,
+  "macro_step_success_rate": 0.5138235450085447
+}

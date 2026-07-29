@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "predictions": 7708,
+  "unique_identities": 7708,
+  "duplicates": 0,
+  "missing": 0,
+  "extra": 0,
+  "order_matches_prepared_data": true,
+  "sources": [
+    "artifacts/low_shards/shard_0/predictions.jsonl",
+    "artifacts/low_shards/shard_1/predictions.jsonl",
+    "artifacts/low_shards/shard_2/predictions.jsonl",
+    "artifacts/low_shards/shard_3/predictions.jsonl"
+  ]
+}

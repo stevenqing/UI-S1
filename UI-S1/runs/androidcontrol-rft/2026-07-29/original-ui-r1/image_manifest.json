@@ -1,0 +1,4868 @@
+{
+  "official_images_recovered": 694,
+  "prepared_images_reused": 7174,
+  "recovered": {
+    "episode_10095_screenshot_0.png": {
+      "bytes": 2149734,
+      "sha256": "8c98bb4736bac939ee220e2ccc8f56c75a031b3ca7ba890f74466759b48039c5",
+      "source_episode_id": 10095,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10235_screenshot_0.png": {
+      "bytes": 863424,
+      "sha256": "2e4cf91fb5139a1587d04811d5adaaf562c0da9eefebd7e54e824d23cfed3c80",
+      "source_episode_id": 10235,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10235_screenshot_1.png": {
+      "bytes": 151442,
+      "sha256": "2adb3d5693d02a82f4ef71a53744d6f54cc78e45cc47997180108789bd31dfad",
+      "source_episode_id": 10235,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_10235_screenshot_2.png": {
+      "bytes": 133863,
+      "sha256": "ca0191cb1582339ca329e7fce2ac8094e36e4a0d06fea8733adff71353d3f4b8",
+      "source_episode_id": 10235,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_10235_screenshot_3.png": {
+      "bytes": 134409,
+      "sha256": "49bec08b50b5def92067d6a116664e2ca6f77cbd56186624b3b7d48d2262bcc9",
+      "source_episode_id": 10235,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_10255_screenshot_0.png": {
+      "bytes": 1628442,
+      "sha256": "5609ba69ea1d3d92b3081c6721e9e10b80b86cc146eab86379c314bf14274b0c",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10255_screenshot_2.png": {
+      "bytes": 1837385,
+      "sha256": "636dc527a596ae7a18d9e5a4d4694026426af8abc54e9656f4167c07bd2cee50",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_10255_screenshot_3.png": {
+      "bytes": 123765,
+      "sha256": "ccea118b31cad973b96d7c1c6595c580df396c1b40e68e8e9e3a42ac16875533",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_10255_screenshot_4.png": {
+      "bytes": 154838,
+      "sha256": "429872aa64861954c46811e4a05cc4bd7a1e29ebe82349e453e6ce98a36b8a7d",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_10255_screenshot_5.png": {
+      "bytes": 1864302,
+      "sha256": "525e9d8da17c810e833833ff2074262d2d5e913f58155dcce7644bf5ae44f67e",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_10255_screenshot_6.png": {
+      "bytes": 1041278,
+      "sha256": "0769230d973f45641104e4bf9ab0627fd955d31034b18825b36b3bcf4d99b669",
+      "source_episode_id": 10255,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_10612_screenshot_0.png": {
+      "bytes": 909628,
+      "sha256": "6cbc9644cebff379d63de67b2141602e05fa3ca1b6c6a60c3f0772f624a3ab60",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10612_screenshot_1.png": {
+      "bytes": 1041151,
+      "sha256": "4b32dfa3e5f75d76f3d545f242176303fb8484cde2cc1df69bc02fe7b9857ab4",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_10612_screenshot_2.png": {
+      "bytes": 256627,
+      "sha256": "6c10848f4b8ec296e07869b6beaa06c2d7ca7c755a193c8cadd19104dfe7fddc",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_10612_screenshot_3.png": {
+      "bytes": 220295,
+      "sha256": "bb8b30c0e04e25f366c1d9114d0ec8696d25cc4f3887637877881a075c6a2884",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_10612_screenshot_4.png": {
+      "bytes": 164662,
+      "sha256": "cbf7dc712fc08922a758a9a21dea478b67a31972be743b8fda52e71bf44a0b00",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_10612_screenshot_5.png": {
+      "bytes": 247611,
+      "sha256": "4e0fd46aad5e15dfd3c8886d3437637b0bfde21fb54f47bc5bc85d7c3692e875",
+      "source_episode_id": 10612,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_10693_screenshot_0.png": {
+      "bytes": 1026549,
+      "sha256": "2599f9a1cb133e236b6b9bfd927f0ff03be4dcb291ed70a040bbef1680b4940a",
+      "source_episode_id": 10693,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10693_screenshot_1.png": {
+      "bytes": 1595702,
+      "sha256": "a595e703cbb4e57d1a79cbd2f87e71b2b87ed43bab43055542fe5313c4d3129e",
+      "source_episode_id": 10693,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_10693_screenshot_2.png": {
+      "bytes": 495713,
+      "sha256": "e3fae05fc65eeeb3ad3b9fb18302437ecec06ca131989ca0101ea04769ffac67",
+      "source_episode_id": 10693,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_10738_screenshot_0.png": {
+      "bytes": 778551,
+      "sha256": "87c75e4c608ae2fcba0f2c5562c0104048a97084b97d5df23c65ea5e58f48865",
+      "source_episode_id": 10738,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_10738_screenshot_1.png": {
+      "bytes": 581745,
+      "sha256": "b7514d183587a63e884a189aa77f806e58b921836ae1ba90ed673c2e40514260",
+      "source_episode_id": 10738,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_10738_screenshot_2.png": {
+      "bytes": 157230,
+      "sha256": "3c31904a9c0fe332cd9b54d9f543ad00cb681af63050a741fadd2fca7df67821",
+      "source_episode_id": 10738,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_10738_screenshot_3.png": {
+      "bytes": 152281,
+      "sha256": "f67c678ca8ca65b7bd56e914f779ddf69eb3347b234093882fc6fd138a3c0aae",
+      "source_episode_id": 10738,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_10738_screenshot_4.png": {
+      "bytes": 172399,
+      "sha256": "03d769b613019189ce9ee8a378f2f4d32bf8690bdfd24f4c98eb1dfc386fc4b5",
+      "source_episode_id": 10738,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_1089_screenshot_0.png": {
+      "bytes": 4210627,
+      "sha256": "5ee7d867e1e7c4c2633a2b8a1e917d4eca3a644f4c48fc4a0e3987f27f8d93f4",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1089_screenshot_1.png": {
+      "bytes": 699306,
+      "sha256": "7530c0e75b075cf115dbb63e0cddbdabda2b4007ca9218cd6206098621df18ef",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1089_screenshot_10.png": {
+      "bytes": 152767,
+      "sha256": "8164d81abbbdb8744c754274e069492245fe8e6a8c4ce792f6da907c3cafd19b",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 10
+    },
+    "episode_1089_screenshot_11.png": {
+      "bytes": 120072,
+      "sha256": "999f746143a7df3881b6e4be5df7da8f0754e4b8091aeda1a3fd1968f905eb40",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 11
+    },
+    "episode_1089_screenshot_12.png": {
+      "bytes": 153410,
+      "sha256": "eebb9a574834ee08e6a652b9260e518e167622c5c6deb85bf43e46b321c53478",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 12
+    },
+    "episode_1089_screenshot_13.png": {
+      "bytes": 74491,
+      "sha256": "273a29280b835d22e92d7ba09ca99dca93008c9cbd3253846fc35a912e181ff1",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 13
+    },
+    "episode_1089_screenshot_14.png": {
+      "bytes": 73733,
+      "sha256": "81ed4286d8af5b43706c0ae3fbbae1c449b67a6f90c674c238a5345a78fa7440",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 14
+    },
+    "episode_1089_screenshot_15.png": {
+      "bytes": 71076,
+      "sha256": "afbc397226574e9d73325a8c9ca3be7a1060e1826db4ad7b44c5415e2a7e1851",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 15
+    },
+    "episode_1089_screenshot_16.png": {
+      "bytes": 71859,
+      "sha256": "d9c816b5a6ea9763c5403de6d1d44079b6d28f695c0571ad2dc076fa990260d0",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 16
+    },
+    "episode_1089_screenshot_17.png": {
+      "bytes": 154185,
+      "sha256": "fe9d3a51b1fdd833897e5e63c0a32fbe0435b38b0ceb708a0a2ded9378e7b75a",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 17
+    },
+    "episode_1089_screenshot_18.png": {
+      "bytes": 143621,
+      "sha256": "d56154a375495366627ff6f0769d651e9e12da607dfff0600a703536c7cd9daa",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 18
+    },
+    "episode_1089_screenshot_19.png": {
+      "bytes": 143645,
+      "sha256": "dc8a1e4220f27202e9a2ceea3de1b3577b7874bb7049bf272fd7a78c0bf392eb",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 19
+    },
+    "episode_1089_screenshot_2.png": {
+      "bytes": 129344,
+      "sha256": "ea40174b87e8d48525a7c4b46511ba4da15626b9114cdd94771ed90ef8c8f794",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1089_screenshot_20.png": {
+      "bytes": 153806,
+      "sha256": "9f2e10db07693e84ce08e3621909cb26b0f655c0bb704821f539974858f91e56",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 20
+    },
+    "episode_1089_screenshot_3.png": {
+      "bytes": 149945,
+      "sha256": "e337a5b4bec2da6c0410be326c03a95c76e5db45a56bd5ac5060397e55ce5c96",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1089_screenshot_4.png": {
+      "bytes": 192034,
+      "sha256": "3034ba16a5f869687939d5de87a262c3dc0c9af22289ea73f780b03cf9662334",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_1089_screenshot_5.png": {
+      "bytes": 134835,
+      "sha256": "24f56d25e7f02aa2509819e698af581de200315e86f6406a83366f49c190e158",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_1089_screenshot_6.png": {
+      "bytes": 179831,
+      "sha256": "871c9350606c0e495c94b92a550eeae6c719d8b0f1d058192de0b8ae35c4f023",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_1089_screenshot_7.png": {
+      "bytes": 111373,
+      "sha256": "1e89c05e1714e92954e828c8c1d4cd95b82d92a69c0005b53769b5a0cb80b64c",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_1089_screenshot_8.png": {
+      "bytes": 117631,
+      "sha256": "9d4714a26acb93719a9ddaaf96ee7f5a2f1a7dfd91b4e8aa9ffe7c66b09323db",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_1089_screenshot_9.png": {
+      "bytes": 120272,
+      "sha256": "9128808a416d8e7ed6fa3894749e9720ebd9f08598a7c3d20c8fefeaca1c42f0",
+      "source_episode_id": 1089,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_11014_screenshot_0.png": {
+      "bytes": 4128834,
+      "sha256": "67c285f7aab6edd57ad6805e2ee929ba96a13b556aa104d8deab660c8021e5a3",
+      "source_episode_id": 11014,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11135_screenshot_0.png": {
+      "bytes": 775724,
+      "sha256": "49a70e67a34d31f7ddda3326269f2aa2192d79f87117e3aa68f4b936888647e6",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11135_screenshot_1.png": {
+      "bytes": 1717349,
+      "sha256": "53fbe9ea906bb0ec7bfc0fd327c73e3f94f7884490623747a221c61730747739",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_11135_screenshot_2.png": {
+      "bytes": 480259,
+      "sha256": "8ed0d551b9706afc4cd31ea850717938a1f7e4898c53dc7c86dbaf2256fcced0",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_11135_screenshot_3.png": {
+      "bytes": 515486,
+      "sha256": "922c586d454a4cd91058f744da3091ea69b18436c097cc245824c9e951e9f391",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_11135_screenshot_4.png": {
+      "bytes": 284794,
+      "sha256": "e91edc2b23fdede69ad1627531def8d661472096c7a8562911f1b93cfab741a7",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_11135_screenshot_5.png": {
+      "bytes": 591498,
+      "sha256": "8e31389b948cd00617017b094af782bff01cf5b518ccf52506185e4c789d49e0",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_11135_screenshot_6.png": {
+      "bytes": 302706,
+      "sha256": "f26d59a58fab73974859fd0006706b94528db5b0cb68c2ae120270f6fdd2e276",
+      "source_episode_id": 11135,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_11296_screenshot_0.png": {
+      "bytes": 607967,
+      "sha256": "7d8527210b75ccbbe87669ba406ecf97982f54e832d0ccdefe00a95617b31fcb",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11296_screenshot_1.png": {
+      "bytes": 335217,
+      "sha256": "099b8f08f91c0b55ceffc154ef8c674bb3dd36cd9e592ef228d81c20581cda74",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_11296_screenshot_10.png": {
+      "bytes": 130518,
+      "sha256": "c596eeceb6dce24ecc7373a744f2d431f47222594f7fe928d7784f205a660ae8",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 10
+    },
+    "episode_11296_screenshot_2.png": {
+      "bytes": 142086,
+      "sha256": "61bf399469668fbbb5c02fb96f82bd60880d062b15388e68ce37c171bef32bcd",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_11296_screenshot_3.png": {
+      "bytes": 108207,
+      "sha256": "e1287fda500406a68f8b9d7e3277c9a63d3bfe250c7aaff8ec1cff8d5e049337",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_11296_screenshot_4.png": {
+      "bytes": 109286,
+      "sha256": "c0472d27e9476711baf2987b7d395b1384b183d137bd878f4ad657d91ccffb28",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_11296_screenshot_5.png": {
+      "bytes": 117181,
+      "sha256": "f43a7c3abf075729f0f9756430a567b715441ba17cb136f784caa785cc6a2a77",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_11296_screenshot_6.png": {
+      "bytes": 119835,
+      "sha256": "8714a95eaa0eefaf15c4374eb0265ef46f7f170884798a5ccaf19c7fc185f794",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_11296_screenshot_7.png": {
+      "bytes": 122547,
+      "sha256": "63a2123a91555dd12ea94f7f0c4f835346b5cd3989e97d8d9af5336a3197564f",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_11296_screenshot_8.png": {
+      "bytes": 124570,
+      "sha256": "e4fe81fecfa265e0a512141f35a296e3c1216431ee7b280d38c4af175d4276d4",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_11296_screenshot_9.png": {
+      "bytes": 123496,
+      "sha256": "04a2e556b0dafcb65fbbccfe153a550de4a82dc7e049567b58f4f772ba713e10",
+      "source_episode_id": 11296,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_11501_screenshot_0.png": {
+      "bytes": 1150784,
+      "sha256": "b4c3ff4362848a4096fac21bf0300f00bda7129a1d048f1837c1a53d677419a7",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11501_screenshot_1.png": {
+      "bytes": 956314,
+      "sha256": "0845569a049fa01cbfad5329b961066b918650bf836bf5d52b7c66bf08c0df47",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_11501_screenshot_2.png": {
+      "bytes": 677870,
+      "sha256": "4c5f6609e10f98fa60acc920cb5d6c5d11dce15e02b52fcd40b23e9e27b8572c",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_11501_screenshot_3.png": {
+      "bytes": 181361,
+      "sha256": "043be77e48fb77a6c9664d020963f67bb3e824891417491ddcddc57cbfeba158",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_11501_screenshot_4.png": {
+      "bytes": 149956,
+      "sha256": "9c099267d28cc31bfcd5a527ee83af1e77118e72de9833509f9ee28195a707eb",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_11501_screenshot_5.png": {
+      "bytes": 196121,
+      "sha256": "81da3490cf5dff850972b7ba6ee8710068a61ce33b3cdfdc091b7c6a1991a945",
+      "source_episode_id": 11501,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_11622_screenshot_0.png": {
+      "bytes": 374475,
+      "sha256": "284821276983c9ce8346f6b830cb7013f969bf58b43cd1458a6262f0288d19fd",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11622_screenshot_1.png": {
+      "bytes": 296543,
+      "sha256": "d4e2c40bc9ad120a581fae7b4af5e2e20ffb140598e8feede7f9f4700beaf5fe",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_11622_screenshot_2.png": {
+      "bytes": 293830,
+      "sha256": "d774a5a6fec5ae50839627c6c712c427e246cf9bc1a08872ccda7e89bfd9b7f6",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_11622_screenshot_3.png": {
+      "bytes": 294800,
+      "sha256": "0eecfd6195f0a821d7e2322f7efa175d3de5750827f9e5bddc3d617f1c62296b",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_11622_screenshot_4.png": {
+      "bytes": 187018,
+      "sha256": "ca3ed0fbce3246cb087511a426f00d445104ff8e1dba34cc7e9e1564fbda7673",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_11622_screenshot_5.png": {
+      "bytes": 293017,
+      "sha256": "9b06116fd20f92a5761ba91beae74e63c090b1a81d2a3b0ea8f9231de29dd314",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_11622_screenshot_7.png": {
+      "bytes": 258769,
+      "sha256": "ff48970f3a199f57be00985b4b4419497b48a968e2031371e2d1b6b1d9e82e5c",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_11622_screenshot_8.png": {
+      "bytes": 223486,
+      "sha256": "159400f23afaecb001c81e44c9f6c739e832d6fe929ad04934ee8f5d149651ed",
+      "source_episode_id": 11622,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_11682_screenshot_0.png": {
+      "bytes": 712703,
+      "sha256": "682f43a412bb9102af106717fb01d82d34ac879b4e63bcd385555ff143bf0527",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_11682_screenshot_1.png": {
+      "bytes": 352155,
+      "sha256": "3956a1af051cdca7291f7ca3c80316e3ec9877d4597de9dde3d0b8ffd4de65e1",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_11682_screenshot_2.png": {
+      "bytes": 248554,
+      "sha256": "485c02e8ef086f91a86fe3f18c47765cb0c6330adf8e5f897ecc765d6826bbf5",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_11682_screenshot_3.png": {
+      "bytes": 297785,
+      "sha256": "93a21200e06c9565ec9d812354ea1cd13d300e6de19433b18502f1c8cd965d3b",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_11682_screenshot_4.png": {
+      "bytes": 206168,
+      "sha256": "2586ef69f8ce771e4284c2294588f6afb7c59a9d16c88cefc8b82574ea8e65c1",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_11682_screenshot_5.png": {
+      "bytes": 118942,
+      "sha256": "a59fb50198632dd2489ba1670c08278809a1171d3ab11a6c7976b8426bf27f03",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_11682_screenshot_6.png": {
+      "bytes": 73371,
+      "sha256": "be0918e3f6deaf38145d7bff91f7234c712bb197a4d63a216e85379e5fdf5f33",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_11682_screenshot_7.png": {
+      "bytes": 149634,
+      "sha256": "44e661fc26307d085d125470c5a68d6db457f4af79438545f119220e87749092",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_11682_screenshot_8.png": {
+      "bytes": 146797,
+      "sha256": "27100ae219ed2e802a6b3e8255eb7f15934b1892b2960b68e98704dccca6d5be",
+      "source_episode_id": 11682,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_12245_screenshot_0.png": {
+      "bytes": 832551,
+      "sha256": "0bca61b7b179128c092e3722dd32c6343700ab2a532668d50ddd4f899c2632c6",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_12245_screenshot_1.png": {
+      "bytes": 790755,
+      "sha256": "5ab9e9abb01ec52764e455893c1851f2ea5039f8e7127749002dcb01bbed5f20",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_12245_screenshot_2.png": {
+      "bytes": 170311,
+      "sha256": "366c2c175f06c0a926a15d1230f739a1d24921f45442559b70c7588ee3a84fba",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_12245_screenshot_3.png": {
+      "bytes": 184410,
+      "sha256": "e41469206b212e85999575b155d730aea293e0edaba9fa18802bf21460181e6b",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_12245_screenshot_4.png": {
+      "bytes": 214028,
+      "sha256": "8038ed0fedb1d29a2a2e01bce2da959d65d91ea8aa752c1cd5f23e490dce030e",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_12245_screenshot_5.png": {
+      "bytes": 160094,
+      "sha256": "ad9125d1f8173c374531250ba23b1e9f20c194c6948b142d94bf9821ea36a86f",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_12245_screenshot_6.png": {
+      "bytes": 227448,
+      "sha256": "a26cd8fc206eb37544e3c6eae1cf46c377c6e3cbf164dcbc7130ef3e0513bc7f",
+      "source_episode_id": 12245,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_12642_screenshot_0.png": {
+      "bytes": 895718,
+      "sha256": "a9a181ad1eb2f75ff48bced5a8607c282fe74b67b335a5bdedf7426923407334",
+      "source_episode_id": 12642,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_12642_screenshot_1.png": {
+      "bytes": 1028387,
+      "sha256": "0263e6aade0a19793853e6799b7b3128843c0e3cfc11ee8aa2b3937092c3ff9e",
+      "source_episode_id": 12642,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_12642_screenshot_2.png": {
+      "bytes": 464228,
+      "sha256": "0e81ea4688b8ebdc568b6e8447631601fe502c1f372f9933a5786f2634f4a748",
+      "source_episode_id": 12642,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_12642_screenshot_3.png": {
+      "bytes": 535978,
+      "sha256": "1fda12d37b9968546947d30a87ecb5614823b9209c764c29577a3b575aaed3d4",
+      "source_episode_id": 12642,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_12642_screenshot_4.png": {
+      "bytes": 539347,
+      "sha256": "8f24e5b0775b423dd45cd13ee3f1d4b72661afa688c531ceef593db97c0cfbb1",
+      "source_episode_id": 12642,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_12803_screenshot_0.png": {
+      "bytes": 1622992,
+      "sha256": "1d787e1cfdf83c2685581275ea8b6591df02f14220dbe3e1607663751548cf2f",
+      "source_episode_id": 12803,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_12803_screenshot_2.png": {
+      "bytes": 899839,
+      "sha256": "c59540a039530bbfaf472648255b6eaba62b2456ada0a193e0512a97f17f9163",
+      "source_episode_id": 12803,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_12803_screenshot_3.png": {
+      "bytes": 675950,
+      "sha256": "5c26c9d3b7568216ebcc2e51e3acfbcb072d11a1fceb0ff45b7759db3b717b15",
+      "source_episode_id": 12803,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_12823_screenshot_0.png": {
+      "bytes": 4136093,
+      "sha256": "5649a186a54d517258876f7826603bf539c91568e958096f9510cd77691cb196",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_12823_screenshot_1.png": {
+      "bytes": 199215,
+      "sha256": "35801862bc9f5e690ad79bc2a56c49dc26e355d26d9a0c5d029897d0f782911f",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_12823_screenshot_2.png": {
+      "bytes": 209643,
+      "sha256": "cb4adaa7a400140ac828f93091fca3dcd9a62344e9fe7cda649fe55a524ec558",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_12823_screenshot_3.png": {
+      "bytes": 201127,
+      "sha256": "0008f9a7a869efc611b73a1f2ba145b22703112fe036ca3a72498e36fc5ea274",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_12823_screenshot_4.png": {
+      "bytes": 223124,
+      "sha256": "4c416fb2ebd7f86570e635d7252b10551fab7d3cfc4dbba18b7c5cb8c42cc7a2",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_12823_screenshot_5.png": {
+      "bytes": 221041,
+      "sha256": "3552592cc659600c2ab7e5076f9e6a3179d460db4eb73be37c5e92a165f9be19",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_12823_screenshot_6.png": {
+      "bytes": 430145,
+      "sha256": "af37fdfae3c492179689a44dfd8d4d427ff5625491ad91ba16ab99515571499d",
+      "source_episode_id": 12823,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_12863_screenshot_1.png": {
+      "bytes": 250030,
+      "sha256": "a1faa4040a5f15f02d1b756c8f944e989c570b82fd88338917a8354581487bf0",
+      "source_episode_id": 12863,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_12863_screenshot_2.png": {
+      "bytes": 185343,
+      "sha256": "f87d13d985f0ebddba6b665b3d15739d1177d5c4deb2a4008b1cd6fa8767cbb3",
+      "source_episode_id": 12863,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1309_screenshot_0.png": {
+      "bytes": 908038,
+      "sha256": "51e921d49e7c6eec24b214411f009eecc4ec96c6ea477ddb99dbc2b504f53d1f",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1309_screenshot_1.png": {
+      "bytes": 1644086,
+      "sha256": "f02369b3fb856e3821fa2a6bfe221efbec1104eb77d1f9ca33fe1b5b912f213f",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1309_screenshot_2.png": {
+      "bytes": 931844,
+      "sha256": "c487dc3796c09345524e5a6537b6cfe2aa36823dd4e419f11a58fe7c9e2bd7dd",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1309_screenshot_3.png": {
+      "bytes": 978447,
+      "sha256": "0167b8a068468e8dbd7ff3b4a402ac4927bac371ec8943e57483508f4634eff1",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1309_screenshot_4.png": {
+      "bytes": 151343,
+      "sha256": "98e977d434bf108631236bfb339e34e760a967c5307de321096d0e703324b60b",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_1309_screenshot_5.png": {
+      "bytes": 104711,
+      "sha256": "30ef00904f3606a916c635c888bc6a51177f42e98e81ef94c28b34f2e1bf6739",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_1309_screenshot_6.png": {
+      "bytes": 106259,
+      "sha256": "4db73c5136017c2fded4ebecb66066bda44ce45fae4aa4c3d58bdccc873529c5",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_1309_screenshot_7.png": {
+      "bytes": 253065,
+      "sha256": "d7deed62e9c05832aed89a350d38f65e7f1a907d06b4ff15726a663d74f38f51",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_1309_screenshot_8.png": {
+      "bytes": 254804,
+      "sha256": "5968061bb6c9caf27043813563b517b3b186e80bccaa2afacc2a5d6d5556b49c",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_1309_screenshot_9.png": {
+      "bytes": 1002683,
+      "sha256": "e56609ba04d3e3bae2d4b283925514d9c4d75b37221967f7d8fd9b28f3500cbd",
+      "source_episode_id": 1309,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_13108_screenshot_0.png": {
+      "bytes": 2177052,
+      "sha256": "88d82f9316590a0a01a1ba5a50fc8945d9c731fe42423dbfd906dfab9293e744",
+      "source_episode_id": 13108,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13108_screenshot_1.png": {
+      "bytes": 1767532,
+      "sha256": "922281a1c8735b6ea84a050764bab460fbc4c713da2f1993b2f1676f1d76550a",
+      "source_episode_id": 13108,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13203_screenshot_0.png": {
+      "bytes": 605911,
+      "sha256": "655bfb16f5a989c6fcb2b9e08b986114aa226131fefbcef1c0c791b56b77e7e7",
+      "source_episode_id": 13203,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13203_screenshot_1.png": {
+      "bytes": 522160,
+      "sha256": "d068418dae39028acc0d83d74f0952fc29f52fa20d4f33e8464cfa59ee1af76c",
+      "source_episode_id": 13203,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13203_screenshot_2.png": {
+      "bytes": 479947,
+      "sha256": "de99661284f41efba640f58331be3646b1409cb519dfbc31db180fa117e6138a",
+      "source_episode_id": 13203,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13203_screenshot_3.png": {
+      "bytes": 97403,
+      "sha256": "3890f4d9ff34476ddb53fc83133a37c02cf5dcd8d496360d28829eda4067172a",
+      "source_episode_id": 13203,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13203_screenshot_4.png": {
+      "bytes": 111160,
+      "sha256": "c85136d036acdcd4e9b330dc00fbf6120a6f3e22f2b5a398f713fdd81169805a",
+      "source_episode_id": 13203,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_13228_screenshot_0.png": {
+      "bytes": 312630,
+      "sha256": "adfd7ff174084a4d7e9051a4974e7a6e80bc0f99032d7c1b372d9646705142f1",
+      "source_episode_id": 13228,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13228_screenshot_1.png": {
+      "bytes": 257564,
+      "sha256": "165214ff5e19d448f5b8f1574f0d7bdc7a4d4d215f4a1bb7c1d0390f3c446269",
+      "source_episode_id": 13228,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13228_screenshot_2.png": {
+      "bytes": 149350,
+      "sha256": "91766af8b88e17f034432d037498fabca0aa37da54218c6b933db4652839a3d6",
+      "source_episode_id": 13228,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13228_screenshot_3.png": {
+      "bytes": 172695,
+      "sha256": "77bc2365bab4895e61a5f0420cafbbef22379fd21ac675ad139a69ae4ac75fe7",
+      "source_episode_id": 13228,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13248_screenshot_0.png": {
+      "bytes": 644489,
+      "sha256": "ece6078e4db4d912c286230ceb2f535b4a2f1d8ce9eb8cd59cc6a18663e6e48a",
+      "source_episode_id": 13248,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13248_screenshot_1.png": {
+      "bytes": 888452,
+      "sha256": "6efd3a9b8a29da70282561a7fc1da9301922d7e6234ab0f5bea35d6718842062",
+      "source_episode_id": 13248,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13248_screenshot_2.png": {
+      "bytes": 729964,
+      "sha256": "290a691963bc8036b4412da04680a49d2fa95e95fb8880a58d436e40c9a7a58e",
+      "source_episode_id": 13248,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13248_screenshot_3.png": {
+      "bytes": 247917,
+      "sha256": "56882df1212d54413acc5061161640ef268b57228b4bf04a8391bc2ab3544d29",
+      "source_episode_id": 13248,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1329_screenshot_0.png": {
+      "bytes": 1500763,
+      "sha256": "41c493bd16c66637bc8137ba5e05aca8ebeea2cec4fcf66c4b017d5caeb1cf15",
+      "source_episode_id": 1329,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1329_screenshot_1.png": {
+      "bytes": 2562704,
+      "sha256": "a6bfcd325da94798ddaaed75f53bd7175ba64e01e7817152a06bbcd033dd4dbd",
+      "source_episode_id": 1329,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1329_screenshot_2.png": {
+      "bytes": 545617,
+      "sha256": "5859c27376ade34da4d28e12a63c0f6260ff79c4609d647ba3f37dff06f54d37",
+      "source_episode_id": 1329,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13428_screenshot_0.png": {
+      "bytes": 413650,
+      "sha256": "e6d94726b2608a5460441821b689d85a64ce78322535be6be50cf8e964b77279",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13428_screenshot_1.png": {
+      "bytes": 2188155,
+      "sha256": "11957ff66109cb60170a7da4ccbd139fb142b25bdec0625df73934919198a8db",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13428_screenshot_10.png": {
+      "bytes": 69109,
+      "sha256": "2de95fb1fbc2a53e1c51a53755304834ff8ee0b51c8c353ba0224dcbc548c6cf",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 10
+    },
+    "episode_13428_screenshot_11.png": {
+      "bytes": 149510,
+      "sha256": "8862ecdb6eedd0f39e4cd7baa8de3425a0e4cead47f2537dc63b48000b0648bd",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 11
+    },
+    "episode_13428_screenshot_2.png": {
+      "bytes": 135525,
+      "sha256": "410416d6a6b10e8c8d93fb0380b4a6301102b75f22688b753f9b7cf06f13eb16",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13428_screenshot_3.png": {
+      "bytes": 156676,
+      "sha256": "c032dd5e6bddaffe334b5166d6cd0cf82488beac11dde0596e604893216cb9d6",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13428_screenshot_4.png": {
+      "bytes": 157332,
+      "sha256": "d5054074ff5c0943c7ec5c315da09650e9208b4100a0e038389e7920cd23c77b",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_13428_screenshot_5.png": {
+      "bytes": 141172,
+      "sha256": "b342d91e4d6c41e4c58d233b868d3ff58e8e4eaa5c1cb50a816ba6b08b56a0b3",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_13428_screenshot_6.png": {
+      "bytes": 143895,
+      "sha256": "fe174ca97980ced13c2fa70314244501aa9f88b61961a0613736f408af8bdda3",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_13428_screenshot_7.png": {
+      "bytes": 145022,
+      "sha256": "14f260d6c48534fe873cedceb6614461c5af3aea198a87385b16802db5e54ecc",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_13428_screenshot_8.png": {
+      "bytes": 143452,
+      "sha256": "a644782447da7ab62981c267f4fecdd3abddb2dbda064c65bc1607697f8e5ad8",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_13428_screenshot_9.png": {
+      "bytes": 68602,
+      "sha256": "f7459f5cea3cb5907d4eb071b2cac465a82827429d7047620e8c91985b095d49",
+      "source_episode_id": 13428,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 9
+    },
+    "episode_13468_screenshot_0.png": {
+      "bytes": 168443,
+      "sha256": "a492e6072fde7d66a0907377c3cb967ce231f2cc78c3c78f86531740b56bfb48",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13468_screenshot_1.png": {
+      "bytes": 78940,
+      "sha256": "bd1e597ff8897ac77900729ec01bd8c13ce63bdcd852ec125861c891924c0f58",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13468_screenshot_10.png": {
+      "bytes": 188785,
+      "sha256": "58ed27f3c46ae45b6991da8052e8446d546a56da3fff87cda618f07b54a321c3",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 10
+    },
+    "episode_13468_screenshot_11.png": {
+      "bytes": 162157,
+      "sha256": "983b79ea4956f4d2c9f606aab1ba098cf873104697111446135b7ec7d502e258",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 11
+    },
+    "episode_13468_screenshot_2.png": {
+      "bytes": 161114,
+      "sha256": "e211c72d3b71ead5eafa38a9df820d874ed2240ee0e89eef680531c4f5d8d6e8",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13468_screenshot_3.png": {
+      "bytes": 156823,
+      "sha256": "95f07a890b6f96d462e40760c23ef8b8a8a1e98a4a1ff1fd8ab457279fe0cf8c",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13468_screenshot_4.png": {
+      "bytes": 173379,
+      "sha256": "f621e2c71207921536e30f932faec304e31667fe355d6644da4f38734af3b68c",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_13468_screenshot_5.png": {
+      "bytes": 185634,
+      "sha256": "5373a0e8c31a8b69f3389e3542d740656020ebee64ca4dc5ede767529a0864ef",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_13468_screenshot_6.png": {
+      "bytes": 178531,
+      "sha256": "7ad9a0365eb888755af902503d5901fd40ae74a7d52790aada64ea636af65ad2",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_13468_screenshot_7.png": {
+      "bytes": 203338,
+      "sha256": "be8edb7e9979617e0256e3f1d84eb48bcc3edf25df550e5a05744dd6b8cea7cb",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_13468_screenshot_8.png": {
+      "bytes": 162336,
+      "sha256": "aea8f646ffc48a631917e1e074dbad3ac46b2ad91670bee014104e754dd8ffbb",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_13468_screenshot_9.png": {
+      "bytes": 188660,
+      "sha256": "02247c468631fa00fce9991ba4d3771261c925410a7a371edfd004140bc30dae",
+      "source_episode_id": 13468,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 9
+    },
+    "episode_13651_screenshot_0.png": {
+      "bytes": 302651,
+      "sha256": "b0224a498e90df638dd4566488e8d3273dbac6eb84b0219b0fb72bdf09cb19cb",
+      "source_episode_id": 13651,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13651_screenshot_1.png": {
+      "bytes": 393569,
+      "sha256": "fc49c5ed7782e24ecceb112b5cd9563ea6a913c8bf4f50da0f3ba9b916553609",
+      "source_episode_id": 13651,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13651_screenshot_2.png": {
+      "bytes": 518270,
+      "sha256": "d0aa04f5655f38d1cf13a719baf058f3c3b422777e9e24305902eea62f1dbfa6",
+      "source_episode_id": 13651,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13686_screenshot_0.png": {
+      "bytes": 217150,
+      "sha256": "511b69ccfa963cccaf3b28cabeb3115c0ed121ccc0a53b87bd703038e85ade9f",
+      "source_episode_id": 13686,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13686_screenshot_1.png": {
+      "bytes": 195601,
+      "sha256": "e3b388300e93d36b36aacfaed83484c64fdb58938b36087395a674c9c1a984d2",
+      "source_episode_id": 13686,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13686_screenshot_2.png": {
+      "bytes": 429565,
+      "sha256": "fdc5369e21fb03ff4fe824f24db0597f549ccf9bc54e91101bac318eb020ae6d",
+      "source_episode_id": 13686,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13686_screenshot_3.png": {
+      "bytes": 120360,
+      "sha256": "ca9266f4fa6cbc51ca16163e38d2320c030a85921b4cac3367ca0b03378fdc7e",
+      "source_episode_id": 13686,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13686_screenshot_4.png": {
+      "bytes": 151329,
+      "sha256": "8c04c462590f45abfee8dc5433235bcd17afd8511308d1935f44fd023a47ea0c",
+      "source_episode_id": 13686,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_13731_screenshot_0.png": {
+      "bytes": 1703379,
+      "sha256": "cef35631e5f0f3077ed22d997785a4cabecebaa984c4e04b1a64e345ee1034af",
+      "source_episode_id": 13731,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13731_screenshot_1.png": {
+      "bytes": 122799,
+      "sha256": "8fdfcc8afa5aceee18738995e51338c46f269412f3fe98263efb9a48f3b36e5b",
+      "source_episode_id": 13731,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13731_screenshot_2.png": {
+      "bytes": 157002,
+      "sha256": "589c4ddd2556f5c59169d915fdb1a922298813006943a0715b22ef647fb22cad",
+      "source_episode_id": 13731,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13731_screenshot_3.png": {
+      "bytes": 387508,
+      "sha256": "2930e9ca853f7a885688dacb07ab14312214ea3d2961cf207b65f65f25ffedec",
+      "source_episode_id": 13731,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13731_screenshot_4.png": {
+      "bytes": 1844153,
+      "sha256": "1678d749ecb0ec056ef8bd655174b552213add31b8de71671a214ade1740b29e",
+      "source_episode_id": 13731,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_13746_screenshot_0.png": {
+      "bytes": 2691213,
+      "sha256": "f1f14a274ae292b65ecc6777ca06c8ec60850eab5d09f397504f26f209626103",
+      "source_episode_id": 13746,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13746_screenshot_1.png": {
+      "bytes": 2250538,
+      "sha256": "9081fa438ceebf622625b2aab7514e150638788aaf7a5a975678e9c90332f56b",
+      "source_episode_id": 13746,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13746_screenshot_2.png": {
+      "bytes": 147786,
+      "sha256": "3befd30b3c62928e31639542b40137e17919bc29f3b27d414d5c539209071b3d",
+      "source_episode_id": 13746,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13806_screenshot_0.png": {
+      "bytes": 195252,
+      "sha256": "49729a646c4279ffc64f940d35bfa9d5239158e81a33640a1f59a62440a18f19",
+      "source_episode_id": 13806,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13806_screenshot_1.png": {
+      "bytes": 207188,
+      "sha256": "26b15d93b9e73a12fb9169be536f74bf868b61d2342cbead5b3b666cc0f80ec6",
+      "source_episode_id": 13806,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13806_screenshot_2.png": {
+      "bytes": 204840,
+      "sha256": "723e823ef2615d2d71612d1406cb68dc4de1dd6a562ebac5e46df843060d9407",
+      "source_episode_id": 13806,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13806_screenshot_3.png": {
+      "bytes": 178565,
+      "sha256": "ad6c8cb4b9182addefed072e5581eefa2f5190f10eb62afab5cbaae431c28eab",
+      "source_episode_id": 13806,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13846_screenshot_0.png": {
+      "bytes": 643350,
+      "sha256": "9f57dfa9c1fd526bb4e52b8861ce356d40d92f3a10225426713dbc5682be4ef9",
+      "source_episode_id": 13846,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13846_screenshot_1.png": {
+      "bytes": 84560,
+      "sha256": "89e72779452e689628dff789669cf9afd2652599a52b238c15a245e5a26631ae",
+      "source_episode_id": 13846,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13846_screenshot_2.png": {
+      "bytes": 150643,
+      "sha256": "4719f956f98b1e5c10e6f2b1b5d2323d0462ac06015c32f12db9b9de8120b65a",
+      "source_episode_id": 13846,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13886_screenshot_0.png": {
+      "bytes": 93591,
+      "sha256": "3555e6eb5e7b0525ec85868ba2d325489f98a429bb342d9d217632f41f0e1e7e",
+      "source_episode_id": 13886,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_13886_screenshot_1.png": {
+      "bytes": 1527525,
+      "sha256": "78ad95662eceda960c623a1c27786d207bfdac505754ffcec6a9be097a651aff",
+      "source_episode_id": 13886,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_13886_screenshot_2.png": {
+      "bytes": 1901635,
+      "sha256": "56e8f7f2a40a595e113b69887c04989f7c642edb6f57a5b13fd269c43c25d93c",
+      "source_episode_id": 13886,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_13886_screenshot_3.png": {
+      "bytes": 1947318,
+      "sha256": "7277fecf069989311c71d7e2abb3f7e4b0d765bc0da252b7cf61da71f8bc69fd",
+      "source_episode_id": 13886,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_13886_screenshot_4.png": {
+      "bytes": 755265,
+      "sha256": "219b5d23d29afafe07d4f4893f4c0811e3095f76c334775481b10f3bb6f1f40f",
+      "source_episode_id": 13886,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_14107_screenshot_0.png": {
+      "bytes": 1280334,
+      "sha256": "3b602b39f8cd85026c59c88e3b11b85bbf7e08848a718734740c6c773309c27a",
+      "source_episode_id": 14107,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14107_screenshot_1.png": {
+      "bytes": 1044766,
+      "sha256": "632ed67033dd7696980d832ed28f0b9824ffcd09e78f87d50c49016240917884",
+      "source_episode_id": 14107,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_14107_screenshot_2.png": {
+      "bytes": 82975,
+      "sha256": "17cdaf420d67ec585b6b5336cfc43bbb19d1f660ec52a6df377a515a4b6b49c7",
+      "source_episode_id": 14107,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_14107_screenshot_3.png": {
+      "bytes": 91091,
+      "sha256": "62ce7a1a74e3daf60b5e5f0af32d7f88fa49737e2cd56f4eb756b096fa4c84d6",
+      "source_episode_id": 14107,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_14172_screenshot_0.png": {
+      "bytes": 65140,
+      "sha256": "6eac13d84e2b3fae2aa20d11e2c8e8c7ccb5607df010565d59cdc523739cbf67",
+      "source_episode_id": 14172,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14172_screenshot_1.png": {
+      "bytes": 75185,
+      "sha256": "c6f9e0f165ffe3b1aef7f199769a3d6f7e47121ca5310e6e43a2041e0e70da21",
+      "source_episode_id": 14172,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_14172_screenshot_2.png": {
+      "bytes": 62935,
+      "sha256": "47df585597a18117a75f7d4fd93b37d8a3357f98f93324839c6cb996a976511c",
+      "source_episode_id": 14172,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_14454_screenshot_0.png": {
+      "bytes": 939391,
+      "sha256": "46a146a37a82a1fe580c2a8f229b29e191d5d71556c7844c31b0244dfa01d76f",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14454_screenshot_2.png": {
+      "bytes": 1024606,
+      "sha256": "35e6d187a9cc5e23653ebd919afcba79926a29cdcf09b366b2122aa5ac82eabd",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_14454_screenshot_3.png": {
+      "bytes": 1818419,
+      "sha256": "21f319df421f2eaae10d2dbf9a3944b0a4457c471ee3ac8bb2e9c9c5b4fdd807",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_14454_screenshot_4.png": {
+      "bytes": 641411,
+      "sha256": "339c5776a0217536f7eddb1e6ae4ef67346dcd060cd53e0dbe0d9bb6b0724b5b",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_14454_screenshot_5.png": {
+      "bytes": 265432,
+      "sha256": "054f5f789c6503510f0eb22d04a3bbb9063b4bdee702c1cac5c257312c68913a",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_14454_screenshot_7.png": {
+      "bytes": 653554,
+      "sha256": "8f50053931ee085b346a448f52501a2e520f27fa471cde6c3dbc2b90c9f7d747",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_14454_screenshot_8.png": {
+      "bytes": 709893,
+      "sha256": "4c8e46406be2029c5aa86cef126876a2d6b126ecac7e79530bcd4b8b945fdc6d",
+      "source_episode_id": 14454,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_14495_screenshot_0.png": {
+      "bytes": 1049691,
+      "sha256": "86e6961a06ae2decf1b15f8bd4ce726ec86a29c877116180e12a5eecce83b7b1",
+      "source_episode_id": 14495,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14495_screenshot_1.png": {
+      "bytes": 1373539,
+      "sha256": "ef7e218eb53acb8021cb1ec8f08b6180d46dd197fe6dce632acba7a2e541d33b",
+      "source_episode_id": 14495,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_14495_screenshot_3.png": {
+      "bytes": 336270,
+      "sha256": "374fb4945a3937e6c0a5381deabbcfb6dabcc60c15286233db07bbf91d4a899e",
+      "source_episode_id": 14495,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_14495_screenshot_4.png": {
+      "bytes": 234693,
+      "sha256": "69c7602a9c79a121ba9bbce03cccf793628ca690b54a5918ac842bb7f02bb9b9",
+      "source_episode_id": 14495,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_14495_screenshot_5.png": {
+      "bytes": 287205,
+      "sha256": "cbe84e7a143363e0eb4913c048b72e03727e44b269894c9831f66524da9f7c9c",
+      "source_episode_id": 14495,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_14670_screenshot_0.png": {
+      "bytes": 204495,
+      "sha256": "2f00a08f27c14d2cafb5ad03d4754f3ff0f158288f6b551d6ba5ad8c43f726b6",
+      "source_episode_id": 14670,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14735_screenshot_0.png": {
+      "bytes": 807983,
+      "sha256": "ad3c056c7a9623cb433620de41f1a671a9ad01f6aa915149ef04cb93af3a1201",
+      "source_episode_id": 14735,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_14735_screenshot_1.png": {
+      "bytes": 216890,
+      "sha256": "e4b019fd56f64f0b6fb39492076226225e6550f136fd9fc02dee6677dc9632cc",
+      "source_episode_id": 14735,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_14735_screenshot_2.png": {
+      "bytes": 1224504,
+      "sha256": "d3a342005272773e2647abbc9fc6c3037903747e13b43e86280f7fb07c652342",
+      "source_episode_id": 14735,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_14815_screenshot_0.png": {
+      "bytes": 533033,
+      "sha256": "464f4f5744c175841af2ec232616de54989449592dba47a874ee50dee798b5db",
+      "source_episode_id": 14815,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1489_screenshot_0.png": {
+      "bytes": 83590,
+      "sha256": "a8443b7b73e012b9139eb6d15177af6c6ded8cb480f81ee8efa5eb9b0eb5e363",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1489_screenshot_1.png": {
+      "bytes": 264821,
+      "sha256": "bd53be76b2368b4c6c6366c89d97779249bc13341fcbe6ce5136594fd8c60ab7",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1489_screenshot_2.png": {
+      "bytes": 135622,
+      "sha256": "30704cea2f2954b569815dfae370dc116a6763a78cb5e4ea76016e6784d197f5",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1489_screenshot_3.png": {
+      "bytes": 157943,
+      "sha256": "c06677f9fcf597440d314333a59ff6e5683c46268902ed235b682604c379c12f",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1489_screenshot_4.png": {
+      "bytes": 141453,
+      "sha256": "28345aaa31185a18b470efeccdc2270f1bf9e94286b97d8093b75ed1a10c48b7",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_1489_screenshot_5.png": {
+      "bytes": 126272,
+      "sha256": "b04660252018b9997ea1017d540720c7cc311c647067d6f9e13f5928124a84d6",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_1489_screenshot_6.png": {
+      "bytes": 131073,
+      "sha256": "a6044cd7e590b92ee39495b3d611802e5e62034370f2c64fde26a9b0e0b672a3",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_1489_screenshot_7.png": {
+      "bytes": 135589,
+      "sha256": "0848274632510688c1ec2ea10964f56dbf03db6ac076fce337b8fc7f3b810ba8",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_1489_screenshot_8.png": {
+      "bytes": 176503,
+      "sha256": "d766e09fdd6c09ee4af85bd7e272e092f3a87a3359b8fef03e3f735638d5b284",
+      "source_episode_id": 1489,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_15017_screenshot_0.png": {
+      "bytes": 411668,
+      "sha256": "403fb7d8ee5ff3df732b942af3136827fea968a05b4a1001946b8ab27ae877a5",
+      "source_episode_id": 15017,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15017_screenshot_1.png": {
+      "bytes": 595594,
+      "sha256": "6f6f28dbf034ffed0e9c77b0abef5a6eb37ec809f6a7d40808383f64e22ff0dc",
+      "source_episode_id": 15017,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_15017_screenshot_2.png": {
+      "bytes": 850131,
+      "sha256": "a5c153b0384a904ff048adca1f0149b6d840fbfe7ea2ea3d0ed51446295648a5",
+      "source_episode_id": 15017,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_15017_screenshot_3.png": {
+      "bytes": 347633,
+      "sha256": "3460e26d6e655c323c80e1ffac01ae12ae73b62b6b4f3614e3b061df358ed9bb",
+      "source_episode_id": 15017,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_15017_screenshot_5.png": {
+      "bytes": 1033969,
+      "sha256": "a7256f9a50758211bd89cd5af61a0f0f0c251321159688439be97c9169e6a6d8",
+      "source_episode_id": 15017,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_15032_screenshot_0.png": {
+      "bytes": 144595,
+      "sha256": "eb47d346612b6670988419cee5d7103b07641360b6b04ae9fc4baef926589281",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15032_screenshot_1.png": {
+      "bytes": 144603,
+      "sha256": "63c7fcb948d500faaefc38f75c53d80af035867ba97608b8201f659c575e8258",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_15032_screenshot_2.png": {
+      "bytes": 153935,
+      "sha256": "64404b95907b93271806d99dd9bd2fa9fce998cd3593522a5913d8697b734a65",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_15032_screenshot_3.png": {
+      "bytes": 170458,
+      "sha256": "157ea05f8c9c5664c7c24da50d63696cf905fb206e3dd804d33b1e09894d1dc3",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_15032_screenshot_4.png": {
+      "bytes": 178191,
+      "sha256": "6ac9d8d77a4c0df32200be6e5398f8371053b1d09e32a7d17131600bd4e5f312",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_15032_screenshot_5.png": {
+      "bytes": 145690,
+      "sha256": "6af6f5ef7334dfe7fd67a0a7ae88ffca0c979a05b19bd3fa43ac3a244a25dc12",
+      "source_episode_id": 15032,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_15057_screenshot_0.png": {
+      "bytes": 276441,
+      "sha256": "47083bc23fb04d7bc8e454dad87e49705ef687e9a20bae478c5bfa2d86b74d47",
+      "source_episode_id": 15057,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15057_screenshot_1.png": {
+      "bytes": 480504,
+      "sha256": "c0fc2d323df85865269310645ad8e060f0efacd9f5a4dc75f909afcd7dcf32a6",
+      "source_episode_id": 15057,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_15057_screenshot_2.png": {
+      "bytes": 79468,
+      "sha256": "a3169e4e5a72d3e90b99fd558d4418593e5c8380da24955dbff6f008dafb4bee",
+      "source_episode_id": 15057,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_15057_screenshot_3.png": {
+      "bytes": 81309,
+      "sha256": "97efa9a7afa9a325c2b9a9eb1e4998de3f9d56e777b4df769e3bdcc53241e732",
+      "source_episode_id": 15057,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_15419_screenshot_0.png": {
+      "bytes": 364863,
+      "sha256": "88c42af3c98fa19f6e8b4606c3dbc0760f5ed052f8cd4d7a8cbaf9d568271964",
+      "source_episode_id": 15419,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15419_screenshot_2.png": {
+      "bytes": 549387,
+      "sha256": "02ed83c9c47fe398f27fb678babe7d73bd87a908c242bcf16d6f31d63e6b600b",
+      "source_episode_id": 15419,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_15594_screenshot_0.png": {
+      "bytes": 522737,
+      "sha256": "530985a6084223165ee9a0319da77d670ee59bb09c236f461d7c3234d347fb01",
+      "source_episode_id": 15594,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15594_screenshot_1.png": {
+      "bytes": 118995,
+      "sha256": "644b570b7fda78f09ce362d8feedb282bd333877864714218a2cc2a541dfcaf9",
+      "source_episode_id": 15594,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_15594_screenshot_2.png": {
+      "bytes": 121927,
+      "sha256": "33ce54307ebf4834bc8dde5f115089779ab9d6aa294b1ccb5d2750e36849474e",
+      "source_episode_id": 15594,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_15594_screenshot_3.png": {
+      "bytes": 527696,
+      "sha256": "d1b262324be219bced8d2ee381a956702c85b267cc814286d07945126ec53a1a",
+      "source_episode_id": 15594,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_15594_screenshot_4.png": {
+      "bytes": 712299,
+      "sha256": "faea8e4023a2f4d7924f48d1c6ddcb3e2cf8c36ddd80cb713641e86d3a978917",
+      "source_episode_id": 15594,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_15634_screenshot_0.png": {
+      "bytes": 124310,
+      "sha256": "3fc86fecae71c524944d7ca59b41402ca1d49cf212490b23533b8243667633e2",
+      "source_episode_id": 15634,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1569_screenshot_0.png": {
+      "bytes": 429141,
+      "sha256": "22379c618e3914b86b837690b5218cd457bebd532c76e4dc976036be4527351d",
+      "source_episode_id": 1569,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15801_screenshot_0.png": {
+      "bytes": 1831806,
+      "sha256": "83e348bc4e5796297cccd79a6cb9e7937b44c6e875d8c7f6bbdbc0ebfff43413",
+      "source_episode_id": 15801,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1589_screenshot_0.png": {
+      "bytes": 451492,
+      "sha256": "84c9689747bdd628699fc97092c1dbcdcc44af56b4e5b429731e1afe84f8c20a",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1589_screenshot_1.png": {
+      "bytes": 555890,
+      "sha256": "6cc543809bf183d88e7dbd3647c5b0b59731c7af6f359e636636a17607cfef81",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1589_screenshot_2.png": {
+      "bytes": 970356,
+      "sha256": "2be50130433dfa428daa46ebc408676724b6c0e9be5a6f9676eb09c28a194b7f",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1589_screenshot_3.png": {
+      "bytes": 343115,
+      "sha256": "694533acb8fecef96301242869468bf15c39ade2bdc792ef6752a83732e2099f",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1589_screenshot_4.png": {
+      "bytes": 967879,
+      "sha256": "46f7ebcb03b5457c5eb0b7db0d1d2498327cf8917f2555e2864b996d9caaaa38",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_1589_screenshot_5.png": {
+      "bytes": 967634,
+      "sha256": "8f6c82630aeb9566c805a1f7edf1fbed3e7bfe9d2c94b7cb0874179465db15ee",
+      "source_episode_id": 1589,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_15981_screenshot_0.png": {
+      "bytes": 405850,
+      "sha256": "2903eda53b5fb6f4cbeaaaa0cf8bb0a05727d0d1a5ac04df04c284c0383f22bc",
+      "source_episode_id": 15981,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_15981_screenshot_1.png": {
+      "bytes": 153373,
+      "sha256": "65598dd03be916ed3ff303eed9590d8861efca2f24f7943a73f5c6dbb1461272",
+      "source_episode_id": 15981,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_15981_screenshot_2.png": {
+      "bytes": 194204,
+      "sha256": "58b69385f43d5bd845fcad41d6199a6374c0171eb5acddfdf13afcc1ae79e2bf",
+      "source_episode_id": 15981,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_16002_screenshot_0.png": {
+      "bytes": 2801917,
+      "sha256": "54002a186007d9c35349cfcf9817ceb03c89b4ecac26a3d8bbe3be25de0ac7fd",
+      "source_episode_id": 16002,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_16002_screenshot_1.png": {
+      "bytes": 1697570,
+      "sha256": "cbad6c74fbf1375c8afe6d27f99cf81b65fea924d6b1911f2d20dbf2ff4f9dc0",
+      "source_episode_id": 16002,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_16002_screenshot_2.png": {
+      "bytes": 115636,
+      "sha256": "56890594d209da955818a7b9a4660bb31906e06c7403416cc2b15ccbd67d3768",
+      "source_episode_id": 16002,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_16002_screenshot_3.png": {
+      "bytes": 127014,
+      "sha256": "39d04899adad80a9f0b93b4384bf9b7127b8dd9b73fb53514e06c73afa613612",
+      "source_episode_id": 16002,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_16002_screenshot_4.png": {
+      "bytes": 371703,
+      "sha256": "56c83bbd9568a59b44f1cf664404d5d35a0a5fb098b25bd2e19dfb0108ecb87b",
+      "source_episode_id": 16002,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_16022_screenshot_1.png": {
+      "bytes": 489863,
+      "sha256": "916dbc05e91694e78e49bb16f331e1c6e5c06109e0e25b5120573f987f309c5f",
+      "source_episode_id": 16022,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_16022_screenshot_2.png": {
+      "bytes": 320465,
+      "sha256": "42737239a174875cc190aff92ad46fd485a4c352f177c9543d5c81dbc05fcf8d",
+      "source_episode_id": 16022,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_16579_screenshot_0.png": {
+      "bytes": 251863,
+      "sha256": "00ef41800df7e97c0a305a18d51abc6b864a09b8315f2d93ee326b4694f4c20a",
+      "source_episode_id": 16579,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_16584_screenshot_0.png": {
+      "bytes": 1506772,
+      "sha256": "baba6303463e3e076f9462c1f37aa44c8d786990aec89b62b8e1ae3cd0a62cce",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_16584_screenshot_1.png": {
+      "bytes": 747021,
+      "sha256": "b3e40155c00b2ce0bc8d751fb367b5a1108986789e57b83a26dac16e93371e2f",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_16584_screenshot_2.png": {
+      "bytes": 255236,
+      "sha256": "13cf9cc63c4fd7b3f75a4455da5f8435478482e592c807e93e4702dc941c3f1c",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_16584_screenshot_3.png": {
+      "bytes": 1757589,
+      "sha256": "6f1e51fd7f39af31ab2562c7f886a03c6198f023f56ac1c93307d83fb25093f6",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_16584_screenshot_4.png": {
+      "bytes": 104362,
+      "sha256": "5fa696a0d22b9da8335052a3715c432322cdf2064efdf5f183d471825b7cfc38",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_16584_screenshot_5.png": {
+      "bytes": 153871,
+      "sha256": "f5340b73be6bc955fdf3005da42d5de42463052d5b259a0a383da46aa2904e6b",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_16584_screenshot_6.png": {
+      "bytes": 446991,
+      "sha256": "153aee7fac679ad9d900b0264d7068d2863601e0ba79e668644d69cd1d4bf0d2",
+      "source_episode_id": 16584,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_16705_screenshot_0.png": {
+      "bytes": 1512252,
+      "sha256": "5431247914e997d15a4465932a4363752f260fe0d09c4185fb5a47b8d063d35e",
+      "source_episode_id": 16705,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_16705_screenshot_1.png": {
+      "bytes": 117040,
+      "sha256": "f7f5a73cc68f5cfbe23db2d7d0a8cb8f8f5c2ea77f08902c792b92ad23b77abb",
+      "source_episode_id": 16705,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_16705_screenshot_2.png": {
+      "bytes": 540286,
+      "sha256": "0e7acf0f2cb71e01a443745d58e728c8f17bfba5b3d02ec4a0eac72222c05345",
+      "source_episode_id": 16705,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_16705_screenshot_3.png": {
+      "bytes": 123043,
+      "sha256": "f6cffa1aa8775449f5bf32ba0e9800f491729bdf31167cfa27b21d9a2e507a84",
+      "source_episode_id": 16705,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17169_screenshot_0.png": {
+      "bytes": 5069393,
+      "sha256": "363a21a819785bb7b557c5c14d2b61aadcc2d626babc958e81459c79831ba030",
+      "source_episode_id": 17169,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17169_screenshot_1.png": {
+      "bytes": 636039,
+      "sha256": "1027c81a2e43a89d4425b6c57d62d5ab2a769728112edbcb4a0fe29ce7781f2a",
+      "source_episode_id": 17169,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17169_screenshot_2.png": {
+      "bytes": 602659,
+      "sha256": "ed2aa8da81b0ae8c07c3c5658b2567b3a3dee04a3d65c261fba740e219c15f7d",
+      "source_episode_id": 17169,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_17169_screenshot_3.png": {
+      "bytes": 242594,
+      "sha256": "1bb94978ff50c7df65266f1bc891a732be4d517bd45d7af70c0a33f870edc464",
+      "source_episode_id": 17169,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17325_screenshot_0.png": {
+      "bytes": 331854,
+      "sha256": "292f17df50bc72360ba8cb35c5a565a7cadfd6121397e042483a420a97a890e5",
+      "source_episode_id": 17325,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17410_screenshot_0.png": {
+      "bytes": 122385,
+      "sha256": "42975c39f10e797c648cbd50f092196e55b89f6b0bb5a07d12bc381df8fccb5a",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17410_screenshot_1.png": {
+      "bytes": 309467,
+      "sha256": "313ad9a66095f864e0d5bee97e972158a5519f6284881ebd2bcdc4dd5e6f25a5",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17410_screenshot_2.png": {
+      "bytes": 231906,
+      "sha256": "0e83d645d203dece0fcacfb18ed0d8258a1962bf19d8c4c1332d2e252a2d8990",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_17410_screenshot_3.png": {
+      "bytes": 226221,
+      "sha256": "32ed467b688d52811d4e46988895935147a54f8e4b2215632676fe95a4f7ece5",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17410_screenshot_4.png": {
+      "bytes": 161921,
+      "sha256": "ceb775942691e5884dfeb7130fb5b1f8a36438ff159fa1db7f34e3a8c63556aa",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_17410_screenshot_5.png": {
+      "bytes": 114872,
+      "sha256": "72edd7e7359ab2d36e5dfc46bd30619f5768277182cc8ab27869be58d44ec94b",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_17410_screenshot_6.png": {
+      "bytes": 71267,
+      "sha256": "a0002363b8d4d64fb23bd18b5ae12c0215c53e4696a14d3440453883aa400d9c",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_17410_screenshot_7.png": {
+      "bytes": 129426,
+      "sha256": "efe4ed982dc8396c9d4b6d45a481f03fe8a0d276feaec289ea3dcb84729f6b23",
+      "source_episode_id": 17410,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_17510_screenshot_0.png": {
+      "bytes": 573946,
+      "sha256": "1a042ce97f5e57c6af9f52dfcfbf56a7c20c784026f62ee97500a8f67b5b3f07",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17510_screenshot_1.png": {
+      "bytes": 553478,
+      "sha256": "da137ef192a0cdff8e023d44be39c71b35ebad0473c45bbd2072ef4c4de304ea",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17510_screenshot_2.png": {
+      "bytes": 469174,
+      "sha256": "332ef35d8de1127a28d82bb50c7da6fe6b5a69b9c3d46d6bd4eba6e11fd332ac",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_17510_screenshot_3.png": {
+      "bytes": 125614,
+      "sha256": "58e0c110f4e19d14bfe4ba50ac2508646f7be430a2a2531df1df9892ccdee7dd",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17510_screenshot_4.png": {
+      "bytes": 858978,
+      "sha256": "7569a9251d83a4b1c1639874934bca9aeab7d6f310bcc2c4d25dfbef630465af",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_17510_screenshot_5.png": {
+      "bytes": 895533,
+      "sha256": "91c252df21a7afe426b06063e8e48c6918aa0b0a3e112e9e2711a7fac25dc704",
+      "source_episode_id": 17510,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_17611_screenshot_0.png": {
+      "bytes": 166495,
+      "sha256": "db13e9a1add34c8bbb60615ae230da562d30bf54c57569709c681a12daf9d042",
+      "source_episode_id": 17611,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17611_screenshot_1.png": {
+      "bytes": 162298,
+      "sha256": "73c6465a42c133c56ac67aaa955aac32c07e5fe9f4752c31e2d7b39690b72912",
+      "source_episode_id": 17611,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17611_screenshot_2.png": {
+      "bytes": 436476,
+      "sha256": "96120987803fe04b1d2109c3deda3491b83fd86a5be4dd5ea7e00230eae4709a",
+      "source_episode_id": 17611,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_17611_screenshot_3.png": {
+      "bytes": 79407,
+      "sha256": "3e4a623d449fd7e1c7e8cacecfaa0b44d81f178e60d22754532e636a41496494",
+      "source_episode_id": 17611,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17611_screenshot_4.png": {
+      "bytes": 240622,
+      "sha256": "e303c1a07dbc2f909d317f49b85b486438c887b387c41b23c1f31cad57fd6208",
+      "source_episode_id": 17611,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_17712_screenshot_0.png": {
+      "bytes": 489789,
+      "sha256": "c36ff33413a3fc13094957740d982ef75b2f180ba21c448b5a1ee62bf0b79504",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17712_screenshot_1.png": {
+      "bytes": 481090,
+      "sha256": "f48cc65d72d67ed4a3652b4bd425c1fcbcf75d74996f4d60592d7c5ba2743adf",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17712_screenshot_2.png": {
+      "bytes": 360853,
+      "sha256": "4c4d441ed63c4c9188cca1319624c7a8b8547b0729f5dcf4a748c81aa3a50d67",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_17712_screenshot_3.png": {
+      "bytes": 347755,
+      "sha256": "3c10fc4c27c13d978eff5d374ed7d89cc80e4ea1a0aaf052445f7082cf1ef7e3",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_17712_screenshot_4.png": {
+      "bytes": 363067,
+      "sha256": "efe7f409341e53bdc7374363f4b77740892b136328efb8dea56d763c6fc744b8",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_17712_screenshot_5.png": {
+      "bytes": 466757,
+      "sha256": "aa42d53853bb70d89f488085981790dbf8a2287ef9bb74fdd2cd2cba10d7333b",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_17712_screenshot_6.png": {
+      "bytes": 470529,
+      "sha256": "b30d204967f8f6664dd01a982da7e2331f04f96b0551e44daa676580ff668e51",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_17712_screenshot_7.png": {
+      "bytes": 471039,
+      "sha256": "7cf73e23c5960d62d8bdacf4e4e9ff4fbfceab46743092540b53660e6c78f10c",
+      "source_episode_id": 17712,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_17807_screenshot_0.png": {
+      "bytes": 4128690,
+      "sha256": "c85ce170f1843a20cf8497e3f65b8046c08e7f02018069651bb94fab5a53e8ec",
+      "source_episode_id": 17807,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17953_screenshot_0.png": {
+      "bytes": 197349,
+      "sha256": "09fc3205cbdf9bac106f44c932a83741a00af79008eb7212c9376e98d7823629",
+      "source_episode_id": 17953,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_17953_screenshot_1.png": {
+      "bytes": 170609,
+      "sha256": "ede296451477921c552bc4cf5dc278e772f17c56575fb78868670cf353ef98e0",
+      "source_episode_id": 17953,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_17953_screenshot_2.png": {
+      "bytes": 132308,
+      "sha256": "12384d4fff8ac6af90dbc550112077e68e971b965cf984f678b7dea1d6e3c5f2",
+      "source_episode_id": 17953,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18068_screenshot_0.png": {
+      "bytes": 439106,
+      "sha256": "ddc08aa95d56d510c105d4afa1545e0b697a6be6b2f2bba44c0b35e7abc69d9f",
+      "source_episode_id": 18068,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1809_screenshot_0.png": {
+      "bytes": 928434,
+      "sha256": "addc5fca5e4a5f4dc1ac3f0995f1766f35421a5198d275a3538748caaafed2c6",
+      "source_episode_id": 1809,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1809_screenshot_1.png": {
+      "bytes": 2162564,
+      "sha256": "15be89a730705b5ed0b37d0bb3644ba75389fb2f683a0488a9eb975a231c8fc7",
+      "source_episode_id": 1809,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1809_screenshot_2.png": {
+      "bytes": 2090783,
+      "sha256": "3cab7b38258cda2d7bf7b83e6a5c2640aa23f4ae28b741f5b13769a87cdeef1a",
+      "source_episode_id": 1809,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1809_screenshot_3.png": {
+      "bytes": 119643,
+      "sha256": "384a6feca38c1808651cc1cd60a20cabf9cd634f6f7777dcb116f344eea381ef",
+      "source_episode_id": 1809,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1809_screenshot_4.png": {
+      "bytes": 127095,
+      "sha256": "5ca96ea6bab26ea4548d4ea6855daf6c2e66181a559211b8ab2b9c8691d70874",
+      "source_episode_id": 1809,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_18173_screenshot_0.png": {
+      "bytes": 2116302,
+      "sha256": "79c027663cd0bdd02ea690d7c52c8bbd74f5fc858d97551de8672c29866bd533",
+      "source_episode_id": 18173,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18173_screenshot_1.png": {
+      "bytes": 2693728,
+      "sha256": "fca6a781c47f42203b6dd8358f2d0921e30355394a3a4320f2c42a72be0ad2a1",
+      "source_episode_id": 18173,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18173_screenshot_2.png": {
+      "bytes": 108513,
+      "sha256": "1e828d375a8c1cf453ab247a3d1b1f2b53490ec1c45d1a832968a2b1a9322ab2",
+      "source_episode_id": 18173,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18173_screenshot_3.png": {
+      "bytes": 112756,
+      "sha256": "8747ac5a6776c5727b4c639cfb7cb9961c0a3c360776286c715c9993a3caa7dd",
+      "source_episode_id": 18173,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_18488_screenshot_0.png": {
+      "bytes": 4110829,
+      "sha256": "e1915eb52a130a3c934df820e4948b5a93d1efdaa94ab15c84ebaeaa9c1e70a8",
+      "source_episode_id": 18488,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18488_screenshot_1.png": {
+      "bytes": 475980,
+      "sha256": "9e3fe49f036666309bd2bee158168a24a1e962311f1862232fbd2b06e9eb7569",
+      "source_episode_id": 18488,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18488_screenshot_2.png": {
+      "bytes": 345102,
+      "sha256": "9f558ca040fd95d084aced404fa2a36efc92bcb5fda3665549c4d5d6f8b25770",
+      "source_episode_id": 18488,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18513_screenshot_0.png": {
+      "bytes": 1397516,
+      "sha256": "c351091c6ea52e30316e91c9194bcfdad1394e532086b0451fa2c17c2c65a538",
+      "source_episode_id": 18513,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_185_screenshot_0.png": {
+      "bytes": 4136037,
+      "sha256": "c8414bc6cb946aaa48941d1e6492a33114270481e35500486af0a473282850d5",
+      "source_episode_id": 185,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18654_screenshot_0.png": {
+      "bytes": 1644660,
+      "sha256": "9b067844401532054a1d454eef7d71252110f65692bfe97cd970e7947068cb35",
+      "source_episode_id": 18654,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18654_screenshot_1.png": {
+      "bytes": 2513747,
+      "sha256": "f9895808894c3eddf57c2bd6660467d317b56f91019a6bd91c96a5200fa3420b",
+      "source_episode_id": 18654,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18654_screenshot_2.png": {
+      "bytes": 2438043,
+      "sha256": "302d797792fe79d4877f244be628b025015685991bdd72aefe1752230ed0c7d7",
+      "source_episode_id": 18654,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18654_screenshot_3.png": {
+      "bytes": 456327,
+      "sha256": "aead19d44072387ad6fca1914e8a6328c828641dee1af1b473d79c53204548a3",
+      "source_episode_id": 18654,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_18654_screenshot_5.png": {
+      "bytes": 1854438,
+      "sha256": "6b8e9d09967648fd24bda3333957f7696fbf9424bbf283848e8c128556dc3c12",
+      "source_episode_id": 18654,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_18875_screenshot_0.png": {
+      "bytes": 92511,
+      "sha256": "761d9f37c21e6a5cca09a37a5b1621466349618549ba7d489c3da04189596e04",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18875_screenshot_1.png": {
+      "bytes": 86430,
+      "sha256": "837847f1b811726de9d1274a9e3dd851856c6223708a9de7dbc42d99bd2b42b6",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18875_screenshot_2.png": {
+      "bytes": 2620238,
+      "sha256": "12d8af5adacc5a34efadcd7cd8eb6083b0f0e847a82c79bf5469f86595ccf34a",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18875_screenshot_3.png": {
+      "bytes": 2593171,
+      "sha256": "12ba5b35160f3564f243b9a4312c51f21bbdefda3bfff3888b412fbd3e98e712",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_18875_screenshot_4.png": {
+      "bytes": 976574,
+      "sha256": "e094c37014432828b61bb65f0d420d7a9709836d542eb3a1872051ddfa5274f0",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_18875_screenshot_5.png": {
+      "bytes": 731849,
+      "sha256": "36b67ee25dd04450c5639a5646001d4cf34e6384e97b5c4eb65ca6c188226c9d",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_18875_screenshot_6.png": {
+      "bytes": 497035,
+      "sha256": "373cb20688985247adc4d4d9707a218226bd69e7965e20cf6f972e59e12fa8a5",
+      "source_episode_id": 18875,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_18950_screenshot_0.png": {
+      "bytes": 76458,
+      "sha256": "dc23ec73b0cb5ba23eef64d6d8071ce189484ed5f09a27e5aa7364aa63e9991b",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18950_screenshot_1.png": {
+      "bytes": 102047,
+      "sha256": "dcf0e0473b800fc464bd3fb3f6f564adc234df778532d87cff0f4543e40d8a65",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18950_screenshot_10.png": {
+      "bytes": 90386,
+      "sha256": "1627b43c0209a266b5dbdbfcdd51551eda718cc76c8ee6275d357843bb5eb5b5",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 10
+    },
+    "episode_18950_screenshot_11.png": {
+      "bytes": 119024,
+      "sha256": "b57f6bf3c877246211ef6e46612a79d3d0f3d11b92e515e871eb1bd8c75a045a",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 11
+    },
+    "episode_18950_screenshot_12.png": {
+      "bytes": 242327,
+      "sha256": "1596c755a590ef39638978f52fb9dd7824a03db025874517625135d6e7505050",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 12
+    },
+    "episode_18950_screenshot_2.png": {
+      "bytes": 159749,
+      "sha256": "d042babb44f6624ee0b33672db19661e2d155d26d7b06fb534e826d224749edc",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_18950_screenshot_3.png": {
+      "bytes": 353939,
+      "sha256": "441f06c1e8a3c784ed5e1f9b3e7ecc4c86ea2062e0534a8ff54ae31f9bdfcbd6",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_18950_screenshot_4.png": {
+      "bytes": 145581,
+      "sha256": "ecdb79ab4fea6924a97c6fb2dec3f9ce0a750398f4ed8e7627e65701bd81e337",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_18950_screenshot_5.png": {
+      "bytes": 144642,
+      "sha256": "a19e374f0a083c3425f3d8ec0f7fca04a7946baa56f44d9d31bcfce6a241f0d7",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_18950_screenshot_6.png": {
+      "bytes": 146684,
+      "sha256": "4e2f72c039ee04e9bccdef4af00ec0301ca9652431c5315555096e37edb4b82c",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_18950_screenshot_7.png": {
+      "bytes": 242870,
+      "sha256": "31281857d41da4792b9c17bb27f79aa51e3f502cacf3fdac929729af4030d7d3",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_18950_screenshot_8.png": {
+      "bytes": 90598,
+      "sha256": "4f20f0f9d2bb3b0f76556af927b8dd88532008c5f33d5d240d321e9863abe500",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_18950_screenshot_9.png": {
+      "bytes": 90248,
+      "sha256": "395530acd69cc3e6e3d9abf0c86b320267f235c50a60755ca92092774ea447f1",
+      "source_episode_id": 18950,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_18991_screenshot_0.png": {
+      "bytes": 185739,
+      "sha256": "efa050b2c45b607f474204f2685da41aac96b7b7498b3805285a8f805606f135",
+      "source_episode_id": 18991,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_18991_screenshot_1.png": {
+      "bytes": 180481,
+      "sha256": "c9dd1a2ebc23a5a07bd4d544150a115e03a75ed2cd8882ead8caa54fd3afe006",
+      "source_episode_id": 18991,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_18991_screenshot_2.png": {
+      "bytes": 186533,
+      "sha256": "2d1cc87e1fdf837b0d03dd7ae234dffba4ba519701e79524424456b286f0ebc9",
+      "source_episode_id": 18991,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19251_screenshot_0.png": {
+      "bytes": 494940,
+      "sha256": "edcf2bca05de2139f5411ffea9bc921bc4e5c0b11b4d40b527f3f093351e8ad0",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19251_screenshot_1.png": {
+      "bytes": 562302,
+      "sha256": "f8157574b104a57652f27fae0ae0b23c9b36923d86de2518b3241135236eb5fa",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19251_screenshot_2.png": {
+      "bytes": 64308,
+      "sha256": "a943cf05b2dd1306a42a87a0edda2bcdac236851d0c1e8345d7c29314c810ea2",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19251_screenshot_3.png": {
+      "bytes": 133905,
+      "sha256": "623df2f3496c580679c9266d857418ea746c467636df9389666bbd932a64245a",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19251_screenshot_4.png": {
+      "bytes": 141840,
+      "sha256": "0bd2919999770eb3ffedc212ef653829bc3238ea9da04fd819ba0abd90111bd2",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19251_screenshot_5.png": {
+      "bytes": 357647,
+      "sha256": "1b2cbc1b842aadca4516fd1bb140112a48e5876091847a5f9e755640282cd47c",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_19251_screenshot_6.png": {
+      "bytes": 355052,
+      "sha256": "8e414b04997f8da1f2f5ab3e4a1ac1ca420064733b561c4fed870bdabfda8429",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_19251_screenshot_7.png": {
+      "bytes": 167445,
+      "sha256": "e885566dc7a74991ae82b98ffb0044176efbd965fa5aa16957bb3eb7daf1a3ee",
+      "source_episode_id": 19251,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_19551_screenshot_0.png": {
+      "bytes": 2797961,
+      "sha256": "beeba636f72fd6fa9071ea1e19a629386d60ca4618fdd51eb76eb3a150a9765f",
+      "source_episode_id": 19551,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19551_screenshot_2.png": {
+      "bytes": 439270,
+      "sha256": "ad8244bc2f109956feacf11879959029961263ca292c9556f9157f5aff075194",
+      "source_episode_id": 19551,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19551_screenshot_3.png": {
+      "bytes": 415338,
+      "sha256": "09fb878a69f1607472853dda1d996145f9eeba8a948225abab87276b98ab5103",
+      "source_episode_id": 19551,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19551_screenshot_4.png": {
+      "bytes": 126558,
+      "sha256": "c3db36f0ca5a6c289c9c04309466dab722207399b8622281782e1d5e47d04118",
+      "source_episode_id": 19551,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19636_screenshot_0.png": {
+      "bytes": 633810,
+      "sha256": "3670674a86ac59463c2c302c1b54cdc32fa5f14c38df8a2b6188ad6504c13ecb",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19636_screenshot_1.png": {
+      "bytes": 969688,
+      "sha256": "e9ccc91f5f820ed0c63e7c762279667ed2cc5cbfff410d2e4228ccc01461732f",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19636_screenshot_2.png": {
+      "bytes": 560176,
+      "sha256": "d9ac166f5ead5b636fd1ff4503b611f6d67aa3dc47b043eaa8ff9098462259a1",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19636_screenshot_3.png": {
+      "bytes": 222299,
+      "sha256": "7116978ec00e8c5ddb995b65a05cd32129c318331cf0a3742014b8793f080e1d",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19636_screenshot_4.png": {
+      "bytes": 165105,
+      "sha256": "334d57fbfa1b204f260479b2413e6f861907b56767fdb085f795198fc486e6a3",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19636_screenshot_5.png": {
+      "bytes": 230701,
+      "sha256": "466dbf41bf410395ac449c0700edb019baa9eb74f64bed7c781c624f81e87196",
+      "source_episode_id": 19636,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_19657_screenshot_0.png": {
+      "bytes": 406317,
+      "sha256": "70d1739d8065de318eb415d7fde99631b0b57402768934e693626f585e8611f7",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19657_screenshot_1.png": {
+      "bytes": 415863,
+      "sha256": "5b5549e1abd7894a39b485a7a6a1819cd0729b9d3785bc83f4d1f90e2b116c55",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19657_screenshot_2.png": {
+      "bytes": 1275044,
+      "sha256": "ba4faa0bbf87d165e184b09e9b13f2ca038dfb8a12f1509f322d55c346cba9b3",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19657_screenshot_3.png": {
+      "bytes": 694461,
+      "sha256": "d433edaac50b915125952f468101d1ec97b52909f77e29648708f279517b002a",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19657_screenshot_4.png": {
+      "bytes": 1128299,
+      "sha256": "36bf82ce9bafe53d6ebfc8427d43c01bd45592d8f327813ed2ce77840ce5a9a7",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19657_screenshot_5.png": {
+      "bytes": 1120118,
+      "sha256": "aa91a1f7690abb391d6266b5b6e729c51a1bb8f31b9c9a314085c11e86388cc5",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_19657_screenshot_6.png": {
+      "bytes": 838767,
+      "sha256": "b71485b0a685cc2f65e878d5cb6112afc177061342fb971d63093c965eb91412",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_19657_screenshot_7.png": {
+      "bytes": 812733,
+      "sha256": "9cdaddbc59d33b677a6ae135be547e4e2c10b8ff15e30a62f16c6e70cce68dff",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_19657_screenshot_8.png": {
+      "bytes": 741241,
+      "sha256": "93fa61687ad3adb1c710b36ee184e54811845b6291ee450a230657d6f82b8e06",
+      "source_episode_id": 19657,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_19697_screenshot_0.png": {
+      "bytes": 599656,
+      "sha256": "7f84e47eb09e989fb8b7a8bb6a3e49da17a1b44c3803d42a8ca80f9c09c238f6",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19697_screenshot_1.png": {
+      "bytes": 599672,
+      "sha256": "dabe31ebf159072c4bde4fdf3566b1dd11c905c85df38923677d4669ed2c9271",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19697_screenshot_2.png": {
+      "bytes": 376042,
+      "sha256": "fe3234add90c3441c4cbe861dbbca8f65f37a6cfb18166fd69a1296bbd54fbee",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19697_screenshot_3.png": {
+      "bytes": 391920,
+      "sha256": "88204aff40ccb771d7a509724f2774472d132939d86a287f392fd261f8bd4da7",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19697_screenshot_4.png": {
+      "bytes": 282230,
+      "sha256": "9e77ef34988215397649f47d49f75ce990592e9cf9022c78d7f91f9343929ab4",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19697_screenshot_5.png": {
+      "bytes": 156353,
+      "sha256": "bfe940775e5c84084e76fefc6e898020965e66b3bed7ab5014f17e8de585b302",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_19697_screenshot_6.png": {
+      "bytes": 284055,
+      "sha256": "e233d094ff5a9b85ef5f2042f59dbaba59677b03d113c925be47747d684af826",
+      "source_episode_id": 19697,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_1969_screenshot_0.png": {
+      "bytes": 470571,
+      "sha256": "e6e11d0f35ce2100270bdfbac6d4f73409f27d9370a84cf338af68c9e6ea318a",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_1969_screenshot_1.png": {
+      "bytes": 190002,
+      "sha256": "507f15fcd296cbd594aef66414a8d9868308ab110bbd38ed507dbdd32d0b3f2f",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_1969_screenshot_10.png": {
+      "bytes": 228510,
+      "sha256": "4e7bad0969fe1c61bf2d65957e35d7284eed3eec492810b235abe86b78f7692a",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 10
+    },
+    "episode_1969_screenshot_2.png": {
+      "bytes": 675903,
+      "sha256": "d6d9a441b7cbf66ee8ffff2ff9c20ca8e64ead8e4574f4b7792c3e40303b2b61",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_1969_screenshot_3.png": {
+      "bytes": 756482,
+      "sha256": "12d7c7d7b29023db8852bd8e441f191d13e5a558473cc42a70b5af832a5deda7",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_1969_screenshot_5.png": {
+      "bytes": 538754,
+      "sha256": "b301d1bea5c94f5e02afce6dd234fc99ee56152aea0bee6393fe4cb00e87f4bb",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_1969_screenshot_6.png": {
+      "bytes": 491319,
+      "sha256": "0c20315c1c4ff6c11a3b19d17315ac6deebe3379de74d31bf1f7ac1526ca0e25",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_1969_screenshot_8.png": {
+      "bytes": 216444,
+      "sha256": "50d002cab870d797ab35095f1ad16b4929591d46b572a18eb0bc1220431351d9",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_1969_screenshot_9.png": {
+      "bytes": 174906,
+      "sha256": "c9f9e50be0fd5476fbc8ec87a30f911ff5b4d11c0ae1a02a40349b6c9b18041e",
+      "source_episode_id": 1969,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_19812_screenshot_0.png": {
+      "bytes": 2235950,
+      "sha256": "0c8fc40939095a4db0b152e328bacd833bd7de41145e9c799136a99414d7d184",
+      "source_episode_id": 19812,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19812_screenshot_2.png": {
+      "bytes": 1458055,
+      "sha256": "98aa40674d06ff5f77fe2bec22ab12a8548010267f299082f9aca1577f22fc1b",
+      "source_episode_id": 19812,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19812_screenshot_3.png": {
+      "bytes": 837102,
+      "sha256": "0d372e9c3931179f64eb7456a33f05c852360fcdcbdd6cbdf58c672353495293",
+      "source_episode_id": 19812,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19812_screenshot_4.png": {
+      "bytes": 168586,
+      "sha256": "a18e4512b262b5584efa5e0933d960ac8fd8beebcc825024decd2197df498c9d",
+      "source_episode_id": 19812,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_19812_screenshot_5.png": {
+      "bytes": 167766,
+      "sha256": "4f9bcf796d7ead990c4b0c703fd6109b3e994cf408318ca0960f3747b50d0a16",
+      "source_episode_id": 19812,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_19817_screenshot_0.png": {
+      "bytes": 4213691,
+      "sha256": "d02a68e565abfcc87a8f55ca6d08ff1f3f2ce6496820514eaccdac6ec61f8974",
+      "source_episode_id": 19817,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19817_screenshot_1.png": {
+      "bytes": 214630,
+      "sha256": "7f98f28233cfc21d570bc23761ea7502d20a1eead2bfe38812dc3e7eef2ded8b",
+      "source_episode_id": 19817,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19817_screenshot_2.png": {
+      "bytes": 1934418,
+      "sha256": "911e436af15d352ce04911973635afa47a5ac78586ebe27edd362145bf0a16fa",
+      "source_episode_id": 19817,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19877_screenshot_0.png": {
+      "bytes": 874247,
+      "sha256": "8de6a5d433523ef82aef49136b3fd1c4ca1ce0832c9716436a3f9c3566348790",
+      "source_episode_id": 19877,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19877_screenshot_1.png": {
+      "bytes": 130793,
+      "sha256": "ce472f181262cb4561f285f85218651556576014080182169d9b1ba160a75a10",
+      "source_episode_id": 19877,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19877_screenshot_2.png": {
+      "bytes": 153931,
+      "sha256": "c0978e6529fbb9f0e452a665230d60e51235f94b9be8844d7f0fc171bc10cf50",
+      "source_episode_id": 19877,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19877_screenshot_3.png": {
+      "bytes": 153792,
+      "sha256": "5691231408561aafc8b99809aea9a63468468f5460a71bdd52ad3ea8ce1b3275",
+      "source_episode_id": 19877,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_19897_screenshot_0.png": {
+      "bytes": 1679596,
+      "sha256": "2a3ab7e6d65347af3825ca5b6f11f8f3762073ea3ac3e8bb71d832cbb8591784",
+      "source_episode_id": 19897,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_19897_screenshot_1.png": {
+      "bytes": 342093,
+      "sha256": "56a2d2247dc177496257896d76d30c018dde2640b913410127c548258d6d0e09",
+      "source_episode_id": 19897,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_19897_screenshot_2.png": {
+      "bytes": 183312,
+      "sha256": "ba4010357196c588e9b30824931bc11e45af2c64baad9ab7b41b36332685bc5c",
+      "source_episode_id": 19897,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_19897_screenshot_3.png": {
+      "bytes": 196041,
+      "sha256": "c6fdbb5d9898f597c279b03ef17331427fada28f43d960c5e00ece1f58342414",
+      "source_episode_id": 19897,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_20033_screenshot_0.png": {
+      "bytes": 112046,
+      "sha256": "ea073393680fd91bcb655e71bbd6c9d1bb6a7c3e1369a4c494d2218c6300c641",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_20033_screenshot_1.png": {
+      "bytes": 1098438,
+      "sha256": "e5b99796c2b26722966700032b5720ca98bd503231a1afaf8fdbcd29b5b21baa",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_20033_screenshot_2.png": {
+      "bytes": 218324,
+      "sha256": "194a0374a4f6bb170342888aff5dfdbf811f36f00eb5501e57d3cfccf5c417d3",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_20033_screenshot_3.png": {
+      "bytes": 138514,
+      "sha256": "83710c16813531c61ff9f04c5abde416064afb59f43b515dbe8fd44ee61677de",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_20033_screenshot_4.png": {
+      "bytes": 1754046,
+      "sha256": "c91c28e53a6ac720cc3d1152477d50835fba6d1ab0578c22328b32cbb8ae651d",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_20033_screenshot_5.png": {
+      "bytes": 182659,
+      "sha256": "57e1f30ce764896bd96fe1d8d08ea9b438c75b60c285a8d1bafb5c1782738b73",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_20033_screenshot_6.png": {
+      "bytes": 221143,
+      "sha256": "7abad0da5a6c370d1b46562cbe23ee633e0ee7c2817937f2a27f4e6188465aaf",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_20033_screenshot_7.png": {
+      "bytes": 239010,
+      "sha256": "d6f1221a2feddcb51cb30834ce54ac4845c8e47d7eb39d4e078691cf59ef4b55",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_20033_screenshot_8.png": {
+      "bytes": 507196,
+      "sha256": "2d54b3c35b599931b877f3da5f8e2e241989b0abc4640ad3f8962e4ca2bd918e",
+      "source_episode_id": 20033,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_2269_screenshot_0.png": {
+      "bytes": 215321,
+      "sha256": "f9aa80f470ef2ce4f3afc27db288ff92db78dd4be245fdc501791556432093f8",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_2269_screenshot_1.png": {
+      "bytes": 99550,
+      "sha256": "cb33037c5274805db251ef7daa99cb1eef427190e00f04759a46fc5a79b13828",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_2269_screenshot_10.png": {
+      "bytes": 114526,
+      "sha256": "2464761ad59a815c6af4539228b26685238e705268772fc3f023f0636fede7bf",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 10
+    },
+    "episode_2269_screenshot_11.png": {
+      "bytes": 114932,
+      "sha256": "2438932b013340b2cc86cb302e6c7c8c6d8b24fb67f6d147a9670d8067618e70",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 11
+    },
+    "episode_2269_screenshot_12.png": {
+      "bytes": 115158,
+      "sha256": "929973360bb291cb5cbf9692bbc94a1e3371a29f5e26d87d0688ea25096c7ae7",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 12
+    },
+    "episode_2269_screenshot_13.png": {
+      "bytes": 110703,
+      "sha256": "1df02e3636adcbcf8773bc06de1b31496c7aa3ca3dc7451d5b3fd4848c575644",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 13
+    },
+    "episode_2269_screenshot_14.png": {
+      "bytes": 45177,
+      "sha256": "9d8726ce9f4d2b339fd7a3b6323c9a88af41a97e57dade57ee4d4eda42575349",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 14
+    },
+    "episode_2269_screenshot_15.png": {
+      "bytes": 110638,
+      "sha256": "da1f2d65a963ee938ea351755cc76929305d2bd6d26f84109de3b9c90e3b92fd",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 15
+    },
+    "episode_2269_screenshot_16.png": {
+      "bytes": 129740,
+      "sha256": "0b85dc20818f306b709aaa8828d828fd4c94f0209ed26d72335ea58bbac80c78",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 16
+    },
+    "episode_2269_screenshot_17.png": {
+      "bytes": 130618,
+      "sha256": "a6127d5ed32a0933da01e58c43e1094960cd008750cb71c6a2a49dba18a76c41",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 17
+    },
+    "episode_2269_screenshot_18.png": {
+      "bytes": 112857,
+      "sha256": "951e0cb6e9d78e8f1a0e8f91561b998a0d8c7d4970cf742dccb45e70d941143f",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 18
+    },
+    "episode_2269_screenshot_2.png": {
+      "bytes": 105881,
+      "sha256": "6838d9a26c5bf044934e4c679d81b119b407f5b328e8a675d6cca4157502993e",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_2269_screenshot_3.png": {
+      "bytes": 124217,
+      "sha256": "63ea5c73f2f7e3cd7b11033e9d394f38f61eea9d42ffc57f8f0abf0b79c1dd8e",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_2269_screenshot_4.png": {
+      "bytes": 129069,
+      "sha256": "3c79c22dad9c17ab50418e2f48c88351d684f7705f142f04807776a9c94c6ec3",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_2269_screenshot_5.png": {
+      "bytes": 132281,
+      "sha256": "698b6511da560df5e6d8d54a52d014c649c6d20af007840975f74b54f1cb5240",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_2269_screenshot_6.png": {
+      "bytes": 127506,
+      "sha256": "d09b87129d430a8524c93151fe745b8041d271c221fcf692f5744c33c9b76acc",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_2269_screenshot_7.png": {
+      "bytes": 114088,
+      "sha256": "88ab146aa16164e4e7d607035f5a474809ad4e75f6785756a046ec288456d4a1",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_2269_screenshot_8.png": {
+      "bytes": 113332,
+      "sha256": "5705cf4f90b1e49dfc012c483d415dfd2e5e3c712b232431b50d220ef633300b",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_2269_screenshot_9.png": {
+      "bytes": 114319,
+      "sha256": "91709deeb8c180d4355ca57625c30585ca97d43fdfcb48ef84f78598931c3c22",
+      "source_episode_id": 2269,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_3113_screenshot_0.png": {
+      "bytes": 290685,
+      "sha256": "f25fdfd3cc5dda2e03a0408e7fa6a7d6295e4b57dec2fd85af3642bd89ae91f9",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_3113_screenshot_1.png": {
+      "bytes": 290520,
+      "sha256": "a5c9f24386cc5c468e2c02aac6a88e61c0f34f2d261aab043f9ead70e61308c7",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_3113_screenshot_2.png": {
+      "bytes": 120869,
+      "sha256": "9da2f7f42f604feda58cdc26400f7271ef13710cb4958fc10e384fe98b93c625",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_3113_screenshot_3.png": {
+      "bytes": 121033,
+      "sha256": "83e3ee278fffb49a320cee23aee1ae10506f2d2cc75984d7953644ec855c48dd",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_3113_screenshot_4.png": {
+      "bytes": 121065,
+      "sha256": "c6526204dd2a2c0191e4a3cce72b4d5756de7c1a22474a4ba73ebd7f562eb510",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_3113_screenshot_5.png": {
+      "bytes": 121277,
+      "sha256": "c5e661c9203bef126ca7e6d2725b63fd6fb1de8dbbe7b29afcb37a4300e7a61a",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_3113_screenshot_6.png": {
+      "bytes": 121463,
+      "sha256": "a4729cf5a82700cbb3ac442517973fd53969c4c10d8850854d57badf83c73f49",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_3113_screenshot_7.png": {
+      "bytes": 121878,
+      "sha256": "3b159997a22a57c953b40a2c643503e5d75b10c3767c8b1c019a646f164f9212",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_3113_screenshot_8.png": {
+      "bytes": 122621,
+      "sha256": "d40731aff69c5ca1cf57ca00346c0f401e3b7d884bcdee74b2e38dc3c9d52023",
+      "source_episode_id": 3113,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_3373_screenshot_0.png": {
+      "bytes": 915740,
+      "sha256": "71991ac82ffe4d7b2f1cef5b9e0c2f9b1358301107cc104fef23db74fe8644fc",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_3373_screenshot_1.png": {
+      "bytes": 84912,
+      "sha256": "8cf699ea03934c59f18c56a9c97c0417501139e5d65b7319ed59c62ca5f6d37c",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_3373_screenshot_2.png": {
+      "bytes": 94658,
+      "sha256": "74107385a9cabe468894755e1a4ed3a1ba258f94d7de9ce1fdfa6012d647971b",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_3373_screenshot_3.png": {
+      "bytes": 261615,
+      "sha256": "e7b44359d192a92ec1c7502ef0e0120c02bcfb53874847d50d3e3d032fe5431b",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_3373_screenshot_4.png": {
+      "bytes": 261615,
+      "sha256": "e7b44359d192a92ec1c7502ef0e0120c02bcfb53874847d50d3e3d032fe5431b",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_3373_screenshot_5.png": {
+      "bytes": 262803,
+      "sha256": "4216e44653efd81f247621afc3d81c2d85ab5a06909f9aa82b160f82ad735631",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_3373_screenshot_6.png": {
+      "bytes": 104136,
+      "sha256": "fffa990d929f9b0582d7743e3be46623da191b760d5c1c84e1fc2702ce4b5849",
+      "source_episode_id": 3373,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_3715_screenshot_0.png": {
+      "bytes": 2543073,
+      "sha256": "2cfa7b6b420dcec61b76ce726845246e8ec65f39566d812ab1f9f7f2755a8ba1",
+      "source_episode_id": 3715,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_3715_screenshot_1.png": {
+      "bytes": 1251812,
+      "sha256": "ee38b12d14c33233c498ffac0a08d715e1eb96800f48fb4171050f677b7e8c4d",
+      "source_episode_id": 3715,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_406_screenshot_0.png": {
+      "bytes": 2958267,
+      "sha256": "7751fb854ea8cc4fa23bd08647aa70c4e062be361d2b8fc6df72c27e41d11580",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_406_screenshot_1.png": {
+      "bytes": 1112598,
+      "sha256": "9c79f9c793e2074355e901a29205bcc1be64c064d7b57b934b58a5fb54834748",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_406_screenshot_11.png": {
+      "bytes": 265215,
+      "sha256": "87ca26ba32b82b8f3871002022944b8de37b2f7e2f40a89da88ca7c449d9a138",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 11
+    },
+    "episode_406_screenshot_12.png": {
+      "bytes": 2755186,
+      "sha256": "e7950a5aea856c28558acfdb590aa50d681cf0a4f31d0b3881bc7edd856970ba",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 12
+    },
+    "episode_406_screenshot_2.png": {
+      "bytes": 3033837,
+      "sha256": "9297e1451ead36e967d5c4e4ad63df1a6db8c4ce02cbeacabc2ed9156ef3189b",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_406_screenshot_3.png": {
+      "bytes": 3016067,
+      "sha256": "9ec08deef36e6cf09d1dec69aea235ac48e94297a864ab0cf0e77aa094f8af70",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_406_screenshot_4.png": {
+      "bytes": 2825435,
+      "sha256": "80f0f4d16b2f59e0a87e9dcd030bab0745a3606ecfd57ca78e30e6c1c6fabe4b",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_406_screenshot_5.png": {
+      "bytes": 551646,
+      "sha256": "a58ae7bf59de186ffb97e829a7359c75774440115cb8f92962856ec7568b5d5d",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_406_screenshot_6.png": {
+      "bytes": 275532,
+      "sha256": "17f7c37961f5c8e77dea921f6ad95bcd785b73a0666fe6ddd14b8990f0404a0e",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_406_screenshot_7.png": {
+      "bytes": 323110,
+      "sha256": "6b02092059f8bc536e231bd9991caed17e321530ac5a8f037363c302e4f18ec4",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_406_screenshot_8.png": {
+      "bytes": 321431,
+      "sha256": "e03ab2d11e72ad26875bc24a9bbccfda0421c7d3faf2cf21d847cc01192c8755",
+      "source_episode_id": 406,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_4216_screenshot_0.png": {
+      "bytes": 1637808,
+      "sha256": "bd6ec5b58d6b15bbb186f81aebbbbc4e9698990bee14b58ced29c05eb9a99879",
+      "source_episode_id": 4216,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_4216_screenshot_1.png": {
+      "bytes": 1339017,
+      "sha256": "2e33ed4434f61ef54237c5f65281bc36aa9144e55e257603c2be0a003ec00734",
+      "source_episode_id": 4216,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_4216_screenshot_2.png": {
+      "bytes": 658760,
+      "sha256": "74a1ee99732162664edecc8bd6f6612306492129bcf408a0cb748745bfa3751a",
+      "source_episode_id": 4216,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_4216_screenshot_4.png": {
+      "bytes": 274289,
+      "sha256": "bba352b4fb2fdf30cfd863c5ae056ad4f773523fa50e96d890d4c2da491c75f5",
+      "source_episode_id": 4216,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_4336_screenshot_0.png": {
+      "bytes": 894050,
+      "sha256": "417ea42e76cda1908001fefc21c6fd5ccebee0bd8c5a49a1ef9d437807defd9a",
+      "source_episode_id": 4336,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_4336_screenshot_1.png": {
+      "bytes": 763110,
+      "sha256": "4fd48b33df7be5d8fa9bcac2a0660bd64ad52e8d54421e671edf4ad78eeaa30d",
+      "source_episode_id": 4336,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_4336_screenshot_2.png": {
+      "bytes": 588493,
+      "sha256": "777468e00eb793378438afa6d169d03cdac9772eba6b83309ee041baf67cb0aa",
+      "source_episode_id": 4336,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_4336_screenshot_3.png": {
+      "bytes": 596461,
+      "sha256": "3cd65561ab772e06bb8bb8ad38dbd7b824578ef3511819ca17ab473a9f445b13",
+      "source_episode_id": 4336,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_4336_screenshot_4.png": {
+      "bytes": 74824,
+      "sha256": "56bf9670345d9580b95411a3920454ba95d26ade340b5cf397f269928c101e31",
+      "source_episode_id": 4336,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_4516_screenshot_0.png": {
+      "bytes": 88940,
+      "sha256": "0f62daa24a7e62570a9251ebebca1baffef84e2ec4e827d9b1724dd32e957ab8",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_4516_screenshot_1.png": {
+      "bytes": 1752370,
+      "sha256": "7ff339dce0c77268bf3dd1aa33fe834ab1e95ca06ac24b84c486676a0df9e9e7",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_4516_screenshot_2.png": {
+      "bytes": 847921,
+      "sha256": "2576949695ce120604609bf95371f6e9ca5569f63dd5b8502feb5120d2382b12",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_4516_screenshot_3.png": {
+      "bytes": 908182,
+      "sha256": "9937cf367ae49df4273d91167d8a9d2e9d90e8384242b6ce67b4f925b5d2ab15",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_4516_screenshot_4.png": {
+      "bytes": 909619,
+      "sha256": "1a357916e0510e6db1083f6b4f875a492f08b4ccdb54bdac536192b1b57932da",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_4516_screenshot_5.png": {
+      "bytes": 909619,
+      "sha256": "1a357916e0510e6db1083f6b4f875a492f08b4ccdb54bdac536192b1b57932da",
+      "source_episode_id": 4516,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_45_screenshot_0.png": {
+      "bytes": 154060,
+      "sha256": "c3d5be0a020b623e8d933b5068761e440e1a53de5b05a53e427f16b87a013c1b",
+      "source_episode_id": 45,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_45_screenshot_1.png": {
+      "bytes": 201106,
+      "sha256": "90e5a1dbd209315f35b692dd34759815ffdaf313a08c5e1d0487151e86d5380f",
+      "source_episode_id": 45,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_45_screenshot_2.png": {
+      "bytes": 123747,
+      "sha256": "97a73db7e6e4b3a9a51afdc07aef3634830e1f121c1478149ef4998d007bb9c2",
+      "source_episode_id": 45,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_45_screenshot_3.png": {
+      "bytes": 162572,
+      "sha256": "6755c969d338f715a2edc1df7928d7e7106996107192fc962b9866780e46bb59",
+      "source_episode_id": 45,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_45_screenshot_4.png": {
+      "bytes": 116298,
+      "sha256": "b19e54fc8936eb17e015b47579655d859a793c752bb8e187e49e24124c748be4",
+      "source_episode_id": 45,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_4657_screenshot_0.png": {
+      "bytes": 793347,
+      "sha256": "5f3bb2db7bfce22f59cf8623688bc7007a01c9b33382608a9a2ebdb21716c02c",
+      "source_episode_id": 4657,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_4657_screenshot_1.png": {
+      "bytes": 116957,
+      "sha256": "07c96da7cd3df4572d04c9d95f398787348cfc01b103a4ee5077cfa84f876b18",
+      "source_episode_id": 4657,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_4657_screenshot_2.png": {
+      "bytes": 123969,
+      "sha256": "9ea647f9a9832f5e73ec6c98dccd61fa9cb4e159697d0333a74591b6f6884052",
+      "source_episode_id": 4657,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_4657_screenshot_3.png": {
+      "bytes": 264242,
+      "sha256": "5616e079083427a5bf899c5fde4b09581d9d0b3aa3a7cb131e94603f578f8142",
+      "source_episode_id": 4657,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_4979_screenshot_0.png": {
+      "bytes": 270097,
+      "sha256": "5d6f92a41384c7a25709dd6235fe41471f53cc0727d390e14b7c49ea64f7bf5f",
+      "source_episode_id": 4979,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_4979_screenshot_1.png": {
+      "bytes": 811834,
+      "sha256": "4c82bbaa75e2be63ae685d686c3fa345f527767e86e5289e8ce2a98d6bb296f5",
+      "source_episode_id": 4979,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_4979_screenshot_2.png": {
+      "bytes": 1187819,
+      "sha256": "92b4ed73f9239ffa4be29e55c985559844cb39be5913a757c59f0e2358bf8e63",
+      "source_episode_id": 4979,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_5019_screenshot_0.png": {
+      "bytes": 644083,
+      "sha256": "808d08705859097917d9a9dbd80af4cc2c0da62dabcee9b0fc4e9fb60f3a737a",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_5019_screenshot_2.png": {
+      "bytes": 2364940,
+      "sha256": "e99f713b74bdc85a4a5524bcc42a113dd82c293b137432f181a3a1cbc73568cd",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_5019_screenshot_3.png": {
+      "bytes": 1755733,
+      "sha256": "88b158e128b3baf502cd9115268d9f4e2ac006031c7a44143be2d99c25c2e3d0",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_5019_screenshot_4.png": {
+      "bytes": 101801,
+      "sha256": "27fffdb125d4472e14c101b8a2d07f957f9868fe6023b883709859fd2f480295",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_5019_screenshot_5.png": {
+      "bytes": 460839,
+      "sha256": "d35b5bae9beb48a969edf206585276629c8e0bd540e94c4b6b783dedffbf7e1a",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_5019_screenshot_6.png": {
+      "bytes": 434872,
+      "sha256": "524815de1e643624f32cb6130de5fff53024b045fefc98808e6156ce69a9e0d6",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_5019_screenshot_7.png": {
+      "bytes": 387038,
+      "sha256": "eeec283dd7f1dfc73c08d3b74ad921ab671562dea62b3910b87c25465ccafd89",
+      "source_episode_id": 5019,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_5199_screenshot_0.png": {
+      "bytes": 1246833,
+      "sha256": "24126174e617e71b7ade6e9d4e18dc87ac97a7a4f1c4c64870ba03563f41ef85",
+      "source_episode_id": 5199,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_5199_screenshot_1.png": {
+      "bytes": 837834,
+      "sha256": "90f21d811e0f3ad3281af331e51451dbdfac487ab56901294c6c4a23b2bf6301",
+      "source_episode_id": 5199,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_5199_screenshot_2.png": {
+      "bytes": 2184006,
+      "sha256": "6e968554c0f02cce06bbca5cc3b5fa8c0a06301b06c83d5a364bb05fa8c6d74b",
+      "source_episode_id": 5199,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_5199_screenshot_3.png": {
+      "bytes": 127563,
+      "sha256": "6fa2e95440a63b5ae031f923dcb2ae0d87ee0e39b023e4781c8458912d52bcbe",
+      "source_episode_id": 5199,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_5199_screenshot_4.png": {
+      "bytes": 112845,
+      "sha256": "cb439599f242b23a1cf9b70b9250cc9bfb306c45713816edce0128d9456a3ae1",
+      "source_episode_id": 5199,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_567_screenshot_0.png": {
+      "bytes": 4425815,
+      "sha256": "fb57187ae7f9127ec6397236ec789a9ff01fa70cf4fdb231f105fe574fd4ad31",
+      "source_episode_id": 567,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_567_screenshot_1.png": {
+      "bytes": 1278953,
+      "sha256": "deec807c6b9cab70e8412d75ac165c9ee714c13c788dad73304a158682369c30",
+      "source_episode_id": 567,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_5741_screenshot_0.png": {
+      "bytes": 2375507,
+      "sha256": "73ee48ab51290d7e73a4b766a2efdf0bd5926719ef71adec0de18935e1f02b7c",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_5741_screenshot_1.png": {
+      "bytes": 1086438,
+      "sha256": "408fcda5f110a0efdc0d540346958a5c3eb9e78ed87ed2a10763d888f4207a84",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_5741_screenshot_2.png": {
+      "bytes": 130521,
+      "sha256": "5340e99ca09b8a4f449c1dd163d08e8a8c0c992756df78470a0b1e53eebf1f2a",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_5741_screenshot_3.png": {
+      "bytes": 897239,
+      "sha256": "bc7ea076c8adb42d1f1dd1ad300df448be72335be832efd56cfe9ccdd36ff71b",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_5741_screenshot_4.png": {
+      "bytes": 1005072,
+      "sha256": "76c79aa6319bf4b2bdfdae78f56017eb8fcc878d70247b0882be32967eb9067e",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_5741_screenshot_5.png": {
+      "bytes": 763482,
+      "sha256": "180d240823bdc697830f709eb81413c9d6ba24351604dc901ac1b274f2d84f81",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_5741_screenshot_6.png": {
+      "bytes": 1103921,
+      "sha256": "1e919afd26d4c6cfdb1f498ffca496eb4c4e3aafdb61a5af89986eb70a709bee",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_5741_screenshot_7.png": {
+      "bytes": 821151,
+      "sha256": "d170bbf025f05b12ef114f147af12e4e8b283c1a525524115fd32082af70fcc3",
+      "source_episode_id": 5741,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_5806_screenshot_0.png": {
+      "bytes": 1251348,
+      "sha256": "298ca2314cc847b1583b91a8899c62a36e40333d3c13b0343943cf70fb0b8fa2",
+      "source_episode_id": 5806,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_5806_screenshot_1.png": {
+      "bytes": 866335,
+      "sha256": "db12d49320f1fd49fce2c7bee006696595ea5a01af810501a43e1c6a947e3ebc",
+      "source_episode_id": 5806,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_5806_screenshot_2.png": {
+      "bytes": 122061,
+      "sha256": "88d075bdaccd94926dab3c080d45d66e7acadba49c9db87d8068883b86bb6efd",
+      "source_episode_id": 5806,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_5806_screenshot_3.png": {
+      "bytes": 122256,
+      "sha256": "2123170ee06412c39bc40e63e15d3952149dd216e9caa7e8b11398650e12e3d4",
+      "source_episode_id": 5806,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_5806_screenshot_4.png": {
+      "bytes": 266039,
+      "sha256": "17c153d779ce4fec89b4a2d6147ad9f0eb62e7c11d98e424c0bfa8d2d8bf92e4",
+      "source_episode_id": 5806,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_5902_screenshot_0.png": {
+      "bytes": 273781,
+      "sha256": "8f2ba9ef52e1be9f13abc9d20c5b6ee17483f16915c3fa1e0e99a43caf4f2783",
+      "source_episode_id": 5902,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6048_screenshot_0.png": {
+      "bytes": 848879,
+      "sha256": "c9633999e7b002c68e6a28eb9918f8ddcabd87e98fdb3e70e557809395587e84",
+      "source_episode_id": 6048,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6048_screenshot_1.png": {
+      "bytes": 510486,
+      "sha256": "d3ad4056f6509117cad588d5f9d1b561b2901c5560df440a8ce28016d3f01ee5",
+      "source_episode_id": 6048,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6048_screenshot_2.png": {
+      "bytes": 532088,
+      "sha256": "b6c714a326269b42920f8b43b10c87f8fdc526bb6d99828c5272d75d52d7ab27",
+      "source_episode_id": 6048,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6304_screenshot_0.png": {
+      "bytes": 951800,
+      "sha256": "2a09f608badbf6468f52149b3a5144236339c84c9d3496b8c3ddba3b9798e8ae",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6304_screenshot_1.png": {
+      "bytes": 1064809,
+      "sha256": "e00ab1ffb8b49c6e981d7a8fad50d0a5be2edcd28dc5f27f3078be746a1c8cc1",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6304_screenshot_2.png": {
+      "bytes": 1041138,
+      "sha256": "6fec71e972d4268a4e3691840d5b997c1a30bc5f95d3aac7c0c7d4410e830dbe",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6304_screenshot_3.png": {
+      "bytes": 260927,
+      "sha256": "cae8833d3efb6397dddbad2226987c22e316b663b6284f11c45f4b7bf73c1640",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6304_screenshot_4.png": {
+      "bytes": 512923,
+      "sha256": "9b11dbee53a925898c37360cdfebe8c50d7b8087bd0784ce1e664f7e6cce0158",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_6304_screenshot_5.png": {
+      "bytes": 485695,
+      "sha256": "cd01568b84261a50eceae3b946494d40dcc3c3977b2965bd4fcd9943daa77763",
+      "source_episode_id": 6304,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_6404_screenshot_0.png": {
+      "bytes": 153757,
+      "sha256": "736fc1a964c996f031022a61d0b856fc68fa774635d5c973f385fa5c483bb13c",
+      "source_episode_id": 6404,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6404_screenshot_1.png": {
+      "bytes": 187409,
+      "sha256": "1463b0b3b00eb0637704d2152f38fd788820f2d550744f10ee77bd05a2493ea2",
+      "source_episode_id": 6404,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6404_screenshot_2.png": {
+      "bytes": 164356,
+      "sha256": "1753c34a5bdb69c00ffe79dd419823b832acc50d7ac3415c79c7e918cae1ea61",
+      "source_episode_id": 6404,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6404_screenshot_3.png": {
+      "bytes": 163922,
+      "sha256": "a80ada7b80390892d2f2e082fd290130889273d59b1d23885b7604c4ec1b5c77",
+      "source_episode_id": 6404,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6424_screenshot_0.png": {
+      "bytes": 4129169,
+      "sha256": "fe0aa38ec477e8de544fcaf83c51811be91af9ad0b49e752c1b383e10e99c4d0",
+      "source_episode_id": 6424,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6424_screenshot_2.png": {
+      "bytes": 238521,
+      "sha256": "efa0f212d5b249b5c14f9ead6ebcba15e852737b1f89fa536b5d6235479c49b6",
+      "source_episode_id": 6424,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6424_screenshot_3.png": {
+      "bytes": 826645,
+      "sha256": "2f9f43b994fbbe255f66cc6e19994f5ffe0e9e623e26d5bdb637dfc2861a324d",
+      "source_episode_id": 6424,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6424_screenshot_4.png": {
+      "bytes": 326896,
+      "sha256": "16d1b1b39376f71478f33c9cdd1526d2b4adb354de085e49a43f9753a5fec90f",
+      "source_episode_id": 6424,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_6424_screenshot_6.png": {
+      "bytes": 326555,
+      "sha256": "762a326198f64750a59c00457fbb12c68a1e5a79d581cdfc76c97b42eb0bcc7e",
+      "source_episode_id": 6424,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_6449_screenshot_0.png": {
+      "bytes": 563109,
+      "sha256": "02ccbc149cf833511b507ba5a98e6b02aa98378d397d49f3168ba5f35596c829",
+      "source_episode_id": 6449,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6449_screenshot_1.png": {
+      "bytes": 2126412,
+      "sha256": "27b25efd10923ff4b4008905ee4b54302fefb929c09681a465cbaa1e7a7bfd07",
+      "source_episode_id": 6449,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6449_screenshot_2.png": {
+      "bytes": 141938,
+      "sha256": "e014ea4c47663712e7c9c94008fb6fc092101e2c3386d5523ce04e69f4b5503a",
+      "source_episode_id": 6449,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6449_screenshot_3.png": {
+      "bytes": 2499689,
+      "sha256": "0886c4a9de9e5c88d890fce4c41dc93a95dff34e434436b5256250b957d6032f",
+      "source_episode_id": 6449,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6589_screenshot_0.png": {
+      "bytes": 948525,
+      "sha256": "0d5098cc24894adbd5b0d66d07a2f624b30891db2124d27c5d14b671ae802a70",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6589_screenshot_1.png": {
+      "bytes": 957427,
+      "sha256": "420f2e1f6968526e71155c8c3e7dca465185dac7aa0694f37aeee82dfd4f2f1f",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6589_screenshot_3.png": {
+      "bytes": 496850,
+      "sha256": "6f84f52e09756b7502d998d76d39693a64dfd6bf556f0f145040589bff2072ef",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6589_screenshot_4.png": {
+      "bytes": 181889,
+      "sha256": "2a6422430500cccabec51d3c615a28cfca90e53ff50a4f346db7a4fc0e27944d",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_6589_screenshot_5.png": {
+      "bytes": 156209,
+      "sha256": "caa4f8fc5871c51911573d129fc02fefcc276e8491513a7a688685675ffc43eb",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_6589_screenshot_6.png": {
+      "bytes": 201070,
+      "sha256": "1b1aaa180efebc5a348848f5ca054043219308a71afcf4f55c5e05d88f5a395b",
+      "source_episode_id": 6589,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_6689_screenshot_0.png": {
+      "bytes": 141871,
+      "sha256": "f5a9d7459b3464f227916815a1d7a1753a37ddbd4ad1461bef34dd31bf8ce777",
+      "source_episode_id": 6689,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6689_screenshot_1.png": {
+      "bytes": 160635,
+      "sha256": "36f001f9fde819d734e30aa322fbbab0aee670e2c01ec4996cfc7a9659966423",
+      "source_episode_id": 6689,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6689_screenshot_2.png": {
+      "bytes": 129064,
+      "sha256": "81c4985bc91cde4b9faac380eabcf35868009c0a9c3c95ca2360c9257c869538",
+      "source_episode_id": 6689,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6809_screenshot_0.png": {
+      "bytes": 1188171,
+      "sha256": "b3892bd315732007a7e93a17ae74321018d887362bea83e7e8b7aed44734801b",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6809_screenshot_1.png": {
+      "bytes": 1375029,
+      "sha256": "5112aed92dc88c9616cc2865b86e6c88dfa6d4fc04538b0bdfb6025e61a9ffb6",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6809_screenshot_2.png": {
+      "bytes": 824703,
+      "sha256": "5769d5089e1d7e3d3fdd73e5cdf8dc316d1e71493dd5ec32045e4c9f311e4ff6",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6809_screenshot_3.png": {
+      "bytes": 542467,
+      "sha256": "47d4c3ec1fb6482c6b7266269a6048a59066b17c16fce3f74fe1e6918fe11a26",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6809_screenshot_4.png": {
+      "bytes": 544665,
+      "sha256": "7d3f3233073762b040e51428c7ca3ce7e2be82250084d2730b0ec1c0e77b897f",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_6809_screenshot_5.png": {
+      "bytes": 302625,
+      "sha256": "a27eb412065fed27ea53a136134febee7bfabf6fee42801f8ce5937f418d4c3b",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_6809_screenshot_6.png": {
+      "bytes": 927503,
+      "sha256": "7cab0cf77b70a831404918da590957a168ccd56d73c856c9a4d8078d633edf94",
+      "source_episode_id": 6809,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_6930_screenshot_0.png": {
+      "bytes": 2403168,
+      "sha256": "7ec67e921162d24b6f4ebe8816b4ef828a2d79ac4bb1999f75fbf58ca7007054",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_6930_screenshot_1.png": {
+      "bytes": 1660790,
+      "sha256": "91cd75bf2d72a7d776fe0febaa83baaecdd9bd776bf1f3709c02f8c1460cd998",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_6930_screenshot_2.png": {
+      "bytes": 1420696,
+      "sha256": "23caa046cc913ddc77b19db28f1a06fda6fb6224d19a5bafa65d2e67890e3b6f",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_6930_screenshot_3.png": {
+      "bytes": 105601,
+      "sha256": "0f0c4cca5bec0d8886f6ed1fb0c3271015d1e47d4843cb7b187f814a866da474",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_6930_screenshot_4.png": {
+      "bytes": 113380,
+      "sha256": "9b59f54279c4f3371515d7808e4ccebddb73cd4f7726181d43b019b0f5e1e84a",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_6930_screenshot_5.png": {
+      "bytes": 2312800,
+      "sha256": "54bacc7a4b547506cb47e8f97f6873ce877995449d4c9634aafca96ba5657b74",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_6930_screenshot_6.png": {
+      "bytes": 1821113,
+      "sha256": "9a0755e420c9785b90937fb4ef1620ba8b6f4b0703ea9017ad1748e357316cb9",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_6930_screenshot_7.png": {
+      "bytes": 2804477,
+      "sha256": "2f0a4f5fa034a9a70119592f6d395920e59ab7d129b72044716e9a1d3d53cdd7",
+      "source_episode_id": 6930,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_7030_screenshot_0.png": {
+      "bytes": 3217406,
+      "sha256": "f5c169a211a933c32b1525c94c1f29a093847734f7c9e8b35d82c090aae474e9",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7030_screenshot_10.png": {
+      "bytes": 323288,
+      "sha256": "54b9d8706ac209fc889b2967ec60aede17969d417c4c48fb3f751cafdd76203d",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 10
+    },
+    "episode_7030_screenshot_11.png": {
+      "bytes": 363510,
+      "sha256": "e697c9df3bf5b57b4c08cb83d6229defee97fd3ba7e6be561636f9f86e7bfd91",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 11
+    },
+    "episode_7030_screenshot_2.png": {
+      "bytes": 1900985,
+      "sha256": "c7b93281c4947721b9320c6b8ffd11cc9df858c116afeee7d52586df5b5d67ac",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7030_screenshot_3.png": {
+      "bytes": 772092,
+      "sha256": "a6c321a11ff430038dff65f9626bd87d23a4a96be46f552b25c71b6ae05b5ece",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7030_screenshot_4.png": {
+      "bytes": 134683,
+      "sha256": "7a647bb71af84ab95464b198535b7adbb42afd93307855364e259e088f7b22ea",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7030_screenshot_5.png": {
+      "bytes": 617036,
+      "sha256": "11d8feca3506d6ba73a586bfd5807222cfad33d56279efc4c95af8cb21a69890",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_7030_screenshot_6.png": {
+      "bytes": 405061,
+      "sha256": "294a87b8ba95fe92364102b41857fed9b2eddc33b4118b6e82d177d419323956",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_7030_screenshot_7.png": {
+      "bytes": 271441,
+      "sha256": "086373c8b8986be5f816c498ee64cec7a31d1ae83e7fee533a3e9f07b225d300",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_7030_screenshot_8.png": {
+      "bytes": 181357,
+      "sha256": "325bd1f848d4cdd7b0c4891820af24c4a975a4a37df7b6d2e33c73312aae46f4",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_7030_screenshot_9.png": {
+      "bytes": 235878,
+      "sha256": "f027ab21876374c5e2c352583d5e2a843d4832a172736c810321b66f48b64612",
+      "source_episode_id": 7030,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 9
+    },
+    "episode_7045_screenshot_0.png": {
+      "bytes": 2728134,
+      "sha256": "029a4b719e7a13995f93b6e856f005a8f0fcaf8a8ebcdcb5fc8cad1bdf89cacf",
+      "source_episode_id": 7045,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7045_screenshot_1.png": {
+      "bytes": 1901011,
+      "sha256": "d4bfd97ab096e0d2735a63776f47a4065b4fd08d9f2b1928c1d31900df5d6158",
+      "source_episode_id": 7045,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_7045_screenshot_2.png": {
+      "bytes": 849050,
+      "sha256": "f016590923d8f2da9a3451f1e68478f3e574d45492e6f57c53443054982f0f23",
+      "source_episode_id": 7045,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7045_screenshot_3.png": {
+      "bytes": 909058,
+      "sha256": "4b6c3deac018d9d4478af82e43c88d97d719bda9453d00f68264cc01b6bdc4f7",
+      "source_episode_id": 7045,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7045_screenshot_4.png": {
+      "bytes": 149610,
+      "sha256": "e7a2efce32eff3016d59a055eccd35eec92b233cbf09d38ad3528f0ed42ff54a",
+      "source_episode_id": 7045,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7205_screenshot_0.png": {
+      "bytes": 664731,
+      "sha256": "6082a1f1f0b97c5437fbaf79beab093f95f5d90dd0dfe7cdc6d9a3d4aaead7fd",
+      "source_episode_id": 7205,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_727_screenshot_0.png": {
+      "bytes": 474323,
+      "sha256": "3ed0f13a0dd430533d59480a545d5d8924488fcced144e833448746f55cab342",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_727_screenshot_1.png": {
+      "bytes": 471675,
+      "sha256": "a692b00a46f210595fd3b3fc432efb2324095e925954edbccea1b08deffc95ca",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_727_screenshot_2.png": {
+      "bytes": 338376,
+      "sha256": "ddc4772d3ff65b8972b8de43a5252b4dcd516d6647f204b89d44d70e35c76c4d",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_727_screenshot_3.png": {
+      "bytes": 346492,
+      "sha256": "1e286ce51d0a05142c6fd62fccabff42967c29f887c59dba6a8bd8fdf57383a0",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_727_screenshot_4.png": {
+      "bytes": 358299,
+      "sha256": "e18a8a1487f0578aa4bbe48c9eb9a9fa72af5067c50cb73d0fa89d2eef02a3b3",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_727_screenshot_5.png": {
+      "bytes": 473661,
+      "sha256": "37f144cc58866bdb34fbd558568e77c42201e63e476f181f2cef5d3885913b0c",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_727_screenshot_6.png": {
+      "bytes": 474176,
+      "sha256": "20f0813074524c1e585e3764c0b52747a798a37b639fd09280020265ace037f7",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_727_screenshot_7.png": {
+      "bytes": 475563,
+      "sha256": "ce1a17c342aa22c54d097edf7593a3c3b2e7d4d15614230b58e63c590c1b2a6a",
+      "source_episode_id": 727,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_7430_screenshot_0.png": {
+      "bytes": 122316,
+      "sha256": "5933af0b30d55833f3f7c2cea4c96a1e0b06902d5fc6d2bd4c0bde97b4e63f7a",
+      "source_episode_id": 7430,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7430_screenshot_1.png": {
+      "bytes": 592430,
+      "sha256": "d5629d45855e8cf5f9cc34efbbc7ed47bb293da12fdf90d508d8739b54e909bd",
+      "source_episode_id": 7430,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_7430_screenshot_2.png": {
+      "bytes": 697860,
+      "sha256": "cb196beb46ba5589526548a8103054eebfca7529c5629fddaf5a62b1c9fbfc40",
+      "source_episode_id": 7430,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7430_screenshot_3.png": {
+      "bytes": 183784,
+      "sha256": "7c335b60e47c38f5f6a996870c1e130a29e730cd513244871a262b564893b77d",
+      "source_episode_id": 7430,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7430_screenshot_4.png": {
+      "bytes": 60230,
+      "sha256": "312b77720f1e443a7862bc551bcccdaba6372df8b94d34f6363ec38d23803043",
+      "source_episode_id": 7430,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7565_screenshot_0.png": {
+      "bytes": 790150,
+      "sha256": "0b29e4e59c259d7eb756a9e0532368b33ac9f328db9f35c9468c55b87638098a",
+      "source_episode_id": 7565,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7565_screenshot_2.png": {
+      "bytes": 1357835,
+      "sha256": "cdf4975424ee3066ddb1a4a906c8a3e04ceffdcc77a3e3214cbd6a884ae08877",
+      "source_episode_id": 7565,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7565_screenshot_3.png": {
+      "bytes": 2217921,
+      "sha256": "4afef47ab746916774d1da36fbef123cff35db350abcfe1977473fbadd4945f6",
+      "source_episode_id": 7565,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7565_screenshot_4.png": {
+      "bytes": 135065,
+      "sha256": "f45ae90f0666278efaf9dd4985417cc66951251ed324071a03786bd0589b8c32",
+      "source_episode_id": 7565,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7565_screenshot_5.png": {
+      "bytes": 127509,
+      "sha256": "e72bff8c5b03484908de266b277a28af9be5f83086d6c5e75c0b057a439710b9",
+      "source_episode_id": 7565,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_7585_screenshot_0.png": {
+      "bytes": 974469,
+      "sha256": "6e99f97cd2c2f8c9513a84494fd684bb25cffc85b219451eb489a7415f1ab0a3",
+      "source_episode_id": 7585,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7585_screenshot_1.png": {
+      "bytes": 672192,
+      "sha256": "25426bb2a667c2a21a4a2ab9cb3ca63a7bc8c39475850c26b0e6d73c7270d634",
+      "source_episode_id": 7585,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_7585_screenshot_2.png": {
+      "bytes": 196025,
+      "sha256": "3ba6ea87852e088e9f9435cedffc8682babf969bd3107a307229186f0a97ed48",
+      "source_episode_id": 7585,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7585_screenshot_3.png": {
+      "bytes": 153088,
+      "sha256": "e3fb441b8385ed5d2b94636c59699c0649e516aa10b4cf00b95d43620933d6b5",
+      "source_episode_id": 7585,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7585_screenshot_4.png": {
+      "bytes": 210347,
+      "sha256": "7128ae1af711f3f9b256b713ba95b71be96bc6a36054f766e881f4890f07aa2f",
+      "source_episode_id": 7585,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7705_screenshot_0.png": {
+      "bytes": 4131503,
+      "sha256": "110a133b919114fc52e2bd6ef6cbe89be92babf1fc7a93f949204fdfeb757b12",
+      "source_episode_id": 7705,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7705_screenshot_1.png": {
+      "bytes": 666858,
+      "sha256": "6f0eef0ae73386eaeadbd681754802582470f70194d5365511a8bdafd1bb36a5",
+      "source_episode_id": 7705,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_7705_screenshot_2.png": {
+      "bytes": 39558,
+      "sha256": "e16a66655f54a3127edaabea67bb3ddf385235ea2e0b94141e09aaf248d7a7fc",
+      "source_episode_id": 7705,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_7705_screenshot_3.png": {
+      "bytes": 230761,
+      "sha256": "e31081d78a9db9b62d532e8d64c1dd418773dbbe7d72e465464a42b4d8c4af96",
+      "source_episode_id": 7705,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7705_screenshot_4.png": {
+      "bytes": 226478,
+      "sha256": "204b0e3b09b3195e7df5b37cb30b3bccbe5873674fe3fc5cf4064553de871789",
+      "source_episode_id": 7705,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7765_screenshot_0.png": {
+      "bytes": 1711373,
+      "sha256": "9c168c80860396acf4bb3c275d35fe5baadf959468bb53e3e12592995ba677d9",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_7765_screenshot_1.png": {
+      "bytes": 1199339,
+      "sha256": "5576df55c9a836f96539ac710e732c23e8eaad539b073c5e4dcf06ef10d3d6fd",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_7765_screenshot_3.png": {
+      "bytes": 1688581,
+      "sha256": "e93e2b8c15f5c939b2ac6e095395009947735877f7482133019ac6d188e4aab0",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_7765_screenshot_4.png": {
+      "bytes": 778246,
+      "sha256": "47315c58a063f79804df80427c70c84b2a9d07f287aa2085aa36c707eed888da",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_7765_screenshot_5.png": {
+      "bytes": 1129364,
+      "sha256": "b25dd03fbf32bebf56808d0cc5f761fa5101fed6a148909b64952cac094a0d91",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_7765_screenshot_6.png": {
+      "bytes": 412555,
+      "sha256": "b39e847afb1645ea43bc482cf193463722c17c54f7dbce5819a4d5c7f609ab77",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_7765_screenshot_7.png": {
+      "bytes": 1533384,
+      "sha256": "b2a559f497a7317dab3219eb5a94c2986efc86594602fccc4a2f4149d6058f08",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_7765_screenshot_8.png": {
+      "bytes": 566827,
+      "sha256": "3f9d756d0f258d12ea6796a102e33a9f71bb148ce9271ec544e6e72dcf1de930",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 8
+    },
+    "episode_7765_screenshot_9.png": {
+      "bytes": 216722,
+      "sha256": "05faf2735348ccdd4d76a4f329d7c5ccd52a532858dc6783c4c4d211ba6ba1a3",
+      "source_episode_id": 7765,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 9
+    },
+    "episode_8165_screenshot_0.png": {
+      "bytes": 257309,
+      "sha256": "b4b5ac7bec6329376ffc5a856874e6675ef710bf58556a82ac6b6e56dfc204d0",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_8165_screenshot_1.png": {
+      "bytes": 745540,
+      "sha256": "00e716e73e5340126ba8b2e3b652ff18a2110ff6ece1f445be58c45b0dad630f",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_8165_screenshot_2.png": {
+      "bytes": 1489198,
+      "sha256": "cd510edf4140577d0243fef8f58c9e382eed110a80c2928822abbdf16e0aa9da",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_8165_screenshot_3.png": {
+      "bytes": 395256,
+      "sha256": "17d5d6da093dd224ec95e12455950851272fce056ffc92601ab990155c576dbc",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_8165_screenshot_4.png": {
+      "bytes": 195979,
+      "sha256": "2abf337f121562bec4a3ffaffab9f843218f01f35df6dadd2ae2c3923dcd2cc0",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_8165_screenshot_5.png": {
+      "bytes": 196785,
+      "sha256": "41a6fe3450b96f7cf1796e133e1042c8ca999b36ef0c222b5827389f631ca522",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_8165_screenshot_6.png": {
+      "bytes": 152376,
+      "sha256": "a33a4283d925cc07f274e1f6c1224427c7e8460bc6e73a6b97473aeee7f8a832",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_8165_screenshot_7.png": {
+      "bytes": 212862,
+      "sha256": "ad5c1af79f4c9f13429fa2ff89a19e9bf446e76acc7e74175fe8fc442c8cab44",
+      "source_episode_id": 8165,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_8271_screenshot_0.png": {
+      "bytes": 4214671,
+      "sha256": "a409076fcfe6bc4e66a225824ddd73cdfae168295987e24d16c9b742fa5f8f51",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_8271_screenshot_1.png": {
+      "bytes": 2376514,
+      "sha256": "cfd7fe37b44197d775a93c08fc5e83664bbb4cf9452ce5c9b5c3a3e4de24e9a8",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_8271_screenshot_10.png": {
+      "bytes": 979018,
+      "sha256": "e694f88f2c5acf7520b46d2c2ab5d4789aa3581cedc8c376ba1e2475f3cfbc5c",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 10
+    },
+    "episode_8271_screenshot_2.png": {
+      "bytes": 196424,
+      "sha256": "73d40dfb41b2c0365bea001aff9be25e502d1e6bd1f77359a4bb3b3349bec11d",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_8271_screenshot_3.png": {
+      "bytes": 194738,
+      "sha256": "6f73120942a741ae2cbb584fd7b36bee917a70764d93742e01b96e1f3f38530c",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_8271_screenshot_4.png": {
+      "bytes": 977586,
+      "sha256": "82da2c71efccedc607521d3da2edd28a8ae59cf49c06351589302c9761955439",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_8271_screenshot_5.png": {
+      "bytes": 118863,
+      "sha256": "50fe1a8a12b82dcc70cf0ee39e2f2b383f566847da6da5bd7be8a269584d621b",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_8271_screenshot_6.png": {
+      "bytes": 2615597,
+      "sha256": "05fa9bc62b9ffb406df5fb6adc4f5a8ab5b38dd61ee3a1bbc09b15941ce069e2",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_8271_screenshot_7.png": {
+      "bytes": 117430,
+      "sha256": "e5d6f16965ad1e56bcba9032fca72e0bf81c7484b3ff17229fbdc5cf29a7a2ef",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_8271_screenshot_8.png": {
+      "bytes": 97889,
+      "sha256": "6c50efacb4ea86014fee9d0163bb9f0297a45433d8116a0b01067f19b1bd1db9",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_8271_screenshot_9.png": {
+      "bytes": 98415,
+      "sha256": "b1cb95ce734c528d2c954b1dc8881b45baa9dab8d4fe2e1a1500f0bafba7edb8",
+      "source_episode_id": 8271,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 9
+    },
+    "episode_828_screenshot_0.png": {
+      "bytes": 1629714,
+      "sha256": "e0b6370089dab64b117dd33a0cd3f69bbe52f59b84b6e17f8c06dfae5c018ffe",
+      "source_episode_id": 828,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_828_screenshot_1.png": {
+      "bytes": 577723,
+      "sha256": "3a805a079840a221c3bd467cc08cd59a758e68c7f631e9228755cadc75ba3bbb",
+      "source_episode_id": 828,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_828_screenshot_2.png": {
+      "bytes": 198161,
+      "sha256": "f2e995e392dfb50ff97c2b68d65b40219124af2611ebcda7e344eb095080b6da",
+      "source_episode_id": 828,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_828_screenshot_3.png": {
+      "bytes": 132895,
+      "sha256": "2be418ade86831fd69c3e7da005bce102302bb9d2aa5a0acaa64463599f70e62",
+      "source_episode_id": 828,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_828_screenshot_4.png": {
+      "bytes": 241081,
+      "sha256": "b14d76a2f1018a551df13c09f7e431692c2fcae91137e2abca6d790eef4f5ebd",
+      "source_episode_id": 828,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_8307_screenshot_0.png": {
+      "bytes": 366336,
+      "sha256": "80ac4efb13a9acc18cdb6b2c301e21ce50e4c08bbe6ee48c76033a3fafee4df2",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_8307_screenshot_1.png": {
+      "bytes": 302866,
+      "sha256": "fed3416eeffb296a5c0a4f0ca96d97253a9b95f82caa25d96c6db61319950df4",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_8307_screenshot_3.png": {
+      "bytes": 338305,
+      "sha256": "f6275ffd9d0c04a0a92a3eb56bb0a74810c30435f033f55d931ed5ba5fac696b",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_8307_screenshot_4.png": {
+      "bytes": 1128865,
+      "sha256": "ed16729a776bde604797d14a513faadff36073e40656143bf3872a1ef29d9f2f",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_8307_screenshot_5.png": {
+      "bytes": 383308,
+      "sha256": "16670756cb3da20dd952bee298cc385b2893f65a5379872a7b73969cda6220f1",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 5
+    },
+    "episode_8307_screenshot_6.png": {
+      "bytes": 260624,
+      "sha256": "a0eb45a2edc5ae17ed12ceb19ea69d193b840ada5934a47d7eaa9351877675f2",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 6
+    },
+    "episode_8307_screenshot_7.png": {
+      "bytes": 377376,
+      "sha256": "d0d0cac034824c5b029a0047da121a2b2b7ac393c661b664222139d78a0a47a5",
+      "source_episode_id": 8307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 7
+    },
+    "episode_8532_screenshot_0.png": {
+      "bytes": 1051105,
+      "sha256": "4dfea0d781eb83d6988eb9c4052ddba16c4ca478d208daff53e7dccf0c6d5ba3",
+      "source_episode_id": 8532,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_8532_screenshot_1.png": {
+      "bytes": 858069,
+      "sha256": "8ec9cec5845cb728e2fe4d55382f8f1d19b260c357f65c86435f5f3c39dfec89",
+      "source_episode_id": 8532,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_8532_screenshot_2.png": {
+      "bytes": 1086269,
+      "sha256": "829d3cc352603a119c001508829963c27593e6a6816e7b701828adb9994ed5a0",
+      "source_episode_id": 8532,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9072_screenshot_0.png": {
+      "bytes": 4137409,
+      "sha256": "ab87f44c3dec98a1729702eb812ed80df62e4b1cb9de5c807fc32b246190464d",
+      "source_episode_id": 9072,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9072_screenshot_1.png": {
+      "bytes": 304816,
+      "sha256": "45cc914c5cb2d83cf054132c3f22701a4e751596d8271df09c5b7b5edd4c24ca",
+      "source_episode_id": 9072,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_9072_screenshot_2.png": {
+      "bytes": 142901,
+      "sha256": "977a76edb747199e3ee04e66eb5efabf129e76fd09ffbfaad8670edd32fea5a6",
+      "source_episode_id": 9072,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9072_screenshot_3.png": {
+      "bytes": 177071,
+      "sha256": "0a56a7f71e58f06585ce5f24f99ee4c53225438192c7cda3e9e15a4c010d663d",
+      "source_episode_id": 9072,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_9112_screenshot_0.png": {
+      "bytes": 131153,
+      "sha256": "687a6b022e5703b53df9caf9b43b55480640af590d0fbfd00b7a9ede7c91df13",
+      "source_episode_id": 9112,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9307_screenshot_0.png": {
+      "bytes": 150167,
+      "sha256": "1c2a1442f512b1b76db5a960a6917a2e955d8598df01fd31d3561121edc94141",
+      "source_episode_id": 9307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9307_screenshot_1.png": {
+      "bytes": 3344554,
+      "sha256": "9485d0d0fa99eb789977d798a404f7c35aad02c4b14822d87ced95d67985ddc3",
+      "source_episode_id": 9307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_9307_screenshot_2.png": {
+      "bytes": 2554686,
+      "sha256": "d9f62481c174911edec13fb1731945471c0bbc4915de5d1b20c4ba6134eb2b43",
+      "source_episode_id": 9307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9307_screenshot_3.png": {
+      "bytes": 1464508,
+      "sha256": "db78fc5ca70278760511ff3630bc85cbebcee38c7d80e5728ff6d9e2669c45dd",
+      "source_episode_id": 9307,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_9609_screenshot_0.png": {
+      "bytes": 981215,
+      "sha256": "f80ea59c25ba1a342b1a1ac499af08aa4bf5900d6b5913717f91d5b5b3c12de1",
+      "source_episode_id": 9609,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9609_screenshot_1.png": {
+      "bytes": 135286,
+      "sha256": "2f0e805c36e2ea7a0119152093ca17cf63679f3ca9b0564b23b2f56804b66800",
+      "source_episode_id": 9609,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 1
+    },
+    "episode_9609_screenshot_2.png": {
+      "bytes": 103330,
+      "sha256": "6a8eb620d127625911ec0f629cdb5f9fdb7d8c0af7ec1d21692822cd134f07f0",
+      "source_episode_id": 9609,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9609_screenshot_3.png": {
+      "bytes": 50914,
+      "sha256": "dbb6961cc8b1ae61d5dcdeedea6b544d630f7c90d29656c1b58fe607355a3dc1",
+      "source_episode_id": 9609,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 3
+    },
+    "episode_9609_screenshot_4.png": {
+      "bytes": 85038,
+      "sha256": "e9236738558eba9135b6ca6912113fbabdd6e435a8c0dfbacf450e6933969a8a",
+      "source_episode_id": 9609,
+      "source_shard": "android_control-00005-of-00020",
+      "source_step_id": 4
+    },
+    "episode_9634_screenshot_0.png": {
+      "bytes": 824369,
+      "sha256": "a8360275cc29ef1dc41029c6f43211dee533f8e3974933dc7b5deb78394f5954",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9634_screenshot_1.png": {
+      "bytes": 2224648,
+      "sha256": "df11b6240daee0af2788ca43922eb118278de58b5bba509e0ebcb2734942abb2",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_9634_screenshot_2.png": {
+      "bytes": 234629,
+      "sha256": "a428f162873693fb3fca13001436b67850f7f5087e1d86e81a2c7bcb2831aaed",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9634_screenshot_3.png": {
+      "bytes": 240382,
+      "sha256": "1cdd4e545c25d9c72a1c3e332a6fdad0eeb288b92147d34281ac62eb490d8495",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_9634_screenshot_4.png": {
+      "bytes": 1541218,
+      "sha256": "a567dab4af170716e434dec9a5e9e46fe44531e8d21825168976f31a53675335",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_9634_screenshot_5.png": {
+      "bytes": 194838,
+      "sha256": "cb07b25fe1e1f9e525e86b3974ca5c07a784aae344bf6183ce38572f10466a97",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_9634_screenshot_6.png": {
+      "bytes": 234910,
+      "sha256": "5c926dea8dbd4eb0eb48d20d5da3ea78b995263b11db687ebb11573ff00b54be",
+      "source_episode_id": 9634,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_9935_screenshot_0.png": {
+      "bytes": 1860141,
+      "sha256": "0e6ea35861ced90e444c6a180f194d0a9a7a0738653ff94dfa8ab0d40c59694b",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 0
+    },
+    "episode_9935_screenshot_1.png": {
+      "bytes": 1656893,
+      "sha256": "61e2fa0ad5aa1614f95abb2bf06f6f59d3005bd69f50fe11676890a7179916ee",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 1
+    },
+    "episode_9935_screenshot_10.png": {
+      "bytes": 1069782,
+      "sha256": "c77b56e46118aeeca9ffb09a93e59214cac6e8788878cc8d17c596e22824eecd",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 10
+    },
+    "episode_9935_screenshot_2.png": {
+      "bytes": 566357,
+      "sha256": "98fefec0be33685bab30eaff1af5672ddec389096a3e1228511b4d63a4f3a783",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 2
+    },
+    "episode_9935_screenshot_3.png": {
+      "bytes": 2157154,
+      "sha256": "b2ebc59a9cdb451ab7b2c4d03aba4a721be4d5a26ac4951ff73f781690116291",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 3
+    },
+    "episode_9935_screenshot_4.png": {
+      "bytes": 950496,
+      "sha256": "2554f4f334edbb3f4e5ac35f5b901159bbb14f90408c39ca078b5df8928e0c9d",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 4
+    },
+    "episode_9935_screenshot_5.png": {
+      "bytes": 1154905,
+      "sha256": "16355bd12ea076373280ce032f2312216584aeae5932d5cd9195a53c4a8f2d80",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 5
+    },
+    "episode_9935_screenshot_6.png": {
+      "bytes": 1559003,
+      "sha256": "b552fd6ec5aa005422e32dd2cffcabc14b6159510ad544930141c20c5a609c87",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 6
+    },
+    "episode_9935_screenshot_7.png": {
+      "bytes": 1055166,
+      "sha256": "d59e0567d06e4a1cac82017048fc018155a70287cd0ebea38237ead8c7bb1e19",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 7
+    },
+    "episode_9935_screenshot_8.png": {
+      "bytes": 918868,
+      "sha256": "79671843649e5c754427287540ec6dbeff5422a79adde6d8d131523a896bc7e7",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 8
+    },
+    "episode_9935_screenshot_9.png": {
+      "bytes": 1265016,
+      "sha256": "67c0c8d9ed0a30fd3ae0cdce3ca127e687e31c4aa710d5bb4592033a865d798b",
+      "source_episode_id": 9935,
+      "source_shard": "android_control-00010-of-00020",
+      "source_step_id": 9
+    }
+  },
+  "scanned_episodes": 15283,
+  "source_rows": 7868,
+  "status": "COMPLETE",
+  "total_image_coverage": 7868
+}

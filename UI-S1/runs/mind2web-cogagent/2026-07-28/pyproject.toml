@@ -1,0 +1,20 @@
+[project]
+name = "mind2web-cogagent-reproduction"
+version = "0.1.0"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "accelerate==1.9.0",
+  "einops==0.8.1",
+  "huggingface-hub==0.36.2",
+  "pillow==11.3.0",
+  "safetensors==0.5.3",
+  "sentencepiece==0.2.0",
+  "timm==0.9.12",
+  "transformers==4.36.2",
+]
+
+[tool.uv]
+override-dependencies = [
+  "torch==2.8.0",
+  "torchvision==0.23.0",
+]

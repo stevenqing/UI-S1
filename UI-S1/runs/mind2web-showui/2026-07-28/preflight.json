@@ -1,0 +1,33 @@
+{
+  "status": "PREFLIGHT_PINNED",
+  "benchmark": "Mind2Web",
+  "split": "test_task",
+  "baseline": "ShowUI-ZS",
+  "paper_anchor_percent": {
+    "macro_element_accuracy": 21.4,
+    "macro_operation_f1": 85.2,
+    "macro_step_success_rate": 18.6
+  },
+  "source": {
+    "repository": "https://github.com/showlab/ShowUI.git",
+    "revision": "21ed7cb24be0cc877bb8352ee34d58a9aea2c876",
+    "license": "Apache-2.0"
+  },
+  "model": {
+    "repository": "showlab/ShowUI-2B",
+    "revision": "cabec4fcc48d15ffd3efe0b33ea9bc7d41509d60",
+    "license": "MIT",
+    "scope": "public general ShowUI checkpoint; no Mind2Web downstream state dict"
+  },
+  "evaluation": {
+    "model_id": "showlab/ShowUI-2B",
+    "version": "showlab/ShowUI-2B",
+    "eval_only": true,
+    "lora_r": 0,
+    "target_row": "ShowUI-ZS",
+    "forbidden_claims": [
+      "ShowUI Mind2Web fine-tuned row",
+      "ShowUI-dagger Mind2Web fine-tuned row"
+    ]
+  }
+}

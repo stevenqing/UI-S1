@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "coverage": "COMPLETE",
+  "setting": "high",
+  "rows": 8444,
+  "expected_rows": 8444,
+  "unique_question_ids": 8444,
+  "parse_success": 8444,
+  "mismatches": {},
+  "official_metrics_percent": {
+    "type_accuracy": 82.74514448128849,
+    "grounding_accuracy": 74.43831296807252,
+    "step_success_rate": 71.28138323069635
+  },
+  "official_counts": {
+    "type_matches": 6987,
+    "grounding_matches": 3777,
+    "grounding_denominator": 5074,
+    "step_successes": 6019
+  },
+  "artifact_sha256": "07215723ca049f958f4f9e30af47f634d86d4a9df71b00049eecf6b35543f3e8",
+  "evaluator_sha256": "90ab6a56cae771245282c3ebcaf4cb96016d3c7c05072d155c7db91c5545e1f1",
+  "source_head": "a4fca17809a4395ba1fe08d481bb82c790ea7236",
+  "source_worktree": []
+}

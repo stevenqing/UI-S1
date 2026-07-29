@@ -1,0 +1,206 @@
+{
+  "bucket": "gresearch",
+  "objects": [
+    {
+      "generation": "1717537205165914",
+      "md5_base64": "QuhP+X5aiP+iD5amlNM6tA==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00000-of-00020?generation=1717537205165914&alt=media",
+      "name": "android_control/android_control-00000-of-00020",
+      "path": "data/official-gcs/android_control-00000-of-00020",
+      "size": 2492987829,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717537500637737",
+      "md5_base64": "YEgUqLKmkb3Myu+sn8w9Hw==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00001-of-00020?generation=1717537500637737&alt=media",
+      "name": "android_control/android_control-00001-of-00020",
+      "path": "data/official-gcs/android_control-00001-of-00020",
+      "size": 2381590403,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717537877247114",
+      "md5_base64": "mRohMITXMgOv5lW9uKZJzg==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00002-of-00020?generation=1717537877247114&alt=media",
+      "name": "android_control/android_control-00002-of-00020",
+      "path": "data/official-gcs/android_control-00002-of-00020",
+      "size": 2524501320,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717538172092003",
+      "md5_base64": "1iHt5nD8mJDebNXfbj+J9A==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00003-of-00020?generation=1717538172092003&alt=media",
+      "name": "android_control/android_control-00003-of-00020",
+      "path": "data/official-gcs/android_control-00003-of-00020",
+      "size": 2521787571,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717538447138615",
+      "md5_base64": "ZSFUhsEdL1vVQJFe2LqxHQ==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00004-of-00020?generation=1717538447138615&alt=media",
+      "name": "android_control/android_control-00004-of-00020",
+      "path": "data/official-gcs/android_control-00004-of-00020",
+      "size": 2492154967,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717538744465503",
+      "md5_base64": "cYA4TqdZfFsjB7W4EG0mGQ==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00005-of-00020?generation=1717538744465503&alt=media",
+      "name": "android_control/android_control-00005-of-00020",
+      "path": "data/official-gcs/android_control-00005-of-00020",
+      "size": 2494079253,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717539074311832",
+      "md5_base64": "7JbtvucLhWuXtqBbzgHMlQ==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00006-of-00020?generation=1717539074311832&alt=media",
+      "name": "android_control/android_control-00006-of-00020",
+      "path": "data/official-gcs/android_control-00006-of-00020",
+      "size": 2581962545,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717539507177189",
+      "md5_base64": "2HNcLWRLKhv0UThR5794aA==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00007-of-00020?generation=1717539507177189&alt=media",
+      "name": "android_control/android_control-00007-of-00020",
+      "path": "data/official-gcs/android_control-00007-of-00020",
+      "size": 2676941243,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717539815868564",
+      "md5_base64": "yZOE6/Ovq/pmw5LKS1YlLg==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00008-of-00020?generation=1717539815868564&alt=media",
+      "name": "android_control/android_control-00008-of-00020",
+      "path": "data/official-gcs/android_control-00008-of-00020",
+      "size": 2483337369,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717540230695334",
+      "md5_base64": "e18whCgrcbQPau+20rST7Q==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00009-of-00020?generation=1717540230695334&alt=media",
+      "name": "android_control/android_control-00009-of-00020",
+      "path": "data/official-gcs/android_control-00009-of-00020",
+      "size": 2630264084,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717540606015314",
+      "md5_base64": "bYj0TvfhuOWPEMDn5rebZw==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00010-of-00020?generation=1717540606015314&alt=media",
+      "name": "android_control/android_control-00010-of-00020",
+      "path": "data/official-gcs/android_control-00010-of-00020",
+      "size": 2495033402,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717540936822111",
+      "md5_base64": "WTUWA7Mb43BC136dE1dtbQ==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00011-of-00020?generation=1717540936822111&alt=media",
+      "name": "android_control/android_control-00011-of-00020",
+      "path": "data/official-gcs/android_control-00011-of-00020",
+      "size": 2418884116,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717541240506712",
+      "md5_base64": "WHKZpHKm7J2TPT1KcGViuA==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00012-of-00020?generation=1717541240506712&alt=media",
+      "name": "android_control/android_control-00012-of-00020",
+      "path": "data/official-gcs/android_control-00012-of-00020",
+      "size": 2503753753,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717541655245559",
+      "md5_base64": "XJsXkpP/+XuN+tSu/tbBAQ==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00013-of-00020?generation=1717541655245559&alt=media",
+      "name": "android_control/android_control-00013-of-00020",
+      "path": "data/official-gcs/android_control-00013-of-00020",
+      "size": 2516494995,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717541918186796",
+      "md5_base64": "7mIiIt7gp06xBCaBESPb6Q==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00014-of-00020?generation=1717541918186796&alt=media",
+      "name": "android_control/android_control-00014-of-00020",
+      "path": "data/official-gcs/android_control-00014-of-00020",
+      "size": 2453866804,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717542237746755",
+      "md5_base64": "fpY5ZABCLM6bNS6m3Yi3uA==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00015-of-00020?generation=1717542237746755&alt=media",
+      "name": "android_control/android_control-00015-of-00020",
+      "path": "data/official-gcs/android_control-00015-of-00020",
+      "size": 2345501105,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717542722987392",
+      "md5_base64": "B5GCzf12qeGXgWEf0Adu1w==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00016-of-00020?generation=1717542722987392&alt=media",
+      "name": "android_control/android_control-00016-of-00020",
+      "path": "data/official-gcs/android_control-00016-of-00020",
+      "size": 2398778868,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717543085141265",
+      "md5_base64": "4WtwF/Tx1c48pKyH/SGF5Q==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00017-of-00020?generation=1717543085141265&alt=media",
+      "name": "android_control/android_control-00017-of-00020",
+      "path": "data/official-gcs/android_control-00017-of-00020",
+      "size": 2421224827,
+      "status": "DOWNLOADED_MD5_VERIFIED"
+    },
+    {
+      "generation": "1717543461446530",
+      "md5_base64": "Q8JvIFjosrJjLUKu9fgxgg==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00018-of-00020?generation=1717543461446530&alt=media",
+      "name": "android_control/android_control-00018-of-00020",
+      "path": "data/official-gcs/android_control-00018-of-00020",
+      "size": 2538585489,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717543885076524",
+      "md5_base64": "xuJJrmWvdUT1zlKYsKN0pg==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fandroid_control-00019-of-00020?generation=1717543885076524&alt=media",
+      "name": "android_control/android_control-00019-of-00020",
+      "path": "data/official-gcs/android_control-00019-of-00020",
+      "size": 2558503032,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1717536900388589",
+      "md5_base64": "0Xn03OtQxw3DHeE3a90rkg==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Fsplits.json?generation=1717536900388589&alt=media",
+      "name": "android_control/splits.json",
+      "path": "data/official-gcs/splits.json",
+      "size": 98603,
+      "status": "VERIFIED_EXISTING"
+    },
+    {
+      "generation": "1723564107024194",
+      "md5_base64": "Fa/XPr5xSdHf8cGiS1zp3Q==",
+      "media_link": "https://storage.googleapis.com/download/storage/v1/b/gresearch/o/android_control%2Ftest_subsplits.json?generation=1723564107024194&alt=media",
+      "name": "android_control/test_subsplits.json",
+      "path": "data/official-gcs/test_subsplits.json",
+      "size": 18414,
+      "status": "VERIFIED_EXISTING"
+    }
+  ],
+  "prefix": "android_control/",
+  "status": "DOWNLOADED_MD5_VERIFIED",
+  "total_bytes": 49930349992
+}

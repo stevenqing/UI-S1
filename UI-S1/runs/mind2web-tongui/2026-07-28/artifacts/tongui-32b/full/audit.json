@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "coverage": "COMPLETE",
+  "rows": 2080,
+  "episodes": 252,
+  "unique_identities": 2080,
+  "model_name": "Bofeee5675/TongUI-32B",
+  "model_revision": "base:7cfb30d71a1f4f49a57592323337a4a4727301da+adapter:be18be453c78e6145305a1692aa8e678454f93c2",
+  "base_revision": "7cfb30d71a1f4f49a57592323337a4a4727301da",
+  "adapter_revision": "be18be453c78e6145305a1692aa8e678454f93c2",
+  "metadata_sha256": "e3dbd288037f14849ca713f92468adaef67f859a3f2f520fffc2b190a82054ef",
+  "predictions_sha256": "a4582a93dd4c015fa0bb66baa07a6a0d18308369482b3d23465d558683c51e70",
+  "score_sha256": "8af78dad2dd595a5b864be47042114bd970e00e3d0d9882c7e7c8576c21ca82c",
+  "input_hash_reference_sha256": "688d6ce969d8f8b7af5fa46f78577c0b0c3ad98bb9d679998ffd5c8a59e88734",
+  "checkpoint_manifest_sha256": "bad3221ec2a359f356d1be0436ad00f85193ef537562eb76116c787326f2eb63"
+}

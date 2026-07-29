@@ -1,0 +1,67 @@
+{
+  "run_date": "2026-07-27",
+  "retrieved_date": "2026-07-27",
+  "code": {
+    "SeeClick": {
+      "url": "https://github.com/njucckevin/SeeClick.git",
+      "commit": "0ef37ac4d7aaf37ba7b990e3e3c3ca77e1fb8f93",
+      "commit_date": "2025-07-13T14:44:39+08:00",
+      "license": "Apache-2.0",
+      "local_changes": "agent_tasks/mind2web_test.py patched for explicit paths, single-GPU enforcement, incremental artifacts, parse accounting, bounded replay, and structured GT construction",
+      "patched_evaluator_sha256": "bff2d0621977fa6fd590a35d47ec0e107ff27f64bd416f9c783b8842a83b28ca",
+      "runtime_generated_file": "agent_tasks/SimSun.ttf"
+    },
+    "Mind2Web": {
+      "url": "https://github.com/OSU-NLP-Group/Mind2Web.git",
+      "commit": "33bd95caeee7bba22dd08ecc935845e15c5e5dc7",
+      "commit_date": "2025-11-04T16:38:41-08:00",
+      "license": "MIT",
+      "local_changes": "none"
+    }
+  },
+  "data": {
+    "images": {
+      "url": "https://box.nju.edu.cn/f/33e203d170ab48b0b922/?dl=1",
+      "file": "downloads/mind2web_images.zip",
+      "bytes": 1202026857,
+      "sha256": "8d059cc4da2a6e8ad3c29057e5496d224733e653766a9984e00f4473ff950550"
+    },
+    "annotations": {
+      "url": "https://box.nju.edu.cn/f/e30b861fa7604668821b/?dl=1",
+      "file": "downloads/mind2web_annots.zip",
+      "bytes": 2561707,
+      "sha256": "7723050a12174189d4d676bd2c71a707c6602570551116f99bcb076fd6e9a0a7"
+    }
+  },
+  "models": {
+    "SeeClick": {
+      "id": "cckevinn/SeeClick-mind2web",
+      "url": "https://huggingface.co/cckevinn/SeeClick-mind2web",
+      "revision": "01f67c9a81163273127832118b40a74c0507bbde",
+      "local_path": "models/SeeClick-mind2web",
+      "files": 55,
+      "bytes": 19314138313,
+      "weight_index_sha256": "a12bfd680fb216bad1d3fbe784daccfae77487f9cb29d6a90b440dd864ba0b38"
+    },
+    "Qwen_metadata_only": {
+      "id": "Qwen/Qwen-VL-Chat",
+      "url": "https://huggingface.co/Qwen/Qwen-VL-Chat",
+      "revision": "f57cfbd358cb56b710d963669ad1bcfb44cdcdd8",
+      "local_path": "models/Qwen-VL-Chat",
+      "files": 40,
+      "bytes": 13269668,
+      "note": "Tokenizer, config, and trusted custom code only; base Qwen weights were not downloaded."
+    }
+  },
+  "paper_anchor": {
+    "paper": "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents",
+    "url": "https://arxiv.org/html/2401.10935",
+    "location": "Table 4, Mind2Web Cross-Task, SeeClick row",
+    "metrics_percent": {
+      "element_accuracy": 28.3,
+      "operation_f1": 87.0,
+      "step_success_rate": 25.5
+    },
+    "scope_diagnosis": "The supplied spec's approximately 78.4 Element Accuracy is not the live paper's Cross-Task SeeClick row. The exact checkpoint, split, and harness are compared to Table 4's 28.3/87.0/25.5 row."
+  }
+}

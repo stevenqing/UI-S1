@@ -1,0 +1,9 @@
+[project]
+name = "mindact-mind2web-reproduction"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "datasets==2.21.0",
+  "huggingface-hub==0.36.2",
+  "lxml==5.3.2",
+]

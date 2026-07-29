@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "model_name": "TongUI-3B",
+  "model_revision": "8c08f9d982bd8bd00b31aee11d8a3a1fa3498836",
+  "rows": 2080,
+  "episodes": 252,
+  "unique_identities": 2080,
+  "predictions_sha256": "688d6ce969d8f8b7af5fa46f78577c0b0c3ad98bb9d679998ffd5c8a59e88734",
+  "score_sha256": "0eadab49900e25803d05ed46f4a346f491472673720c2f8c2c9359f1b9867a51",
+  "metadata_sha256": "6e86b61ab6b8c657cabadc73de9df1f844dc39e4904228c8b2b5a18b68640d2d"
+}

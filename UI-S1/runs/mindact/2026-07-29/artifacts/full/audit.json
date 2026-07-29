@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "coverage": "COMPLETE",
+  "actions": 2094,
+  "episodes": 252,
+  "unique_identities": 2094,
+  "metrics": {
+    "element_acc": 0.5229226361031518,
+    "action_f1": 0.7301437154589017,
+    "step_acc": 0.4804202483285578,
+    "marco_element_acc": 0.5436599810790896,
+    "marco_action_f1": 0.7431620210906331,
+    "marco_step_acc": 0.5000115414895104
+  },
+  "predictions_sha256": "00350d8500d3ec54f68481098db11781689266719af869a3e509d3bff1e4930b",
+  "results_sha256": "ea4642355c5f316ae4c91d7bd579bdd402247ded79f79ebef61125f58205d546",
+  "provenance_sha256": "e55c1adaee728c119a1e12c3d0c771637af7d85c8ec7ec0dfce35ce9d8f614b2",
+  "manifest_sha256": "30dcdb07872c6e25eb255283b806c330c8031de76fc202a5f5238a5f1a91bdc1",
+  "candidate_scores_sha256": "884c97cd9ae0544485d21ea39e0d46422aee0291969a7324e56df3a84466dbd7"
+}

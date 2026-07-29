@@ -1,0 +1,86 @@
+{
+  "date": "2026-07-27",
+  "status": "STOP",
+  "gate": 2,
+  "target": {
+    "benchmark": "AndroidControl-High",
+    "setting": "zero-shot OOD",
+    "model": "OS-Atlas-7B action model used in paper Table 5",
+    "steps": 7708,
+    "anchor_percent": {
+      "type": 57.44,
+      "grounding": 54.90,
+      "step_success_rate": 29.83
+    }
+  },
+  "source": {
+    "os_atlas_repository": "https://github.com/OS-Copilot/OS-Atlas.git",
+    "os_atlas_commit": "bad08407ab54b5bf6c17a69fe1ced476b9494926",
+    "os_atlas_commit_date": "2025-04-20T23:59:31+08:00",
+    "os_atlas_license": "Apache-2.0",
+    "ac_idx_lines": 7708,
+    "ac_idx_sha256": "4a0008a58b82495a7c77745eca167f13c2e4fe683cd865490c13d249ddfb83f8",
+    "androidcontrol_repository": "https://github.com/google-research/google-research/tree/master/android_control",
+    "androidcontrol_bucket": "gs://gresearch/android_control",
+    "androidcontrol_license": "Apache-2.0",
+    "os_atlas_paper": "https://arxiv.org/html/2410.23218",
+    "androidcontrol_paper": "https://arxiv.org/html/2406.03679"
+  },
+  "official_data_manifest": {
+    "tfrecord_shards": 20,
+    "tfrecord_bytes": 49930232975,
+    "metadata_objects": [
+      "android_control/splits.json",
+      "android_control/test_subsplits.json"
+    ],
+    "all_bucket_objects_bytes_including_duplicate_directory_marker": 49930448595
+  },
+  "local_join_audit": {
+    "derived_file": "evaluation/dataset/android_control_evaluation_std.jsonl",
+    "derived_sha256": "fc18cba83918d3b95b04e6b1c4bb5d211b9ba13533df01515a15ffa695b516c1",
+    "episodes": 1543,
+    "derived_steps": 8444,
+    "ac_idx_intersection": 7708,
+    "ac_idx_missing_from_derived": 0,
+    "derived_steps_outside_ac_idx": 736,
+    "ac_idx_unique_episodes": 1412,
+    "referenced_screenshots_present": 0,
+    "action_counts_in_ac_idx": {
+      "click": 4598,
+      "swipe": 1138,
+      "type": 569,
+      "open": 554,
+      "wait": 527,
+      "system_button": 315,
+      "long_press": 7
+    }
+  },
+  "blockers": [
+    {
+      "id": "checkpoint_unavailable",
+      "evidence": "Hugging Face API for OS-Copilot/OS-Atlas-7B returns HTTP 401 and the public OS-Copilot model listing contains only Base and Pro OS-Atlas checkpoints.",
+      "why_fatal": "OS-Atlas-Base-7B is grounding-only. OS-Atlas-Pro-7B is Section 5.4's all-dataset action model; its model card explicitly says it differs from the Tables 4/5 checkpoint and is not constrained by OOD/SFT conditions."
+    },
+    {
+      "id": "processed_eval_release_incomplete",
+      "evidence": "Pinned OS-Atlas eval/data/ac_test.jsonl and ac_low_test.jsonl each contain only three demonstration rows, while ac_idx.txt contains 7,708 identities. No full conversion or inference script is released.",
+      "why_fatal": "The exact High prompt, history serialization, target conversion, order, and parser cannot be proven for all rows from released OS-Atlas artifacts alone."
+    },
+    {
+      "id": "screenshots_absent_locally",
+      "evidence": "Zero of 8,444 paths referenced by the local 1,543-episode derived JSONL exist; no AndroidControl TFRecord shards or episode screenshots were found locally.",
+      "why_fatal": "Inference cannot begin without downloading and extracting the official source data. This is recoverable but does not resolve the checkpoint or prompt blockers."
+    }
+  ],
+  "resume_requirements": [
+    "Obtain the exact OS-Atlas-7B action checkpoint used for the Table 5 zero-shot OOD row, with revision or checksum.",
+    "Obtain the complete 7,708-row AndroidControl-High processed ground truth/prompt file or the exact conversion and inference code used by OS-Atlas.",
+    "Download and checksum the 20 official AndroidControl shards and both split files, then independently join all ac_idx identities before inference."
+  ],
+  "prohibited_substitutions": [
+    "OS-Atlas-Base-7B",
+    "OS-Atlas-Pro-7B",
+    "historical workspace result files",
+    "the 1,543-episode task-success evaluator"
+  ]
+}

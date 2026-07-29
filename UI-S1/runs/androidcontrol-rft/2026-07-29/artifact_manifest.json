@@ -1,0 +1,60 @@
+{
+  "data_sha256": {
+    "high": "ec70c99046aa4fb1557c61bf2c5d1266f87d4b9dc879128b2de20bf0aca7c72f",
+    "low": "ffb8e19f5091c339aea4060e062cc47405f57da3f35c22699a82390d5769cf47"
+  },
+  "dataset_revision": "6b4f69d9d3f947eb857301b6b01b2dba8e295b2c",
+  "models": {
+    "KDEGroup/UI-AGILE": {
+      "index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6",
+      "revision": "de01366937b3c921f49ae1abe3b2c4a39b40ce8d",
+      "shards": {
+        "model-00001-of-00004.safetensors": "8093a0470c218864af8b540123bb3da1b959266bf8060bdfdaac082068f71212",
+        "model-00002-of-00004.safetensors": "eecd49d0ebffca719a2c858503dfeda06698db4545bec5eaac06262804096431",
+        "model-00003-of-00004.safetensors": "98c6adda476fb3227fa3af67568a48e8326d4dc9ea937e3937b3b24e94495199",
+        "model-00004-of-00004.safetensors": "e67e28dcbb8e4903786e19e39876118cb35f891cb105cd0b1d01794bec40d649"
+      }
+    },
+    "KDEGroup/UI-AGILE-3B": {
+      "index_sha256": "eafcf7eb80f0e63f73ef902b792726372d9a5ac90f7c724898006882705360da",
+      "revision": "84c28b06a7bda29a741139d64e227d176c0fb1c0",
+      "shards": {
+        "model-00001-of-00002.safetensors": "650a5082d023803ddde354137789c870f9322f9677be505ce27313fd5706901b",
+        "model-00002-of-00002.safetensors": "bcca0b440b3958fa17530ab4d837642cf3bb1adf85ae45e9ad93f33a5f755140"
+      }
+    },
+    "LZXzju/Qwen2.5-VL-3B-UI-R1-E": {
+      "index_sha256": "eafcf7eb80f0e63f73ef902b792726372d9a5ac90f7c724898006882705360da",
+      "revision": "91c3e5f213ab3f42931e6398174f470c8500167f",
+      "shards": {
+        "model-00001-of-00002.safetensors": "06b10b7860e05b50833145408c4a5e14a8fe95e0d58fd2a6a815e49c86a85c30",
+        "model-00002-of-00002.safetensors": "88b0ce0b7bc06b83fd63d01e07361ee6491e531ca667999b8eaf2886bfac44e1"
+      }
+    },
+    "ritzzai/GUI-R1:GUI-R1-3B": {
+      "index_sha256": "80bda3479a9267845ffd2a49a875667d9e631077d36270599957ae3fb642dc72",
+      "revision": "e74baccc4cfa77074e2d53e99a8244ab9fc2ca10",
+      "shards": {
+        "model-00001-of-00002.safetensors": "4a3d9eba686bc9837585eb9d0332bb9671fdd4f16bb4c4b1fd397b3e38bb79d0",
+        "model-00002-of-00002.safetensors": "3faefd573deb7d4b1bf25262c9c76a9e7c7711b5f70e1b9502f74e7f30d4143f"
+      }
+    },
+    "ritzzai/GUI-R1:GUI-R1-7B": {
+      "index_sha256": "da86c43e03377ab65945bfa77595964d906f057840eb38b78c983a5ec13d0e19",
+      "revision": "e74baccc4cfa77074e2d53e99a8244ab9fc2ca10",
+      "shards": {
+        "model-00001-of-00004.safetensors": "bad2b968019c35cb3492f7a4dc3b88b65979e900ce27fa6748f0ab521e21a059",
+        "model-00002-of-00004.safetensors": "76c4f2c63835d502ebc7c3533abab0d76c49b5da97bb2505b7d72ab0a6aac76b",
+        "model-00003-of-00004.safetensors": "99cf71acedcfec810a76577518776a7e0059fb7c911a41fae642a3458fe6373e",
+        "model-00004-of-00004.safetensors": "9d87de4912c9b93001c956cfdd61a1de9f6a11862e0eaee8830d5c976d913a1b"
+      }
+    }
+  },
+  "official_repo_revision": "3a397b078d6c14338f0646070212f8c3eb837881",
+  "official_source_sha256": {
+    "repo/eval/android_control/eval.py": "bbbb0d8488312ea4d7c9034e83b84343a7f0bcdcc487b7e9795e5cec2624e451",
+    "repo/eval/android_control/inference_android_control.py": "c7ca26abaa700081dc7b8ae64031554d044e7daa836a856ea13ee2a5f7464b4e",
+    "repo/eval/android_control/utils.py": "729d42c9505d05cfc43733ead53f96aeaa7166aa5d9178fce7d210fab933f4c5"
+  },
+  "status": "DOWNLOADED_HASH_INDEX_VERIFIED"
+}

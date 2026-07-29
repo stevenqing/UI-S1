@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "coverage": "COMPLETE",
+  "rows": 7708,
+  "episodes": 1412,
+  "unique_identities": 7708,
+  "model_name": "ByteDance-Seed/UI-TARS-7B-SFT",
+  "model_revision": "3434901a9dd04dd3625617d839a5724fe5e2db20",
+  "setting": "low",
+  "data_sha256": "a81c8aa95a773f3d64aa3c51457719664e1992edb23cb68971fe3da06a5e03bb",
+  "predictions_sha256": "bb24c9ef627324db5dfb9a116a4a45607e7f4835b5da93d5e4459f691355923b",
+  "score_sha256": "0fea2e09b1d7b4200d81eda87adc46be1d2943912eb1d35023f4ba4fadd07cdc"
+}

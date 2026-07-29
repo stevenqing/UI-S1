@@ -1,0 +1,28 @@
+{
+  "coverage": "COMPLETE",
+  "rows": 2080,
+  "episodes": 252,
+  "parse_success": 1958,
+  "parse_rate": 0.9413461538461538,
+  "parsed_action_counts": {
+    "CLICK": 1687,
+    "SELECT": 53,
+    "TYPE": 218
+  },
+  "parse_errors": {
+    "missing 0-1000 bounding box": 63,
+    "missing Grounded Operation marker": 30,
+    "unsupported or implicit action": 29
+  },
+  "element_accuracy_micro": 0.5283653846153846,
+  "operation_f1_micro": 0.8385878704628704,
+  "step_success_micro": 0.5014423076923077,
+  "operation_f1_by_category": {
+    "CLICK": 0.8962795941375423,
+    "SELECT": 0.18004822182037372,
+    "TYPE": 0.616911722638595
+  },
+  "macro_element_accuracy": 0.5892801563180555,
+  "macro_operation_f1": 0.8548818928344449,
+  "macro_step_success_rate": 0.560391794836095
+}

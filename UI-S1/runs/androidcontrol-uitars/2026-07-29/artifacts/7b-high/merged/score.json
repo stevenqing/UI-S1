@@ -1,0 +1,34 @@
+{
+  "coverage": "COMPLETE",
+  "rows": 7708,
+  "episodes": 1412,
+  "parse_success": 7652,
+  "parse_rate": 0.9927348209652309,
+  "parse_errors": {
+    "unsupported AndroidControl action: drag": 2,
+    "unsupported AndroidControl action: finished": 54
+  },
+  "type_matches": 6134,
+  "type_accuracy": 0.7957965749870265,
+  "step_successes": 4703,
+  "step_success_rate": 0.6101453035806954,
+  "click_only_grounding": 0.7345509131848886,
+  "coordinate_grounding_including_long_press": 0.7345509131848886,
+  "per_type_count": {
+    "CLICK": 4598,
+    "LONG_PRESS": 7,
+    "OPEN_APP": 554,
+    "PRESS_BACK": 315,
+    "SCROLL": 1138,
+    "TYPE": 569,
+    "WAIT": 527
+  },
+  "per_type_success": {
+    "CLICK": 2936,
+    "OPEN_APP": 489,
+    "PRESS_BACK": 144,
+    "SCROLL": 552,
+    "TYPE": 375,
+    "WAIT": 207
+  }
+}

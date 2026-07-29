@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "duplicates": 0,
+  "upstream_exact_parser": {
+    "rows": 8,
+    "parse_success": 8,
+    "parse_rate": 1.0,
+    "type_matches": 8,
+    "type_accuracy": 1.0,
+    "step_successes": 8,
+    "step_success_rate": 1.0,
+    "upstream_click_only_grounding": 1.0,
+    "coordinate_grounding_including_long_press": 1.0,
+    "per_type_count": {
+      "OPEN_APP": 1,
+      "LONG_PRESS": 1,
+      "CLICK": 5,
+      "TYPE": 1
+    },
+    "per_type_success": {
+      "OPEN_APP": 1,
+      "LONG_PRESS": 1,
+      "CLICK": 5,
+      "TYPE": 1
+    },
+    "runtime_errors": []
+  },
+  "flexible_parser_diagnostic": {
+    "rows": 8,
+    "parse_success": 8,
+    "parse_rate": 1.0,
+    "type_matches": 8,
+    "type_accuracy": 1.0,
+    "step_successes": 8,
+    "step_success_rate": 1.0,
+    "upstream_click_only_grounding": 1.0,
+    "coordinate_grounding_including_long_press": 1.0,
+    "per_type_count": {
+      "OPEN_APP": 1,
+      "LONG_PRESS": 1,
+      "CLICK": 5,
+      "TYPE": 1
+    },
+    "per_type_success": {
+      "OPEN_APP": 1,
+      "LONG_PRESS": 1,
+      "CLICK": 5,
+      "TYPE": 1
+    },
+    "runtime_errors": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "model_name": "Qwen2.5-VL-3B-Instruct",
+  "model_revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "rows": 2080,
+  "episodes": 252,
+  "unique_identities": 2080,
+  "predictions_sha256": "b3a1f7c742179580f96a8b07953cf985af22c7f10e7592033eeb8de56d039974",
+  "score_sha256": "c3a0e8a1b3fdeeedb82412c1883e5d2ee1ba43d9fb96f3647ad37ff42639b64c",
+  "metadata_sha256": "6e86b61ab6b8c657cabadc73de9df1f844dc39e4904228c8b2b5a18b68640d2d"
+}

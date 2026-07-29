@@ -1,0 +1,27 @@
+{
+  "dataset": {
+    "repo": "osunlp/Mind2Web",
+    "revision": "17ece8eb89862368edc0cc806acee6fca5163474",
+    "test_zip_bytes": 567745122,
+    "test_zip_sha256": "8f5fbe72afab942fe97cdf7fb397e179885d89b5c16862288e9a14bc6d41ca89",
+    "candidate_scores_bytes": 245190981,
+    "candidate_scores_sha256": "884c97cd9ae0544485d21ea39e0d46422aee0291969a7324e56df3a84466dbd7"
+  },
+  "model": {
+    "repo": "osunlp/MindAct_ActionPrediction_flan-t5-xl",
+    "revision": "848f8100c508e5a742ec2d3ec175b7baa704334c",
+    "shard_bytes": [9976139978, 1949499619],
+    "shard_sha256": [
+      "71cf4fd2d4a52f014cd8097fc3b0724d9d63780c06da2399759135242381129b",
+      "0669d55556787a9379265480245d9abe5797d81f1b64eddcef90a2d66fe66091"
+    ],
+    "index_sha256": "e284be89e0861a19e01f152caf64c27614751fc80358746558c8c6f4ae65c51c"
+  },
+  "tokenizer": {
+    "repo": "google/flan-t5-xl",
+    "revision": "7d6315df2c2fb742f0f5b556879d730926ca9001",
+    "spiece_sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+    "tokenizer_json_sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a"
+  },
+  "status": "DOWNLOADED_HASH_VERIFIED"
+}

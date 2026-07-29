@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "input_counts": {
+    "episodes": 252,
+    "actions": 2094,
+    "bbox_actions": 2080,
+    "no_bbox_actions": 14,
+    "native_predictions": 2079,
+    "native_unique_images": 2079,
+    "native_duplicates": 0,
+    "native_missing_bbox_actions": [
+      "14d50319-3f81-4aa6-8ee8-d1b66e4d5d64-ed754c64-be86-4e85-a728-467d1d038af4.jpg"
+    ],
+    "supplement_predictions": 1,
+    "corrected_predictions": 2080
+  },
+  "diagnosed_skip": {
+    "image": "14d50319-3f81-4aa6-8ee8-d1b66e4d5d64-ed754c64-be86-4e85-a728-467d1d038af4.jpg",
+    "operation": "TYPE",
+    "value": "32\" curved monitor",
+    "cause": "Upstream action2step interpolated an unescaped double quote into a Python literal; ast.literal_eval raised SyntaxError and the broad except silently continued."
+  },
+  "native_metrics_independent": {
+    "num_steps": 2079,
+    "num_episodes": 252,
+    "parse_success": 2079,
+    "parse_rate": 1,
+    "micro_element_accuracy": 0.2429052429052429,
+    "micro_operation_f1": 0.8724054605006986,
+    "micro_step_success": 0.21933621933621933,
+    "macro_element_accuracy": 0.2855350753613367,
+    "macro_operation_f1": 0.8704211417896907,
+    "macro_step_success": 0.2600954340963798,
+    "recorded_field_mismatches": []
+  },
+  "native_summary_deltas": {
+    "num_steps": 0,
+    "num_episodes": 0,
+    "parse_success": 0,
+    "parse_rate": 0.0,
+    "micro_element_accuracy": 0.0,
+    "micro_step_success": 0.0,
+    "macro_element_accuracy": 0.0,
+    "macro_operation_f1": 0.0,
+    "macro_step_success": 0.0
+  },
+  "native_summary_exact_within_1e_12": true,
+  "corrected_metrics_independent": {
+    "num_steps": 2080,
+    "num_episodes": 252,
+    "parse_success": 2080,
+    "parse_rate": 1,
+    "micro_element_accuracy": 0.24278846153846154,
+    "micro_operation_f1": 0.8719860347985348,
+    "micro_step_success": 0.21923076923076923,
+    "macro_element_accuracy": 0.28520438753064886,
+    "macro_operation_f1": 0.8694290782976272,
+    "macro_step_success": 0.25976474626569196,
+    "recorded_field_mismatches": []
+  },
+  "paper_anchor_percent": {
+    "macro_element_accuracy": 28.3,
+    "macro_operation_f1": 87.0,
+    "macro_step_success": 25.5
+  },
+  "corrected_anchor_delta_percentage_points": {
+    "macro_element_accuracy": 0.22043875306488658,
+    "macro_operation_f1": -0.05709217023728286,
+    "macro_step_success": 0.47647462656919615
+  },
+  "within_one_percentage_point": true,
+  "artifact_sha256": {
+    "artifacts/gate1_cross_task/predictions.jsonl": "00bb6d7f53725b19be71e710b9b92044dca502936851dabd5275a9949aec035f",
+    "artifacts/gate1_cross_task/summary.json": "582994cf67d6d183bd7570371816769310b816ead684d49a0292d4871ba7202c",
+    "artifacts/gate1_corrected_missing/predictions.jsonl": "832e87d9195607dd17048029c05560961bfa11a840224f0429a8a6af6b55b8c3"
+  }
+}

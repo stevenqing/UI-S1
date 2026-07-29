@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "duplicates": 0,
+  "upstream_exact_parser": {
+    "rows": 7708,
+    "parse_success": 0,
+    "parse_rate": 0.0,
+    "type_matches": 0,
+    "type_accuracy": 0.0,
+    "step_successes": 0,
+    "step_success_rate": 0.0,
+    "upstream_click_only_grounding": 0,
+    "coordinate_grounding_including_long_press": 0,
+    "per_type_count": {
+      "OPEN_APP": 554,
+      "LONG_PRESS": 7,
+      "CLICK": 4598,
+      "TYPE": 569,
+      "WAIT": 527,
+      "PRESS_BACK": 315,
+      "SCROLL": 1138
+    },
+    "per_type_success": {},
+    "runtime_errors": []
+  },
+  "flexible_parser_diagnostic": {
+    "rows": 7708,
+    "parse_success": 7673,
+    "parse_rate": 0.9954592631032694,
+    "type_matches": 6057,
+    "type_accuracy": 0.785806953814219,
+    "step_successes": 1381,
+    "step_success_rate": 0.17916450441100157,
+    "upstream_click_only_grounding": 0.05336635892816933,
+    "coordinate_grounding_including_long_press": 0.0534024335286165,
+    "per_type_count": {
+      "OPEN_APP": 554,
+      "LONG_PRESS": 7,
+      "CLICK": 4598,
+      "TYPE": 569,
+      "WAIT": 527,
+      "PRESS_BACK": 315,
+      "SCROLL": 1138
+    },
+    "per_type_success": {
+      "OPEN_APP": 228,
+      "CLICK": 237,
+      "TYPE": 505,
+      "SCROLL": 220,
+      "PRESS_BACK": 109,
+      "WAIT": 82
+    },
+    "runtime_errors": [
+      {
+        "identity": "episode_4635_screenshot_13",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_4635_screenshot_15",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_7587_screenshot_4",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_15658_screenshot_1",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_1300_screenshot_0",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_8738_screenshot_0",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_12434_screenshot_0",
+        "error": "list index out of range"
+      },
+      {
+        "identity": "episode_6418_screenshot_21",
+        "error": "list index out of range"
+      }
+    ]
+  }
+}

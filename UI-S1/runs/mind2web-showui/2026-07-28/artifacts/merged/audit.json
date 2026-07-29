@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "rows": 2080,
+  "episodes": 252,
+  "unique_identities": 2080,
+  "predictions_sha256": "e2e47600dfc11cc50bac064dbac7c5dc0b02ed01d08c82472e379d8bd6e97131",
+  "score_sha256": "db5cb323ed011e2ed32148b37307a2220e8760c1e16bdb638777f175fd915d59",
+  "metadata_sha256": "e3dbd288037f14849ca713f92468adaef67f859a3f2f520fffc2b190a82054ef"
+}

@@ -1,0 +1,74 @@
+{
+  "archive_validation": {
+    "mind2web_images.zip": {
+      "bytes": 1202026857,
+      "sha256": "8d059cc4da2a6e8ad3c29057e5496d224733e653766a9984e00f4473ff950550",
+      "unzip_test": "PASS"
+    },
+    "mind2web_annots.zip": {
+      "bytes": 2561707,
+      "sha256": "7723050a12174189d4d676bd2c71a707c6602570551116f99bcb076fd6e9a0a7",
+      "unzip_test": "PASS"
+    }
+  },
+  "annotation_files": {
+    "mind2web_data_train.json": {
+      "bytes": 7286875,
+      "sha256": "2f17d648f68f1b54c52c2b78f7b66ae4c852dde93dce3617c83db4e98acd7d85",
+      "episodes": 1009,
+      "actions": 7775,
+      "bbox_actions": 7725
+    },
+    "mind2web_data_test_task.json": {
+      "bytes": 2342018,
+      "sha256": "310200fcfe0c3004acc0d19621e50b2801811291bf8e95f641ed6ddc2e1bb906",
+      "episodes": 252,
+      "actions": 2094,
+      "bbox_actions": 2080
+    },
+    "mind2web_data_test_website.json": {
+      "bytes": 1021943,
+      "sha256": "d6e67963cb04012c95dc61f92192a6b148896e8dbe15bfee630e1b2e81495d20",
+      "episodes": 177,
+      "actions": 1373,
+      "bbox_actions": 1371
+    },
+    "mind2web_data_test_domain.json": {
+      "bytes": 5034674,
+      "sha256": "f8384c6f40ab10be1a368d32d44acd9caafced95101201a3684ba431342b0f10",
+      "episodes": 912,
+      "actions": 5911,
+      "bbox_actions": 5817
+    }
+  },
+  "images": {
+    "archive_directory_name_preserved": "data/ming2web_images",
+    "jpg_files": 16993,
+    "total_bytes": 1477031677,
+    "corrupt_files": 0,
+    "missing_for_all_bbox_actions": 0,
+    "typical_dimensions": [1280, 720],
+    "maximum_width": 11804,
+    "maximum_height": 6639,
+    "maximum_pixel_area": 78366756
+  },
+  "gate1_cross_task_coverage": {
+    "episodes": 252,
+    "actions": 2094,
+    "excluded_no_bbox": 14,
+    "scoreable_bbox_actions": 2080,
+    "native_predictions": 2079,
+    "native_unique_images": 2079,
+    "native_duplicates": 0,
+    "native_silently_skipped": 1,
+    "corrective_replay_predictions": 1,
+    "corrected_predictions": 2080,
+    "missing_after_correction": 0,
+    "diagnosed_skip": {
+      "image": "14d50319-3f81-4aa6-8ee8-d1b66e4d5d64-ed754c64-be86-4e85-a728-467d1d038af4.jpg",
+      "operation": "TYPE",
+      "value": "32\" curved monitor",
+      "cause": "Unescaped quote made the upstream string-form GT invalid for ast.literal_eval."
+    }
+  }
+}

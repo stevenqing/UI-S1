@@ -1,0 +1,50 @@
+{
+  "baseline": "ShowUI-ZS",
+  "benchmark": "Mind2Web",
+  "split": "test_task",
+  "source": {
+    "repository": "https://github.com/showlab/ShowUI.git",
+    "revision": "21ed7cb24be0cc877bb8352ee34d58a9aea2c876",
+    "clean": true
+  },
+  "model": {
+    "repository": "showlab/ShowUI-2B",
+    "revision": "cabec4fcc48d15ffd3efe0b33ea9bc7d41509d60",
+    "weight_bytes": 4418202778,
+    "weight_sha256": "68080df785764e98976eb9cc93a07c6c69cf8a6933738496e02aef55b53d2aa3"
+  },
+  "processor": {
+    "repository": "Qwen/Qwen2-VL-2B-Instruct",
+    "revision": "895c3a49bc3fa70a340399125c650a463535e71c"
+  },
+  "data": {
+    "annotations": "/home/aiscuser/UI-S1/UI-S1/runs/mind2web/2026-07-27/data/mind2web_data_test_task.json",
+    "annotations_sha256": "310200fcfe0c3004acc0d19621e50b2801811291bf8e95f641ed6ddc2e1bb906",
+    "images": "/home/aiscuser/UI-S1/UI-S1/runs/mind2web/2026-07-27/data/ming2web_images",
+    "episodes": 252,
+    "actions": 2094,
+    "rows": 2080,
+    "metadata": "/home/aiscuser/UI-S1/UI-S1/runs/mind2web-showui/2026-07-28/data/Mind2Web/metadata/hf_test_task.json",
+    "metadata_sha256": "e3dbd288037f14849ca713f92468adaef67f859a3f2f520fffc2b190a82054ef",
+    "metadata_sha256_recomputed": "e3dbd288037f14849ca713f92468adaef67f859a3f2f520fffc2b190a82054ef"
+  },
+  "configuration": {
+    "num_history": 2,
+    "interleaved_history": "tttt",
+    "min_visual_tokens": 256,
+    "max_visual_tokens": 1344,
+    "uigraph_test": false,
+    "lm_skip_ratio": 0,
+    "max_new_tokens": 128,
+    "generation": "greedy/default released generate path",
+    "precision": "bfloat16",
+    "num_shards": 4
+  },
+  "environment": {
+    "python": "3.10.20",
+    "torch": "2.4.1+cu121",
+    "transformers": "4.49.0",
+    "cuda": "12.1",
+    "uv_lock_sha256": "281721f7e2d349c65a8fe4fa38b3a0a8444d6ffb0fdf4688bf2d1b91248392d8"
+  }
+}
