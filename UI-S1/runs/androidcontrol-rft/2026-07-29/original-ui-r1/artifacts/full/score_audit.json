@@ -1,0 +1,25 @@
+{
+  "coverage": "COMPLETE",
+  "episodes": 1543,
+  "gcs_manifest_sha256": "c74efaab9a9470be4102d667be34ef50f32f7fcc6e9cbd1a1e9088ab0f887ca3",
+  "grounding_accuracy": 0.7680331099724084,
+  "grounding_correct": 3897,
+  "grounding_total": 5074,
+  "image_manifest_sha256": "a3e891fccfeea623d17939c0feeac22979aef9c91ac16fbf44c8ad420889055d",
+  "max_pixels": 1003520,
+  "model_name": "LZXzju/Qwen2.5-VL-3B-UI-R1",
+  "model_revision": "9cc2fbb7d99ffe90c21f9cd0eb19c45380f8bb0f",
+  "model_shard_sha256": {
+    "model-00001-of-00002.safetensors": "37402717148faf8e2deebb6d2686ff079b46992879af5b51e481a683395e4caf",
+    "model-00002-of-00002.safetensors": "1cc0b2ac2e3e6500386949c3086d9fa74163160cac04c158f5696ced69c85980"
+  },
+  "predictions_sha256": "656ae66fb8501bb86e5af07cdf8bae93215ebe34e57480eba59e5899483b2579",
+  "reported_average": 0.8585971345489902,
+  "rows": 7868,
+  "source_json_sha256": "699b15d6d96b214071af85afb960106bcfcff541fd72248168c7ec02d1417fc9",
+  "source_revision": "2fe9bf00c8aae85fcedaf56eb3e2780dbfe8075e",
+  "status": "PASS",
+  "type_accuracy": 0.949161159125572,
+  "type_correct": 7468,
+  "type_total": 7868
+}

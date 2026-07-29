@@ -21,13 +21,14 @@
 
 结果来自固定 checkpoint：`KDEGroup/UI-AGILE-3B@84c28b06...`、`KDEGroup/UI-AGILE@de013669...`、`LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` 和 `ritzzai/GUI-R1@e74baccc...`。预测按四个 GPU shard 生成后严格按全局 index 合并；独立 audit 从官方 parquet、原始模型输出和固定 parser 逐行重算指标。未使用 GT output repair。
 
-## 正在运行
+## 运行状态
 
-严格串行队列继续执行：
+严格串行队列已全部完成：
 
-1. 原始 UI-R1-3B v1 selected-Low 7,868-step 独立 lane
+1. 10 条统一 7,708-step Low/High lane：全部 audit PASS
+2. 原始 UI-R1-3B v1 selected-Low 7,868-step lane：audit PASS
 
-原始 UI-R1 lane 不与统一 7,708-step lane 混报。其发布指标 `94.3 / 82.6 / 88.5` 表示 Type / click Grounding / 两者算术平均，不是 Step SR。发布代码还存在可复核的坐标矛盾：实际 slow-processor grid 为 672x1484，但 `eval_ac.py` 按 644x1484 缩放；本地 runner 同时记录两者并按发布 evaluator 计分。
+原始 UI-R1 lane 结果为 Type `94.9161`、click Grounding `76.8033`、两者算术平均 `85.8597`，不含 Step SR。发布代码存在可复核的坐标矛盾：7,744张标准截图的 slow-processor grid 为 672x1484，另外124张为 672x1456 或 700x1400，但 `eval_ac.py` 对全部样本统一按 644x1484 缩放；本地 runner 逐行记录并审计实际 grid，同时按发布 evaluator 计分。因此该结果属于 released-code controlled reproduction，不是无保留的 strict paper reproduction。
 
 ## Provenance
 
@@ -47,6 +48,7 @@
 - GUI-R1-7B Low score SHA256: `80e347852de8a2abfd0070d3e02f79f0ab25b8e1cbc077eb4df9e8b172595a1e`
 - GUI-R1-7B High predictions SHA256: `357d7c6c9cdc4110649b7799e0927181210478543ffff4b038323516db83f6df`
 - GUI-R1-7B High score SHA256: `a7c45f65ecaf98cbfd47de45c0ead6a70e09479fe18a1bb25c374eceed9f77a7`
+- Original UI-R1 predictions SHA256: `656ae66fb8501bb86e5af07cdf8bae93215ebe34e57480eba59e5899483b2579`
 - Official AndroidControl source: 20 TFRecord shards plus two split files, 49,930,349,992 bytes, all public GCS MD5 checks PASS
 - Checkpoint/data/source manifest: `artifact_manifest.json`
 - Completed score/audit: `artifacts/ui-agile-3b/low/{score,audit}.json`
