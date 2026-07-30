@@ -4,6 +4,9 @@
   "w1_results_generated": false,
   "w2_results_generated": false,
   "w4_results_generated": false,
+  "preregistration_amendments": [
+    "AMENDMENT_001_MIND2WEB_COORD_KERNEL.md"
+  ],
   "execution_gate": {
     "e5_required_status": "PASS",
     "e5_observed_status": "PENDING_INFERENCE",

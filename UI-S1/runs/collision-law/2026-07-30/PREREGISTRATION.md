@@ -29,6 +29,8 @@ This document and the files under `configs/` are committed before any Collision-
 - Accuracy weighting, smooth Mind2Web boundary kernels, continuous mode, and dev-fold temperature are ablations only.
 - Test paths must assert that no tunable kernel parameter is supplied.
 
+Amendment 001 supersedes the Mind2Web inference-kernel sentence above after trace-schema inspection proved that parsers expose points but no predicted bboxes. The GT indicator remains analysis-only; inference uses the fixed unit-square triangular kernel documented in `AMENDMENT_001_MIND2WEB_COORD_KERNEL.md`.
+
 Degeneracy tests required before W1 execution:
 
 1. `K=1` is identity.
