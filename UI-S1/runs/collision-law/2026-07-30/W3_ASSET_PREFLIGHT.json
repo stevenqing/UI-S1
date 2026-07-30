@@ -5,8 +5,12 @@
     "revision": "701bedc80b447863bd60e3318ae44f6cbbfafd78",
     "license": "apache-2.0",
     "model_card_screenspotpro": 50.1,
+    "source_readme_updated_screenspotpro": 55.5,
+    "anchor_conflict_policy": "report deltas to both; primary pinned-checkpoint card protocol",
     "source_repo": "https://github.com/Yan98/GTA1",
-    "downloaded": false
+    "source_revision": "81f0c4c2997cf6ad696d42f47c5480f4c856b73a",
+    "downloaded": true,
+    "checkpoint_index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6"
   },
   "mvp": {
     "status": "BLOCKED_SOURCE_NOT_LOCATED",
@@ -29,5 +33,15 @@
     "temperature": 0.7,
     "samples": 5,
     "implementation": "w3_baselines/selfconsistency.py"
+  },
+  "screenspot_pro": {
+    "dataset": "likaixin/ScreenSpot-Pro",
+    "dataset_revision": "210e78d3844251110bff86c95835ebd37a6930fa",
+    "source_repo": "https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding",
+    "source_revision": "dbe00114bc53a32c61c1a267786da85967710da8",
+    "annotation_rows": 1581,
+    "image_files_in_repo": 1585,
+    "metric": "predicted normalized point inside GT bbox",
+    "sanity_runner": "w3_baselines/gta1_sanity.py"
   }
 }
