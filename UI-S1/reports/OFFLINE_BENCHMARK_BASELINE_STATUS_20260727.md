@@ -371,6 +371,10 @@ Mind2Web evaluator，因此所有公共 checkpoint 结果均与论文 anchor 分
 | RFT checkpoint/data/source manifest | `runs/androidcontrol-rft/2026-07-29/artifact_manifest.json` |
 | Original UI-R1 selected-Low lane | `runs/androidcontrol-rft/2026-07-29/original-ui-r1/` |
 | AndroidControl RFT final report | `runs/androidcontrol-rft/2026-07-29/ANDROIDCONTROL_RFT_FINAL_REPORT.md` |
+| Cross-benchmark trace error-overlap analysis | `reports/BENCHMARK_ERROR_OVERLAP_ANALYSIS_20260729.md` |
+| Complementarity follow-up report | `runs/complementarity/2026-07-30/REPORT.md` |
+| AndroidControl overlap machine-readable summary | `runs/error-overlap-analysis/2026-07-29/androidcontrol_summary.json` |
+| Mind2Web visual/HTML overlap machine-readable summary | `runs/error-overlap-analysis/2026-07-29/mind2web_summary.json` |
 | Original UI-R1 score/audit | `runs/androidcontrol-rft/2026-07-29/original-ui-r1/artifacts/full/score_audit.json` |
 | Official AndroidControl GCS manifest | `runs/androidcontrol-rft/2026-07-29/data/official-gcs/official_gcs_manifest.json` |
 | TongUI AndroidControl scope/action check | `runs/androidcontrol-tongui/2026-07-29/PREFLIGHT.md` |

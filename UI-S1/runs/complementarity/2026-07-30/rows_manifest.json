@@ -1,0 +1,134 @@
+{
+  "androidcontrol": {
+    "episode_groups": 1393,
+    "group_source": "SHA256 of released High full instruction; identical goals are conservatively merged",
+    "lanes": {
+      "high/gui-r1-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 2962
+      },
+      "high/gui-r1-7b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 3466
+      },
+      "high/ui-agile-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 4517
+      },
+      "high/ui-agile-7b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 4666
+      },
+      "high/ui-r1-e-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 1764
+      },
+      "low/gui-r1-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 4385
+      },
+      "low/gui-r1-7b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 4487
+      },
+      "low/ui-agile-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 6096
+      },
+      "low/ui-agile-7b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 5978
+      },
+      "low/ui-r1-e-3b": {
+        "quarantine_rows": 58,
+        "rows": 7708,
+        "successes": 3739
+      }
+    },
+    "parameter_conflict_pairs": 58
+  },
+  "default_filter": "quarantine == false",
+  "folds_sha256": "0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec",
+  "label_provenance": "shared scoring.py; per-lane Step SR and exclusive counts matched upstream summaries",
+  "locked_input_sha256": {
+    "androidcontrol_summary.json": "5c4e9495c1b1eaaee46fad7101ef148174bb41d1cf51c5b99b4931ff2188adfb",
+    "mind2web_summary.json": "f0418b3f42806ac6026cadc7e35ad4c948128256c20294798e1e3ff21baa6609",
+    "seeclick_native.jsonl": "00bb6d7f53725b19be71e710b9b92044dca502936851dabd5275a9949aec035f",
+    "seeclick_supplement.jsonl": "832e87d9195607dd17048029c05560961bfa11a840224f0429a8a6af6b55b8c3"
+  },
+  "mind2web": {
+    "episodes": 252,
+    "lanes": {
+      "html/mindact-flan-t5-xl": {
+        "rows": 2094,
+        "successes": 1006
+      },
+      "visual/cogagent-18b": {
+        "rows": 2080,
+        "successes": 1043
+      },
+      "visual/qwen2.5-vl-3b": {
+        "rows": 2080,
+        "successes": 19
+      },
+      "visual/qwen2.5-vl-7b": {
+        "rows": 2080,
+        "successes": 114
+      },
+      "visual/seeclick-9.6b": {
+        "rows": 2080,
+        "successes": 456
+      },
+      "visual/showui-2b": {
+        "rows": 2080,
+        "successes": 377
+      },
+      "visual/tongui-32b": {
+        "rows": 2080,
+        "successes": 1082
+      },
+      "visual/tongui-3b": {
+        "rows": 2080,
+        "successes": 1019
+      },
+      "visual/tongui-7b": {
+        "rows": 2080,
+        "successes": 1101
+      },
+      "visual/ui-tars-2b": {
+        "rows": 2080,
+        "successes": 392
+      },
+      "visual/ui-tars-72b": {
+        "rows": 2080,
+        "successes": 831
+      },
+      "visual/ui-tars-7b": {
+        "rows": 2080,
+        "successes": 700
+      }
+    },
+    "website_groups": 69
+  },
+  "quarantine_semantics": "58 paired identities x 2 settings x 5 AndroidControl models",
+  "quarantine_tidy_rows": 580,
+  "row_counts": {
+    "androidcontrol/high": 38540,
+    "androidcontrol/low": 38540,
+    "mind2web/html": 2094,
+    "mind2web/visual": 22880
+  },
+  "rows": 102054,
+  "rows_parquet_sha256": "f3effb37b6979ceb8073bf7b47c80448ec9084da8991f3f93205b79f4f77c77e",
+  "schema": "bench: string\nsetting: string\nrow_id: string\nepisode_id: string\ngroup_key: string\ngroup_source: string\nmodel: string\ninstruction: string\nhistory: string\nhistory_len: int64\nimage_ref: string\nimage_width: int64\nimage_height: int64\nimage_gray_mean: double\nimage_gray_std: double\nimage_entropy: double\nimage_edge_density: double\ngt_action: string\ngt_x: double\ngt_y: double\ngt_bbox: list<item: double>\n  child 0, item: double\ngt_param: string\npred_action: string\npred_x: double\npred_y: double\npred_param: string\npred_raw: string\nparse_ok: bool\nerr_label: string\nsuccess: bool\nground_dist: double\nbbox_dist: double\nquarantine: bool",
+  "status": "PASS"
+}

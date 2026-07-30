@@ -1,0 +1,2024 @@
+{
+  "contract": {
+    "episodes": 252,
+    "identity": [
+      "annot_id",
+      "action_uid"
+    ],
+    "models": [
+      "seeclick-9.6b",
+      "showui-2b",
+      "cogagent-18b",
+      "qwen2.5-vl-3b",
+      "qwen2.5-vl-7b",
+      "tongui-3b",
+      "tongui-7b",
+      "tongui-32b",
+      "ui-tars-2b",
+      "ui-tars-7b",
+      "ui-tars-72b"
+    ],
+    "parser_policy": "each model uses its released local parser and scorer semantics",
+    "visual_rows": 2080
+  },
+  "cross_modal_overlap": {
+    "both_fail": 270,
+    "both_success": 897,
+    "combined_oracle_success": 1810,
+    "mindact_only": 109,
+    "visual_only": 804
+  },
+  "family_overlap": {
+    "CogAgent": {
+      "all_models_fail": 1037,
+      "all_models_success": 1043,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 854,
+          "all_models_success": 920,
+          "oracle_success": 920,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 78,
+          "all_models_success": 1,
+          "oracle_success": 1,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 105,
+          "all_models_success": 122,
+          "oracle_success": 122,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 181,
+        "element_miss": 678,
+        "parameter_miss": 56,
+        "parse_failure": 122
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 181,
+        "element_miss": 678,
+        "parameter_miss": 56,
+        "parse_failure": 122
+      },
+      "models": [
+        "cogagent-18b"
+      ],
+      "oracle_success": 1043,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 1037,
+        "1": 1043
+      }
+    },
+    "Qwen2.5-VL": {
+      "all_models_fail": 1958,
+      "all_models_success": 11,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 1673,
+          "all_models_success": 3,
+          "oracle_success": 101,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 79,
+          "all_models_success": 0,
+          "oracle_success": 0,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 206,
+          "all_models_success": 8,
+          "oracle_success": 21,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 91,
+        "element_miss": 132,
+        "parameter_miss": 15,
+        "parse_failure": 54,
+        "tie": 1666
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 91,
+        "element_miss": 132,
+        "parameter_miss": 15,
+        "parse_failure": 54
+      },
+      "models": [
+        "qwen2.5-vl-3b",
+        "qwen2.5-vl-7b"
+      ],
+      "oracle_success": 122,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 1958,
+        "1": 111,
+        "2": 11
+      }
+    },
+    "SeeClick": {
+      "all_models_fail": 1624,
+      "all_models_success": 456,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 1351,
+          "all_models_success": 423,
+          "oracle_success": 423,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 72,
+          "all_models_success": 7,
+          "oracle_success": 7,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 201,
+          "all_models_success": 26,
+          "oracle_success": 26,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 252,
+        "element_miss": 1340,
+        "parameter_miss": 32
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 252,
+        "element_miss": 1340,
+        "parameter_miss": 32
+      },
+      "models": [
+        "seeclick-9.6b"
+      ],
+      "oracle_success": 456,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 1624,
+        "1": 456
+      }
+    },
+    "ShowUI": {
+      "all_models_fail": 1703,
+      "all_models_success": 377,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 1397,
+          "all_models_success": 377,
+          "oracle_success": 377,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 79,
+          "all_models_success": 0,
+          "oracle_success": 0,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 227,
+          "all_models_success": 0,
+          "oracle_success": 0,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 258,
+        "element_miss": 1346,
+        "parameter_miss": 1,
+        "unsupported_action": 98
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 258,
+        "element_miss": 1346,
+        "parameter_miss": 1,
+        "unsupported_action": 98
+      },
+      "models": [
+        "showui-2b"
+      ],
+      "oracle_success": 377,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 1703,
+        "1": 377
+      }
+    },
+    "TongUI": {
+      "all_models_fail": 674,
+      "all_models_success": 707,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 545,
+          "all_models_success": 619,
+          "oracle_success": 1229,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 58,
+          "all_models_success": 2,
+          "oracle_success": 21,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 71,
+          "all_models_success": 86,
+          "oracle_success": 156,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 151,
+        "element_miss": 491,
+        "parameter_miss": 31,
+        "tie": 1
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 109,
+        "element_miss": 443,
+        "parameter_miss": 14
+      },
+      "models": [
+        "tongui-3b",
+        "tongui-7b",
+        "tongui-32b"
+      ],
+      "oracle_success": 1406,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 674,
+        "1": 317,
+        "2": 382,
+        "3": 707
+      }
+    },
+    "UI-TARS": {
+      "all_models_fail": 1023,
+      "all_models_success": 247,
+      "by_gt_action": {
+        "CLICK": {
+          "all_models_fail": 717,
+          "all_models_success": 247,
+          "oracle_success": 1057,
+          "rows": 1774
+        },
+        "SELECT": {
+          "all_models_fail": 79,
+          "all_models_success": 0,
+          "oracle_success": 0,
+          "rows": 79
+        },
+        "TYPE": {
+          "all_models_fail": 227,
+          "all_models_success": 0,
+          "oracle_success": 0,
+          "rows": 227
+        }
+      },
+      "hard_core_dominant_error_type": {
+        "action_mismatch": 291,
+        "element_miss": 635,
+        "missing_position": 5,
+        "parameter_miss": 1,
+        "parse_failure": 89,
+        "tie": 2
+      },
+      "hard_core_unanimous_error_type": {
+        "action_mismatch": 213,
+        "element_miss": 452,
+        "parse_failure": 14
+      },
+      "models": [
+        "ui-tars-2b",
+        "ui-tars-7b",
+        "ui-tars-72b"
+      ],
+      "oracle_success": 1057,
+      "rows": 2080,
+      "success_count_histogram": {
+        "0": 1023,
+        "1": 438,
+        "2": 372,
+        "3": 247
+      }
+    }
+  },
+  "learnable_pools": {
+    "best_single_model": "tongui-7b",
+    "best_single_successes": 1101,
+    "consensus_hard_count": 379,
+    "consensus_hard_examples": [
+      {
+        "action_uid": "0b5f2213-5eef-4cb0-b67b-16bb398e5285",
+        "annot_id": "8f6261cf-d665-4e61-93af-f50f0d366245",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "90ebffd6-9359-4651-9b33-c255f506e5d2",
+        "annot_id": "8f6261cf-d665-4e61-93af-f50f0d366245",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "6c7246d1-305f-4da9-bd7d-923bef313d26",
+        "annot_id": "8f6261cf-d665-4e61-93af-f50f0d366245",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "4405d277-6aef-4153-9c2a-1cb19ed836a6",
+        "annot_id": "8f6261cf-d665-4e61-93af-f50f0d366245",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "8f638f7b-76b3-4b73-8f0b-61f2c7ba15d7",
+        "annot_id": "9c3cba90-742a-4f3b-a2e7-767b565fae96",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "b75d116f-b23b-43ce-ad65-583eb5e1f545",
+        "annot_id": "9c3cba90-742a-4f3b-a2e7-767b565fae96",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "2909fa32-2f85-49ed-aae2-8e7d034fa659",
+        "annot_id": "9c3cba90-742a-4f3b-a2e7-767b565fae96",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "5a014915-42f1-4c39-a61e-447b5480e8c4",
+        "annot_id": "1d73ad40-f7f8-435e-a83d-8b38534427fd",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "8efc281a-28cb-4021-9682-9402c981bf0a",
+        "annot_id": "1d73ad40-f7f8-435e-a83d-8b38534427fd",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "a326bdc3-5d9a-4174-a0b9-61f65c7ebb53",
+        "annot_id": "91695df8-f256-47c9-8c37-06e8d0fc758f",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "cf0f8c98-0750-4609-a9e0-8a9349e7c591",
+        "annot_id": "923fd4e0-1862-45b0-9bba-d57b956844da",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "336b6101-09a9-4f4c-b5f5-f975bef82baf",
+        "annot_id": "923fd4e0-1862-45b0-9bba-d57b956844da",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "6e9e7839-beb7-4b78-bb48-f68a6167422b",
+        "annot_id": "923fd4e0-1862-45b0-9bba-d57b956844da",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "badafad4-f062-43e6-9d7e-e48211537610",
+        "annot_id": "923fd4e0-1862-45b0-9bba-d57b956844da",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "1a0d2673-9a06-4b00-8623-d56f8b847a3c",
+        "annot_id": "923fd4e0-1862-45b0-9bba-d57b956844da",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "e163fff0-384e-4892-ada9-5dd4ca982b30",
+        "annot_id": "9223f1b4-43ad-4636-9541-99ff9e6ad918",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "9e9d839b-645c-4dc2-b821-14098c653005",
+        "annot_id": "9223f1b4-43ad-4636-9541-99ff9e6ad918",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "c21aa18b-a3e6-44f9-a068-9169f5483c81",
+        "annot_id": "9223f1b4-43ad-4636-9541-99ff9e6ad918",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "d8211143-dd20-476d-ad16-060ac1dc6786",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "64e3be93-1f9e-46dc-9f0c-3800f211b510",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "849dfff1-8b78-411f-9965-e613f25c3579",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "dc0f2f02-fbba-4026-ac41-18846b18dae5",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "4c5f16f2-d081-432b-b1bf-0548734d1823",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "785f1d35-1819-4359-ab52-2fc28c38331a",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "2a214570-f725-478e-b1c1-7c72b53df487",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "050bde66-16bb-4c60-947a-d99b4f0dbd44",
+        "annot_id": "a52fcf7a-50aa-4256-8796-654b3dc3adac",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "5c124329-b3c2-4c6b-bc9c-c8e2b4bcfd06",
+        "annot_id": "a4f3beb3-422a-4049-8d17-44eade56fed1",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "fec52a16-1890-4ad5-9282-14b99962504f",
+        "annot_id": "a4f3beb3-422a-4049-8d17-44eade56fed1",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "99d9029f-f178-462a-a5ad-2bdce271960a",
+        "annot_id": "a4f3beb3-422a-4049-8d17-44eade56fed1",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "62c8edb4-1cad-440c-98da-98c1127a4c4b",
+        "annot_id": "b59b1997-884f-42f0-b083-fc93d6ce64fe",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "b2fca236-194f-4afc-8d41-58037a33b1f0",
+        "annot_id": "b59b1997-884f-42f0-b083-fc93d6ce64fe",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "30f68290-b395-4cef-9a53-6229262fe58e",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "db4dde08-4682-47ff-97bd-a9cc60958439",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "28bdc9b9-eee4-49e6-9176-6b6bba7e9180",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "b718c17e-47a8-4fc7-be9c-5d997396114e",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "c5749a12-4795-4011-96ad-60b2180822e1",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "a6716684-ef90-48f5-a449-3eb37e6a3946",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "3c2d8d1c-06a7-49f2-8403-48035cb50b20",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "1f737dd7-c703-401f-b5e2-9be214b6fae5",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "7f4abe6f-6e45-441a-bd69-19e7aae8dd55",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "cb582ec3-d3cc-4e1c-8d82-2e03b07d52aa",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "32eae713-fe74-4a37-bccb-3f8ede0ebb40",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "a1fd2d0a-8656-4f7e-a305-24cdb85dd3e6",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "6d5fb20d-7e7e-4719-b0e9-d595f62d3af3",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "c4a79a83-3d16-483b-9bb7-9c87c4fa6458",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "9d91f460-dc2a-4676-a6af-11fbc8954a8b",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "ddb474e6-a61d-4844-a138-5c9f5c7f4fde",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "ca3984bf-6dc5-4f17-b16d-e1be1401cb18",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "6157313b-c9b5-48db-9508-4caaebb0d2bd",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "30bf530a-57b0-4f81-82a3-aa8a1ac9c544",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "1d3159ad-107a-4dd8-84a8-983b8d83b1f7",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "2404da3a-9347-40ad-9752-dd4bce3d6af1",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "cccaa857-cde8-47e0-8f1d-a9ed2ea20ddf",
+        "annot_id": "e483a49f-029d-446c-892c-c56b92fc463b",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "ed754c64-be86-4e85-a728-467d1d038af4",
+        "annot_id": "14d50319-3f81-4aa6-8ee8-d1b66e4d5d64",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "2d2fbb0b-2597-4c05-b224-6d9753782325",
+        "annot_id": "14d50319-3f81-4aa6-8ee8-d1b66e4d5d64",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "85788dc3-a02c-4122-ba19-3e10bd203588",
+        "annot_id": "c52fcdf7-1f23-4074-91bb-1a121af02a80",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "e12e57cd-5bc0-49a9-bb32-4c498ca61720",
+        "annot_id": "c52fcdf7-1f23-4074-91bb-1a121af02a80",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "998eb988-dad8-4083-b244-670df93c0e5d",
+        "annot_id": "c52fcdf7-1f23-4074-91bb-1a121af02a80",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "2c54cb02-2e79-4489-8773-3390776d51d8",
+        "annot_id": "c52fcdf7-1f23-4074-91bb-1a121af02a80",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "3c91bb95-67b2-4c34-aeb3-b53d97909e74",
+        "annot_id": "453ebdd8-0989-455e-87ba-ebad183c0a04",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "6cc44ef8-ed8e-424a-b1d9-3857620e9a91",
+        "annot_id": "453ebdd8-0989-455e-87ba-ebad183c0a04",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "df83ec49-e747-495e-8ca9-1946fbd0f32b",
+        "annot_id": "4b8fb0aa-7d7c-4a22-bfd5-f09316a050c3",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "734eb23d-eeee-437d-9c9a-1f702184e18d",
+        "annot_id": "d6545454-33e8-4a35-988e-fa6cc0eb5873",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "acd425d7-f9ad-4ed0-81c4-eff60c21fd48",
+        "annot_id": "81b4816a-9107-4951-ae3a-6587f28b49e8",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "9da529be-02a6-45c3-bbfe-cabeec3437f7",
+        "annot_id": "105d3ad2-9a1b-4eef-9215-30d432a47e73",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "83ad9cf1-23fb-42a4-a121-3f2307ef92fc",
+        "annot_id": "105d3ad2-9a1b-4eef-9215-30d432a47e73",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "d5b0fb66-e3bc-4687-9a58-ff7790e4e752",
+        "annot_id": "aecaba3f-5ba7-44ba-8c05-e06c5d39a3c3",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "d48939dd-a890-4a66-b079-494ae461268a",
+        "annot_id": "c094948f-afc6-415c-968a-9e105e2db118",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "8538e479-4847-4097-b24b-b62624c29f27",
+        "annot_id": "c094948f-afc6-415c-968a-9e105e2db118",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "bf6594ff-0bc4-455c-8dfd-20dbfc6f402e",
+        "annot_id": "c094948f-afc6-415c-968a-9e105e2db118",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "db885a86-bec5-4994-aa31-f11743c16993",
+        "annot_id": "2daa15a5-649e-43fa-912f-00111b163fb6",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "aceb910a-6141-4ed9-85d0-4076ac2ba7de",
+        "annot_id": "2daa15a5-649e-43fa-912f-00111b163fb6",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "e80e011c-4004-4152-b177-ba748c3c9b7f",
+        "annot_id": "2daa15a5-649e-43fa-912f-00111b163fb6",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "b1c6fca2-1aae-4d7e-8c6b-d96707c5e0ef",
+        "annot_id": "691c18cc-b1ad-44e5-a506-584198162ae1",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "c8c6c651-c90a-4bb3-8bd8-11ff25c7fd57",
+        "annot_id": "691c18cc-b1ad-44e5-a506-584198162ae1",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "747ace4e-d903-4608-9cca-bc6f3fa28d99",
+        "annot_id": "790ba0ec-4e7d-4df0-ac86-ea52b3a73532",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "8a3d7a46-5e17-404f-945d-b1cb79565b9b",
+        "annot_id": "790ba0ec-4e7d-4df0-ac86-ea52b3a73532",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "da8eff8e-1bb8-40ce-b226-2b4f45c8c5ee",
+        "annot_id": "8dcf6423-262a-439b-9ee7-279a920468fa",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "a4e30a1f-846d-49e4-9a56-6405f7e11ca3",
+        "annot_id": "6bf5cdf6-abc8-4425-b813-1a0b51ed16bb",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "c4a23ff1-31e7-43f1-aba4-97f4352b113f",
+        "annot_id": "6bf5cdf6-abc8-4425-b813-1a0b51ed16bb",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "4a2a53cf-b329-4f6a-a437-10f585153fda",
+        "annot_id": "7dfdeddd-b449-44cb-a0b0-1fde889219e2",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "7c965a35-84fb-431e-8ee2-56afeea3dd90",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "4a3acad0-bb31-4ebd-8004-0ccfb39bc4ee",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "b212cc47-4c92-43c5-8d51-e816753fad85",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "ad9ce9c9-0a15-4d67-a863-edee825db98b",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "045334c2-4147-4d2f-a7a3-f2624df21651",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "14a75133-27b4-47fb-ac61-17ba86d6cc35",
+        "annot_id": "94f88670-09a4-4926-9353-f5eed2d81c01",
+        "gt_action": "SELECT",
+        "instruction": null
+      },
+      {
+        "action_uid": "d29d8e6c-39fb-404e-bee4-c61a7d470cad",
+        "annot_id": "ef3a7151-b9cd-4ddb-aa76-e7e66815c23d",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "2c4f32a9-5885-4cb6-bfa3-7ffddb544c00",
+        "annot_id": "b674adf9-8950-4d27-b888-b789ccd49479",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "d2ccba96-cecb-46a1-9895-61498de5b918",
+        "annot_id": "02aaea66-b7f4-4fac-8849-92480bf9b542",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "a84eee51-611d-4186-943c-06fedeb5eeec",
+        "annot_id": "19b955ba-fdcd-4345-b33a-fc6a88b5a85d",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "43552357-7f02-496c-bb84-40f231ffd85f",
+        "annot_id": "19b955ba-fdcd-4345-b33a-fc6a88b5a85d",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "3e6f059f-4119-4f8c-8e8d-d4e34f3669c3",
+        "annot_id": "374f69aa-bbd8-4202-9026-afc84f197421",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "433aedb2-1431-4a82-abf3-5c191ca54bfc",
+        "annot_id": "e37f9fa1-70bc-4f55-86c4-8b7593e8fb48",
+        "gt_action": "TYPE",
+        "instruction": null
+      },
+      {
+        "action_uid": "233a7e50-b9ea-407c-9db3-e13cc4a6077a",
+        "annot_id": "e37f9fa1-70bc-4f55-86c4-8b7593e8fb48",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "6d1dd6a6-4982-4c2a-8e5b-f4f3bdbb1390",
+        "annot_id": "e37f9fa1-70bc-4f55-86c4-8b7593e8fb48",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "9ae68121-7472-4584-b9bb-2b32c4ccea59",
+        "annot_id": "e37f9fa1-70bc-4f55-86c4-8b7593e8fb48",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "29375e57-2e90-44c8-b388-ffeb2d5d86c3",
+        "annot_id": "e37f9fa1-70bc-4f55-86c4-8b7593e8fb48",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "d47ed611-c128-4901-a889-d61ff45df36d",
+        "annot_id": "4dceb921-f7ff-4069-b860-47cf663072ee",
+        "gt_action": "CLICK",
+        "instruction": null
+      },
+      {
+        "action_uid": "81c586b3-5753-43c5-a04c-32810bf64d8e",
+        "annot_id": "01c6e863-be94-4c6b-b9c1-55c203332f50",
+        "gt_action": "CLICK",
+        "instruction": null
+      }
+    ],
+    "model_disagreement_count": 1701,
+    "oracle_gain_over_best": 600,
+    "oracle_successes": 1701
+  },
+  "mindact_html": {
+    "coverage": 2094,
+    "evaluator_parity": "PASS",
+    "full_metrics": {
+      "action_f1": 0.7301437154589017,
+      "element_acc": 0.5229226361031518,
+      "step_acc": 0.4804202483285578
+    },
+    "non_visual_actions": 14,
+    "shared_error_type_counts": {
+      "action_mismatch": 513,
+      "element_miss": 486,
+      "parameter_miss": 75,
+      "success": 1006
+    },
+    "shared_metrics": {
+      "element_accuracy": 0.5264423076923077,
+      "operation_f1": 0.735058144312952,
+      "step_success": 0.48365384615384616
+    },
+    "shared_visual_identities": 2080
+  },
+  "models": {
+    "cogagent-18b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 52,
+        "at_most_0.02": 31,
+        "over_0.05": 595
+      },
+      "error_type_counts": {
+        "action_mismatch": 181,
+        "element_miss": 678,
+        "parameter_miss": 56,
+        "parse_failure": 122,
+        "success": 1043
+      },
+      "evaluator_parity": "PASS",
+      "family": "CogAgent",
+      "metrics": {
+        "element_accuracy_micro": 0.5283653846153846,
+        "operation_f1_micro": 0.8385878704628704,
+        "parse_success": 1958,
+        "step_success_micro": 0.5014423076923077
+      }
+    },
+    "qwen2.5-vl-3b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 14,
+        "at_most_0.02": 10,
+        "over_0.05": 182
+      },
+      "error_type_counts": {
+        "action_mismatch": 508,
+        "element_miss": 206,
+        "parameter_miss": 59,
+        "parse_failure": 459,
+        "success": 19,
+        "unsupported_action": 829
+      },
+      "evaluator_parity": "PASS",
+      "family": "Qwen2.5-VL",
+      "metrics": {
+        "element_accuracy_micro": 0.021153846153846155,
+        "operation_f1_micro": 0.12373546044598677,
+        "parse_success": 1621,
+        "step_success_micro": 0.009134615384615385
+      }
+    },
+    "qwen2.5-vl-7b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 118,
+        "at_most_0.02": 77,
+        "over_0.05": 1163
+      },
+      "error_type_counts": {
+        "action_mismatch": 333,
+        "element_miss": 1358,
+        "parameter_miss": 39,
+        "parse_failure": 235,
+        "success": 114,
+        "unsupported_action": 1
+      },
+      "evaluator_parity": "PASS",
+      "family": "Qwen2.5-VL",
+      "metrics": {
+        "element_accuracy_micro": 0.06778846153846153,
+        "operation_f1_micro": 0.7175292736110044,
+        "parse_success": 1845,
+        "step_success_micro": 0.05480769230769231
+      }
+    },
+    "seeclick-9.6b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 0,
+        "at_most_0.02": 0,
+        "over_0.05": 0
+      },
+      "error_type_counts": {
+        "action_mismatch": 252,
+        "element_miss": 1340,
+        "parameter_miss": 32,
+        "success": 456
+      },
+      "evaluator_parity": "PASS",
+      "family": "SeeClick",
+      "metrics": {
+        "element_accuracy_micro": 0.24278846153846154,
+        "operation_f1_micro": 0.8719860347985349,
+        "parse_success": 2080,
+        "step_success_micro": 0.21923076923076923
+      }
+    },
+    "showui-2b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 94,
+        "at_most_0.02": 74,
+        "over_0.05": 1178
+      },
+      "error_type_counts": {
+        "action_mismatch": 258,
+        "element_miss": 1346,
+        "parameter_miss": 1,
+        "success": 377,
+        "unsupported_action": 98
+      },
+      "evaluator_parity": "PASS",
+      "family": "ShowUI",
+      "metrics": {
+        "element_accuracy_micro": 0.20865384615384616,
+        "operation_f1_micro": 0.8286057692307692,
+        "parse_success": 2080,
+        "step_success_micro": 0.18125
+      }
+    },
+    "tongui-32b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 91,
+        "at_most_0.02": 40,
+        "over_0.05": 627
+      },
+      "error_type_counts": {
+        "action_mismatch": 205,
+        "element_miss": 758,
+        "parameter_miss": 34,
+        "parse_failure": 1,
+        "success": 1082
+      },
+      "evaluator_parity": "PASS",
+      "family": "TongUI",
+      "metrics": {
+        "element_accuracy_micro": 0.5644230769230769,
+        "operation_f1_micro": 0.8947347334682861,
+        "parse_success": 2079,
+        "step_success_micro": 0.5201923076923077
+      }
+    },
+    "tongui-3b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 71,
+        "at_most_0.02": 74,
+        "over_0.05": 658
+      },
+      "error_type_counts": {
+        "action_mismatch": 209,
+        "element_miss": 803,
+        "parameter_miss": 49,
+        "success": 1019
+      },
+      "evaluator_parity": "PASS",
+      "family": "TongUI",
+      "metrics": {
+        "element_accuracy_micro": 0.5360576923076923,
+        "operation_f1_micro": 0.88918303370606,
+        "parse_success": 2080,
+        "step_success_micro": 0.48990384615384613
+      }
+    },
+    "tongui-7b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 64,
+        "at_most_0.02": 61,
+        "over_0.05": 589
+      },
+      "error_type_counts": {
+        "action_mismatch": 220,
+        "element_miss": 714,
+        "parameter_miss": 44,
+        "parse_failure": 1,
+        "success": 1101
+      },
+      "evaluator_parity": "PASS",
+      "family": "TongUI",
+      "metrics": {
+        "element_accuracy_micro": 0.5769230769230769,
+        "operation_f1_micro": 0.88512053370606,
+        "parse_success": 2079,
+        "step_success_micro": 0.5293269230769231
+      }
+    },
+    "ui-tars-2b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 55,
+        "at_most_0.02": 14,
+        "over_0.05": 894
+      },
+      "error_type_counts": {
+        "action_mismatch": 265,
+        "element_miss": 963,
+        "parse_failure": 460,
+        "success": 392
+      },
+      "evaluator_parity": "PASS",
+      "family": "UI-TARS",
+      "metrics": {
+        "element_accuracy_micro": 0.23846153846153847,
+        "operation_f1_micro": 0.6514423076923077,
+        "parse_success": 1620,
+        "step_success_micro": 0.18846153846153846
+      }
+    },
+    "ui-tars-72b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 56,
+        "at_most_0.02": 26,
+        "over_0.05": 744
+      },
+      "error_type_counts": {
+        "action_mismatch": 291,
+        "element_miss": 826,
+        "missing_position": 12,
+        "parameter_miss": 2,
+        "parse_failure": 118,
+        "success": 831
+      },
+      "evaluator_parity": "PASS",
+      "family": "UI-TARS",
+      "metrics": {
+        "element_accuracy_micro": 0.48028846153846155,
+        "operation_f1_micro": 0.8029166666666666,
+        "parse_success": 1962,
+        "step_success_micro": 0.3995192307692308
+      }
+    },
+    "ui-tars-7b": {
+      "element_miss_distance": {
+        "0.02_to_0.05": 57,
+        "at_most_0.02": 20,
+        "over_0.05": 942
+      },
+      "error_type_counts": {
+        "action_mismatch": 288,
+        "element_miss": 1019,
+        "missing_position": 34,
+        "parameter_miss": 8,
+        "parse_failure": 31,
+        "success": 700
+      },
+      "evaluator_parity": "PASS",
+      "family": "UI-TARS",
+      "metrics": {
+        "element_accuracy_micro": 0.39326923076923076,
+        "operation_f1_micro": 0.8448901098901099,
+        "parse_success": 2049,
+        "step_success_micro": 0.33653846153846156
+      }
+    }
+  },
+  "overlap": {
+    "all_models_fail": 379,
+    "all_models_success": 0,
+    "by_gt_action": {
+      "CLICK": {
+        "all_models_fail": 287,
+        "all_models_success": 0,
+        "oracle_success": 1487,
+        "rows": 1774
+      },
+      "SELECT": {
+        "all_models_fail": 53,
+        "all_models_success": 0,
+        "oracle_success": 26,
+        "rows": 79
+      },
+      "TYPE": {
+        "all_models_fail": 39,
+        "all_models_success": 0,
+        "oracle_success": 188,
+        "rows": 227
+      }
+    },
+    "hard_core_dominant_error_type": {
+      "action_mismatch": 84,
+      "element_miss": 281,
+      "parameter_miss": 5,
+      "tie": 9
+    },
+    "hard_core_unanimous_error_type": {
+      "action_mismatch": 2,
+      "element_miss": 5
+    },
+    "models": [
+      "seeclick-9.6b",
+      "showui-2b",
+      "cogagent-18b",
+      "qwen2.5-vl-3b",
+      "qwen2.5-vl-7b",
+      "tongui-3b",
+      "tongui-7b",
+      "tongui-32b",
+      "ui-tars-2b",
+      "ui-tars-7b",
+      "ui-tars-72b"
+    ],
+    "oracle_success": 1701,
+    "pairwise_failure_overlap": [
+      {
+        "intersection": 1436,
+        "jaccard": 0.7593865679534638,
+        "left": "seeclick-9.6b",
+        "right": "showui-2b",
+        "same_error_type": 1283,
+        "same_error_type_rate_within_intersection": 0.8934540389972145,
+        "shared_error_type_counts": {
+          "action_mismatch": 185,
+          "element_miss": 1098
+        }
+      },
+      {
+        "intersection": 904,
+        "jaccard": 0.514513375071144,
+        "left": "seeclick-9.6b",
+        "right": "cogagent-18b",
+        "same_error_type": 674,
+        "same_error_type_rate_within_intersection": 0.745575221238938,
+        "shared_error_type_counts": {
+          "action_mismatch": 81,
+          "element_miss": 584,
+          "parameter_miss": 9
+        }
+      },
+      {
+        "intersection": 1612,
+        "jaccard": 0.7776169802219006,
+        "left": "seeclick-9.6b",
+        "right": "qwen2.5-vl-3b",
+        "same_error_type": 158,
+        "same_error_type_rate_within_intersection": 0.09801488833746898,
+        "shared_error_type_counts": {
+          "action_mismatch": 50,
+          "element_miss": 98,
+          "parameter_miss": 10
+        }
+      },
+      {
+        "intersection": 1558,
+        "jaccard": 0.7667322834645669,
+        "left": "seeclick-9.6b",
+        "right": "qwen2.5-vl-7b",
+        "same_error_type": 1160,
+        "same_error_type_rate_within_intersection": 0.7445442875481386,
+        "shared_error_type_counts": {
+          "action_mismatch": 146,
+          "element_miss": 1008,
+          "parameter_miss": 6
+        }
+      },
+      {
+        "intersection": 950,
+        "jaccard": 0.547550432276657,
+        "left": "seeclick-9.6b",
+        "right": "tongui-3b",
+        "same_error_type": 824,
+        "same_error_type_rate_within_intersection": 0.8673684210526316,
+        "shared_error_type_counts": {
+          "action_mismatch": 116,
+          "element_miss": 693,
+          "parameter_miss": 15
+        }
+      },
+      {
+        "intersection": 886,
+        "jaccard": 0.5160163075131042,
+        "left": "seeclick-9.6b",
+        "right": "tongui-7b",
+        "same_error_type": 757,
+        "same_error_type_rate_within_intersection": 0.8544018058690744,
+        "shared_error_type_counts": {
+          "action_mismatch": 113,
+          "element_miss": 633,
+          "parameter_miss": 11
+        }
+      },
+      {
+        "intersection": 910,
+        "jaccard": 0.5315420560747663,
+        "left": "seeclick-9.6b",
+        "right": "tongui-32b",
+        "same_error_type": 808,
+        "same_error_type_rate_within_intersection": 0.8879120879120879,
+        "shared_error_type_counts": {
+          "action_mismatch": 128,
+          "element_miss": 671,
+          "parameter_miss": 9
+        }
+      },
+      {
+        "intersection": 1407,
+        "jaccard": 0.7385826771653543,
+        "left": "seeclick-9.6b",
+        "right": "ui-tars-2b",
+        "same_error_type": 933,
+        "same_error_type_rate_within_intersection": 0.6631130063965884,
+        "shared_error_type_counts": {
+          "action_mismatch": 178,
+          "element_miss": 755
+        }
+      },
+      {
+        "intersection": 1178,
+        "jaccard": 0.6451259583789705,
+        "left": "seeclick-9.6b",
+        "right": "ui-tars-7b",
+        "same_error_type": 1030,
+        "same_error_type_rate_within_intersection": 0.8743633276740238,
+        "shared_error_type_counts": {
+          "action_mismatch": 186,
+          "element_miss": 843,
+          "parameter_miss": 1
+        }
+      },
+      {
+        "intersection": 1079,
+        "jaccard": 0.6014492753623188,
+        "left": "seeclick-9.6b",
+        "right": "ui-tars-72b",
+        "same_error_type": 876,
+        "same_error_type_rate_within_intersection": 0.8118628359592215,
+        "shared_error_type_counts": {
+          "action_mismatch": 195,
+          "element_miss": 680,
+          "parameter_miss": 1
+        }
+      },
+      {
+        "intersection": 937,
+        "jaccard": 0.5196894065446478,
+        "left": "showui-2b",
+        "right": "cogagent-18b",
+        "same_error_type": 674,
+        "same_error_type_rate_within_intersection": 0.7193169690501601,
+        "shared_error_type_counts": {
+          "action_mismatch": 86,
+          "element_miss": 587,
+          "parameter_miss": 1
+        }
+      },
+      {
+        "intersection": 1688,
+        "jaccard": 0.8131021194605009,
+        "left": "showui-2b",
+        "right": "qwen2.5-vl-3b",
+        "same_error_type": 174,
+        "same_error_type_rate_within_intersection": 0.10308056872037914,
+        "shared_error_type_counts": {
+          "action_mismatch": 39,
+          "element_miss": 101,
+          "unsupported_action": 34
+        }
+      },
+      {
+        "intersection": 1628,
+        "jaccard": 0.7976482116609506,
+        "left": "showui-2b",
+        "right": "qwen2.5-vl-7b",
+        "same_error_type": 1156,
+        "same_error_type_rate_within_intersection": 0.7100737100737101,
+        "shared_error_type_counts": {
+          "action_mismatch": 148,
+          "element_miss": 1007,
+          "parameter_miss": 1
+        }
+      },
+      {
+        "intersection": 975,
+        "jaccard": 0.5449972051425377,
+        "left": "showui-2b",
+        "right": "tongui-3b",
+        "same_error_type": 808,
+        "same_error_type_rate_within_intersection": 0.8287179487179487,
+        "shared_error_type_counts": {
+          "action_mismatch": 111,
+          "element_miss": 697
+        }
+      },
+      {
+        "intersection": 903,
+        "jaccard": 0.5075885328836425,
+        "left": "showui-2b",
+        "right": "tongui-7b",
+        "same_error_type": 734,
+        "same_error_type_rate_within_intersection": 0.8128460686600222,
+        "shared_error_type_counts": {
+          "action_mismatch": 108,
+          "element_miss": 626
+        }
+      },
+      {
+        "intersection": 929,
+        "jaccard": 0.5242663656884876,
+        "left": "showui-2b",
+        "right": "tongui-32b",
+        "same_error_type": 787,
+        "same_error_type_rate_within_intersection": 0.8471474703982778,
+        "shared_error_type_counts": {
+          "action_mismatch": 119,
+          "element_miss": 668
+        }
+      },
+      {
+        "intersection": 1475,
+        "jaccard": 0.7698329853862212,
+        "left": "showui-2b",
+        "right": "ui-tars-2b",
+        "same_error_type": 1003,
+        "same_error_type_rate_within_intersection": 0.68,
+        "shared_error_type_counts": {
+          "action_mismatch": 220,
+          "element_miss": 783
+        }
+      },
+      {
+        "intersection": 1256,
+        "jaccard": 0.6874657909140668,
+        "left": "showui-2b",
+        "right": "ui-tars-7b",
+        "same_error_type": 1099,
+        "same_error_type_rate_within_intersection": 0.875,
+        "shared_error_type_counts": {
+          "action_mismatch": 218,
+          "element_miss": 881
+        }
+      },
+      {
+        "intersection": 1128,
+        "jaccard": 0.618421052631579,
+        "left": "showui-2b",
+        "right": "ui-tars-72b",
+        "same_error_type": 942,
+        "same_error_type_rate_within_intersection": 0.8351063829787234,
+        "shared_error_type_counts": {
+          "action_mismatch": 238,
+          "element_miss": 704
+        }
+      },
+      {
+        "intersection": 1030,
+        "jaccard": 0.49806576402321084,
+        "left": "cogagent-18b",
+        "right": "qwen2.5-vl-3b",
+        "same_error_type": 134,
+        "same_error_type_rate_within_intersection": 0.13009708737864079,
+        "shared_error_type_counts": {
+          "action_mismatch": 50,
+          "element_miss": 49,
+          "parameter_miss": 16,
+          "parse_failure": 19
+        }
+      },
+      {
+        "intersection": 996,
+        "jaccard": 0.4962630792227205,
+        "left": "cogagent-18b",
+        "right": "qwen2.5-vl-7b",
+        "same_error_type": 654,
+        "same_error_type_rate_within_intersection": 0.6566265060240963,
+        "shared_error_type_counts": {
+          "action_mismatch": 87,
+          "element_miss": 521,
+          "parameter_miss": 20,
+          "parse_failure": 26
+        }
+      },
+      {
+        "intersection": 698,
+        "jaccard": 0.49857142857142855,
+        "left": "cogagent-18b",
+        "right": "tongui-3b",
+        "same_error_type": 513,
+        "same_error_type_rate_within_intersection": 0.7349570200573066,
+        "shared_error_type_counts": {
+          "action_mismatch": 65,
+          "element_miss": 436,
+          "parameter_miss": 12
+        }
+      },
+      {
+        "intersection": 643,
+        "jaccard": 0.46831755280407866,
+        "left": "cogagent-18b",
+        "right": "tongui-7b",
+        "same_error_type": 471,
+        "same_error_type_rate_within_intersection": 0.7325038880248833,
+        "shared_error_type_counts": {
+          "action_mismatch": 67,
+          "element_miss": 391,
+          "parameter_miss": 13
+        }
+      },
+      {
+        "intersection": 659,
+        "jaccard": 0.4789244186046512,
+        "left": "cogagent-18b",
+        "right": "tongui-32b",
+        "same_error_type": 491,
+        "same_error_type_rate_within_intersection": 0.7450682852807283,
+        "shared_error_type_counts": {
+          "action_mismatch": 73,
+          "element_miss": 408,
+          "parameter_miss": 10
+        }
+      },
+      {
+        "intersection": 924,
+        "jaccard": 0.5130483064963909,
+        "left": "cogagent-18b",
+        "right": "ui-tars-2b",
+        "same_error_type": 491,
+        "same_error_type_rate_within_intersection": 0.5313852813852814,
+        "shared_error_type_counts": {
+          "action_mismatch": 81,
+          "element_miss": 386,
+          "parse_failure": 24
+        }
+      },
+      {
+        "intersection": 803,
+        "jaccard": 0.49752168525402723,
+        "left": "cogagent-18b",
+        "right": "ui-tars-7b",
+        "same_error_type": 579,
+        "same_error_type_rate_within_intersection": 0.7210460772104608,
+        "shared_error_type_counts": {
+          "action_mismatch": 98,
+          "element_miss": 479,
+          "parse_failure": 2
+        }
+      },
+      {
+        "intersection": 756,
+        "jaccard": 0.49411764705882355,
+        "left": "cogagent-18b",
+        "right": "ui-tars-72b",
+        "same_error_type": 505,
+        "same_error_type_rate_within_intersection": 0.667989417989418,
+        "shared_error_type_counts": {
+          "action_mismatch": 93,
+          "element_miss": 401,
+          "parse_failure": 11
+        }
+      },
+      {
+        "intersection": 1958,
+        "jaccard": 0.9463508941517641,
+        "left": "qwen2.5-vl-3b",
+        "right": "qwen2.5-vl-7b",
+        "same_error_type": 292,
+        "same_error_type_rate_within_intersection": 0.1491317671092952,
+        "shared_error_type_counts": {
+          "action_mismatch": 91,
+          "element_miss": 132,
+          "parameter_miss": 15,
+          "parse_failure": 54
+        }
+      },
+      {
+        "intersection": 1060,
+        "jaccard": 0.5140640155189137,
+        "left": "qwen2.5-vl-3b",
+        "right": "tongui-3b",
+        "same_error_type": 145,
+        "same_error_type_rate_within_intersection": 0.13679245283018868,
+        "shared_error_type_counts": {
+          "action_mismatch": 59,
+          "element_miss": 64,
+          "parameter_miss": 22
+        }
+      },
+      {
+        "intersection": 976,
+        "jaccard": 0.4728682170542636,
+        "left": "qwen2.5-vl-3b",
+        "right": "tongui-7b",
+        "same_error_type": 143,
+        "same_error_type_rate_within_intersection": 0.14651639344262296,
+        "shared_error_type_counts": {
+          "action_mismatch": 74,
+          "element_miss": 52,
+          "parameter_miss": 17
+        }
+      },
+      {
+        "intersection": 996,
+        "jaccard": 0.48279205041202133,
+        "left": "qwen2.5-vl-3b",
+        "right": "tongui-32b",
+        "same_error_type": 137,
+        "same_error_type_rate_within_intersection": 0.13755020080321284,
+        "shared_error_type_counts": {
+          "action_mismatch": 61,
+          "element_miss": 58,
+          "parameter_miss": 18
+        }
+      },
+      {
+        "intersection": 1671,
+        "jaccard": 0.8041385948026949,
+        "left": "qwen2.5-vl-3b",
+        "right": "ui-tars-2b",
+        "same_error_type": 210,
+        "same_error_type_rate_within_intersection": 0.12567324955116696,
+        "shared_error_type_counts": {
+          "action_mismatch": 34,
+          "element_miss": 67,
+          "parse_failure": 109
+        }
+      },
+      {
+        "intersection": 1367,
+        "jaccard": 0.659112825458052,
+        "left": "qwen2.5-vl-3b",
+        "right": "ui-tars-7b",
+        "same_error_type": 133,
+        "same_error_type_rate_within_intersection": 0.09729334308705194,
+        "shared_error_type_counts": {
+          "action_mismatch": 52,
+          "element_miss": 70,
+          "parameter_miss": 3,
+          "parse_failure": 8
+        }
+      },
+      {
+        "intersection": 1236,
+        "jaccard": 0.5959498553519769,
+        "left": "qwen2.5-vl-3b",
+        "right": "ui-tars-72b",
+        "same_error_type": 127,
+        "same_error_type_rate_within_intersection": 0.10275080906148867,
+        "shared_error_type_counts": {
+          "action_mismatch": 41,
+          "element_miss": 50,
+          "parameter_miss": 1,
+          "parse_failure": 35
+        }
+      },
+      {
+        "intersection": 1036,
+        "jaccard": 0.5203415369161225,
+        "left": "qwen2.5-vl-7b",
+        "right": "tongui-3b",
+        "same_error_type": 737,
+        "same_error_type_rate_within_intersection": 0.7113899613899614,
+        "shared_error_type_counts": {
+          "action_mismatch": 116,
+          "element_miss": 607,
+          "parameter_miss": 14
+        }
+      },
+      {
+        "intersection": 954,
+        "jaccard": 0.479156202913109,
+        "left": "qwen2.5-vl-7b",
+        "right": "tongui-7b",
+        "same_error_type": 679,
+        "same_error_type_rate_within_intersection": 0.7117400419287212,
+        "shared_error_type_counts": {
+          "action_mismatch": 116,
+          "element_miss": 550,
+          "parameter_miss": 13
+        }
+      },
+      {
+        "intersection": 976,
+        "jaccard": 0.4909456740442656,
+        "left": "qwen2.5-vl-7b",
+        "right": "tongui-32b",
+        "same_error_type": 707,
+        "same_error_type_rate_within_intersection": 0.7243852459016393,
+        "shared_error_type_counts": {
+          "action_mismatch": 113,
+          "element_miss": 583,
+          "parameter_miss": 11
+        }
+      },
+      {
+        "intersection": 1607,
+        "jaccard": 0.7850512945774304,
+        "left": "qwen2.5-vl-7b",
+        "right": "ui-tars-2b",
+        "same_error_type": 934,
+        "same_error_type_rate_within_intersection": 0.581207218419415,
+        "shared_error_type_counts": {
+          "action_mismatch": 145,
+          "element_miss": 735,
+          "parse_failure": 54
+        }
+      },
+      {
+        "intersection": 1315,
+        "jaccard": 0.6474643032988675,
+        "left": "qwen2.5-vl-7b",
+        "right": "ui-tars-7b",
+        "same_error_type": 923,
+        "same_error_type_rate_within_intersection": 0.7019011406844107,
+        "shared_error_type_counts": {
+          "action_mismatch": 152,
+          "element_miss": 767,
+          "parse_failure": 4
+        }
+      },
+      {
+        "intersection": 1195,
+        "jaccard": 0.5915841584158416,
+        "left": "qwen2.5-vl-7b",
+        "right": "ui-tars-72b",
+        "same_error_type": 819,
+        "same_error_type_rate_within_intersection": 0.6853556485355649,
+        "shared_error_type_counts": {
+          "action_mismatch": 162,
+          "element_miss": 626,
+          "parameter_miss": 1,
+          "parse_failure": 30
+        }
+      },
+      {
+        "intersection": 805,
+        "jaccard": 0.6518218623481782,
+        "left": "tongui-3b",
+        "right": "tongui-7b",
+        "same_error_type": 724,
+        "same_error_type_rate_within_intersection": 0.8993788819875776,
+        "shared_error_type_counts": {
+          "action_mismatch": 142,
+          "element_miss": 554,
+          "parameter_miss": 28
+        }
+      },
+      {
+        "intersection": 793,
+        "jaccard": 0.6263823064770933,
+        "left": "tongui-3b",
+        "right": "tongui-32b",
+        "same_error_type": 713,
+        "same_error_type_rate_within_intersection": 0.8991172761664565,
+        "shared_error_type_counts": {
+          "action_mismatch": 137,
+          "element_miss": 557,
+          "parameter_miss": 19
+        }
+      },
+      {
+        "intersection": 972,
+        "jaccard": 0.5469893078221723,
+        "left": "tongui-3b",
+        "right": "ui-tars-2b",
+        "same_error_type": 563,
+        "same_error_type_rate_within_intersection": 0.5792181069958847,
+        "shared_error_type_counts": {
+          "action_mismatch": 89,
+          "element_miss": 474
+        }
+      },
+      {
+        "intersection": 868,
+        "jaccard": 0.5518118245390973,
+        "left": "tongui-3b",
+        "right": "ui-tars-7b",
+        "same_error_type": 714,
+        "same_error_type_rate_within_intersection": 0.8225806451612904,
+        "shared_error_type_counts": {
+          "action_mismatch": 113,
+          "element_miss": 597,
+          "parameter_miss": 4
+        }
+      },
+      {
+        "intersection": 808,
+        "jaccard": 0.5379494007989347,
+        "left": "tongui-3b",
+        "right": "ui-tars-72b",
+        "same_error_type": 611,
+        "same_error_type_rate_within_intersection": 0.7561881188118812,
+        "shared_error_type_counts": {
+          "action_mismatch": 110,
+          "element_miss": 499,
+          "parameter_miss": 2
+        }
+      },
+      {
+        "intersection": 741,
+        "jaccard": 0.5995145631067961,
+        "left": "tongui-7b",
+        "right": "tongui-32b",
+        "same_error_type": 656,
+        "same_error_type_rate_within_intersection": 0.8852901484480432,
+        "shared_error_type_counts": {
+          "action_mismatch": 131,
+          "element_miss": 508,
+          "parameter_miss": 17
+        }
+      },
+      {
+        "intersection": 885,
+        "jaccard": 0.49663299663299665,
+        "left": "tongui-7b",
+        "right": "ui-tars-2b",
+        "same_error_type": 506,
+        "same_error_type_rate_within_intersection": 0.5717514124293785,
+        "shared_error_type_counts": {
+          "action_mismatch": 91,
+          "element_miss": 415
+        }
+      },
+      {
+        "intersection": 809,
+        "jaccard": 0.5219354838709678,
+        "left": "tongui-7b",
+        "right": "ui-tars-7b",
+        "same_error_type": 653,
+        "same_error_type_rate_within_intersection": 0.8071693448702101,
+        "shared_error_type_counts": {
+          "action_mismatch": 109,
+          "element_miss": 540,
+          "parameter_miss": 4
+        }
+      },
+      {
+        "intersection": 768,
+        "jaccard": 0.5260273972602739,
+        "left": "tongui-7b",
+        "right": "ui-tars-72b",
+        "same_error_type": 575,
+        "same_error_type_rate_within_intersection": 0.7486979166666666,
+        "shared_error_type_counts": {
+          "action_mismatch": 111,
+          "element_miss": 462,
+          "parameter_miss": 2
+        }
+      },
+      {
+        "intersection": 917,
+        "jaccard": 0.5183719615602035,
+        "left": "tongui-32b",
+        "right": "ui-tars-2b",
+        "same_error_type": 551,
+        "same_error_type_rate_within_intersection": 0.6008724100327154,
+        "shared_error_type_counts": {
+          "action_mismatch": 98,
+          "element_miss": 453
+        }
+      },
+      {
+        "intersection": 835,
+        "jaccard": 0.541153596889177,
+        "left": "tongui-32b",
+        "right": "ui-tars-7b",
+        "same_error_type": 715,
+        "same_error_type_rate_within_intersection": 0.8562874251497006,
+        "shared_error_type_counts": {
+          "action_mismatch": 129,
+          "element_miss": 581,
+          "parameter_miss": 5
+        }
+      },
+      {
+        "intersection": 788,
+        "jaccard": 0.5400959561343386,
+        "left": "tongui-32b",
+        "right": "ui-tars-72b",
+        "same_error_type": 610,
+        "same_error_type_rate_within_intersection": 0.7741116751269036,
+        "shared_error_type_counts": {
+          "action_mismatch": 120,
+          "element_miss": 488,
+          "parameter_miss": 2
+        }
+      },
+      {
+        "intersection": 1284,
+        "jaccard": 0.7197309417040358,
+        "left": "ui-tars-2b",
+        "right": "ui-tars-7b",
+        "same_error_type": 911,
+        "same_error_type_rate_within_intersection": 0.7095015576323987,
+        "shared_error_type_counts": {
+          "action_mismatch": 221,
+          "element_miss": 670,
+          "parse_failure": 20
+        }
+      },
+      {
+        "intersection": 1150,
+        "jaccard": 0.6435366536094013,
+        "left": "ui-tars-2b",
+        "right": "ui-tars-72b",
+        "same_error_type": 891,
+        "same_error_type_rate_within_intersection": 0.7747826086956522,
+        "shared_error_type_counts": {
+          "action_mismatch": 250,
+          "element_miss": 551,
+          "parse_failure": 90
+        }
+      },
+      {
+        "intersection": 1073,
+        "jaccard": 0.6895886889460154,
+        "left": "ui-tars-7b",
+        "right": "ui-tars-72b",
+        "same_error_type": 906,
+        "same_error_type_rate_within_intersection": 0.8443616029822927,
+        "shared_error_type_counts": {
+          "action_mismatch": 246,
+          "element_miss": 638,
+          "missing_position": 5,
+          "parameter_miss": 1,
+          "parse_failure": 16
+        }
+      }
+    ],
+    "rows": 2080,
+    "success_count_histogram": {
+      "0": 379,
+      "1": 269,
+      "10": 10,
+      "2": 238,
+      "3": 220,
+      "4": 248,
+      "5": 219,
+      "6": 169,
+      "7": 154,
+      "8": 116,
+      "9": 58
+    }
+  },
+  "scale_effects": {
+    "qwen2.5-vl-3b_to_qwen2.5-vl-7b": {
+      "both_fail": 1958,
+      "both_success": 11,
+      "compared": 2080,
+      "left_only": 8,
+      "net_right_gain": 95,
+      "right_only": 103
+    },
+    "tongui-3b_to_tongui-32b": {
+      "both_fail": 793,
+      "both_success": 814,
+      "compared": 2080,
+      "left_only": 205,
+      "net_right_gain": 63,
+      "right_only": 268
+    },
+    "tongui-3b_to_tongui-7b": {
+      "both_fail": 805,
+      "both_success": 845,
+      "compared": 2080,
+      "left_only": 174,
+      "net_right_gain": 82,
+      "right_only": 256
+    },
+    "tongui-7b_to_tongui-32b": {
+      "both_fail": 741,
+      "both_success": 844,
+      "compared": 2080,
+      "left_only": 257,
+      "net_right_gain": -19,
+      "right_only": 238
+    },
+    "ui-tars-2b_to_ui-tars-72b": {
+      "both_fail": 1150,
+      "both_success": 293,
+      "compared": 2080,
+      "left_only": 99,
+      "net_right_gain": 439,
+      "right_only": 538
+    },
+    "ui-tars-2b_to_ui-tars-7b": {
+      "both_fail": 1284,
+      "both_success": 296,
+      "compared": 2080,
+      "left_only": 96,
+      "net_right_gain": 308,
+      "right_only": 404
+    },
+    "ui-tars-7b_to_ui-tars-72b": {
+      "both_fail": 1073,
+      "both_success": 524,
+      "compared": 2080,
+      "left_only": 176,
+      "net_right_gain": 131,
+      "right_only": 307
+    }
+  },
+  "status": "PASS"
+}

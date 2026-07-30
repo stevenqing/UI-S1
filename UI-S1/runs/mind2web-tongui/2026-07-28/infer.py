@@ -9,6 +9,13 @@ import torch
 from torch.utils.data._utils.collate import default_collate
 
 
+PROMPT_VARIANTS = {
+    "original": "{instruction}",
+    "please_carry_out": "Please carry out the following task: {instruction}",
+    "your_objective": "Your objective is to complete this task: {instruction}",
+}
+
+
 def load_completed(path: Path) -> set[int]:
     completed = set()
     if not path.exists():
@@ -38,6 +45,8 @@ def main() -> None:
     parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--prompt-variant", choices=PROMPT_VARIANTS, default="original")
+    parser.add_argument("--max-visual-tokens", type=int, default=1344)
     args = parser.parse_args()
 
     if torch.cuda.device_count() != 1:
@@ -52,7 +61,7 @@ def main() -> None:
     processor = AutoProcessor.from_pretrained(
         args.model_dir.resolve(),
         min_pixels=256 * 28 * 28,
-        max_pixels=1344 * 28 * 28,
+        max_pixels=args.max_visual_tokens * 28 * 28,
         model_max_length=8196,
         use_fast=False,
     )
@@ -72,6 +81,10 @@ def main() -> None:
         inference=True,
         args_dict={"num_history": 2, "interleaved_history": "vtvt", "version": "v2"},
     )
+    for sample in dataset.json_data:
+        sample["task"] = PROMPT_VARIANTS[args.prompt_variant].format(
+            instruction=sample["task"]
+        )
     indices = [index for index in range(len(dataset)) if index % args.num_shards == args.shard_index]
     if args.limit is not None:
         indices = indices[: args.limit]
@@ -130,9 +143,10 @@ def main() -> None:
                 "num_history": 2,
                 "interleaved_history": "vtvt",
                 "min_visual_tokens": 256,
-                "max_visual_tokens": 1344,
                 "attention_backend": "flash_attention_2",
                 "generation": "greedy",
+                "prompt_variant": args.prompt_variant,
+                "max_visual_tokens": args.max_visual_tokens,
                 "shard_index": args.shard_index,
                 "num_shards": args.num_shards,
             }

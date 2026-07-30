@@ -1,0 +1,124 @@
+{
+  "allowed_labels": [
+    "solvable",
+    "annotation_error",
+    "partially_observable",
+    "ambiguous_instruction",
+    "evaluator_artifact"
+  ],
+  "cohen_kappa_overlap_rows": 30,
+  "instruction": "Two real annotators must fill assigned rows independently; null labels are intentional.",
+  "label_assignments": 359,
+  "overlap_sample_ids": [
+    "e4_androidcontrol_high_007",
+    "e4_androidcontrol_high_014",
+    "e4_androidcontrol_high_025",
+    "e4_androidcontrol_high_036",
+    "e4_androidcontrol_low_000",
+    "e4_androidcontrol_low_009",
+    "e4_androidcontrol_low_016",
+    "e4_androidcontrol_low_019",
+    "e4_androidcontrol_low_029",
+    "e4_androidcontrol_low_036",
+    "e4_androidcontrol_low_037",
+    "e4_androidcontrol_low_067",
+    "e4_androidcontrol_low_070",
+    "e4_androidcontrol_low_071",
+    "e4_androidcontrol_low_074",
+    "e4_androidcontrol_low_079",
+    "e4_androidcontrol_low_083",
+    "e4_androidcontrol_low_090",
+    "e4_androidcontrol_low_099",
+    "e4_mind2web_visual_008",
+    "e4_mind2web_visual_026",
+    "e4_mind2web_visual_027",
+    "e4_mind2web_visual_032",
+    "e4_mind2web_visual_037",
+    "e4_mind2web_visual_038",
+    "e4_mind2web_visual_045",
+    "e4_mind2web_visual_064",
+    "e4_mind2web_visual_068",
+    "e4_mind2web_visual_076",
+    "e4_mind2web_visual_095"
+  ],
+  "status": "READY_FOR_HUMAN_ANNOTATION",
+  "streams": {
+    "d2/select_visibility": {
+      "rows": 79,
+      "sampling": "complete census"
+    },
+    "e4/androidcontrol/high": {
+      "allocation": {
+        "action_mismatch": 27,
+        "grounding_miss": 19,
+        "parameter_miss": 4
+      },
+      "clean_hard_core": 1719,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "strata": {
+        "action_mismatch": 924,
+        "grounding_miss": 657,
+        "parameter_miss": 138
+      }
+    },
+    "e4/androidcontrol/low": {
+      "allocation": {
+        "action_mismatch": 54,
+        "grounding_miss": 29,
+        "parameter_miss": 17
+      },
+      "clean_hard_core": 953,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "strata": {
+        "action_mismatch": 519,
+        "grounding_miss": 273,
+        "parameter_miss": 161
+      }
+    },
+    "e4/cross_modal_mindact_only": {
+      "rows": 109,
+      "sampling": "complete census"
+    },
+    "e4/mind2web/visual": {
+      "allocation": {
+        "action_mismatch": 22,
+        "element_miss": 74,
+        "parameter_miss": 1,
+        "tie": 3
+      },
+      "clean_hard_core": 379,
+      "models": [
+        "cogagent-18b",
+        "qwen2.5-vl-3b",
+        "qwen2.5-vl-7b",
+        "seeclick-9.6b",
+        "showui-2b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-2b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ],
+      "strata": {
+        "action_mismatch": 84,
+        "element_miss": 281,
+        "parameter_miss": 5,
+        "tie": 9
+      }
+    }
+  },
+  "tasks": 438
+}
