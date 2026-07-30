@@ -3,7 +3,8 @@
     "gui-r1-7b/high": {
       "available_views": [
         "full",
-        "v1"
+        "v1",
+        "v4"
       ],
       "complete": false
     },

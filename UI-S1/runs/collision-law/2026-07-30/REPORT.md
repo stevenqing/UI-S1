@@ -82,7 +82,7 @@ These values are frozen inputs to P3 allocation; no W2 allocation result has bee
 
 ## E5 inheritance and W2 gate
 
-E5 was paused at the user's request. The first new cell, AndroidControl `original_768`, has four complete 1,927-row shards and a complete merged 7,708-row prediction file. Its score process was interrupted, so scoring remains pending; no inference must be repeated.
+E5 was paused at the user's request. The first new cell, AndroidControl `original_768`, has four complete 1,927-row shards and a complete merged 7,708-row prediction file. It is now scored by the shared fail-closed W2 scorer and inherited as GUI-R1-7B / AndroidControl High / `v4`; no inference was repeated. It obtains 8.78% Step SR on the 7,650 clean paired rows, versus 45.22% for `full`, exposing severe sensitivity to the 768-token deployment processor profile.
 
 Amendment 004 applies the superseding spec: independent E5 is canceled and its compatible cell is inherited as GUI-R1-7B / AndroidControl High / W2 `v4`. The remaining prompt-paraphrase E5 cells are not part of W2 and are canceled. W2's five views now provide the MDE, so W2 implementation and inference may proceed.
 
@@ -101,6 +101,8 @@ All five preregistered `full` versus `v1` cells are complete. AndroidControl val
 K1 is complete and the mechanism evidence is heterogeneous. The TongUI cell has substantially more grounding than action-type instability, and its grounding flip rate rises from 8.28% on regular elements to 12.35% on small elements and 18.06% on tiny elements. Both UI-AGILE cells satisfy the preregistered direction, while GUI-R1 High has nearly identical action and grounding flip rates and GUI-R1 Low has fewer grounding than action flips. Thus three of five cells satisfy P2 directionally, but this count is descriptive: no unregistered averaging or majority rule is introduced to convert heterogeneous cell-level tests into a global pass/fail claim.
 
 W2 `v1` is a preregistered 28-pixel border perturbation, not an exact official MVP view. Official MVP uses AGVP crops and is evaluated separately in W3 under Amendment 005.
+
+W2 noise estimation remains partial. The inherited GUI-R1 High `v4` cell is complete, while the remaining `v2`/`v3`/`v4` cells are pending. K2 and P3 therefore remain unevaluated.
 
 ## Current scientific state
 

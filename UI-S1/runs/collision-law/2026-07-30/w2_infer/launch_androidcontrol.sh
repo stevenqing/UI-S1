@@ -22,6 +22,15 @@ case "$view" in v1|v2|v3|v4) ;; *) exit 2 ;; esac
 
 cell="$artifact_root/$model/$setting/$view"
 shards="$cell/shards"
+if [[ "$model/$setting/$view" == "gui-r1-7b/high/v4" ]]; then
+  inherited="$workspace/runs/complementarity/2026-07-30/e5_artifacts/androidcontrol/original_768/predictions.jsonl"
+  [[ -f "$inherited" ]] || { echo "missing preregistered inherited v4 cell" >&2; exit 3; }
+  mkdir -p "$cell"
+  PYTHONPATH="$run_dir/.." "$python" "$run_dir/score_androidcontrol.py" \
+    --predictions "$inherited" --output "$cell/score.json" --require-complete \
+    --model "$model" --view-id "$view"
+  exit 0
+fi
 mkdir -p "$shards"
 pids=()
 for shard in 0 1 2 3; do

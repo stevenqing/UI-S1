@@ -16,6 +16,7 @@ ROOT = RUN_DIR.parents[2]
 W2_ROOT = RUN_DIR / "w2_artifacts"
 UPSTREAM_AC = ROOT / "runs/androidcontrol-rft/2026-07-29/artifacts"
 UPSTREAM_M2W_FULL = ROOT / "runs/mind2web-tongui/2026-07-28/artifacts/tongui-7b/merged/predictions.jsonl"
+INHERITED_GUI_R1_HIGH_V4 = ROOT / "runs/complementarity/2026-07-30/e5_artifacts/androidcontrol/original_768/predictions.jsonl"
 COLLISION_ROWS = RUN_DIR / "rows.parquet"
 VIEWS = ("full", "v1", "v2", "v3", "v4")
 AC_MODELS = ("gui-r1-7b", "ui-agile-7b")
@@ -59,6 +60,8 @@ def clean_ac_indices(setting: str) -> list[int]:
 def ac_prediction_path(model: str, setting: str, view: str) -> Path:
     if view == "full":
         return UPSTREAM_AC / model / setting / "predictions.jsonl"
+    if (model, setting, view) == ("gui-r1-7b", "high", "v4"):
+        return INHERITED_GUI_R1_HIGH_V4
     return W2_ROOT / "androidcontrol" / model / setting / view / "predictions.jsonl"
 
 

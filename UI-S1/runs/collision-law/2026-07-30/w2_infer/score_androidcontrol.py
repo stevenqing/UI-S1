@@ -16,16 +16,19 @@ def main():
     parser.add_argument("--predictions", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--require-complete", action="store_true")
+    parser.add_argument("--model")
+    parser.add_argument("--view-id")
     args = parser.parse_args()
     rows = [json.loads(line) for line in args.predictions.read_text().splitlines() if line.strip()]
     if args.require_complete and (len(rows) != 7708 or [row["index"] for row in rows] != list(range(7708))):
         raise ValueError("complete W2 AndroidControl scoring requires ordered indices 0..7707")
     labels = [label_android_row(row) for row in rows]
+    first = rows[0] if rows else {}
     result = {
         "status": "PASS", "coverage": "COMPLETE" if len(rows) == 7708 else "PARTIAL",
-        "rows": len(rows), "model": rows[0]["model"] if rows else None,
-        "setting": rows[0]["data_setting"] if rows else None,
-        "view_id": rows[0]["view_id"] if rows else None,
+        "rows": len(rows), "model": args.model or first.get("model") or first.get("model_name"),
+        "setting": first.get("data_setting"),
+        "view_id": args.view_id or first.get("view_id"),
         "step_successes": sum(label["step_success"] for label in labels),
         "step_sr": sum(label["step_success"] for label in labels) / len(labels),
         "action_accuracy": sum(label["action_correct"] for label in labels) / len(labels),

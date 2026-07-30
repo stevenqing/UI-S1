@@ -17,6 +17,14 @@
         "step_sr": 0.4542483660130719,
         "step_successes": 3475
       },
+      "gui-r1-7b/high/v4": {
+        "action_accuracy": 0.7145098039215686,
+        "rows": 7650,
+        "sha256": "87e428f8d433d52bd2f19ff92c52929b805e4c3400fc25cc0e2b773e36084390",
+        "source": "runs/complementarity/2026-07-30/e5_artifacts/androidcontrol/original_768/predictions.jsonl",
+        "step_sr": 0.08784313725490196,
+        "step_successes": 672
+      },
       "gui-r1-7b/low/full": {
         "action_accuracy": 0.8369934640522876,
         "rows": 7650,
@@ -86,6 +94,28 @@
           "wilson_95": [
             0.06746123893754948,
             0.08295887516221963
+          ]
+        }
+      },
+      "gui-r1-7b/high/full_to_v4": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 49,
+          "rate": 0.006405228758169935,
+          "wilson_95": [
+            0.004848646106056467,
+            0.00845728129897576
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4585,
+          "flips": 2942,
+          "gt_grounding_rows": 4605,
+          "rate": 0.6416575790621593,
+          "stable_type_rows": 4585,
+          "wilson_95": [
+            0.6276646253616699,
+            0.6554133610226834
           ]
         }
       },
@@ -186,7 +216,8 @@
       "gui-r1-7b/high": {
         "available_views": [
           "full",
-          "v1"
+          "v1",
+          "v4"
         ],
         "complete": false
       },
