@@ -15,6 +15,7 @@ RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[2]
 W2_ROOT = RUN_DIR / "w2_artifacts"
 UPSTREAM_AC = ROOT / "runs/androidcontrol-rft/2026-07-29/artifacts"
+UPSTREAM_M2W_FULL = ROOT / "runs/mind2web-tongui/2026-07-28/artifacts/tongui-7b/merged/predictions.jsonl"
 COLLISION_ROWS = RUN_DIR / "rows.parquet"
 VIEWS = ("full", "v1", "v2", "v3", "v4")
 AC_MODELS = ("gui-r1-7b", "ui-agile-7b")
@@ -180,6 +181,123 @@ def analyze_androidcontrol():
     return result
 
 
+def area_bin(area: float) -> str:
+    if area <= 0.001:
+        return "tiny"
+    if area <= 0.005:
+        return "small"
+    return "regular"
+
+
+def load_mind2web_full():
+    table = pq.read_table(
+        COLLISION_ROWS,
+        filters=[("bench", "=", "mind2web"), ("setting", "=", "visual"), ("model", "=", "tongui-7b")],
+    )
+    by_identity = {row["row_id"]: row for row in table.to_pylist()}
+    trace = read_jsonl(UPSTREAM_M2W_FULL)
+    identities = [f"{row['annot_id']}__{row['action_uid']}" for row in trace]
+    if len(by_identity) != 2080 or len(trace) != 2080 or set(by_identity) != set(identities):
+        raise ValueError("expected 2,080 TongUI full rows")
+    output = []
+    for index, identity in enumerate(identities):
+        row = by_identity[identity]
+        output.append({
+            "index": index, "row_id": row["row_id"], "pred_action": row["pred_action"],
+            "pred_x": row["pred_x"], "pred_y": row["pred_y"], "parse_ok": row["parse_ok"],
+            "element": float(row["bbox_dist"] == 0.0) if not math.isnan(row["bbox_dist"]) else 0.0,
+            "success": row["success"], "gt_element_area": row["gt_element_area"],
+        })
+    return output
+
+
+def m2w_cell_path(view: str):
+    return W2_ROOT / "mind2web" / "tongui-7b" / view / "scored_rows.jsonl"
+
+
+def summarize_m2w_cell(rows):
+    if len(rows) != 2080 or [row["index"] for row in rows] != list(range(2080)):
+        raise ValueError("W2 Mind2Web cell must contain ordered indices 0..2079")
+    return {
+        "rows": len(rows), "step_successes": sum(row["success"] for row in rows),
+        "step_sr": sum(row["success"] for row in rows) / len(rows),
+        "element_accuracy": sum(row["element"] for row in rows) / len(rows),
+        "parse_rate": sum(row["parse_ok"] for row in rows) / len(rows),
+    }
+
+
+def paired_m2w_flips(full_rows, view_rows):
+    action_flips = sum(full["pred_action"] != view["pred_action"] for full, view in zip(full_rows, view_rows))
+    stable = [(full, view) for full, view in zip(full_rows, view_rows) if full["pred_action"] == view["pred_action"]]
+    element_flips = sum(bool(full["element"]) != bool(view["element"]) for full, view in stable)
+    bins = {}
+    for name in ("tiny", "small", "regular"):
+        members = [
+            (full, view) for full, view in stable
+            if area_bin(full["gt_element_area"]) == name
+        ]
+        flips = sum(bool(full["element"]) != bool(view["element"]) for full, view in members)
+        bins[name] = {
+            "rows": len(members), "flips": flips,
+            "rate": flips / len(members) if members else None,
+            "wilson_95": wilson(flips, len(members)),
+        }
+    return {
+        "action_type": {
+            "flips": action_flips, "denominator": len(full_rows),
+            "rate": action_flips / len(full_rows), "wilson_95": wilson(action_flips, len(full_rows)),
+        },
+        "grounding_given_stable_type": {
+            "stable_type_rows": len(stable), "flips": element_flips, "denominator": len(stable),
+            "rate": element_flips / len(stable) if stable else None,
+            "wilson_95": wilson(element_flips, len(stable)), "by_gt_element_area": bins,
+        },
+    }
+
+
+def analyze_mind2web():
+    full_rows = load_mind2web_full()
+    full_summary = summarize_m2w_cell(full_rows)
+    result = {
+        "cells": {"tongui-7b/visual/full": {**full_summary, "source": "collision rows.parquet"}},
+        "full_to_view_flips": {}, "k1": {}, "noise": {},
+    }
+    scores = [full_summary["step_sr"]]
+    available = ["full"]
+    for view in VIEWS[1:]:
+        path = m2w_cell_path(view)
+        if not path.exists():
+            continue
+        rows = read_jsonl(path)
+        if len(rows) != 2080:
+            continue
+        result["cells"][f"tongui-7b/visual/{view}"] = {
+            **summarize_m2w_cell(rows), "source": str(path.relative_to(ROOT)),
+            "sha256": sha256_file(path),
+        }
+        result["full_to_view_flips"][f"tongui-7b/visual/full_to_{view}"] = paired_m2w_flips(full_rows, rows)
+        scores.append(result["cells"][f"tongui-7b/visual/{view}"]["step_sr"])
+        available.append(view)
+    noise = {"available_views": available, "complete": set(available) == set(VIEWS)}
+    if noise["complete"]:
+        noise.update({
+            "mean_step_sr": float(np.mean(scores)),
+            "sample_sd": float(np.std(scores, ddof=1)),
+            "mde": float(2 * np.std(scores, ddof=1)),
+        })
+    result["noise"]["tongui-7b/visual"] = noise
+    flip = result["full_to_view_flips"].get("tongui-7b/visual/full_to_v1")
+    if flip:
+        action_rate = flip["action_type"]["rate"]
+        grounding_rate = flip["grounding_given_stable_type"]["rate"]
+        result["k1"]["tongui-7b/visual"] = {
+            "action_flip_rate": action_rate, "grounding_flip_rate": grounding_rate,
+            "difference": grounding_rate - action_rate,
+            "prediction_satisfied": grounding_rate > action_rate,
+        }
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--flips", type=Path, required=True)
@@ -187,8 +305,15 @@ def main():
     parser.add_argument("--allocation", type=Path, required=True)
     args = parser.parse_args()
     androidcontrol = analyze_androidcontrol()
-    complete_v1 = len(androidcontrol["k1"]) == len(AC_MODELS) * len(AC_SETTINGS)
-    complete_noise = all(item["complete"] for item in androidcontrol["noise"].values())
+    mind2web = analyze_mind2web()
+    complete_v1 = (
+        len(androidcontrol["k1"]) == len(AC_MODELS) * len(AC_SETTINGS)
+        and len(mind2web["k1"]) == 1
+    )
+    complete_noise = (
+        all(item["complete"] for item in androidcontrol["noise"].values())
+        and all(item["complete"] for item in mind2web["noise"].values())
+    )
     flips = {
         "status": "PASS" if complete_v1 else "PARTIAL",
         "contract": {
@@ -197,13 +322,13 @@ def main():
             "quarantine_excluded": True,
         },
         "androidcontrol": androidcontrol,
-        "mind2web": {"status": "PENDING_INFERENCE"},
+        "mind2web": mind2web,
     }
     noise = {
         "status": "PASS" if complete_noise else "PARTIAL",
         "definition": "MDE = 2 * sample SD over full,v1,v2,v3,v4",
         "androidcontrol": androidcontrol["noise"],
-        "mind2web": {"status": "PENDING_INFERENCE"},
+        "mind2web": mind2web["noise"],
     }
     allocation = {
         "status": "PENDING_INFERENCE",
