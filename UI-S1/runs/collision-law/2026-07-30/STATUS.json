@@ -7,7 +7,8 @@
   "w4_results_generated": false,
   "preregistration_amendments": [
     "AMENDMENT_001_MIND2WEB_COORD_KERNEL.md",
-    "AMENDMENT_002_OUT_OF_DOMAIN_POINTS.md"
+    "AMENDMENT_002_OUT_OF_DOMAIN_POINTS.md",
+    "AMENDMENT_003_W1_STATISTIC_AND_A2.md"
   ],
   "execution_gate": {
     "e5_required_status": "PASS",

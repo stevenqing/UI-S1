@@ -6,6 +6,7 @@ from typing import Callable
 from pka import (
     AggregateResult,
     Prediction,
+    coordinate_density_medoid,
     coordinate_density_mode,
     pair_kernel,
     pka_joint,
@@ -116,7 +117,7 @@ def plurality_then_density(
     if action is None:
         return AggregateResult(None, None, (), 0)
     selected = [prediction for prediction in predictions if prediction.parse_ok and prediction.action == action]
-    coordinate = coordinate_density_mode(bench, selected, action) if requires_coordinate(bench, action) else None
+    coordinate = coordinate_density_medoid(bench, selected, action) if requires_coordinate(bench, action) else None
     parameter = _text_medoid(selected, action) if requires_string(bench, action) else ""
     prediction = Prediction(
         action=action,

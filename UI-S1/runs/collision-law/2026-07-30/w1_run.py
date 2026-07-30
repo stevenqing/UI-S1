@@ -231,6 +231,53 @@ def pairwise_kappa(identities, models, pivot, permutations=KAPPA_PERMUTATIONS):
     return output
 
 
+def categorical_kappa(left, right):
+    if len(left) != len(right) or not left:
+        raise ValueError("categorical kappa requires equal non-empty vectors")
+    categories = sorted(set(left) | set(right))
+    observed = sum(a == b for a, b in zip(left, right)) / len(left)
+    left_counts, right_counts = Counter(left), Counter(right)
+    expected = sum(
+        left_counts[category] / len(left) * right_counts[category] / len(right)
+        for category in categories
+    )
+    if expected == 1.0:
+        return 1.0 if observed == 1.0 else 0.0
+    return (observed - expected) / (1 - expected)
+
+
+def pairwise_error_collision(identities, models, pivot, minimum_rows, permutations):
+    rng = np.random.default_rng(KAPPA_SEED)
+    output = []
+    for left, right in combinations(models, 2):
+        cofailure = [
+            row_id for row_id in identities
+            if not pivot[row_id][left]["success"] and not pivot[row_id][right]["success"]
+        ]
+        if not cofailure:
+            output.append({
+                "left": left, "right": right, "cofailure_rows": 0,
+                "eligible_for_mean": False, "observed_kappa": None,
+            })
+            continue
+        left_labels = [pivot[row_id][left]["err_label"] for row_id in cofailure]
+        right_labels = [pivot[row_id][right]["err_label"] for row_id in cofailure]
+        observed = categorical_kappa(left_labels, right_labels)
+        null = np.asarray([
+            categorical_kappa(left_labels, rng.permutation(right_labels).tolist())
+            for _ in range(permutations)
+        ])
+        output.append({
+            "left": left, "right": right, "cofailure_rows": len(cofailure),
+            "eligible_for_mean": len(cofailure) >= minimum_rows,
+            "observed_kappa": observed, "null_mean": float(null.mean()),
+            "null_sd": float(null.std()),
+            "p_greater_equal": float((1 + np.count_nonzero(null >= observed)) / (permutations + 1)),
+            "permutations": permutations,
+        })
+    return output
+
+
 def dominant_error(model_rows):
     if any(row["success"] for row in model_rows.values()):
         return None
@@ -260,6 +307,8 @@ def stratum_ids(stratum_id, pools):
 
 def build_strata(pools, scope_outputs, scope_models):
     config = yaml.safe_load(STRATA_PATH.read_text())
+    minimum_rows = config["collision_statistic"]["minimum_pair_cofailure_rows"]
+    permutations = config["collision_statistic"]["permutations"]
     output = {}
     collisions = []
     gains = []
@@ -269,23 +318,28 @@ def build_strata(pools, scope_outputs, scope_models):
         by_pool = defaultdict(list)
         for pool, row_id in members:
             by_pool[pool].append(row_id)
-        kappa_values = []
+        collision_pairs = []
         method_counts = Counter()
         denominator = 0
         for pool, row_ids in by_pool.items():
             bench, setting = pool.split("/", 1)
             identities, _, pivot = pools[(bench, setting)]
             models = scope_models[pool]
-            kappas = pairwise_kappa(row_ids, models, pivot)
-            kappa_values.extend(item["observed_kappa"] for item in kappas)
+            kappas = pairwise_error_collision(row_ids, models, pivot, minimum_rows, permutations)
+            collision_pairs.extend({"pool": pool, **item} for item in kappas)
             denominator += len(row_ids)
             for method, values in scope_outputs[pool].items():
                 method_counts[method] += sum(values[row_id] for row_id in row_ids)
         rates = {method: count / denominator for method, count in method_counts.items()}
         gain = rates["A3_pka_joint"] - rates["A0_heldout_best"]
+        kappa_values = [
+            item["observed_kappa"] for item in collision_pairs
+            if item["eligible_for_mean"] and item["observed_kappa"] is not None
+        ]
         collision = float(np.mean(kappa_values)) if kappa_values else None
         output[stratum_id] = {
             "rows": denominator, "mean_pairwise_failure_kappa": collision,
+            "collision_pairs": collision_pairs,
             "step_sr": rates, "a3_gain_over_heldout_best": gain,
         }
         collisions.append(collision)

@@ -5,7 +5,7 @@ import unittest
 import kernels
 import pka
 from aggregators import plurality_then_density
-from pka import Prediction, coordinate_density_mode, pka_joint, pka_joint_continuous
+from pka import Prediction, coordinate_density_medoid, coordinate_density_mode, pka_joint, pka_joint_continuous
 
 
 class ProductKernelAggregationTest(unittest.TestCase):
@@ -57,6 +57,16 @@ class ProductKernelAggregationTest(unittest.TestCase):
         result = pka_joint_continuous("androidcontrol", predictions)
         self.assertEqual(result.prediction.action, "click")
         self.assertLess(math.dist(result.prediction.coordinate, (0.105, 0.10)), 0.01)
+
+    def test_discrete_density_mode_returns_input_candidate(self):
+        predictions = [
+            Prediction("click", 0.10, 0.10, source="a"),
+            Prediction("click", 0.11, 0.10, source="b"),
+            Prediction("click", 0.90, 0.90, source="c"),
+        ]
+        coordinate = coordinate_density_medoid("androidcontrol", predictions, "click")
+        self.assertIn(coordinate, [prediction.coordinate for prediction in predictions])
+        self.assertNotEqual(coordinate, (0.105, 0.10))
 
     def test_mind2web_inference_kernel_has_no_bbox_argument(self):
         signature = inspect.signature(kernels.mind2web_coord_inference)

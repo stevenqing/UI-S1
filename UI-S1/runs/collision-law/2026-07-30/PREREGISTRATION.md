@@ -77,7 +77,7 @@ Budget is exactly five forwards per row.
 
 Evaluation uses the existing grouped folds in `runs/complementarity/2026-07-30/folds.json`.
 
-The fixed Mind2Web C2 model set under the new double-sided deployability band is TongUI-3B, TongUI-7B, TongUI-32B, UI-TARS-7B, and CogAgent-18B. The fixed AndroidControl C2 set is the five unified lanes already present in the tidy table.
+Amendment 003 corrects the fixed Mind2Web C2 set to the top five eligible models by full-clean Step SR: TongUI-7B, TongUI-32B, CogAgent-18B, TongUI-3B, and UI-TARS-72B. The fixed AndroidControl C2 set is the five unified lanes already present in the tidy table.
 
 ## Execution gate
 

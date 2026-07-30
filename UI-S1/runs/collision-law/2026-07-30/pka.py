@@ -161,6 +161,36 @@ def coordinate_density_mode(
     return max(candidates, key=lambda item: item[0])[1]
 
 
+def coordinate_density_medoid(
+    bench: str,
+    predictions: Iterable[Prediction],
+    action: str,
+    weights=None,
+) -> tuple[float, float] | None:
+    original, parsed, parsed_weights, _ = _validated_inputs(predictions, weights)
+    selected = [
+        (prediction.coordinate, weight)
+        for prediction, weight in zip(parsed, parsed_weights)
+        if prediction.action == action and prediction.coordinate is not None
+    ]
+    if not selected:
+        return None
+    points = [point for point, _ in selected]
+    point_weights = [weight for _, weight in selected]
+    scores = []
+    for candidate in points:
+        scores.append(sum(
+            weight * (
+                android_coord_kernel_normalized(point, candidate)
+                if bench == "androidcontrol"
+                else mind2web_coord_inference(point, candidate)
+            )
+            for point, weight in zip(points, point_weights)
+        ))
+    winner = max(range(len(points)), key=lambda index: (scores[index], -index))
+    return points[winner]
+
+
 def pka_joint_continuous(bench: str, predictions: Iterable[Prediction], weights=None) -> AggregateResult:
     predictions = list(predictions)
     result = pka_joint(bench, predictions, weights)

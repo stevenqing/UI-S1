@@ -4,12 +4,14 @@ upstream_commit: "802940669dc80f3dee572cf39643e867844d9965"
 default_exclude_quarantine: true
 
 collision_statistic:
-  primary: cohen_kappa
-  outcome: step_failure
+  primary: categorical_cohen_kappa
+  outcome: inherited_exclusive_err_label
+  conditioning: both_models_fail
   chance_correction: matched_marginal_permutation
   permutations: 1000
   seed: 20260730
   aggregation: mean_pairwise_kappa
+  minimum_pair_cofailure_rows: 30
   prediction: aggregator_gain_is_reverse_ordered_by_collision
 
 strata:
