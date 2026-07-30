@@ -2,8 +2,10 @@
 set -euo pipefail
 run_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace="$(cd "$run_dir/../../../.." && pwd)"
-python="$run_dir/../w3_assets/.venv-mvp/bin/python"
-[[ -x "$python" ]] || { echo "missing MVP runtime: $python" >&2; exit 2; }
+python="$workspace/runs/mind2web-tongui/2026-07-28/.venv/bin/python"
+overlay="$run_dir/../w3_assets/mvp-overlay"
+[[ -x "$python" && -d "$overlay/transformers" ]] || { echo "missing MVP runtime" >&2; exit 2; }
+export PYTHONPATH="$overlay${PYTHONPATH:+:$PYTHONPATH}"
 cell="$run_dir/../w3_artifacts/gta1_screenspot_pro"
 mkdir -p "$cell/shards"
 pids=()
