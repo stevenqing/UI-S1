@@ -2,6 +2,7 @@
   "status": "PREREGISTERED_WAITING_FOR_E5",
   "base_commit": "802940669dc80f3dee572cf39643e867844d9965",
   "w1_results_generated": false,
+  "w1_operator_gate_passed": true,
   "w2_results_generated": false,
   "w4_results_generated": false,
   "preregistration_amendments": [
