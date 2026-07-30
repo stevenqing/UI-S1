@@ -8,11 +8,12 @@
   "preregistration_amendments": [
     "AMENDMENT_001_MIND2WEB_COORD_KERNEL.md",
     "AMENDMENT_002_OUT_OF_DOMAIN_POINTS.md",
-    "AMENDMENT_003_W1_STATISTIC_AND_A2.md"
+    "AMENDMENT_003_W1_STATISTIC_AND_A2.md",
+    "AMENDMENT_004_E5_MERGED_INTO_W2.md"
   ],
   "execution_gate": {
-    "e5_required_status": "PASS",
-    "e5_observed_status": "PENDING_INFERENCE",
+    "e5_required_status": "SUPERSEDED_BY_W2",
+    "e5_observed_status": "PAUSED_ONE_CELL_INHERITED",
     "configs_committed": true,
     "w0_regression_passed": true
   },
@@ -28,11 +29,12 @@
     "K3": "TRIGGERED_JOINT_NOT_GENERALLY_BETTER_THAN_SEQUENTIAL"
   },
   "e5": {
-    "status": "PAUSED_BY_USER",
+    "status": "SUPERSEDED_BY_W2",
     "completed_new_cells": 1,
     "completed_cell": "androidcontrol/original_768",
     "completed_predictions": 7708,
-    "score_pending": true
+    "score_pending": true,
+    "w2_mapping": "gui-r1-7b/androidcontrol-high/v4"
   },
   "supersedes": {
     "complementarity_e5": "merged_as_W2_noise_floor_after_current_E5_finishes",

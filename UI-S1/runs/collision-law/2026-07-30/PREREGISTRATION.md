@@ -83,8 +83,10 @@ Amendment 003 corrects the fixed Mind2Web C2 set to the top five eligible models
 
 No W1/W2 result script may run until:
 
-1. E5 reaches `PASS` and its transition table is frozen.
-2. `configs/strata.yaml` and `configs/bands.yaml` are committed and pushed.
-3. W0 reproduces upstream summary hashes and validates extended-row identity coverage.
+1. `configs/strata.yaml` and `configs/bands.yaml` are committed and pushed.
+2. W0 reproduces upstream summary hashes and validates extended-row identity coverage.
+3. W1 operator tests pass before W1 result generation.
+
+Amendment 004 removes the obsolete independent-E5 gate. W2's own five-view sweep supplies the noise floor and MDE.
 
 W4 Curated work may perform availability/preflight checks before E5, but may not emit `w4_curated.json` or `w4_threshold.json` before this preregistration commit.

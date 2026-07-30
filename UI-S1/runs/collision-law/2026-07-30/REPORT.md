@@ -2,7 +2,7 @@
 
 Date: 2026-07-30
 
-Status: W0 and W1 complete; E5 paused after one complete inference cell; W2/W3/W4 pending.
+Status: W0 and W1 complete; independent E5 superseded by W2 with one compatible cell inherited; W2/W3/W4 pending.
 
 ## Preregistration record
 
@@ -78,11 +78,11 @@ The preregistered reverse-order prediction is not satisfied: Spearman correlatio
 
 These values are frozen inputs to P3 allocation; no W2 allocation result has been generated.
 
-## E5 pause and W2 gate
+## E5 inheritance and W2 gate
 
-E5 was paused at the user's request. The first new cell, AndroidControl `original_768`, has four complete 1,927-row shards and a complete merged 7,708-row prediction file. Its score process was interrupted, so scoring remains pending; no inference must be repeated when E5 resumes.
+E5 was paused at the user's request. The first new cell, AndroidControl `original_768`, has four complete 1,927-row shards and a complete merged 7,708-row prediction file. Its score process was interrupted, so scoring remains pending; no inference must be repeated.
 
-W2 is not yet allowed to emit results because E5 has not reached `PASS`. W2 implementation may proceed, but K1/P2 and K2/MDE evaluation remain gated.
+Amendment 004 applies the superseding spec: independent E5 is canceled and its compatible cell is inherited as GUI-R1-7B / AndroidControl High / W2 `v4`. The remaining prompt-paraphrase E5 cells are not part of W2 and are canceled. W2's five views now provide the MDE, so W2 implementation and inference may proceed.
 
 ## Current scientific state
 
