@@ -1,3 +1,4 @@
+from score_mvp_official import score_rows
 import unittest
 
 from mvp_port import mvp_official_code, mvp_paper_centroid, multi_coordinate_clustering, official_complete_link_groups
@@ -29,6 +30,20 @@ class BaselineAlgorithmTest(unittest.TestCase):
         self.assertEqual(result.coordinate, (105, 105))
         centroid = mvp_paper_centroid(points, [0, 8, 100])
         self.assertEqual(centroid.coordinate, (102.5, 102.5))
+
+    def test_official_mvp_scorer_recomputes_all_rows(self):
+        row = {
+            "id": "sample", "img_size": [1000, 800], "target_bbox": [100, 100, 110, 110],
+            "all_predictions": [
+                {"point": [100, 100], "coverage": 0},
+                {"point": [105, 105], "coverage": 8},
+                {"point": [900, 700], "coverage": 100},
+            ],
+            "final_prediction": {"point": [105, 105]},
+        }
+        result = score_rows([row], {"sample"})
+        self.assertEqual(result["correct"]["official_code"], 1)
+        self.assertEqual(result["correct"]["paper_centroid"], 1)
 
     def test_kde_peak_selects_dense_candidate(self):
         result = kde_candidate_peak([(0.1, 0.1), (0.11, 0.1), (0.9, 0.9)])
