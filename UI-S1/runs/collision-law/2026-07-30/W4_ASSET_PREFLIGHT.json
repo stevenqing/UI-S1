@@ -20,7 +20,11 @@
     "low": "android_control_low_bbox.json, 8377 identities",
     "high": "android_control_high_task-improved.json, same 8377 image identities",
     "high_bbox_extra_excluded": 58,
-    "high_multi_candidate_rows": 1493
+    "high_candidate_actions_field_rows": 1274,
+    "high_multi_candidate_rows": 573,
+    "high_additional_candidate_actions": 1233,
+    "high_gt_min_null_rows": 93,
+    "high_gt_min_differs_from_max_rows": 1493
   },
   "androidcontrol_v2": {
     "status": "BLOCKED_NOT_LOCATED"
