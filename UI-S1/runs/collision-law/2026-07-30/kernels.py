@@ -36,8 +36,8 @@ def android_coord_hard_ablation(left: tuple[float, float], right: tuple[float, f
 
 def mind2web_coord_inference(left: tuple[float, float], right: tuple[float, float]) -> float:
     for point in (left, right):
-        if len(point) != 2 or not all(0.0 <= value <= 1.0 for value in point):
-            raise ValueError(f"Mind2Web inference point outside unit square: {point}")
+        if len(point) != 2 or not all(math.isfinite(value) for value in point):
+            raise ValueError(f"non-finite Mind2Web inference point: {point}")
     return max(0.0, 1.0 - math.dist(left, right) / UNIT_SQUARE_DIAMETER)
 
 

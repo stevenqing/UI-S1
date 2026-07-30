@@ -63,6 +63,10 @@ class ProductKernelAggregationTest(unittest.TestCase):
         self.assertEqual(list(signature.parameters), ["left", "right"])
         self.assertNotIn("gt_analysis", inspect.getsource(pka))
 
+    def test_out_of_domain_points_are_preserved_without_clipping(self):
+        self.assertEqual(kernels.mind2web_coord_inference((134.0, 180.0), (134.0, 180.0)), 1.0)
+        self.assertEqual(kernels.mind2web_coord_inference((134.0, 180.0), (0.5, 0.5)), 0.0)
+
     def test_sequential_density_keeps_plurality_type(self):
         predictions = [
             Prediction("CLICK", 0.10, 0.10, source="a"),
