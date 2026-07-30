@@ -25,6 +25,14 @@
         "step_sr": 0.5813071895424836,
         "step_successes": 4447
       },
+      "gui-r1-7b/low/v1": {
+        "action_accuracy": 0.8358169934640522,
+        "rows": 7650,
+        "sha256": "58625b40f8a8c13ae620184683894262f4961b448ae43aa01db7f8576a547fe2",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/low/v1/predictions.jsonl",
+        "step_sr": 0.5803921568627451,
+        "step_successes": 4440
+      },
       "ui-agile-7b/high/full": {
         "action_accuracy": 0.7990849673202615,
         "rows": 7650,
@@ -64,6 +72,28 @@
             0.08295887516221963
           ]
         }
+      },
+      "gui-r1-7b/low/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 284,
+          "rate": 0.03712418300653595,
+          "wilson_95": [
+            0.0331144654745383,
+            0.04159853477472524
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4588,
+          "flips": 142,
+          "gt_grounding_rows": 4605,
+          "rate": 0.03095030514385353,
+          "stable_type_rows": 4588,
+          "wilson_95": [
+            0.026318253100140913,
+            0.03636715566277823
+          ]
+        }
       }
     },
     "k1": {
@@ -71,6 +101,12 @@
         "action_flip_rate": 0.07490196078431373,
         "difference": -5.976060397107352e-05,
         "grounding_flip_rate": 0.07484220018034266,
+        "prediction_satisfied": false
+      },
+      "gui-r1-7b/low": {
+        "action_flip_rate": 0.03712418300653595,
+        "difference": -0.00617387786268242,
+        "grounding_flip_rate": 0.03095030514385353,
         "prediction_satisfied": false
       }
     },
@@ -84,7 +120,8 @@
       },
       "gui-r1-7b/low": {
         "available_views": [
-          "full"
+          "full",
+          "v1"
         ],
         "complete": false
       },

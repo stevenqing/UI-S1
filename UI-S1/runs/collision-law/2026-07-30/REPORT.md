@@ -2,7 +2,7 @@
 
 Date: 2026-07-30
 
-Status: W0 and W1 complete; W2 K1 partial with 2/5 `full` versus `v1` cells complete; W3/W4 pending.
+Status: W0 and W1 complete; W2 K1 partial with 3/5 `full` versus `v1` cells complete; W3/W4 pending.
 
 ## Preregistration record
 
@@ -88,21 +88,22 @@ Amendment 004 applies the superseding spec: independent E5 is canceled and its c
 
 ## W2 K1 partial result
 
-Two of five preregistered `full` versus `v1` cells are complete. AndroidControl values below exclude the fixed 58-row quarantine.
+Three of five preregistered `full` versus `v1` cells are complete. AndroidControl values below exclude the fixed 58-row quarantine.
 
 | Cell | Full Step SR | v1 Step SR | Action flip | Grounding flip given stable type | Grounding - action | P2 direction |
 |---|---:|---:|---:|---:|---:|---|
 | GUI-R1-7B / AndroidControl High | 45.22% | 45.42% | 7.49% | 7.48% | -0.006 pp | Not satisfied |
+| GUI-R1-7B / AndroidControl Low | 58.13% | 58.04% | 3.71% | 3.10% | -0.62 pp | Not satisfied |
 | TongUI-7B / Mind2Web | 52.93% | 52.12% | 3.32% | 10.69% | +7.37 pp | Satisfied |
 
-The mechanism evidence is already heterogeneous. The TongUI cell has substantially more grounding than action-type instability, and its grounding flip rate rises from 8.28% on regular elements to 12.35% on small elements and 18.06% on tiny elements. GUI-R1 High instead has nearly identical action and grounding flip rates. Overall K1 remains `PARTIAL`; no unregistered averaging or majority rule is introduced while the remaining GUI-R1 Low and UI-AGILE Low/High cells run.
+The mechanism evidence is already heterogeneous. The TongUI cell has substantially more grounding than action-type instability, and its grounding flip rate rises from 8.28% on regular elements to 12.35% on small elements and 18.06% on tiny elements. GUI-R1 High instead has nearly identical action and grounding flip rates, while GUI-R1 Low has fewer grounding than action flips. Overall K1 remains `PARTIAL`; no unregistered averaging or majority rule is introduced while the remaining UI-AGILE Low/High cells run.
 
 W2 `v1` is a preregistered 28-pixel border perturbation, not an exact official MVP view. Official MVP uses AGVP crops and is evaluated separately in W3 under Amendment 005.
 
 ## Current scientific state
 
 - P1: failed on the four preregistered strata.
-- P2/K1: partial and heterogeneous; one of two complete cells satisfies the direction.
+- P2/K1: partial and heterogeneous; one of three complete cells satisfies the direction.
 - P3: pending W2 model-view pool.
 - K2: pending W2 noise floor.
 - K3: triggered; operator demoted to unified perspective.
