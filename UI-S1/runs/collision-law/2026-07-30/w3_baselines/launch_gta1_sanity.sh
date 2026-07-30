@@ -2,7 +2,8 @@
 set -euo pipefail
 run_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace="$(cd "$run_dir/../../../.." && pwd)"
-python="$workspace/.venv-ac-vllm/bin/python"
+python="$run_dir/../w3_assets/.venv-mvp/bin/python"
+[[ -x "$python" ]] || { echo "missing MVP runtime: $python" >&2; exit 2; }
 cell="$run_dir/../w3_artifacts/gta1_screenspot_pro"
 mkdir -p "$cell/shards"
 pids=()
