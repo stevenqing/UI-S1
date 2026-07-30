@@ -1,0 +1,201 @@
+{
+  "androidcontrol": {
+    "cells": {
+      "gui-r1-7b/high/full": {
+        "action_accuracy": 0.7141176470588235,
+        "rows": 7650,
+        "sha256": "357d7c6c9cdc4110649b7799e0927181210478543ffff4b038323516db83f6df",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/high/predictions.jsonl",
+        "step_sr": 0.45215686274509803,
+        "step_successes": 3459
+      },
+      "gui-r1-7b/high/v1": {
+        "action_accuracy": 0.7186928104575163,
+        "rows": 7650,
+        "sha256": "8358d29c72698bdf31f29f178c5f4bb13230d7d178a93f0c1f860cf1a09116fb",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/high/v1/predictions.jsonl",
+        "step_sr": 0.4542483660130719,
+        "step_successes": 3475
+      },
+      "gui-r1-7b/low/full": {
+        "action_accuracy": 0.8369934640522876,
+        "rows": 7650,
+        "sha256": "4e33ae3eeb63a263c8bbc0016be6961560e4abc8ea79854190ff9fc226030c16",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/low/predictions.jsonl",
+        "step_sr": 0.5813071895424836,
+        "step_successes": 4447
+      },
+      "ui-agile-7b/high/full": {
+        "action_accuracy": 0.7990849673202615,
+        "rows": 7650,
+        "sha256": "11c129e4dad08b644aa55ca7d765ab13119121a5edee534f05ccaa43e8c028f2",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/high/predictions.jsonl",
+        "step_sr": 0.6075816993464053,
+        "step_successes": 4648
+      },
+      "ui-agile-7b/low/full": {
+        "action_accuracy": 0.8768627450980392,
+        "rows": 7650,
+        "sha256": "287c36778fbfd7ef8ac9b21cbebbb3fb24873d94caf9f453a146be933fee33b9",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/low/predictions.jsonl",
+        "step_sr": 0.7756862745098039,
+        "step_successes": 5934
+      }
+    },
+    "full_to_view_flips": {
+      "gui-r1-7b/high/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 573,
+          "rate": 0.07490196078431373,
+          "wilson_95": [
+            0.06921421858177619,
+            0.08101641593124413
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4436,
+          "flips": 332,
+          "gt_grounding_rows": 4605,
+          "rate": 0.07484220018034266,
+          "stable_type_rows": 4436,
+          "wilson_95": [
+            0.06746123893754948,
+            0.08295887516221963
+          ]
+        }
+      }
+    },
+    "k1": {
+      "gui-r1-7b/high": {
+        "action_flip_rate": 0.07490196078431373,
+        "difference": -5.976060397107352e-05,
+        "grounding_flip_rate": 0.07484220018034266,
+        "prediction_satisfied": false
+      }
+    },
+    "noise": {
+      "gui-r1-7b/high": {
+        "available_views": [
+          "full",
+          "v1"
+        ],
+        "complete": false
+      },
+      "gui-r1-7b/low": {
+        "available_views": [
+          "full"
+        ],
+        "complete": false
+      },
+      "ui-agile-7b/high": {
+        "available_views": [
+          "full"
+        ],
+        "complete": false
+      },
+      "ui-agile-7b/low": {
+        "available_views": [
+          "full"
+        ],
+        "complete": false
+      }
+    }
+  },
+  "contract": {
+    "action_flip": "pred_action(view) != pred_action(full)",
+    "grounding_flip": "GT grounding row; predicted type stable; grounding correctness changes",
+    "quarantine_excluded": true
+  },
+  "mind2web": {
+    "cells": {
+      "tongui-7b/visual/full": {
+        "element_accuracy": 0.5769230769230769,
+        "parse_rate": 0.9995192307692308,
+        "rows": 2080,
+        "source": "collision rows.parquet",
+        "step_sr": 0.5293269230769231,
+        "step_successes": 1101
+      },
+      "tongui-7b/visual/v1": {
+        "element_accuracy": 0.56875,
+        "parse_rate": 1.0,
+        "rows": 2080,
+        "sha256": "504066f631f1870fdfd37e57fd8a941a1fe5f223e06d95ef5fd304ff63962b80",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/mind2web/tongui-7b/v1/scored_rows.jsonl",
+        "step_sr": 0.5211538461538462,
+        "step_successes": 1084
+      }
+    },
+    "full_to_view_flips": {
+      "tongui-7b/visual/full_to_v1": {
+        "action_type": {
+          "denominator": 2080,
+          "flips": 69,
+          "rate": 0.03317307692307692,
+          "wilson_95": [
+            0.02629640928474493,
+            0.04177088931913556
+          ]
+        },
+        "grounding_given_stable_type": {
+          "by_gt_element_area": {
+            "regular": {
+              "flips": 93,
+              "rate": 0.08281389136242208,
+              "rows": 1123,
+              "wilson_95": [
+                0.06808185485216248,
+                0.10039034443962996
+              ]
+            },
+            "small": {
+              "flips": 83,
+              "rate": 0.12351190476190477,
+              "rows": 672,
+              "wilson_95": [
+                0.1007539245290751,
+                0.15054977488743904
+              ]
+            },
+            "tiny": {
+              "flips": 39,
+              "rate": 0.18055555555555555,
+              "rows": 216,
+              "wilson_95": [
+                0.13498578371629236,
+                0.23728912411829042
+              ]
+            }
+          },
+          "denominator": 2011,
+          "flips": 215,
+          "rate": 0.10691198408751865,
+          "stable_type_rows": 2011,
+          "wilson_95": [
+            0.09414827776942697,
+            0.1211745988377606
+          ]
+        }
+      }
+    },
+    "k1": {
+      "tongui-7b/visual": {
+        "action_flip_rate": 0.03317307692307692,
+        "difference": 0.07373890716444173,
+        "grounding_flip_rate": 0.10691198408751865,
+        "prediction_satisfied": true
+      }
+    },
+    "noise": {
+      "tongui-7b/visual": {
+        "available_views": [
+          "full",
+          "v1"
+        ],
+        "complete": false
+      }
+    }
+  },
+  "status": "PARTIAL"
+}

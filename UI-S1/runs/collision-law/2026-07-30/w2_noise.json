@@ -1,0 +1,40 @@
+{
+  "androidcontrol": {
+    "gui-r1-7b/high": {
+      "available_views": [
+        "full",
+        "v1"
+      ],
+      "complete": false
+    },
+    "gui-r1-7b/low": {
+      "available_views": [
+        "full"
+      ],
+      "complete": false
+    },
+    "ui-agile-7b/high": {
+      "available_views": [
+        "full"
+      ],
+      "complete": false
+    },
+    "ui-agile-7b/low": {
+      "available_views": [
+        "full"
+      ],
+      "complete": false
+    }
+  },
+  "definition": "MDE = 2 * sample SD over full,v1,v2,v3,v4",
+  "mind2web": {
+    "tongui-7b/visual": {
+      "available_views": [
+        "full",
+        "v1"
+      ],
+      "complete": false
+    }
+  },
+  "status": "PARTIAL"
+}
