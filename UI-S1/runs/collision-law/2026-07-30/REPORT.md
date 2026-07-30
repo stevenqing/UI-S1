@@ -13,6 +13,7 @@ The initial preregistration was pushed as commit `2aafdd2` before any Collision-
 3. `690e9d9`: correct A2 to discrete density mode and P1 to categorical same-error kappa after declaring the first uncommitted run invalid.
 4. `43a62f4`: supersede independent E5 and inherit its compatible completed cell as W2 `v4`.
 5. `4129c4f`: distinguish the spec-defined W2 border perturbation from official MVP AGVP and freeze official-code versus paper-centroid W3 rows.
+6. Amendment 006 freezes the P3 candidate pool, fold-local kappa allocation, tie breaks, and random-seed derivation before complete five-view pools exist.
 
 No invalid preliminary W1 JSON was committed.
 

@@ -8,7 +8,10 @@ from pathlib import Path
 import numpy as np
 import pyarrow.parquet as pq
 
+from aggregators import pka_medoid, plurality_then_density
+from pka import Prediction
 from scoring import GROUNDING_ACTIONS, label_android_row
+from w1_run import cohen_kappa, fold_map, load_pool, prediction_from_row, score_prediction, split_rows
 
 
 RUN_DIR = Path(__file__).resolve().parent
@@ -21,6 +24,12 @@ COLLISION_ROWS = RUN_DIR / "rows.parquet"
 VIEWS = ("full", "v1", "v2", "v3", "v4")
 AC_MODELS = ("gui-r1-7b", "ui-agile-7b")
 AC_SETTINGS = ("low", "high")
+P3_MODELS = {
+    "androidcontrol": ("ui-agile-3b", "ui-agile-7b", "gui-r1-3b", "gui-r1-7b", "ui-r1-e-3b"),
+    "mind2web": ("tongui-7b", "tongui-32b", "cogagent-18b", "tongui-3b", "ui-tars-72b"),
+}
+P3_REPRESENTATIVE = {"androidcontrol": "gui-r1-7b", "mind2web": "tongui-7b"}
+P3_SEED = 20260730
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -301,6 +310,163 @@ def analyze_mind2web():
     return result
 
 
+def prediction_from_view_row(row: dict, source: str, bench: str) -> Prediction:
+    if bench == "androidcontrol":
+        width, height = row["image_size"]
+        point = coordinate(row)
+        x = row.get("pred_x")
+        y = row.get("pred_y")
+        if (x is None or y is None) and point is not None:
+            x, y = point[0] / width, point[1] / height
+        return Prediction(
+            action=row.get("pred_action"), x=x, y=y,
+            parameter=row.get("pred_input_text", ""), source=source,
+            parse_ok=row.get("pred_action") is not None,
+        )
+    return Prediction(
+        action=row.get("pred_action"), x=row.get("pred_x"), y=row.get("pred_y"),
+        parameter=row.get("pred_param", ""), source=source,
+        parse_ok=bool(row.get("parse_ok")),
+    )
+
+
+def p3_view_rows(bench: str, setting: str, view: str):
+    if bench == "androidcontrol":
+        path = ac_prediction_path(P3_REPRESENTATIVE[bench], setting, view)
+        rows = read_jsonl(path)
+        if len(rows) != 7708:
+            return None
+        return {row["index"]: row for row in rows}
+    path = m2w_cell_path(view)
+    rows = read_jsonl(path)
+    if len(rows) != 2080:
+        return None
+    return {f"{row['annot_id']}__{row['action_uid']}": row for row in rows}
+
+
+def build_p3_pool(bench: str, setting: str):
+    identities, available_models, pivot = load_pool(bench, setting)
+    models = P3_MODELS[bench]
+    if not set(models).issubset(available_models):
+        raise ValueError(f"P3 fixed model coverage mismatch: {bench}/{setting}")
+    units = {}
+    for model in models:
+        key = f"{model}/full"
+        units[key] = {}
+        for row_id in identities:
+            prediction = prediction_from_row(pivot[row_id][model])
+            units[key][row_id] = Prediction(
+                action=prediction.action, x=prediction.x, y=prediction.y,
+                parameter=prediction.parameter, source=key, parse_ok=prediction.parse_ok,
+            )
+    representative = P3_REPRESENTATIVE[bench]
+    for view in VIEWS[1:]:
+        rows = p3_view_rows(bench, setting, view)
+        if rows is None or not set(identities).issubset(rows):
+            return None
+        key = f"{representative}/{view}"
+        units[key] = {
+            row_id: prediction_from_view_row(rows[row_id], key, bench)
+            for row_id in identities
+        }
+    return identities, pivot, units
+
+
+def greedy_kappa_allocation(unit_failures, unit_step_sr, budget=5):
+    keys = sorted(unit_failures)
+    if budget > len(keys) or any(len(unit_failures[key]) == 0 for key in keys):
+        raise ValueError("invalid P3 allocation pool")
+    selected = [min(keys, key=lambda key: (-unit_step_sr[key], key))]
+    while len(selected) < budget:
+        candidates = [key for key in keys if key not in selected]
+        selected.append(min(
+            candidates,
+            key=lambda key: (
+                float(np.mean([
+                    cohen_kappa(unit_failures[key], unit_failures[chosen])
+                    for chosen in selected
+                ])),
+                -unit_step_sr[key],
+                key,
+            ),
+        ))
+    return selected
+
+
+def evaluate_p3_pool(bench: str, setting: str, identities, pivot, units):
+    pool = f"{bench}/{setting}"
+    representative = P3_REPRESENTATIVE[bench]
+    c1 = [f"{representative}/{view}" for view in VIEWS]
+    c2 = [f"{model}/full" for model in P3_MODELS[bench]]
+    candidate_keys = sorted(units)
+    folds = []
+    for test_fold in range(5):
+        dev_ids, test_ids = split_rows(identities, pivot, fold_map(pool), test_fold)
+        dev_success = {
+            key: [
+                score_prediction(next(iter(pivot[row_id].values())), units[key][row_id])
+                for row_id in dev_ids
+            ]
+            for key in candidate_keys
+        }
+        dev_step_sr = {key: sum(values) / len(values) for key, values in dev_success.items()}
+        failures = {key: [not value for value in values] for key, values in dev_success.items()}
+        c3 = greedy_kappa_allocation(failures, dev_step_sr)
+        rng = np.random.default_rng(np.random.SeedSequence([P3_SEED, test_fold]))
+        c4 = sorted(rng.choice(candidate_keys, size=5, replace=False).tolist())
+        selections = {"C1_single_model_five_views": c1, "C2_five_models_full": c2,
+                      "C3_kappa_mixed": c3, "C4_random_mixed": c4}
+        successes = {method: 0 for method in selections}
+        for row_id in test_ids:
+            reference = next(iter(pivot[row_id].values()))
+            for method, selected in selections.items():
+                predictions = [units[key][row_id] for key in selected]
+                aggregate = (
+                    plurality_then_density(bench, predictions, c1).prediction
+                    if method == "C1_single_model_five_views"
+                    else pka_medoid(bench, predictions).prediction
+                )
+                successes[method] += int(score_prediction(reference, aggregate))
+        folds.append({
+            "fold": test_fold, "dev_rows": len(dev_ids), "test_rows": len(test_ids),
+            "selections": selections,
+            "step_sr": {method: value / len(test_ids) for method, value in successes.items()},
+        })
+    total = sum(fold["test_rows"] for fold in folds)
+    aggregate = {
+        method: sum(fold["step_sr"][method] * fold["test_rows"] for fold in folds) / total
+        for method in folds[0]["step_sr"]
+    }
+    return {"models": list(P3_MODELS[bench]), "representative": representative,
+            "candidate_units": candidate_keys, "folds": folds, "aggregate_step_sr": aggregate}
+
+
+def analyze_allocation():
+    result = {
+        "status": "PASS",
+        "contract": {
+            "budget": 5, "folds": "runs/complementarity/2026-07-30/folds.json",
+            "c3_selection": "highest dev Step SR first; then minimum mean dev failure kappa; ties by dev Step SR then unit key",
+            "c4_seed": P3_SEED, "test_label_tuning": False,
+        },
+        "pools": {},
+    }
+    for bench, setting in (("androidcontrol", "low"), ("androidcontrol", "high"), ("mind2web", "visual")):
+        pool = build_p3_pool(bench, setting)
+        if pool is None:
+            return {"status": "PENDING_INFERENCE", "reason": "requires complete representative five-view prediction pools"}
+        result["pools"][f"{bench}/{setting}"] = evaluate_p3_pool(bench, setting, *pool)
+    for values in result["pools"].values():
+        metrics = values["aggregate_step_sr"]
+        values["p3_prediction_satisfied"] = (
+            metrics["C3_kappa_mixed"] > max(
+                metrics["C1_single_model_five_views"], metrics["C2_five_models_full"],
+            )
+        )
+        values["c3_exceeds_random"] = metrics["C3_kappa_mixed"] > metrics["C4_random_mixed"]
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--flips", type=Path, required=True)
@@ -333,10 +499,7 @@ def main():
         "androidcontrol": androidcontrol["noise"],
         "mind2web": mind2web["noise"],
     }
-    allocation = {
-        "status": "PENDING_INFERENCE",
-        "reason": "requires complete five-view prediction pools",
-    }
+    allocation = analyze_allocation()
     args.flips.write_text(json.dumps(flips, indent=2, sort_keys=True) + "\n")
     args.noise.write_text(json.dumps(noise, indent=2, sort_keys=True) + "\n")
     args.allocation.write_text(json.dumps(allocation, indent=2, sort_keys=True) + "\n")

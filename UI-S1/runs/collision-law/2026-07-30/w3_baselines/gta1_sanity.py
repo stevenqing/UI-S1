@@ -10,6 +10,9 @@ from PIL import Image
 from qwen_vl_utils import process_vision_info, smart_resize
 from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 
+from pka import Prediction
+from selfconsistency import self_consistency_product_space
+
 
 RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[3]
@@ -65,6 +68,17 @@ def load_completed(path):
     return set(indices)
 
 
+def aggregate_points(points, width, height):
+    predictions = [
+        Prediction("CLICK", point[0] / width, point[1] / height, source=f"sample_{index}")
+        for index, point in enumerate(points) if point is not None
+    ]
+    aggregate = self_consistency_product_space(predictions)
+    if aggregate is None or aggregate.coordinate is None:
+        return (0.0, 0.0), False
+    return (aggregate.x * width, aggregate.y * height), True
+
+
 def infer(args):
     rows = samples()
     processor = AutoProcessor.from_pretrained(
@@ -108,18 +122,31 @@ def infer(args):
                 text=[text], images=image_inputs, videos=video_inputs,
                 padding=True, return_tensors="pt",
             ).to(model.device)
-            with torch.inference_mode():
-                output_ids = model.generate(
-                    **inputs, max_new_tokens=32, do_sample=False,
-                    temperature=1.0, use_cache=True,
-                )
-            generated = [values[len(source):] for source, values in zip(inputs.input_ids, output_ids)]
-            response = processor.batch_decode(
-                generated, skip_special_tokens=True,
-                clean_up_tokenization_spaces=True,
-            )[0]
-            parsed = parse_coordinate(response)
-            compatibility_point = parsed if parsed is not None else (0.0, 0.0)
+            responses = []
+            parsed_points = []
+            for sample_index in range(args.samples):
+                seed = args.seed + index * args.samples + sample_index
+                torch.manual_seed(seed)
+                torch.cuda.manual_seed_all(seed)
+                generation_args = {
+                    "max_new_tokens": 32,
+                    "do_sample": args.temperature > 0,
+                    "use_cache": True,
+                }
+                if args.temperature > 0:
+                    generation_args["temperature"] = args.temperature
+                with torch.inference_mode():
+                    output_ids = model.generate(**inputs, **generation_args)
+                generated = output_ids[:, inputs.input_ids.shape[1]:]
+                response = processor.batch_decode(
+                    generated, skip_special_tokens=True,
+                    clean_up_tokenization_spaces=True,
+                )[0]
+                responses.append(response)
+                parsed_points.append(parse_coordinate(response))
+            compatibility_point, parse_ok = aggregate_points(
+                parsed_points, resized_width, resized_height,
+            )
             original_point = (
                 compatibility_point[0] * image.width / resized_width,
                 compatibility_point[1] * image.height / resized_height,
@@ -129,12 +156,15 @@ def infer(args):
                 "img_filename": row["img_filename"], "img_size": row["img_size"],
                 "bbox": row["bbox"], "instruction": row["instruction"],
                 "ui_type": row["ui_type"], "application": row["application"],
-                "response": response, "parse_ok": parsed is not None,
+                "response": responses[0], "responses": responses, "parse_ok": parse_ok,
+                "sample_parse_ok": [point is not None for point in parsed_points],
+                "sample_points_resized": [list(point) if point is not None else None for point in parsed_points],
                 "pred_point_resized": list(compatibility_point),
                 "pred_point_original": list(original_point),
                 "resized_size": [resized_width, resized_height],
                 "model_revision": MODEL_REVISION, "dataset_revision": DATA_REVISION,
                 "protocol": "pinned_model_card_locator_with_0_0_parse_fallback",
+                "samples": args.samples, "temperature": args.temperature, "seed": args.seed,
                 "num_shards": args.num_shards, "shard_index": args.shard_index,
             }
             output.write(json.dumps(result, ensure_ascii=True) + "\n")
@@ -197,6 +227,9 @@ def main():
     inference.add_argument("--shard-index", type=int, required=True)
     inference.add_argument("--limit", type=int)
     inference.add_argument("--resume", action="store_true")
+    inference.add_argument("--samples", type=int, default=1)
+    inference.add_argument("--temperature", type=float, default=0.0)
+    inference.add_argument("--seed", type=int, default=20260730)
     merger = sub.add_parser("merge")
     merger.add_argument("--shard-root", type=Path, required=True)
     merger.add_argument("--num-shards", type=int, default=4)
