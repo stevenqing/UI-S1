@@ -14,7 +14,7 @@ mkdir -p "$cell"
 export PYTHONPATH="$source_root:$overlay${PYTHONPATH:+:$PYTHONPATH}"
 if [[ ! -f "$cell/source_result.json" ]]; then
   pushd "$cell" >/dev/null
-  "$python" -m torch.distributed.run --nproc_per_node=4 "$source_root/mvp_sspro.py" \
+  "$python" -m torch.distributed.run --standalone --nproc_per_node=4 "$source_root/mvp_sspro.py" \
     --attn_layer 20 --target_token_id ',' --max_inferences 4 --batch_size 1 --num_workers 0 \
     --json_file_dir "$data/annotations" --base_image_dir "$data/images" --model_path "$model"
   mapfile -t outputs < <(find sspro_rst -maxdepth 1 -name '*.json' -type f)
