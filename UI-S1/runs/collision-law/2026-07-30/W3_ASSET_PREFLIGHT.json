@@ -1,0 +1,33 @@
+{
+  "status": "PARTIAL_ASSETS_AVAILABLE",
+  "gta1": {
+    "model": "HelloKKMe/GTA1-7B",
+    "revision": "701bedc80b447863bd60e3318ae44f6cbbfafd78",
+    "license": "apache-2.0",
+    "model_card_screenspotpro": 50.1,
+    "source_repo": "https://github.com/Yan98/GTA1",
+    "downloaded": false
+  },
+  "mvp": {
+    "status": "BLOCKED_SOURCE_NOT_LOCATED",
+    "requested_anchor": 61.7,
+    "anchor_verified": false,
+    "algorithm_level_implementation": "w3_baselines/mvp_port.py",
+    "implemented_components": ["28px_border_view_in_W2", "14px_multi_coordinate_clustering"],
+    "pending_components": ["official_AGVP_source", "query_token_layer_ablation", "ScreenSpotPro_anchor"]
+  },
+  "reguide": {
+    "gui_stage2_model": "hyunseoki/regUIDE-gta1-7b-sft-2k",
+    "revision": "93166cb69ddce1b10d12458ecf6d3c312b74d9d3",
+    "model_card_present": false,
+    "source_located": false,
+    "algorithm_level_implementation": "w3_baselines/reguide_port.py",
+    "excluded_name_collision": "daintlab/reguide is Reflexive Guidance for OOD classification, not GUI KDE grounding"
+  },
+  "self_consistency": {
+    "status": "IMPLEMENTED_PENDING_INFERENCE",
+    "temperature": 0.7,
+    "samples": 5,
+    "implementation": "w3_baselines/selfconsistency.py"
+  }
+}
