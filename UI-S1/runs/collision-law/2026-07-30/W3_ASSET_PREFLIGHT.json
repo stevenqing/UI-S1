@@ -13,7 +13,7 @@
     "checkpoint_index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6"
   },
   "mvp": {
-    "status": "SOURCE_PINNED_PENDING_SANITY",
+    "status": "OFFICIAL_SOURCE_RUN_IN_PROGRESS",
     "requested_anchor": 61.7,
     "anchor_verified_from_paper": true,
     "paper": "arXiv:2512.08529",
@@ -37,13 +37,17 @@
       "consistency_threshold_pixels": 14,
       "subimage_resize_factor": 2
     },
-    "pending_components": ["official_AGVP_port", "query_token_layer_ablation", "ScreenSpotPro_sanity_run"]
+    "pending_components": ["ScreenSpotPro_full_result", "query_token_layer_ablation"]
   },
   "reguide": {
+    "status": "CHECKPOINT_ONLY_OFFICIAL_METHOD_SOURCE_UNVERIFIED",
     "gui_stage2_model": "hyunseoki/regUIDE-gta1-7b-sft-2k",
     "revision": "93166cb69ddce1b10d12458ecf6d3c312b74d9d3",
     "model_card_present": false,
     "source_located": false,
+    "training_metadata_sha256": "58300af07989d90c437821d05936c220294faa40d1d4e5e5ec9cf1a8e53021f0",
+    "training_output_dir": "/workspace/training_output/gta1_7b_sft_2k",
+    "official_result_claim_allowed": false,
     "algorithm_level_implementation": "w3_baselines/reguide_port.py",
     "excluded_name_collision": "daintlab/reguide is Reflexive Guidance for OOD classification, not GUI KDE grounding"
   },
