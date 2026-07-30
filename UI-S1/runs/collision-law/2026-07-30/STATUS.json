@@ -11,7 +11,7 @@
     "e5_required_status": "PASS",
     "e5_observed_status": "PENDING_INFERENCE",
     "configs_committed": true,
-    "w0_regression_passed": false
+    "w0_regression_passed": true
   },
   "supersedes": {
     "complementarity_e5": "merged_as_W2_noise_floor_after_current_E5_finishes",
