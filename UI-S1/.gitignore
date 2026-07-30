@@ -75,6 +75,12 @@ runs/**/*.zip
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
+runs/collision-law/**/w2_artifacts/
+runs/collision-law/**/w3_artifacts/
+runs/collision-law/**/w3_assets/
+runs/collision-law/**/w4_artifacts/
+runs/collision-law/**/w4_data/
+runs/collision-law/**/w4_repo/
 
 # CHORUS N0/N1 generated artifacts
 chorus-n0n1/data/
