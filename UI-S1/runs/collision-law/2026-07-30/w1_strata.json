@@ -1,0 +1,892 @@
+{
+  "contract": {
+    "collision_statistic": {
+      "aggregation": "mean_pairwise_kappa",
+      "chance_correction": "matched_marginal_permutation",
+      "conditioning": "both_models_fail",
+      "minimum_pair_cofailure_rows": 30,
+      "outcome": "inherited_exclusive_err_label",
+      "permutations": 1000,
+      "prediction": "aggregator_gain_is_reverse_ordered_by_collision",
+      "primary": "categorical_cohen_kappa",
+      "seed": 20260730
+    },
+    "default_exclude_quarantine": true,
+    "preregistered_at_utc": "2026-07-30",
+    "reporting": {
+      "capability_controls": [
+        "best_single_step_sr",
+        "mean_model_step_sr"
+      ],
+      "minimum_stratum_rows_for_directional_claim": 30,
+      "multiplicity_policy": "report_unadjusted_and_benjamini_hochberg"
+    },
+    "schema_version": 1,
+    "strata": [
+      {
+        "bench": "mind2web",
+        "gain_denominator": "all_rows_in_stratum",
+        "id": "mind2web_click",
+        "predicate": {
+          "gt_action_in": [
+            "CLICK"
+          ]
+        },
+        "setting": "visual"
+      },
+      {
+        "bench": "mind2web",
+        "gain_denominator": "all_rows_in_stratum",
+        "id": "mind2web_select_type",
+        "predicate": {
+          "gt_action_in": [
+            "SELECT",
+            "TYPE"
+          ]
+        },
+        "setting": "visual"
+      },
+      {
+        "bench": "androidcontrol",
+        "gain_denominator": "all_rows_in_stratum",
+        "id": "androidcontrol_grounding_dominant",
+        "predicate": {
+          "all_models_fail": true,
+          "strict_majority_error_label": "grounding_miss"
+        },
+        "setting_in": [
+          "low",
+          "high"
+        ],
+        "tie_policy": "exclude"
+      },
+      {
+        "bench": "androidcontrol",
+        "gain_denominator": "all_rows_in_stratum",
+        "id": "androidcontrol_action_dominant",
+        "predicate": {
+          "all_models_fail": true,
+          "strict_majority_error_label": "action_mismatch"
+        },
+        "setting_in": [
+          "low",
+          "high"
+        ],
+        "tie_policy": "exclude"
+      }
+    ],
+    "upstream_commit": "802940669dc80f3dee572cf39643e867844d9965"
+  },
+  "p1_reverse_order_test": {
+    "p_value": 0.683772233983162,
+    "prediction_satisfied": false,
+    "spearman_collision_vs_gain": 0.316227766016838
+  },
+  "status": "PASS",
+  "strata": {
+    "androidcontrol_action_dominant": {
+      "a3_gain_over_heldout_best": 0.0,
+      "collision_pairs": [
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.0005405306718564886,
+          "null_sd": 0.030627661921727684,
+          "observed_kappa": 0.24196689386562986,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "gui-r1-7b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.0001890719861229341,
+          "null_sd": 0.03231388616704656,
+          "observed_kappa": -0.012792714657415329,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.0002790395846873226,
+          "null_sd": 0.03155818204432771,
+          "observed_kappa": -0.010382868267361008,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.001152786824228921,
+          "null_sd": 0.030183382594949345,
+          "observed_kappa": 0.1790267051270146,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.00026935588809434084,
+          "null_sd": 0.035069386797195165,
+          "observed_kappa": -0.013012361743655916,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": -0.003629139072848701,
+          "null_sd": 0.027814640857420494,
+          "observed_kappa": 0.25866770549279444,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.0019044959508508175,
+          "null_sd": 0.036100605560040626,
+          "observed_kappa": -0.014521083496231156,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": -0.0012181254307394036,
+          "null_sd": 0.03511541353615227,
+          "observed_kappa": 0.5827015851137131,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": -0.0007132239876958489,
+          "null_sd": 0.039430821397244575,
+          "observed_kappa": 0.06893900563813553,
+          "p_greater_equal": 0.17582417582417584,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 519,
+          "eligible_for_mean": true,
+          "left": "ui-agile-7b",
+          "null_mean": 0.0006079178885608912,
+          "null_sd": 0.036878454948204305,
+          "observed_kappa": -0.014662756598242793,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.0011263498920089125,
+          "null_sd": 0.027393191317215432,
+          "observed_kappa": 0.12943535945695805,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "gui-r1-7b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.00031698290548055853,
+          "null_sd": 0.020366474350876622,
+          "observed_kappa": 0.022968924396405088,
+          "p_greater_equal": 0.16383616383616384,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.00034578424341782807,
+          "null_sd": 0.022111860869953034,
+          "observed_kappa": -0.03497592459788935,
+          "p_greater_equal": 0.968031968031968,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": -0.0002719778772717082,
+          "null_sd": 0.02188722591352787,
+          "observed_kappa": -0.015986304977614173,
+          "p_greater_equal": 0.8001998001998002,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.0005092635925668367,
+          "null_sd": 0.023221092985638986,
+          "observed_kappa": 0.17965588437715038,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 924,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": 0.00017629450353508742,
+          "null_sd": 0.027480473218249517,
+          "observed_kappa": 0.36105980510795516,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        }
+      ],
+      "mean_pairwise_failure_kappa": 0.11925549088983414,
+      "rows": 1443,
+      "step_sr": {
+        "A0_heldout_best": 0.0,
+        "A0_insample_best": 0.0,
+        "A1_plurality_median": 0.0,
+        "A2_plurality_density": 0.0,
+        "A3_pka_joint": 0.0,
+        "A4_pka_continuous": 0.0
+      }
+    },
+    "androidcontrol_grounding_dominant": {
+      "a3_gain_over_heldout_best": 0.0,
+      "collision_pairs": [
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.001663138231631662,
+          "null_sd": 0.057613241012649065,
+          "observed_kappa": 0.15006226650062252,
+          "p_greater_equal": 0.1258741258741259,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "gui-r1-7b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.0012161687170489076,
+          "null_sd": 0.060410359705613814,
+          "observed_kappa": -0.028119507908610005,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.00275215075788091,
+          "null_sd": 0.0289151921652018,
+          "observed_kappa": -0.006554690700527335,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.0018898423468372766,
+          "null_sd": 0.05661480488068224,
+          "observed_kappa": -0.03512272999401339,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.0011923990498836053,
+          "null_sd": 0.06006937554633759,
+          "observed_kappa": -0.01900237529690964,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.000542372881351537,
+          "null_sd": 0.050485927069604405,
+          "observed_kappa": -0.005895357406047221,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": -0.0012498128275540358,
+          "null_sd": 0.051509025825981644,
+          "observed_kappa": -0.021961567257301955,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": -0.00041290322580087404,
+          "null_sd": 0.03850910618418806,
+          "observed_kappa": -0.006451612903220173,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": 0.002288235294117771,
+          "null_sd": 0.05880240179403712,
+          "observed_kappa": 0.655882352941176,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 273,
+          "eligible_for_mean": true,
+          "left": "ui-agile-7b",
+          "null_mean": 0.0007897971727148925,
+          "null_sd": 0.03478428147857635,
+          "observed_kappa": -0.00676090964965752,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/low",
+          "right": "ui-r1-e-3b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": -0.0011045543584722495,
+          "null_sd": 0.033449143709281114,
+          "observed_kappa": 0.10283093498078774,
+          "p_greater_equal": 0.003996003996003996,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "gui-r1-7b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.00027683365009770357,
+          "null_sd": 0.037110400121914563,
+          "observed_kappa": -0.002594231649626226,
+          "p_greater_equal": 0.5804195804195804,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "gui-r1-3b",
+          "null_mean": 0.0009680220406614323,
+          "null_sd": 0.03388531241413309,
+          "observed_kappa": -0.09853695610868303,
+          "p_greater_equal": 1.0,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": -0.00013821068218620997,
+          "null_sd": 0.0341102825973041,
+          "observed_kappa": -0.029425944419573823,
+          "p_greater_equal": 0.8351648351648352,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-3b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "gui-r1-7b",
+          "null_mean": 0.000747009569377519,
+          "null_sd": 0.03784191678869845,
+          "observed_kappa": 0.04419371524634641,
+          "p_greater_equal": 0.18281718281718282,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        },
+        {
+          "cofailure_rows": 657,
+          "eligible_for_mean": true,
+          "left": "ui-agile-3b",
+          "null_mean": 0.00024712454244235404,
+          "null_sd": 0.03138784606259484,
+          "observed_kappa": 0.09957843970646921,
+          "p_greater_equal": 0.001998001998001998,
+          "permutations": 1000,
+          "pool": "androidcontrol/high",
+          "right": "ui-agile-7b"
+        }
+      ],
+      "mean_pairwise_failure_kappa": 0.04950761413007697,
+      "rows": 930,
+      "step_sr": {
+        "A0_heldout_best": 0.0,
+        "A0_insample_best": 0.0,
+        "A1_plurality_median": 0.001075268817204301,
+        "A2_plurality_density": 0.0,
+        "A3_pka_joint": 0.0,
+        "A4_pka_continuous": 0.001075268817204301
+      }
+    },
+    "mind2web_click": {
+      "a3_gain_over_heldout_best": 0.08229988726042836,
+      "collision_pairs": [
+        {
+          "cofailure_rows": 535,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.0008931994223447168,
+          "null_sd": 0.030768569293862007,
+          "observed_kappa": 0.24143363528948417,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-32b"
+        },
+        {
+          "cofailure_rows": 578,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": 0.0004832733692371324,
+          "null_sd": 0.03111724465234297,
+          "observed_kappa": 0.2120941250083799,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-3b"
+        },
+        {
+          "cofailure_rows": 530,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.0008308493850667449,
+          "null_sd": 0.03263918622933672,
+          "observed_kappa": 0.22338000651253656,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 573,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.0002479226725450224,
+          "null_sd": 0.03359879578638668,
+          "observed_kappa": 0.022246481261658867,
+          "p_greater_equal": 0.2787212787212787,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 620,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.0007028703007090039,
+          "null_sd": 0.026160440834825948,
+          "observed_kappa": 0.045892893782914876,
+          "p_greater_equal": 0.059940059940059943,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 646,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": 0.0005223735408565086,
+          "null_sd": 0.03801263943586729,
+          "observed_kappa": 0.630812256809339,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-3b"
+        },
+        {
+          "cofailure_rows": 604,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": 0.0009079890920104163,
+          "null_sd": 0.0391742554753984,
+          "observed_kappa": 0.5958489041510959,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 614,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": -0.0001293464599913016,
+          "null_sd": 0.018970465018852117,
+          "observed_kappa": -0.004791579388353263,
+          "p_greater_equal": 0.6673326673326674,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 661,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": -0.0011161905096167474,
+          "null_sd": 0.0315589347242016,
+          "observed_kappa": 0.18801768917590872,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 659,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": -0.00048244675270169235,
+          "null_sd": 0.03897519803504171,
+          "observed_kappa": 0.6128003357465113,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 631,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": 0.00025396633598767,
+          "null_sd": 0.01984597740677025,
+          "observed_kappa": 0.0011841612392611417,
+          "p_greater_equal": 0.5274725274725275,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 691,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": -0.00048796421634969566,
+          "null_sd": 0.029827686378504928,
+          "observed_kappa": 0.1154581837443355,
+          "p_greater_equal": 0.002997002997002997,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 600,
+          "eligible_for_mean": true,
+          "left": "tongui-7b",
+          "null_mean": 0.00018873403019754114,
+          "null_sd": 0.02070946596638805,
+          "observed_kappa": 0.01277584204413477,
+          "p_greater_equal": 0.3196803196803197,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 641,
+          "eligible_for_mean": true,
+          "left": "tongui-7b",
+          "null_mean": -0.0003237891759323308,
+          "null_sd": 0.028800636313766788,
+          "observed_kappa": 0.1030648631569446,
+          "p_greater_equal": 0.001998001998001998,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 767,
+          "eligible_for_mean": true,
+          "left": "ui-tars-72b",
+          "null_mean": -0.0009178939475513019,
+          "null_sd": 0.024231130248245004,
+          "observed_kappa": 0.1594439744674299,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        }
+      ],
+      "mean_pairwise_failure_kappa": 0.21064411820010545,
+      "rows": 1774,
+      "step_sr": {
+        "A0_heldout_best": 0.5326944757609922,
+        "A0_insample_best": 0.556369785794814,
+        "A1_plurality_median": 0.5986471251409244,
+        "A2_plurality_density": 0.6116121758737317,
+        "A3_pka_joint": 0.6149943630214205,
+        "A4_pka_continuous": 0.31510710259301017
+      }
+    },
+    "mind2web_select_type": {
+      "a3_gain_over_heldout_best": -0.02614379084967322,
+      "collision_pairs": [
+        {
+          "cofailure_rows": 124,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.0013623668639052907,
+          "null_sd": 0.05804033902840683,
+          "observed_kappa": 0.11952662721893494,
+          "p_greater_equal": 0.024975024975024976,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-32b"
+        },
+        {
+          "cofailure_rows": 120,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": 0.0009864797195792757,
+          "null_sd": 0.06809699658670908,
+          "observed_kappa": 0.05358037055583363,
+          "p_greater_equal": 0.24775224775224775,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-3b"
+        },
+        {
+          "cofailure_rows": 113,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": -0.00157060152499295,
+          "null_sd": 0.06577751627718358,
+          "observed_kappa": 0.12242304433775772,
+          "p_greater_equal": 0.03896103896103896,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 183,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": 0.00036995487590859357,
+          "null_sd": 0.020706998117995003,
+          "observed_kappa": -0.03221358736525465,
+          "p_greater_equal": 0.977022977022977,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 183,
+          "eligible_for_mean": true,
+          "left": "cogagent-18b",
+          "null_mean": 0.00025063705860927087,
+          "null_sd": 0.026440933591837548,
+          "observed_kappa": 0.011831088460138226,
+          "p_greater_equal": 0.4085914085914086,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 147,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": -0.0004654305468258371,
+          "null_sd": 0.07096311349546852,
+          "observed_kappa": 0.4918290383406662,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-3b"
+        },
+        {
+          "cofailure_rows": 137,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": -0.002068961352656906,
+          "null_sd": 0.06939425742054146,
+          "observed_kappa": 0.4705314009661835,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 174,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": -0.0007618849906582563,
+          "null_sd": 0.03050069622549862,
+          "observed_kappa": 0.042765206560099446,
+          "p_greater_equal": 0.12987012987012986,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 174,
+          "eligible_for_mean": true,
+          "left": "tongui-32b",
+          "null_mean": 0.002122750073767986,
+          "null_sd": 0.03769301832866157,
+          "observed_kappa": 0.1442903511360283,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 146,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": -0.0024569243156199088,
+          "null_sd": 0.07073730069345892,
+          "observed_kappa": 0.6326489533011271,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "tongui-7b"
+        },
+        {
+          "cofailure_rows": 177,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": 0.0002656288608844741,
+          "null_sd": 0.027539373190053063,
+          "observed_kappa": 0.037805782060785595,
+          "p_greater_equal": 0.12287712287712288,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 177,
+          "eligible_for_mean": true,
+          "left": "tongui-3b",
+          "null_mean": 0.0004996128232924796,
+          "null_sd": 0.033929682831338605,
+          "observed_kappa": 0.0816942852717981,
+          "p_greater_equal": 0.016983016983016984,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 168,
+          "eligible_for_mean": true,
+          "left": "tongui-7b",
+          "null_mean": 0.0028913299333072277,
+          "null_sd": 0.03184709406621151,
+          "observed_kappa": 0.06080816006276971,
+          "p_greater_equal": 0.07592407592407592,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-72b"
+        },
+        {
+          "cofailure_rows": 168,
+          "eligible_for_mean": true,
+          "left": "tongui-7b",
+          "null_mean": 4.6553267681419544e-05,
+          "null_sd": 0.04170195744154991,
+          "observed_kappa": 0.05246195165622215,
+          "p_greater_equal": 0.14085914085914086,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        },
+        {
+          "cofailure_rows": 306,
+          "eligible_for_mean": true,
+          "left": "ui-tars-72b",
+          "null_mean": -0.0002624155157214371,
+          "null_sd": 0.03792261841865766,
+          "observed_kappa": 0.20570085218924453,
+          "p_greater_equal": 0.000999000999000999,
+          "permutations": 1000,
+          "pool": "mind2web/visual",
+          "right": "ui-tars-7b"
+        }
+      ],
+      "mean_pairwise_failure_kappa": 0.16637890165015568,
+      "rows": 306,
+      "step_sr": {
+        "A0_heldout_best": 0.43137254901960786,
+        "A0_insample_best": 0.48366013071895425,
+        "A1_plurality_median": 0.4117647058823529,
+        "A2_plurality_density": 0.4117647058823529,
+        "A3_pka_joint": 0.40522875816993464,
+        "A4_pka_continuous": 0.3954248366013072
+      }
+    }
+  }
+}
