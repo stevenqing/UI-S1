@@ -41,6 +41,14 @@
         "step_sr": 0.6075816993464053,
         "step_successes": 4648
       },
+      "ui-agile-7b/high/v1": {
+        "action_accuracy": 0.7992156862745098,
+        "rows": 7650,
+        "sha256": "aef0a9b677aac0086d51f707385c193387bfb4b7ea575b27ac4a45f17e45fcb6",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/high/v1/predictions.jsonl",
+        "step_sr": 0.6082352941176471,
+        "step_successes": 4653
+      },
       "ui-agile-7b/low/full": {
         "action_accuracy": 0.8768627450980392,
         "rows": 7650,
@@ -48,6 +56,14 @@
         "source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/low/predictions.jsonl",
         "step_sr": 0.7756862745098039,
         "step_successes": 5934
+      },
+      "ui-agile-7b/low/v1": {
+        "action_accuracy": 0.8786928104575163,
+        "rows": 7650,
+        "sha256": "bd414c14acdf7f7ae0da45fbec76b63f856fb33eb265ff340904776429f6b432",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/low/v1/predictions.jsonl",
+        "step_sr": 0.777124183006536,
+        "step_successes": 5945
       }
     },
     "full_to_view_flips": {
@@ -94,6 +110,50 @@
             0.03636715566277823
           ]
         }
+      },
+      "ui-agile-7b/high/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 348,
+          "rate": 0.04549019607843137,
+          "wilson_95": [
+            0.04104445799892709,
+            0.050392170599403686
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4460,
+          "flips": 257,
+          "gt_grounding_rows": 4605,
+          "rate": 0.05762331838565023,
+          "stable_type_rows": 4460,
+          "wilson_95": [
+            0.051157375238822834,
+            0.0648506558702173
+          ]
+        }
+      },
+      "ui-agile-7b/low/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 110,
+          "rate": 0.01437908496732026,
+          "wilson_95": [
+            0.011944667583486482,
+            0.017300968091750468
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4602,
+          "flips": 98,
+          "gt_grounding_rows": 4605,
+          "rate": 0.021295089091699262,
+          "stable_type_rows": 4602,
+          "wilson_95": [
+            0.017506012756104777,
+            0.02588268409927128
+          ]
+        }
       }
     },
     "k1": {
@@ -108,6 +168,18 @@
         "difference": -0.00617387786268242,
         "grounding_flip_rate": 0.03095030514385353,
         "prediction_satisfied": false
+      },
+      "ui-agile-7b/high": {
+        "action_flip_rate": 0.04549019607843137,
+        "difference": 0.012133122307218858,
+        "grounding_flip_rate": 0.05762331838565023,
+        "prediction_satisfied": true
+      },
+      "ui-agile-7b/low": {
+        "action_flip_rate": 0.01437908496732026,
+        "difference": 0.006916004124379002,
+        "grounding_flip_rate": 0.021295089091699262,
+        "prediction_satisfied": true
       }
     },
     "noise": {
@@ -127,13 +199,15 @@
       },
       "ui-agile-7b/high": {
         "available_views": [
-          "full"
+          "full",
+          "v1"
         ],
         "complete": false
       },
       "ui-agile-7b/low": {
         "available_views": [
-          "full"
+          "full",
+          "v1"
         ],
         "complete": false
       }
@@ -234,5 +308,5 @@
       }
     }
   },
-  "status": "PARTIAL"
+  "status": "PASS"
 }

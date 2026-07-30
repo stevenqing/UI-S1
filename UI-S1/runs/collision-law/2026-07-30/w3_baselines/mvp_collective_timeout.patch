@@ -1,0 +1,26 @@
+diff --git a/mvp_sspro.py b/mvp_sspro.py
+index 57ce444..a293949 100644
+--- a/mvp_sspro.py
++++ b/mvp_sspro.py
+@@ -17,6 +17,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
+ from torch.utils.data.distributed import DistributedSampler
+ import argparse
+ import copy
++from datetime import timedelta
++
+ # 系统提示词
+ SYSTEM_PROMPT = '''
+@@ -613,7 +614,12 @@ def setup_distributed():
+         world_size = int(os.environ["WORLD_SIZE"])
+         gpu = int(os.environ['LOCAL_RANK'])
+         torch.cuda.set_device(gpu)
+-        dist.init_process_group(backend='nccl', world_size=world_size, rank=rank)
++        dist.init_process_group(
++            backend='nccl',
++            world_size=world_size,
++            rank=rank,
++            timeout=timedelta(hours=1),
++        )
+         return rank, world_size, gpu
+     else:
+         print("Not using distributed mode")

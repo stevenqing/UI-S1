@@ -16,13 +16,15 @@
     },
     "ui-agile-7b/high": {
       "available_views": [
-        "full"
+        "full",
+        "v1"
       ],
       "complete": false
     },
     "ui-agile-7b/low": {
       "available_views": [
-        "full"
+        "full",
+        "v1"
       ],
       "complete": false
     }
