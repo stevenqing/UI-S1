@@ -13,12 +13,22 @@
     "checkpoint_index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6"
   },
   "mvp": {
-    "status": "BLOCKED_SOURCE_NOT_LOCATED",
+    "status": "SOURCE_PINNED_PENDING_SANITY",
     "requested_anchor": 61.7,
-    "anchor_verified": false,
+    "anchor_verified_from_paper": true,
+    "paper": "arXiv:2512.08529",
+    "source_repo": "https://github.com/ZJUSCL/MVP",
+    "source_revision": "988ff3c61b9f7632d780ae27c83260de75b3c95f",
     "algorithm_level_implementation": "w3_baselines/mvp_port.py",
-    "implemented_components": ["28px_border_view_in_W2", "14px_multi_coordinate_clustering"],
-    "pending_components": ["official_AGVP_source", "query_token_layer_ablation", "ScreenSpotPro_anchor"]
+    "implemented_components": ["spec_defined_28px_border_view_in_W2", "graph_centroid_ablation"],
+    "official_parameters": {
+      "attention_layer": 20,
+      "max_subimage_inferences": 4,
+      "top_attention_tokens": 100,
+      "consistency_threshold_pixels": 14,
+      "subimage_resize_factor": 2
+    },
+    "pending_components": ["official_AGVP_port", "query_token_layer_ablation", "ScreenSpotPro_sanity_run"]
   },
   "reguide": {
     "gui_stage2_model": "hyunseoki/regUIDE-gta1-7b-sft-2k",
