@@ -1,0 +1,53 @@
+schema_version: 1
+preregistered_at_utc: "2026-07-30"
+upstream_commit: "802940669dc80f3dee572cf39643e867844d9965"
+default_exclude_quarantine: true
+
+collision_statistic:
+  primary: cohen_kappa
+  outcome: step_failure
+  chance_correction: matched_marginal_permutation
+  permutations: 1000
+  seed: 20260730
+  aggregation: mean_pairwise_kappa
+  prediction: aggregator_gain_is_reverse_ordered_by_collision
+
+strata:
+  - id: mind2web_click
+    bench: mind2web
+    setting: visual
+    predicate:
+      gt_action_in: [CLICK]
+    gain_denominator: all_rows_in_stratum
+
+  - id: mind2web_select_type
+    bench: mind2web
+    setting: visual
+    predicate:
+      gt_action_in: [SELECT, TYPE]
+    gain_denominator: all_rows_in_stratum
+
+  - id: androidcontrol_grounding_dominant
+    bench: androidcontrol
+    setting_in: [low, high]
+    predicate:
+      all_models_fail: true
+      strict_majority_error_label: grounding_miss
+    tie_policy: exclude
+    gain_denominator: all_rows_in_stratum
+
+  - id: androidcontrol_action_dominant
+    bench: androidcontrol
+    setting_in: [low, high]
+    predicate:
+      all_models_fail: true
+      strict_majority_error_label: action_mismatch
+    tie_policy: exclude
+    gain_denominator: all_rows_in_stratum
+
+reporting:
+  capability_controls:
+    - best_single_step_sr
+    - mean_model_step_sr
+  minimum_stratum_rows_for_directional_claim: 30
+  multiplicity_policy: report_unadjusted_and_benjamini_hochberg

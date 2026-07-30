@@ -1,0 +1,18 @@
+{
+  "status": "PREREGISTERED_WAITING_FOR_E5",
+  "base_commit": "802940669dc80f3dee572cf39643e867844d9965",
+  "w1_results_generated": false,
+  "w2_results_generated": false,
+  "w4_results_generated": false,
+  "execution_gate": {
+    "e5_required_status": "PASS",
+    "e5_observed_status": "PENDING_INFERENCE",
+    "configs_committed": true,
+    "w0_regression_passed": false
+  },
+  "supersedes": {
+    "complementarity_e5": "merged_as_W2_noise_floor_after_current_E5_finishes",
+    "complementarity_e4": "replaced_by_W4_curated_rerun",
+    "complementarity_e1_e2_e3_diagnostics": "inherited_as_upstream_inputs"
+  }
+}

@@ -1,0 +1,31 @@
+schema_version: 1
+preregistered_at_utc: "2026-07-30"
+upstream_commit: "802940669dc80f3dee572cf39643e867844d9965"
+
+deployable_subset:
+  parse_rate:
+    lower_inclusive: 0.90
+    upper_inclusive: 1.00
+  step_success_rate:
+    lower_inclusive: 0.30
+    upper_inclusive: 0.90
+  aggregation_for_eligibility: step_micro
+  scope: full_clean_pool
+  quarantine_excluded: true
+  rationale: >-
+    The lower Step-SR endpoint preserves the prior follow-up capability floor.
+    The upper endpoint excludes a hypothetical near-saturated model whose
+    complementarity headroom would be structurally negligible. No current lane
+    is excluded by the upper endpoint. Endpoints are fixed before W1/W2 runs.
+
+threshold_sensitivity:
+  androidcontrol_grounding_radius:
+    start: 0.06
+    stop: 0.30
+    step: 0.02
+    reference: 0.14
+
+mde:
+  definition: two_times_sample_standard_deviation
+  ddof: 1
+  greedy_seed_dimension: omitted
