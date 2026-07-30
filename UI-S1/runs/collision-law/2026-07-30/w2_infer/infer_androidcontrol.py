@@ -99,6 +99,7 @@ def main():
     parser.add_argument("--shard-index", type=int, required=True)
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--kv-cache-memory-bytes", type=int, default=2 * 1024**3)
+    parser.add_argument("--gpu-memory-utilization", type=float, default=0.65)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
@@ -124,7 +125,8 @@ def main():
     model = LLM(
         model=str(config["model_dir"].resolve()), trust_remote_code=True,
         tensor_parallel_size=1, dtype="bfloat16", max_model_len=8192,
-        gpu_memory_utilization=0.65, kv_cache_memory_bytes=args.kv_cache_memory_bytes,
+        gpu_memory_utilization=args.gpu_memory_utilization,
+        kv_cache_memory_bytes=args.kv_cache_memory_bytes,
         limit_mm_per_prompt={"image": 1}, enforce_eager=True,
     )
     sampling = SamplingParams(temperature=0.0, max_tokens=256, skip_special_tokens=False)
