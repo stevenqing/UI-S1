@@ -1,0 +1,38 @@
+{
+  "status": "ZERO_GPU_COMPLETE_H1_WAITING_FOR_PROTECTED_PID_H3_PREFLIGHT_PENDING",
+  "upstream_commit": "1d51f56148bb57c9fe20200d0a2f9d32dde7fbb4",
+  "preregistration_commit": "89f492c",
+  "implementation_commit": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
+  "remote_branch": "fork/benchmark-results-20260729",
+  "remote_head_at_h1_queue_start": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
+  "zero_gpu": {
+    "c1_mde": "PASS",
+    "c2_sgap": "PASS_3_OF_3",
+    "c3_p1": "FAILED_RHO_0",
+    "h2": "PASS_VIEW_KAPPA_0.895_GT_CROSS_FAMILY_0.398_P_5.49E-4",
+    "h3_gate": "OPEN",
+    "h4": "HK4_TRIGGERED_RHO_BELOW_0.7_AND_ANDROIDCONTROL_AREA_UNAVAILABLE"
+  },
+  "h1": {
+    "status": "WAITING_FOR_PROTECTED_PID_1814",
+    "gpu_plan": "GPUS_0_7_EIGHT_RESUMABLE_SHARDS",
+    "candidate_plan": "ONE_FULL_PLUS_18_OFFICIAL_SUBIMAGES_DERIVE_N2_N4_N10_AND_THREE_SEEDED_N10",
+    "results_generated": false
+  },
+  "h3": {
+    "status": "PREFLIGHT_PENDING_BARE_SCREENSPOT_SCORES",
+    "local_assets": {
+      "GTA1-7B": "PRESENT_16G",
+      "UI-TARS-7B-SFT": "PRESENT_31G",
+      "SeeClick-mind2web": "PRESENT_18G",
+      "Qwen3-VL-8B-Instruct": "NOT_FOUND_IN_WORKSPACE_SEARCH_PENDING_SCRATCH"
+    },
+    "eligible_models_frozen": false,
+    "inference_started": false
+  },
+  "protected_process": {
+    "pid": 1814,
+    "policy": "NEVER_KILL_PAUSE_OR_REUSE",
+    "owns_gpus": [0, 1, 2, 3, 4, 5, 6, 7]
+  }
+}
