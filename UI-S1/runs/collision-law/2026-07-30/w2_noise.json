@@ -4,30 +4,53 @@
       "available_views": [
         "full",
         "v1",
+        "v2",
+        "v3",
         "v4"
       ],
-      "complete": false
+      "complete": true,
+      "mde": 0.301619567843777,
+      "mean_step_sr": 0.3475032679738562,
+      "sample_sd": 0.1508097839218885
     },
     "gui-r1-7b/low": {
       "available_views": [
         "full",
-        "v1"
+        "v1",
+        "v2",
+        "v3",
+        "v4"
       ],
-      "complete": false
+      "complete": true,
+      "mde": 0.40894607861091364,
+      "mean_step_sr": 0.4537777777777777,
+      "sample_sd": 0.20447303930545682
     },
     "ui-agile-7b/high": {
       "available_views": [
         "full",
-        "v1"
+        "v1",
+        "v2",
+        "v3",
+        "v4"
       ],
-      "complete": false
+      "complete": true,
+      "mde": 0.29947706141964353,
+      "mean_step_sr": 0.4735686274509804,
+      "sample_sd": 0.14973853070982177
     },
     "ui-agile-7b/low": {
       "available_views": [
         "full",
-        "v1"
+        "v1",
+        "v2",
+        "v3",
+        "v4"
       ],
-      "complete": false
+      "complete": true,
+      "mde": 0.4247116156017106,
+      "mean_step_sr": 0.6196078431372548,
+      "sample_sd": 0.2123558078008553
     }
   },
   "definition": "MDE = 2 * sample SD over full,v1,v2,v3,v4",
@@ -35,10 +58,16 @@
     "tongui-7b/visual": {
       "available_views": [
         "full",
-        "v1"
+        "v1",
+        "v2",
+        "v3",
+        "v4"
       ],
-      "complete": false
+      "complete": true,
+      "mde": 0.04644041642908159,
+      "mean_step_sr": 0.5039423076923077,
+      "sample_sd": 0.023220208214540794
     }
   },
-  "status": "PARTIAL"
+  "status": "PASS"
 }

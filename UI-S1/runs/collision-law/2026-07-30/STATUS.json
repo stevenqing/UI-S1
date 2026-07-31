@@ -1,5 +1,5 @@
 {
-  "status": "W2_MATRIX_IN_PROGRESS_W3_MVP_PASS",
+  "status": "W2_COMPLETE_W3_W4_IN_PROGRESS",
   "base_commit": "802940669dc80f3dee572cf39643e867844d9965",
   "w1_results_generated": true,
   "w1_operator_gate_passed": true,
@@ -23,12 +23,23 @@
     "rows_manifest.json": "03bc77b64bc478fcf19c7be15f6b3d209137429b7328cc6ae9f389098d892062",
     "w1_aggregators.json": "7e07bf292e81d470c073a344351114cb8f4acb9080046cc2e515e6f8c5b6af14",
     "w1_strata.json": "4b6f46184e86676e2905b66f4307e1988b3ce1821d3ce9dd9ebe4846bd893465",
-    "w1_kappa.json": "3dfd85f6e19419ac235fc3b63c8e931cc0f9cc1069b1dc943d965dbbecc35169"
+    "w1_kappa.json": "3dfd85f6e19419ac235fc3b63c8e931cc0f9cc1069b1dc943d965dbbecc35169",
+    "w2_flips.json": "6b438980af7571eb3aa4a18e648925731e466cc28401d39a9cde4c86edac6dde",
+    "w2_noise.json": "5094555e55059dad9e269434e74089a23875af55eac63c964af11f7a4b145326",
+    "w2_allocation.json": "3be13ec1ecd0ed567d2b04e2ba2418d8ff23840b4b26baf861f4e8f1510a26bb"
   },
   "kill_conditions": {
     "K1": "COMPLETE_HETEROGENEOUS_3_OF_5_DIRECTIONALLY_SATISFIED_NO_GLOBAL_RULE",
-    "K2": "PENDING_W2_MDE",
+    "K2": "NOT_TRIGGERED_MIND2WEB_GAIN_6.63PP_EXCEEDS_MDE_4.64PP",
     "K3": "TRIGGERED_JOINT_NOT_GENERALLY_BETTER_THAN_SEQUENTIAL"
+  },
+  "w2": {
+    "status": "PASS",
+    "five_view_cells_complete": 5,
+    "p3_pools_complete": 3,
+    "p3_prediction_satisfied": 0,
+    "c3_exceeds_random": 3,
+    "mind2web_mde": 0.04644041642908159
   },
   "e5": {
     "status": "SUPERSEDED_BY_W2",

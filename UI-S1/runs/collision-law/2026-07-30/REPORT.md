@@ -2,7 +2,7 @@
 
 Date: 2026-07-30
 
-Status: W0 and W1 complete; W2 K1 complete with all 5/5 `full` versus `v1` cells; official MVP sanity anchor passed; W2 noise/allocation and remaining W3/W4 runs in progress.
+Status: W0, W1, and W2 complete; official MVP sanity anchor passed; remaining W3/W4 runs in progress.
 
 ## Preregistration record
 
@@ -33,7 +33,7 @@ AndroidControl uses the exact metric-derived Gaussian coordinate kernel with `si
 
 Mind2Web parsers expose points but no predicted element boxes. Its exact point-in-GT-bbox evaluator can therefore be used only for post-hoc analysis and scoring. Inference PKA uses the fixed GT-free triangular point kernel on normalized-coordinate scale. This weakens the paper's exact evaluator-kernel claim on Mind2Web and is stated as a main-text limitation.
 
-The operator gate has nine passing tests: identity at `K=1`, parse removal, parameter-free plurality, independent density-medoid agreement, continuous-mode behavior, GT-free API separation, out-of-domain preservation, and sequential type preservation.
+The operator gate has eleven passing tests, including identity at `K=1`, parse removal, parameter-free plurality, independent density-medoid agreement, continuous-mode behavior, GT-free API separation, out-of-domain preservation, sequential type preservation, and P3 view-adapter identity/null handling.
 
 ## W1 main table
 
@@ -57,7 +57,7 @@ Density mode is useful on Mind2Web but not materially useful on AndroidControl. 
 
 K3 is therefore triggered: joint PKA is not generally better than sequential density mode. PKA remains a unified perspective and a positive Mind2Web medoid result, not a generally superior operator.
 
-K2 remains pending because the +6.63 pp Mind2Web A3 gain must be compared with W2's MDE.
+K2 is not triggered: the +6.63 pp Mind2Web A3 gain exceeds W2's 4.64 pp MDE.
 
 ## P1 strata
 
@@ -79,7 +79,7 @@ The preregistered reverse-order prediction is not satisfied: Spearman correlatio
 - Mind2Web: TongUI-7B, CogAgent-18B, UI-TARS-72B, and SeeClick;
 - AndroidControl: all cross-family UI-AGILE, GUI-R1, and UI-R1-E pairs in Low and High.
 
-These values are frozen inputs to P3 allocation; no W2 allocation result has been generated.
+These values are frozen inputs to the completed P3 allocation below.
 
 ## E5 inheritance and W2 gate
 
@@ -103,7 +103,29 @@ K1 is complete and the mechanism evidence is heterogeneous. The TongUI cell has 
 
 W2 `v1` is a preregistered 28-pixel border perturbation, not an exact official MVP view. Official MVP uses AGVP crops and is evaluated separately in W3 under Amendment 005.
 
-W2 noise estimation remains partial. The inherited GUI-R1 High `v4` cell is complete, while the remaining `v2`/`v3`/`v4` cells are pending. K2 and P3 therefore remain unevaluated.
+## W2 noise and P3 final results
+
+All five views are complete for every representative cell. MDE is twice the sample standard deviation over `full`, `v1`, `v2`, `v3`, and `v4` Step SR.
+
+| Cell | Mean Step SR | MDE |
+|---|---:|---:|
+| GUI-R1-7B / AndroidControl High | 34.75% | 30.16 pp |
+| GUI-R1-7B / AndroidControl Low | 45.38% | 40.89 pp |
+| UI-AGILE-7B / AndroidControl High | 47.36% | 29.95 pp |
+| UI-AGILE-7B / AndroidControl Low | 61.96% | 42.47 pp |
+| TongUI-7B / Mind2Web | 50.39% | 4.64 pp |
+
+The AndroidControl MDEs are dominated by severe `v4` deployment-profile degradation and are not small-noise regimes. Mind2Web's +6.63 pp W1 A3 gain remains above its 4.64 pp MDE, so K2 is not triggered and the aggregate positive result is retained.
+
+P3 uses five grouped held-out folds and a fixed five-forward budget. C1 is one model across five views, C2 is five lineages on the full view, C3 is fold-local kappa-guided mixed allocation, and C4 is seeded random mixed allocation.
+
+| Pool | C1 views | C2 lineages | C3 kappa mixed | C4 random mixed | P3 |
+|---|---:|---:|---:|---:|---|
+| AndroidControl High | 44.76% | 50.37% | 48.33% | 43.70% | Not satisfied |
+| AndroidControl Low | 57.40% | 71.90% | 69.12% | 54.31% | Not satisfied |
+| Mind2Web visual | 54.76% | 58.94% | 58.51% | 55.72% | Not satisfied |
+
+P3 fails in all three pools because C3 does not exceed C2. C3 does exceed the seeded random mixed allocation in all three pools, so kappa guidance carries signal but does not beat the strongest single-axis corner.
 
 ## W3 official MVP sanity anchor
 
@@ -113,8 +135,8 @@ The pinned official MVP source completed all 1,581 ScreenSpot-Pro rows after inc
 
 - P1: failed on the four preregistered strata.
 - P2/K1: complete and heterogeneous; three of five cells satisfy the direction, with no preregistered global aggregation rule.
-- P3: pending W2 model-view pool.
-- K2: pending W2 noise floor.
+- P3: failed in all three pools; C3 exceeds random but not the five-lineage C2 corner.
+- K2: not triggered; Mind2Web's +6.63 pp A3 gain exceeds its 4.64 pp MDE.
 - K3: triggered; operator demoted to unified perspective.
 - AndroidControl aggregation: negative result across A1-A4.
 - Mind2Web: discrete density and joint medoid aggregation are positive; continuous mode is strongly negative.

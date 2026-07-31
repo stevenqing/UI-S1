@@ -320,12 +320,12 @@ def prediction_from_view_row(row: dict, source: str, bench: str) -> Prediction:
             x, y = point[0] / width, point[1] / height
         return Prediction(
             action=row.get("pred_action"), x=x, y=y,
-            parameter=row.get("pred_input_text", ""), source=source,
+            parameter=row.get("pred_input_text") or "", source=source,
             parse_ok=row.get("pred_action") is not None,
         )
     return Prediction(
         action=row.get("pred_action"), x=row.get("pred_x"), y=row.get("pred_y"),
-        parameter=row.get("pred_param", ""), source=source,
+        parameter=row.get("pred_param") or "", source=source,
         parse_ok=bool(row.get("parse_ok")),
     )
 
@@ -336,7 +336,7 @@ def p3_view_rows(bench: str, setting: str, view: str):
         rows = read_jsonl(path)
         if len(rows) != 7708:
             return None
-        return {row["index"]: row for row in rows}
+        return {str(row["index"]): row for row in rows}
     path = m2w_cell_path(view)
     rows = read_jsonl(path)
     if len(rows) != 2080:

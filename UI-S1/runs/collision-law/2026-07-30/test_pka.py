@@ -1,9 +1,11 @@
 import inspect
 import math
 import unittest
+from unittest.mock import patch
 
 import kernels
 import pka
+import w2_analyze
 from aggregators import plurality_then_density
 from pka import Prediction, coordinate_density_medoid, coordinate_density_mode, pka_joint, pka_joint_continuous
 
@@ -85,6 +87,21 @@ class ProductKernelAggregationTest(unittest.TestCase):
         ]
         result = plurality_then_density("mind2web", predictions, ["a", "b", "c"])
         self.assertEqual(result.prediction.action, "CLICK")
+
+    def test_androidcontrol_p3_view_rows_use_pool_identity_type(self):
+        rows = [{"index": index} for index in range(7708)]
+        with patch.object(w2_analyze, "read_jsonl", return_value=rows):
+            result = w2_analyze.p3_view_rows("androidcontrol", "low", "v1")
+        self.assertIn("0", result)
+        self.assertNotIn(0, result)
+
+    def test_p3_view_prediction_normalizes_nullable_parameter(self):
+        row = {
+            "image_size": [100, 100], "pred_coord": [50, 50],
+            "pred_action": "type", "pred_input_text": None,
+        }
+        prediction = w2_analyze.prediction_from_view_row(row, "test", "androidcontrol")
+        self.assertEqual(prediction.parameter, "")
 
 
 if __name__ == "__main__":
