@@ -2,7 +2,7 @@
 
 Date: 2026-07-30
 
-Status: W0 and W1 complete; W2 K1 complete with all 5/5 `full` versus `v1` cells; W2 noise/allocation and W3/W4 pending.
+Status: W0 and W1 complete; W2 K1 complete with all 5/5 `full` versus `v1` cells; official MVP sanity anchor passed; W2 noise/allocation and remaining W3/W4 runs in progress.
 
 ## Preregistration record
 
@@ -104,6 +104,10 @@ K1 is complete and the mechanism evidence is heterogeneous. The TongUI cell has 
 W2 `v1` is a preregistered 28-pixel border perturbation, not an exact official MVP view. Official MVP uses AGVP crops and is evaluated separately in W3 under Amendment 005.
 
 W2 noise estimation remains partial. The inherited GUI-R1 High `v4` cell is complete, while the remaining `v2`/`v3`/`v4` cells are pending. K2 and P3 therefore remain unevaluated.
+
+## W3 official MVP sanity anchor
+
+The pinned official MVP source completed all 1,581 ScreenSpot-Pro rows after increasing only the distributed collective timeout. Official-code accuracy is 61.35% (970/1,581), within 0.35 pp of the preregistered 61.7% paper anchor and therefore inside the fixed +/-1 pp sanity band. The same trace gives 49.46% for the bare full-image prediction, 61.73% for the paper-centroid interpretation, and 62.05% for the graph-centroid ablation. This validates the official AGVP and clustering reproduction before migration to the agent benchmarks.
 
 ## Current scientific state
 

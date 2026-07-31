@@ -13,7 +13,7 @@
     "checkpoint_index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6"
   },
   "mvp": {
-    "status": "OFFICIAL_SOURCE_RUN_IN_PROGRESS",
+    "status": "OFFICIAL_SOURCE_RUN_PASS",
     "requested_anchor": 61.7,
     "anchor_verified_from_paper": true,
     "paper": "arXiv:2512.08529",
@@ -37,7 +37,16 @@
       "consistency_threshold_pixels": 14,
       "subimage_resize_factor": 2
     },
-    "pending_components": ["ScreenSpotPro_full_result", "query_token_layer_ablation"]
+    "official_screenspot_pro_result": {
+      "status": "PASS",
+      "rows": 1581,
+      "official_code_accuracy": 0.6135357368753953,
+      "paper_centroid_accuracy": 0.6173308032890575,
+      "graph_centroid_ablation_accuracy": 0.6204933586337761,
+      "bare_full_accuracy": 0.4946236559139785,
+      "delta_to_61_7_anchor": -0.003464263124604683
+    },
+    "pending_components": ["query_token_layer_ablation"]
   },
   "reguide": {
     "status": "CHECKPOINT_ONLY_OFFICIAL_METHOD_SOURCE_UNVERIFIED",
