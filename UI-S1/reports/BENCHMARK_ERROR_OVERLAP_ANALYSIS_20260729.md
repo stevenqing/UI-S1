@@ -45,6 +45,107 @@ Mind2Web 对每个模型使用其自己的 released local parser 和 scorer sema
 
 这些标签是互斥归因，适合比较“主要失败原因”；原 evaluator 的 element、operation、action 子指标仍保留在 summary JSON 中。
 
+## Real task and trajectory case studies
+
+下面五例从锁定的逐 step trace 中按预先声明的机制类型选择，用于说明聚合统计背后的具体行为，不作为额外的总体效果估计。AndroidControl 坐标和距离均归一化到屏幕宽高；Mind2Web 坐标为归一化页面坐标。案例字段来自 `runs/collision-law/2026-07-30/rows.parquet`，并回查各模型原始 `predictions.jsonl`；错误标签仍由本报告的锁定 evaluator 重算。展示前排除了含邮箱、密码、电话号码或长数字标识符的任务文本。
+
+### Case 1: instruction says click, released trajectory expects wait
+
+- Identity: AndroidControl Low, `row_id=1`, episode `ac_goal_5f2021f390f831ec2f3d`.
+- Task: `Click on the first result podcast`.
+- History: empty.
+- Released GT: `wait`.
+
+| Model | Predicted action | Predicted coordinate | Audited label |
+|---|---|---:|---|
+| GUI-R1-3B | `click` | (0.211, 0.307) | action mismatch |
+| GUI-R1-7B | `click` | (0.209, 0.437) | action mismatch |
+| UI-AGILE-3B | `click` | (0.209, 0.336) | action mismatch |
+| UI-AGILE-7B | `click` | (0.209, 0.349) | action mismatch |
+| UI-R1-E-3B | `click` | (0.186, 0.307) | action mismatch |
+
+五个模型都遵循自然语言指令并点击首个 podcast，但 released step label 要求 `wait`。这是真实的五模同类错误，同时也是一个重要的反例：高错误碰撞不必然表示五个模型共享同一种能力缺陷，也可能暴露 trajectory state、异步加载或 step annotation 与指令之间的错位。因此 consensus hard core 进入训练前必须先做状态/标注审计。
+
+### Case 2: action consensus is correct, grounding consensus is wrong
+
+- Identity: AndroidControl High, `row_id=1`, episode `ac_goal_d160a956920ac0ce98bc`.
+- Task: `Browse Leonardo Da Vinci Mona lisa's painting for me on the Artsy app.`
+- History: open Artsy -> open search -> type the query -> submit search.
+- Released GT: `click` at (0.559, 0.321).
+
+| Model | Predicted action | Predicted coordinate | Distance to GT | Audited label |
+|---|---|---:|---:|---|
+| GUI-R1-3B | `click` | (0.304, 0.300) | 0.256 | grounding miss |
+| GUI-R1-7B | `click` | (0.314, 0.300) | 0.246 | grounding miss |
+| UI-AGILE-3B | `click` | (0.302, 0.308) | 0.257 | grounding miss |
+| UI-AGILE-7B | `click` | (0.301, 0.300) | 0.259 | grounding miss |
+| UI-R1-E-3B | `click` | (0.903, 0.108) | 0.404 | grounding miss |
+
+四个模型形成紧密但错误的坐标簇，距离约 0.25，已经明显超过 0.14 成功半径；第五个模型错得更远。这一例直接说明为什么观测 density 不能自动等同于 truth density：语义上合理的错误目标也会形成高密簇，且普通坐标投票会强化该错误。
+
+### Case 3: larger model regresses on the action contract
+
+- Identity: AndroidControl Low, `row_id=29`, episode `ac_goal_ea2651953f230f821987`.
+- Task: `Open Etsy app.`
+- History: empty.
+- Released GT: `open_app("Etsy")`.
+
+| Model | Prediction | Audited label |
+|---|---|---|
+| UI-AGILE-3B | `open_app("Etsy")` | success |
+| UI-AGILE-7B | `click` at (0.164, 0.194) | action mismatch |
+| GUI-R1-3B | `click` at (0.163, 0.179) | action mismatch |
+| GUI-R1-7B | `click` at (0.163, 0.179) | action mismatch |
+| UI-R1-E-3B | `click` at (0.162, 0.179) | action mismatch |
+
+除 UI-AGILE-3B 外，模型都正确识别了 Etsy 图标，却输出通用 `click` 而不是 lane 要求的 `open_app` contract。UI-AGILE 从 3B 扩大到 7B 在这一行发生真实回退，说明规模提升不是成功集合包含关系，也说明 action-contract 错误与视觉定位错误必须分开处理。
+
+### Case 4: seven cross-lineage models collide on the same wrong element
+
+- Identity: Mind2Web `(annot_id, action_uid) = (8f6261cf-d665-4e61-93af-f50f0d366245, 0b5f2213-5eef-4cb0-b67b-16bb398e5285)`.
+- Screenshot: [New York events step](../runs/mind2web/2026-07-27/data/ming2web_images/8f6261cf-d665-4e61-93af-f50f0d366245-0b5f2213-5eef-4cb0-b67b-16bb398e5285.jpg).
+- Task: find all New York City events during September.
+- History: change location -> type New York -> choose New York, NY -> open `Filter by`.
+- GT: click `Next month`, bbox $x\in[0.639,0.658]$, $y\in[0.070,0.103]$.
+
+| Models | Shared or representative prediction | Audited outcome |
+|---|---|---|
+| TongUI-3B/7B/32B | click `Filter by Date` near (0.22, 0.98-0.99) | element miss |
+| CogAgent-18B | click `Filter by Date` at (0.221, 0.985) | element miss |
+| SeeClick-9.6B | click at (0.220, 0.980) | element miss |
+| UI-TARS-7B/72B | click near (0.21, 0.99) | element miss |
+| ShowUI-2B | click `9/1` at (0.220, 0.090) | element miss |
+| Qwen2.5-VL-7B | click `New York, NY` at (0.180, 0.470) | element miss |
+| Qwen2.5-VL-3B / UI-TARS-2B | unsupported lowercase action / parse failure | failure |
+
+全部 11 个视觉模型失败，其中 9 个是 element miss。更重要的是，TongUI、CogAgent、SeeClick 和 UI-TARS 共七个跨谱系模型集中到页面底部几乎相同的错误区域，而 GT 在页面顶部右侧。这是“错误质量也会集中”的直接实例：family 去重可以减少重复计票，但跨 family 的共享语义误读仍可能制造错误 mode。截图同时暴露了测量侧风险：底部 `Filter by Date` 清晰可见，而 GT `Next month` 在当前渲染中并不明显，因此该碰撞也可能混合 partial render/state mismatch，不能只归因于模型能力。
+
+### Case 5: HTML grounding rescues an all-visual failure
+
+- Identity: Mind2Web `(annot_id, action_uid) = (1d73ad40-f7f8-435e-a83d-8b38534427fd, 5a014915-42f1-4c39-a61e-447b5480e8c4)`.
+- Screenshot: [brown loungewear step](../runs/mind2web/2026-07-27/data/ming2web_images/1d73ad40-f7f8-435e-a83d-8b38534427fd-5a014915-42f1-4c39-a61e-447b5480e8c4.jpg).
+- Task: find the cheapest women's plus-size brown loungewear in size 3XL.
+- History: open Women/Loungewear -> choose 3XL -> sort Price Low-High.
+- GT: click the `Color` filter, bbox $x\in[0.008,0.168]$, $y\in[0.783,0.825]$.
+
+| Lane/model | Prediction | Audited outcome |
+|---|---|---|
+| TongUI-7B | click at (0.210, 0.090), reasoning refers to brown color | element miss |
+| TongUI-32B | click `Brown` at (0.340, 0.090) | element miss |
+| SeeClick-9.6B | click at (0.190, 0.690) | element miss, bbox distance 0.096 |
+| UI-TARS-7B | click at (0.195, 0.694) | element miss, bbox distance 0.093 |
+| Other visual models | seven element/action/parse failures | failure |
+| MindAct HTML | select the positive DOM candidate and emit `CLICK` | success |
+
+视觉模型通常理解下一步与颜色筛选有关，但无法把这个意图落到正确的折叠式 `Color` 控件上；两个最接近的视觉点仍落在 bbox 外约 0.09。截图可见顶部颜色圆点，但 GT `Color` bbox 位于页面左下区域且在当前渲染中不醒目，说明这里同样含有可观测性因素。MindAct 使用 HTML candidate grounding 后同时命中元素和操作，成为 109 个 `MindAct-only` steps 之一。这一例支持“HTML 提供有限但真实的候选元素互补”，而不是“HTML 可以替代视觉”：完整 contingency 中 visual-only 仍有 804 行。
+
+### Trace provenance
+
+- AndroidControl 原始输出：`runs/androidcontrol-rft/2026-07-29/artifacts/<model>/<setting>/predictions.jsonl`。
+- Mind2Web 视觉输出：各 lane 在 `runs/mind2web-*/2026-07-28/artifacts/**/predictions.jsonl` 下的锁定 merged/full trace。
+- MindAct 输出：`runs/mindact/2026-07-29/artifacts/full/test_task_predictions_top50.json`。
+- 案例 identity、标签和统计可以分别由 `analyze_androidcontrol.py` 与 `analyze_mind2web.py` 的 reproduction 命令重算；MD 中没有手工改写 evaluator 结果。
+
 ## AndroidControl findings
 
 ### Per-model results and exclusive errors
