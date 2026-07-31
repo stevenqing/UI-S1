@@ -157,11 +157,24 @@ K4 triggers exactly as frozen: A5c improves over A5a by 2.31 pp on Mind2Web but 
 
 A5d-risk meets the separate discovery success criterion: no significant inferiority in any pool and significant superiority in AndroidControl High and Mind2Web. It achieves this by reducing AndroidControl Low overrides from about 30% to 6.24%; it is a selective aggregation candidate for frozen W4 confirmation, not grounds to reverse K4. Its score-gap confidence prediction also fails: `S_gap` correctness AUROC is 0.393 on AndroidControl Low, 0.417 on High, and 0.395 on Mind2Web, below the prior Mind2Web negative-dispersion AUROC of 0.660. The gain is from nested risk control, not a generally calibrated verifier score.
 
+## P3-CCM allocation diagnostic
+
+The original kappa-only P3 remains the preregistered negative result. Amendment 007 additionally evaluates an exploratory aligned allocator: under the same five-forward budget, every C1-C4 corner uses frozen A5d, while C3 greedily adds the unit with greatest development simulated-CCM Step SR.
+
+| Pool | C1 views | C2 lineages | C3 greedy CCM | C4 random CCM | C3 beats both corners |
+|---|---:|---:|---:|---:|---|
+| AndroidControl Low | 57.82% | 76.24% | 79.57% | 78.37% | Yes |
+| AndroidControl High | 45.25% | 60.22% | 61.37% | 59.22% | Yes |
+| Mind2Web visual | 54.13% | 61.15% | 60.29% | 58.03% | No |
+
+Objective alignment improves the directional P3 result from zero to two of three pools, and C3 exceeds random in all three. It does not eliminate the allocation pathology: all five AndroidControl High folds still select the very weak GUI-R1 `v4` unit, sometimes because the fixed five-unit budget forces a nonpositive development increment. Together with K4, this keeps P3-CCM diagnostic rather than a rescued primary claim.
+
 ## Current scientific state
 
 - P1: failed on the four preregistered strata.
 - P2/K1: complete and heterogeneous; three of five cells satisfy the direction, with no preregistered global aggregation rule.
 - P3: failed in all three pools; C3 exceeds random but not the five-lineage C2 corner.
+- P3-CCM diagnostic: aligned allocation beats both corners in two of three pools, but still selects the weak High `v4` unit under the forced budget.
 - K2: not triggered; Mind2Web's +6.63 pp A3 gain exceeds its 4.64 pp MDE.
 - K3: triggered; operator demoted to unified perspective.
 - K3 retrial: still triggered after A5a leave-one-out correction; one of three pools exceeds sequential density.

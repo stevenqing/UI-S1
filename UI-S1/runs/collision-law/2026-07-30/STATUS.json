@@ -28,7 +28,8 @@
     "w2_noise.json": "5094555e55059dad9e269434e74089a23875af55eac63c964af11f7a4b145326",
     "w2_allocation.json": "3be13ec1ecd0ed567d2b04e2ba2418d8ff23840b4b26baf861f4e8f1510a26bb",
     "a5a_retrial.json": "96a909cf7ad029f1eaf17c1b62a6e81e210125e0984df559bba947e0c4b57b75",
-    "a5_ccm.json": "fd8886d82654dc5702c7fd3d59a93204a0e4c885d796832bcbf44fe0c81f7f02"
+    "a5_ccm.json": "fd8886d82654dc5702c7fd3d59a93204a0e4c885d796832bcbf44fe0c81f7f02",
+    "p3_ccm.json": "33a8931136bf2de5f86c71f15dc5c6c4c5bbfa70339fe671c779045f6356340a"
   },
   "kill_conditions": {
     "K1": "COMPLETE_HETEROGENEOUS_3_OF_5_DIRECTIONALLY_SATISFIED_NO_GLOBAL_RULE",
@@ -43,7 +44,10 @@
     "a5d_risk_significantly_superior_pools": 2,
     "a5d_risk_significantly_inferior_pools": 0,
     "confidence_prediction": "FAILED_S_GAP_AUROC_BELOW_0.660",
-    "w4_role": "FROZEN_CONFIRMATION"
+    "w4_role": "FROZEN_CONFIRMATION",
+    "p3_ccm_directional_passes": 2,
+    "p3_ccm_pools": 3,
+    "p3_ccm_status": "DIAGNOSTIC_K4_TRIGGERED_WEAK_V4_STILL_SELECTED"
   },
   "w2": {
     "status": "PASS",

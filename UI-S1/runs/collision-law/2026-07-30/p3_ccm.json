@@ -1,0 +1,4462 @@
+{
+  "contract": {
+    "aggregator": "A5d_MAP_nine_LR_family",
+    "budget": 5,
+    "original_p3_remains_negative": true,
+    "selection": "greedy development simulated CCM Step SR increment",
+    "test_label_tuning": false,
+    "ties": "higher standalone development Step SR then unit key"
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "aggregate_step_sr": {
+        "C1_views_CCM": 0.45254901960784316,
+        "C2_lineages_CCM": 0.6022222222222222,
+        "C3_greedy_CCM": 0.6137254901960785,
+        "C4_random_CCM": 0.592156862745098
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "gui-r1-3b/full",
+        "gui-r1-7b/full",
+        "gui-r1-7b/v1",
+        "gui-r1-7b/v2",
+        "gui-r1-7b/v3",
+        "gui-r1-7b/v4",
+        "ui-agile-3b/full",
+        "ui-agile-7b/full",
+        "ui-r1-e-3b/full"
+      ],
+      "folds": [
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6122549019607844,
+              "standalone_step_sr": 0.6122549019607844,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-7b/v2",
+              "increment": 0.0,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.6122549019607844,
+              "standalone_step_sr": 0.36944444444444446,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v4",
+              "increment": -0.002614379084967311,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4"
+              ],
+              "simulated_ccm_step_sr": 0.609640522875817,
+              "standalone_step_sr": 0.08790849673202615,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": 0.0016339869281045694,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.6112745098039216,
+              "standalone_step_sr": 0.37598039215686274,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/full",
+              "increment": -0.004084967320261534,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4",
+                "gui-r1-7b/v3",
+                "gui-r1-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6071895424836601,
+              "standalone_step_sr": 0.4560457516339869,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 53613,
+                  "successes": 34109
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 4384,
+                  "successes": 3318
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 21516,
+                  "successes": 5356
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 53613,
+                  "successes": 34109
+                },
+                "parameterless": {
+                  "failures": 4384,
+                  "successes": 3318
+                },
+                "string-bearing": {
+                  "failures": 21516,
+                  "successes": 5356
+                }
+              },
+              "global": {
+                "failures": 79513,
+                "successes": 42783
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 35291,
+                  "successes": 30585
+                },
+                "cross-family/parameterless": {
+                  "failures": 3675,
+                  "successes": 3457
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15763,
+                  "successes": 9101
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7523,
+                  "successes": 8495
+                },
+                "same-family/parameterless": {
+                  "failures": 1098,
+                  "successes": 975
+                },
+                "same-family/string-bearing": {
+                  "failures": 3338,
+                  "successes": 3035
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 42814,
+                  "successes": 39080
+                },
+                "parameterless": {
+                  "failures": 4773,
+                  "successes": 4432
+                },
+                "string-bearing": {
+                  "failures": 19101,
+                  "successes": 12136
+                }
+              },
+              "global": {
+                "failures": 66688,
+                "successes": 55648
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 17685,
+                  "successes": 15373
+                },
+                "cross-family/parameterless": {
+                  "failures": 1384,
+                  "successes": 1815
+                },
+                "cross-family/string-bearing": {
+                  "failures": 7001,
+                  "successes": 5686
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 33791,
+                  "successes": 18652
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 2583,
+                  "successes": 1868
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 13357,
+                  "successes": 3141
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 51476,
+                  "successes": 34025
+                },
+                "parameterless": {
+                  "failures": 3967,
+                  "successes": 3683
+                },
+                "string-bearing": {
+                  "failures": 20358,
+                  "successes": 8827
+                }
+              },
+              "global": {
+                "failures": 75801,
+                "successes": 46535
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 18007,
+                  "successes": 14938
+                },
+                "cross-family/parameterless": {
+                  "failures": 1592,
+                  "successes": 1792
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6892,
+                  "successes": 5707
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 16508,
+                  "successes": 9513
+                },
+                "same-family/parameterless": {
+                  "failures": 1990,
+                  "successes": 945
+                },
+                "same-family/string-bearing": {
+                  "failures": 5995,
+                  "successes": 1705
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 18245,
+                  "successes": 7838
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1220,
+                  "successes": 852
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7029,
+                  "successes": 1504
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 52760,
+                  "successes": 32289
+                },
+                "parameterless": {
+                  "failures": 4802,
+                  "successes": 3589
+                },
+                "string-bearing": {
+                  "failures": 19916,
+                  "successes": 8916
+                }
+              },
+              "global": {
+                "failures": 77478,
+                "successes": 44794
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/full"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.43856209150326797,
+            "C2_lineages_CCM": 0.5928104575163399,
+            "C3_greedy_CCM": 0.5823529411764706,
+            "C4_random_CCM": 0.5751633986928104
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6013071895424836,
+              "standalone_step_sr": 0.6013071895424836,
+              "step": 1
+            },
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": 0.0016339869281045694,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6029411764705882,
+              "standalone_step_sr": 0.584640522875817,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v4",
+              "increment": 0.002941176470588225,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4"
+              ],
+              "simulated_ccm_step_sr": 0.6058823529411764,
+              "standalone_step_sr": 0.084640522875817,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.005718954248366104,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6116013071895425,
+              "standalone_step_sr": 0.37973856209150325,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/full",
+              "increment": 0.0011437908496731986,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full",
+                "gui-r1-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6127450980392157,
+              "standalone_step_sr": 0.442156862745098,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 52945,
+                  "successes": 33281
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 4344,
+                  "successes": 2874
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 23260,
+                  "successes": 5536
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 52945,
+                  "successes": 33281
+                },
+                "parameterless": {
+                  "failures": 4344,
+                  "successes": 2874
+                },
+                "string-bearing": {
+                  "failures": 23260,
+                  "successes": 5536
+                }
+              },
+              "global": {
+                "failures": 80549,
+                "successes": 41691
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 34976,
+                  "successes": 29825
+                },
+                "cross-family/parameterless": {
+                  "failures": 3764,
+                  "successes": 3143
+                },
+                "cross-family/string-bearing": {
+                  "failures": 16761,
+                  "successes": 9367
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7468,
+                  "successes": 8270
+                },
+                "same-family/parameterless": {
+                  "failures": 1125,
+                  "successes": 886
+                },
+                "same-family/string-bearing": {
+                  "failures": 3578,
+                  "successes": 3125
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 42444,
+                  "successes": 38095
+                },
+                "parameterless": {
+                  "failures": 4889,
+                  "successes": 4029
+                },
+                "string-bearing": {
+                  "failures": 20339,
+                  "successes": 12492
+                }
+              },
+              "global": {
+                "failures": 67672,
+                "successes": 54616
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 26471,
+                  "successes": 20815
+                },
+                "cross-family/parameterless": {
+                  "failures": 3157,
+                  "successes": 2694
+                },
+                "cross-family/string-bearing": {
+                  "failures": 10886,
+                  "successes": 9345
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 14211,
+                  "successes": 10175
+                },
+                "same-family/parameterless": {
+                  "failures": 1845,
+                  "successes": 1202
+                },
+                "same-family/string-bearing": {
+                  "failures": 5487,
+                  "successes": 3742
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 6457,
+                  "successes": 2283
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 508,
+                  "successes": 341
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2043,
+                  "successes": 600
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 47139,
+                  "successes": 33273
+                },
+                "parameterless": {
+                  "failures": 5510,
+                  "successes": 4237
+                },
+                "string-bearing": {
+                  "failures": 18416,
+                  "successes": 13687
+                }
+              },
+              "global": {
+                "failures": 71065,
+                "successes": 51197
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 22614,
+                  "successes": 24590
+                },
+                "cross-family/parameterless": {
+                  "failures": 2958,
+                  "successes": 2573
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11408,
+                  "successes": 9209
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 12280,
+                  "successes": 12061
+                },
+                "same-family/parameterless": {
+                  "failures": 1746,
+                  "successes": 1144
+                },
+                "same-family/string-bearing": {
+                  "failures": 5748,
+                  "successes": 3675
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 4523,
+                  "successes": 4170
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 409,
+                  "successes": 281
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2302,
+                  "successes": 533
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 39417,
+                  "successes": 40821
+                },
+                "parameterless": {
+                  "failures": 5113,
+                  "successes": 3998
+                },
+                "string-bearing": {
+                  "failures": 19458,
+                  "successes": 13417
+                }
+              },
+              "global": {
+                "failures": 63988,
+                "successes": 58236
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-7b/full",
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.4895424836601307,
+            "C2_lineages_CCM": 0.626797385620915,
+            "C3_greedy_CCM": 0.6418300653594772,
+            "C4_random_CCM": 0.6470588235294118
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6133986928104576,
+              "standalone_step_sr": 0.6133986928104576,
+              "step": 1
+            },
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": 0.00016339869281045694,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.613562091503268,
+              "standalone_step_sr": 0.5939542483660131,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v4",
+              "increment": 0.00424836601307188,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4"
+              ],
+              "simulated_ccm_step_sr": 0.6178104575163399,
+              "standalone_step_sr": 0.08741830065359477,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.0019607843137254832,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6197712418300654,
+              "standalone_step_sr": 0.388562091503268,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/full",
+              "increment": 0.002287581699346397,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full",
+                "gui-r1-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6220588235294118,
+              "standalone_step_sr": 0.45441176470588235,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 52645,
+                  "successes": 34133
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 4408,
+                  "successes": 2946
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 22520,
+                  "successes": 5580
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 52645,
+                  "successes": 34133
+                },
+                "parameterless": {
+                  "failures": 4408,
+                  "successes": 2946
+                },
+                "string-bearing": {
+                  "failures": 22520,
+                  "successes": 5580
+                }
+              },
+              "global": {
+                "failures": 79573,
+                "successes": 42659
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 34593,
+                  "successes": 30623
+                },
+                "cross-family/parameterless": {
+                  "failures": 3536,
+                  "successes": 3173
+                },
+                "cross-family/string-bearing": {
+                  "failures": 16470,
+                  "successes": 9441
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7362,
+                  "successes": 8497
+                },
+                "same-family/parameterless": {
+                  "failures": 1073,
+                  "successes": 894
+                },
+                "same-family/string-bearing": {
+                  "failures": 3477,
+                  "successes": 3149
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 41955,
+                  "successes": 39120
+                },
+                "parameterless": {
+                  "failures": 4609,
+                  "successes": 4067
+                },
+                "string-bearing": {
+                  "failures": 19947,
+                  "successes": 12590
+                }
+              },
+              "global": {
+                "failures": 66511,
+                "successes": 55777
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 26265,
+                  "successes": 21410
+                },
+                "cross-family/parameterless": {
+                  "failures": 3023,
+                  "successes": 2719
+                },
+                "cross-family/string-bearing": {
+                  "failures": 10538,
+                  "successes": 9413
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 14104,
+                  "successes": 10434
+                },
+                "same-family/parameterless": {
+                  "failures": 1773,
+                  "successes": 1230
+                },
+                "same-family/string-bearing": {
+                  "failures": 5336,
+                  "successes": 3785
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 6448,
+                  "successes": 2343
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 510,
+                  "successes": 362
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 1958,
+                  "successes": 611
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 46817,
+                  "successes": 34187
+                },
+                "parameterless": {
+                  "failures": 5306,
+                  "successes": 4311
+                },
+                "string-bearing": {
+                  "failures": 17832,
+                  "successes": 13809
+                }
+              },
+              "global": {
+                "failures": 69955,
+                "successes": 52307
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 35750,
+                  "successes": 20964
+                },
+                "cross-family/parameterless": {
+                  "failures": 3008,
+                  "successes": 2493
+                },
+                "cross-family/string-bearing": {
+                  "failures": 16406,
+                  "successes": 6979
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 11405,
+                  "successes": 5716
+                },
+                "same-family/parameterless": {
+                  "failures": 1330,
+                  "successes": 583
+                },
+                "same-family/string-bearing": {
+                  "failures": 4166,
+                  "successes": 1218
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 6607,
+                  "successes": 1942
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 438,
+                  "successes": 273
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2405,
+                  "successes": 557
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 53762,
+                  "successes": 28622
+                },
+                "parameterless": {
+                  "failures": 4776,
+                  "successes": 3349
+                },
+                "string-bearing": {
+                  "failures": 22977,
+                  "successes": 8754
+                }
+              },
+              "global": {
+                "failures": 81515,
+                "successes": 40725
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-7b/full",
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full",
+              "ui-r1-e-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.4437908496732026,
+            "C2_lineages_CCM": 0.5679738562091503,
+            "C3_greedy_CCM": 0.5973856209150327,
+            "C4_random_CCM": 0.5359477124183006
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6039215686274509,
+              "standalone_step_sr": 0.6039215686274509,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-7b/v2",
+              "increment": 0.0,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.6039215686274509,
+              "standalone_step_sr": 0.37140522875816995,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v4",
+              "increment": -0.004084967320261423,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4"
+              ],
+              "simulated_ccm_step_sr": 0.5998366013071895,
+              "standalone_step_sr": 0.08954248366013072,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": 0.004411764705882337,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4",
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6042483660130719,
+              "standalone_step_sr": 0.5839869281045752,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.00751633986928113,
+              "selected": [
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v4",
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.611764705882353,
+              "standalone_step_sr": 0.3908496732026144,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 52960,
+                  "successes": 34255
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 4072,
+                  "successes": 3022
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 22223,
+                  "successes": 5716
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 52960,
+                  "successes": 34255
+                },
+                "parameterless": {
+                  "failures": 4072,
+                  "successes": 3022
+                },
+                "string-bearing": {
+                  "failures": 22223,
+                  "successes": 5716
+                }
+              },
+              "global": {
+                "failures": 79255,
+                "successes": 42993
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 34928,
+                  "successes": 30848
+                },
+                "cross-family/parameterless": {
+                  "failures": 3596,
+                  "successes": 3326
+                },
+                "cross-family/string-bearing": {
+                  "failures": 16150,
+                  "successes": 8988
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7498,
+                  "successes": 8517
+                },
+                "same-family/parameterless": {
+                  "failures": 1072,
+                  "successes": 934
+                },
+                "same-family/string-bearing": {
+                  "failures": 3433,
+                  "successes": 2998
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 42426,
+                  "successes": 39365
+                },
+                "parameterless": {
+                  "failures": 4668,
+                  "successes": 4260
+                },
+                "string-bearing": {
+                  "failures": 19583,
+                  "successes": 11986
+                }
+              },
+              "global": {
+                "failures": 66677,
+                "successes": 55611
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 26967,
+                  "successes": 20710
+                },
+                "cross-family/parameterless": {
+                  "failures": 2873,
+                  "successes": 2662
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11312,
+                  "successes": 8848
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 14435,
+                  "successes": 10089
+                },
+                "same-family/parameterless": {
+                  "failures": 1674,
+                  "successes": 1201
+                },
+                "same-family/string-bearing": {
+                  "failures": 5693,
+                  "successes": 3572
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 6627,
+                  "successes": 1974
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 401,
+                  "successes": 282
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2379,
+                  "successes": 565
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 48029,
+                  "successes": 32773
+                },
+                "parameterless": {
+                  "failures": 4948,
+                  "successes": 4145
+                },
+                "string-bearing": {
+                  "failures": 19384,
+                  "successes": 12985
+                }
+              },
+              "global": {
+                "failures": 72361,
+                "successes": 49903
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16748,
+                  "successes": 14046
+                },
+                "cross-family/parameterless": {
+                  "failures": 2061,
+                  "successes": 1750
+                },
+                "cross-family/string-bearing": {
+                  "failures": 8278,
+                  "successes": 6035
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 16269,
+                  "successes": 9645
+                },
+                "same-family/parameterless": {
+                  "failures": 1879,
+                  "successes": 886
+                },
+                "same-family/string-bearing": {
+                  "failures": 6175,
+                  "successes": 1780
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 17969,
+                  "successes": 7921
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1136,
+                  "successes": 774
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7270,
+                  "successes": 1612
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 50986,
+                  "successes": 31612
+                },
+                "parameterless": {
+                  "failures": 5076,
+                  "successes": 3410
+                },
+                "string-bearing": {
+                  "failures": 21723,
+                  "successes": 9427
+                }
+              },
+              "global": {
+                "failures": 77785,
+                "successes": 44449
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full",
+              "gui-r1-3b/full"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.43333333333333335,
+            "C2_lineages_CCM": 0.6143790849673203,
+            "C3_greedy_CCM": 0.6241830065359477,
+            "C4_random_CCM": 0.592156862745098
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6070261437908496,
+              "standalone_step_sr": 0.6070261437908496,
+              "step": 1
+            },
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": 0.0016339869281045694,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6086601307189542,
+              "standalone_step_sr": 0.5888888888888889,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v4",
+              "increment": 0.0019607843137255943,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4"
+              ],
+              "simulated_ccm_step_sr": 0.6106209150326798,
+              "standalone_step_sr": 0.08970588235294118,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": -0.0004901960784313708,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6101307189542484,
+              "standalone_step_sr": 0.3874183006535948,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": 0.0039215686274509665,
+              "selected": [
+                "ui-agile-7b/full",
+                "ui-agile-3b/full",
+                "gui-r1-7b/v4",
+                "gui-r1-3b/full",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.6140522875816994,
+              "standalone_step_sr": 0.3743464052287582,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 52433,
+                  "successes": 33522
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 4296,
+                  "successes": 3320
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 23073,
+                  "successes": 5636
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 52433,
+                  "successes": 33522
+                },
+                "parameterless": {
+                  "failures": 4296,
+                  "successes": 3320
+                },
+                "string-bearing": {
+                  "failures": 23073,
+                  "successes": 5636
+                }
+              },
+              "global": {
+                "failures": 79802,
+                "successes": 42478
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 34568,
+                  "successes": 30259
+                },
+                "cross-family/parameterless": {
+                  "failures": 3545,
+                  "successes": 3497
+                },
+                "cross-family/string-bearing": {
+                  "failures": 16684,
+                  "successes": 9283
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7417,
+                  "successes": 8369
+                },
+                "same-family/parameterless": {
+                  "failures": 1056,
+                  "successes": 979
+                },
+                "same-family/string-bearing": {
+                  "failures": 3534,
+                  "successes": 3097
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 41985,
+                  "successes": 38628
+                },
+                "parameterless": {
+                  "failures": 4601,
+                  "successes": 4476
+                },
+                "string-bearing": {
+                  "failures": 20218,
+                  "successes": 12380
+                }
+              },
+              "global": {
+                "failures": 66804,
+                "successes": 55484
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 26824,
+                  "successes": 20425
+                },
+                "cross-family/parameterless": {
+                  "failures": 2830,
+                  "successes": 2822
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11357,
+                  "successes": 9118
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 14421,
+                  "successes": 9937
+                },
+                "same-family/parameterless": {
+                  "failures": 1674,
+                  "successes": 1283
+                },
+                "same-family/string-bearing": {
+                  "failures": 5679,
+                  "successes": 3672
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 6659,
+                  "successes": 1973
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 422,
+                  "successes": 321
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2311,
+                  "successes": 546
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 47904,
+                  "successes": 32335
+                },
+                "parameterless": {
+                  "failures": 4926,
+                  "successes": 4426
+                },
+                "string-bearing": {
+                  "failures": 19347,
+                  "successes": 13336
+                }
+              },
+              "global": {
+                "failures": 72177,
+                "successes": 50097
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 21995,
+                  "successes": 24919
+                },
+                "cross-family/parameterless": {
+                  "failures": 2305,
+                  "successes": 2673
+                },
+                "cross-family/string-bearing": {
+                  "failures": 12553,
+                  "successes": 8963
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 2871,
+                  "successes": 4258
+                },
+                "same-family/parameterless": {
+                  "failures": 368,
+                  "successes": 607
+                },
+                "same-family/string-bearing": {
+                  "failures": 1682,
+                  "successes": 2454
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 13382,
+                  "successes": 12144
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1202,
+                  "successes": 852
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7504,
+                  "successes": 1604
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 38248,
+                  "successes": 41321
+                },
+                "parameterless": {
+                  "failures": 3875,
+                  "successes": 4132
+                },
+                "string-bearing": {
+                  "failures": 21739,
+                  "successes": 13021
+                }
+              },
+              "global": {
+                "failures": 63862,
+                "successes": 58474
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-7b/full",
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "gui-r1-3b/full",
+              "gui-r1-7b/v3"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.45751633986928103,
+            "C2_lineages_CCM": 0.6091503267973856,
+            "C3_greedy_CCM": 0.6228758169934641,
+            "C4_random_CCM": 0.6104575163398693
+          },
+          "test_rows": 1530
+        }
+      ],
+      "p3_ccm_prediction_satisfied": true,
+      "rows": 7650
+    },
+    "androidcontrol/low": {
+      "aggregate_step_sr": {
+        "C1_views_CCM": 0.5781699346405229,
+        "C2_lineages_CCM": 0.7623529411764706,
+        "C3_greedy_CCM": 0.7956862745098039,
+        "C4_random_CCM": 0.7836601307189542
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "gui-r1-3b/full",
+        "gui-r1-7b/full",
+        "gui-r1-7b/v1",
+        "gui-r1-7b/v2",
+        "gui-r1-7b/v3",
+        "gui-r1-7b/v4",
+        "ui-agile-3b/full",
+        "ui-agile-7b/full",
+        "ui-r1-e-3b/full"
+      ],
+      "folds": [
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7916666666666666,
+              "standalone_step_sr": 0.7916666666666666,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.015686274509803977,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8073529411764706,
+              "standalone_step_sr": 0.5658496732026144,
+              "step": 2
+            },
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": -0.007026143790849648,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.800326797385621,
+              "standalone_step_sr": 0.7758169934640523,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": -0.005228758169934733,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.7950980392156862,
+              "standalone_step_sr": 0.5063725490196078,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/v2",
+              "increment": 0.0034313725490197067,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v3",
+                "gui-r1-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.7985294117647059,
+              "standalone_step_sr": 0.4996732026143791,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 41456,
+                  "successes": 47820
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1952,
+                  "successes": 2292
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 23696,
+                  "successes": 5176
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 41456,
+                  "successes": 47820
+                },
+                "parameterless": {
+                  "failures": 1952,
+                  "successes": 2292
+                },
+                "string-bearing": {
+                  "failures": 23696,
+                  "successes": 5176
+                }
+              },
+              "global": {
+                "failures": 67104,
+                "successes": 55288
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19998,
+                  "successes": 48735
+                },
+                "cross-family/parameterless": {
+                  "failures": 693,
+                  "successes": 2244
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15441,
+                  "successes": 10785
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4719,
+                  "successes": 12421
+                },
+                "same-family/parameterless": {
+                  "failures": 223,
+                  "successes": 588
+                },
+                "same-family/string-bearing": {
+                  "failures": 2926,
+                  "successes": 3595
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24717,
+                  "successes": 61156
+                },
+                "parameterless": {
+                  "failures": 916,
+                  "successes": 2832
+                },
+                "string-bearing": {
+                  "failures": 18367,
+                  "successes": 14380
+                }
+              },
+              "global": {
+                "failures": 44000,
+                "successes": 78368
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15626,
+                  "successes": 36654
+                },
+                "cross-family/parameterless": {
+                  "failures": 445,
+                  "successes": 1474
+                },
+                "cross-family/string-bearing": {
+                  "failures": 9335,
+                  "successes": 9886
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 8192,
+                  "successes": 17959
+                },
+                "same-family/parameterless": {
+                  "failures": 305,
+                  "successes": 770
+                },
+                "same-family/string-bearing": {
+                  "failures": 5529,
+                  "successes": 3947
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 3408,
+                  "successes": 5731
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 118,
+                  "successes": 152
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2555,
+                  "successes": 274
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 27226,
+                  "successes": 60344
+                },
+                "parameterless": {
+                  "failures": 868,
+                  "successes": 2396
+                },
+                "string-bearing": {
+                  "failures": 17419,
+                  "successes": 14107
+                }
+              },
+              "global": {
+                "failures": 45513,
+                "successes": 76847
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 13435,
+                  "successes": 21680
+                },
+                "cross-family/parameterless": {
+                  "failures": 346,
+                  "successes": 931
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5983,
+                  "successes": 6575
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 11862,
+                  "successes": 14442
+                },
+                "same-family/parameterless": {
+                  "failures": 506,
+                  "successes": 801
+                },
+                "same-family/string-bearing": {
+                  "failures": 7204,
+                  "successes": 1879
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 15412,
+                  "successes": 11646
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 484,
+                  "successes": 582
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7354,
+                  "successes": 1238
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 40709,
+                  "successes": 47768
+                },
+                "parameterless": {
+                  "failures": 1336,
+                  "successes": 2314
+                },
+                "string-bearing": {
+                  "failures": 20541,
+                  "successes": 9692
+                }
+              },
+              "global": {
+                "failures": 62586,
+                "successes": 59774
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-3b/full",
+              "gui-r1-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v2"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5862745098039216,
+            "C2_lineages_CCM": 0.7738562091503268,
+            "C3_greedy_CCM": 0.796078431372549,
+            "C4_random_CCM": 0.7777777777777778
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7915032679738562,
+              "standalone_step_sr": 0.7915032679738562,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.015686274509803977,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8071895424836601,
+              "standalone_step_sr": 0.5617647058823529,
+              "step": 2
+            },
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": -0.005392156862745079,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8017973856209151,
+              "standalone_step_sr": 0.7740196078431373,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/v2",
+              "increment": -0.008496732026143872,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.7933006535947712,
+              "standalone_step_sr": 0.4991830065359477,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": 0.0032679738562091387,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v2",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.7965686274509803,
+              "standalone_step_sr": 0.50359477124183,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 41292,
+                  "successes": 47416
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1892,
+                  "successes": 2096
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 24380,
+                  "successes": 5316
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 41292,
+                  "successes": 47416
+                },
+                "parameterless": {
+                  "failures": 1892,
+                  "successes": 2096
+                },
+                "string-bearing": {
+                  "failures": 24380,
+                  "successes": 5316
+                }
+              },
+              "global": {
+                "failures": 67564,
+                "successes": 54828
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19900,
+                  "successes": 48252
+                },
+                "cross-family/parameterless": {
+                  "failures": 638,
+                  "successes": 2148
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15897,
+                  "successes": 11067
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4726,
+                  "successes": 12280
+                },
+                "same-family/parameterless": {
+                  "failures": 206,
+                  "successes": 558
+                },
+                "same-family/string-bearing": {
+                  "failures": 3015,
+                  "successes": 3689
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24626,
+                  "successes": 60532
+                },
+                "parameterless": {
+                  "failures": 844,
+                  "successes": 2706
+                },
+                "string-bearing": {
+                  "failures": 18912,
+                  "successes": 14756
+                }
+              },
+              "global": {
+                "failures": 44382,
+                "successes": 77994
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15569,
+                  "successes": 36301
+                },
+                "cross-family/parameterless": {
+                  "failures": 415,
+                  "successes": 1402
+                },
+                "cross-family/string-bearing": {
+                  "failures": 9550,
+                  "successes": 10187
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 8140,
+                  "successes": 17823
+                },
+                "same-family/parameterless": {
+                  "failures": 283,
+                  "successes": 722
+                },
+                "same-family/string-bearing": {
+                  "failures": 5689,
+                  "successes": 4049
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 3374,
+                  "successes": 5708
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 114,
+                  "successes": 138
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2613,
+                  "successes": 291
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 27083,
+                  "successes": 59832
+                },
+                "parameterless": {
+                  "failures": 812,
+                  "successes": 2262
+                },
+                "string-bearing": {
+                  "failures": 17852,
+                  "successes": 14527
+                }
+              },
+              "global": {
+                "failures": 45747,
+                "successes": 76621
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14929,
+                  "successes": 36681
+                },
+                "cross-family/parameterless": {
+                  "failures": 565,
+                  "successes": 1512
+                },
+                "cross-family/string-bearing": {
+                  "failures": 9154,
+                  "successes": 10583
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7820,
+                  "successes": 18013
+                },
+                "same-family/parameterless": {
+                  "failures": 358,
+                  "successes": 777
+                },
+                "same-family/string-bearing": {
+                  "failures": 5491,
+                  "successes": 4247
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 3054,
+                  "successes": 5898
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 189,
+                  "successes": 193
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2415,
+                  "successes": 489
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 25803,
+                  "successes": 60592
+                },
+                "parameterless": {
+                  "failures": 1112,
+                  "successes": 2482
+                },
+                "string-bearing": {
+                  "failures": 17060,
+                  "successes": 15319
+                }
+              },
+              "global": {
+                "failures": 43975,
+                "successes": 78393
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-3b/full",
+              "gui-r1-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.6124183006535948,
+            "C2_lineages_CCM": 0.7633986928104575,
+            "C3_greedy_CCM": 0.8032679738562092,
+            "C4_random_CCM": 0.7980392156862746
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7933006535947712,
+              "standalone_step_sr": 0.7933006535947712,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.015032679738562149,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8083333333333333,
+              "standalone_step_sr": 0.568954248366013,
+              "step": 2
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": -0.012908496732026209,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.7954248366013071,
+              "standalone_step_sr": 0.5124183006535947,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/full",
+              "increment": 0.002450980392156965,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "gui-r1-7b/v3",
+                "gui-r1-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7978758169934641,
+              "standalone_step_sr": 0.5841503267973857,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/v1",
+              "increment": 0.0004901960784313708,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "gui-r1-7b/v3",
+                "gui-r1-7b/full",
+                "gui-r1-7b/v1"
+              ],
+              "simulated_ccm_step_sr": 0.7983660130718955,
+              "standalone_step_sr": 0.5831699346405229,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 40556,
+                  "successes": 48292
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1840,
+                  "successes": 2028
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 24240,
+                  "successes": 5436
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 40556,
+                  "successes": 48292
+                },
+                "parameterless": {
+                  "failures": 1840,
+                  "successes": 2028
+                },
+                "string-bearing": {
+                  "failures": 24240,
+                  "successes": 5436
+                }
+              },
+              "global": {
+                "failures": 66636,
+                "successes": 55756
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19348,
+                  "successes": 49009
+                },
+                "cross-family/parameterless": {
+                  "failures": 665,
+                  "successes": 1966
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15856,
+                  "successes": 11052
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4573,
+                  "successes": 12483
+                },
+                "same-family/parameterless": {
+                  "failures": 215,
+                  "successes": 518
+                },
+                "same-family/string-bearing": {
+                  "failures": 2999,
+                  "successes": 3684
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 23921,
+                  "successes": 61492
+                },
+                "parameterless": {
+                  "failures": 880,
+                  "successes": 2484
+                },
+                "string-bearing": {
+                  "failures": 18855,
+                  "successes": 14736
+                }
+              },
+              "global": {
+                "failures": 43656,
+                "successes": 78712
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9198,
+                  "successes": 24945
+                },
+                "cross-family/parameterless": {
+                  "failures": 405,
+                  "successes": 1031
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6168,
+                  "successes": 7203
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 8230,
+                  "successes": 17827
+                },
+                "same-family/parameterless": {
+                  "failures": 553,
+                  "successes": 767
+                },
+                "same-family/string-bearing": {
+                  "failures": 7185,
+                  "successes": 2132
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 8466,
+                  "successes": 18212
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 590,
+                  "successes": 628
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7100,
+                  "successes": 1720
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 25894,
+                  "successes": 60984
+                },
+                "parameterless": {
+                  "failures": 1548,
+                  "successes": 2426
+                },
+                "string-bearing": {
+                  "failures": 20453,
+                  "successes": 11055
+                }
+              },
+              "global": {
+                "failures": 47895,
+                "successes": 74465
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 23736,
+                  "successes": 36240
+                },
+                "cross-family/parameterless": {
+                  "failures": 546,
+                  "successes": 1670
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15706,
+                  "successes": 7766
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 8571,
+                  "successes": 8781
+                },
+                "same-family/parameterless": {
+                  "failures": 337,
+                  "successes": 495
+                },
+                "same-family/string-bearing": {
+                  "failures": 4933,
+                  "successes": 1347
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 5906,
+                  "successes": 2967
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 165,
+                  "successes": 193
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2510,
+                  "successes": 499
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 38213,
+                  "successes": 47988
+                },
+                "parameterless": {
+                  "failures": 1048,
+                  "successes": 2358
+                },
+                "string-bearing": {
+                  "failures": 23149,
+                  "successes": 9612
+                }
+              },
+              "global": {
+                "failures": 62410,
+                "successes": 59958
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-3b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full",
+              "ui-r1-e-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.569281045751634,
+            "C2_lineages_CCM": 0.7405228758169935,
+            "C3_greedy_CCM": 0.7849673202614379,
+            "C4_random_CCM": 0.7405228758169935
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7898692810457516,
+              "standalone_step_sr": 0.7898692810457516,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.01666666666666672,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8065359477124183,
+              "standalone_step_sr": 0.5766339869281045,
+              "step": 2
+            },
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": -0.0039215686274509665,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8026143790849674,
+              "standalone_step_sr": 0.7753267973856209,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/v1",
+              "increment": -0.008986928104575242,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v1"
+              ],
+              "simulated_ccm_step_sr": 0.7936274509803921,
+              "standalone_step_sr": 0.5887254901960784,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/full",
+              "increment": -0.0011437908496731986,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v1",
+                "gui-r1-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7924836601307189,
+              "standalone_step_sr": 0.588562091503268,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 41568,
+                  "successes": 48552
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1908,
+                  "successes": 2076
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 22608,
+                  "successes": 5688
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 41568,
+                  "successes": 48552
+                },
+                "parameterless": {
+                  "failures": 1908,
+                  "successes": 2076
+                },
+                "string-bearing": {
+                  "failures": 22608,
+                  "successes": 5688
+                }
+              },
+              "global": {
+                "failures": 66084,
+                "successes": 56316
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19835,
+                  "successes": 49350
+                },
+                "cross-family/parameterless": {
+                  "failures": 672,
+                  "successes": 2102
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15131,
+                  "successes": 10824
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4708,
+                  "successes": 12558
+                },
+                "same-family/parameterless": {
+                  "failures": 220,
+                  "successes": 544
+                },
+                "same-family/string-bearing": {
+                  "failures": 2840,
+                  "successes": 3608
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24543,
+                  "successes": 61908
+                },
+                "parameterless": {
+                  "failures": 892,
+                  "successes": 2646
+                },
+                "string-bearing": {
+                  "failures": 17971,
+                  "successes": 14432
+                }
+              },
+              "global": {
+                "failures": 43406,
+                "successes": 78986
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14094,
+                  "successes": 37854
+                },
+                "cross-family/parameterless": {
+                  "failures": 694,
+                  "successes": 1601
+                },
+                "cross-family/string-bearing": {
+                  "failures": 8445,
+                  "successes": 10748
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7387,
+                  "successes": 18596
+                },
+                "same-family/parameterless": {
+                  "failures": 429,
+                  "successes": 839
+                },
+                "same-family/string-bearing": {
+                  "failures": 5058,
+                  "successes": 4407
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 2647,
+                  "successes": 6214
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 245,
+                  "successes": 254
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2143,
+                  "successes": 737
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24128,
+                  "successes": 62664
+                },
+                "parameterless": {
+                  "failures": 1368,
+                  "successes": 2694
+                },
+                "string-bearing": {
+                  "failures": 15646,
+                  "successes": 15892
+                }
+              },
+              "global": {
+                "failures": 41142,
+                "successes": 81250
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12864,
+                  "successes": 21870
+                },
+                "cross-family/parameterless": {
+                  "failures": 343,
+                  "successes": 1025
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6013,
+                  "successes": 6843
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 11809,
+                  "successes": 14714
+                },
+                "same-family/parameterless": {
+                  "failures": 493,
+                  "successes": 760
+                },
+                "same-family/string-bearing": {
+                  "failures": 6951,
+                  "successes": 1987
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 15490,
+                  "successes": 11848
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 464,
+                  "successes": 530
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7018,
+                  "successes": 1370
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 40163,
+                  "successes": 48432
+                },
+                "parameterless": {
+                  "failures": 1300,
+                  "successes": 2315
+                },
+                "string-bearing": {
+                  "failures": 19982,
+                  "successes": 10200
+                }
+              },
+              "global": {
+                "failures": 61445,
+                "successes": 60947
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-3b/full",
+              "gui-r1-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/full"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5444444444444444,
+            "C2_lineages_CCM": 0.765359477124183,
+            "C3_greedy_CCM": 0.7901960784313725,
+            "C4_random_CCM": 0.7967320261437908
+          },
+          "test_rows": 1530
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "ui-agile-3b/full",
+              "increment": null,
+              "selected": [
+                "ui-agile-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.7892156862745098,
+              "standalone_step_sr": 0.7892156862745098,
+              "step": 1
+            },
+            {
+              "added_unit": "gui-r1-3b/full",
+              "increment": 0.01601307189542489,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8052287581699347,
+              "standalone_step_sr": 0.5666666666666667,
+              "step": 2
+            },
+            {
+              "added_unit": "ui-agile-7b/full",
+              "increment": 0.0014705882352941124,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.8066993464052288,
+              "standalone_step_sr": 0.7733660130718955,
+              "step": 3
+            },
+            {
+              "added_unit": "gui-r1-7b/v3",
+              "increment": -0.015032679738562149,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.7916666666666666,
+              "standalone_step_sr": 0.5078431372549019,
+              "step": 4
+            },
+            {
+              "added_unit": "gui-r1-7b/v2",
+              "increment": 0.004575163398692794,
+              "selected": [
+                "ui-agile-3b/full",
+                "gui-r1-3b/full",
+                "ui-agile-7b/full",
+                "gui-r1-7b/v3",
+                "gui-r1-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.7962418300653594,
+              "standalone_step_sr": 0.5024509803921569,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 40968,
+                  "successes": 47536
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 1832,
+                  "successes": 2212
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 24068,
+                  "successes": 5776
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 40968,
+                  "successes": 47536
+                },
+                "parameterless": {
+                  "failures": 1832,
+                  "successes": 2212
+                },
+                "string-bearing": {
+                  "failures": 24068,
+                  "successes": 5776
+                }
+              },
+              "global": {
+                "failures": 66868,
+                "successes": 55524
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19655,
+                  "successes": 48346
+                },
+                "cross-family/parameterless": {
+                  "failures": 644,
+                  "successes": 2224
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15987,
+                  "successes": 11040
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4622,
+                  "successes": 12326
+                },
+                "same-family/parameterless": {
+                  "failures": 208,
+                  "successes": 580
+                },
+                "same-family/string-bearing": {
+                  "failures": 3056,
+                  "successes": 3680
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24277,
+                  "successes": 60672
+                },
+                "parameterless": {
+                  "failures": 852,
+                  "successes": 2804
+                },
+                "string-bearing": {
+                  "failures": 19043,
+                  "successes": 14720
+                }
+              },
+              "global": {
+                "failures": 44172,
+                "successes": 78196
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15373,
+                  "successes": 36399
+                },
+                "cross-family/parameterless": {
+                  "failures": 405,
+                  "successes": 1448
+                },
+                "cross-family/string-bearing": {
+                  "failures": 9656,
+                  "successes": 10139
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 8040,
+                  "successes": 17851
+                },
+                "same-family/parameterless": {
+                  "failures": 281,
+                  "successes": 759
+                },
+                "same-family/string-bearing": {
+                  "failures": 5699,
+                  "successes": 4072
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 3369,
+                  "successes": 5710
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 106,
+                  "successes": 145
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2580,
+                  "successes": 328
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 26782,
+                  "successes": 59960
+                },
+                "parameterless": {
+                  "failures": 792,
+                  "successes": 2352
+                },
+                "string-bearing": {
+                  "failures": 17935,
+                  "successes": 14539
+                }
+              },
+              "global": {
+                "failures": 45509,
+                "successes": 76851
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15275,
+                  "successes": 36769
+                },
+                "cross-family/parameterless": {
+                  "failures": 471,
+                  "successes": 1384
+                },
+                "cross-family/string-bearing": {
+                  "failures": 9526,
+                  "successes": 10011
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 1982,
+                  "successes": 6419
+                },
+                "same-family/string-bearing": {
+                  "failures": 686,
+                  "successes": 2870
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 9330,
+                  "successes": 17512
+                },
+                "same-model-diff-view/parameterless": {
+                  "failures": 444,
+                  "successes": 562
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 7466,
+                  "successes": 1402
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 26587,
+                  "successes": 60700
+                },
+                "parameterless": {
+                  "failures": 924,
+                  "successes": 2220
+                },
+                "string-bearing": {
+                  "failures": 17678,
+                  "successes": 14283
+                }
+              },
+              "global": {
+                "failures": 45189,
+                "successes": 77203
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "selections": {
+            "C1_views_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_greedy_CCM": [
+              "ui-agile-3b/full",
+              "gui-r1-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v2"
+            ],
+            "C4_random_CCM": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5784313725490197,
+            "C2_lineages_CCM": 0.7686274509803922,
+            "C3_greedy_CCM": 0.803921568627451,
+            "C4_random_CCM": 0.8052287581699347
+          },
+          "test_rows": 1530
+        }
+      ],
+      "p3_ccm_prediction_satisfied": true,
+      "rows": 7650
+    },
+    "mind2web/visual": {
+      "aggregate_step_sr": {
+        "C1_views_CCM": 0.5413461538461538,
+        "C2_lineages_CCM": 0.6115384615384616,
+        "C3_greedy_CCM": 0.6028846153846154,
+        "C4_random_CCM": 0.5802884615384616
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "cogagent-18b/full",
+        "tongui-32b/full",
+        "tongui-3b/full",
+        "tongui-7b/full",
+        "tongui-7b/v1",
+        "tongui-7b/v2",
+        "tongui-7b/v3",
+        "tongui-7b/v4",
+        "ui-tars-72b/full"
+      ],
+      "folds": [
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "tongui-7b/full",
+              "increment": null,
+              "selected": [
+                "tongui-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5192307692307693,
+              "standalone_step_sr": 0.5192307692307693,
+              "step": 1
+            },
+            {
+              "added_unit": "tongui-32b/full",
+              "increment": 0.0042067307692307265,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5234375,
+              "standalone_step_sr": 0.5162259615384616,
+              "step": 2
+            },
+            {
+              "added_unit": "cogagent-18b/full",
+              "increment": 0.05288461538461542,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5763221153846154,
+              "standalone_step_sr": 0.49158653846153844,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-tars-72b/full",
+              "increment": 0.016826923076923017,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5931490384615384,
+              "standalone_step_sr": 0.3864182692307692,
+              "step": 4
+            },
+            {
+              "added_unit": "tongui-7b/v2",
+              "increment": 0.008413461538461564,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full",
+                "tongui-7b/v2"
+              ],
+              "simulated_ccm_step_sr": 0.6015625,
+              "standalone_step_sr": 0.4609375,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 14128,
+                  "successes": 14458
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2670,
+                  "successes": 2000
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 14128,
+                  "successes": 14458
+                },
+                "string-bearing": {
+                  "failures": 2670,
+                  "successes": 2000
+                }
+              },
+              "global": {
+                "failures": 16798,
+                "successes": 16458
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9877,
+                  "successes": 9638
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1238,
+                  "successes": 979
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4225,
+                  "successes": 4434
+                },
+                "same-family/string-bearing": {
+                  "failures": 709,
+                  "successes": 608
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 14102,
+                  "successes": 14072
+                },
+                "string-bearing": {
+                  "failures": 1947,
+                  "successes": 1587
+                }
+              },
+              "global": {
+                "failures": 16049,
+                "successes": 15659
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9938,
+                  "successes": 9599
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1228,
+                  "successes": 963
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 2860,
+                  "successes": 2947
+                },
+                "same-family/string-bearing": {
+                  "failures": 443,
+                  "successes": 398
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 1443,
+                  "successes": 1438
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 251,
+                  "successes": 192
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 14241,
+                  "successes": 13984
+                },
+                "string-bearing": {
+                  "failures": 1922,
+                  "successes": 1553
+                }
+              },
+              "global": {
+                "failures": 16163,
+                "successes": 15537
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 5146,
+                  "successes": 5627
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1018,
+                  "successes": 771
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 8431,
+                  "successes": 8713
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 1612,
+                  "successes": 1194
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13577,
+                  "successes": 14340
+                },
+                "string-bearing": {
+                  "failures": 2630,
+                  "successes": 1965
+                }
+              },
+              "global": {
+                "failures": 16207,
+                "successes": 16305
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 0,
+          "selections": {
+            "C1_views_CCM": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_greedy_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-7b/v2"
+            ],
+            "C4_random_CCM": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5769230769230769,
+            "C2_lineages_CCM": 0.6658653846153846,
+            "C3_greedy_CCM": 0.6466346153846154,
+            "C4_random_CCM": 0.6346153846153846
+          },
+          "test_rows": 416
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "tongui-7b/full",
+              "increment": null,
+              "selected": [
+                "tongui-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5279615153337343,
+              "standalone_step_sr": 0.5279615153337343,
+              "step": 1
+            },
+            {
+              "added_unit": "cogagent-18b/full",
+              "increment": 0.0036079374624172766,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5315694527961515,
+              "standalone_step_sr": 0.5057125676488274,
+              "step": 2
+            },
+            {
+              "added_unit": "tongui-32b/full",
+              "increment": 0.06494287432351176,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5965123271196633,
+              "standalone_step_sr": 0.5219482862297053,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-tars-72b/full",
+              "increment": 0.016837041491280735,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full",
+                "ui-tars-72b/full"
+              ],
+              "simulated_ccm_step_sr": 0.613349368610944,
+              "standalone_step_sr": 0.39987973541791944,
+              "step": 4
+            },
+            {
+              "added_unit": "tongui-3b/full",
+              "increment": 0.0036079374624173877,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full",
+                "ui-tars-72b/full",
+                "tongui-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6169573060733614,
+              "standalone_step_sr": 0.49488875526157544,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 13772,
+                  "successes": 14354
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2830,
+                  "successes": 2280
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13772,
+                  "successes": 14354
+                },
+                "string-bearing": {
+                  "failures": 2830,
+                  "successes": 2280
+                }
+              },
+              "global": {
+                "failures": 16602,
+                "successes": 16634
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9583,
+                  "successes": 9824
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1174,
+                  "successes": 1065
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4089,
+                  "successes": 4456
+                },
+                "same-family/string-bearing": {
+                  "failures": 745,
+                  "successes": 680
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13672,
+                  "successes": 14280
+                },
+                "string-bearing": {
+                  "failures": 1919,
+                  "successes": 1745
+                }
+              },
+              "global": {
+                "failures": 15591,
+                "successes": 16025
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9583,
+                  "successes": 9824
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1174,
+                  "successes": 1065
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4089,
+                  "successes": 4456
+                },
+                "same-family/string-bearing": {
+                  "failures": 745,
+                  "successes": 680
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13672,
+                  "successes": 14280
+                },
+                "string-bearing": {
+                  "failures": 1919,
+                  "successes": 1745
+                }
+              },
+              "global": {
+                "failures": 15591,
+                "successes": 16025
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 5024,
+                  "successes": 5674
+                },
+                "cross-family/string-bearing": {
+                  "failures": 954,
+                  "successes": 842
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4177,
+                  "successes": 4292
+                },
+                "same-family/string-bearing": {
+                  "failures": 824,
+                  "successes": 683
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 4088,
+                  "successes": 4312
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 874,
+                  "successes": 700
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13289,
+                  "successes": 14278
+                },
+                "string-bearing": {
+                  "failures": 2652,
+                  "successes": 2225
+                }
+              },
+              "global": {
+                "failures": 15941,
+                "successes": 16503
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1663,
+          "fold": 1,
+          "selections": {
+            "C1_views_CCM": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_greedy_CCM": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "tongui-32b/full",
+              "ui-tars-72b/full",
+              "tongui-3b/full"
+            ],
+            "C4_random_CCM": [
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5443645083932853,
+            "C2_lineages_CCM": 0.5971223021582733,
+            "C3_greedy_CCM": 0.5971223021582733,
+            "C4_random_CCM": 0.5899280575539568
+          },
+          "test_rows": 417
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "tongui-7b/full",
+              "increment": null,
+              "selected": [
+                "tongui-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5228365384615384,
+              "standalone_step_sr": 0.5228365384615384,
+              "step": 1
+            },
+            {
+              "added_unit": "cogagent-18b/full",
+              "increment": 0.004807692307692291,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5276442307692307,
+              "standalone_step_sr": 0.49939903846153844,
+              "step": 2
+            },
+            {
+              "added_unit": "tongui-32b/full",
+              "increment": 0.055288461538461564,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5829326923076923,
+              "standalone_step_sr": 0.5012019230769231,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-tars-72b/full",
+              "increment": 0.019230769230769273,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full",
+                "ui-tars-72b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6021634615384616,
+              "standalone_step_sr": 0.39002403846153844,
+              "step": 4
+            },
+            {
+              "added_unit": "tongui-7b/v3",
+              "increment": 0.010216346153846145,
+              "selected": [
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "tongui-32b/full",
+                "ui-tars-72b/full",
+                "tongui-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.6123798076923077,
+              "standalone_step_sr": 0.4921875,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 13864,
+                  "successes": 14310
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2862,
+                  "successes": 2220
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13864,
+                  "successes": 14310
+                },
+                "string-bearing": {
+                  "failures": 2862,
+                  "successes": 2220
+                }
+              },
+              "global": {
+                "failures": 16726,
+                "successes": 16530
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9784,
+                  "successes": 9607
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1272,
+                  "successes": 1057
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4208,
+                  "successes": 4357
+                },
+                "same-family/string-bearing": {
+                  "failures": 759,
+                  "successes": 656
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13992,
+                  "successes": 13964
+                },
+                "string-bearing": {
+                  "failures": 2031,
+                  "successes": 1713
+                }
+              },
+              "global": {
+                "failures": 16023,
+                "successes": 15677
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9722,
+                  "successes": 9634
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1292,
+                  "successes": 1072
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 2801,
+                  "successes": 2913
+                },
+                "same-family/string-bearing": {
+                  "failures": 497,
+                  "successes": 443
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 1356,
+                  "successes": 1462
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 281,
+                  "successes": 227
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13879,
+                  "successes": 14009
+                },
+                "string-bearing": {
+                  "failures": 2070,
+                  "successes": 1742
+                }
+              },
+              "global": {
+                "failures": 15949,
+                "successes": 15751
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9788,
+                  "successes": 9524
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1348,
+                  "successes": 1056
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 4223,
+                  "successes": 4263
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 834,
+                  "successes": 656
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 14011,
+                  "successes": 13787
+                },
+                "string-bearing": {
+                  "failures": 2182,
+                  "successes": 1712
+                }
+              },
+              "global": {
+                "failures": 16193,
+                "successes": 15499
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 2,
+          "selections": {
+            "C1_views_CCM": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_greedy_CCM": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "tongui-32b/full",
+              "ui-tars-72b/full",
+              "tongui-7b/v3"
+            ],
+            "C4_random_CCM": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "ui-tars-72b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5865384615384616,
+            "C2_lineages_CCM": 0.625,
+            "C3_greedy_CCM": 0.6129807692307693,
+            "C4_random_CCM": 0.6225961538461539
+          },
+          "test_rows": 416
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "tongui-32b/full",
+              "increment": null,
+              "selected": [
+                "tongui-32b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5336538461538461,
+              "standalone_step_sr": 0.5336538461538461,
+              "step": 1
+            },
+            {
+              "added_unit": "tongui-7b/full",
+              "increment": 0.0012019230769231282,
+              "selected": [
+                "tongui-32b/full",
+                "tongui-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5348557692307693,
+              "standalone_step_sr": 0.5318509615384616,
+              "step": 2
+            },
+            {
+              "added_unit": "cogagent-18b/full",
+              "increment": 0.06730769230769229,
+              "selected": [
+                "tongui-32b/full",
+                "tongui-7b/full",
+                "cogagent-18b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6021634615384616,
+              "standalone_step_sr": 0.5114182692307693,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-tars-72b/full",
+              "increment": 0.01862980769230771,
+              "selected": [
+                "tongui-32b/full",
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6207932692307693,
+              "standalone_step_sr": 0.4098557692307692,
+              "step": 4
+            },
+            {
+              "added_unit": "tongui-3b/full",
+              "increment": 0.0030048076923075984,
+              "selected": [
+                "tongui-32b/full",
+                "tongui-7b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full",
+                "tongui-3b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6237980769230769,
+              "standalone_step_sr": 0.49038461538461536,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 13776,
+                  "successes": 14902
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2622,
+                  "successes": 1964
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13776,
+                  "successes": 14902
+                },
+                "string-bearing": {
+                  "failures": 2622,
+                  "successes": 1964
+                }
+              },
+              "global": {
+                "failures": 16398,
+                "successes": 16866
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9752,
+                  "successes": 10101
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1147,
+                  "successes": 934
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4117,
+                  "successes": 4582
+                },
+                "same-family/string-bearing": {
+                  "failures": 683,
+                  "successes": 594
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13869,
+                  "successes": 14683
+                },
+                "string-bearing": {
+                  "failures": 1830,
+                  "successes": 1528
+                }
+              },
+              "global": {
+                "failures": 15699,
+                "successes": 16211
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9752,
+                  "successes": 10101
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1147,
+                  "successes": 934
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4117,
+                  "successes": 4582
+                },
+                "same-family/string-bearing": {
+                  "failures": 683,
+                  "successes": 594
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13869,
+                  "successes": 14683
+                },
+                "string-bearing": {
+                  "failures": 1830,
+                  "successes": 1528
+                }
+              },
+              "global": {
+                "failures": 15699,
+                "successes": 16211
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 5042,
+                  "successes": 5868
+                },
+                "cross-family/string-bearing": {
+                  "failures": 940,
+                  "successes": 730
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 8256,
+                  "successes": 8953
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 1571,
+                  "successes": 1176
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13298,
+                  "successes": 14821
+                },
+                "string-bearing": {
+                  "failures": 2511,
+                  "successes": 1906
+                }
+              },
+              "global": {
+                "failures": 15809,
+                "successes": 16727
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 3,
+          "selections": {
+            "C1_views_CCM": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_greedy_CCM": [
+              "tongui-32b/full",
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-3b/full"
+            ],
+            "C4_random_CCM": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.5240384615384616,
+            "C2_lineages_CCM": 0.5793269230769231,
+            "C3_greedy_CCM": 0.5793269230769231,
+            "C4_random_CCM": 0.5480769230769231
+          },
+          "test_rows": 416
+        },
+        {
+          "c3_selection_trace": [
+            {
+              "added_unit": "tongui-7b/full",
+              "increment": null,
+              "selected": [
+                "tongui-7b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5447447447447448,
+              "standalone_step_sr": 0.5447447447447448,
+              "step": 1
+            },
+            {
+              "added_unit": "tongui-32b/full",
+              "increment": 0.0006006006006006315,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5453453453453454,
+              "standalone_step_sr": 0.5231231231231231,
+              "step": 2
+            },
+            {
+              "added_unit": "cogagent-18b/full",
+              "increment": 0.047447447447447444,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full"
+              ],
+              "simulated_ccm_step_sr": 0.5927927927927928,
+              "standalone_step_sr": 0.4990990990990991,
+              "step": 3
+            },
+            {
+              "added_unit": "ui-tars-72b/full",
+              "increment": 0.016816816816816793,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full"
+              ],
+              "simulated_ccm_step_sr": 0.6096096096096096,
+              "standalone_step_sr": 0.4114114114114114,
+              "step": 4
+            },
+            {
+              "added_unit": "tongui-7b/v3",
+              "increment": 0.016816816816816793,
+              "selected": [
+                "tongui-7b/full",
+                "tongui-32b/full",
+                "cogagent-18b/full",
+                "ui-tars-72b/full",
+                "tongui-7b/v3"
+              ],
+              "simulated_ccm_step_sr": 0.6264264264264264,
+              "standalone_step_sr": 0.5141141141141141,
+              "step": 5
+            }
+          ],
+          "calibration": {
+            "C1_views_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 13404,
+                  "successes": 14992
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 2656,
+                  "successes": 2240
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13404,
+                  "successes": 14992
+                },
+                "string-bearing": {
+                  "failures": 2656,
+                  "successes": 2240
+                }
+              },
+              "global": {
+                "failures": 16060,
+                "successes": 17232
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C2_lineages_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9600,
+                  "successes": 10006
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1217,
+                  "successes": 1001
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4093,
+                  "successes": 4547
+                },
+                "same-family/string-bearing": {
+                  "failures": 692,
+                  "successes": 654
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13693,
+                  "successes": 14553
+                },
+                "string-bearing": {
+                  "failures": 1909,
+                  "successes": 1655
+                }
+              },
+              "global": {
+                "failures": 15602,
+                "successes": 16208
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C3_greedy_CCM": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 9497,
+                  "successes": 10058
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1244,
+                  "successes": 1025
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 2689,
+                  "successes": 3059
+                },
+                "same-family/string-bearing": {
+                  "failures": 464,
+                  "successes": 444
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 1309,
+                  "successes": 1529
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 258,
+                  "successes": 234
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13495,
+                  "successes": 14646
+                },
+                "string-bearing": {
+                  "failures": 1966,
+                  "successes": 1703
+                }
+              },
+              "global": {
+                "failures": 15461,
+                "successes": 16349
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "C4_random_CCM": {
+              "bins": 8,
+              "cells": {
+                "same-family/coordinate-bearing": {
+                  "failures": 5377,
+                  "successes": 6108
+                },
+                "same-family/string-bearing": {
+                  "failures": 948,
+                  "successes": 877
+                },
+                "same-model-diff-view/coordinate-bearing": {
+                  "failures": 7851,
+                  "successes": 9144
+                },
+                "same-model-diff-view/string-bearing": {
+                  "failures": 1608,
+                  "successes": 1371
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 13228,
+                  "successes": 15252
+                },
+                "string-bearing": {
+                  "failures": 2556,
+                  "successes": 2248
+                }
+              },
+              "global": {
+                "failures": 15784,
+                "successes": 17500
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1665,
+          "fold": 4,
+          "selections": {
+            "C1_views_CCM": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_lineages_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_greedy_CCM": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-7b/v3"
+            ],
+            "C4_random_CCM": [
+              "tongui-32b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_views_CCM": 0.4746987951807229,
+            "C2_lineages_CCM": 0.5903614457831325,
+            "C3_greedy_CCM": 0.5783132530120482,
+            "C4_random_CCM": 0.5060240963855421
+          },
+          "test_rows": 415
+        }
+      ],
+      "p3_ccm_prediction_satisfied": false,
+      "rows": 2080
+    }
+  },
+  "protocol": "AMENDMENT_007_CCM_CONFIRMATION.md",
+  "status": "PASS",
+  "summary": {
+    "c3_exceeds_random_pools": 3,
+    "p3_ccm_directional_passes": 2,
+    "pools": 3
+  }
+}
