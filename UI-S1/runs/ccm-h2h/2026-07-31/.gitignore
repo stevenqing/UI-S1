@@ -1,0 +1,8 @@
+h1/raw/
+h1/shards/
+h1/*.parquet
+h1/*.jsonl
+h1/logs/
+h3/raw/
+h3/shards/
+h3/logs/
