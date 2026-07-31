@@ -1,0 +1,97 @@
+{
+  "definition": "mean leave-one-out evaluator-kernel mass of failed candidates on disagreement rows",
+  "p1_recalibrated": {
+    "p_value_descriptive": 1.0,
+    "prediction_satisfied": false,
+    "retroactively_rescues_original_p1": false,
+    "spearman_collision_vs_gain": 0.0
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "disagreement_rows": 3854,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ]
+    },
+    "androidcontrol/low": {
+      "disagreement_rows": 3431,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ]
+    },
+    "mind2web/visual": {
+      "disagreement_rows": 1377,
+      "models": [
+        "cogagent-18b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ]
+    }
+  },
+  "status": "PASS",
+  "strata": {
+    "androidcontrol_coordinate": {
+      "a0_step_sr": 0.6582319026265214,
+      "a3_gain_over_a0": 0.011210762331838597,
+      "a3_step_sr": 0.66944266495836,
+      "mean_error_conditional_agreement_mass": 0.6140524411847378,
+      "pools": [
+        "androidcontrol/high",
+        "androidcontrol/low"
+      ],
+      "rows": 3122
+    },
+    "androidcontrol_parameterless": {
+      "a0_step_sr": 0.526595744680851,
+      "a3_gain_over_a0": -0.401595744680851,
+      "a3_step_sr": 0.125,
+      "mean_error_conditional_agreement_mass": 0.783740155933374,
+      "pools": [
+        "androidcontrol/high",
+        "androidcontrol/low"
+      ],
+      "rows": 752
+    },
+    "androidcontrol_string": {
+      "a0_step_sr": 0.8800938141307535,
+      "a3_gain_over_a0": -0.3990032248607447,
+      "a3_step_sr": 0.4810905892700088,
+      "mean_error_conditional_agreement_mass": 0.20186263244168087,
+      "pools": [
+        "androidcontrol/high",
+        "androidcontrol/low"
+      ],
+      "rows": 3411
+    },
+    "mind2web_click": {
+      "a0_step_sr": 0.5664095972579263,
+      "a3_gain_over_a0": 0.1251071122536418,
+      "a3_step_sr": 0.6915167095115681,
+      "mean_error_conditional_agreement_mass": 0.7156540087487623,
+      "pools": [
+        "mind2web/visual"
+      ],
+      "rows": 1167
+    },
+    "mind2web_select_type": {
+      "a0_step_sr": 0.6285714285714286,
+      "a3_gain_over_a0": -0.03809523809523807,
+      "a3_step_sr": 0.5904761904761905,
+      "mean_error_conditional_agreement_mass": 0.28326218595718444,
+      "pools": [
+        "mind2web/visual"
+      ],
+      "rows": 210
+    }
+  }
+}

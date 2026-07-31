@@ -1,0 +1,79 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 720 460] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1003 >>
+stream
+0.8 w
+80 70 m 80 420 l 680 420 l 680 70 l h S
+0.7 0.7 0.7 RG
+80 194.88 m 680 194.88 l S
+0 0 0 RG
+0.1 0.35 0.7 RG 1.8 w
+373.37 275.96 m
+449.30 276.22 l
+516.10 390.83 l
+591.69 364.95 l
+680.00 361.26 l
+S
+371.37 273.96 4 4 re f
+447.30 274.22 4 4 re f
+514.10 388.83 4 4 re f
+589.69 362.95 4 4 re f
+678.00 359.26 4 4 re f
+0.1 0.35 0.7 RG 530 420 m 550 420 l S
+0 0 0 RG
+BT /F1 10 Tf
+555 417 Td (screenspot-pro) Tj ET
+0.75 0.2 0.15 RG 1.8 w
+80.00 163.99 m
+173.95 165.39 l
+236.02 173.82 l
+312.37 105.01 l
+440.86 99.17 l
+S
+78.00 161.99 4 4 re f
+171.95 163.39 4 4 re f
+234.02 171.82 4 4 re f
+310.37 103.01 4 4 re f
+438.86 97.17 4 4 re f
+0.75 0.2 0.15 RG 530 402 m 550 402 l S
+0 0 0 RG
+BT /F1 10 Tf
+555 399 Td (mind2web) Tj ET
+0 0 0 RG
+BT /F1 11 Tf
+230 30 Td (log\(screen area / target bbox area\)) Tj ET
+BT /F1 11 Tf 0 1 -1 0 20 130 Tm (Zoom minus bare accuracy \(pp\)) Tj ET
+BT /F1 9 Tf
+80 55 Td (3.53) Tj ET
+BT /F1 9 Tf
+660 55 Td (9.61) Tj ET
+BT /F1 9 Tf
+35 70 Td (-10.7) Tj ET
+BT /F1 9 Tf
+35 420 Td (19.3) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000241 00000 n
+0000001296 00000 n
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1366
+%%EOF
