@@ -3,6 +3,8 @@ import unittest
 from ccm import (
     CCMCalibration,
     RankLikelihoodRatio,
+    calibration_from_dict,
+    calibration_to_dict,
     candidate_class,
     collision_calibrated_mode,
     pair_type,
@@ -53,6 +55,26 @@ class CollisionCalibratedModeTest(unittest.TestCase):
         ]
         result = collision_calibrated_mode(calibration, predictions)
         self.assertEqual(result.prediction.source, "strong")
+
+    def test_calibration_round_trip_preserves_decision(self):
+        table = RankLikelihoodRatio((0.5,), (-1.0, 1.0), 32, 32)
+        calibration = CCMCalibration(
+            "androidcontrol",
+            {"ui-agile-7b": 0.7, "gui-r1-7b": 0.4},
+            table,
+            {"parameterless": table},
+            {("cross-family", "parameterless"): table},
+            {"mode": "nine"},
+        )
+        restored = calibration_from_dict(calibration_to_dict(calibration))
+        predictions = [
+            Prediction("wait", source="ui-agile-7b"),
+            Prediction("wait", source="gui-r1-7b"),
+        ]
+        self.assertEqual(
+            collision_calibrated_mode(calibration, predictions),
+            collision_calibrated_mode(restored, predictions),
+        )
 
 
 if __name__ == "__main__":

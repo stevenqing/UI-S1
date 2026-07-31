@@ -101,6 +101,52 @@ class CCMCalibration:
     table_report: dict
 
 
+def table_to_dict(table: RankLikelihoodRatio) -> dict:
+    return {
+        "boundaries": list(table.boundaries),
+        "log_ratios": list(table.log_ratios),
+        "successes": table.successes,
+        "failures": table.failures,
+    }
+
+
+def table_from_dict(value: dict) -> RankLikelihoodRatio:
+    return RankLikelihoodRatio(
+        tuple(value["boundaries"]), tuple(value["log_ratios"]),
+        value["successes"], value["failures"],
+    )
+
+
+def calibration_to_dict(calibration: CCMCalibration) -> dict:
+    return {
+        "bench": calibration.bench,
+        "source_priors": calibration.source_priors,
+        "global_table": table_to_dict(calibration.global_table),
+        "class_tables": {
+            key: table_to_dict(table) for key, table in calibration.class_tables.items()
+        },
+        "cell_tables": {
+            f"{pair_kind}|{classification}": table_to_dict(table)
+            for (pair_kind, classification), table in calibration.cell_tables.items()
+        },
+        "table_report": calibration.table_report,
+    }
+
+
+def calibration_from_dict(value: dict) -> CCMCalibration:
+    return CCMCalibration(
+        value["bench"],
+        value["source_priors"],
+        table_from_dict(value["global_table"]),
+        {key: table_from_dict(table) for key, table in value["class_tables"].items()},
+        {
+            tuple(key.split("|", 1)): table_from_dict(table)
+            for key, table in value["cell_tables"].items()
+        },
+        value["table_report"],
+    )
+
+
 def fit_calibration(bench: str, rows, mode: str) -> CCMCalibration:
     if mode not in {"pooled", "nine"}:
         raise ValueError(mode)

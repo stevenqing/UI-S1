@@ -147,6 +147,8 @@ The implementation artifact was large, especially on AndroidControl High, but K3
 
 Amendment 007 froze CCM after A5a and before any calibrated result or W4 inference. CCM estimates fold-local likelihood ratios of evaluator-space agreement conditioned on candidate success versus failure. A5b uses a pooled ratio, A5c uses the fixed three pair types by three candidate classes, and A5d separately averages evidence within source family. A5d-risk chooses an override threshold on a nested development fold under exact best-single non-inferiority.
 
+Amendment 008 freezes deployment to W4 before any W4 cell exists. Low uses the five-model discovery deployable set and fixed UI-AGILE-3B baseline; High uses the four-model deployable set, excludes UI-R1-E-3B, and fixes UI-AGILE-7B. Final LR tables are fitted on all discovery rows. Thresholds are chosen from pooled five-fold out-of-fold discovery scores: 1.507 for Low and 0 for High. The serialized calibration explicitly attests that no W4 label was read.
+
 | Pool | Frozen best | A5b pooled LR | A5c nine LR | A5d family | A5d-risk |
 |---|---:|---:|---:|---:|---:|
 | AndroidControl Low | 79.11% | 77.67% | 76.21% | 76.24% | 78.93% |
@@ -154,6 +156,8 @@ Amendment 007 froze CCM after A5a and before any calibrated result or W4 inferen
 | Mind2Web visual | 58.41% | 60.19% | 60.72% | 60.82% | 60.67% |
 
 K4 triggers exactly as frozen: A5c improves over A5a by 2.31 pp on Mind2Web but is significantly inferior to A0 on AndroidControl Low after the paired one-sided exact McNemar/Holm test. The unthresholded LR component is therefore removed from the primary method claim and remains a discovery diagnostic.
+
+No official MM-Mind2Web-v2 corrected-label confirmation set was found. The public official `osunlp/Multimodal-Mind2Web` revision `1b4c6a8cf9f77b7a5e0d641959935c80c4a05889` is the original multimodal release, not a versioned correction with an auditable label diff and revised evaluator. Third-party datasets carrying `v2` in their names are not accepted as confirmation. Mind2Web A5 results therefore remain discovery-stage.
 
 A5d-risk meets the separate discovery success criterion: no significant inferiority in any pool and significant superiority in AndroidControl High and Mind2Web. It achieves this by reducing AndroidControl Low overrides from about 30% to 6.24%; it is a selective aggregation candidate for frozen W4 confirmation, not grounds to reverse K4. Its score-gap confidence prediction also fails: `S_gap` correctness AUROC is 0.393 on AndroidControl Low, 0.417 on High, and 0.395 on Mind2Web, below the prior Mind2Web negative-dispersion AUROC of 0.660. The gain is from nested risk control, not a generally calibrated verifier score.
 

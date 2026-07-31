@@ -11,7 +11,9 @@
     "AMENDMENT_003_W1_STATISTIC_AND_A2.md",
     "AMENDMENT_004_E5_MERGED_INTO_W2.md",
     "AMENDMENT_005_OFFICIAL_MVP_SEMANTICS.md",
-    "AMENDMENT_006_P3_ALLOCATION_DETAILS.md"
+    "AMENDMENT_006_P3_ALLOCATION_DETAILS.md",
+    "AMENDMENT_007_CCM_CONFIRMATION.md",
+    "AMENDMENT_008_CCM_CONFIRMATION_DEPLOYMENT.md"
   ],
   "execution_gate": {
     "e5_required_status": "SUPERSEDED_BY_W2",
@@ -29,7 +31,8 @@
     "w2_allocation.json": "3be13ec1ecd0ed567d2b04e2ba2418d8ff23840b4b26baf861f4e8f1510a26bb",
     "a5a_retrial.json": "96a909cf7ad029f1eaf17c1b62a6e81e210125e0984df559bba947e0c4b57b75",
     "a5_ccm.json": "fd8886d82654dc5702c7fd3d59a93204a0e4c885d796832bcbf44fe0c81f7f02",
-    "p3_ccm.json": "33a8931136bf2de5f86c71f15dc5c6c4c5bbfa70339fe671c779045f6356340a"
+    "p3_ccm.json": "33a8931136bf2de5f86c71f15dc5c6c4c5bbfa70339fe671c779045f6356340a",
+    "ccm_confirmation_frozen.json": "aa99d83641614e26a4e794137f1f190ca90d3f63d87bbf1ad0feca1b05e28221"
   },
   "kill_conditions": {
     "K1": "COMPLETE_HETEROGENEOUS_3_OF_5_DIRECTIONALLY_SATISFIED_NO_GLOBAL_RULE",
@@ -47,7 +50,9 @@
     "w4_role": "FROZEN_CONFIRMATION",
     "p3_ccm_directional_passes": 2,
     "p3_ccm_pools": 3,
-    "p3_ccm_status": "DIAGNOSTIC_K4_TRIGGERED_WEAK_V4_STILL_SELECTED"
+    "p3_ccm_status": "DIAGNOSTIC_K4_TRIGGERED_WEAK_V4_STILL_SELECTED",
+    "confirmation_calibration_status": "FROZEN_BEFORE_W4_ZERO_W4_CELLS_EXISTED",
+    "mind2web_confirmation": "UNAVAILABLE_NO_OFFICIAL_VERSIONED_CORRECTED_LABEL_RELEASE_DISCOVERY_ONLY"
   },
   "w2": {
     "status": "PASS",

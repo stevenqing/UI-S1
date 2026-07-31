@@ -37,3 +37,9 @@ done
   --threshold "$run_dir/w4_threshold.json"
 score_passes "$run_dir/w4_curated.json"
 score_passes "$run_dir/w4_threshold.json"
+
+"$python" "$run_dir/w4_ccm_confirm.py" \
+  --frozen "$run_dir/ccm_confirmation_frozen.json" \
+  --discovery "$run_dir/a5_ccm.json" \
+  --output "$run_dir/w4_ccm_confirmation.json"
+score_passes "$run_dir/w4_ccm_confirmation.json"
