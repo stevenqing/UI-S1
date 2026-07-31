@@ -2,11 +2,11 @@
 
 Date: 2026-07-30
 
-Status: W0, W1, and W2 complete; official MVP sanity anchor passed; remaining W3/W4 runs in progress.
+Status: W0-W4 complete; official MVP sanity anchor passed; CCM discovery and frozen W4 confirmation complete.
 
 ## Preregistration record
 
-The initial preregistration was pushed as commit `2aafdd2` before any Collision-Law result. Five result-free amendments were subsequently pushed before the corresponding final runs:
+The initial preregistration was pushed as commit `2aafdd2` before any Collision-Law result. Amendments 001-008 were frozen before their corresponding result slices; Amendment 009 is explicitly a post-result implementation correction:
 
 1. `c528dba`: separate Mind2Web GT-only analysis kernel from the GT-free inference kernel;
 2. `420888f`: preserve released-parser out-of-domain points without clipping or parse repair;
@@ -14,6 +14,8 @@ The initial preregistration was pushed as commit `2aafdd2` before any Collision-
 4. `43a62f4`: supersede independent E5 and inherit its compatible completed cell as W2 `v4`.
 5. `4129c4f`: distinguish the spec-defined W2 border perturbation from official MVP AGVP and freeze official-code versus paper-centroid W3 rows.
 6. Amendment 006 freezes the P3 candidate pool, fold-local kappa allocation, tie breaks, and random-seed derivation before complete five-view pools exist.
+7. Amendments 007 and 008 freeze CCM and its label-free deployment to W4 before any W4 cell exists.
+8. Amendment 009 records a post-result exact-candidate scoring correction; no inference, calibration, threshold, or selection changed.
 
 No invalid preliminary W1 JSON was committed.
 
@@ -33,7 +35,7 @@ AndroidControl uses the exact metric-derived Gaussian coordinate kernel with `si
 
 Mind2Web parsers expose points but no predicted element boxes. Its exact point-in-GT-bbox evaluator can therefore be used only for post-hoc analysis and scoring. Inference PKA uses the fixed GT-free triangular point kernel on normalized-coordinate scale. This weakens the paper's exact evaluator-kernel claim on Mind2Web and is stated as a main-text limitation.
 
-The operator gate has eleven passing tests, including identity at `K=1`, parse removal, parameter-free plurality, independent density-medoid agreement, continuous-mode behavior, GT-free API separation, out-of-domain preservation, sequential type preservation, and P3 view-adapter identity/null handling.
+The focused operator/calibration suite has nineteen passing tests, including identity at `K=1`, parse removal, parameter-free plurality, independent density-medoid agreement, continuous-mode behavior, GT-free API separation, out-of-domain preservation, sequential type preservation, P3 view-adapter identity/null handling, CCM rank invariance and serialization, and exact-candidate W4 scoring.
 
 ## W1 main table
 
@@ -131,6 +133,8 @@ P3 fails in all three pools because C3 does not exceed C2. C3 does exceed the se
 
 The pinned official MVP source completed all 1,581 ScreenSpot-Pro rows after increasing only the distributed collective timeout. Official-code accuracy is 61.35% (970/1,581), within 0.35 pp of the preregistered 61.7% paper anchor and therefore inside the fixed +/-1 pp sanity band. The same trace gives 49.46% for the bare full-image prediction, 61.73% for the paper-centroid interpretation, and 62.05% for the graph-centroid ablation. This validates the official AGVP and clustering reproduction before migration to the agent benchmarks.
 
+The separate GTA1 checkpoint sanity run obtains 49.40% (781/1,581), within 0.70 pp of its pinned 50.1% model-card anchor. Deterministic five-sample self-consistency obtains 49.34% (780/1,581), a -0.06 pp change from the bare run. Thus naive N=5 stochastic self-consistency does not improve GTA1 on ScreenSpot-Pro.
+
 ## A5a K3 retrial
 
 Original A3 compared action classes with unequal self-kernels: an AndroidControl coordinate candidate received self-score `1 / rho0 = 3.256`, while a parameterless candidate received `1`. A5a removes only the candidate's own vote and preserves every fold, candidate, kernel, and tie break. In the concrete three-`wait` versus one-isolated-`click` regression, original A3 selects `click` with scores `(3, 3, 3, 3.256)`, while A5a selects `wait` with `(2, 2, 2, 0)`.
@@ -173,6 +177,32 @@ The original kappa-only P3 remains the preregistered negative result. Amendment 
 
 Objective alignment improves the directional P3 result from zero to two of three pools, and C3 exceeds random in all three. It does not eliminate the allocation pathology: all five AndroidControl High folds still select the very weak GUI-R1 `v4` unit, sometimes because the fixed five-unit budget forces a nonpositive development increment. Together with K4, this keeps P3-CCM diagnostic rather than a rescued primary claim.
 
+## W4 AndroidControl-Curated robustness
+
+All ten model-setting cells complete 8,377 identities. Values use deterministic grouped held-out folds. Amendment 009 corrects exact-candidate scoring for A3; the initial uncommitted round-trip JSON is invalid.
+
+| Setting | A0 held-out best | A1 plurality + median | A2 plurality + density | A3 exact-candidate PKA | A4 continuous PKA | Oracle |
+|---|---:|---:|---:|---:|---:|---:|
+| Low | 75.53% | 72.39% | 72.42% | 67.67% | 68.51% | 82.95% |
+| High | 57.13% | 56.56% | 57.22% | 54.95% | 55.23% | 71.34% |
+
+Curated labels do not reverse the core AndroidControl result. Low aggregation remains substantially below A0. High A2 exceeds A0 by only 0.08 pp, while joint and continuous PKA remain lower. The all-five hard core is 1,428/8,377 (17.05%) on Low and 2,401/8,377 (28.66%) on High.
+
+Threshold sensitivity is asymmetric. Relative to the 0.14 ranking, High Kendall tau is 1.0 from radii 0.10-0.14 and 0.20-0.30, but falls to 0.4 at 0.06-0.08. Low is less stable: tau is 0.2 at 0.06 and 0.10, 0.4 at 0.08, and ranges from 0.6 to 1.0 above 0.12. Exact rankings near strict tolerances are therefore metric-sensitive, especially on Low.
+
+## Frozen CCM confirmation
+
+CCM uses only the calibration tables and thresholds serialized before W4. W4 labels are read only for final scoring. Exact selected candidates are scored with their original released responses.
+
+| Setting | Frozen source | CCM | Delta | Wins / losses | Override rate |
+|---|---:|---:|---:|---:|---:|
+| Low | 68.59% | 76.09% | +7.50 pp | 676 / 48 | 15.51% |
+| High | 52.01% | 55.90% | +3.89 pp | 488 / 162 | 32.36% |
+
+Both gains over the discovery-fixed deployment source are significant (`p=3.70e-143` Low; `p=3.68e-39` High). High preserves the positive discovery direction. Low changes from a small non-significant discovery loss (-0.18 pp) to a large confirmation gain, so the literal preregistered same-sign criterion is satisfied in only one of two settings even though the Low transfer is favorable.
+
+The stronger comparison against W4's own held-out A0 is mixed. Low CCM is +0.56 pp (516 wins, 469 losses, one-sided superiority `p=0.071`) and is not significantly better. High CCM is -1.23 pp (337 wins, 440 losses, one-sided inferiority `p=1.24e-4`) and is significantly worse. W4 therefore confirms transferable selection value against fixed deployment sources, but does not confirm that CCM dominates the poolwise-best aggregation baseline. `S_gap` remains a weak correctness score (AUROC 0.434 Low, 0.472 High), consistent with the discovery-stage verifier failure.
+
 ## Current scientific state
 
 - P1: failed on the four preregistered strata.
@@ -183,5 +213,7 @@ Objective alignment improves the directional P3 result from zero to two of three
 - K3: triggered; operator demoted to unified perspective.
 - K3 retrial: still triggered after A5a leave-one-out correction; one of three pools exceeds sequential density.
 - K4: triggered; raw collision likelihood ratios remain diagnostic, while nested risk-controlled CCM proceeds only to frozen confirmation.
-- AndroidControl aggregation: negative result across A1-A4.
+- W3 GTA1 N=5: no gain over bare checkpoint (49.34% versus 49.40%).
+- W4 AndroidControl-Curated: A1-A4 remain negative on Low; High A2 is effectively tied with A0, while A3/A4 remain lower.
+- W4 CCM: large significant gains over frozen deployment sources, but only Low reaches nonsignificant +0.56 pp versus W4 A0; High is significantly -1.23 pp below W4 A0.
 - Mind2Web: discrete density and joint medoid aggregation are positive; continuous mode is strongly negative.

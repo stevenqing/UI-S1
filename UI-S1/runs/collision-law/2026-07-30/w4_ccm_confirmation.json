@@ -1,0 +1,118 @@
+{
+  "direction_preserved_settings": 1,
+  "frozen_calibration": "runs/collision-law/2026-07-30/ccm_confirmation_frozen.json",
+  "protocol": "AMENDMENT_008_CCM_CONFIRMATION_DEPLOYMENT.md",
+  "settings": {
+    "high": {
+      "backoff_counts": {
+        "cell": 100494
+      },
+      "best_source_step_sr": 0.5201145994986272,
+      "ccm_step_sr": 0.5590306792407783,
+      "delta_ccm_minus_best": 0.038916079742151166,
+      "direction_preserved": true,
+      "discovery_delta": 0.007189542483660105,
+      "excluded_models": [
+        "ui-r1-e-3b"
+      ],
+      "fixed_best_source": "ui-agile-7b",
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ],
+      "oof_threshold": 0.0,
+      "override_conditional_step_sr": 0.516783474732571,
+      "override_rate": 0.323624209144085,
+      "override_rows": 2711,
+      "paired": {
+        "inferiority_p_one_sided": 1.0,
+        "losses": 162,
+        "superiority_p_one_sided": 3.680751004754143e-39,
+        "wins": 488
+      },
+      "rows": 8377,
+      "s_gap_correctness_auroc": 0.47157402490617667,
+      "selected_candidate_classes": {
+        "coordinate-bearing": 7587,
+        "parameterless": 315,
+        "string-bearing": 475
+      },
+      "selected_sources": {
+        "gui-r1-3b": 129,
+        "gui-r1-7b": 973,
+        "ui-agile-3b": 1609,
+        "ui-agile-7b": 5666
+      },
+      "w4_a0_reporting_only": {
+        "delta_ccm_minus_w4_a0": -0.012295571206875966,
+        "paired": {
+          "inferiority_p_one_sided": 0.00012409399036863547,
+          "losses": 440,
+          "superiority_p_one_sided": 0.9999065825902776,
+          "wins": 337
+        },
+        "step_sr": 0.5713262504476543,
+        "used_for_calibration_or_selection": false
+      },
+      "w4_labels_used_for_calibration": false
+    },
+    "low": {
+      "backoff_counts": {
+        "cell": 167516
+      },
+      "best_source_step_sr": 0.6859257490748478,
+      "ccm_step_sr": 0.7608929210934702,
+      "delta_ccm_minus_best": 0.07496717201862235,
+      "direction_preserved": false,
+      "discovery_delta": -0.001830065359477162,
+      "excluded_models": [],
+      "fixed_best_source": "ui-agile-3b",
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "oof_threshold": 1.5070437170218178,
+      "override_conditional_step_sr": 0.6666666666666666,
+      "override_rate": 0.15506744657992122,
+      "override_rows": 1299,
+      "paired": {
+        "inferiority_p_one_sided": 1.0,
+        "losses": 48,
+        "superiority_p_one_sided": 3.6963150255919047e-143,
+        "wins": 676
+      },
+      "rows": 8377,
+      "s_gap_correctness_auroc": 0.43372053623361634,
+      "selected_candidate_classes": {
+        "coordinate-bearing": 6318,
+        "parameterless": 1278,
+        "string-bearing": 781
+      },
+      "selected_sources": {
+        "gui-r1-3b": 123,
+        "gui-r1-7b": 483,
+        "ui-agile-3b": 7078,
+        "ui-agile-7b": 486,
+        "ui-r1-e-3b": 207
+      },
+      "w4_a0_reporting_only": {
+        "delta_ccm_minus_w4_a0": 0.005610600453622938,
+        "paired": {
+          "inferiority_p_one_sided": 0.9369396924226975,
+          "losses": 469,
+          "superiority_p_one_sided": 0.07134809083023956,
+          "wins": 516
+        },
+        "step_sr": 0.7552823206398472,
+        "used_for_calibration_or_selection": false
+      },
+      "w4_labels_used_for_calibration": false
+    }
+  },
+  "status": "PASS"
+}

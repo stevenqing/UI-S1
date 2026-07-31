@@ -41,5 +41,6 @@ score_passes "$run_dir/w4_threshold.json"
 "$python" "$run_dir/w4_ccm_confirm.py" \
   --frozen "$run_dir/ccm_confirmation_frozen.json" \
   --discovery "$run_dir/a5_ccm.json" \
+  --curated "$run_dir/w4_curated.json" \
   --output "$run_dir/w4_ccm_confirmation.json"
 score_passes "$run_dir/w4_ccm_confirmation.json"

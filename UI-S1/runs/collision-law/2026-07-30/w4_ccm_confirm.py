@@ -8,7 +8,7 @@ from scipy.stats import binomtest
 from sklearn.metrics import roc_auc_score
 
 from ccm import calibration_from_dict, candidate_class, score_candidates
-from w4_analyze import load_official_utils, load_setting, score_prediction
+from w4_analyze import assign_folds, load_official_utils, load_setting, score_response
 
 
 SETTINGS = ("low", "high")
@@ -31,7 +31,7 @@ def paired_test(wins, losses):
     }
 
 
-def confirm_setting(setting, rows, frozen, discovery, utils):
+def confirm_setting(setting, rows, frozen, discovery, curated, utils):
     models = frozen["models"]
     best_source = frozen["fixed_best_source"]
     threshold = frozen["oof_threshold"]
@@ -44,11 +44,18 @@ def confirm_setting(setting, rows, frozen, discovery, utils):
     override_successes = 0
     wins = 0
     losses = 0
+    w4_a0_successes = 0
+    w4_a0_wins = 0
+    w4_a0_losses = 0
     gaps = []
     labels = []
     backoffs = Counter()
     selected_classes = Counter()
     selected_sources = Counter()
+    fold_map, _ = assign_folds(rows)
+    heldout_sources = {
+        fold["fold"]: fold["heldout_best_model"] for fold in curated["folds"]
+    }
     for row in rows:
         predictions = [row["predictions"][model] for model in models]
         baseline = row["predictions"][best_source]
@@ -67,8 +74,11 @@ def confirm_setting(setting, rows, frozen, discovery, utils):
             gap = float("-inf")
         use_winner = threshold is not None and gap >= threshold
         selected = winner if use_winner else baseline
-        success = bool(score_prediction(row, selected, utils)["step"])
-        baseline_success = bool(score_prediction(row, baseline, utils)["step"])
+        success = bool(score_response(row, row["responses"][selected.source], utils)["step"])
+        baseline_success = bool(score_response(row, row["responses"][best_source], utils)["step"])
+        fold = fold_map[str(Path(row["image"]).parent)]
+        w4_a0_source = heldout_sources[fold]
+        w4_a0_success = bool(score_response(row, row["responses"][w4_a0_source], utils)["step"])
         override = selected != baseline
         successes += int(success)
         baseline_successes += int(baseline_success)
@@ -76,6 +86,9 @@ def confirm_setting(setting, rows, frozen, discovery, utils):
         override_successes += int(override and success)
         wins += int(success and not baseline_success)
         losses += int(baseline_success and not success)
+        w4_a0_successes += int(w4_a0_success)
+        w4_a0_wins += int(success and not w4_a0_success)
+        w4_a0_losses += int(w4_a0_success and not success)
         gaps.append(gap)
         labels.append(success)
         selected_classes[candidate_class("androidcontrol", selected)] += 1
@@ -104,6 +117,12 @@ def confirm_setting(setting, rows, frozen, discovery, utils):
             or (discovery_delta == 0 and confirmation_delta == 0)
         ),
         "paired": paired_test(wins, losses),
+        "w4_a0_reporting_only": {
+            "used_for_calibration_or_selection": False,
+            "step_sr": w4_a0_successes / len(rows),
+            "delta_ccm_minus_w4_a0": ccm_sr - w4_a0_successes / len(rows),
+            "paired": paired_test(w4_a0_wins, w4_a0_losses),
+        },
         "override_rows": overrides,
         "override_rate": overrides / len(rows),
         "override_conditional_step_sr": override_successes / overrides if overrides else None,
@@ -118,10 +137,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--frozen", type=Path, required=True)
     parser.add_argument("--discovery", type=Path, required=True)
+    parser.add_argument("--curated", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     frozen = json.loads(args.frozen.read_text())
     discovery = json.loads(args.discovery.read_text())
+    curated = json.loads(args.curated.read_text())
     if frozen.get("w4_labels_read") is not False:
         raise ValueError("confirmation artifact must attest zero W4 label access")
     utils = load_official_utils()
@@ -139,6 +160,7 @@ def main():
                     loaded[setting],
                     frozen["settings"][setting],
                     discovery["pools"][f"androidcontrol/{setting}"],
+                    curated["settings"][setting],
                     utils,
                 )
                 for setting in SETTINGS

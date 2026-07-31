@@ -119,6 +119,12 @@ def aggregate(method, predictions, priority, weights):
     raise ValueError(method)
 
 
+def score_aggregate(row, prediction, method, utils):
+    if method == "A3_pka_joint" and prediction.source in row["responses"]:
+        return score_response(row, row["responses"][prediction.source], utils)
+    return score_prediction(row, prediction, utils)
+
+
 def threshold_success(row, prediction, radius, utils):
     if prediction is None or not prediction.parse_ok:
         return False
@@ -198,7 +204,7 @@ def analyze_setting(setting, rows, utils):
             predictions = [row["predictions"][model] for model in MODELS]
             for method in methods:
                 prediction = aggregate(method, predictions, priority, weights)
-                success = score_prediction(row, prediction, utils)["step"]
+                success = score_aggregate(row, prediction, method, utils)["step"]
                 aggregate_success[method] += success
                 fold_counts[method] += success
         folds.append({

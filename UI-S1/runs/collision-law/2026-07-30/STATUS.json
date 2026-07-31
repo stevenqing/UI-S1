@@ -1,10 +1,10 @@
 {
-  "status": "A5_DISCOVERY_COMPLETE_W3_IN_PROGRESS_W4_FROZEN_CONFIRMATION_PENDING",
+  "status": "W0_W4_COMPLETE_CCM_CONFIRMATION_COMPLETE",
   "base_commit": "802940669dc80f3dee572cf39643e867844d9965",
   "w1_results_generated": true,
   "w1_operator_gate_passed": true,
   "w2_results_generated": true,
-  "w4_results_generated": false,
+  "w4_results_generated": true,
   "preregistration_amendments": [
     "AMENDMENT_001_MIND2WEB_COORD_KERNEL.md",
     "AMENDMENT_002_OUT_OF_DOMAIN_POINTS.md",
@@ -13,7 +13,8 @@
     "AMENDMENT_005_OFFICIAL_MVP_SEMANTICS.md",
     "AMENDMENT_006_P3_ALLOCATION_DETAILS.md",
     "AMENDMENT_007_CCM_CONFIRMATION.md",
-    "AMENDMENT_008_CCM_CONFIRMATION_DEPLOYMENT.md"
+    "AMENDMENT_008_CCM_CONFIRMATION_DEPLOYMENT.md",
+    "AMENDMENT_009_W4_EXACT_CANDIDATE_SCORING.md"
   ],
   "execution_gate": {
     "e5_required_status": "SUPERSEDED_BY_W2",
@@ -32,7 +33,13 @@
     "a5a_retrial.json": "96a909cf7ad029f1eaf17c1b62a6e81e210125e0984df559bba947e0c4b57b75",
     "a5_ccm.json": "fd8886d82654dc5702c7fd3d59a93204a0e4c885d796832bcbf44fe0c81f7f02",
     "p3_ccm.json": "33a8931136bf2de5f86c71f15dc5c6c4c5bbfa70339fe671c779045f6356340a",
-    "ccm_confirmation_frozen.json": "aa99d83641614e26a4e794137f1f190ca90d3f63d87bbf1ad0feca1b05e28221"
+    "ccm_confirmation_frozen.json": "aa99d83641614e26a4e794137f1f190ca90d3f63d87bbf1ad0feca1b05e28221",
+    "w3_gta1_score.json": "e6c24c2c17174704e9393cff28a9b840b66a35dc6324d6facdcf600b0d4726c0",
+    "w3_gta1_n5_score.json": "332851fe9186db0f24c3c3db9dc762fc41164a23145cc873d9b23dd212c79763",
+    "w3_summary.json": "1556c30f130f8c795e1a68313f3e61b87677d10f0ecad964c6fe0e7e5de15b7d",
+    "w4_curated.json": "3b0cd2430f8f47a3862976cebe37e125aa696e7a17152ef2eb3d39637dc846a6",
+    "w4_threshold.json": "d5fa88ff47801c48cc0ecb8bbeb2c79852792b4715efd17532f91c91c666cb57",
+    "w4_ccm_confirmation.json": "5f5e06737d76771394fb51b39e4e6f0aa724f283834473de5d57e0d391a911f5"
   },
   "kill_conditions": {
     "K1": "COMPLETE_HETEROGENEOUS_3_OF_5_DIRECTIONALLY_SATISFIED_NO_GLOBAL_RULE",
@@ -51,8 +58,29 @@
     "p3_ccm_directional_passes": 2,
     "p3_ccm_pools": 3,
     "p3_ccm_status": "DIAGNOSTIC_K4_TRIGGERED_WEAK_V4_STILL_SELECTED",
-    "confirmation_calibration_status": "FROZEN_BEFORE_W4_ZERO_W4_CELLS_EXISTED",
+    "confirmation_calibration_status": "FROZEN_BEFORE_W4_AND_CONFIRMATION_COMPLETE",
+    "w4_exact_candidate_scoring": "CORRECTED_ORIGINAL_RELEASED_RESPONSES_BASELINE_PARITY_PASS",
+    "w4_fixed_source_delta_low": 0.07496717201862235,
+    "w4_fixed_source_delta_high": 0.038916079742151166,
+    "w4_a0_delta_low": 0.005610600453622938,
+    "w4_a0_delta_high": -0.012295571206875966,
+    "w4_direction_preserved_settings": 1,
+    "w4_confirmation_settings": 2,
     "mind2web_confirmation": "UNAVAILABLE_NO_OFFICIAL_VERSIONED_CORRECTED_LABEL_RELEASE_DISCOVERY_ONLY"
+  },
+  "w3": {
+    "status": "PASS",
+    "bare_gta1_accuracy": 0.4939911448450348,
+    "self_consistency_n5_accuracy": 0.49335863377609107,
+    "n5_delta": -0.0006325110689437295
+  },
+  "w4": {
+    "status": "PASS",
+    "model_setting_cells": 10,
+    "rows_per_cell": 8377,
+    "curated_status": "PASS",
+    "threshold_status": "PASS",
+    "ccm_confirmation_status": "PASS"
   },
   "w2": {
     "status": "PASS",

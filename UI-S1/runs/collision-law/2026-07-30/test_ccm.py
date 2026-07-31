@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 from ccm import (
     CCMCalibration,
@@ -10,6 +11,7 @@ from ccm import (
     pair_type,
 )
 from pka import Prediction
+from w4_analyze import score_aggregate
 
 
 class CollisionCalibratedModeTest(unittest.TestCase):
@@ -75,6 +77,16 @@ class CollisionCalibratedModeTest(unittest.TestCase):
             collision_calibrated_mode(calibration, predictions),
             collision_calibrated_mode(restored, predictions),
         )
+
+    def test_w4_exact_candidate_uses_original_response(self):
+        prediction = Prediction("click", 0.25, 0.75, source="model-a")
+        row = {"responses": {"model-a": "released two-value point response"}}
+        with patch("w4_analyze.score_response", return_value={"step": True}) as original:
+            with patch("w4_analyze.score_prediction") as round_trip:
+                result = score_aggregate(row, prediction, "A3_pka_joint", object())
+        self.assertTrue(result["step"])
+        original.assert_called_once_with(row, row["responses"]["model-a"], unittest.mock.ANY)
+        round_trip.assert_not_called()
 
 
 if __name__ == "__main__":
