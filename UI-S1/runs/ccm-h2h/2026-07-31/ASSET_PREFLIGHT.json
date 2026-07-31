@@ -1,0 +1,36 @@
+{
+  "androidcontrol_h4": {
+    "curated_image_sha256_matches_to_w2": 0,
+    "curated_images": 9987,
+    "h4_primary_available": false,
+    "reason": "W2 has point GT only and exact image SHA256 linking to Curated matched 0/7708",
+    "w2_rows": 7708
+  },
+  "gpu": {
+    "available_for_h1_at_freeze": false,
+    "protected_pid": 1814,
+    "rule": "never kill, pause, or reuse protected process; wait for release"
+  },
+  "h1": {
+    "dataset_rows": 1581,
+    "existing_candidate_count_distribution": {
+      "5": 1581
+    },
+    "existing_trace_reusable_as_h1_n": false,
+    "model_assets_present": true,
+    "new_generation_required_for": [
+      2,
+      4,
+      10
+    ],
+    "official_mvp_source_revision": "988ff3c61b9f7632d780ae27c83260de75b3c95f",
+    "screenspot_bbox_rows": 1581,
+    "screenspot_group_key": "application"
+  },
+  "mind2web_h4": {
+    "area_rows": 2080,
+    "h4_descriptive_available": true,
+    "visual_rows": 2080
+  },
+  "status": "PASS_WITH_H1_WAITING_FOR_GPU_AND_H4_PRIMARY_BLOCKED"
+}

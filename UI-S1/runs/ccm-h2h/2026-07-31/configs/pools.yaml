@@ -1,0 +1,49 @@
+schema_version: 1
+frozen_at_utc: "2026-07-31"
+seed: 20260731
+
+h2:
+  view_pairs:
+    views: [full, v1]
+    models: [gui-r1-7b, ui-agile-7b]
+    settings: [low, high]
+  excluded_views:
+    v2: information_deleting_50_percent_crop
+    v3: information_deleting_75_percent_crop
+    v4: deployment_resize_distribution_shift
+  permutations: 1000
+  primary_alpha: 0.01
+  gate: view_axis_mean_kappa_gt_cross_family_mean_kappa_and_p_lt_0_01
+
+h3:
+  enabled_only_if_h2_positive: true
+  forward_budget: 12
+  pools:
+    D1:
+      description: GTA1-7B twelve official views
+      models: [GTA1-7B]
+      views_per_model: 12
+    D2:
+      description: three grounding lineages four official views each
+      models:
+        - GTA1-7B
+        - Qwen3VL-8B
+        - AUTO_THIRD_ELIGIBLE
+      views_per_model: 4
+    D3:
+      description: twelve eligible models one full view each
+      conditional_on_available_models: 12
+      views_per_model: 1
+  model_eligibility:
+    minimum_bare_fraction_of_gta1: 0.5
+    ordering: descending_bare_accuracy_then_model_id
+    result_blind: true
+  success:
+    comparison: D2_M1_gt_D1_M1
+    minimum_delta: greater_than_screenspot_mde
+
+h4:
+  required_benchmarks: [screenspot-pro, mind2web, androidcontrol]
+  minimum_spearman_rho: 0.7
+  require_same_direction_all_benchmarks: true
+  blocked_if_area_axis_unavailable: true

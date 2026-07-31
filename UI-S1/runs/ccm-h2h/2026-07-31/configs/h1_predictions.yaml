@@ -1,0 +1,60 @@
+schema_version: 1
+frozen_at_utc: "2026-07-31"
+upstream_commit: "1d51f56148bb57c9fe20200d0a2f9d32dde7fbb4"
+seed: 20260731
+
+dataset:
+  id: screenspot-pro
+  rows: 1581
+  group_key: application
+  folds: 5
+
+model:
+  id: GTA1-7B
+  revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+
+official_mvp:
+  source_revision: 988ff3c61b9f7632d780ae27c83260de75b3c95f
+  attention_layer: 20
+  target_token: ","
+  candidate_counts: [2, 4, 10]
+  candidate_definition: one_full_plus_n_minus_one_attention_subimages
+  existing_anchor_candidate_count: 5
+  existing_anchor_reuse_for_h1: false
+
+ccm:
+  bins: 8
+  smoothing: add_one
+  source_prior: constant_omitted
+  pair_type: same_model_diff_view
+  candidate_class: coordinate_bearing
+  fit_scope: development_folds_only
+
+mde:
+  perturbation_seeds: [20260731, 20260732, 20260733]
+  definition: two_times_sample_standard_deviation
+  deterministic_attention_fallback: top_k_sampling_perturbation
+
+bootstrap:
+  resamples: 10000
+  unit: application
+  alternative: greater
+  seed: 20260731
+
+predictions:
+  P-H1a:
+    statement: M1_N10 exceeds B3_N10
+    minimum_delta: greater_than_mde
+    paired_bootstrap_one_sided_p_max: 0.01
+  P-H1b:
+    statement: M1 is nondecreasing over N2_N4_N10 and B3 declines from N4 to N10
+    m1_n10_minus_n4: nonnegative_and_not_significantly_negative
+    b3_n10_minus_n4: negative
+  P-H1c:
+    statement: M1_N10 exceeds published_GRPO_selector_62_8
+    paper_only_reference: 0.628
+    minimum_delta: greater_than_mde
+
+kill_conditions:
+  H-K1: P-H1a_and_P-H1c_both_fail
+  H-K2: P-H1b_fails_and_B3_decline_not_reproduced
