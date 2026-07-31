@@ -10,6 +10,7 @@ from pka import (
     coordinate_density_mode,
     pair_kernel,
     pka_joint,
+    pka_joint_leave_one_out,
     pka_joint_continuous,
     requires_coordinate,
     requires_string,
@@ -131,6 +132,10 @@ def plurality_then_density(
 
 def pka_medoid(bench: str, predictions: list[Prediction]) -> AggregateResult:
     return pka_joint(bench, predictions)
+
+
+def pka_medoid_leave_one_out(bench: str, predictions: list[Prediction]) -> AggregateResult:
+    return pka_joint_leave_one_out(bench, predictions)
 
 
 def pka_continuous(bench: str, predictions: list[Prediction]) -> AggregateResult:

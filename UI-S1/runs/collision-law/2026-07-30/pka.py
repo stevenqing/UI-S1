@@ -107,6 +107,22 @@ def pka_joint(bench: str, predictions: Iterable[Prediction], weights=None) -> Ag
     return AggregateResult(parsed[winner], original_indices[winner], scores, len(parsed))
 
 
+def pka_joint_leave_one_out(bench: str, predictions: Iterable[Prediction], weights=None) -> AggregateResult:
+    original, parsed, parsed_weights, original_indices = _validated_inputs(predictions, weights)
+    if not parsed:
+        return AggregateResult(None, None, (), 0)
+    scores = tuple(
+        sum(
+            weight * pair_kernel(bench, voter, candidate)
+            for voter_index, (voter, weight) in enumerate(zip(parsed, parsed_weights))
+            if voter_index != candidate_index
+        )
+        for candidate_index, candidate in enumerate(parsed)
+    )
+    winner = max(range(len(parsed)), key=lambda index: (scores[index], -index))
+    return AggregateResult(parsed[winner], original_indices[winner], scores, len(parsed))
+
+
 def coordinate_density_mode(
     bench: str,
     predictions: Iterable[Prediction],

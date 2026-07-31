@@ -4,6 +4,12 @@ set -euo pipefail
 run_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace="$(cd "$run_dir/../../.." && pwd)"
 python="$workspace/.venv-ac-vllm/bin/python"
+freeze="$run_dir/AMENDMENT_007_CCM_CONFIRMATION.md"
+
+[[ -f "$freeze" ]] || {
+  echo "W4 blocked: freeze A5 in $freeze before confirmation inference" >&2
+  exit 2
+}
 
 score_passes() {
   local score="$1"

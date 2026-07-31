@@ -7,7 +7,14 @@ import kernels
 import pka
 import w2_analyze
 from aggregators import plurality_then_density
-from pka import Prediction, coordinate_density_medoid, coordinate_density_mode, pka_joint, pka_joint_continuous
+from pka import (
+    Prediction,
+    coordinate_density_medoid,
+    coordinate_density_mode,
+    pka_joint,
+    pka_joint_continuous,
+    pka_joint_leave_one_out,
+)
 
 
 class ProductKernelAggregationTest(unittest.TestCase):
@@ -33,6 +40,24 @@ class ProductKernelAggregationTest(unittest.TestCase):
         result = pka_joint("androidcontrol", predictions)
         self.assertEqual(result.prediction.action, "wait")
         self.assertEqual(result.candidate_scores, (2.0, 2.0, 1.0))
+
+    def test_leave_one_out_removes_cross_class_self_kernel_artifact(self):
+        predictions = [
+            Prediction("wait", source="wait-a"),
+            Prediction("wait", source="wait-b"),
+            Prediction("wait", source="wait-c"),
+            Prediction("click", 0.5, 0.5, source="click"),
+        ]
+        self.assertEqual(pka_joint("androidcontrol", predictions).prediction.action, "click")
+        result = pka_joint_leave_one_out("androidcontrol", predictions)
+        self.assertEqual(result.prediction.action, "wait")
+        self.assertEqual(result.candidate_scores, (2.0, 2.0, 2.0, 0.0))
+
+    def test_leave_one_out_preserves_k1_identity(self):
+        prediction = Prediction("click", 0.25, 0.75, source="only")
+        result = pka_joint_leave_one_out("androidcontrol", [prediction])
+        self.assertEqual(result.prediction, prediction)
+        self.assertEqual(result.candidate_scores, (0,))
 
     def test_same_type_medoid_matches_independent_density_reference(self):
         predictions = [
