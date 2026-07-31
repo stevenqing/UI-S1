@@ -54,10 +54,17 @@ def confirm_setting(setting, rows, frozen, discovery, utils):
         baseline = row["predictions"][best_source]
         scores, row_backoffs = score_candidates(calibration, predictions, family_dedup=True)
         backoffs.update(row_backoffs)
-        winner_position = max(range(len(scores)), key=lambda index: (scores[index][0], -index))
-        winner_score, _, winner = scores[winner_position]
-        baseline_score = next(score for score, _, prediction in scores if prediction.source == best_source)
-        gap = winner_score - baseline_score
+        if scores:
+            winner_position = max(range(len(scores)), key=lambda index: (scores[index][0], -index))
+            winner_score, _, winner = scores[winner_position]
+            baseline_scores = [
+                score for score, _, prediction in scores if prediction.source == best_source
+            ]
+            baseline_score = baseline_scores[0] if baseline_scores else float("-inf")
+            gap = winner_score - baseline_score
+        else:
+            winner = baseline
+            gap = float("-inf")
         use_winner = threshold is not None and gap >= threshold
         selected = winner if use_winner else baseline
         success = bool(score_prediction(row, selected, utils)["step"])
