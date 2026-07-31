@@ -1,0 +1,37 @@
+{
+  "eligibility_rule": {
+    "minimum_bare_fraction_of_gta1": 0.5,
+    "ordering": "descending bare ScreenSpot-Pro accuracy, then model id",
+    "result_blind": true
+  },
+  "gate": "H2_OPEN",
+  "models": {
+    "GTA1-7B": {
+      "bare_screenspot_accuracy": 0.4939911448450348,
+      "checkpoint": "runs/collision-law/2026-07-30/w3_assets/GTA1-7B",
+      "checkpoint_status": "PRESENT_16G",
+      "eligible": true
+    },
+    "Qwen3-VL-8B-Instruct": {
+      "bare_screenspot_accuracy": null,
+      "checkpoint": null,
+      "checkpoint_status": "NOT_FOUND_IN_WORKSPACE_OR_SCRATCH_SEARCH",
+      "eligible": null
+    },
+    "SeeClick-mind2web": {
+      "bare_screenspot_accuracy": null,
+      "checkpoint": "runs/mind2web/2026-07-27/models/SeeClick-mind2web",
+      "checkpoint_status": "PRESENT_18G",
+      "eligible": null
+    },
+    "UI-TARS-7B-SFT": {
+      "bare_screenspot_accuracy": null,
+      "checkpoint": "runs/mind2web-tongui/2026-07-28/models/UI-TARS-7B-SFT",
+      "checkpoint_status": "PRESENT_31G",
+      "eligible": null
+    }
+  },
+  "required_minimum_bare_accuracy": 0.2469955724225174,
+  "status": "PENDING_BARE_SCORE_PREFLIGHT_AND_QWEN3_CHECKPOINT",
+  "inference_started": false
+}

@@ -104,3 +104,5 @@ Figure: `fig1_area_law.pdf`.
 2. Evaluate B0-B4, M1/M2, pass@N with candidate-hash identity assertions.
 3. Run three proposal perturbation seeds for ScreenSpot-Pro MDE.
 4. Because H2 is positive, schedule H3 after H1 and freeze eligible model availability before H3 inference.
+
+H3 asset preflight currently finds local GTA1-7B, UI-TARS-7B-SFT, and SeeClick checkpoints. Qwen3-VL-8B-Instruct is absent from the workspace and scratch search. UI-TARS and SeeClick have no audited ScreenSpot-Pro bare score yet, so they are not eligible until result-blind bare scoring confirms at least 24.70% accuracy. H3 inference has not started.
