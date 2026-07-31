@@ -131,6 +131,32 @@ P3 fails in all three pools because C3 does not exceed C2. C3 does exceed the se
 
 The pinned official MVP source completed all 1,581 ScreenSpot-Pro rows after increasing only the distributed collective timeout. Official-code accuracy is 61.35% (970/1,581), within 0.35 pp of the preregistered 61.7% paper anchor and therefore inside the fixed +/-1 pp sanity band. The same trace gives 49.46% for the bare full-image prediction, 61.73% for the paper-centroid interpretation, and 62.05% for the graph-centroid ablation. This validates the official AGVP and clustering reproduction before migration to the agent benchmarks.
 
+## A5a K3 retrial
+
+Original A3 compared action classes with unequal self-kernels: an AndroidControl coordinate candidate received self-score `1 / rho0 = 3.256`, while a parameterless candidate received `1`. A5a removes only the candidate's own vote and preserves every fold, candidate, kernel, and tie break. In the concrete three-`wait` versus one-isolated-`click` regression, original A3 selects `click` with scores `(3, 3, 3, 3.256)`, while A5a selects `wait` with `(2, 2, 2, 0)`.
+
+| Pool | A2 sequential | A3 original joint | A5a LOO joint | A5a - A3 | A5a - A2 |
+|---|---:|---:|---:|---:|---:|
+| AndroidControl Low | 72.08% | 68.26% | 70.71% | +2.44 pp | -1.37 pp |
+| AndroidControl High | 59.44% | 50.33% | 56.27% | +5.95 pp | -3.16 pp |
+| Mind2Web visual | 58.22% | 58.41% | 58.41% | 0.00 pp | +0.19 pp |
+
+The implementation artifact was large, especially on AndroidControl High, but K3 remains triggered because corrected joint mode exceeds sequential density in only one of three pools. This is distinct from the collision tax: A2 itself remains 7.03 pp below A0 on AndroidControl Low and 1.32 pp below A0 on High.
+
+## Collision-Calibrated Mode discovery
+
+Amendment 007 froze CCM after A5a and before any calibrated result or W4 inference. CCM estimates fold-local likelihood ratios of evaluator-space agreement conditioned on candidate success versus failure. A5b uses a pooled ratio, A5c uses the fixed three pair types by three candidate classes, and A5d separately averages evidence within source family. A5d-risk chooses an override threshold on a nested development fold under exact best-single non-inferiority.
+
+| Pool | Frozen best | A5b pooled LR | A5c nine LR | A5d family | A5d-risk |
+|---|---:|---:|---:|---:|---:|
+| AndroidControl Low | 79.11% | 77.67% | 76.21% | 76.24% | 78.93% |
+| AndroidControl High | 60.76% | 61.46% | 61.41% | 61.58% | 61.48% |
+| Mind2Web visual | 58.41% | 60.19% | 60.72% | 60.82% | 60.67% |
+
+K4 triggers exactly as frozen: A5c improves over A5a by 2.31 pp on Mind2Web but is significantly inferior to A0 on AndroidControl Low after the paired one-sided exact McNemar/Holm test. The unthresholded LR component is therefore removed from the primary method claim and remains a discovery diagnostic.
+
+A5d-risk meets the separate discovery success criterion: no significant inferiority in any pool and significant superiority in AndroidControl High and Mind2Web. It achieves this by reducing AndroidControl Low overrides from about 30% to 6.24%; it is a selective aggregation candidate for frozen W4 confirmation, not grounds to reverse K4. Its score-gap confidence prediction also fails: `S_gap` correctness AUROC is 0.393 on AndroidControl Low, 0.417 on High, and 0.395 on Mind2Web, below the prior Mind2Web negative-dispersion AUROC of 0.660. The gain is from nested risk control, not a generally calibrated verifier score.
+
 ## Current scientific state
 
 - P1: failed on the four preregistered strata.
@@ -138,5 +164,7 @@ The pinned official MVP source completed all 1,581 ScreenSpot-Pro rows after inc
 - P3: failed in all three pools; C3 exceeds random but not the five-lineage C2 corner.
 - K2: not triggered; Mind2Web's +6.63 pp A3 gain exceeds its 4.64 pp MDE.
 - K3: triggered; operator demoted to unified perspective.
+- K3 retrial: still triggered after A5a leave-one-out correction; one of three pools exceeds sequential density.
+- K4: triggered; raw collision likelihood ratios remain diagnostic, while nested risk-controlled CCM proceeds only to frozen confirmation.
 - AndroidControl aggregation: negative result across A1-A4.
 - Mind2Web: discrete density and joint medoid aggregation are positive; continuous mode is strongly negative.

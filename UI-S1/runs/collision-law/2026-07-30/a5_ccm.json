@@ -1,0 +1,3332 @@
+{
+  "k4": {
+    "androidcontrol_significantly_inferior": {
+      "androidcontrol/high": false,
+      "androidcontrol/low": true
+    },
+    "mind2web_a5c_minus_a5a": 0.023076923076922995,
+    "mind2web_strict_gain": true,
+    "triggered": true
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "aggregate_step_sr": {
+        "A0_heldout_best": 0.6075816993464053,
+        "A2_sequential_density": 0.5943790849673203,
+        "A3_joint_original": 0.5032679738562091,
+        "A5a_LOO": 0.5627450980392157,
+        "A5b_MAP_pooled_LR": 0.6146405228758169,
+        "A5c_MAP_nine_LR": 0.6141176470588235,
+        "A5d_MAP_nine_LR_family": 0.6158169934640523,
+        "A5d_risk": 0.6147712418300654
+      },
+      "comparisons": {
+        "A5b_MAP_pooled_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9850617976055844,
+            "losses": 294,
+            "superiority_p_holm": 0.036379383515410854,
+            "superiority_p_one_sided": 0.018189691757705427,
+            "wins": 348
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9999999995158352,
+            "losses": 251,
+            "superiority_p_one_sided": 7.928256966896656e-10,
+            "wins": 406
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 366,
+            "superiority_p_one_sided": 3.623291939203196e-107,
+            "wins": 1218
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 294,
+            "superiority_p_one_sided": 8.498965309702248e-38,
+            "wins": 691
+          }
+        },
+        "A5c_MAP_nine_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9849202702228997,
+            "losses": 252,
+            "superiority_p_holm": 0.03726426330851176,
+            "superiority_p_one_sided": 0.01863213165425588,
+            "wins": 302
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9999999999781191,
+            "losses": 194,
+            "superiority_p_one_sided": 3.940854205922618e-11,
+            "wins": 345
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 303,
+            "superiority_p_one_sided": 1.0948188941763758e-116,
+            "wins": 1151
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 231,
+            "superiority_p_one_sided": 8.864720640344876e-43,
+            "wins": 624
+          }
+        },
+        "A5d_MAP_nine_LR_family": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9967770951933012,
+            "losses": 245,
+            "superiority_p_holm": 0.008317970237509353,
+            "superiority_p_one_sided": 0.004158985118754677,
+            "wins": 308
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9999999999999525,
+            "losses": 168,
+            "superiority_p_one_sided": 9.511226040713127e-14,
+            "wins": 332
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 275,
+            "superiority_p_one_sided": 1.1252582369418276e-124,
+            "wins": 1136
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 202,
+            "superiority_p_one_sided": 2.6845670531229983e-48,
+            "wins": 608
+          }
+        },
+        "A5d_risk": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9909048213345271,
+            "losses": 254,
+            "superiority_p_holm": 0.02277185440787793,
+            "superiority_p_one_sided": 0.011385927203938965,
+            "wins": 309
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9999999999991104,
+            "losses": 174,
+            "superiority_p_one_sided": 1.7082105418995733e-12,
+            "wins": 330
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 282,
+            "superiority_p_one_sided": 1.2262312965179049e-121,
+            "wins": 1135
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 209,
+            "superiority_p_one_sided": 4.782538016746527e-46,
+            "wins": 607
+          }
+        }
+      },
+      "diagnostics": {
+        "A5b_MAP_pooled_LR": {
+          "override_conditional_step_sr": 0.4540682414698163,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.4540682414698163,
+              "override_rate": 0.1992156862745098,
+              "override_rows": 1524,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.3681462140992167,
+              "override_rate": 0.10013071895424837,
+              "override_rows": 766,
+              "threshold": 0.8256699352637747
+            },
+            {
+              "conditional_step_sr": 0.0,
+              "override_rate": 0.00026143790849673205,
+              "override_rows": 2,
+              "threshold": 5.1264848261209055
+            }
+          ],
+          "override_rate": 0.1992156862745098,
+          "override_rows": 1524,
+          "s_gap_correctness_auroc": 0.42808297892233277
+        },
+        "A5c_MAP_nine_LR": {
+          "override_conditional_step_sr": 0.4994152046783626,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.4994152046783626,
+              "override_rate": 0.2235294117647059,
+              "override_rows": 1710,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.472893533638145,
+              "override_rate": 0.20013071895424836,
+              "override_rows": 1531,
+              "threshold": 0.02814709130972659
+            },
+            {
+              "conditional_step_sr": 0.37989556135770236,
+              "override_rate": 0.10013071895424837,
+              "override_rows": 766,
+              "threshold": 0.8244747568910042
+            },
+            {
+              "conditional_step_sr": 0.2857142857142857,
+              "override_rate": 0.0009150326797385621,
+              "override_rows": 7,
+              "threshold": 5.767948218993929
+            }
+          ],
+          "override_rate": 0.2235294117647059,
+          "override_rows": 1710,
+          "s_gap_correctness_auroc": 0.43813546905158285
+        },
+        "A5d_MAP_nine_LR_family": {
+          "override_conditional_step_sr": 0.44876325088339225,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.44876325088339225,
+              "override_rate": 0.22196078431372548,
+              "override_rows": 1698,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.4233529028049576,
+              "override_rate": 0.20039215686274509,
+              "override_rows": 1533,
+              "threshold": 0.029483422820850258
+            },
+            {
+              "conditional_step_sr": 0.3833116036505867,
+              "override_rate": 0.10026143790849673,
+              "override_rows": 767,
+              "threshold": 0.48881505567259653
+            },
+            {
+              "conditional_step_sr": 0.0,
+              "override_rate": 0.00026143790849673205,
+              "override_rows": 2,
+              "threshold": 3.1103271974955833
+            }
+          ],
+          "override_rate": 0.22196078431372548,
+          "override_rows": 1698,
+          "s_gap_correctness_auroc": 0.41742336155331045
+        },
+        "A5d_risk": {
+          "override_conditional_step_sr": 0.46030871003307605,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.46030871003307605,
+              "override_rate": 0.23712418300653595,
+              "override_rows": 1814,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.421875,
+              "override_rate": 0.2007843137254902,
+              "override_rows": 1536,
+              "threshold": 0.04508627741094884
+            },
+            {
+              "conditional_step_sr": 0.3785900783289817,
+              "override_rate": 0.10013071895424837,
+              "override_rows": 766,
+              "threshold": 0.48453988687310623
+            },
+            {
+              "conditional_step_sr": 0.0,
+              "override_rate": 0.00026143790849673205,
+              "override_rows": 2,
+              "threshold": 3.1207265707926206
+            }
+          ],
+          "override_rate": 0.23712418300653595,
+          "override_rows": 1814,
+          "s_gap_correctness_auroc": 0.417137881580904
+        }
+      },
+      "folds": [
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 18312
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 18312
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 18312
+            },
+            "A5d_risk": {
+              "cell": 18312
+            }
+          },
+          "best_source": "ui-agile-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22568,
+                  "successes": 25488
+                },
+                "parameterless": {
+                  "failures": 3292,
+                  "successes": 2927
+                },
+                "string-bearing": {
+                  "failures": 10016,
+                  "successes": 9101
+                }
+              },
+              "global": {
+                "failures": 35876,
+                "successes": 37516
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15045,
+                  "successes": 16993
+                },
+                "cross-family/parameterless": {
+                  "failures": 2194,
+                  "successes": 1952
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6678,
+                  "successes": 6066
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7523,
+                  "successes": 8495
+                },
+                "same-family/parameterless": {
+                  "failures": 1098,
+                  "successes": 975
+                },
+                "same-family/string-bearing": {
+                  "failures": 3338,
+                  "successes": 3035
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22568,
+                  "successes": 25488
+                },
+                "parameterless": {
+                  "failures": 3292,
+                  "successes": 2927
+                },
+                "string-bearing": {
+                  "failures": 10016,
+                  "successes": 9101
+                }
+              },
+              "global": {
+                "failures": 35876,
+                "successes": 37516
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 11348,
+                  "successes": 12458
+                },
+                "cross-family/parameterless": {
+                  "failures": 1732,
+                  "successes": 1388
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5156,
+                  "successes": 4614
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5674,
+                  "successes": 6228
+                },
+                "same-family/parameterless": {
+                  "failures": 867,
+                  "successes": 694
+                },
+                "same-family/string-bearing": {
+                  "failures": 2576,
+                  "successes": 2309
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 17022,
+                  "successes": 18686
+                },
+                "parameterless": {
+                  "failures": 2599,
+                  "successes": 2082
+                },
+                "string-bearing": {
+                  "failures": 7732,
+                  "successes": 6923
+                }
+              },
+              "global": {
+                "failures": 27353,
+                "successes": 27691
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "risk": {
+            "best_single_successes": 968,
+            "best_source": "ui-agile-7b",
+            "candidate_thresholds": 152,
+            "selected_successes": 983,
+            "threshold": 0.0,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 1,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.5888888888888889,
+            "A2_sequential_density": 0.5771241830065359,
+            "A3_joint_original": 0.49673202614379086,
+            "A5a_LOO": 0.545751633986928,
+            "A5b_MAP_pooled_LR": 0.5941176470588235,
+            "A5c_MAP_nine_LR": 0.5986928104575163,
+            "A5d_MAP_nine_LR_family": 0.6013071895424836,
+            "A5d_risk": 0.6019607843137255
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 18348
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 18348
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 18348
+            },
+            "A5d_risk": {
+              "cell": 18348
+            }
+          },
+          "best_source": "ui-agile-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22400,
+                  "successes": 24812
+                },
+                "parameterless": {
+                  "failures": 3373,
+                  "successes": 2663
+                },
+                "string-bearing": {
+                  "failures": 10741,
+                  "successes": 9367
+                }
+              },
+              "global": {
+                "failures": 36514,
+                "successes": 36842
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14932,
+                  "successes": 16542
+                },
+                "cross-family/parameterless": {
+                  "failures": 2248,
+                  "successes": 1777
+                },
+                "cross-family/string-bearing": {
+                  "failures": 7163,
+                  "successes": 6242
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7468,
+                  "successes": 8270
+                },
+                "same-family/parameterless": {
+                  "failures": 1125,
+                  "successes": 886
+                },
+                "same-family/string-bearing": {
+                  "failures": 3578,
+                  "successes": 3125
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22400,
+                  "successes": 24812
+                },
+                "parameterless": {
+                  "failures": 3373,
+                  "successes": 2663
+                },
+                "string-bearing": {
+                  "failures": 10741,
+                  "successes": 9367
+                }
+              },
+              "global": {
+                "failures": 36514,
+                "successes": 36842
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 11022,
+                  "successes": 12462
+                },
+                "cross-family/parameterless": {
+                  "failures": 1682,
+                  "successes": 1231
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5435,
+                  "successes": 4840
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5513,
+                  "successes": 6230
+                },
+                "same-family/parameterless": {
+                  "failures": 842,
+                  "successes": 613
+                },
+                "same-family/string-bearing": {
+                  "failures": 2715,
+                  "successes": 2423
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16535,
+                  "successes": 18692
+                },
+                "parameterless": {
+                  "failures": 2524,
+                  "successes": 1844
+                },
+                "string-bearing": {
+                  "failures": 8150,
+                  "successes": 7263
+                }
+              },
+              "global": {
+                "failures": 27209,
+                "successes": 27799
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "risk": {
+            "best_single_successes": 894,
+            "best_source": "ui-agile-7b",
+            "candidate_thresholds": 161,
+            "selected_successes": 907,
+            "threshold": 0.0,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 2,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.6326797385620915,
+            "A2_sequential_density": 0.615686274509804,
+            "A3_joint_original": 0.5352941176470588,
+            "A5a_LOO": 0.6,
+            "A5b_MAP_pooled_LR": 0.6392156862745098,
+            "A5c_MAP_nine_LR": 0.642483660130719,
+            "A5d_MAP_nine_LR_family": 0.642483660130719,
+            "A5d_risk": 0.6418300653594772
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 18348
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 18348
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 18348
+            },
+            "A5d_risk": {
+              "cell": 18348
+            }
+          },
+          "best_source": "ui-agile-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22081,
+                  "successes": 25494
+                },
+                "parameterless": {
+                  "failures": 3217,
+                  "successes": 2689
+                },
+                "string-bearing": {
+                  "failures": 10434,
+                  "successes": 9441
+                }
+              },
+              "global": {
+                "failures": 35732,
+                "successes": 37624
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14719,
+                  "successes": 16997
+                },
+                "cross-family/parameterless": {
+                  "failures": 2144,
+                  "successes": 1795
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6957,
+                  "successes": 6292
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7362,
+                  "successes": 8497
+                },
+                "same-family/parameterless": {
+                  "failures": 1073,
+                  "successes": 894
+                },
+                "same-family/string-bearing": {
+                  "failures": 3477,
+                  "successes": 3149
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22081,
+                  "successes": 25494
+                },
+                "parameterless": {
+                  "failures": 3217,
+                  "successes": 2689
+                },
+                "string-bearing": {
+                  "failures": 10434,
+                  "successes": 9441
+                }
+              },
+              "global": {
+                "failures": 35732,
+                "successes": 37624
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 11081,
+                  "successes": 12955
+                },
+                "cross-family/parameterless": {
+                  "failures": 1578,
+                  "successes": 1329
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5141,
+                  "successes": 4588
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5543,
+                  "successes": 6477
+                },
+                "same-family/parameterless": {
+                  "failures": 789,
+                  "successes": 661
+                },
+                "same-family/string-bearing": {
+                  "failures": 2570,
+                  "successes": 2296
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16624,
+                  "successes": 19432
+                },
+                "parameterless": {
+                  "failures": 2367,
+                  "successes": 1990
+                },
+                "string-bearing": {
+                  "failures": 7711,
+                  "successes": 6884
+                }
+              },
+              "global": {
+                "failures": 26702,
+                "successes": 28306
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "risk": {
+            "best_single_successes": 952,
+            "best_source": "ui-agile-7b",
+            "candidate_thresholds": 181,
+            "selected_successes": 961,
+            "threshold": 0.0,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 3,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.5843137254901961,
+            "A2_sequential_density": 0.5784313725490197,
+            "A3_joint_original": 0.49084967320261436,
+            "A5a_LOO": 0.5411764705882353,
+            "A5b_MAP_pooled_LR": 0.5915032679738562,
+            "A5c_MAP_nine_LR": 0.5875816993464053,
+            "A5d_MAP_nine_LR_family": 0.5934640522875817,
+            "A5d_risk": 0.5908496732026144
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 18348
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 18348
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 18348
+            },
+            "A5d_risk": {
+              "cell": 18348
+            }
+          },
+          "best_source": "ui-agile-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22489,
+                  "successes": 25552
+                },
+                "parameterless": {
+                  "failures": 3216,
+                  "successes": 2809
+                },
+                "string-bearing": {
+                  "failures": 10302,
+                  "successes": 8988
+                }
+              },
+              "global": {
+                "failures": 36007,
+                "successes": 37349
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14991,
+                  "successes": 17035
+                },
+                "cross-family/parameterless": {
+                  "failures": 2144,
+                  "successes": 1875
+                },
+                "cross-family/string-bearing": {
+                  "failures": 6869,
+                  "successes": 5990
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7498,
+                  "successes": 8517
+                },
+                "same-family/parameterless": {
+                  "failures": 1072,
+                  "successes": 934
+                },
+                "same-family/string-bearing": {
+                  "failures": 3433,
+                  "successes": 2998
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22489,
+                  "successes": 25552
+                },
+                "parameterless": {
+                  "failures": 3216,
+                  "successes": 2809
+                },
+                "string-bearing": {
+                  "failures": 10302,
+                  "successes": 8988
+                }
+              },
+              "global": {
+                "failures": 36007,
+                "successes": 37349
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 11191,
+                  "successes": 12699
+                },
+                "cross-family/parameterless": {
+                  "failures": 1544,
+                  "successes": 1499
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5257,
+                  "successes": 4482
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5598,
+                  "successes": 6349
+                },
+                "same-family/parameterless": {
+                  "failures": 772,
+                  "successes": 746
+                },
+                "same-family/string-bearing": {
+                  "failures": 2627,
+                  "successes": 2244
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16789,
+                  "successes": 19048
+                },
+                "parameterless": {
+                  "failures": 2316,
+                  "successes": 2245
+                },
+                "string-bearing": {
+                  "failures": 7884,
+                  "successes": 6726
+                }
+              },
+              "global": {
+                "failures": 26989,
+                "successes": 28019
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "risk": {
+            "best_single_successes": 933,
+            "best_source": "ui-agile-7b",
+            "candidate_thresholds": 194,
+            "selected_successes": 947,
+            "threshold": 0.0,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 4,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.6222222222222222,
+            "A2_sequential_density": 0.6032679738562091,
+            "A3_joint_original": 0.4954248366013072,
+            "A5a_LOO": 0.5588235294117647,
+            "A5b_MAP_pooled_LR": 0.6274509803921569,
+            "A5c_MAP_nine_LR": 0.6209150326797386,
+            "A5d_MAP_nine_LR_family": 0.6209150326797386,
+            "A5d_risk": 0.6202614379084967
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 18348
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 18348
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 18348
+            },
+            "A5d_risk": {
+              "cell": 18348
+            }
+          },
+          "best_source": "ui-agile-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22246,
+                  "successes": 25110
+                },
+                "parameterless": {
+                  "failures": 3166,
+                  "successes": 2944
+                },
+                "string-bearing": {
+                  "failures": 10607,
+                  "successes": 9283
+                }
+              },
+              "global": {
+                "failures": 36019,
+                "successes": 37337
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14829,
+                  "successes": 16741
+                },
+                "cross-family/parameterless": {
+                  "failures": 2110,
+                  "successes": 1965
+                },
+                "cross-family/string-bearing": {
+                  "failures": 7073,
+                  "successes": 6186
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 7417,
+                  "successes": 8369
+                },
+                "same-family/parameterless": {
+                  "failures": 1056,
+                  "successes": 979
+                },
+                "same-family/string-bearing": {
+                  "failures": 3534,
+                  "successes": 3097
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22246,
+                  "successes": 25110
+                },
+                "parameterless": {
+                  "failures": 3166,
+                  "successes": 2944
+                },
+                "string-bearing": {
+                  "failures": 10607,
+                  "successes": 9283
+                }
+              },
+              "global": {
+                "failures": 36019,
+                "successes": 37337
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 11245,
+                  "successes": 12657
+                },
+                "cross-family/parameterless": {
+                  "failures": 1594,
+                  "successes": 1576
+                },
+                "cross-family/string-bearing": {
+                  "failures": 5066,
+                  "successes": 4558
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5623,
+                  "successes": 6327
+                },
+                "same-family/parameterless": {
+                  "failures": 798,
+                  "successes": 787
+                },
+                "same-family/string-bearing": {
+                  "failures": 2532,
+                  "successes": 2281
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16868,
+                  "successes": 18984
+                },
+                "parameterless": {
+                  "failures": 2392,
+                  "successes": 2363
+                },
+                "string-bearing": {
+                  "failures": 7598,
+                  "successes": 6839
+                }
+              },
+              "global": {
+                "failures": 26858,
+                "successes": 28186
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "risk": {
+            "best_single_successes": 901,
+            "best_source": "ui-agile-7b",
+            "candidate_thresholds": 156,
+            "selected_successes": 918,
+            "threshold": 0.0,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 0,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.6098039215686275,
+            "A2_sequential_density": 0.5973856209150327,
+            "A3_joint_original": 0.4980392156862745,
+            "A5a_LOO": 0.5679738562091503,
+            "A5b_MAP_pooled_LR": 0.6209150326797386,
+            "A5c_MAP_nine_LR": 0.6209150326797386,
+            "A5d_MAP_nine_LR_family": 0.6209150326797386,
+            "A5d_risk": 0.6189542483660131
+          },
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ],
+      "rows": 7650
+    },
+    "androidcontrol/low": {
+      "aggregate_step_sr": {
+        "A0_heldout_best": 0.7911111111111111,
+        "A2_sequential_density": 0.7207843137254902,
+        "A3_joint_original": 0.6826143790849674,
+        "A5a_LOO": 0.7070588235294117,
+        "A5b_MAP_pooled_LR": 0.7767320261437909,
+        "A5c_MAP_nine_LR": 0.7620915032679738,
+        "A5d_MAP_nine_LR_family": 0.7623529411764706,
+        "A5d_risk": 0.7892810457516339
+      },
+      "comparisons": {
+        "A5b_MAP_pooled_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 8.172013931216946e-06,
+            "inferiority_p_one_sided": 2.724004643738982e-06,
+            "losses": 344,
+            "superiority_p_holm": 0.999998177831868,
+            "superiority_p_one_sided": 0.999998177831868,
+            "wins": 234
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 53,
+            "superiority_p_one_sided": 1.1744722278754968e-87,
+            "wins": 481
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 61,
+            "superiority_p_one_sided": 2.1834494404042785e-160,
+            "wins": 781
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 62,
+            "superiority_p_one_sided": 1.4828994575642552e-110,
+            "wins": 595
+          }
+        },
+        "A5c_MAP_nine_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.2633597030106705e-18,
+            "inferiority_p_one_sided": 4.2111990100355683e-19,
+            "losses": 429,
+            "superiority_p_holm": 1.0,
+            "superiority_p_one_sided": 1.0,
+            "wins": 207
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 103,
+            "superiority_p_one_sided": 1.6593200558744545e-46,
+            "wins": 419
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 91,
+            "superiority_p_one_sided": 2.8662544288686536e-117,
+            "wins": 699
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 101,
+            "superiority_p_one_sided": 1.2404844889186333e-69,
+            "wins": 522
+          }
+        },
+        "A5d_MAP_nine_LR_family": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 1.7809266029853652e-18,
+            "inferiority_p_one_sided": 5.936422009951218e-19,
+            "losses": 425,
+            "superiority_p_holm": 1.0,
+            "superiority_p_one_sided": 1.0,
+            "wins": 205
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 108,
+            "superiority_p_one_sided": 5.994303071385162e-46,
+            "wins": 426
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 96,
+            "superiority_p_one_sided": 7.378325922260852e-116,
+            "wins": 706
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 106,
+            "superiority_p_one_sided": 8.729014883343623e-69,
+            "wins": 529
+          }
+        },
+        "A5d_risk": {
+          "A0_heldout_best": {
+            "inferiority_p_holm": 0.6407854134070343,
+            "inferiority_p_one_sided": 0.21359513780234476,
+            "losses": 141,
+            "superiority_p_holm": 0.8202252014266165,
+            "superiority_p_one_sided": 0.8202252014266165,
+            "wins": 127
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 131,
+            "superiority_p_one_sided": 7.413646270066644e-85,
+            "wins": 655
+          },
+          "A3_joint_original": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 130,
+            "superiority_p_one_sided": 8.947998497988601e-154,
+            "wins": 946
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 138,
+            "superiority_p_one_sided": 1.111556185122003e-106,
+            "wins": 767
+          }
+        }
+      },
+      "diagnostics": {
+        "A5b_MAP_pooled_LR": {
+          "override_conditional_step_sr": 0.6711613745106568,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.6711613745106568,
+              "override_rate": 0.30052287581699344,
+              "override_rows": 2299,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.6711613745106568,
+              "override_rate": 0.30052287581699344,
+              "override_rows": 2299,
+              "threshold": 0.0004757450464958346
+            },
+            {
+              "conditional_step_sr": 0.6106770833333334,
+              "override_rate": 0.2007843137254902,
+              "override_rows": 1536,
+              "threshold": 0.25260447487352655
+            },
+            {
+              "conditional_step_sr": 0.4367666232073012,
+              "override_rate": 0.10026143790849673,
+              "override_rows": 767,
+              "threshold": 1.0173519749346993
+            },
+            {
+              "conditional_step_sr": 1.0,
+              "override_rate": 0.00026143790849673205,
+              "override_rows": 2,
+              "threshold": 13.521775068963898
+            }
+          ],
+          "override_rate": 0.30052287581699344,
+          "override_rows": 2299,
+          "s_gap_correctness_auroc": 0.38806915325902136
+        },
+        "A5c_MAP_nine_LR": {
+          "override_conditional_step_sr": 0.6439274447949527,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.6439274447949527,
+              "override_rate": 0.3315032679738562,
+              "override_rows": 2536,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.6254893431926924,
+              "override_rate": 0.30052287581699344,
+              "override_rows": 2299,
+              "threshold": 0.05850795785979335
+            },
+            {
+              "conditional_step_sr": 0.534944480731548,
+              "override_rate": 0.20013071895424836,
+              "override_rows": 1531,
+              "threshold": 0.33680125917579673
+            },
+            {
+              "conditional_step_sr": 0.43342036553524804,
+              "override_rate": 0.10013071895424837,
+              "override_rows": 766,
+              "threshold": 1.0287299040689737
+            },
+            {
+              "conditional_step_sr": 1.0,
+              "override_rate": 0.00013071895424836603,
+              "override_rows": 1,
+              "threshold": 15.955081594478527
+            }
+          ],
+          "override_rate": 0.3315032679738562,
+          "override_rows": 2536,
+          "s_gap_correctness_auroc": 0.36835164835164835
+        },
+        "A5d_MAP_nine_LR_family": {
+          "override_conditional_step_sr": 0.6026258205689278,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.6026258205689278,
+              "override_rate": 0.29869281045751633,
+              "override_rows": 2285,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.5146962769431744,
+              "override_rate": 0.20013071895424836,
+              "override_rows": 1531,
+              "threshold": 0.20500766019708128
+            },
+            {
+              "conditional_step_sr": 0.41815856777493604,
+              "override_rate": 0.10222222222222223,
+              "override_rows": 782,
+              "threshold": 0.6592231978430858
+            },
+            {
+              "conditional_step_sr": 1.0,
+              "override_rate": 0.00013071895424836603,
+              "override_rows": 1,
+              "threshold": 11.200655747037953
+            }
+          ],
+          "override_rate": 0.29869281045751633,
+          "override_rows": 2285,
+          "s_gap_correctness_auroc": 0.3483847227315324
+        },
+        "A5d_risk": {
+          "override_conditional_step_sr": 0.4109014675052411,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.4109014675052411,
+              "override_rate": 0.06235294117647059,
+              "override_rows": 477,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.4109014675052411,
+              "override_rate": 0.06235294117647059,
+              "override_rows": 477,
+              "threshold": 0.21113640624521612
+            },
+            {
+              "conditional_step_sr": 0.4143763213530655,
+              "override_rate": 0.061830065359477125,
+              "override_rows": 473,
+              "threshold": 0.6473006846142635
+            },
+            {
+              "conditional_step_sr": 1.0,
+              "override_rate": 0.00013071895424836603,
+              "override_rows": 1,
+              "threshold": 11.76128489124164
+            }
+          ],
+          "override_rate": 0.06235294117647059,
+          "override_rows": 477,
+          "s_gap_correctness_auroc": 0.39310293492742826
+        }
+      },
+      "folds": [
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 30600
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 30600
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 30600
+            },
+            "A5d_risk": {
+              "cell": 30600
+            }
+          },
+          "best_source": "ui-agile-3b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24717,
+                  "successes": 61156
+                },
+                "parameterless": {
+                  "failures": 916,
+                  "successes": 2832
+                },
+                "string-bearing": {
+                  "failures": 18367,
+                  "successes": 14380
+                }
+              },
+              "global": {
+                "failures": 44000,
+                "successes": 78368
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19998,
+                  "successes": 48735
+                },
+                "cross-family/parameterless": {
+                  "failures": 693,
+                  "successes": 2244
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15441,
+                  "successes": 10785
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4719,
+                  "successes": 12421
+                },
+                "same-family/parameterless": {
+                  "failures": 223,
+                  "successes": 588
+                },
+                "same-family/string-bearing": {
+                  "failures": 2926,
+                  "successes": 3595
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24717,
+                  "successes": 61156
+                },
+                "parameterless": {
+                  "failures": 916,
+                  "successes": 2832
+                },
+                "string-bearing": {
+                  "failures": 18367,
+                  "successes": 14380
+                }
+              },
+              "global": {
+                "failures": 44000,
+                "successes": 78368
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 15214,
+                  "successes": 36064
+                },
+                "cross-family/parameterless": {
+                  "failures": 503,
+                  "successes": 1721
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11760,
+                  "successes": 8160
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 3608,
+                  "successes": 9184
+                },
+                "same-family/parameterless": {
+                  "failures": 161,
+                  "successes": 449
+                },
+                "same-family/string-bearing": {
+                  "failures": 2232,
+                  "successes": 2720
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 18822,
+                  "successes": 45248
+                },
+                "parameterless": {
+                  "failures": 664,
+                  "successes": 2170
+                },
+                "string-bearing": {
+                  "failures": 13992,
+                  "successes": 10880
+                }
+              },
+              "global": {
+                "failures": 33478,
+                "successes": 58298
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b",
+            "ui-r1-e-3b"
+          ],
+          "risk": {
+            "best_single_successes": 1208,
+            "best_source": "ui-agile-3b",
+            "candidate_thresholds": 292,
+            "selected_successes": 1208,
+            "threshold": 1.4709364218046261,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 1,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.7888888888888889,
+            "A2_sequential_density": 0.7339869281045751,
+            "A3_joint_original": 0.6901960784313725,
+            "A5a_LOO": 0.7189542483660131,
+            "A5b_MAP_pooled_LR": 0.7915032679738562,
+            "A5c_MAP_nine_LR": 0.773202614379085,
+            "A5d_MAP_nine_LR_family": 0.7738562091503268,
+            "A5d_risk": 0.7973856209150327
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 30592
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 30592
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 30592
+            },
+            "A5d_risk": {
+              "cell": 30592
+            }
+          },
+          "best_source": "ui-agile-3b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24626,
+                  "successes": 60532
+                },
+                "parameterless": {
+                  "failures": 844,
+                  "successes": 2706
+                },
+                "string-bearing": {
+                  "failures": 18912,
+                  "successes": 14756
+                }
+              },
+              "global": {
+                "failures": 44382,
+                "successes": 77994
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19900,
+                  "successes": 48252
+                },
+                "cross-family/parameterless": {
+                  "failures": 638,
+                  "successes": 2148
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15897,
+                  "successes": 11067
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4726,
+                  "successes": 12280
+                },
+                "same-family/parameterless": {
+                  "failures": 206,
+                  "successes": 558
+                },
+                "same-family/string-bearing": {
+                  "failures": 3015,
+                  "successes": 3689
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24626,
+                  "successes": 60532
+                },
+                "parameterless": {
+                  "failures": 844,
+                  "successes": 2706
+                },
+                "string-bearing": {
+                  "failures": 18912,
+                  "successes": 14756
+                }
+              },
+              "global": {
+                "failures": 44382,
+                "successes": 77994
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14564,
+                  "successes": 36338
+                },
+                "cross-family/parameterless": {
+                  "failures": 475,
+                  "successes": 1443
+                },
+                "cross-family/string-bearing": {
+                  "failures": 12175,
+                  "successes": 8427
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 3462,
+                  "successes": 9246
+                },
+                "same-family/parameterless": {
+                  "failures": 153,
+                  "successes": 379
+                },
+                "same-family/string-bearing": {
+                  "failures": 2305,
+                  "successes": 2809
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 18026,
+                  "successes": 45584
+                },
+                "parameterless": {
+                  "failures": 628,
+                  "successes": 1822
+                },
+                "string-bearing": {
+                  "failures": 14480,
+                  "successes": 11236
+                }
+              },
+              "global": {
+                "failures": 33134,
+                "successes": 58642
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b",
+            "ui-r1-e-3b"
+          ],
+          "risk": {
+            "best_single_successes": 1197,
+            "best_source": "ui-agile-3b",
+            "candidate_thresholds": 308,
+            "selected_successes": 1197,
+            "threshold": 1.5113555479157843,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 2,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.7895424836601307,
+            "A2_sequential_density": 0.7300653594771241,
+            "A3_joint_original": 0.6967320261437908,
+            "A5a_LOO": 0.7183006535947712,
+            "A5b_MAP_pooled_LR": 0.7797385620915033,
+            "A5c_MAP_nine_LR": 0.7633986928104575,
+            "A5d_MAP_nine_LR_family": 0.7633986928104575,
+            "A5d_risk": 0.7875816993464052
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 30600
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 30600
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 30600
+            },
+            "A5d_risk": {
+              "cell": 30600
+            }
+          },
+          "best_source": "ui-agile-3b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 23921,
+                  "successes": 61492
+                },
+                "parameterless": {
+                  "failures": 880,
+                  "successes": 2484
+                },
+                "string-bearing": {
+                  "failures": 18855,
+                  "successes": 14736
+                }
+              },
+              "global": {
+                "failures": 43656,
+                "successes": 78712
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19348,
+                  "successes": 49009
+                },
+                "cross-family/parameterless": {
+                  "failures": 665,
+                  "successes": 1966
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15856,
+                  "successes": 11052
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4573,
+                  "successes": 12483
+                },
+                "same-family/parameterless": {
+                  "failures": 215,
+                  "successes": 518
+                },
+                "same-family/string-bearing": {
+                  "failures": 2999,
+                  "successes": 3684
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 23921,
+                  "successes": 61492
+                },
+                "parameterless": {
+                  "failures": 880,
+                  "successes": 2484
+                },
+                "string-bearing": {
+                  "failures": 18855,
+                  "successes": 14736
+                }
+              },
+              "global": {
+                "failures": 43656,
+                "successes": 78712
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14499,
+                  "successes": 37436
+                },
+                "cross-family/parameterless": {
+                  "failures": 509,
+                  "successes": 1397
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11409,
+                  "successes": 8184
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 3444,
+                  "successes": 9524
+                },
+                "same-family/parameterless": {
+                  "failures": 167,
+                  "successes": 365
+                },
+                "same-family/string-bearing": {
+                  "failures": 2130,
+                  "successes": 2728
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 17943,
+                  "successes": 46960
+                },
+                "parameterless": {
+                  "failures": 676,
+                  "successes": 1762
+                },
+                "string-bearing": {
+                  "failures": 13539,
+                  "successes": 10912
+                }
+              },
+              "global": {
+                "failures": 32158,
+                "successes": 59634
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b",
+            "ui-r1-e-3b"
+          ],
+          "risk": {
+            "best_single_successes": 1218,
+            "best_source": "ui-agile-3b",
+            "candidate_thresholds": 298,
+            "selected_successes": 1218,
+            "threshold": 1.754482480531303,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 3,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.7823529411764706,
+            "A2_sequential_density": 0.6967320261437908,
+            "A3_joint_original": 0.6601307189542484,
+            "A5a_LOO": 0.6830065359477124,
+            "A5b_MAP_pooled_LR": 0.7568627450980392,
+            "A5c_MAP_nine_LR": 0.7418300653594772,
+            "A5d_MAP_nine_LR_family": 0.7405228758169935,
+            "A5d_risk": 0.788235294117647
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 30576
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 30576
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 30576
+            },
+            "A5d_risk": {
+              "cell": 30576
+            }
+          },
+          "best_source": "ui-agile-3b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24543,
+                  "successes": 61908
+                },
+                "parameterless": {
+                  "failures": 892,
+                  "successes": 2646
+                },
+                "string-bearing": {
+                  "failures": 17971,
+                  "successes": 14432
+                }
+              },
+              "global": {
+                "failures": 43406,
+                "successes": 78986
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19835,
+                  "successes": 49350
+                },
+                "cross-family/parameterless": {
+                  "failures": 672,
+                  "successes": 2102
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15131,
+                  "successes": 10824
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4708,
+                  "successes": 12558
+                },
+                "same-family/parameterless": {
+                  "failures": 220,
+                  "successes": 544
+                },
+                "same-family/string-bearing": {
+                  "failures": 2840,
+                  "successes": 3608
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24543,
+                  "successes": 61908
+                },
+                "parameterless": {
+                  "failures": 892,
+                  "successes": 2646
+                },
+                "string-bearing": {
+                  "failures": 17971,
+                  "successes": 14432
+                }
+              },
+              "global": {
+                "failures": 43406,
+                "successes": 78986
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14806,
+                  "successes": 36773
+                },
+                "cross-family/parameterless": {
+                  "failures": 488,
+                  "successes": 1655
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11540,
+                  "successes": 8172
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 3493,
+                  "successes": 9367
+                },
+                "same-family/parameterless": {
+                  "failures": 160,
+                  "successes": 427
+                },
+                "same-family/string-bearing": {
+                  "failures": 2187,
+                  "successes": 2724
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 18299,
+                  "successes": 46140
+                },
+                "parameterless": {
+                  "failures": 648,
+                  "successes": 2082
+                },
+                "string-bearing": {
+                  "failures": 13727,
+                  "successes": 10896
+                }
+              },
+              "global": {
+                "failures": 32674,
+                "successes": 59118
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b",
+            "ui-r1-e-3b"
+          ],
+          "risk": {
+            "best_single_successes": 1222,
+            "best_source": "ui-agile-3b",
+            "candidate_thresholds": 303,
+            "selected_successes": 1222,
+            "threshold": 1.470949243698868,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 4,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.796078431372549,
+            "A2_sequential_density": 0.7169934640522876,
+            "A3_joint_original": 0.6816993464052288,
+            "A5a_LOO": 0.7045751633986929,
+            "A5b_MAP_pooled_LR": 0.7738562091503268,
+            "A5c_MAP_nine_LR": 0.7640522875816993,
+            "A5d_MAP_nine_LR_family": 0.765359477124183,
+            "A5d_risk": 0.7862745098039216
+          },
+          "test_rows": 1530
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 30600
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 30600
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 30600
+            },
+            "A5d_risk": {
+              "cell": 30600
+            }
+          },
+          "best_source": "ui-agile-3b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24277,
+                  "successes": 60672
+                },
+                "parameterless": {
+                  "failures": 852,
+                  "successes": 2804
+                },
+                "string-bearing": {
+                  "failures": 19043,
+                  "successes": 14720
+                }
+              },
+              "global": {
+                "failures": 44172,
+                "successes": 78196
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 19655,
+                  "successes": 48346
+                },
+                "cross-family/parameterless": {
+                  "failures": 644,
+                  "successes": 2224
+                },
+                "cross-family/string-bearing": {
+                  "failures": 15987,
+                  "successes": 11040
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4622,
+                  "successes": 12326
+                },
+                "same-family/parameterless": {
+                  "failures": 208,
+                  "successes": 580
+                },
+                "same-family/string-bearing": {
+                  "failures": 3056,
+                  "successes": 3680
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 24277,
+                  "successes": 60672
+                },
+                "parameterless": {
+                  "failures": 852,
+                  "successes": 2804
+                },
+                "string-bearing": {
+                  "failures": 19043,
+                  "successes": 14720
+                }
+              },
+              "global": {
+                "failures": 44172,
+                "successes": 78196
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 14969,
+                  "successes": 36158
+                },
+                "cross-family/parameterless": {
+                  "failures": 509,
+                  "successes": 1797
+                },
+                "cross-family/string-bearing": {
+                  "failures": 11850,
+                  "successes": 8133
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 3504,
+                  "successes": 9230
+                },
+                "same-family/parameterless": {
+                  "failures": 163,
+                  "successes": 471
+                },
+                "same-family/string-bearing": {
+                  "failures": 2273,
+                  "successes": 2711
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 18473,
+                  "successes": 45388
+                },
+                "parameterless": {
+                  "failures": 672,
+                  "successes": 2268
+                },
+                "string-bearing": {
+                  "failures": 14123,
+                  "successes": 10844
+                }
+              },
+              "global": {
+                "failures": 33268,
+                "successes": 58500
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "models": [
+            "gui-r1-3b",
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-agile-7b",
+            "ui-r1-e-3b"
+          ],
+          "risk": {
+            "best_single_successes": 1207,
+            "best_source": "ui-agile-3b",
+            "candidate_thresholds": 267,
+            "selected_successes": 1208,
+            "threshold": 0.6250839189653077,
+            "threshold_dev_rows": 1530,
+            "threshold_fold": 0,
+            "train_rows": 4590
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.7986928104575164,
+            "A2_sequential_density": 0.7261437908496732,
+            "A3_joint_original": 0.6843137254901961,
+            "A5a_LOO": 0.7104575163398693,
+            "A5b_MAP_pooled_LR": 0.7816993464052288,
+            "A5c_MAP_nine_LR": 0.7679738562091504,
+            "A5d_MAP_nine_LR_family": 0.7686274509803922,
+            "A5d_risk": 0.7869281045751634
+          },
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "rows": 7650
+    },
+    "mind2web/visual": {
+      "aggregate_step_sr": {
+        "A0_heldout_best": 0.5177884615384616,
+        "A2_sequential_density": 0.5822115384615385,
+        "A3_joint_original": 0.5841346153846154,
+        "A5a_LOO": 0.5841346153846154,
+        "A5b_MAP_pooled_LR": 0.6019230769230769,
+        "A5c_MAP_nine_LR": 0.6072115384615384,
+        "A5d_MAP_nine_LR_family": 0.6081730769230769,
+        "A5d_risk": 0.6067307692307692
+      },
+      "comparisons": {
+        "A5b_MAP_pooled_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 59,
+            "superiority_p_one_sided": 3.9981350900325323e-26,
+            "wins": 234
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9993308854946149,
+            "losses": 66,
+            "superiority_p_one_sided": 0.0011310852881624453,
+            "wins": 107
+          },
+          "A3_joint_original": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9978123132115498,
+            "losses": 71,
+            "superiority_p_holm": 0.010441786392382225,
+            "superiority_p_one_sided": 0.0034805954641274083,
+            "wins": 108
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 0.9978123132115498,
+            "losses": 71,
+            "superiority_p_one_sided": 0.0034805954641274083,
+            "wins": 108
+          }
+        },
+        "A5c_MAP_nine_LR": {
+          "A0_heldout_best": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 82,
+            "superiority_p_one_sided": 1.772438764977174e-24,
+            "wins": 268
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9999453472111752,
+            "losses": 69,
+            "superiority_p_one_sided": 9.918809522444893e-05,
+            "wins": 121
+          },
+          "A3_joint_original": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9997818791623789,
+            "losses": 74,
+            "superiority_p_holm": 0.001118906397428374,
+            "superiority_p_one_sided": 0.0003729687991427914,
+            "wins": 122
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 0.9997818791623789,
+            "losses": 74,
+            "superiority_p_one_sided": 0.0003729687991427914,
+            "wins": 122
+          }
+        },
+        "A5d_MAP_nine_LR_family": {
+          "A0_heldout_best": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 95,
+            "superiority_p_one_sided": 4.1030364230113456e-23,
+            "wins": 283
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.999881363857489,
+            "losses": 86,
+            "superiority_p_one_sided": 0.00019955845239791022,
+            "wins": 140
+          },
+          "A3_joint_original": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9996513546639872,
+            "losses": 89,
+            "superiority_p_holm": 0.0016913321171389446,
+            "superiority_p_one_sided": 0.0005637773723796482,
+            "wins": 139
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 0.9996513546639872,
+            "losses": 89,
+            "superiority_p_one_sided": 0.0005637773723796482,
+            "wins": 139
+          }
+        },
+        "A5d_risk": {
+          "A0_heldout_best": {
+            "inferiority_p_one_sided": 1.0,
+            "losses": 94,
+            "superiority_p_one_sided": 1.0440241418552849e-22,
+            "wins": 279
+          },
+          "A2_sequential_density": {
+            "inferiority_p_one_sided": 0.9997197359184038,
+            "losses": 89,
+            "superiority_p_one_sided": 0.00045621135419621244,
+            "wins": 140
+          },
+          "A3_joint_original": {
+            "inferiority_p_holm": 1.0,
+            "inferiority_p_one_sided": 0.9993050675703616,
+            "losses": 90,
+            "superiority_p_holm": 0.0032914238156957496,
+            "superiority_p_one_sided": 0.0010971412718985831,
+            "wins": 137
+          },
+          "A5a_LOO": {
+            "inferiority_p_one_sided": 0.9993050675703616,
+            "losses": 90,
+            "superiority_p_one_sided": 0.0010971412718985831,
+            "wins": 137
+          }
+        }
+      },
+      "diagnostics": {
+        "A5b_MAP_pooled_LR": {
+          "override_conditional_step_sr": 0.5694879832810867,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.5694879832810867,
+              "override_rate": 0.4600961538461538,
+              "override_rows": 957,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.5438175270108043,
+              "override_rate": 0.40048076923076925,
+              "override_rows": 833,
+              "threshold": 0.13225553520412814
+            },
+            {
+              "conditional_step_sr": 0.52,
+              "override_rate": 0.3004807692307692,
+              "override_rows": 625,
+              "threshold": 0.4831192645046376
+            },
+            {
+              "conditional_step_sr": 0.5191387559808612,
+              "override_rate": 0.20096153846153847,
+              "override_rows": 418,
+              "threshold": 1.3453771189378252
+            },
+            {
+              "conditional_step_sr": 0.6142857142857143,
+              "override_rate": 0.10096153846153846,
+              "override_rows": 210,
+              "threshold": 2.7912058510166524
+            },
+            {
+              "conditional_step_sr": 0.5,
+              "override_rate": 0.0009615384615384616,
+              "override_rows": 2,
+              "threshold": 9.931696532460602
+            }
+          ],
+          "override_rate": 0.4600961538461538,
+          "override_rows": 957,
+          "s_gap_correctness_auroc": 0.4573697802983183
+        },
+        "A5c_MAP_nine_LR": {
+          "override_conditional_step_sr": 0.6463492063492063,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.6463492063492063,
+              "override_rate": 0.7572115384615384,
+              "override_rows": 1575,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.6616334934797529,
+              "override_rate": 0.7004807692307692,
+              "override_rows": 1457,
+              "threshold": 0.24634606144597826
+            },
+            {
+              "conditional_step_sr": 0.6717373899119295,
+              "override_rate": 0.6004807692307692,
+              "override_rows": 1249,
+              "threshold": 0.5997713271295799
+            },
+            {
+              "conditional_step_sr": 0.6743515850144092,
+              "override_rate": 0.5004807692307692,
+              "override_rows": 1041,
+              "threshold": 0.8973156475784063
+            },
+            {
+              "conditional_step_sr": 0.6414868105515588,
+              "override_rate": 0.4009615384615385,
+              "override_rows": 834,
+              "threshold": 1.125103442583531
+            },
+            {
+              "conditional_step_sr": 0.608,
+              "override_rate": 0.3004807692307692,
+              "override_rows": 625,
+              "threshold": 1.5105624202175694
+            },
+            {
+              "conditional_step_sr": 0.5861244019138756,
+              "override_rate": 0.20096153846153847,
+              "override_rows": 418,
+              "threshold": 1.995666215790366
+            },
+            {
+              "conditional_step_sr": 0.6571428571428571,
+              "override_rate": 0.10096153846153846,
+              "override_rows": 210,
+              "threshold": 3.4403370226297545
+            },
+            {
+              "conditional_step_sr": 1.0,
+              "override_rate": 0.0009615384615384616,
+              "override_rows": 2,
+              "threshold": 11.010693524182
+            }
+          ],
+          "override_rate": 0.7572115384615384,
+          "override_rows": 1575,
+          "s_gap_correctness_auroc": 0.5705583800654477
+        },
+        "A5d_MAP_nine_LR_family": {
+          "override_conditional_step_sr": 0.5068762278978389,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.5068762278978389,
+              "override_rate": 0.4894230769230769,
+              "override_rows": 1018,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.4909963985594238,
+              "override_rate": 0.40048076923076925,
+              "override_rows": 833,
+              "threshold": 0.20647271307849935
+            },
+            {
+              "conditional_step_sr": 0.4736,
+              "override_rate": 0.3004807692307692,
+              "override_rows": 625,
+              "threshold": 0.5941864270864581
+            },
+            {
+              "conditional_step_sr": 0.5095693779904307,
+              "override_rate": 0.20096153846153847,
+              "override_rows": 418,
+              "threshold": 1.1521425529595992
+            },
+            {
+              "conditional_step_sr": 0.6619047619047619,
+              "override_rate": 0.10096153846153846,
+              "override_rows": 210,
+              "threshold": 2.2200980410033315
+            },
+            {
+              "conditional_step_sr": 0.5,
+              "override_rate": 0.0009615384615384616,
+              "override_rows": 2,
+              "threshold": 6.64145683993536
+            }
+          ],
+          "override_rate": 0.4894230769230769,
+          "override_rows": 1018,
+          "s_gap_correctness_auroc": 0.39694185741616567
+        },
+        "A5d_risk": {
+          "override_conditional_step_sr": 0.5035246727089627,
+          "override_curve": [
+            {
+              "conditional_step_sr": 0.5035246727089627,
+              "override_rate": 0.4774038461538462,
+              "override_rows": 993,
+              "threshold": 0.0
+            },
+            {
+              "conditional_step_sr": 0.4921968787515006,
+              "override_rate": 0.40048076923076925,
+              "override_rows": 833,
+              "threshold": 0.21451092927886162
+            },
+            {
+              "conditional_step_sr": 0.4608,
+              "override_rate": 0.3004807692307692,
+              "override_rows": 625,
+              "threshold": 0.5714273973367368
+            },
+            {
+              "conditional_step_sr": 0.4904306220095694,
+              "override_rate": 0.20096153846153847,
+              "override_rows": 418,
+              "threshold": 1.0974482784984076
+            },
+            {
+              "conditional_step_sr": 0.6047619047619047,
+              "override_rate": 0.10096153846153846,
+              "override_rows": 210,
+              "threshold": 2.0057536108367353
+            },
+            {
+              "conditional_step_sr": 0.5,
+              "override_rate": 0.0009615384615384616,
+              "override_rows": 2,
+              "threshold": 6.761598174017834
+            }
+          ],
+          "override_rate": 0.4774038461538462,
+          "override_rows": 993,
+          "s_gap_correctness_auroc": 0.39533671369297824
+        }
+      },
+      "folds": [
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 11996
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 11996
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 11996
+            },
+            "A5d_risk": {
+              "cell": 11996
+            }
+          },
+          "best_source": "tongui-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22678,
+                  "successes": 20339
+                },
+                "string-bearing": {
+                  "failures": 2738,
+                  "successes": 1977
+                }
+              },
+              "global": {
+                "failures": 25416,
+                "successes": 22316
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16615,
+                  "successes": 14727
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1947,
+                  "successes": 1369
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 6063,
+                  "successes": 5612
+                },
+                "same-family/string-bearing": {
+                  "failures": 791,
+                  "successes": 608
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22678,
+                  "successes": 20339
+                },
+                "string-bearing": {
+                  "failures": 2738,
+                  "successes": 1977
+                }
+              },
+              "global": {
+                "failures": 25416,
+                "successes": 22316
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12359,
+                  "successes": 10924
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1432,
+                  "successes": 1097
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4497,
+                  "successes": 4162
+                },
+                "same-family/string-bearing": {
+                  "failures": 617,
+                  "successes": 490
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16856,
+                  "successes": 15086
+                },
+                "string-bearing": {
+                  "failures": 2049,
+                  "successes": 1587
+                }
+              },
+              "global": {
+                "failures": 18905,
+                "successes": 16673
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 0,
+          "models": [
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b",
+            "tongui-7b",
+            "ui-tars-72b",
+            "ui-tars-7b"
+          ],
+          "risk": {
+            "best_single_successes": 212,
+            "best_source": "tongui-32b",
+            "candidate_thresholds": 216,
+            "selected_successes": 253,
+            "threshold": 0.0,
+            "threshold_dev_rows": 417,
+            "threshold_fold": 1,
+            "train_rows": 1247
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.5697115384615384,
+            "A2_sequential_density": 0.6370192307692307,
+            "A3_joint_original": 0.6370192307692307,
+            "A5a_LOO": 0.6370192307692307,
+            "A5b_MAP_pooled_LR": 0.65625,
+            "A5c_MAP_nine_LR": 0.6706730769230769,
+            "A5d_MAP_nine_LR_family": 0.6514423076923077,
+            "A5d_risk": 0.65625
+          },
+          "test_rows": 416
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 12154
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 12154
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 12154
+            },
+            "A5d_risk": {
+              "cell": 12154
+            }
+          },
+          "best_source": "tongui-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22111,
+                  "successes": 20599
+                },
+                "string-bearing": {
+                  "failures": 2687,
+                  "successes": 2177
+                }
+              },
+              "global": {
+                "failures": 24798,
+                "successes": 22776
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16209,
+                  "successes": 14943
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1867,
+                  "successes": 1497
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5902,
+                  "successes": 5656
+                },
+                "same-family/string-bearing": {
+                  "failures": 820,
+                  "successes": 680
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22111,
+                  "successes": 20599
+                },
+                "string-bearing": {
+                  "failures": 2687,
+                  "successes": 2177
+                }
+              },
+              "global": {
+                "failures": 24798,
+                "successes": 22776
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12203,
+                  "successes": 10884
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1504,
+                  "successes": 1207
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4472,
+                  "successes": 4100
+                },
+                "same-family/string-bearing": {
+                  "failures": 672,
+                  "successes": 538
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16675,
+                  "successes": 14984
+                },
+                "string-bearing": {
+                  "failures": 2176,
+                  "successes": 1745
+                }
+              },
+              "global": {
+                "failures": 18851,
+                "successes": 16729
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1663,
+          "fold": 1,
+          "models": [
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b",
+            "tongui-7b",
+            "ui-tars-72b",
+            "ui-tars-7b"
+          ],
+          "risk": {
+            "best_single_successes": 231,
+            "best_source": "tongui-7b",
+            "candidate_thresholds": 175,
+            "selected_successes": 266,
+            "threshold": 0.0,
+            "threshold_dev_rows": 416,
+            "threshold_fold": 2,
+            "train_rows": 1247
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.5347721822541966,
+            "A2_sequential_density": 0.5779376498800959,
+            "A3_joint_original": 0.5779376498800959,
+            "A5a_LOO": 0.5779376498800959,
+            "A5b_MAP_pooled_LR": 0.5899280575539568,
+            "A5c_MAP_nine_LR": 0.5971223021582733,
+            "A5d_MAP_nine_LR_family": 0.5995203836930456,
+            "A5d_risk": 0.6019184652278178
+          },
+          "test_rows": 417
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 11994
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 11994
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 11994
+            },
+            "A5d_risk": {
+              "cell": 11994
+            }
+          },
+          "best_source": "tongui-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22497,
+                  "successes": 20237
+                },
+                "string-bearing": {
+                  "failures": 2865,
+                  "successes": 2135
+                }
+              },
+              "global": {
+                "failures": 25362,
+                "successes": 22372
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16459,
+                  "successes": 14687
+                },
+                "cross-family/string-bearing": {
+                  "failures": 2019,
+                  "successes": 1479
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 6038,
+                  "successes": 5550
+                },
+                "same-family/string-bearing": {
+                  "failures": 846,
+                  "successes": 656
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22497,
+                  "successes": 20237
+                },
+                "string-bearing": {
+                  "failures": 2865,
+                  "successes": 2135
+                }
+              },
+              "global": {
+                "failures": 25362,
+                "successes": 22372
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12357,
+                  "successes": 11282
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1467,
+                  "successes": 1032
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4528,
+                  "successes": 4254
+                },
+                "same-family/string-bearing": {
+                  "failures": 610,
+                  "successes": 452
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16885,
+                  "successes": 15536
+                },
+                "string-bearing": {
+                  "failures": 2077,
+                  "successes": 1484
+                }
+              },
+              "global": {
+                "failures": 18962,
+                "successes": 17020
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 2,
+          "models": [
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b",
+            "tongui-7b",
+            "ui-tars-72b",
+            "ui-tars-7b"
+          ],
+          "risk": {
+            "best_single_successes": 216,
+            "best_source": "tongui-7b",
+            "candidate_thresholds": 190,
+            "selected_successes": 243,
+            "threshold": 0.0,
+            "threshold_dev_rows": 416,
+            "threshold_fold": 3,
+            "train_rows": 1248
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.5552884615384616,
+            "A2_sequential_density": 0.6153846153846154,
+            "A3_joint_original": 0.6177884615384616,
+            "A5a_LOO": 0.6177884615384616,
+            "A5b_MAP_pooled_LR": 0.6346153846153846,
+            "A5c_MAP_nine_LR": 0.6322115384615384,
+            "A5d_MAP_nine_LR_family": 0.6298076923076923,
+            "A5d_risk": 0.625
+          },
+          "test_rows": 416
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 11752
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 11752
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 11752
+            },
+            "A5d_risk": {
+              "cell": 11752
+            }
+          },
+          "best_source": "tongui-32b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22321,
+                  "successes": 21151
+                },
+                "string-bearing": {
+                  "failures": 2588,
+                  "successes": 1916
+                }
+              },
+              "global": {
+                "failures": 24909,
+                "successes": 23067
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16363,
+                  "successes": 15341
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1830,
+                  "successes": 1322
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5958,
+                  "successes": 5810
+                },
+                "same-family/string-bearing": {
+                  "failures": 758,
+                  "successes": 594
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22321,
+                  "successes": 21151
+                },
+                "string-bearing": {
+                  "failures": 2588,
+                  "successes": 1916
+                }
+              },
+              "global": {
+                "failures": 24909,
+                "successes": 23067
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12112,
+                  "successes": 11881
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1313,
+                  "successes": 962
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4401,
+                  "successes": 4500
+                },
+                "same-family/string-bearing": {
+                  "failures": 525,
+                  "successes": 450
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16513,
+                  "successes": 16381
+                },
+                "string-bearing": {
+                  "failures": 1838,
+                  "successes": 1412
+                }
+              },
+              "global": {
+                "failures": 18351,
+                "successes": 17793
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1664,
+          "fold": 3,
+          "models": [
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b",
+            "tongui-7b",
+            "ui-tars-72b",
+            "ui-tars-7b"
+          ],
+          "risk": {
+            "best_single_successes": 194,
+            "best_source": "tongui-7b",
+            "candidate_thresholds": 186,
+            "selected_successes": 242,
+            "threshold": 0.0,
+            "threshold_dev_rows": 415,
+            "threshold_fold": 4,
+            "train_rows": 1249
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.46153846153846156,
+            "A2_sequential_density": 0.5360576923076923,
+            "A3_joint_original": 0.5360576923076923,
+            "A5a_LOO": 0.5360576923076923,
+            "A5b_MAP_pooled_LR": 0.5793269230769231,
+            "A5c_MAP_nine_LR": 0.5745192307692307,
+            "A5d_MAP_nine_LR_family": 0.5793269230769231,
+            "A5d_risk": 0.5721153846153846
+          },
+          "test_rows": 416
+        },
+        {
+          "backoff_counts": {
+            "A5b_MAP_pooled_LR": {
+              "class": 11832
+            },
+            "A5c_MAP_nine_LR": {
+              "cell": 11832
+            },
+            "A5d_MAP_nine_LR_family": {
+              "cell": 11832
+            },
+            "A5d_risk": {
+              "cell": 11832
+            }
+          },
+          "best_source": "tongui-7b",
+          "calibration": {
+            "A5b": {
+              "bins": 8,
+              "cells": {},
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22125,
+                  "successes": 21082
+                },
+                "string-bearing": {
+                  "failures": 2626,
+                  "successes": 2063
+                }
+              },
+              "global": {
+                "failures": 24751,
+                "successes": 23145
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "pooled"
+            },
+            "A5c_A5d": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 16214,
+                  "successes": 15286
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1865,
+                  "successes": 1409
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 5911,
+                  "successes": 5796
+                },
+                "same-family/string-bearing": {
+                  "failures": 761,
+                  "successes": 654
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 22125,
+                  "successes": 21082
+                },
+                "string-bearing": {
+                  "failures": 2626,
+                  "successes": 2063
+                }
+              },
+              "global": {
+                "failures": 24751,
+                "successes": 23145
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            },
+            "A5d_risk": {
+              "bins": 8,
+              "cells": {
+                "cross-family/coordinate-bearing": {
+                  "failures": 12364,
+                  "successes": 11267
+                },
+                "cross-family/string-bearing": {
+                  "failures": 1430,
+                  "successes": 1009
+                },
+                "same-family/coordinate-bearing": {
+                  "failures": 4506,
+                  "successes": 4302
+                },
+                "same-family/string-bearing": {
+                  "failures": 558,
+                  "successes": 464
+                }
+              },
+              "classes": {
+                "coordinate-bearing": {
+                  "failures": 16870,
+                  "successes": 15569
+                },
+                "string-bearing": {
+                  "failures": 1988,
+                  "successes": 1473
+                }
+              },
+              "global": {
+                "failures": 18858,
+                "successes": 17042
+              },
+              "minimum_successes_and_failures": 32,
+              "mode": "nine"
+            }
+          },
+          "dev_rows": 1665,
+          "fold": 4,
+          "models": [
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b",
+            "tongui-7b",
+            "ui-tars-72b",
+            "ui-tars-7b"
+          ],
+          "risk": {
+            "best_single_successes": 237,
+            "best_source": "tongui-7b",
+            "candidate_thresholds": 174,
+            "selected_successes": 276,
+            "threshold": 0.0,
+            "threshold_dev_rows": 416,
+            "threshold_fold": 0,
+            "train_rows": 1249
+          },
+          "step_sr": {
+            "A0_heldout_best": 0.4674698795180723,
+            "A2_sequential_density": 0.5445783132530121,
+            "A3_joint_original": 0.5518072289156627,
+            "A5a_LOO": 0.5518072289156627,
+            "A5b_MAP_pooled_LR": 0.5493975903614458,
+            "A5c_MAP_nine_LR": 0.5614457831325301,
+            "A5d_MAP_nine_LR_family": 0.5807228915662651,
+            "A5d_risk": 0.5783132530120482
+          },
+          "test_rows": 415
+        }
+      ],
+      "models": [
+        "cogagent-18b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ],
+      "rows": 2080
+    }
+  },
+  "protocol": "AMENDMENT_007_CCM_CONFIRMATION.md",
+  "status": "PASS",
+  "success_criteria": {
+    "A5b_MAP_pooled_LR": {
+      "discovery_success": false,
+      "significantly_inferior_pools": 1,
+      "significantly_superior_pools": 2
+    },
+    "A5c_MAP_nine_LR": {
+      "discovery_success": false,
+      "significantly_inferior_pools": 1,
+      "significantly_superior_pools": 2
+    },
+    "A5d_MAP_nine_LR_family": {
+      "discovery_success": false,
+      "significantly_inferior_pools": 1,
+      "significantly_superior_pools": 2
+    },
+    "A5d_risk": {
+      "discovery_success": true,
+      "significantly_inferior_pools": 0,
+      "significantly_superior_pools": 2
+    }
+  }
+}

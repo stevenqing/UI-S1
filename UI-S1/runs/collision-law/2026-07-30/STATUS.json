@@ -1,5 +1,5 @@
 {
-  "status": "W2_COMPLETE_W3_W4_IN_PROGRESS",
+  "status": "A5_DISCOVERY_COMPLETE_W3_IN_PROGRESS_W4_FROZEN_CONFIRMATION_PENDING",
   "base_commit": "802940669dc80f3dee572cf39643e867844d9965",
   "w1_results_generated": true,
   "w1_operator_gate_passed": true,
@@ -26,12 +26,24 @@
     "w1_kappa.json": "3dfd85f6e19419ac235fc3b63c8e931cc0f9cc1069b1dc943d965dbbecc35169",
     "w2_flips.json": "6b438980af7571eb3aa4a18e648925731e466cc28401d39a9cde4c86edac6dde",
     "w2_noise.json": "5094555e55059dad9e269434e74089a23875af55eac63c964af11f7a4b145326",
-    "w2_allocation.json": "3be13ec1ecd0ed567d2b04e2ba2418d8ff23840b4b26baf861f4e8f1510a26bb"
+    "w2_allocation.json": "3be13ec1ecd0ed567d2b04e2ba2418d8ff23840b4b26baf861f4e8f1510a26bb",
+    "a5a_retrial.json": "96a909cf7ad029f1eaf17c1b62a6e81e210125e0984df559bba947e0c4b57b75",
+    "a5_ccm.json": "fd8886d82654dc5702c7fd3d59a93204a0e4c885d796832bcbf44fe0c81f7f02"
   },
   "kill_conditions": {
     "K1": "COMPLETE_HETEROGENEOUS_3_OF_5_DIRECTIONALLY_SATISFIED_NO_GLOBAL_RULE",
     "K2": "NOT_TRIGGERED_MIND2WEB_GAIN_6.63PP_EXCEEDS_MDE_4.64PP",
-    "K3": "TRIGGERED_JOINT_NOT_GENERALLY_BETTER_THAN_SEQUENTIAL"
+    "K3": "RETRIAL_STILL_TRIGGERED_A5A_EXCEEDS_SEQUENTIAL_1_OF_3_POOLS",
+    "K4": "TRIGGERED_A5C_SIGNIFICANTLY_INFERIOR_TO_A0_ON_ANDROIDCONTROL_LOW"
+  },
+  "a5": {
+    "amendment_commit": "0c2c11a3c61b32b8db5321c844223db63d4d07f8",
+    "discovery_status": "PASS_WITH_K4_TRIGGERED",
+    "a5d_risk_discovery_success": true,
+    "a5d_risk_significantly_superior_pools": 2,
+    "a5d_risk_significantly_inferior_pools": 0,
+    "confidence_prediction": "FAILED_S_GAP_AUROC_BELOW_0.660",
+    "w4_role": "FROZEN_CONFIRMATION"
   },
   "w2": {
     "status": "PASS",
