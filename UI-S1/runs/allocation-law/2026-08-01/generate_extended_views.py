@@ -78,6 +78,7 @@ def main():
             size={"shortest_edge": 3136, "longest_edge": 2116800},
         )
     index_hash = sha256_file(args.model_dir / "model.safetensors.index.json")
+    written = 0
     with args.output.open("a", buffering=1) as output:
         for stable_index in indices:
             source = rows[stable_index]
@@ -119,6 +120,23 @@ def main():
             ).hexdigest()
             output.write(json.dumps(artifact, ensure_ascii=True) + "\n")
             output.flush(); os.fsync(output.fileno())
+            written += 1
+            if written % 25 == 0:
+                print(json.dumps({
+                    "model": args.model_id,
+                    "shard": args.shard_index,
+                    "written_this_run": written,
+                    "total_assigned": len(indices),
+                }), flush=True)
+
+    print(json.dumps({
+        "status": "PASS",
+        "model": args.model_id,
+        "shard": args.shard_index,
+        "written_this_run": written,
+        "completed": len(completed_ids(args.output)),
+        "total_assigned": len(indices),
+    }), flush=True)
 
 
 if __name__ == "__main__":
