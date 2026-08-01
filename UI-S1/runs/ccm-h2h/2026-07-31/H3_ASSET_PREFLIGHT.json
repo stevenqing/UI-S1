@@ -26,13 +26,18 @@
       "eligible": null
     },
     "UI-TARS-7B-SFT": {
-      "bare_screenspot_accuracy": null,
+      "bare_screenspot_accuracy": 0.33459835547122074,
       "checkpoint": "runs/mind2web-tongui/2026-07-28/models/UI-TARS-7B-SFT",
       "checkpoint_status": "PRESENT_31G",
-      "eligible": null
+      "eligible": true
     }
   },
   "required_minimum_bare_accuracy": 0.2469955724225174,
-  "status": "QWEN3_ELIGIBLE_UITARS_BARE_SCORE_RUNNING",
+  "status": "PASS_D2_MODELS_FROZEN_BEFORE_FOUR_VIEW_RESULTS",
+  "selected_d2_models": [
+    "Qwen3-VL-8B-Instruct",
+    "GTA1-7B",
+    "UI-TARS-7B-SFT"
+  ],
   "inference_started": false
 }

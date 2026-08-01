@@ -30,14 +30,15 @@
     "startup_memory_free_mib_per_gpu": [41744, 41980, 41980, 41978, 41978, 41978, 41978, 41978]
   },
   "h3": {
-    "status": "PREFLIGHT_PENDING_BARE_SCREENSPOT_SCORES",
+    "status": "D2_MODELS_FROZEN_READY_FOR_FOUR_VIEW_INFERENCE",
     "local_assets": {
       "GTA1-7B": "PRESENT_16G",
       "UI-TARS-7B-SFT": "PRESENT_31G",
       "SeeClick-mind2web": "PRESENT_18G",
       "Qwen3-VL-8B-Instruct": "PRESENT_17G_ELIGIBLE_54.65_PERCENT"
     },
-    "eligible_models_frozen": false,
+    "eligible_models_frozen": true,
+    "selected_models": ["Qwen3-VL-8B-Instruct", "GTA1-7B", "UI-TARS-7B-SFT"],
     "inference_started": false
   },
   "protected_process": {

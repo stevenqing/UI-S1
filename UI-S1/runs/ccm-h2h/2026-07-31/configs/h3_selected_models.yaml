@@ -1,0 +1,32 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+selection_rule: descending_bare_accuracy_then_model_id_among_available_models_above_half_gta1
+minimum_bare_accuracy: 0.2469955724225174
+forward_budget: 12
+views_per_model: 4
+shared_regions: GTA1_official_N4
+
+selected_models:
+  - id: Qwen3-VL-8B-Instruct
+    family: Qwen3-VL
+    revision: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b
+    bare_accuracy: 0.5464895635673624
+    eligibility_source: h3/qwen3_eligibility.json
+  - id: GTA1-7B
+    family: GTA1
+    revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+    bare_accuracy: 0.4939911448450348
+    eligibility_source: ../collision-law/2026-07-30/w3_summary.json
+  - id: UI-TARS-7B-SFT
+    family: UI-TARS
+    revision: 3434901a9dd04dd3625617d839a5724fe5e2db20
+    bare_accuracy: 0.33459835547122074
+    eligibility_source: h3/uitars_eligibility.json
+
+excluded_or_unavailable:
+  - id: SeeClick-mind2web
+    reason: lower-priority local candidate; no bare score needed after three eligible lineages are fixed
+  - id: Qwen3-VL-32B
+    reason: spec fixes Qwen3-VL-8B as the transfer model
+
+result_blind: true
