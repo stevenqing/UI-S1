@@ -1,5 +1,5 @@
 {
-  "status": "ZERO_GPU_COMPLETE_H1_RUNNING_SHARED_GPUS_H3_PREFLIGHT_PENDING",
+  "status": "ZERO_GPU_AND_H1_COMPLETE_HK1_TRIGGERED_H3_PREFLIGHT_PENDING",
   "upstream_commit": "1d51f56148bb57c9fe20200d0a2f9d32dde7fbb4",
   "preregistration_commit": "89f492c",
   "implementation_commit": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
@@ -14,10 +14,17 @@
     "h4": "HK4_TRIGGERED_RHO_BELOW_0.7_AND_ANDROIDCONTROL_AREA_UNAVAILABLE"
   },
   "h1": {
-    "status": "RUNNING_SHARED_GPUS_WITH_PROTECTED_PID_UNTOUCHED",
+    "status": "PASS_HK1_TRIGGERED_HK2_NOT_TRIGGERED",
     "gpu_plan": "GPUS_0_7_EIGHT_RESUMABLE_SHARDS",
     "candidate_plan": "ONE_FULL_PLUS_18_OFFICIAL_SUBIMAGES_DERIVE_N2_N4_N10_AND_THREE_SEEDED_N10",
-    "results_generated": false,
+    "results_generated": true,
+    "result_sha256": "9991fa6b70eb582b4690dff0c5682af8a85a6f0de23b72aeeca4b3e32f3b98ae",
+    "candidate_manifest_sha256": "a05702aabe2f42f431b685161a5584afce1d79633ecb2075d2ac5c83f30c8752",
+    "P-H1a": "FAILED_DELTA_0.44PP_BELOW_MDE_0.70PP_P_0.148",
+    "P-H1b": "FAILED_M1_N10_MINUS_N4_NEGATIVE_0.51PP_B3_DECLINE_REPRODUCED",
+    "P-H1c": "FAILED_M1_60.91_BELOW_GRPO_62.8",
+    "H-K1": "TRIGGERED",
+    "H-K2": "NOT_TRIGGERED",
     "worker_pids": [2489755, 2489756, 2489757, 2489758, 2489759, 2489760, 2489761, 2489762],
     "startup_memory_used_mib_per_gpu": [39409, 39173, 39173, 39175, 39175, 39175, 39175, 39175],
     "startup_memory_free_mib_per_gpu": [41744, 41980, 41980, 41978, 41978, 41978, 41978, 41978]
