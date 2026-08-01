@@ -1,0 +1,7 @@
+raw/
+shards/
+logs/
+models/
+smoke/
+*.parquet
+*.jsonl

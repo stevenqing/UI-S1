@@ -9,7 +9,7 @@ from pathlib import Path
 import torch
 from PIL import Image
 from qwen_vl_utils import process_vision_info, smart_resize
-from transformers import AutoProcessor, Qwen2VLForConditionalGeneration, Qwen3VLForConditionalGeneration
+from transformers import AutoProcessor
 
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -20,8 +20,10 @@ sys.path.insert(0, str(MVP_ROOT))
 
 def load_backend(model_type):
     if model_type == "uitars":
+        from transformers import Qwen2VLForConditionalGeneration
         return process_uitars_subimage, None, Qwen2VLForConditionalGeneration
     if model_type == "qwen3":
+        from transformers import Qwen3VLForConditionalGeneration
         return process_qwen3_subimage, None, Qwen3VLForConditionalGeneration
     raise ValueError(model_type)
 
