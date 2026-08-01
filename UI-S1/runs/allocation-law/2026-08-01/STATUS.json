@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-01",
+  "status": "COMPLETE_WITH_L3_BLOCKED_L4_E2_UNAVAILABLE",
+  "commits": {
+    "preregistration": "00aa688",
+    "view_extension": "d93d800",
+    "production_launcher": "7b018be",
+    "l1_l2_evaluator": "5010456",
+    "trace_integrity": "4d089eb",
+    "stratified_bootstrap": "21809c0",
+    "l1_l2_results": "84e0057",
+    "l3_l4_availability": "9fe0ff8"
+  },
+  "artifacts": {
+    "L1_RESULTS.json": {
+      "sha256": "b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11",
+      "status": "PASS"
+    },
+    "L2_RESULTS.json": {
+      "sha256": "ab281bd58a3c11622a343a5a2b605a820e438683fd632fdc1b37589f87eed40a",
+      "status": "PASS"
+    },
+    "L3_STATUS.json": {
+      "sha256": "f116a1e13ae6d527455929cc92fcdb47fc7d26944982a539a0f3e839efa8950f",
+      "status": "BLOCKED_PREREGISTRATION_GAP"
+    },
+    "L4_RESULTS.json": {
+      "sha256": "3ccbca9ce2f781624b90608f98f121b66d29d836bbe3ca48e941e55a507af0af",
+      "status": "PARTIAL_E1_ONLY_E2_UNAVAILABLE"
+    }
+  },
+  "predictions": {
+    "P-L1a": "PASS_BOTH_RULES",
+    "P-L1b": "FAIL",
+    "P-L2": "FAIL_EFFECT_SIZE",
+    "L3": "NOT_EVALUATED",
+    "L4": "E2_UNAVAILABLE"
+  },
+  "kill_conditions": {
+    "L-K1": false,
+    "L-K2": true,
+    "L-K3": true,
+    "L-K4": "NOT_EVALUATED"
+  },
+  "validation": {
+    "production_rows_per_model": 1581,
+    "views_per_model": 12,
+    "allocation_unit_tests": 10,
+    "l2_bootstrap_replicates": 10000,
+    "l2_finite_bootstrap_replicates": 10000,
+    "protected_pid_1814_modified": false
+  }
+}

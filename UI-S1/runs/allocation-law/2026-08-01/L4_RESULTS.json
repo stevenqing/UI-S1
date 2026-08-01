@@ -1,0 +1,75 @@
+{
+  "E1_shared_gta1": {
+    "accuracy": {
+      "B3_mvp": 0.6008855154965211,
+      "M1_ccm": 0.6040480708412397,
+      "pass_at_n": 0.7280202403542062
+    },
+    "diagnostic": {
+      "candidate_count": 18972,
+      "full_bbox_containment_ratio": 0.7251212312882143,
+      "per_rank_full_bbox_containment": [
+        0.9993674889310563,
+        0.8026565464895635,
+        0.7760910815939279,
+        0.7571157495256167,
+        0.7311827956989247,
+        0.7115749525616698,
+        0.6957621758380772,
+        0.6736242884250474,
+        0.661606578115117,
+        0.6489563567362429,
+        0.6331435800126503,
+        0.6103731815306768
+      ],
+      "per_rank_target_center_containment": [
+        1.0,
+        0.8121442125237192,
+        0.7969639468690702,
+        0.7817836812144212,
+        0.7615433270082227,
+        0.7337128399746996,
+        0.7210626185958254,
+        0.6957621758380772,
+        0.6869070208728653,
+        0.6786843769765971,
+        0.6521189120809614,
+        0.6375711574952562
+      ],
+      "target_center_containment_ratio": 0.7465211891208097
+    },
+    "proposer": {
+      "attention_layer": 20,
+      "model": "GTA1-7B",
+      "ordering": "official_attention_rank_prefix_N12",
+      "revision": "701bedc80b447863bd60e3318ae44f6cbbfafd78",
+      "target_token": ","
+    },
+    "rows": 1581,
+    "status": "AVAILABLE_REUSED_IDENTICAL_L1_POOL"
+  },
+  "E2_native_per_model": {
+    "models": {
+      "Qwen3-VL-8B-Instruct": {
+        "architecture": "Qwen3VLForConditionalGeneration",
+        "config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+        "model_type": "qwen3_vl",
+        "status": "UNAVAILABLE_NO_RELEASED_NATIVE_PROPOSER",
+        "target_extraction_fields_present": false
+      },
+      "UI-TARS-7B-SFT": {
+        "architecture": "Qwen2VLForConditionalGeneration",
+        "config_sha256": "4745aaba24756172765cb804b86512792202df6c65ac28989355971bbb27649c",
+        "model_type": "qwen2_vl",
+        "status": "UNAVAILABLE_UNSUPPORTED_ARCHITECTURE_CONVERSION",
+        "target_extraction_fields_present": false
+      }
+    },
+    "pooled_scoring": "NOT_RUN",
+    "status": "UNAVAILABLE"
+  },
+  "ablation_comparison": "NOT_AVAILABLE",
+  "budget": 12,
+  "schema_version": 1,
+  "status": "PARTIAL_E1_ONLY_E2_UNAVAILABLE"
+}
