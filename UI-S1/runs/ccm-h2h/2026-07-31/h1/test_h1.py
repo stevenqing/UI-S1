@@ -7,7 +7,7 @@ import pyarrow.parquet as pq
 
 from aggregators_coord import mvp_official, reguide_algorithm_level
 from ccm_coord import fit, select
-from merge_candidates import candidate_hash, main as merge_main
+from merge_candidates import candidate_hash, main as merge_main, seeded_candidates
 from generation_contract import generation_row
 
 
@@ -56,6 +56,19 @@ class H1HeadToHeadTest(unittest.TestCase):
         sanitized = generation_row(source)
         self.assertEqual(sanitized["bbox"], [-1, -1, -1, -1])
         self.assertEqual(source["bbox"], [10, 20, 30, 40])
+
+    def test_seeded_candidates_accept_variable_official_superset(self):
+        row = {
+            "id": "sample", "stable_index": 0,
+            "candidates": [
+                {"coverage": 0, "stage": "full_image"},
+                *[{"coverage": index, "stage": f"subimage_{index}"} for index in range(1, 16)],
+            ],
+        }
+        selected = seeded_candidates(row, 20260731)
+        self.assertEqual(len(selected), 10)
+        self.assertEqual(selected[0]["stage"], "full_image")
+        self.assertEqual(len({item["stage"] for item in selected}), 10)
 
 
 if __name__ == "__main__":

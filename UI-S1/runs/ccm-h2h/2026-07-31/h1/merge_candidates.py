@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import math
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -21,8 +22,8 @@ def seeded_candidates(row, seed):
     candidates = row["candidates"]
     full = candidates[0]
     subimages = candidates[1:]
-    if len(subimages) != 18:
-        raise ValueError(f"MDE superset mismatch: {row['id']}")
+    if len(subimages) < 9 or len(subimages) > 18:
+        raise ValueError(f"MDE superset outside [9,18]: {row['id']}")
     row_index = row["stable_index"]
     rng = np.random.default_rng(np.random.SeedSequence([seed, row_index]))
     coverage = np.asarray([candidate["coverage"] for candidate in subimages], dtype=np.float64)
@@ -57,10 +58,13 @@ def main():
                 raise ValueError(f"duplicate H1 candidate id: {row['id']}")
             if row["shard_index"] != shard or row["num_shards"] != args.num_shards:
                 raise ValueError("H1 shard metadata mismatch")
-            if row["candidate_count"] != 19 or len(row["candidates"]) != 19:
-                raise ValueError(f"H1 requires exactly 19 superset candidates: {row['id']}")
+            if row["candidate_count"] < 10 or row["candidate_count"] > 19:
+                raise ValueError(f"H1 requires 10-19 superset candidates: {row['id']}")
+            if len(row["candidates"]) != row["candidate_count"]:
+                raise ValueError(f"H1 candidate count metadata mismatch: {row['id']}")
             stages = [candidate["stage"] for candidate in row["candidates"]]
-            if stages != ["full_image"] + [f"subimage_{index}" for index in range(1, 19)]:
+            expected_stages = ["full_image"] + [f"subimage_{index}" for index in range(1, len(row["candidates"]))]
+            if stages != expected_stages:
                 raise ValueError(f"H1 candidate stage order mismatch: {row['id']}")
             regions = [tuple(candidate["region"]) for candidate in row["candidates"][1:]]
             if len(regions) != len(set(regions)):
@@ -77,7 +81,7 @@ def main():
     manifest = {
         "status": "PASS",
         "rows": len(ordered),
-        "source_candidates": 19,
+        "source_candidate_count_distribution": dict(sorted(Counter(row["candidate_count"] for row in ordered).items())),
         "outputs": {},
     }
     for count in (2, 4, 10):

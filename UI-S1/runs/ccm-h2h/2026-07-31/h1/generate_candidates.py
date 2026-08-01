@@ -58,8 +58,8 @@ def completed_ids(path):
 
 def normalize_result(row, result, max_subimages, shard_index, num_shards):
     predictions = result["all_predictions"]
-    if len(predictions) != max_subimages + 1:
-        raise ValueError(f"candidate count mismatch: {row['id']} {len(predictions)}")
+    if len(predictions) < 10 or len(predictions) > max_subimages + 1:
+        raise ValueError(f"candidate count outside [10,{max_subimages + 1}]: {row['id']} {len(predictions)}")
     normalized = {
         "id": row["id"],
         "annotation_file": row["annotation_file"],
@@ -83,6 +83,7 @@ def normalize_result(row, result, max_subimages, shard_index, num_shards):
             for index, prediction in enumerate(predictions)
         ],
         "candidate_count": len(predictions),
+        "requested_candidate_count": max_subimages + 1,
         "official_source_revision": SOURCE_REVISION,
         "model_revision": MODEL_REVISION,
         "attention_layer": 20,
