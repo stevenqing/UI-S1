@@ -19,7 +19,7 @@ from allocation_eval import (
     load_model_views,
     matched_marginal_permutation,
 )
-from run_l2 import group_sufficient_statistics, weighted_kappa
+from run_l2 import group_sufficient_statistics, stratified_group_sample_counts, weighted_kappa
 
 
 class AllocationEvaluationTest(unittest.TestCase):
@@ -147,6 +147,17 @@ class AllocationEvaluationTest(unittest.TestCase):
         vectorized, total = weighted_kappa(np.ones((1, 2), dtype=np.int64), statistics, np.ones(2, dtype=np.int64))
         self.assertEqual(total.tolist(), [20])
         self.assertAlmostEqual(vectorized[0], direct)
+
+    def test_stratified_bootstrap_preserves_each_fold(self):
+        groups = [f"app-{index}" for index in range(15)]
+        fold_for_group = {group: index % 5 for index, group in enumerate(groups)}
+        counts = stratified_group_sample_counts(
+            groups, fold_for_group, 100, np.random.default_rng(20260801)
+        )
+        self.assertTrue(np.all(counts.sum(axis=1) == 15))
+        for fold in range(5):
+            indices = [index for index, group in enumerate(groups) if fold_for_group[group] == fold]
+            self.assertTrue(np.all(counts[:, indices].sum(axis=1) == 3))
 
 
 if __name__ == "__main__":

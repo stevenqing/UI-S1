@@ -67,9 +67,20 @@ def weighted_kappa(sample_counts, statistics, group_mask):
     return np.nanmean(np.asarray(values), axis=0), total
 
 
+def stratified_group_sample_counts(groups, fold_for_group, resamples, rng):
+    sample_counts = np.zeros((resamples, len(groups)), dtype=np.int64)
+    for fold in range(5):
+        indices = [index for index, group in enumerate(groups) if fold_for_group[group] == fold]
+        if not indices:
+            raise ValueError(f"L2 bootstrap fold {fold} has no application groups")
+        draws = rng.multinomial(len(indices), np.full(len(indices), 1 / len(indices)), size=resamples)
+        sample_counts[:, indices] = draws
+    return sample_counts
+
+
 def bootstrap_correlations(pool_statistics, groups, fold_for_group, resamples):
     rng = np.random.default_rng(SEED)
-    sample_counts = rng.multinomial(len(groups), np.full(len(groups), 1 / len(groups)), size=resamples)
+    sample_counts = stratified_group_sample_counts(groups, fold_for_group, resamples, rng)
     kappa_columns = []
     outcome_columns = {method: [] for method in METHODS}
     for statistics in pool_statistics.values():
