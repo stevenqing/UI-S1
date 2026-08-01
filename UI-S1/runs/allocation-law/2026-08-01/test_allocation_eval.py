@@ -20,6 +20,7 @@ from allocation_eval import (
     matched_marginal_permutation,
 )
 from run_l2 import group_sufficient_statistics, stratified_group_sample_counts, weighted_kappa
+from run_l3_l4_status import nested_has_key, region_contains_bbox, region_contains_center
 
 
 class AllocationEvaluationTest(unittest.TestCase):
@@ -158,6 +159,14 @@ class AllocationEvaluationTest(unittest.TestCase):
         for fold in range(5):
             indices = [index for index, group in enumerate(groups) if fold_for_group[group] == fold]
             self.assertTrue(np.all(counts[:, indices].sum(axis=1) == 3))
+
+    def test_l4_bbox_and_config_audit_helpers(self):
+        bbox = [10, 10, 20, 20]
+        self.assertTrue(region_contains_bbox([0, 0, 30, 30], bbox))
+        self.assertFalse(region_contains_bbox([14, 14, 16, 16], bbox))
+        self.assertTrue(region_contains_center([14, 14, 16, 16], bbox))
+        self.assertTrue(nested_has_key({"text_config": {"target_layer_idx": 20}}, "target_layer_idx"))
+        self.assertFalse(nested_has_key({"text_config": {"num_hidden_layers": 20}}, "target_layer_idx"))
 
 
 if __name__ == "__main__":
