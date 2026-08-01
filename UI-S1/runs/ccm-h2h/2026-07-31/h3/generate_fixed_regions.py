@@ -9,7 +9,7 @@ from pathlib import Path
 import torch
 from PIL import Image
 from qwen_vl_utils import process_vision_info, smart_resize
-from transformers import AutoProcessor, Qwen2VLForConditionalGeneration
+from transformers import AutoProcessor, Qwen2VLForConditionalGeneration, Qwen3VLForConditionalGeneration
 
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -22,9 +22,7 @@ def load_backend(model_type):
     if model_type == "uitars":
         return process_uitars_subimage, None, Qwen2VLForConditionalGeneration
     if model_type == "qwen3":
-        from mvp_sspro_qwen3vl import process_single_subimage
-        from qwen3_vl import Qwen3VLConfig, Qwen3VLForConditionalGeneration
-        return process_single_subimage, Qwen3VLConfig, Qwen3VLForConditionalGeneration
+        return process_qwen3_subimage, None, Qwen3VLForConditionalGeneration
     raise ValueError(model_type)
 
 
@@ -48,6 +46,38 @@ def parse_uitars_point(response):
 
 
 def process_uitars_subimage(subimage, instruction, processor, model, device, offset_x=0, offset_y=0, resize=False):
+    resized_height, resized_width = smart_resize(
+        subimage.height, subimage.width,
+        factor=processor.image_processor.patch_size * processor.image_processor.merge_size,
+        min_pixels=processor.image_processor.min_pixels,
+        max_pixels=processor.image_processor.max_pixels,
+    )
+    resized = subimage.resize((resized_width, resized_height))
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": [
+            {"type": "image", "image": resized},
+            {"type": "text", "text": instruction},
+        ]},
+    ]
+    image_inputs, video_inputs = process_vision_info(messages)
+    text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    inputs = processor(text=[text], images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt").to(model.device)
+    with torch.inference_mode():
+        output_ids = model.generate(**inputs, max_new_tokens=32, do_sample=False, use_cache=True)
+    generated = output_ids[:, inputs.input_ids.shape[1]:]
+    response = processor.batch_decode(generated, skip_special_tokens=True, clean_up_tokenization_spaces=True)[0]
+    point = parse_uitars_point(response)
+    if point is None:
+        return (0, 0), response
+    x, y = point
+    return (
+        int(x / 1000 * subimage.width + offset_x),
+        int(y / 1000 * subimage.height + offset_y),
+    ), response
+
+
+def process_qwen3_subimage(subimage, instruction, processor, model, device, offset_x=0, offset_y=0, resize=False):
     resized_height, resized_width = smart_resize(
         subimage.height, subimage.width,
         factor=processor.image_processor.patch_size * processor.image_processor.merge_size,
@@ -124,13 +154,17 @@ def main():
 
     process_subimage, config_class, model_class = load_backend(args.model_type)
     config = config_class.from_pretrained(args.model_dir) if config_class is not None else None
-    model = model_class.from_pretrained(
-        args.model_dir,
+    model_kwargs = {
         **({"config": config} if config is not None else {}),
-        torch_dtype=torch.bfloat16,
-        attn_implementation="flash_attention_2",
-        device_map="cuda:0",
-    ).eval()
+        "torch_dtype": torch.bfloat16,
+        "attn_implementation": "sdpa" if args.model_type == "qwen3" else "flash_attention_2",
+    }
+    if args.model_type == "uitars":
+        model_kwargs["device_map"] = "cuda:0"
+    model = model_class.from_pretrained(args.model_dir, **model_kwargs)
+    if args.model_type == "qwen3":
+        model = model.to("cuda:0")
+    model = model.eval()
     processor_kwargs = {
         "min_pixels": 3136, "max_pixels": 4096 * 2160, "use_fast": False,
     }
