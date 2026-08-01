@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+import json
 from pathlib import Path
 
 import yaml
@@ -10,10 +11,12 @@ from allocation_eval import (
     MDE,
     build_pool,
     cohen_kappa_from_counts,
+    canonical_hash,
     failure_statistics,
     l1_predictions,
     l2_units,
     load_l1_units,
+    load_model_views,
     matched_marginal_permutation,
 )
 from run_l2 import group_sufficient_statistics, weighted_kappa
@@ -81,6 +84,46 @@ class AllocationEvaluationTest(unittest.TestCase):
         result = matched_marginal_permutation(statistics, np.random.default_rng(1), permutations=1000)
         self.assertLess(abs(result["null_mean"]), 0.02)
         self.assertEqual(result["p_greater_equal_observed"], 1 / 1001)
+
+    def test_model_trace_hash_and_target_integrity(self):
+        model = "Qwen3-VL-8B-Instruct"
+        revision = "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b"
+        regions = [[index, 0, index + 1, 1] for index in range(12)]
+        manifest = {"row": {
+            "stable_index": 0,
+            "shared_region_candidate_sha256": "n12-hash",
+            "regions": regions,
+        }}
+        old_predictions = [
+            {"view_index": index, "region": regions[index], "point": [index, 0]}
+            for index in range(4)
+        ]
+        new_predictions = [
+            {"view_index": index, "region": regions[index], "point": [index, 0]}
+            for index in range(4, 12)
+        ]
+        base = {
+            "id": "row", "stable_index": 0, "model_id": model,
+            "model_revision": revision, "num_shards": 4, "shard_index": 0,
+        }
+        old = {**base, "predictions": old_predictions, "prediction_sha256": canonical_hash(old_predictions)}
+        new = {
+            **base, "predictions": new_predictions, "prediction_sha256": canonical_hash(new_predictions),
+            "shared_region_candidate_sha256": "n12-hash",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            old_root = root / "old"; old_root.mkdir()
+            old_path = old_root / "shard-0.jsonl"
+            new_path = root / "new.jsonl"
+            old_path.write_text(json.dumps(old) + "\n")
+            new_path.write_text(json.dumps(new) + "\n")
+            result = load_model_views(old_root, [new_path], manifest, model, expected_rows=1)
+            self.assertEqual(len(result["row"]), 12)
+            new["predictions"][0]["point"] = [999, 999]
+            new_path.write_text(json.dumps(new) + "\n")
+            with self.assertRaisesRegex(ValueError, "prediction hash mismatch"):
+                load_model_views(old_root, [new_path], manifest, model, expected_rows=1)
 
     def test_vectorized_weighted_kappa_matches_direct(self):
         rows = []

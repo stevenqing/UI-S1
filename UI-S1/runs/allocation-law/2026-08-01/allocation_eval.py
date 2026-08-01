@@ -93,10 +93,20 @@ def load_model_views(old_root, extended_paths, manifest, model, expected_rows=EX
     output = {}
     for row_id in sorted(manifest):
         old_row, new_row = old[row_id], extended[row_id]
+        stable_index = manifest[row_id]["stable_index"]
         if old_row["model_id"] != model or new_row["model_id"] != model:
             raise ValueError(f"{model} model identity mismatch: {row_id}")
         if old_row["model_revision"] != revision or new_row["model_revision"] != revision:
             raise ValueError(f"{model} revision mismatch: {row_id}")
+        for source_name, source in (("old", old_row), ("extended", new_row)):
+            if source["stable_index"] != stable_index:
+                raise ValueError(f"{model} {source_name} stable-index mismatch: {row_id}")
+            if source["num_shards"] != 4 or source["shard_index"] != stable_index % 4:
+                raise ValueError(f"{model} {source_name} shard mismatch: {row_id}")
+            if canonical_hash(source["predictions"]) != source["prediction_sha256"]:
+                raise ValueError(f"{model} {source_name} prediction hash mismatch: {row_id}")
+        if "target_bbox" in new_row:
+            raise ValueError(f"{model} extended trace contains target field: {row_id}")
         old_predictions = old_row["predictions"]
         new_predictions = new_row["predictions"]
         predictions = old_predictions + new_predictions
