@@ -35,7 +35,7 @@
       "GTA1-7B": "PRESENT_16G",
       "UI-TARS-7B-SFT": "PRESENT_31G",
       "SeeClick-mind2web": "PRESENT_18G",
-      "Qwen3-VL-8B-Instruct": "NOT_FOUND_IN_WORKSPACE_OR_SCRATCH_SEARCH"
+      "Qwen3-VL-8B-Instruct": "PRESENT_17G_ELIGIBLE_54.65_PERCENT"
     },
     "eligible_models_frozen": false,
     "inference_started": false

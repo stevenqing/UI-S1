@@ -13,10 +13,11 @@
       "eligible": true
     },
     "Qwen3-VL-8B-Instruct": {
-      "bare_screenspot_accuracy": null,
-      "checkpoint": null,
-      "checkpoint_status": "NOT_FOUND_IN_WORKSPACE_OR_SCRATCH_SEARCH",
-      "eligible": null
+      "bare_screenspot_accuracy": 0.5464895635673624,
+      "checkpoint": "runs/ccm-h2h/2026-07-31/h3/models/Qwen3-VL-8B-Instruct",
+      "checkpoint_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+      "checkpoint_status": "PRESENT_17G",
+      "eligible": true
     },
     "SeeClick-mind2web": {
       "bare_screenspot_accuracy": null,
@@ -32,6 +33,6 @@
     }
   },
   "required_minimum_bare_accuracy": 0.2469955724225174,
-  "status": "PENDING_BARE_SCORE_PREFLIGHT_AND_QWEN3_CHECKPOINT",
+  "status": "QWEN3_ELIGIBLE_UITARS_BARE_SCORE_RUNNING",
   "inference_started": false
 }
