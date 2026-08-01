@@ -1,0 +1,44 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+budget: 12
+seed: 20260801
+folds: application_grouped_5fold
+kappa:
+  statistic: binary_failure_cohen_kappa
+  scope: outer_development_fold_only
+  matched_marginal_permutations: 1000
+
+pools:
+  gta1_12views:
+    units: GTA1_views_0_to_11
+  qwen3_12views:
+    units: Qwen3_views_0_to_11
+    availability: requires_views_4_to_11_generation
+  uitars_12views:
+    units: UI-TARS_views_0_to_11
+    availability: requires_views_4_to_11_generation
+  gta1_qwen3_6x2:
+    units: round_robin_GTA1_Qwen3_views_0_to_5
+  gta1_uitars_6x2:
+    units: round_robin_GTA1_UITARS_views_0_to_5
+  qwen3_uitars_6x2:
+    units: round_robin_Qwen3_UITARS_views_0_to_5
+  three_lineages_4x3:
+    units: round_robin_all_models_views_0_to_3
+  three_lineages_4x3_shuffled_control:
+    units: each_model_views_4_to_7
+    interpretation: matched_source_count_different_view_quality
+
+prediction:
+  primary_outcome: pass_at_12
+  expected_spearman_direction: negative
+  minimum_absolute_rho: 0.7
+  secondary_outcomes: [B3_mvp, M1_ccm]
+  bootstrap:
+    resamples: 10000
+    unit: application
+
+prescription_validation:
+  heldout_budget: 12
+  select_on: development_mean_kappa_subject_to_frozen_eligibility
+  evaluate_once: heldout_fold
