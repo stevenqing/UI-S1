@@ -2,7 +2,7 @@
 
 Date: 2026-07-31
 
-Status: zero-GPU stage and H1 complete; H2 positive and H3 gate open; H3 model eligibility preflight pending.
+Status: all preregistered C1-C3 and H1-H4 executable slices complete; H1 general method claim failed; H3 mixed-pool prediction passed; H4 primary claim blocked/failed.
 
 ## Preregistration
 
@@ -136,4 +136,41 @@ M1 headroom capture is 0% at N=2, 61.6% at N=4, and 50.5% at N=10. The best obse
 3. Freeze eligible D2 models before any mixed-pool result.
 4. Run H3 only if at least three eligible lineages are available.
 
-H3 asset preflight currently finds local GTA1-7B, UI-TARS-7B-SFT, and SeeClick checkpoints. Qwen3-VL-8B-Instruct is absent from the workspace and scratch search. UI-TARS and SeeClick have no audited ScreenSpot-Pro bare score yet, so they are not eligible until result-blind bare scoring confirms at least 24.70% accuracy. H3 inference has not started.
+## H3: equal-compute mixed pool
+
+Eligibility was frozen before four-view results:
+
+| Model | Independent bare ScreenSpot-Pro | Eligibility |
+|---|---:|---|
+| Qwen3-VL-8B-Instruct | 54.65% | Pass |
+| GTA1-7B | 49.40% | Pass |
+| UI-TARS-7B-SFT | 33.46% | Pass |
+
+All D2 models receive the same four GTA1-proposed regions: full image plus the first three frozen attention crops. D1 and D2 each use exactly 12 forwards per row.
+
+| Pool | B3 MVP | M1 CCM | pass@12 |
+|---|---:|---:|---:|
+| D1: GTA1 twelve views | 60.09% | 60.40% | 72.80% |
+| D2: three lineages x four views | 63.63% | 63.82% | 79.19% |
+
+D2 M1 exceeds D1 M1 by 3.42 pp, above the frozen 0.70 pp ScreenSpot MDE. H3 passes. The mechanism attribution is important: B3 itself gains 3.54 pp from replacing pure views with mixed lineages, while CCM adds only 0.19 pp over B3 inside D2. H3 therefore validates the diversity-allocation prediction and H2 collision-floor interpretation, not a large additional CCM selection advantage.
+
+Per-model view diagnostics:
+
+| Model | Full | View 1 | View 2 | View 3 | pass@4 |
+|---|---:|---:|---:|---:|---:|
+| Qwen3-VL-8B | 54.52% | 57.31% | 56.74% | 55.60% | 69.45% |
+| UI-TARS-7B | 33.46% | 52.37% | 51.04% | 50.35% | 62.75% |
+
+The UI-TARS crop gain is large despite a weak full-image baseline, which supports the result-blind eligibility floor: the model contributes useful localized candidates without becoming a catastrophic weak unit.
+
+## Final kill-condition state
+
+| Condition | Outcome | Consequence |
+|---|---|---|
+| H-K1: P-H1a and P-H1c both fail | Triggered | Remove general same-candidate-set superiority claim |
+| H-K2: P-H1b fails and B3 decline is absent | Not triggered | B3 N4-to-N10 decline reproduced; retain saturation evidence |
+| H-K3: H2 negative | Not triggered | H2 positive; H3 executed and passed |
+| H-K4: H4 rho below 0.7 or area axis unavailable | Triggered | Resolution law remains descriptive only |
+
+Final positioning: the new evidence does not support CCM as a universal replacement for MVP's selection rule. It does support the collision-floor measurement, systematic high-gap deception, and cross-lineage candidate allocation: under equal 12-forward compute, the mixed pool improves CCM by 3.42 pp and raises pass@12 by 6.39 pp over pure views.

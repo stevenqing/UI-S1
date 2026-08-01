@@ -1,5 +1,5 @@
 {
-  "status": "ZERO_GPU_AND_H1_COMPLETE_HK1_TRIGGERED_H3_PREFLIGHT_PENDING",
+  "status": "ALL_EXECUTABLE_SLICES_COMPLETE_HK1_HK4_TRIGGERED_H3_PASSED",
   "upstream_commit": "1d51f56148bb57c9fe20200d0a2f9d32dde7fbb4",
   "preregistration_commit": "89f492c",
   "implementation_commit": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
@@ -30,7 +30,7 @@
     "startup_memory_free_mib_per_gpu": [41744, 41980, 41980, 41978, 41978, 41978, 41978, 41978]
   },
   "h3": {
-    "status": "D2_MODELS_FROZEN_READY_FOR_FOUR_VIEW_INFERENCE",
+    "status": "PASS_D2_MINUS_D1_3.42PP_EXCEEDS_MDE_0.70PP",
     "local_assets": {
       "GTA1-7B": "PRESENT_16G",
       "UI-TARS-7B-SFT": "PRESENT_31G",
@@ -39,7 +39,14 @@
     },
     "eligible_models_frozen": true,
     "selected_models": ["Qwen3-VL-8B-Instruct", "GTA1-7B", "UI-TARS-7B-SFT"],
-    "inference_started": false
+    "inference_started": true,
+    "results_generated": true,
+    "result_sha256": "c728eac1eb983033efac1110bb8d2e3874bd74d3bf745ec5e822232a0e02f72b",
+    "D1_M1": 0.6040480708412397,
+    "D2_M1": 0.6382036685641999,
+    "D2_minus_D1_M1": 0.034155597722960174,
+    "MDE": 0.007043345177520599,
+    "prediction_satisfied": true
   },
   "protected_process": {
     "pid": 1814,
