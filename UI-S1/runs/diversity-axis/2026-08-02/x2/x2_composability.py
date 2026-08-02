@@ -309,6 +309,14 @@ def main():
         "schema_version": 1,
         "status": "PASS",
         "method": "UI_Zoomer_fixed12_microchains_algorithm_level_extension",
+        "sanity_anchor": {
+            "benchmark": "ScreenSpot-Pro",
+            "model": "Qwen2.5-VL-7B-Instruct",
+            "baseline_accuracy": 0.276,
+            "UI_Zoomer_accuracy": 0.410,
+            "tolerance_absolute": 0.01,
+            "status": "NOT_RUN_MISSING_OFFICIAL_BACKBONE_CHECKPOINT_AND_GENERATIONS",
+        },
         "rows": 1581,
         "forward_budget": 12,
         "accuracy": accuracy,
@@ -326,7 +334,10 @@ def main():
             "composability_success": highest == "Q4" and primary["classification"] != "SUB_ADDITIVE",
         },
         "kill_conditions": {"X-K1": primary["classification"] == "SUB_ADDITIVE"},
-        "claim_boundary": "Budget-normalized K=3 microchains are an algorithm-level UI-Zoomer extension, not the official K=8 protocol.",
+        "claim_boundary": (
+            "Budget-normalized K=3 microchains are an algorithm-level UI-Zoomer extension, not the official K=8 protocol. "
+            "Q2/Q4 use UI-Zoomer resize and standard checkpoint classes; Q1/Q3 are frozen MVP/fixed-region upstream pools."
+        ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
