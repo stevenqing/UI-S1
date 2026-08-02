@@ -11,3 +11,5 @@ This amendment activates the global P1 N8 fallback for every row. P2 remains thr
 The 1,176 existing label-free proposal rows are retained. Their derived `required_region_indices_by_model` fields are deterministically normalized before resume: GTA1 requires region indices 0-7 plus the cross-seed perturbation union; UI-Venus and Qwen3.5 require indices 0-3 plus the same union. Region coordinates, coverage values, official ranks, perturbation selections, and region hashes are unchanged.
 
 The paper must label P1 as an 8-forward fallback and must not describe P2-P1 as an equal-budget comparison. The primary absolute 73.1 test and P2's 12-forward budget are unchanged.
+
+Region scoring retains the validated H3 preprocessing contract: GTA1 attention crops are enlarged 2x before smart resize, with coordinates mapped back to the original crop; UI-Venus and Qwen3.5 consume the original crop directly. Full-image preprocessing is unchanged for all models.

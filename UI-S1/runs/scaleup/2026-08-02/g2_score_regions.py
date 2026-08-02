@@ -18,6 +18,12 @@ DATA_ROOT = ROOT / "runs/collision-law/2026-07-30/w3_assets/ScreenSpot-Pro"
 ROSTER_PATH = RUN_DIR / "configs/g1_roster.yaml"
 
 
+def scoring_image(crop, model, region_index):
+    if model == "GTA1-72B" and region_index != 0:
+        return crop.resize((crop.width * 2, crop.height * 2), Image.Resampling.BICUBIC)
+    return crop
+
+
 def completed_ids(path):
     if not path.exists():
         return set()
@@ -73,7 +79,8 @@ def main():
                 region = by_index[region_index]
                 left, top, right, bottom = region["region"]
                 crop = image if region_index == 0 else image.crop((left, top, right, bottom))
-                prompt, resized, resized_size = prompt_for(args.model, spec, processor, crop, source["instruction"])
+                model_input = scoring_image(crop, args.model, region_index)
+                prompt, resized, resized_size = prompt_for(args.model, spec, processor, model_input, source["instruction"])
                 requests.append({"prompt": prompt, "multi_modal_data": {"image": resized}})
                 metadata.append((region, crop.size, resized_size))
             predictions = []
