@@ -142,7 +142,7 @@ def infer(image, instruction, model_type, processor, model, seed, temperature, o
         point = None
     elif model_type == "gta1":
         point = [parsed[0] * image.width / resized_width + offset_x, parsed[1] * image.height / resized_height + offset_y]
-    elif parsed[0] <= 1000 and parsed[1] <= 1000:
+    elif 0 <= parsed[0] <= 1000 and 0 <= parsed[1] <= 1000:
         point = [parsed[0] / 1000 * image.width + offset_x, parsed[1] / 1000 * image.height + offset_y]
     else:
         point = None
