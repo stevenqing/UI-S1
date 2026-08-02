@@ -134,7 +134,7 @@ class OfficialModel:
         self.llm = LLM(
             model=str(MODEL_DIR), trust_remote_code=True, tensor_parallel_size=1,
             limit_mm_per_prompt={"image": 1}, max_model_len=16384,
-            gpu_memory_utilization=0.85, enforce_eager=True,
+            gpu_memory_utilization=0.65, enforce_eager=True,
             mm_processor_kwargs={"min_pixels": 10000, "max_pixels": 5000000},
         )
 

@@ -28,6 +28,10 @@ official_protocol:
   anchor_tolerance_absolute: 0.01
   anchor_pass_requires: abs_UI_Zoomer_minus_0.410_le_0.01
   baseline_parity: descriptive_abs_baseline_minus_0.276_le_0.01
+  runtime:
+    gpu_memory_utilization: 0.65
+    reason: coexist_with_protected_PID_1814
+    semantic_effect: KV_cache_reservation_only
 
 microchain_ablation:
   global_samples: 3
