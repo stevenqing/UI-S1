@@ -1,0 +1,8 @@
+raw/
+shards/
+logs/
+models/
+smoke/
+__pycache__/
+*.jsonl
+*.parquet

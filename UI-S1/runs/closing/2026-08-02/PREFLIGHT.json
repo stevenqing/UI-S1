@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-08-02",
+  "status": "PASS_WITH_NEW_F2_F3_INFERENCE_REQUIRED",
+  "upstream_head": "cb872aa04ce542936b22d54a6506954713a7f824",
+  "F1": {
+    "status": "READY_ZERO_GPU",
+    "rows": 1581,
+    "single_lineage_pools": ["gta1_12views", "qwen3_12views", "uitars_12views"],
+    "mixed_pool": "three_lineages_4x3"
+  },
+  "F2": {
+    "status": "READY_NEW_GTA1_INFERENCE",
+    "existing_samples_per_row": 5,
+    "required_samples_per_row": 16,
+    "mixed_sampling": "UNAVAILABLE_NO_PREEXISTING_CROSS_LINEAGE_RANDOM_TRACES",
+    "cross_control": "READY_WITH_NEW_GTA1_SAMPLES_AND_FROZEN_GTA1_VIEWS"
+  },
+  "F3": {
+    "status": "READY_NEW_OFFICIAL_ANCHOR_INFERENCE",
+    "source_commit": "2c1125067958df2468663004b2b4b7c50557da25",
+    "checkpoint_path": "runs/mind2web-tongui/2026-07-28/models/Qwen2.5-VL-7B-Instruct",
+    "checkpoint_shards": 5,
+    "checkpoint_status": "PRESENT_16G",
+    "dataset_rows": 1581
+  },
+  "F4": {
+    "status": "READY_ZERO_GPU",
+    "area_bins": 5,
+    "rows": 1581
+  },
+  "paper_only_references": {
+    "MVP_GRPO_selector": {
+      "accuracy": 0.628,
+      "comparable": false
+    },
+    "ZoomClick_Venus72B": {
+      "accuracy": 0.731,
+      "comparable": false,
+      "source_requires_external_citation_verification": true
+    }
+  },
+  "protected_pid_1814_rule": "never_kill_or_modify",
+  "raw_artifacts_tracked": false
+}

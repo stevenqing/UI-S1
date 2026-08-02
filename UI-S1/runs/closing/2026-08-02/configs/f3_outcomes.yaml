@@ -1,0 +1,51 @@
+schema_version: 1
+frozen_at_utc: "2026-08-02"
+result_blind: true
+
+source:
+  repository: ZJU-REAL/UI-Zoomer
+  commit: 2c1125067958df2468663004b2b4b7c50557da25
+  implementation: UI-Zoomer/uizoomer.py
+  model: Qwen/Qwen2.5-VL-7B-Instruct
+  local_model_path: runs/mind2web-tongui/2026-07-28/models/Qwen2.5-VL-7B-Instruct
+  model_revision: cc594898137f460bfe9f0759e9844b3ce807cfb5
+  benchmark: ScreenSpot-Pro
+  rows: 1581
+
+official_protocol:
+  global_samples: 8
+  global_temperature: 0.9
+  global_top_p: 1.0
+  gating_threshold: 1.5
+  sigma_scale: 2.5
+  minimum_crop_pixels: 512
+  refinement_samples: 1
+  refinement_temperature: 0.0
+  reported_baseline_accuracy: 0.276
+  reported_UI_Zoomer_accuracy: 0.410
+  anchor_tolerance_absolute: 0.01
+  anchor_pass_requires: abs_UI_Zoomer_minus_0.410_le_0.01
+  baseline_parity: descriptive_abs_baseline_minus_0.276_le_0.01
+
+microchain_ablation:
+  global_samples: 3
+  otherwise_same_official_gate_crop_and_refinement: true
+  fidelity_tolerance_absolute: 0.01
+  length_sensitive_if: official_K8_minus_K3_accuracy_gt_0.01
+
+outcomes:
+  anchor_fail:
+    condition: abs_UI_Zoomer_minus_0.410_gt_0.01
+    action: remove_X2_numbers_from_paper_and_report_reproduction_unavailable_in_limitations
+  anchor_pass_microchain_faithful:
+    condition: anchor_pass_and_official_K8_minus_K3_accuracy_le_0.01
+    action: retain_X2_as_budget_normalized_observation_not_method_evaluation
+  anchor_pass_microchain_length_sensitive:
+    condition: anchor_pass_and_official_K8_minus_K3_accuracy_gt_0.01
+    action: freeze_separate_K8_budget_matching_amendment_then_rerun_Q2_Q4_and_replace_X2_conclusion
+
+prohibitions:
+  - no_threshold_or_sigma_retuning
+  - no_target_result_based_parser_change
+  - no_switch_to_ZoomClick
+  - no_X2_use_in_R1_R4
