@@ -37,13 +37,21 @@ def main():
     if any(value.get("status") != "PASS" for value in results.values()):
         raise ValueError("Closing F1-F4 incomplete")
     f1, f2, f3, f4 = (results[name] for name in ("F1", "F2", "F3", "F4"))
+    k8_x2 = None
+    if f3["outcome"] == "anchor_pass_microchain_length_sensitive":
+        k8_path = run / "f3_k8_x2.json"
+        k8_x2 = load(k8_path)
+        if k8_x2.get("status") != "PASS" or not k8_x2.get("replaces_K3_X2_conclusion"):
+            raise ValueError("Closing K8 X2 replacement is incomplete")
+        paths["K8_X2"] = k8_path
+        results["K8_X2"] = k8_x2
     primary = f1["comparisons"]["mixed_N12_M1_vs_v_only_GTA1_N12_M1"]
     b3 = f1["comparisons"]["mixed_N12_B3_vs_v_only_GTA1_N12_B3"]
     smallest = f4["area_strata"][0]
     if f3["outcome"] == "anchor_fail":
         x2_treatment = "Remove X2 numbers from the paper; state only that the official UI-Zoomer anchor was not reproduced."
     elif f3["outcome"] == "anchor_pass_microchain_length_sensitive":
-        x2_treatment = "A separate result-free K8 budget-matching amendment and Q2/Q4 rerun are required before X2 can be finalized."
+        x2_treatment = "The paired fixed-27 K8 rerun replaces the K3 X2 conclusion; the K3 result remains historical and is excluded from the paper claim."
     else:
         x2_treatment = "Retain X2 only as a budget-normalized K3 observation, not an evaluation of official UI-Zoomer."
     title_scope = f2["prediction"]["title_scope"]
@@ -79,6 +87,8 @@ The proposed coverage-limited explanation is rejected. In the smallest area quin
 
 Official Qwen2.5-VL-7B baseline/K8/K3 accuracies are {pct(f3['accuracy']['baseline'])}, {pct(f3['accuracy']['K8'])}, and {pct(f3['accuracy']['K3'])}. The K8 anchor pass is `{f3['anchor_pass']}` and the frozen outcome is `{f3['outcome']}`. {x2_treatment}
 
+{'' if k8_x2 is None else f"The replacement Q1-Q4 K8 M1 accuracies are {pct(k8_x2['accuracy']['Q1']['M1_ccm'])}, {pct(k8_x2['accuracy']['Q2']['M1_ccm'])}, {pct(k8_x2['accuracy']['Q3']['M1_ccm'])}, and {pct(k8_x2['accuracy']['Q4']['M1_ccm'])}. Q4-highest is `{k8_x2['prediction']['Q4_highest']}`; the interaction is {pp(k8_x2['interactions']['M1_ccm']['point'])} with 99% CI [{pp(k8_x2['interactions']['M1_ccm']['ci_99'][0])}, {pp(k8_x2['interactions']['M1_ccm']['ci_99'][1])}]."}
+
 X2 never enters R1-R4.
 
 ## Confidence and deployment tool
@@ -101,7 +111,7 @@ The paper should lead with R1 and R4, use R2 as the portable formulation, and pr
     status = {
         "schema_version": 1,
         "date": "2026-08-02",
-        "status": "COMPLETE" if f3["outcome"] != "anchor_pass_microchain_length_sensitive" else "REQUIRES_K8_X2_RERUN",
+        "status": "COMPLETE",
         "claims": {
             "R1": "SUPPORTED",
             "R2": "SUPPORTED_B3_SAFEGROUND_PLUS_ORACLE_DIAGNOSTIC",
@@ -110,6 +120,7 @@ The paper should lead with R1 and R4, use R2 as the portable formulation, and pr
         },
         "F3_outcome": f3["outcome"],
         "X2_treatment": x2_treatment,
+        "K8_X2_prediction": None if k8_x2 is None else k8_x2["prediction"],
         "artifacts": {
             name: {"path": str(path.relative_to(run)), "sha256": sha256_file(path), "status": results[name]["status"]}
             for name, path in paths.items()
@@ -119,6 +130,7 @@ The paper should lead with R1 and R4, use R2 as the portable formulation, and pr
             "F2_resamples": f2["slopes"]["S_only"]["GUI_RC"]["resamples"],
             "F3_rows": f3["rows"],
             "F4_rows": sum(record["rows"] for record in f4["area_strata"]),
+            "K8_X2_rows": None if k8_x2 is None else k8_x2["rows"],
             "protected_pid_1814_modified": False,
         },
     }
