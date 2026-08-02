@@ -1,56 +1,89 @@
 {
-  "development_inventory": {
-    "gta1_12views": {
-      "M1_ccm": 0.6040480708412397,
-      "mean_dev_failure_kappa": 0.6888414786068616,
-      "pass_at_12": 0.7280202403542062
+  "claim_boundary": "Ten observations from two new pools are a minimal low-power held-out validation.",
+  "fit_sha256": "28804f21b4e47b76e1fbafcc1d782ec556a3b98ab9aab330e0fe2b693cf7434d",
+  "heldout_observations": 10,
+  "heldout_pools": [
+    "Q2",
+    "Q4"
+  ],
+  "minimum_rho": 0.7,
+  "prediction_X6": true,
+  "records": [
+    {
+      "actual_heldout_pass_at_12": 0.6337579617834395,
+      "feature": 0.014148229640862745,
+      "fold": 0,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6984557577805165
     },
-    "gta1_qwen3_6x2": {
-      "M1_ccm": 0.6388361796331435,
-      "mean_dev_failure_kappa": 0.6469354584736349,
-      "pass_at_12": 0.7855787476280834
+    {
+      "actual_heldout_pass_at_12": 0.7170418006430869,
+      "feature": 0.0150585697312735,
+      "fold": 1,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6994294690853863
     },
-    "gta1_uitars_6x2": {
-      "M1_ccm": 0.6204933586337761,
-      "mean_dev_failure_kappa": 0.6056219780275267,
-      "pass_at_12": 0.756483238456673
+    {
+      "actual_heldout_pass_at_12": 0.5905044510385756,
+      "feature": 0.012471399427895578,
+      "fold": 2,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.696662198920578
     },
-    "qwen3_12views": {
-      "M1_ccm": 0.5679949399114484,
-      "mean_dev_failure_kappa": 0.7121733616818193,
-      "pass_at_12": 0.7419354838709677
+    {
+      "actual_heldout_pass_at_12": 0.5065359477124183,
+      "feature": 0.013138490825683283,
+      "fold": 3,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6973757283391431
     },
-    "qwen3_uitars_6x2": {
-      "M1_ccm": 0.6040480708412397,
-      "mean_dev_failure_kappa": 0.6301374028599588,
-      "pass_at_12": 0.767235926628716
+    {
+      "actual_heldout_pass_at_12": 0.5239616613418531,
+      "feature": 0.013934547497029676,
+      "fold": 4,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6982272006497356
     },
-    "three_lineages_4x3": {
-      "M1_ccm": 0.6382036685641999,
-      "mean_dev_failure_kappa": 0.5937074367406399,
-      "pass_at_12": 0.7919038583175205
+    {
+      "actual_heldout_pass_at_12": 0.7898089171974523,
+      "feature": 0.11026723093139994,
+      "fold": 0,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8012658604611126
     },
-    "three_lineages_4x3_shuffled_control": {
-      "M1_ccm": 0.5863377609108159,
-      "mean_dev_failure_kappa": 0.6909263465010176,
-      "pass_at_12": 0.7052498418722327
+    {
+      "actual_heldout_pass_at_12": 0.8713826366559485,
+      "feature": 0.11904477059235162,
+      "fold": 1,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8106544281918334
     },
-    "uitars_12views": {
-      "M1_ccm": 0.5243516761543326,
-      "mean_dev_failure_kappa": 0.6759944326771599,
-      "pass_at_12": 0.7001897533206831
+    {
+      "actual_heldout_pass_at_12": 0.7744807121661721,
+      "feature": 0.10465846630237989,
+      "fold": 2,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.7952666546882826
+    },
+    {
+      "actual_heldout_pass_at_12": 0.6928104575163399,
+      "feature": 0.10128634590154895,
+      "fold": 3,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.7916597919451624
+    },
+    {
+      "actual_heldout_pass_at_12": 0.7092651757188498,
+      "feature": 0.1093044209480615,
+      "fold": 4,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8002360266933883
     }
-  },
-  "development_pool_count": 8,
-  "fit_allowed": true,
-  "heldout_sources": {
-    "X2": "UNAVAILABLE",
-    "X5": "UNAVAILABLE"
-  },
-  "heldout_spearman": "NOT_EVALUATED",
-  "prediction_X6": "NOT_EVALUATED",
-  "prediction_threshold": 0.7,
+  ],
   "schema_version": 1,
-  "status": "BLOCKED_NO_HELDOUT_POOLS",
-  "warning": "The eight L2 pools cannot serve as both fitting and held-out evaluation pools."
+  "spearman": {
+    "p_value": 0.0003436121977632824,
+    "rho": 0.9030303030303028
+  },
+  "status": "PASS"
 }
