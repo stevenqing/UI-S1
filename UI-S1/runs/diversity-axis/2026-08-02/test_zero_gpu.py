@@ -2,6 +2,7 @@ import unittest
 
 from x7_safeground_port import compute_uncertainty, region_scores
 from x2.zoom_port import adaptive_crop, box_iou, deterministic_seed, gate, point_to_box
+from x2.x2_composability import interaction_classification
 
 
 class SafeGroundPortTest(unittest.TestCase):
@@ -52,6 +53,11 @@ class ZoomPortTest(unittest.TestCase):
         first = deterministic_seed("row", "Q2", "GTA1", 0, 0)
         self.assertEqual(first, deterministic_seed("row", "Q2", "GTA1", 0, 0))
         self.assertNotEqual(first, deterministic_seed("row", "Q2", "GTA1", 0, 1))
+
+    def test_interaction_classifications(self):
+        self.assertEqual(interaction_classification([-0.01, 0.02]), "NEAR_ADDITIVE")
+        self.assertEqual(interaction_classification([0.01, 0.02]), "SUPER_ADDITIVE")
+        self.assertEqual(interaction_classification([-0.03, -0.01]), "SUB_ADDITIVE")
 
 
 if __name__ == "__main__":
