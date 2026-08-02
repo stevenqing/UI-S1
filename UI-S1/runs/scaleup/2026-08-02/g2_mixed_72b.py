@@ -60,7 +60,7 @@ def candidate(score, region, model, view_index):
     }
 
 
-def build_pool(labels, regions, scores, kind, seed=None):
+def build_pool(labels, regions, scores, kind, seed=None, p1_budget=8):
     rows = []
     for row_id in sorted(labels):
         source = regions[row_id]
@@ -68,7 +68,7 @@ def build_pool(labels, regions, scores, kind, seed=None):
         by_score = {model: {value["region_index"]: value for value in scores[model][row_id]["predictions"]} for model in MODEL_ORDER}
         candidates = []
         if kind == "P1":
-            for slot, region_index in enumerate(range(12)):
+            for slot, region_index in enumerate(range(p1_budget)):
                 candidates.append(candidate(by_score["GTA1-72B"][region_index], by_region[region_index], "GTA1-72B", slot))
         else:
             indices = list(range(4)) if kind == "P2" else [0, *source["perturbed_region_indices"][str(seed)]]
@@ -106,7 +106,8 @@ def main():
     paths = dict(zip(MODEL_ORDER, (args.gta1, args.venus, args.qwen35)))
     scores = {model: load_unique(paths[model], model) for model in MODEL_ORDER}
     for model in MODEL_ORDER: validate_scores(regions, scores[model], model)
-    p1 = compact_evaluation(build_pool(labels, regions, scores, "P1"))
+    p1_budget = protocol["cells"]["P1"]["selected_budget"]
+    p1 = compact_evaluation(build_pool(labels, regions, scores, "P1", p1_budget=p1_budget))
     p2 = compact_evaluation(build_pool(labels, regions, scores, "P2"))
     seeds = protocol["proposal_sensitivity"]["seeds"]
     perturbed = {str(seed): compact_evaluation(build_pool(labels, regions, scores, "MDE", seed)) for seed in seeds}
@@ -116,14 +117,22 @@ def main():
     threshold = g1["gate"]["G2_effective_threshold"]
     system_sota = p2_m1 > protocol["decisions"]["standard_system_sota"]["threshold"] and p2_m1 - protocol["decisions"]["standard_system_sota"]["threshold"] > mde
     effective = p2_m1 > threshold and p2_m1 - threshold > mde
+    if system_sota:
+        outcome = "SYSTEM_SOTA"
+    elif effective:
+        outcome = "EFFECTIVE_THRESHOLD_RESULT"
+    elif p2_m1 > 0.704:
+        outcome = "ABOVE_PAPER_MODEL_REFERENCE_ONLY"
+    else:
+        outcome = "BELOW_PAPER_MODEL_REFERENCE"
     unique_counts = {model: sum(len(row["required_region_indices_by_model"][model]) for row in regions.values()) for model in MODEL_ORDER}
     result = {
         "schema_version": 1, "status": "PASS", "rows": 1581,
-        "P0_bare": g1["bare"], "P1_GTA1_72B": compact(p1), "P2_mixed_72B": compact(p2),
+        "P0_bare": g1["bare"], "P1_GTA1_72B": {"budget": p1_budget, **compact(p1)}, "P2_mixed_72B": {"budget": 12, **compact(p2)},
         "proposal_sensitivity": {"seeds": seeds, "M1_accuracies": seed_accuracies, "sample_sd": mde / 2, "MDE": mde, "evaluations": {seed: compact(value) for seed, value in perturbed.items()}},
         "compute": {"primary_P2_scoring_forwards": 1581 * 12, "unique_scored_regions_by_model": unique_counts, "total_unique_scoring_forwards": sum(unique_counts.values())},
-        "comparisons": {"P2_M1_minus_P1_M1": p2_m1 - p1["accuracy"]["M1_ccm"], "P2_M1_minus_73_1": p2_m1 - 0.731, "P2_M1_minus_70_4": p2_m1 - 0.704},
-        "decision": {"effective_threshold": threshold, "effective_threshold_pass": effective, "system_SOTA_73_1_pass": system_sota, "P2_above_P1": p2_m1 > p1["accuracy"]["M1_ccm"], "outcome": "SYSTEM_SOTA" if system_sota else "EFFECTIVE_CONCENTRATED_RESULT" if effective else "CONTROLLED_MIXED_GAIN_ONLY" if p2_m1 > p1["accuracy"]["M1_ccm"] else "SCALEUP_COUNTEREXAMPLE"},
+        "comparisons": {"P2_M1_minus_P1_M1_unequal_budget_context": p2_m1 - p1["accuracy"]["M1_ccm"], "P2_M1_minus_73_1": p2_m1 - 0.731, "P2_M1_minus_70_4": p2_m1 - 0.704},
+        "decision": {"effective_threshold": threshold, "effective_threshold_pass": effective, "system_SOTA_73_1_pass": system_sota, "equal_budget_allocation_adjudication": "UNAVAILABLE_P1_N8_FALLBACK", "P2_above_P1_unequal_budget_context": p2_m1 > p1["accuracy"]["M1_ccm"], "outcome": outcome},
         "paper_only_references": protocol["paper_only_references"],
         "sources": {"G1": {"path": str(args.g1), "sha256": sha256_file(args.g1)}, "regions": {"path": str(args.regions), "sha256": sha256_file(args.regions)}, **{model: {"path": str(paths[model]), "sha256": sha256_file(paths[model])} for model in MODEL_ORDER}},
     }

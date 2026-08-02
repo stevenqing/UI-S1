@@ -1,8 +1,11 @@
 import unittest
 from unittest.mock import patch
+import json
+import tempfile
+from pathlib import Path
 
 from g1_lineage_gate import adjudicate_gate, cohen_kappa
-from g2_prepare_regions import clear_singleton_torchrun_environment
+from g2_prepare_regions import clear_singleton_torchrun_environment, normalize_existing_manifest, required_region_indices
 
 
 GATE = {
@@ -19,6 +22,32 @@ GATE = {
 
 
 class ScaleUpGateTest(unittest.TestCase):
+    def test_p1_n8_required_region_union(self):
+        perturbations = {"1": [2, 8, 10], "2": [3, 8, 11], "3": [2, 9, 11]}
+        self.assertEqual(required_region_indices(perturbations, "GTA1-72B", 8), list(range(12)))
+        self.assertEqual(required_region_indices(perturbations, "UI-Venus-Ground-72B", 8), [0, 1, 2, 3, 8, 9, 10, 11])
+
+    def test_existing_manifest_normalization_changes_only_requirements(self):
+        row = {
+            "id": "row",
+            "regions_sha256": "frozen",
+            "regions": [{"region_index": index} for index in range(12)],
+            "perturbed_region_indices": {"1": [2, 4, 6], "2": [3, 5, 7], "3": [2, 5, 7]},
+            "required_region_indices_by_model": {
+                "GTA1-72B": list(range(12)),
+                "UI-Venus-Ground-72B": list(range(8)),
+                "Qwen3.5-122B-A10B": list(range(8)),
+            },
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.jsonl"
+            path.write_text(json.dumps(row) + "\n")
+            self.assertEqual(normalize_existing_manifest(path, 8), 1)
+            normalized = json.loads(path.read_text())
+            self.assertEqual(normalized["required_region_indices_by_model"]["GTA1-72B"], list(range(8)))
+            self.assertEqual(normalized["regions_sha256"], "frozen")
+            self.assertEqual(normalized["regions"], row["regions"])
+
     def test_singleton_host_world_size_is_not_torchrun(self):
         with patch.dict("os.environ", {"WORLD_SIZE": "1", "RANK": "0"}, clear=True):
             clear_singleton_torchrun_environment()

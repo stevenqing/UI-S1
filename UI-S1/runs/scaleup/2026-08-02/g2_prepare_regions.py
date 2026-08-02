@@ -60,6 +60,36 @@ def completed_ids(path):
     return set(ids)
 
 
+def required_region_indices(perturbations, model, p1_budget):
+    perturb_union = {index for selected in perturbations.values() for index in selected}
+    base = range(p1_budget) if model == "GTA1-72B" else range(4)
+    return sorted(set(base) | perturb_union)
+
+
+def normalize_existing_manifest(path, p1_budget):
+    if not path.exists() or path.stat().st_size == 0:
+        return 0
+    rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    changed = 0
+    for row in rows:
+        expected = {
+            model: required_region_indices(row["perturbed_region_indices"], model, p1_budget)
+            for model in ("GTA1-72B", "UI-Venus-Ground-72B", "Qwen3.5-122B-A10B")
+        }
+        if row["required_region_indices_by_model"] != expected:
+            row["required_region_indices_by_model"] = expected
+            changed += 1
+    if changed:
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        with temporary.open("w") as output:
+            for row in rows:
+                output.write(json.dumps(row, ensure_ascii=True) + "\n")
+            output.flush()
+            os.fsync(output.fileno())
+        os.replace(temporary, path)
+    return changed
+
+
 def clear_singleton_torchrun_environment():
     if os.environ.get("WORLD_SIZE") == "1" and "LOCAL_RANK" not in os.environ:
         os.environ.pop("WORLD_SIZE", None)
@@ -85,6 +115,7 @@ def main():
     roster = yaml.safe_load(ROSTER_PATH.read_text())
     model_spec = roster["models"]["GTA1-72B"]
     sensitivity = protocol["proposal_sensitivity"]
+    p1_budget = protocol["cells"]["P1"]["selected_budget"]
     clear_singleton_torchrun_environment()
     config = Qwen2_5_VLConfig.from_pretrained(args.model_dir, local_files_only=True)
     config.target_token_id = ","
@@ -108,6 +139,9 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if args.output.exists() and not args.resume:
         raise FileExistsError(args.output)
+    normalized_rows = normalize_existing_manifest(args.output, p1_budget) if args.resume else 0
+    if normalized_rows:
+        print(json.dumps({"normalized_existing_rows": normalized_rows, "P1_budget": p1_budget}), flush=True)
     completed = completed_ids(args.output) if args.resume else set()
     model_index_hash = sha256_file(args.model_dir / "model.safetensors.index.json")
     protocol_hash = canonical_hash(protocol["proposer"] | {"proposal_sensitivity": sensitivity})
@@ -125,8 +159,8 @@ def main():
                 model.device,
                 max_regions=sensitivity["source_ranked_regions"],
             )
-            if len(ranked) < 11:
-                raise ValueError(f"G2 P1 requires at least 11 attention regions: {source['id']}")
+            if len(ranked) < p1_budget - 1:
+                raise ValueError(f"G2 P1 N{p1_budget} requires at least {p1_budget - 1} attention regions: {source['id']}")
             regions = [{
                 "region_index": 0,
                 "region": [0, 0, image.width, image.height],
@@ -140,11 +174,9 @@ def main():
                 "official_rank": index,
             } for index, item in enumerate(ranked, start=1))
             perturbations = perturbed_indices(regions[1:], sensitivity["seeds"], source["stable_index"])
-            perturb_union = sorted({index for selected in perturbations.values() for index in selected})
             required = {
-                "GTA1-72B": sorted(set(range(12)) | set(perturb_union)),
-                "UI-Venus-Ground-72B": sorted(set(range(4)) | set(perturb_union)),
-                "Qwen3.5-122B-A10B": sorted(set(range(4)) | set(perturb_union)),
+                model: required_region_indices(perturbations, model, p1_budget)
+                for model in ("GTA1-72B", "UI-Venus-Ground-72B", "Qwen3.5-122B-A10B")
             }
             artifact = {
                 **source,

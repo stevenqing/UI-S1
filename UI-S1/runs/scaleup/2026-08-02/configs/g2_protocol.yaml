@@ -28,6 +28,9 @@ cells:
     primary_budget: 12
     fallback_budget: 8
     fallback_allowed_only_before_inference: true
+    selected_budget: 8
+    fallback_reason: label_free_official_proposer_returned_only_7_unique_crops_on_stata_windows_27
+    comparison_to_P2: unequal_budget_context_control
   P2:
     description: three_lineages_by_four_shared_regions
     models:

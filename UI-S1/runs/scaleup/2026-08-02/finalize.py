@@ -72,10 +72,10 @@ def build_table(run, z, g1, g2):
         ])
         for label, key in (("P1 GTA1-72B single lineage", "P1_GTA1_72B"), ("P2 mixed 72B", "P2_mixed_72B")):
             accuracy = g2[key]["accuracy"]
-            lines.append(f"| {label} | 12 | {pct(accuracy['B3_mvp'])} | {pct(accuracy['M1_ccm'])} | {pct(accuracy['pass_at_n'])} |")
+            lines.append(f"| {label} | {g2[key]['budget']} | {pct(accuracy['B3_mvp'])} | {pct(accuracy['M1_ccm'])} | {pct(accuracy['pass_at_n'])} |")
         lines.extend([
             "",
-            f"P2-P1 M1 is {pp(g2['comparisons']['P2_M1_minus_P1_M1'])}. Proposal MDE is {pp(g2['proposal_sensitivity']['MDE'])}. Outcome: `{g2['decision']['outcome']}`.",
+            f"P2-P1 M1 is {pp(g2['comparisons']['P2_M1_minus_P1_M1_unequal_budget_context'])}, reported only as unequal-budget context (P2 N12 versus P1 N{g2['P1_GTA1_72B']['budget']}). Proposal MDE is {pp(g2['proposal_sensitivity']['MDE'])}. Outcome: `{g2['decision']['outcome']}`.",
             "",
         ])
     lines.extend([
@@ -116,7 +116,7 @@ def main():
     g2_text = (
         "G2 was cancelled by the preregistered pass@3 ceiling rule."
         if g2 is None else
-        f"P1 GTA1-72B M1 is {pct(g2['P1_GTA1_72B']['accuracy']['M1_ccm'])}; P2 mixed M1 is {pct(g2['P2_mixed_72B']['accuracy']['M1_ccm'])}, a {pp(g2['comparisons']['P2_M1_minus_P1_M1'])} controlled difference. The proposal MDE is {pp(g2['proposal_sensitivity']['MDE'])}. The frozen outcome is `{g2['decision']['outcome']}`."
+        f"P1 GTA1-72B N{g2['P1_GTA1_72B']['budget']} M1 is {pct(g2['P1_GTA1_72B']['accuracy']['M1_ccm'])}; P2 mixed N12 M1 is {pct(g2['P2_mixed_72B']['accuracy']['M1_ccm'])}. Their {pp(g2['comparisons']['P2_M1_minus_P1_M1_unequal_budget_context'])} difference is unequal-budget context, not an equal-compute claim. The proposal MDE is {pp(g2['proposal_sensitivity']['MDE'])}. The frozen outcome is `{g2['decision']['outcome']}`."
     )
     report = f"""# Scale-Up Gate Report
 
