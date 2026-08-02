@@ -12,9 +12,11 @@ RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[2]
 ALLOCATION_DIR = ROOT / "runs/allocation-law/2026-08-01"
 DIVERSITY_DIR = ROOT / "runs/diversity-axis/2026-08-02"
+H1_DIR = ROOT / "runs/ccm-h2h/2026-07-31/h1"
 sys.path.insert(0, str(DIVERSITY_DIR / "x1"))
 sys.path.insert(0, str(DIVERSITY_DIR))
 sys.path.insert(0, str(ALLOCATION_DIR))
+sys.path.insert(0, str(H1_DIR))
 from guirc_port import region_consistency_vote
 from x3_curve_stats import slope
 from allocation_eval import group_folds, load_gta1, load_manifest
