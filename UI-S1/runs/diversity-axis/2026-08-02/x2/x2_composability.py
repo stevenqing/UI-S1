@@ -97,6 +97,8 @@ def load_trace(paths, cell, model, expected_forwards):
                 raise ValueError(f"X2 invalid confidence: {cell}/{model}/{row_id}/{chain}/{slot}")
             if slot < 3 and (prediction["branch"] != "global_sample" or prediction["temperature"] != 0.9):
                 raise ValueError(f"X2 global slot mismatch: {cell}/{model}/{row_id}/{chain}/{slot}")
+            if slot < 3 and prediction["region"] != [0, 0, *row["img_size"]]:
+                raise ValueError(f"X2 global region mismatch: {cell}/{model}/{row_id}/{chain}/{slot}")
             if slot == 3 and prediction["branch"] == "adaptive_crop_refine" and prediction["temperature"] != 0.0:
                 raise ValueError(f"X2 crop temperature mismatch: {cell}/{model}/{row_id}/{chain}")
             if slot == 3 and prediction["branch"] == "global_confirmation" and prediction["temperature"] != 0.9:
@@ -117,6 +119,9 @@ def load_trace(paths, cell, model, expected_forwards):
                     raise ValueError(f"X2 gate recomputation mismatch: {cell}/{model}/{row_id}/{chain}/{key}")
             if report["crop"] != expected_crop or report["branch"] != expected_branch or chain_predictions[3]["branch"] != expected_branch:
                 raise ValueError(f"X2 crop/branch recomputation mismatch: {cell}/{model}/{row_id}/{chain}")
+            expected_region = expected_crop if expected_crop is not None else [0, 0, *row["img_size"]]
+            if chain_predictions[3]["region"] != expected_region:
+                raise ValueError(f"X2 branch region mismatch: {cell}/{model}/{row_id}/{chain}")
         indexed[row_id] = row
     if len(indexed) != 1581:
         raise ValueError(f"X2 requires 1,581 identities: {cell}/{model}, found {len(indexed)}")
