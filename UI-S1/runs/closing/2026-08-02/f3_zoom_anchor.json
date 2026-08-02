@@ -1,0 +1,40 @@
+{
+  "K8_minus_K3": 0.03352308665401643,
+  "accuracy": {
+    "K3": 0.3668564199873498,
+    "K8": 0.40037950664136623,
+    "baseline": 0.18089816571790007
+  },
+  "anchor_pass": true,
+  "delta_to_reported": {
+    "K8": -0.009620493358633742,
+    "baseline": -0.09510183428209995
+  },
+  "method_counts": {
+    "K3": {
+      "adaptive_crop_refine": 1545,
+      "crop_fail_fallback": 28,
+      "fallback_center": 4,
+      "gating_pass": 4
+    },
+    "K8": {
+      "adaptive_crop_refine": 1569,
+      "crop_fail_fallback": 8,
+      "fallback_center": 1,
+      "gating_pass": 3
+    }
+  },
+  "microchain_length_sensitive": true,
+  "outcome": "anchor_pass_microchain_length_sensitive",
+  "reported": {
+    "K8": 0.41,
+    "baseline": 0.276
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "source": {
+    "commit": "2c1125067958df2468663004b2b4b7c50557da25",
+    "repository": "ZJU-REAL/UI-Zoomer"
+  },
+  "status": "PASS"
+}
