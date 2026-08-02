@@ -50,6 +50,20 @@ outcomes:
     condition: anchor_pass_and_official_K8_minus_K3_accuracy_gt_0.01
     action: freeze_separate_K8_budget_matching_amendment_then_rerun_Q2_Q4_and_replace_X2_conclusion
 
+K8_X2_rerun:
+  required_only_for_outcome: anchor_pass_microchain_length_sensitive
+  budget_per_cell: 27
+  chains_per_cell: 3
+  candidates_per_chain: 9
+  shared_global_samples_per_chain: 8
+  fixed_ninth_candidate: independent_global_confirmation
+  adaptive_ninth_candidate: crop_refinement_if_triggered_else_same_global_confirmation
+  Q1_Q2_chains: [GTA1-7B, GTA1-7B, GTA1-7B]
+  Q3_Q4_chains: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  seed: 20260802
+  primary_rule: M1_ccm
+  bootstrap_resamples: 10000
+
 prohibitions:
   - no_threshold_or_sigma_retuning
   - no_target_result_based_parser_change
