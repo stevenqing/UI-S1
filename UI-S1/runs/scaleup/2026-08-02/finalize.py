@@ -134,7 +134,7 @@ Local bare scores and paper-only differences are reported in `MAIN_TABLE.md`. An
 
 {g2_text}
 
-The reported 70.4 and 73.1 values are paper-only context, not same-environment controls, and never enter a row-level paired significance test.
+The reported 70.4 and 73.1 values are independently source-verified but remain paper-only context, not same-environment controls, and never enter a row-level paired significance test. `REFERENCE_AUDIT.md` records the exact sources and protocol differences.
 
 ## 7B statistical close
 
