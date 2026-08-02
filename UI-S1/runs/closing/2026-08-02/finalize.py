@@ -49,6 +49,7 @@ def main():
     b3 = f1["comparisons"]["mixed_N12_B3_vs_v_only_GTA1_N12_B3"]
     graph = f1["third_drop_in_graph_centroid"]
     smallest = f4["area_strata"][0]
+    largest = f4["area_strata"][-1]
     if f3["outcome"] == "anchor_fail":
         x2_treatment = "Remove X2 numbers from the paper; state only that the official UI-Zoomer anchor was not reproduced."
     elif f3["outcome"] == "anchor_pass_microchain_length_sensitive":
@@ -82,7 +83,7 @@ V-only M1 slope has 99% CI [-0.004908, -0.000124] per forward, while Mixed has [
 
 ## Area mechanism
 
-The proposed coverage-limited explanation is rejected. In the smallest area quintile, Mixed pass@12 is {pct(smallest['pass_at_n']['mixed'])} versus V-only {pct(smallest['pass_at_n']['v_only'])}, a {pp(smallest['pass_at_n']['mixed_minus_v_only'])} oracle advantage. Yet M1 changes by {pp(smallest['M1_ccm']['mixed_minus_v_only'])}. Small-target degradation is therefore a headroom-realization/selection problem in this setup, not absence of a correct mixed candidate. Large targets show +8.23 pp M1 gain.
+The proposed coverage-limited explanation is rejected. In the smallest area quintile, Mixed pass@12 is {pct(smallest['pass_at_n']['mixed'])} versus V-only {pct(smallest['pass_at_n']['v_only'])}, a {pp(smallest['pass_at_n']['mixed_minus_v_only'])} oracle advantage. Yet M1 changes by {pp(smallest['M1_ccm']['mixed_minus_v_only'])}. Small-target degradation is therefore a headroom-realization/selection problem in this setup, not absence of a correct mixed candidate. Large targets show {pp(largest['M1_ccm']['mixed_minus_v_only'])} M1 gain.
 
 ## F3 and X2 disposition
 
@@ -115,7 +116,7 @@ The paper should lead with R1 and R4, use R2 as the portable formulation, and pr
         "status": "COMPLETE",
         "claims": {
             "R1": "SUPPORTED",
-            "R2": "SUPPORTED_B3_SAFEGROUND_PLUS_ORACLE_DIAGNOSTIC",
+            "R2": "SUPPORTED_B3_SAFEGROUND_GRAPH_CENTROID_PLUS_ORACLE_DIAGNOSTIC",
             "R3": "SUPPORTED_INTERNAL_CONTROLLED_ONLY",
             "R4": "SUPPORTED_FIXED_VIEW_SCOPE" if title_scope == "fixed_view_allocation_axis" else "SUPPORTED_SINGLE_MODEL_DIVERSITY_SCOPE",
         },
