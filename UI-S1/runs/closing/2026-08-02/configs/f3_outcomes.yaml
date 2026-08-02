@@ -13,6 +13,8 @@ source:
   rows: 1581
 
 official_protocol:
+  seed: 20260802
+  seed_semantics: per_row_hash_shard_invariant
   global_samples: 8
   global_temperature: 0.9
   global_top_p: 1.0
