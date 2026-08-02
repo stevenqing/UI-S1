@@ -52,9 +52,10 @@ def validate_scores(regions, scores, model):
 
 
 def candidate(score, region, model, view_index):
+    point = score["point"] if score["parse_ok"] else [-1.0, -1.0]
     return {
         "model": model, "view_index": view_index,
-        "point": list(map(float, score["point"])), "region": list(region["region"]),
+        "point": list(map(float, point)), "region": list(region["region"]),
         "coverage": float(region["coverage"]) if model == "GTA1-72B" else 0.0,
     }
 

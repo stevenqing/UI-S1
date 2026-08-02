@@ -57,6 +57,32 @@ def pair_result(left, right, pair_id, permutations, seed):
     }
 
 
+def adjudicate_gate(pass_at_3, kappas, gate):
+    gate_pass = pass_at_3 >= gate["pass_requires"]["minimum_pass_at_3"] and min(kappas) < gate["pass_requires"]["at_least_one_pairwise_kappa_below"]
+    concentrated = all(value >= gate["lineage_concentrated_if_all_pairwise_kappa_at_least"] for value in kappas)
+    cancelled = pass_at_3 < gate["cancel_g2_if_pass_at_3_below"]
+    if cancelled:
+        action = "CANCEL_G2_COMMON_FAILURE_CEILING"
+        threshold = None
+    elif concentrated:
+        action = "RUN_G2_LINEAGE_CONCENTRATED_RELAXED_THRESHOLD"
+        threshold = gate["concentrated_g2_effective_threshold"]
+    elif gate_pass:
+        action = "RUN_G2_STANDARD_SYSTEM_SOTA_THRESHOLD"
+        threshold = gate["default_g2_threshold"]
+    else:
+        action = "RUN_G2_MARGINAL_GATE_STANDARD_THRESHOLD"
+        threshold = gate["default_g2_threshold"]
+    return {
+        "G1_pass": gate_pass,
+        "lineage_concentrated": concentrated,
+        "G2_cancelled": cancelled,
+        "G2_action": action,
+        "G2_effective_threshold": threshold,
+        "G2_stretch_threshold": gate["stretch_threshold"],
+    }
+
+
 def load_trace(path, model, spec, labels):
     rows = {}
     expected_protocol = canonical_hash(spec)
@@ -106,7 +132,8 @@ def main():
     bare = {}
     for model in MODEL_ORDER:
         success = np.asarray([
-            point_in_bbox(traces[model][row_id]["prediction"]["point"], labels[row_id]["target_bbox"])
+            traces[model][row_id]["prediction"]["parse_ok"]
+            and point_in_bbox(traces[model][row_id]["prediction"]["point"], labels[row_id]["target_bbox"])
             for row_id in ordered_ids
         ], dtype=np.int8)
         successes[model] = success
@@ -132,21 +159,7 @@ def main():
     pass_at_3 = float(np.mean(np.logical_or.reduce([successes[model].astype(bool) for model in MODEL_ORDER])))
     kappas = [record["observed_kappa"] for record in pairs.values()]
     gate = config["gate"]
-    gate_pass = pass_at_3 >= gate["pass_requires"]["minimum_pass_at_3"] and min(kappas) < gate["pass_requires"]["at_least_one_pairwise_kappa_below"]
-    concentrated = all(value >= gate["lineage_concentrated_if_all_pairwise_kappa_at_least"] for value in kappas)
-    cancelled = pass_at_3 < gate["cancel_g2_if_pass_at_3_below"]
-    if cancelled:
-        action = "CANCEL_G2_COMMON_FAILURE_CEILING"
-        threshold = None
-    elif concentrated:
-        action = "RUN_G2_LINEAGE_CONCENTRATED_RELAXED_THRESHOLD"
-        threshold = gate["concentrated_g2_effective_threshold"]
-    elif gate_pass:
-        action = "RUN_G2_STANDARD_SYSTEM_SOTA_THRESHOLD"
-        threshold = gate["default_g2_threshold"]
-    else:
-        action = "RUN_G2_MARGINAL_GATE_STANDARD_THRESHOLD"
-        threshold = gate["default_g2_threshold"]
+    gate_result = adjudicate_gate(pass_at_3, kappas, gate)
     result = {
         "schema_version": 1,
         "status": "PASS",
@@ -155,14 +168,7 @@ def main():
         "bare": bare,
         "pairwise_failure_kappa": pairs,
         "pass_at_3": pass_at_3,
-        "gate": {
-            "G1_pass": gate_pass,
-            "lineage_concentrated": concentrated,
-            "G2_cancelled": cancelled,
-            "G2_action": action,
-            "G2_effective_threshold": threshold,
-            "G2_stretch_threshold": gate["stretch_threshold"],
-        },
+        "gate": gate_result,
         "paper_only_anchors": config["paper_only_references"],
         "sources": {model: {"path": str(paths[model]), "sha256": sha256_file(paths[model])} for model in MODEL_ORDER},
     }
