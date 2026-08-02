@@ -76,8 +76,9 @@ def load_trace(paths, cell, model, expected_forwards):
         predictions = row["predictions"]
         if row["forward_count"] != expected_forwards or len(predictions) != expected_forwards:
             raise ValueError(f"X2 forward budget mismatch: {cell}/{model}/{row_id}")
-        if row["valid_candidate_count"] != expected_forwards:
-            raise ValueError(f"X2 requires {expected_forwards} valid candidates: {cell}/{model}/{row_id}")
+        actual_valid = sum(prediction["point"] is not None for prediction in predictions)
+        if row["valid_candidate_count"] != actual_valid:
+            raise ValueError(f"X2 valid-candidate count mismatch: {cell}/{model}/{row_id}")
         if canonical_hash(predictions) != row["prediction_sha256"]:
             raise ValueError(f"X2 prediction hash mismatch: {cell}/{model}/{row_id}")
         expected_pairs = [(chain, slot) for chain in range(3 if cell == "Q2" else 1) for slot in range(4)]
@@ -89,9 +90,12 @@ def load_trace(paths, cell, model, expected_forwards):
             if prediction["seed"] != expected_seed:
                 raise ValueError(f"X2 seed mismatch: {cell}/{model}/{row_id}/{chain}/{slot}")
             point = prediction["point"]
-            if point is None or len(point) != 2 or not all(math.isfinite(float(value)) for value in point):
+            if point is None:
+                if prediction["box"] is not None:
+                    raise ValueError(f"X2 invalid point has non-null box: {cell}/{model}/{row_id}/{chain}/{slot}")
+            elif len(point) != 2 or not all(math.isfinite(float(value)) for value in point):
                 raise ValueError(f"X2 invalid point: {cell}/{model}/{row_id}/{chain}/{slot}")
-            if prediction["box"] != point_to_box(point, *row["img_size"]):
+            elif prediction["box"] != point_to_box(point, *row["img_size"]):
                 raise ValueError(f"X2 point-box mismatch: {cell}/{model}/{row_id}/{chain}/{slot}")
             if not math.isfinite(prediction["confidence"]) or not 0 <= prediction["confidence"] <= 1:
                 raise ValueError(f"X2 invalid confidence: {cell}/{model}/{row_id}/{chain}/{slot}")
@@ -149,10 +153,11 @@ def validate_source_identity(traces, gta1):
 
 
 def candidate(prediction, model, view_index):
+    point = prediction["point"] if prediction["point"] is not None else [0.0, 0.0]
     return {
         "model": model,
         "view_index": view_index,
-        "point": [float(value) for value in prediction["point"]],
+        "point": [float(value) for value in point],
         "region": list(prediction["region"]),
         "coverage": 0.0,
     }
@@ -248,6 +253,18 @@ def gate_diagnostics(q2_trace, q4_traces):
             "branch_counts": dict(sorted(branches.items())),
             "mean_gate_score": float(np.mean([report["score"] for report in chain_reports])),
             "realized_forwards_per_row": 12,
+            "invalid_forwards": sum(
+                prediction["point"] is None
+                for trace in traces.values()
+                for row in trace.values()
+                for prediction in row["predictions"]
+            ),
+            "rows_with_invalid_forwards": len({
+                row_id
+                for trace in traces.values()
+                for row_id, row in trace.items()
+                if any(prediction["point"] is None for prediction in row["predictions"])
+            }),
         }
     return reports
 

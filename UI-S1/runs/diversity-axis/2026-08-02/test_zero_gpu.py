@@ -2,7 +2,7 @@ import unittest
 
 from x7_safeground_port import compute_uncertainty, region_scores
 from x2.zoom_port import adaptive_crop, box_iou, deterministic_seed, gate, point_to_box
-from x2.x2_composability import interaction_classification
+from x2.x2_composability import candidate, interaction_classification
 from x6_unlabeled_ranking import fit_ols, mean_pairwise_normalized_distance
 
 
@@ -59,6 +59,11 @@ class ZoomPortTest(unittest.TestCase):
         self.assertEqual(interaction_classification([-0.01, 0.02]), "NEAR_ADDITIVE")
         self.assertEqual(interaction_classification([0.01, 0.02]), "SUPER_ADDITIVE")
         self.assertEqual(interaction_classification([-0.03, -0.01]), "SUB_ADDITIVE")
+
+    def test_parse_failure_uses_frozen_sentinel(self):
+        value = candidate({"point": None, "region": [0, 0, 10, 10]}, "model", 2)
+        self.assertEqual(value["point"], [0.0, 0.0])
+        self.assertEqual(value["view_index"], 2)
 
 
 class PoolRankingTest(unittest.TestCase):
