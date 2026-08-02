@@ -44,7 +44,7 @@ def canonical_hash(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
-def load_trace(paths, family, model, expected_chains, num_shards):
+def load_trace(paths, family, model, expected_chains, num_shards, expected_rows=1581):
     rows = {}
     expected_model_hash = sha256_file(MODEL_PATHS[model] / "model.safetensors.index.json")
     for path in sorted(paths):
@@ -94,9 +94,17 @@ def load_trace(paths, family, model, expected_chains, num_shards):
                 expected_use = "refinement" if expected_crop is not None else "confirmation"
                 if report["crop"] != expected_crop or report["adaptive_uses"] != expected_use:
                     raise ValueError(f"K8 branch mismatch: {row_id}/{chain_index}")
+                expected_union = 10 if expected_crop is not None else 9
+                if report["fixed_forwards"] != 9 or report["adaptive_forwards"] != 9 or report["union_generated_forwards"] != expected_union:
+                    raise ValueError(f"K8 forward accounting mismatch: {row_id}/{chain_index}")
                 confirmation = chain["confirmation"]
                 if confirmation["seed"] != deterministic_seed(row_id, family, model, chain_index, "confirmation"):
                     raise ValueError(f"K8 confirmation seed mismatch: {row_id}/{chain_index}")
+                if confirmation["temperature"] != 0.9 or confirmation["region"] != [0, 0, width, height]:
+                    raise ValueError(f"K8 confirmation protocol mismatch: {row_id}/{chain_index}")
+                confirmation_point = confirmation["point"]
+                if confirmation_point is not None and (len(confirmation_point) != 2 or not all(math.isfinite(float(value)) for value in confirmation_point)):
+                    raise ValueError(f"K8 invalid confirmation point: {row_id}/{chain_index}")
                 if confirmation["box"] != point_to_box(confirmation["point"], width, height):
                     raise ValueError(f"K8 confirmation box mismatch: {row_id}/{chain_index}")
                 refinement = chain["refinement"]
@@ -106,10 +114,35 @@ def load_trace(paths, family, model, expected_chains, num_shards):
                 else:
                     if refinement is None or refinement["region"] != expected_crop:
                         raise ValueError(f"K8 refinement mismatch: {row_id}/{chain_index}")
+                    if refinement["seed"] != deterministic_seed(row_id, family, model, chain_index, "refinement") or refinement["temperature"] != 0.0:
+                        raise ValueError(f"K8 refinement seed/temperature mismatch: {row_id}/{chain_index}")
+                    refinement_point = refinement["point"]
+                    if refinement_point is not None and (len(refinement_point) != 2 or not all(math.isfinite(float(value)) for value in refinement_point)):
+                        raise ValueError(f"K8 invalid refinement point: {row_id}/{chain_index}")
+                    if refinement["box"] != point_to_box(refinement["point"], width, height):
+                        raise ValueError(f"K8 refinement box mismatch: {row_id}/{chain_index}")
             rows[row_id] = row
-    if len(rows) != 1581:
-        raise ValueError(f"K8 requires 1,581 identities: {family}/{model}, found {len(rows)}")
+    if len(rows) != expected_rows:
+        raise ValueError(f"K8 requires {expected_rows:,} identities: {family}/{model}, found {len(rows)}")
     return rows
+
+
+def validate_source_identity(traces, gta1):
+    stable_indices = {row_id: index for index, row_id in enumerate(sorted(gta1))}
+    for trace in traces:
+        if set(trace) != set(gta1):
+            raise ValueError("K8 trace/GTA1 identity mismatch")
+        for row_id, row in trace.items():
+            source = gta1[row_id]
+            expected = {
+                "stable_index": stable_indices[row_id],
+                "application": source["application"],
+                "img_filename": source["img_filename"],
+                "img_size": source["img_size"],
+                "instruction": source["instruction"],
+            }
+            if any(row[key] != value for key, value in expected.items()):
+                raise ValueError(f"K8 trace source metadata mismatch: {row_id}")
 
 
 def candidate(value, model, view_index):
@@ -185,6 +218,7 @@ def main():
         "Qwen3-VL-8B-Instruct": load_trace(args.mixed_qwen3, "mixed", "Qwen3-VL-8B-Instruct", 1, 1),
         "UI-TARS-7B-SFT": load_trace(args.mixed_uitars, "mixed", "UI-TARS-7B-SFT", 1, 2),
     }
+    validate_source_identity([single, *mixed.values()], gta1)
     cells = {
         "Q1_K8_single_fixed": build_single(gta1, single, False),
         "Q2_K8_single_adaptive": build_single(gta1, single, True),
