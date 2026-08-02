@@ -60,6 +60,12 @@ def completed_ids(path):
     return set(ids)
 
 
+def clear_singleton_torchrun_environment():
+    if os.environ.get("WORLD_SIZE") == "1" and "LOCAL_RANK" not in os.environ:
+        os.environ.pop("WORLD_SIZE", None)
+        os.environ.pop("RANK", None)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--inputs", type=Path, required=True)
@@ -79,6 +85,7 @@ def main():
     roster = yaml.safe_load(ROSTER_PATH.read_text())
     model_spec = roster["models"]["GTA1-72B"]
     sensitivity = protocol["proposal_sensitivity"]
+    clear_singleton_torchrun_environment()
     config = Qwen2_5_VLConfig.from_pretrained(args.model_dir, local_files_only=True)
     config.target_token_id = ","
     config.target_layer_idx = 20

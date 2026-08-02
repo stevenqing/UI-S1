@@ -1,6 +1,8 @@
 import unittest
+from unittest.mock import patch
 
 from g1_lineage_gate import adjudicate_gate, cohen_kappa
+from g2_prepare_regions import clear_singleton_torchrun_environment
 
 
 GATE = {
@@ -17,6 +19,20 @@ GATE = {
 
 
 class ScaleUpGateTest(unittest.TestCase):
+    def test_singleton_host_world_size_is_not_torchrun(self):
+        with patch.dict("os.environ", {"WORLD_SIZE": "1", "RANK": "0"}, clear=True):
+            clear_singleton_torchrun_environment()
+            import os
+            self.assertNotIn("WORLD_SIZE", os.environ)
+            self.assertNotIn("RANK", os.environ)
+
+    def test_real_torchrun_environment_is_preserved(self):
+        with patch.dict("os.environ", {"WORLD_SIZE": "8", "RANK": "0", "LOCAL_RANK": "0"}, clear=True):
+            clear_singleton_torchrun_environment()
+            import os
+            self.assertEqual(os.environ["WORLD_SIZE"], "8")
+            self.assertEqual(os.environ["LOCAL_RANK"], "0")
+
     def test_kappa_identical_and_opposed(self):
         self.assertAlmostEqual(cohen_kappa([0, 0, 1, 1], [0, 0, 1, 1]), 1.0)
         self.assertAlmostEqual(cohen_kappa([0, 0, 1, 1], [1, 1, 0, 0]), -1.0)

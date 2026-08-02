@@ -1,0 +1,96 @@
+{
+  "bare": {
+    "GTA1-72B": {
+      "accuracy": 0.5901328273244781,
+      "anchor_consistent_within_2pp": true,
+      "correct": 933,
+      "local_minus_reference": 0.006132827324478174,
+      "paper_only_reference": 0.584,
+      "parse_rate": 1.0,
+      "parse_successes": 1581
+    },
+    "Qwen3.5-122B-A10B": {
+      "accuracy": 0.7084123972169513,
+      "anchor_consistent_within_2pp": true,
+      "correct": 1120,
+      "local_minus_reference": 0.004412397216951303,
+      "paper_only_reference": 0.704,
+      "parse_rate": 1.0,
+      "parse_successes": 1581
+    },
+    "UI-Venus-Ground-72B": {
+      "accuracy": 0.6040480708412397,
+      "anchor_consistent_within_2pp": true,
+      "correct": 955,
+      "local_minus_reference": -0.014951929158760313,
+      "paper_only_reference": 0.619,
+      "parse_rate": 0.9993674889310563,
+      "parse_successes": 1580
+    }
+  },
+  "gate": {
+    "G1_pass": false,
+    "G2_action": "RUN_G2_MARGINAL_GATE_STANDARD_THRESHOLD",
+    "G2_cancelled": false,
+    "G2_effective_threshold": 0.731,
+    "G2_stretch_threshold": 0.731,
+    "lineage_concentrated": false
+  },
+  "models": [
+    "UI-Venus-Ground-72B",
+    "GTA1-72B",
+    "Qwen3.5-122B-A10B"
+  ],
+  "pairwise_failure_kappa": {
+    "GTA1-72B__Qwen3.5-122B-A10B": {
+      "id": "GTA1-72B__Qwen3.5-122B-A10B",
+      "null_mean": 0.00020033688822212114,
+      "null_sd": 0.024589559625961894,
+      "observed_kappa": 0.45972005575006936,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 1581
+    },
+    "UI-Venus-Ground-72B__GTA1-72B": {
+      "id": "UI-Venus-Ground-72B__GTA1-72B",
+      "null_mean": -5.480763955049872e-05,
+      "null_sd": 0.02468286745276856,
+      "observed_kappa": 0.6766758278756801,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 1581
+    },
+    "UI-Venus-Ground-72B__Qwen3.5-122B-A10B": {
+      "id": "UI-Venus-Ground-72B__Qwen3.5-122B-A10B",
+      "null_mean": 0.0005351212353519689,
+      "null_sd": 0.02475832131864191,
+      "observed_kappa": 0.46393867046325704,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 1581
+    }
+  },
+  "paper_only_anchors": {
+    "cross_family_kappa": 0.398,
+    "same_family_cross_scale_kappa": 0.618,
+    "view_axis_kappa": 0.895
+  },
+  "pass_at_3": 0.8020240354206198,
+  "rows": 1581,
+  "schema_version": 1,
+  "sources": {
+    "GTA1-72B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g1-gta1.jsonl",
+      "sha256": "d2f501041dd86d252aeb62cfc414885215bde564d4e19ed2290a48b6c12a9c47"
+    },
+    "Qwen3.5-122B-A10B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g1-qwen35.jsonl",
+      "sha256": "3d8f5fd135df433fc3c4587fc47b7d6d0b599b918aaa3680422178db37c3fbbd"
+    },
+    "UI-Venus-Ground-72B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g1-venus.jsonl",
+      "sha256": "1ccaa056984108fce47d8f6f3c54cec0ab746beed3a6763dd8e33de07c6d2c0e"
+    }
+  },
+  "status": "PASS"
+}

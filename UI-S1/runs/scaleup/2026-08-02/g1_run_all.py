@@ -38,6 +38,12 @@ def main():
     raw.mkdir(parents=True, exist_ok=True)
     for model, slug in MODELS:
         output = raw / f"g1-{slug}.jsonl"
+        if output.exists():
+            try:
+                validate_trace(output, model)
+                continue
+            except ValueError:
+                pass
         run_logged([
             str(SCALEUP_PYTHON), str(RUN_DIR / "g1_generate.py"),
             "--inputs", str(INPUTS), "--model", model,
