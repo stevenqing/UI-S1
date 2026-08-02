@@ -52,9 +52,22 @@ forward_budget_gate:
   official_UI_Zoomer_forwards:
     reliable_rows: 8
     uncertain_rows: 9
-  status: BLOCKED_PENDING_RESULT_FREE_BUDGET_AMENDMENT
+  status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
   forbidden_resolutions:
     - ignore_conditional_refinement_cost
     - pad_with_duplicate_candidates
     - select_budget_rule_after_accuracy_is_seen
   requirement: "Before X2 inference, freeze an amendment that gives all four cells equal useful model forwards while preserving an identifiable UI-Zoomer intervention."
+
+budget_normalized_extension:
+  name: fixed12_microchains
+  status: algorithm_level_extension
+  forwards_per_chain: 4
+  global_samples_per_chain: 3
+  branch_forward: adaptive_crop_if_unreliable_else_independent_global_sample
+  global_temperature: 0.9
+  global_top_p: 1.0
+  crop_temperature: 0.0
+  Q2_chains: [GTA1-7B, GTA1-7B, GTA1-7B]
+  Q4_chains: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  seed: 20260802

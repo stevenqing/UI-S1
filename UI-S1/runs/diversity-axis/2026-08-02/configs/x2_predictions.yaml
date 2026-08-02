@@ -56,6 +56,6 @@ kill_conditions:
   X-K1: interaction_bootstrap_99pct_CI_upper_bound_less_than_zero
 
 execution_gate:
-  require_zoom_method_status: READY
-  current_zoom_method_status: BLOCKED_PENDING_RESULT_FREE_BUDGET_AMENDMENT
-  no_X2_inference_until_gate_ready: true
+  require_zoom_method_status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
+  current_zoom_method_status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
+  no_X2_inference_until_gate_ready: false
