@@ -3,6 +3,7 @@ import unittest
 from x7_safeground_port import compute_uncertainty, region_scores
 from x2.zoom_port import adaptive_crop, box_iou, deterministic_seed, gate, point_to_box
 from x2.x2_composability import interaction_classification
+from x6_unlabeled_ranking import fit_ols, mean_pairwise_normalized_distance
 
 
 class SafeGroundPortTest(unittest.TestCase):
@@ -58,6 +59,31 @@ class ZoomPortTest(unittest.TestCase):
         self.assertEqual(interaction_classification([-0.01, 0.02]), "NEAR_ADDITIVE")
         self.assertEqual(interaction_classification([0.01, 0.02]), "SUPER_ADDITIVE")
         self.assertEqual(interaction_classification([-0.03, -0.01]), "SUB_ADDITIVE")
+
+
+class PoolRankingTest(unittest.TestCase):
+    def test_normalized_distance_and_ols(self):
+        rows = [{
+            "id": "row",
+            "application": "app",
+            "candidates": [{"point": [index, 0]} for index in range(12)],
+        }]
+        expected = sum(
+            abs(left - right) / 5
+            for left in range(12)
+            for right in range(left + 1, 12)
+        ) / 66
+        self.assertAlmostEqual(
+            mean_pairwise_normalized_distance(rows, {"row": [3, 4]}), expected
+        )
+        records = [
+            {"feature": value, "target": 0.2 + 3 * value}
+            for value in (0.1, 0.2, 0.3, 0.4)
+        ]
+        model = fit_ols(records)
+        self.assertAlmostEqual(model["intercept"], 0.2)
+        self.assertAlmostEqual(model["coefficient"], 3.0)
+        self.assertAlmostEqual(model["training_r_squared"], 1.0)
 
 
 if __name__ == "__main__":

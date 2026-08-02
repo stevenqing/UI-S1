@@ -1,0 +1,261 @@
+{
+  "feature": "dev_mean_pairwise_normalized_distance",
+  "model": {
+    "coefficient": 1.0696126811579523,
+    "intercept": 0.6833226319407149,
+    "training_r_squared": 0.014545653240023215,
+    "training_spearman": {
+      "p_value": 0.5001310909878427,
+      "rho": 0.10977154492530268
+    }
+  },
+  "records": [
+    {
+      "feature": 0.059457594948445554,
+      "fold": 0,
+      "pool": "gta1_12views",
+      "target": 0.7802547770700637
+    },
+    {
+      "feature": 0.06645050584522644,
+      "fold": 1,
+      "pool": "gta1_12views",
+      "target": 0.8167202572347267
+    },
+    {
+      "feature": 0.04917413789274914,
+      "fold": 2,
+      "pool": "gta1_12views",
+      "target": 0.7418397626112759
+    },
+    {
+      "feature": 0.059547740130868804,
+      "fold": 3,
+      "pool": "gta1_12views",
+      "target": 0.6437908496732027
+    },
+    {
+      "feature": 0.0644303447188285,
+      "fold": 4,
+      "pool": "gta1_12views",
+      "target": 0.6549520766773163
+    },
+    {
+      "feature": 0.06239706598831224,
+      "fold": 0,
+      "pool": "qwen3_12views",
+      "target": 0.7738853503184714
+    },
+    {
+      "feature": 0.06999287421671281,
+      "fold": 1,
+      "pool": "qwen3_12views",
+      "target": 0.842443729903537
+    },
+    {
+      "feature": 0.054732384977771976,
+      "fold": 2,
+      "pool": "qwen3_12views",
+      "target": 0.7359050445103857
+    },
+    {
+      "feature": 0.061197838042808254,
+      "fold": 3,
+      "pool": "qwen3_12views",
+      "target": 0.6764705882352942
+    },
+    {
+      "feature": 0.06683257775754042,
+      "fold": 4,
+      "pool": "qwen3_12views",
+      "target": 0.6805111821086262
+    },
+    {
+      "feature": 0.07122705862574334,
+      "fold": 0,
+      "pool": "uitars_12views",
+      "target": 0.7484076433121019
+    },
+    {
+      "feature": 0.07927699075569014,
+      "fold": 1,
+      "pool": "uitars_12views",
+      "target": 0.7909967845659164
+    },
+    {
+      "feature": 0.06272063743856833,
+      "fold": 2,
+      "pool": "uitars_12views",
+      "target": 0.6824925816023739
+    },
+    {
+      "feature": 0.06981796686964264,
+      "fold": 3,
+      "pool": "uitars_12views",
+      "target": 0.6535947712418301
+    },
+    {
+      "feature": 0.07433899504662192,
+      "fold": 4,
+      "pool": "uitars_12views",
+      "target": 0.6261980830670927
+    },
+    {
+      "feature": 0.052346082771999994,
+      "fold": 0,
+      "pool": "gta1_qwen3_6x2",
+      "target": 0.8089171974522293
+    },
+    {
+      "feature": 0.05700481805754183,
+      "fold": 1,
+      "pool": "gta1_qwen3_6x2",
+      "target": 0.8778135048231511
+    },
+    {
+      "feature": 0.046433239224020664,
+      "fold": 2,
+      "pool": "gta1_qwen3_6x2",
+      "target": 0.8100890207715133
+    },
+    {
+      "feature": 0.05024789729962981,
+      "fold": 3,
+      "pool": "gta1_qwen3_6x2",
+      "target": 0.7124183006535948
+    },
+    {
+      "feature": 0.05330239938371082,
+      "fold": 4,
+      "pool": "gta1_qwen3_6x2",
+      "target": 0.7156549520766773
+    },
+    {
+      "feature": 0.056576054456050455,
+      "fold": 0,
+      "pool": "gta1_uitars_6x2",
+      "target": 0.8121019108280255
+    },
+    {
+      "feature": 0.06242234618844387,
+      "fold": 1,
+      "pool": "gta1_uitars_6x2",
+      "target": 0.8327974276527331
+    },
+    {
+      "feature": 0.05181023374786122,
+      "fold": 2,
+      "pool": "gta1_uitars_6x2",
+      "target": 0.7774480712166172
+    },
+    {
+      "feature": 0.05483916620047266,
+      "fold": 3,
+      "pool": "gta1_uitars_6x2",
+      "target": 0.6764705882352942
+    },
+    {
+      "feature": 0.05702478998695167,
+      "fold": 4,
+      "pool": "gta1_uitars_6x2",
+      "target": 0.6805111821086262
+    },
+    {
+      "feature": 0.061868966250328554,
+      "fold": 0,
+      "pool": "qwen3_uitars_6x2",
+      "target": 0.7929936305732485
+    },
+    {
+      "feature": 0.0680567856025434,
+      "fold": 1,
+      "pool": "qwen3_uitars_6x2",
+      "target": 0.8488745980707395
+    },
+    {
+      "feature": 0.05691044262345804,
+      "fold": 2,
+      "pool": "qwen3_uitars_6x2",
+      "target": 0.7655786350148368
+    },
+    {
+      "feature": 0.05853630287554252,
+      "fold": 3,
+      "pool": "qwen3_uitars_6x2",
+      "target": 0.7156862745098039
+    },
+    {
+      "feature": 0.062142646954589834,
+      "fold": 4,
+      "pool": "qwen3_uitars_6x2",
+      "target": 0.7124600638977636
+    },
+    {
+      "feature": 0.06270522660348055,
+      "fold": 0,
+      "pool": "three_lineages_4x3",
+      "target": 0.8184713375796179
+    },
+    {
+      "feature": 0.06805287474330483,
+      "fold": 1,
+      "pool": "three_lineages_4x3",
+      "target": 0.8778135048231511
+    },
+    {
+      "feature": 0.05837641764848879,
+      "fold": 2,
+      "pool": "three_lineages_4x3",
+      "target": 0.8071216617210683
+    },
+    {
+      "feature": 0.05839022798052591,
+      "fold": 3,
+      "pool": "three_lineages_4x3",
+      "target": 0.7320261437908496
+    },
+    {
+      "feature": 0.06150933961239729,
+      "fold": 4,
+      "pool": "three_lineages_4x3",
+      "target": 0.7220447284345048
+    },
+    {
+      "feature": 0.048980003141548066,
+      "fold": 0,
+      "pool": "three_lineages_4x3_shuffled_control",
+      "target": 0.732484076433121
+    },
+    {
+      "feature": 0.05352363249865807,
+      "fold": 1,
+      "pool": "three_lineages_4x3_shuffled_control",
+      "target": 0.819935691318328
+    },
+    {
+      "feature": 0.04316687891701186,
+      "fold": 2,
+      "pool": "three_lineages_4x3_shuffled_control",
+      "target": 0.658753709198813
+    },
+    {
+      "feature": 0.04996395392732326,
+      "fold": 3,
+      "pool": "three_lineages_4x3_shuffled_control",
+      "target": 0.6568627450980392
+    },
+    {
+      "feature": 0.05098987190158284,
+      "fold": 4,
+      "pool": "three_lineages_4x3_shuffled_control",
+      "target": 0.6613418530351438
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "L2_RESULTS_sha256": "ab281bd58a3c11622a343a5a2b605a820e438683fd632fdc1b37589f87eed40a"
+  },
+  "status": "FROZEN_FIT_BEFORE_X2_VALIDATION",
+  "target": "heldout_pass_at_12",
+  "training_observations": 40
+}
