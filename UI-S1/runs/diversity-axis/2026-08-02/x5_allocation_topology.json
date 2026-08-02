@@ -11,11 +11,15 @@
   },
   "best_region": "NOT_EVALUATED",
   "budget": 12,
+  "related_X2_Q4": {
+    "reason": "each K=3 microchain has three parallel global samples and only one conditional branch",
+    "status": "AVAILABLE_BUT_NOT_X5_HYBRID_ESTIMAND"
+  },
   "schema_version": 1,
-  "status": "BLOCKED_ON_X2",
+  "status": "BLOCKED_INCOMPLETE_TOPOLOGY_TRIANGLE",
   "triangle_comparison": "NOT_EVALUATED",
   "unavailable": {
-    "hybrid": "requires three frozen serial-four-step lineage traces",
+    "hybrid": "X2 Q4 has one conditional fourth step per lineage, not four serially conditioned steps",
     "pure_serial": "requires frozen adaptive 12-step lineage trace"
   }
 }

@@ -60,7 +60,7 @@ Date: 2026-08-02
 
 X3 validates the original budget-axis sign with 10,000 fold-stratified application bootstraps: V-only M1 slope is {x3['slopes']['v_only']['M1_ccm']['point_slope_per_forward']:.6f} per forward with 99% CI [{x3['slopes']['v_only']['M1_ccm']['ci_99'][0]:.6f}, {x3['slopes']['v_only']['M1_ccm']['ci_99'][1]:.6f}], while Mixed is {x3['slopes']['mixed']['M1_ccm']['point_slope_per_forward']:.6f} with CI [{x3['slopes']['mixed']['M1_ccm']['ci_99'][0]:.6f}, {x3['slopes']['mixed']['M1_ccm']['ci_99'][1]:.6f}]. X-K2 does not trigger.
 
-X2 uses a preregistered fixed-12, K=3 microchain extension of UI-Zoomer. Q1-Q4 M1 accuracies are {percent(accuracy['Q1']['M1_ccm'])}, {percent(accuracy['Q2']['M1_ccm'])}, {percent(accuracy['Q3']['M1_ccm'])}, and {percent(accuracy['Q4']['M1_ccm'])}. Q4 is {'the highest cell' if x2['prediction']['Q4_highest'] else 'not the highest cell'}. The M1 interaction is {signed_pp(interaction['point'])}, 99% CI [{signed_pp(interaction['ci_99'][0])}, {signed_pp(interaction['ci_99'][1])}], classified `{interaction['classification']}`. X-K1 is `{x2['kill_conditions']['X-K1']}`.
+X2 uses a preregistered fixed-12, K=3 microchain extension of UI-Zoomer. Q1-Q4 M1 accuracies are {percent(accuracy['Q1']['M1_ccm'])}, {percent(accuracy['Q2']['M1_ccm'])}, {percent(accuracy['Q3']['M1_ccm'])}, and {percent(accuracy['Q4']['M1_ccm'])}. Q4 is {'the highest cell' if x2['prediction']['Q4_highest'] else 'not the highest cell'}, so the preregistered composability criterion fails. Adaptive-minus-fixed is {signed_pp(x2['M1_effects']['adaptive_single_Q2_minus_Q1'])} for the single lineage and {signed_pp(x2['M1_effects']['adaptive_mixed_Q4_minus_Q3'])} for the mixed pool. The interaction is positive, {signed_pp(interaction['point'])}, 99% CI [{signed_pp(interaction['ci_99'][0])}, {signed_pp(interaction['ci_99'][1])}], because mixed allocation attenuates adaptive harm; it is not evidence that adaptive zoom adds accuracy. X-K1 is `{x2['kill_conditions']['X-K1']}` because that kill condition tests only a significantly negative interaction.
 
 X1 remains blocked because only five GTA1 stochastic samples exist per row, not the required N=4/8/12/16 three-pool traces. X4 has no released GMS implementation or auditable fixed-12 trace. X5 lacks pure-serial and hybrid traces. X8 cannot construct a same-lineage N=6 Mind2Web pool. These are unavailable comparisons, not negative results.
 
@@ -86,7 +86,7 @@ Both B3 and M1 satisfy V-only CI upper bound below zero and Mixed CI lower bound
 ## X4-X6
 
 - X4: `{x4['status']}`; X-K4 is `{x4['kill_conditions']['X-K4']}`.
-- X5: `{x5['status']}`; only the frozen pure-parallel point exists.
+- X5: `{x5['status']}`; the frozen pure-parallel point exists, but X2 Q4 has three parallel global samples plus one conditional branch per lineage and is not the preregistered four-step serial hybrid.
 - X6: frozen L2 OLS training R-squared is {x6_fit['model']['training_r_squared']:.4f}. Held-out Spearman over 10 X2 fold-pool observations is {x6['spearman']['rho']:.3f} (p={x6['spearman']['p_value']:.4g}); criterion rho > 0.7 is `{x6['prediction_X6']}`.
 
 ## X7: confidence axis
@@ -99,7 +99,7 @@ Status: `{x8['status']}`. Six deployable full-view models are available across f
 
 ## Claim boundary
 
-The strongest defensible claim is that the fixed-view budget-axis sign is statistically stable and that candidate dispersion is a useful confidence diagnostic, especially in the mixed pool. The adaptive-zoom composability claim follows the X2 interaction classification above but is limited to the preregistered K=3 fixed-budget extension. Sampling-family coverage, GMS comparison, topology triangle, and Mind2Web lineage transfer remain unresolved because their required candidate pools do not exist under the frozen contracts.
+The strongest defensible claim is that the fixed-view budget-axis sign is statistically stable and that candidate dispersion is a useful confidence diagnostic, especially in the mixed pool. X2 does not establish adaptive-zoom composability: both adaptive cells underperform their fixed counterparts and Q4 is not highest. Its positive interaction means cross-lineage allocation reduces the harm of this K=3 adaptive extension. Sampling-family coverage, GMS comparison, topology triangle, and Mind2Web lineage transfer remain unresolved because their required candidate pools do not exist under the frozen contracts.
 """
 
 
@@ -133,6 +133,18 @@ def main():
             "X-K2": results["X3"]["kill_conditions"]["X-K2"],
             "X-K3": results["X1"]["kill_conditions"]["X-K3"],
             "X-K4": results["X4"]["kill_conditions"]["X-K4"],
+        },
+        "predictions": {
+            "X1_sampling_slope": results["X1"]["prediction_X1"],
+            "X2_composability": results["X2"]["prediction"]["composability_success"],
+            "X2_interaction_classification": results["X2"]["prediction"]["primary_interaction_classification"],
+            "X2_interaction_interpretation": results["X2"]["prediction"]["interaction_interpretation"],
+            "X3_curve_slope": results["X3"]["prediction"]["satisfied"],
+            "X4_scanner_locator": results["X4"]["prediction_X4"],
+            "X5_topology": results["X5"]["triangle_comparison"],
+            "X6_unlabeled_ranking": results["X6"]["prediction_X6"],
+            "X7_confidence": "PASS_MIGRATION_DIAGNOSTIC_NO_FDR_GUARANTEE",
+            "X8_mind2web": results["X8"]["comparison"],
         },
         "validation": {
             "x2_rows": results["X2"]["rows"],

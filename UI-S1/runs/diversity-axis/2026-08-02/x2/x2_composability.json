@@ -1,4 +1,10 @@
 {
+  "M1_effects": {
+    "adaptive_mixed_Q4_minus_Q3": -0.02213788741302969,
+    "adaptive_single_Q2_minus_Q1": -0.09171410499683741,
+    "allocation_adaptive_Q4_minus_Q2": 0.1037318153067679,
+    "allocation_fixed_Q3_minus_Q1": 0.034155597722960174
+  },
   "accuracy": {
     "Q1": {
       "B3_mvp": 0.6008855154965211,
@@ -138,6 +144,7 @@
     "Q4_highest": false,
     "composability_success": false,
     "highest_cell": "Q3",
+    "interaction_interpretation": "POSITIVE_INTERACTION_FROM_ATTENUATED_ADAPTIVE_HARM",
     "primary_interaction_classification": "SUPER_ADDITIVE"
   },
   "rows": 1581,

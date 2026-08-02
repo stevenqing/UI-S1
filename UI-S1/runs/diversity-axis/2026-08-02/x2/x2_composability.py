@@ -322,6 +322,18 @@ def main():
     primary = interactions["M1_ccm"]
     accuracy = {cell: evaluation["accuracy"] for cell, evaluation in evaluations.items()}
     highest = max(accuracy, key=lambda cell: (accuracy[cell]["M1_ccm"], cell))
+    effects = {
+        "adaptive_single_Q2_minus_Q1": accuracy["Q2"]["M1_ccm"] - accuracy["Q1"]["M1_ccm"],
+        "adaptive_mixed_Q4_minus_Q3": accuracy["Q4"]["M1_ccm"] - accuracy["Q3"]["M1_ccm"],
+        "allocation_fixed_Q3_minus_Q1": accuracy["Q3"]["M1_ccm"] - accuracy["Q1"]["M1_ccm"],
+        "allocation_adaptive_Q4_minus_Q2": accuracy["Q4"]["M1_ccm"] - accuracy["Q2"]["M1_ccm"],
+    }
+    if effects["adaptive_single_Q2_minus_Q1"] < 0 and effects["adaptive_mixed_Q4_minus_Q3"] < 0:
+        interaction_interpretation = "POSITIVE_INTERACTION_FROM_ATTENUATED_ADAPTIVE_HARM"
+    elif effects["adaptive_single_Q2_minus_Q1"] > 0 and effects["adaptive_mixed_Q4_minus_Q3"] > 0:
+        interaction_interpretation = "POSITIVE_ADAPTIVE_EFFECTS"
+    else:
+        interaction_interpretation = "MIXED_ADAPTIVE_EFFECT_DIRECTIONS"
     result = {
         "schema_version": 1,
         "status": "PASS",
@@ -338,6 +350,7 @@ def main():
         "forward_budget": 12,
         "accuracy": accuracy,
         "interactions": interactions,
+        "M1_effects": effects,
         "failure_kappa": {
             cell: failure_statistics(rows)["mean_pairwise_kappa"]
             for cell, rows in cell_rows.items()
@@ -348,6 +361,7 @@ def main():
             "highest_cell": highest,
             "Q4_highest": highest == "Q4",
             "primary_interaction_classification": primary["classification"],
+            "interaction_interpretation": interaction_interpretation,
             "composability_success": highest == "Q4" and primary["classification"] != "SUB_ADDITIVE",
         },
         "kill_conditions": {"X-K1": primary["classification"] == "SUB_ADDITIVE"},
