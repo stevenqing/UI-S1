@@ -1,0 +1,185 @@
+{
+  "adjudication": {
+    "ci_strictly_negative": false,
+    "point_slope_negative": true,
+    "title_scope": "fixed_view_allocation_axis"
+  },
+  "budgets": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "pools": {
+    "S_only": {
+      "12": {
+        "accuracy": {
+          "B3_mvp": 0.4946236559139785,
+          "GUI_RC": 0.4927261227071474,
+          "pass_at_n": 0.5161290322580645
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 12.0,
+          "minimum": 12
+        }
+      },
+      "16": {
+        "accuracy": {
+          "B3_mvp": 0.4939911448450348,
+          "GUI_RC": 0.49209361163820364,
+          "pass_at_n": 0.5173940543959519
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 16.0,
+          "minimum": 16
+        }
+      },
+      "4": {
+        "accuracy": {
+          "B3_mvp": 0.4927261227071474,
+          "GUI_RC": 0.4952561669829222,
+          "pass_at_n": 0.5117014547754586
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 4.0,
+          "minimum": 4
+        }
+      },
+      "8": {
+        "accuracy": {
+          "B3_mvp": 0.4971537001897533,
+          "GUI_RC": 0.4946236559139785,
+          "pass_at_n": 0.5154965211891208
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 8.0,
+          "minimum": 8
+        }
+      }
+    },
+    "sampling_plus_views": {
+      "12": {
+        "accuracy": {
+          "B3_mvp": 0.5180265654648957,
+          "GUI_RC": 0.5167615433270082,
+          "pass_at_n": 0.7058823529411765
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 12.0,
+          "minimum": 12
+        }
+      },
+      "16": {
+        "accuracy": {
+          "B3_mvp": 0.5186590765338394,
+          "GUI_RC": 0.5167615433270082,
+          "pass_at_n": 0.7160025300442757
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 16.0,
+          "minimum": 16
+        }
+      },
+      "4": {
+        "accuracy": {
+          "B3_mvp": 0.49968374446552816,
+          "GUI_RC": 0.5098039215686274,
+          "pass_at_n": 0.6552814674256799
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 4.0,
+          "minimum": 4
+        }
+      },
+      "8": {
+        "accuracy": {
+          "B3_mvp": 0.5117014547754586,
+          "GUI_RC": 0.5186590765338394,
+          "pass_at_n": 0.691967109424415
+        },
+        "valid_candidates": {
+          "complete_rows": 1581,
+          "mean": 8.0,
+          "minimum": 8
+        }
+      }
+    }
+  },
+  "prediction": {
+    "primary_pool": "S_only",
+    "primary_rule": "GUI_RC",
+    "sampling_axis_covered": false,
+    "title_scope": "fixed_view_allocation_axis"
+  },
+  "provenance": {
+    "duplicate_inference_launched": false,
+    "path": "runs/closing/2026-08-02/f2_sampling_axis.json",
+    "sha256": "6730168337498eff82163260cfa98f881e75774ddabc29eda1f7a3d75549e428"
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "slopes": {
+    "S_only": {
+      "B3_mvp": {
+        "bootstrap_mean": 3.273028251386817e-05,
+        "ci_99": [
+          -0.0004539120682655329,
+          0.00041418846187061615
+        ],
+        "p_slope_nonnegative": 0.6086391360863913,
+        "point_slope_per_forward": 3.162555344718432e-05,
+        "resamples": 10000,
+        "seed": 20260802
+      },
+      "GUI_RC": {
+        "bootstrap_mean": -0.0002813872508279925,
+        "ci_99": [
+          -0.0007892948022290663,
+          0.00020325458113515095
+        ],
+        "p_slope_nonnegative": 0.07489251074892511,
+        "point_slope_per_forward": -0.0002846299810246755,
+        "resamples": 10000,
+        "seed": 20260802
+      }
+    },
+    "sampling_plus_views": {
+      "B3_mvp": {
+        "bootstrap_mean": 0.0015855625619833652,
+        "ci_99": [
+          0.0007187991541625275,
+          0.0024767340066498477
+        ],
+        "p_slope_nonnegative": 1.0,
+        "point_slope_per_forward": 0.0015812776723592714,
+        "resamples": 10000,
+        "seed": 20260802
+      },
+      "GUI_RC": {
+        "bootstrap_mean": 0.0004742196667234909,
+        "ci_99": [
+          -0.0007097265870724023,
+          0.0015420718841778077
+        ],
+        "p_slope_nonnegative": 0.8658134186581342,
+        "point_slope_per_forward": 0.0004743833017077814,
+        "resamples": 10000,
+        "seed": 20260802
+      }
+    }
+  },
+  "source": {
+    "model": "GTA1-7B",
+    "samples_per_row": 16,
+    "temperature": 0.5,
+    "top_p": 0.95
+  },
+  "status": "PASS_REUSED_COMPLETE_CLOSING_INFERENCE"
+}
