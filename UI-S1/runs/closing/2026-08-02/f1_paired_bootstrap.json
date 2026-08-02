@@ -198,5 +198,32 @@
     "L1_RESULTS_sha256": "b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11",
     "L2_RESULTS_sha256": "ab281bd58a3c11622a343a5a2b605a820e438683fd632fdc1b37589f87eed40a"
   },
-  "status": "PASS"
+  "status": "PASS",
+  "third_drop_in_graph_centroid": {
+    "bootstrap_mean": 0.026690721753871646,
+    "ci_99": [
+      0.004780919161494755,
+      0.051552797083660035
+    ],
+    "delta_over_mde": 3.7717113425622553,
+    "fold_rows": [
+      314,
+      311,
+      337,
+      306,
+      313
+    ],
+    "groups": 26,
+    "left": "mixed_N12/B3_graph_centroid",
+    "left_accuracy": 0.6350411132194813,
+    "mde": 0.007043345177520599,
+    "p_one_sided_delta_le_zero": 0.0006999300069993001,
+    "point_delta": 0.026565464895635604,
+    "resamples": 10000,
+    "right": "v_only_N12/B3_graph_centroid",
+    "right_accuracy": 0.6084756483238457,
+    "rows": 1581,
+    "rule": "unchanged_H1_mvp_graph_centroid",
+    "seed": 20260802
+  }
 }

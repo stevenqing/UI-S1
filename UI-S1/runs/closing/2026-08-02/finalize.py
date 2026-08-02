@@ -47,6 +47,7 @@ def main():
         results["K8_X2"] = k8_x2
     primary = f1["comparisons"]["mixed_N12_M1_vs_v_only_GTA1_N12_M1"]
     b3 = f1["comparisons"]["mixed_N12_B3_vs_v_only_GTA1_N12_B3"]
+    graph = f1["third_drop_in_graph_centroid"]
     smallest = f4["area_strata"][0]
     if f3["outcome"] == "anchor_fail":
         x2_treatment = "Remove X2 numbers from the paper; state only that the official UI-Zoomer anchor was not reproduced."
@@ -69,7 +70,7 @@ Mixed N12 M1 reaches {pct(primary['left_accuracy'])} versus GTA1-only {pct(prima
 
 With B3 code and rule unchanged, candidate-source replacement moves accuracy from {pct(b3['right_accuracy'])} to {pct(b3['left_accuracy'])}: {pp(b3['point_delta'])}, 99% CI [{pp(b3['ci_99'][0])}, {pp(b3['ci_99'][1])}], p={b3['p_one_sided_delta_le_zero']:.4g}. With SafeGround code and weights unchanged, correctness AUROC moves from 0.744 on V-only N12 to 0.830 on Mixed N12. These are drop-in candidate-source results; no rule parameter is retuned.
 
-The third candidate-source-only diagnostic is pass@12 under the unchanged oracle admission rule: 72.80% to 79.19%. This is an oracle/headroom diagnostic, not a deployable selector result.
+The third unchanged rule is H1 graph centroid: {pct(graph['right_accuracy'])} to {pct(graph['left_accuracy'])}, {pp(graph['point_delta'])}, 99% CI [{pp(graph['ci_99'][0])}, {pp(graph['ci_99'][1])}], p={graph['p_one_sided_delta_le_zero']:.4g}. In addition, pass@12 rises 72.80% to 79.19%; this is an oracle/headroom diagnostic, not a deployable selector result.
 
 ### R3: Same local inventory and budget exceeds every internal single lineage
 
