@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "code_repository": null,
+    "fixed_forward_budget": null,
+    "name": "GMS: Generalist Scanner Meets Specialist Locator",
+    "paper": "arXiv:2509.24133v1",
+    "per_row_traces": null,
+    "pipeline": [
+      "hierarchical_3x3_search",
+      "iterative_refinement",
+      "cross_modal_verification",
+      "multi_agent_consensus",
+      "adaptive_resolution_fusion"
+    ],
+    "reported_abstract_accuracy": 0.357
+  },
+  "kill_conditions": {
+    "X-K4": "NOT_EVALUATED"
+  },
+  "prediction_X4": "NOT_EVALUATED",
+  "reference_only": {
+    "comparison_valid": false,
+    "mixed_N12_M1": 0.6382036685641999,
+    "mixed_N12_pass_at_12": 0.7919038583175205,
+    "reason": "GMS reported accuracy has no auditable 12-forward mapping or reusable candidate trace"
+  },
+  "schema_version": 1,
+  "status": "UNAVAILABLE_NO_RELEASED_IMPLEMENTATION_OR_FIXED_BUDGET_TRACE"
+}

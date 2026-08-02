@@ -1,0 +1,21 @@
+{
+  "available": {
+    "pure_parallel": {
+      "accuracy": {
+        "B3_mvp": 0.6369386464263125,
+        "M1_ccm": 0.6382036685641999,
+        "pass_at_n": 0.7919038583175205
+      },
+      "pool": "three_lineages_x_four_fixed_views"
+    }
+  },
+  "best_region": "NOT_EVALUATED",
+  "budget": 12,
+  "schema_version": 1,
+  "status": "BLOCKED_ON_X2",
+  "triangle_comparison": "NOT_EVALUATED",
+  "unavailable": {
+    "hybrid": "requires three frozen serial-four-step lineage traces",
+    "pure_serial": "requires frozen adaptive 12-step lineage trace"
+  }
+}

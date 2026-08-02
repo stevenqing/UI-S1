@@ -1,0 +1,56 @@
+{
+  "development_inventory": {
+    "gta1_12views": {
+      "M1_ccm": 0.6040480708412397,
+      "mean_dev_failure_kappa": 0.6888414786068616,
+      "pass_at_12": 0.7280202403542062
+    },
+    "gta1_qwen3_6x2": {
+      "M1_ccm": 0.6388361796331435,
+      "mean_dev_failure_kappa": 0.6469354584736349,
+      "pass_at_12": 0.7855787476280834
+    },
+    "gta1_uitars_6x2": {
+      "M1_ccm": 0.6204933586337761,
+      "mean_dev_failure_kappa": 0.6056219780275267,
+      "pass_at_12": 0.756483238456673
+    },
+    "qwen3_12views": {
+      "M1_ccm": 0.5679949399114484,
+      "mean_dev_failure_kappa": 0.7121733616818193,
+      "pass_at_12": 0.7419354838709677
+    },
+    "qwen3_uitars_6x2": {
+      "M1_ccm": 0.6040480708412397,
+      "mean_dev_failure_kappa": 0.6301374028599588,
+      "pass_at_12": 0.767235926628716
+    },
+    "three_lineages_4x3": {
+      "M1_ccm": 0.6382036685641999,
+      "mean_dev_failure_kappa": 0.5937074367406399,
+      "pass_at_12": 0.7919038583175205
+    },
+    "three_lineages_4x3_shuffled_control": {
+      "M1_ccm": 0.5863377609108159,
+      "mean_dev_failure_kappa": 0.6909263465010176,
+      "pass_at_12": 0.7052498418722327
+    },
+    "uitars_12views": {
+      "M1_ccm": 0.5243516761543326,
+      "mean_dev_failure_kappa": 0.6759944326771599,
+      "pass_at_12": 0.7001897533206831
+    }
+  },
+  "development_pool_count": 8,
+  "fit_allowed": true,
+  "heldout_sources": {
+    "X2": "UNAVAILABLE",
+    "X5": "UNAVAILABLE"
+  },
+  "heldout_spearman": "NOT_EVALUATED",
+  "prediction_X6": "NOT_EVALUATED",
+  "prediction_threshold": 0.7,
+  "schema_version": 1,
+  "status": "BLOCKED_NO_HELDOUT_POOLS",
+  "warning": "The eight L2 pools cannot serve as both fitting and held-out evaluation pools."
+}
