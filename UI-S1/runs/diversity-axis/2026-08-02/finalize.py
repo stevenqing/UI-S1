@@ -37,12 +37,14 @@ def load_results(run_dir):
         results[experiment] = json.loads(path.read_text())
     if results["X2"]["status"] != "PASS" or results["X3"]["status"] != "PASS":
         raise ValueError("Diversity-Axis core X2/X3 result is incomplete")
-    if results["X6"]["heldout_observations"] != 10:
+    if results["X6"].get("status") not in {"PASS", "FAIL_HELDOUT_SPEARMAN"}:
+        raise ValueError(f"Diversity-Axis X6 validation is incomplete: {results['X6'].get('status')}")
+    if results["X6"].get("heldout_observations") != 10:
         raise ValueError("Diversity-Axis X6 held-out validation is incomplete")
     return results
 
 
-def report_text(results):
+def report_text(results, x6_fit):
     x1, x2, x3, x4, x5, x6, x7, x8 = (results[f"X{index}"] for index in range(1, 9))
     accuracy = x2["accuracy"]
     interaction = x2["interactions"]["M1_ccm"]
@@ -85,7 +87,7 @@ Both B3 and M1 satisfy V-only CI upper bound below zero and Mixed CI lower bound
 
 - X4: `{x4['status']}`; X-K4 is `{x4['kill_conditions']['X-K4']}`.
 - X5: `{x5['status']}`; only the frozen pure-parallel point exists.
-- X6: frozen L2 OLS training R-squared is {json.loads((Path(__file__).parent / 'x6_fit.json').read_text())['model']['training_r_squared']:.4f}. Held-out Spearman over 10 X2 fold-pool observations is {x6['spearman']['rho']:.3f} (p={x6['spearman']['p_value']:.4g}); criterion rho > 0.7 is `{x6['prediction_X6']}`.
+- X6: frozen L2 OLS training R-squared is {x6_fit['model']['training_r_squared']:.4f}. Held-out Spearman over 10 X2 fold-pool observations is {x6['spearman']['rho']:.3f} (p={x6['spearman']['p_value']:.4g}); criterion rho > 0.7 is `{x6['prediction_X6']}`.
 
 ## X7: confidence axis
 
@@ -106,7 +108,13 @@ def main():
     parser.add_argument("--run-dir", type=Path, default=Path(__file__).resolve().parent)
     args = parser.parse_args()
     results = load_results(args.run_dir)
-    report = report_text(results)
+    x6_fit_path = args.run_dir / "x6_fit.json"
+    x6_fit = json.loads(x6_fit_path.read_text())
+    if x6_fit.get("status") != "FROZEN_FIT_BEFORE_X2_VALIDATION" or x6_fit.get("training_observations") != 40:
+        raise ValueError("Diversity-Axis X6 frozen fit is invalid")
+    if results["X6"].get("fit_sha256") != sha256_file(x6_fit_path):
+        raise ValueError("Diversity-Axis X6 validation did not use the frozen fit")
+    report = report_text(results, x6_fit)
     (args.run_dir / "REPORT.md").write_text(report)
     status = {
         "schema_version": 1,
