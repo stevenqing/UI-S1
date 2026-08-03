@@ -4,6 +4,7 @@ import numpy as np
 
 from cala_common import SHARED_ACTIONS, UNIFORM_SEQUENCE, V_ONLY_SEQUENCE, cohen_kappa, mean_failure_kappa
 from cala_static import random_sequence
+from cala_adaptive import SCOUT, deterministic_order, development_statistics, feature
 
 
 class CalaContractTest(unittest.TestCase):
@@ -23,6 +24,11 @@ class CalaContractTest(unittest.TestCase):
         self.assertAlmostEqual(cohen_kappa(left, left), 1.0)
         correct = {SHARED_ACTIONS[0]: ~left, SHARED_ACTIONS[1]: ~left}
         self.assertAlmostEqual(mean_failure_kappa(correct, SHARED_ACTIONS[:2]), 1.0)
+
+    def test_adaptive_trajectory_is_deterministic(self):
+        self.assertEqual(deterministic_order("row", 2, 1), deterministic_order("row", 2, 1))
+        self.assertNotEqual(deterministic_order("row", 2, 1), deterministic_order("row", 2, 2))
+        self.assertFalse(set(deterministic_order("row", 2, 1)) & set(SCOUT))
 
 
 if __name__ == "__main__":
