@@ -1,0 +1,45 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+pools:
+  7B_Uniform_Mixed_N4: {scale: 7B, source: Uniform_Mixed, budget: 4}
+  7B_Uniform_Mixed_N8: {scale: 7B, source: Uniform_Mixed, budget: 8}
+  7B_Uniform_Mixed_N12: {scale: 7B, source: Uniform_Mixed, budget: 12}
+  7B_Uniform_Mixed_N16: {scale: 7B, source: Uniform_Mixed, budget: 16}
+  7B_Uniform_Mixed_N24: {scale: 7B, source: Uniform_Mixed, budget: 24}
+  7B_CALA_S_N12: {scale: 7B, source: CALA_S, budget: 12}
+  7B_Quality_Only_N12: {scale: 7B, source: Quality_Only, budget: 12}
+  72B_Uniform_Mixed_N8: {scale: 72B, source: Uniform_Mixed, budget: 8}
+  72B_CALA_S_N8: {scale: 72B, source: CALA_S, budget: 8}
+
+rules: [B3_mvp, M1_ccm, graph_centroid]
+strata: [all, correct, incorrect]
+
+attribution:
+  B3_mvp: actual_selected_candidate
+  M1_ccm: actual_ccm_selected_index
+  graph_centroid: nearest_real_candidate_to_generated_centroid
+  nearest_tie_break: original_candidate_order
+  graph_component_composition_reported: true
+
+test:
+  type: chi_square_goodness_of_fit
+  expected: pool_candidate_source_proportions
+  significance: 0.001
+  effect_size: cramers_V
+  residual: multinomial_standardized_observed_minus_expected_over_sqrt_expected_times_one_minus_p
+
+gate:
+  required_pool_7B: 7B_Uniform_Mixed_N12
+  required_pool_72B: 72B_Uniform_Mixed_N8
+  rule: B3_mvp
+  stratum: incorrect
+  required_positive_residual_model_7B: GTA1-7B
+  required_positive_residual_model_72B: GTA1-72B
+
+source_hashes:
+  R5: 970dbda2d854edc29dc4b0057b7de065b3277de905c3a801de4d2edfd774da5b
+  CALA_static: 625999a06939aa96f0fd76e6ea11b0da926664226ce53450fe47bc3ba8711a8a
+  NOA: 05e7d85299bf3ec7bcac7ca032be1fe430afc44900314a5274221c33b144820f
+  R1: 3397543230e904b68ed40e42c44f27e9a7b78014221993dad7a4634f58c169f8
