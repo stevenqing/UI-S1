@@ -1,0 +1,2924 @@
+{
+  "figure": "runs/sourcebias/2026-08-03/figures/b1_source_bias.pdf",
+  "gate": {
+    "72B_bias_pass": true,
+    "7B_bias_pass": true,
+    "B1_pass": true,
+    "B2_action": "RUN_BOTH_SCALES",
+    "B_K1": false
+  },
+  "reports": {
+    "72B_CALA_S_N8": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 5674,
+            "UI-Venus-Ground-72B": 2231
+          },
+          "chi_square": 607.3561364176902,
+          "cramers_V": 0.4382690264409937,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 709.25,
+            "UI-Venus-Ground-72B": 278.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 1058,
+            "Qwen3.5-122B-A10B": 444,
+            "UI-Venus-Ground-72B": 79
+          },
+          "p_value": 1.3010401583767413e-132,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": 24.162847088501522,
+            "Qwen3.5-122B-A10B": -13.412992362056706,
+            "UI-Venus-Ground-72B": -13.188435554353465
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 2154,
+            "Qwen3.5-122B-A10B": 2597,
+            "UI-Venus-Ground-72B": 993
+          },
+          "chi_square": 73.41106005559175,
+          "cramers_V": 0.2261015438176116,
+          "expected_winners": {
+            "GTA1-72B": 269.25,
+            "Qwen3.5-122B-A10B": 324.625,
+            "UI-Venus-Ground-72B": 124.125
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 350,
+            "Qwen3.5-122B-A10B": 322,
+            "UI-Venus-Ground-72B": 46
+          },
+          "p_value": 1.1454888167642597e-16,
+          "rows": 718,
+          "standardized_residuals": {
+            "GTA1-72B": 6.224789451380699,
+            "Qwen3.5-122B-A10B": -0.19683266408082203,
+            "UI-Venus-Ground-72B": -7.710367884250309
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2589,
+            "Qwen3.5-122B-A10B": 3077,
+            "UI-Venus-Ground-72B": 1238
+          },
+          "chi_square": 731.638413138768,
+          "cramers_V": 0.6510702540791424,
+          "expected_winners": {
+            "GTA1-72B": 323.625,
+            "Qwen3.5-122B-A10B": 384.625,
+            "UI-Venus-Ground-72B": 154.75
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 708,
+            "Qwen3.5-122B-A10B": 122,
+            "UI-Venus-Ground-72B": 33
+          },
+          "p_value": 1.3388663074714925e-159,
+          "rows": 863,
+          "standardized_residuals": {
+            "GTA1-72B": 27.02676669881827,
+            "Qwen3.5-122B-A10B": -17.986160768948565,
+            "UI-Venus-Ground-72B": -10.803531618251714
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 5674,
+            "UI-Venus-Ground-72B": 2231
+          },
+          "chi_square": 1803.1842357693222,
+          "cramers_V": 0.7551602440770087,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 709.25,
+            "UI-Venus-Ground-72B": 278.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 174,
+            "Qwen3.5-122B-A10B": 494,
+            "UI-Venus-Ground-72B": 913
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": -21.760199030789735,
+            "Qwen3.5-122B-A10B": -10.884624339048845,
+            "UI-Venus-Ground-72B": 41.841734563624215
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 2622,
+            "Qwen3.5-122B-A10B": 3192,
+            "UI-Venus-Ground-72B": 1178
+          },
+          "chi_square": 1969.636398148246,
+          "cramers_V": 1.0615056656075113,
+          "expected_winners": {
+            "GTA1-72B": 327.75,
+            "Qwen3.5-122B-A10B": 399.0,
+            "UI-Venus-Ground-72B": 147.25
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 63,
+            "Qwen3.5-122B-A10B": 174,
+            "UI-Venus-Ground-72B": 637
+          },
+          "p_value": 0.0,
+          "rows": 874,
+          "standardized_residuals": {
+            "GTA1-72B": -18.497992964294635,
+            "Qwen3.5-122B-A10B": -15.279353605978931,
+            "UI-Venus-Ground-72B": 44.25985522773189
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2121,
+            "Qwen3.5-122B-A10B": 2482,
+            "UI-Venus-Ground-72B": 1053
+          },
+          "chi_square": 248.26386752957467,
+          "cramers_V": 0.41901739602075716,
+          "expected_winners": {
+            "GTA1-72B": 265.125,
+            "Qwen3.5-122B-A10B": 310.25,
+            "UI-Venus-Ground-72B": 131.625
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 111,
+            "Qwen3.5-122B-A10B": 320,
+            "UI-Venus-Ground-72B": 276
+          },
+          "p_value": 1.230796175203104e-54,
+          "rows": 707,
+          "standardized_residuals": {
+            "GTA1-72B": -11.973131164098286,
+            "Qwen3.5-122B-A10B": 0.7389243186336083,
+            "UI-Venus-Ground-72B": 13.949447865200614
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 5674,
+            "UI-Venus-Ground-72B": 2231
+          },
+          "chi_square": 6.584806799688476,
+          "cramers_V": 0.04563421516613792,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 709.25,
+            "UI-Venus-Ground-72B": 278.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 636,
+            "Qwen3.5-122B-A10B": 696,
+            "UI-Venus-Ground-72B": 249
+          },
+          "p_value": 0.037164421009512325,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": 2.240306972731262,
+            "Qwen3.5-122B-A10B": -0.6700175260970833,
+            "UI-Venus-Ground-72B": -1.971254595053457
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 2685,
+            "Qwen3.5-122B-A10B": 3226,
+            "UI-Venus-Ground-72B": 1249
+          },
+          "chi_square": 18.42466711635329,
+          "cramers_V": 0.10145496597440541,
+          "expected_winners": {
+            "GTA1-72B": 335.625,
+            "Qwen3.5-122B-A10B": 403.25,
+            "UI-Venus-Ground-72B": 156.125
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 362,
+            "Qwen3.5-122B-A10B": 343,
+            "UI-Venus-Ground-72B": 190
+          },
+          "p_value": 9.980087988760574e-05,
+          "rows": 895,
+          "standardized_residuals": {
+            "GTA1-72B": 1.821064415448875,
+            "Qwen3.5-122B-A10B": -4.047708199855369,
+            "UI-Venus-Ground-72B": 2.9837958781085554
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2058,
+            "Qwen3.5-122B-A10B": 2448,
+            "UI-Venus-Ground-72B": 982
+          },
+          "chi_square": 41.41802834992981,
+          "cramers_V": 0.17374713612156165,
+          "expected_winners": {
+            "GTA1-72B": 257.25,
+            "Qwen3.5-122B-A10B": 306.0,
+            "UI-Venus-Ground-72B": 122.74999999999999
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 274,
+            "Qwen3.5-122B-A10B": 353,
+            "UI-Venus-Ground-72B": 59
+          },
+          "p_value": 1.0143537010821361e-09,
+          "rows": 686,
+          "standardized_residuals": {
+            "GTA1-72B": 1.3209826421696496,
+            "Qwen3.5-122B-A10B": 3.61000168186981,
+            "UI-Venus-Ground-72B": -6.350104852087156
+          }
+        }
+      }
+    },
+    "72B_Uniform_Mixed_N8": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 3162,
+            "UI-Venus-Ground-72B": 4743
+          },
+          "chi_square": 2165.460889732237,
+          "cramers_V": 0.8275499930881296,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 395.25,
+            "UI-Venus-Ground-72B": 592.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 1488,
+            "Qwen3.5-122B-A10B": 10,
+            "UI-Venus-Ground-72B": 83
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": 46.50098038182193,
+            "Qwen3.5-122B-A10B": -22.37567144400595,
+            "UI-Venus-Ground-72B": -26.487571425422658
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 1956,
+            "Qwen3.5-122B-A10B": 1304,
+            "UI-Venus-Ground-72B": 1956
+          },
+          "chi_square": 904.0511247443762,
+          "cramers_V": 0.8326408228249708,
+          "expected_winners": {
+            "GTA1-72B": 244.5,
+            "Qwen3.5-122B-A10B": 163.0,
+            "UI-Venus-Ground-72B": 244.5
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 616,
+            "Qwen3.5-122B-A10B": 5,
+            "UI-Venus-Ground-72B": 31
+          },
+          "p_value": 4.872957038737133e-197,
+          "rows": 652,
+          "standardized_residuals": {
+            "GTA1-72B": 30.052415015465208,
+            "Qwen3.5-122B-A10B": -14.290013960017852,
+            "UI-Venus-Ground-72B": -17.271037969856856
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2787,
+            "Qwen3.5-122B-A10B": 1858,
+            "UI-Venus-Ground-72B": 2787
+          },
+          "chi_square": 1261.5288841047723,
+          "cramers_V": 0.8239972162135314,
+          "expected_winners": {
+            "GTA1-72B": 348.375,
+            "Qwen3.5-122B-A10B": 232.25,
+            "UI-Venus-Ground-72B": 348.375
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 872,
+            "Qwen3.5-122B-A10B": 5,
+            "UI-Venus-Ground-72B": 52
+          },
+          "p_value": 1.1547379417637568e-274,
+          "rows": 929,
+          "standardized_residuals": {
+            "GTA1-72B": 35.48598575193465,
+            "Qwen3.5-122B-A10B": -17.21850332738902,
+            "UI-Venus-Ground-72B": -20.08528818759538
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 3162,
+            "UI-Venus-Ground-72B": 4743
+          },
+          "chi_square": 1253.6734134514022,
+          "cramers_V": 0.6296674959248142,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 395.25,
+            "UI-Venus-Ground-72B": 592.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 147,
+            "Qwen3.5-122B-A10B": 986,
+            "UI-Venus-Ground-72B": 448
+          },
+          "p_value": 5.865124219481384e-273,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": -23.162826005021483,
+            "Qwen3.5-122B-A10B": 34.31129891121743,
+            "UI-Venus-Ground-72B": -7.526132699697196
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 2472,
+            "Qwen3.5-122B-A10B": 1648,
+            "UI-Venus-Ground-72B": 2472
+          },
+          "chi_square": 1218.2783171521035,
+          "cramers_V": 0.859794482228146,
+          "expected_winners": {
+            "GTA1-72B": 309.0,
+            "Qwen3.5-122B-A10B": 206.0,
+            "UI-Venus-Ground-72B": 309.0
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 53,
+            "Qwen3.5-122B-A10B": 638,
+            "UI-Venus-Ground-72B": 133
+          },
+          "p_value": 2.84593331246324e-265,
+          "rows": 824,
+          "standardized_residuals": {
+            "GTA1-72B": -18.421318731805556,
+            "Qwen3.5-122B-A10B": 34.7551770258344,
+            "UI-Venus-Ground-72B": -12.664656628116319
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2271,
+            "Qwen3.5-122B-A10B": 1514,
+            "UI-Venus-Ground-72B": 2271
+          },
+          "chi_square": 263.57948040510786,
+          "cramers_V": 0.4172466525831945,
+          "expected_winners": {
+            "GTA1-72B": 283.875,
+            "Qwen3.5-122B-A10B": 189.25,
+            "UI-Venus-Ground-72B": 283.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 94,
+            "Qwen3.5-122B-A10B": 348,
+            "UI-Venus-Ground-72B": 315
+          },
+          "p_value": 5.81357204118831e-58,
+          "rows": 757,
+          "standardized_residuals": {
+            "GTA1-72B": -14.25490097030743,
+            "Qwen3.5-122B-A10B": 13.324936810174986,
+            "UI-Venus-Ground-72B": 2.3367151689312378
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-72B": 4743,
+            "Qwen3.5-122B-A10B": 3162,
+            "UI-Venus-Ground-72B": 4743
+          },
+          "chi_square": 231.0067467847354,
+          "cramers_V": 0.27029088436536397,
+          "expected_winners": {
+            "GTA1-72B": 592.875,
+            "Qwen3.5-122B-A10B": 395.25,
+            "UI-Venus-Ground-72B": 592.875
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 876,
+            "Qwen3.5-122B-A10B": 223,
+            "UI-Venus-Ground-72B": 482
+          },
+          "p_value": 6.87895224466699e-51,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-72B": 14.708102299235676,
+            "Qwen3.5-122B-A10B": -10.004437134925437,
+            "UI-Venus-Ground-72B": -5.759861695109071
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-72B": 2481,
+            "Qwen3.5-122B-A10B": 1654,
+            "UI-Venus-Ground-72B": 2481
+          },
+          "chi_square": 73.12414349052801,
+          "cramers_V": 0.2102628968370136,
+          "expected_winners": {
+            "GTA1-72B": 310.125,
+            "Qwen3.5-122B-A10B": 206.75,
+            "UI-Venus-Ground-72B": 310.125
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 429,
+            "Qwen3.5-122B-A10B": 154,
+            "UI-Venus-Ground-72B": 244
+          },
+          "p_value": 1.3221903833086332e-16,
+          "rows": 827,
+          "standardized_residuals": {
+            "GTA1-72B": 8.538510810920034,
+            "Qwen3.5-122B-A10B": -4.236127987975799,
+            "UI-Venus-Ground-72B": -4.749602753918715
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-72B": 2262,
+            "Qwen3.5-122B-A10B": 1508,
+            "UI-Venus-Ground-72B": 2262
+          },
+          "chi_square": 178.25287356321837,
+          "cramers_V": 0.34380928335020866,
+          "expected_winners": {
+            "GTA1-72B": 282.75,
+            "Qwen3.5-122B-A10B": 188.5,
+            "UI-Venus-Ground-72B": 282.75
+          },
+          "models": [
+            "GTA1-72B",
+            "Qwen3.5-122B-A10B",
+            "UI-Venus-Ground-72B"
+          ],
+          "observed_winners": {
+            "GTA1-72B": 447,
+            "Qwen3.5-122B-A10B": 69,
+            "UI-Venus-Ground-72B": 238
+          },
+          "p_value": 1.962819274643385e-39,
+          "rows": 754,
+          "standardized_residuals": {
+            "GTA1-72B": 12.35560633710704,
+            "Qwen3.5-122B-A10B": -10.050359491395202,
+            "UI-Venus-Ground-72B": -3.366291528679087
+          }
+        }
+      }
+    },
+    "7B_CALA_S_N12": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6944,
+            "Qwen3-VL-8B-Instruct": 6011,
+            "UI-TARS-7B-SFT": 6017
+          },
+          "chi_square": 1975.6918669321371,
+          "cramers_V": 0.7904577707432046,
+          "expected_winners": {
+            "GTA1-7B": 578.6666666666666,
+            "Qwen3-VL-8B-Instruct": 500.9166666666667,
+            "UI-TARS-7B-SFT": 501.4166666666667
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1428,
+            "Qwen3-VL-8B-Instruct": 125,
+            "UI-TARS-7B-SFT": 28
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 44.34286853625146,
+            "Qwen3-VL-8B-Instruct": -20.32104992233805,
+            "UI-TARS-7B-SFT": -25.584799025408486
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4321,
+            "Qwen3-VL-8B-Instruct": 3772,
+            "UI-TARS-7B-SFT": 3703
+          },
+          "chi_square": 1401.9050631854689,
+          "cramers_V": 0.8444375662226009,
+          "expected_winners": {
+            "GTA1-7B": 360.0833333333333,
+            "Qwen3-VL-8B-Instruct": 314.3333333333333,
+            "UI-TARS-7B-SFT": 308.5833333333333
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 925,
+            "Qwen3-VL-8B-Instruct": 52,
+            "UI-TARS-7B-SFT": 6
+          },
+          "p_value": 3.8035002852408637e-305,
+          "rows": 983,
+          "standardized_residuals": {
+            "GTA1-7B": 37.397679999935804,
+            "Qwen3-VL-8B-Instruct": -17.940319806361522,
+            "UI-TARS-7B-SFT": -20.795596473377312
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2623,
+            "Qwen3-VL-8B-Instruct": 2239,
+            "UI-TARS-7B-SFT": 2314
+          },
+          "chi_square": 590.5653761937454,
+          "cramers_V": 0.7026974877992086,
+          "expected_winners": {
+            "GTA1-7B": 218.58333333333331,
+            "Qwen3-VL-8B-Instruct": 186.58333333333334,
+            "UI-TARS-7B-SFT": 192.83333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 503,
+            "Qwen3-VL-8B-Instruct": 73,
+            "UI-TARS-7B-SFT": 22
+          },
+          "p_value": 5.75914426956383e-129,
+          "rows": 598,
+          "standardized_residuals": {
+            "GTA1-7B": 24.151210867465206,
+            "Qwen3-VL-8B-Instruct": -10.025079779772774,
+            "UI-TARS-7B-SFT": -14.945666891521137
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6944,
+            "Qwen3-VL-8B-Instruct": 6011,
+            "UI-TARS-7B-SFT": 6017
+          },
+          "chi_square": 574.8172773060974,
+          "cramers_V": 0.42636738296696114,
+          "expected_winners": {
+            "GTA1-7B": 578.6666666666666,
+            "Qwen3-VL-8B-Instruct": 500.9166666666667,
+            "UI-TARS-7B-SFT": 501.4166666666667
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 804,
+            "Qwen3-VL-8B-Instruct": 719,
+            "UI-TARS-7B-SFT": 58
+          },
+          "p_value": 1.5136106737807222e-125,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 11.764434509617736,
+            "Qwen3-VL-8B-Instruct": 11.789001916816376,
+            "UI-TARS-7B-SFT": -23.96351269392687
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4329,
+            "Qwen3-VL-8B-Instruct": 3777,
+            "UI-TARS-7B-SFT": 3714
+          },
+          "chi_square": 410.14932631668097,
+          "cramers_V": 0.4562867821577996,
+          "expected_winners": {
+            "GTA1-7B": 360.75,
+            "Qwen3-VL-8B-Instruct": 314.75,
+            "UI-TARS-7B-SFT": 309.5
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 502,
+            "Qwen3-VL-8B-Instruct": 468,
+            "UI-TARS-7B-SFT": 15
+          },
+          "p_value": 8.653771271926139e-90,
+          "rows": 985,
+          "standardized_residuals": {
+            "GTA1-7B": 9.34166149993752,
+            "Qwen3-VL-8B-Instruct": 10.471703036873297,
+            "UI-TARS-7B-SFT": -20.21437932458054
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2615,
+            "Qwen3-VL-8B-Instruct": 2234,
+            "UI-TARS-7B-SFT": 2303
+          },
+          "chi_square": 170.57316714116942,
+          "cramers_V": 0.37828335223945286,
+          "expected_winners": {
+            "GTA1-7B": 217.91666666666669,
+            "Qwen3-VL-8B-Instruct": 186.16666666666666,
+            "UI-TARS-7B-SFT": 191.91666666666666
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 302,
+            "Qwen3-VL-8B-Instruct": 251,
+            "UI-TARS-7B-SFT": 43
+          },
+          "p_value": 9.130769404572919e-38,
+          "rows": 596,
+          "standardized_residuals": {
+            "GTA1-7B": 7.151449230909147,
+            "Qwen3-VL-8B-Instruct": 5.730161736012131,
+            "UI-TARS-7B-SFT": -13.05493221963414
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6944,
+            "Qwen3-VL-8B-Instruct": 6011,
+            "UI-TARS-7B-SFT": 6017
+          },
+          "chi_square": 90.64096063475206,
+          "cramers_V": 0.16930949604374151,
+          "expected_winners": {
+            "GTA1-7B": 578.6666666666666,
+            "Qwen3-VL-8B-Instruct": 500.9166666666667,
+            "UI-TARS-7B-SFT": 501.4166666666667
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 753,
+            "Qwen3-VL-8B-Instruct": 458,
+            "UI-TARS-7B-SFT": 370
+          },
+          "p_value": 2.0776169556504975e-20,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 9.101774036287095,
+            "Qwen3-VL-8B-Instruct": -2.3199602549332963,
+            "UI-TARS-7B-SFT": -7.102134846518076
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4396,
+            "Qwen3-VL-8B-Instruct": 3836,
+            "UI-TARS-7B-SFT": 3780
+          },
+          "chi_square": 44.447979915384266,
+          "cramers_V": 0.14900264484069606,
+          "expected_winners": {
+            "GTA1-7B": 366.3333333333333,
+            "Qwen3-VL-8B-Instruct": 319.6666666666667,
+            "UI-TARS-7B-SFT": 315.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 456,
+            "Qwen3-VL-8B-Instruct": 314,
+            "UI-TARS-7B-SFT": 231
+          },
+          "p_value": 2.2296864545559743e-10,
+          "rows": 1001,
+          "standardized_residuals": {
+            "GTA1-7B": 5.883516835424803,
+            "Qwen3-VL-8B-Instruct": -0.3841635984894835,
+            "UI-TARS-7B-SFT": -5.717142143214063
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2548,
+            "Qwen3-VL-8B-Instruct": 2175,
+            "UI-TARS-7B-SFT": 2237
+          },
+          "chi_square": 53.47668510538199,
+          "cramers_V": 0.21471048089948455,
+          "expected_winners": {
+            "GTA1-7B": 212.33333333333331,
+            "Qwen3-VL-8B-Instruct": 181.25,
+            "UI-TARS-7B-SFT": 186.41666666666669
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 297,
+            "Qwen3-VL-8B-Instruct": 144,
+            "UI-TARS-7B-SFT": 139
+          },
+          "p_value": 2.441661043520991e-12,
+          "rows": 580,
+          "standardized_residuals": {
+            "GTA1-7B": 7.297771162841346,
+            "Qwen3-VL-8B-Instruct": -3.336959365296891,
+            "UI-TARS-7B-SFT": -4.215841729964652
+          }
+        }
+      }
+    },
+    "7B_Quality_Only_N12": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 9173,
+            "UI-TARS-7B-SFT": 313
+          },
+          "chi_square": 1288.2565573980178,
+          "cramers_V": 0.6382932445959144,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 764.4166666666666,
+            "UI-TARS-7B-SFT": 26.083333333333332
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1504,
+            "Qwen3-VL-8B-Instruct": 77,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 1.814023559715552e-280,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 35.88872570196759,
+            "Qwen3-VL-8B-Instruct": -34.59558374164933,
+            "UI-TARS-7B-SFT": -5.149842196120523
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6012,
+            "Qwen3-VL-8B-Instruct": 5843,
+            "UI-TARS-7B-SFT": 169
+          },
+          "chi_square": 896.9522659285229,
+          "cramers_V": 0.6690149258590701,
+          "expected_winners": {
+            "GTA1-7B": 501.0,
+            "Qwen3-VL-8B-Instruct": 486.91666666666663,
+            "UI-TARS-7B-SFT": 14.083333333333334
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 975,
+            "Qwen3-VL-8B-Instruct": 27,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 1.6954703069581e-195,
+          "rows": 1002,
+          "standardized_residuals": {
+            "GTA1-7B": 29.94845871895111,
+            "Qwen3-VL-8B-Instruct": -29.070127721775208,
+            "UI-TARS-7B-SFT": -3.7794311127550313
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3474,
+            "Qwen3-VL-8B-Instruct": 3330,
+            "UI-TARS-7B-SFT": 144
+          },
+          "chi_square": 396.64458759277414,
+          "cramers_V": 0.5852568244781521,
+          "expected_winners": {
+            "GTA1-7B": 289.5,
+            "Qwen3-VL-8B-Instruct": 277.5,
+            "UI-TARS-7B-SFT": 12.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 529,
+            "Qwen3-VL-8B-Instruct": 50,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 7.408361495151367e-87,
+          "rows": 579,
+          "standardized_residuals": {
+            "GTA1-7B": 19.906560656415014,
+            "Qwen3-VL-8B-Instruct": -18.925420199791965,
+            "UI-TARS-7B-SFT": -3.500566847521734
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 9173,
+            "UI-TARS-7B-SFT": 313
+          },
+          "chi_square": 51.4513687573709,
+          "cramers_V": 0.12756088791502962,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 764.4166666666666,
+            "UI-TARS-7B-SFT": 26.083333333333332
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 933,
+            "Qwen3-VL-8B-Instruct": 628,
+            "UI-TARS-7B-SFT": 20
+          },
+          "p_value": 6.721670683440922e-12,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 7.167685231296961,
+            "Qwen3-VL-8B-Instruct": -6.865434669060484,
+            "UI-TARS-7B-SFT": -1.2010814067629334
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6060,
+            "Qwen3-VL-8B-Instruct": 5889,
+            "UI-TARS-7B-SFT": 171
+          },
+          "chi_square": 15.598199644615237,
+          "cramers_V": 0.08787423406315278,
+          "expected_winners": {
+            "GTA1-7B": 505.0,
+            "Qwen3-VL-8B-Instruct": 490.75,
+            "UI-TARS-7B-SFT": 14.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 563,
+            "Qwen3-VL-8B-Instruct": 440,
+            "UI-TARS-7B-SFT": 7
+          },
+          "p_value": 0.0004101039793256752,
+          "rows": 1010,
+          "standardized_residuals": {
+            "GTA1-7B": 3.650037298059805,
+            "Qwen3-VL-8B-Instruct": -3.195054913108324,
+            "UI-TARS-7B-SFT": -1.9342655803470838
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3426,
+            "Qwen3-VL-8B-Instruct": 3284,
+            "UI-TARS-7B-SFT": 142
+          },
+          "chi_square": 51.94113966099371,
+          "cramers_V": 0.21326652142387392,
+          "expected_winners": {
+            "GTA1-7B": 285.5,
+            "Qwen3-VL-8B-Instruct": 273.6666666666667,
+            "UI-TARS-7B-SFT": 11.833333333333334
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 370,
+            "Qwen3-VL-8B-Instruct": 188,
+            "UI-TARS-7B-SFT": 13
+          },
+          "p_value": 5.2616848304440995e-12,
+          "rows": 571,
+          "standardized_residuals": {
+            "GTA1-7B": 7.072429882885814,
+            "Qwen3-VL-8B-Instruct": -7.176243585922981,
+            "UI-TARS-7B-SFT": 0.34272095357946464
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 9173,
+            "UI-TARS-7B-SFT": 313
+          },
+          "chi_square": 13.685104012431864,
+          "cramers_V": 0.06578745992782016,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 764.4166666666666,
+            "UI-TARS-7B-SFT": 26.083333333333332
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 864,
+            "Qwen3-VL-8B-Instruct": 694,
+            "UI-TARS-7B-SFT": 23
+          },
+          "p_value": 0.001067375970799962,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 3.697016592984748,
+            "Qwen3-VL-8B-Instruct": -3.5438560142676283,
+            "UI-TARS-7B-SFT": -0.608767288359295
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6066,
+            "Qwen3-VL-8B-Instruct": 5893,
+            "UI-TARS-7B-SFT": 173
+          },
+          "chi_square": 0.9295561657414515,
+          "cramers_V": 0.021441108884997628,
+          "expected_winners": {
+            "GTA1-7B": 505.5,
+            "Qwen3-VL-8B-Instruct": 491.08333333333337,
+            "UI-TARS-7B-SFT": 14.416666666666666
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 491,
+            "Qwen3-VL-8B-Instruct": 504,
+            "UI-TARS-7B-SFT": 16
+          },
+          "p_value": 0.6282745145970765,
+          "rows": 1011,
+          "standardized_residuals": {
+            "GTA1-7B": -0.9120579223975365,
+            "Qwen3-VL-8B-Instruct": 0.8127960092536834,
+            "UI-TARS-7B-SFT": 0.42000909442066575
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3420,
+            "Qwen3-VL-8B-Instruct": 3280,
+            "UI-TARS-7B-SFT": 140
+          },
+          "chi_square": 54.44510055626871,
+          "cramers_V": 0.2185380061615778,
+          "expected_winners": {
+            "GTA1-7B": 285.0,
+            "Qwen3-VL-8B-Instruct": 273.3333333333333,
+            "UI-TARS-7B-SFT": 11.666666666666666
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 373,
+            "Qwen3-VL-8B-Instruct": 190,
+            "UI-TARS-7B-SFT": 7
+          },
+          "p_value": 1.5045153771311051e-12,
+          "rows": 570,
+          "standardized_residuals": {
+            "GTA1-7B": 7.3718287859338405,
+            "Qwen3-VL-8B-Instruct": -6.9867548808738915,
+            "UI-TARS-7B-SFT": -1.380460662891574
+          }
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N12": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6324,
+            "Qwen3-VL-8B-Instruct": 6324,
+            "UI-TARS-7B-SFT": 6324
+          },
+          "chi_square": 2373.165085388994,
+          "cramers_V": 0.8663293787409253,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1439,
+            "Qwen3-VL-8B-Instruct": 110,
+            "UI-TARS-7B-SFT": 32
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 48.65586079162318,
+            "Qwen3-VL-8B-Instruct": -22.247252138275073,
+            "UI-TARS-7B-SFT": -26.408608653348107
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4028,
+            "Qwen3-VL-8B-Instruct": 4028,
+            "UI-TARS-7B-SFT": 4028
+          },
+          "chi_square": 1689.8093346573985,
+          "cramers_V": 0.9159865977176255,
+          "expected_winners": {
+            "GTA1-7B": 335.66666666666663,
+            "Qwen3-VL-8B-Instruct": 335.66666666666663,
+            "UI-TARS-7B-SFT": 335.66666666666663
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 950,
+            "Qwen3-VL-8B-Instruct": 52,
+            "UI-TARS-7B-SFT": 5
+          },
+          "p_value": 0.0,
+          "rows": 1007,
+          "standardized_residuals": {
+            "GTA1-7B": 41.06724811725919,
+            "Qwen3-VL-8B-Instruct": -18.962684833308497,
+            "UI-TARS-7B-SFT": -22.104563283950682
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2296,
+            "Qwen3-VL-8B-Instruct": 2296,
+            "UI-TARS-7B-SFT": 2296
+          },
+          "chi_square": 697.1533101045296,
+          "cramers_V": 0.7792794123612391,
+          "expected_winners": {
+            "GTA1-7B": 191.33333333333331,
+            "Qwen3-VL-8B-Instruct": 191.33333333333331,
+            "UI-TARS-7B-SFT": 191.33333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 489,
+            "Qwen3-VL-8B-Instruct": 58,
+            "UI-TARS-7B-SFT": 27
+          },
+          "p_value": 4.121755161963279e-152,
+          "rows": 574,
+          "standardized_residuals": {
+            "GTA1-7B": 26.356061656907656,
+            "Qwen3-VL-8B-Instruct": -11.805626722019104,
+            "UI-TARS-7B-SFT": -14.550434934888546
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6324,
+            "Qwen3-VL-8B-Instruct": 6324,
+            "UI-TARS-7B-SFT": 6324
+          },
+          "chi_square": 629.1271347248577,
+          "cramers_V": 0.44605486012726675,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 857,
+            "Qwen3-VL-8B-Instruct": 652,
+            "UI-TARS-7B-SFT": 72
+          },
+          "p_value": 2.4365677221283563e-137,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 17.60573910223207,
+            "Qwen3-VL-8B-Instruct": 6.668840569027299,
+            "UI-TARS-7B-SFT": -24.27457967125937
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4036,
+            "Qwen3-VL-8B-Instruct": 4036,
+            "UI-TARS-7B-SFT": 4036
+          },
+          "chi_square": 442.77700693756196,
+          "cramers_V": 0.46841624593271497,
+          "expected_winners": {
+            "GTA1-7B": 336.3333333333333,
+            "Qwen3-VL-8B-Instruct": 336.3333333333333,
+            "UI-TARS-7B-SFT": 336.3333333333333
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 534,
+            "Qwen3-VL-8B-Instruct": 450,
+            "UI-TARS-7B-SFT": 25
+          },
+          "p_value": 7.115322459815867e-97,
+          "rows": 1009,
+          "standardized_residuals": {
+            "GTA1-7B": 13.200613404373843,
+            "Qwen3-VL-8B-Instruct": 7.590909225786646,
+            "UI-TARS-7B-SFT": -20.791522630160486
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2288,
+            "Qwen3-VL-8B-Instruct": 2288,
+            "UI-TARS-7B-SFT": 2288
+          },
+          "chi_square": 200.77272727272728,
+          "cramers_V": 0.4189279600693996,
+          "expected_winners": {
+            "GTA1-7B": 190.66666666666666,
+            "Qwen3-VL-8B-Instruct": 190.66666666666666,
+            "UI-TARS-7B-SFT": 190.66666666666666
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 323,
+            "Qwen3-VL-8B-Instruct": 202,
+            "UI-TARS-7B-SFT": 47
+          },
+          "p_value": 2.5278786060536497e-44,
+          "rows": 572,
+          "standardized_residuals": {
+            "GTA1-7B": 11.73755106038329,
+            "Qwen3-VL-8B-Instruct": 1.0052310731814411,
+            "UI-TARS-7B-SFT": -12.742782133564729
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 6324,
+            "Qwen3-VL-8B-Instruct": 6324,
+            "UI-TARS-7B-SFT": 6324
+          },
+          "chi_square": 77.90132827324479,
+          "cramers_V": 0.15696090662684872,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 690,
+            "Qwen3-VL-8B-Instruct": 470,
+            "UI-TARS-7B-SFT": 421
+          },
+          "p_value": 1.2132254137053517e-17,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 8.6961681020116,
+            "Qwen3-VL-8B-Instruct": -3.0409912994764485,
+            "UI-TARS-7B-SFT": -5.65517680253515
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 4016,
+            "Qwen3-VL-8B-Instruct": 4016,
+            "UI-TARS-7B-SFT": 4016
+          },
+          "chi_square": 34.56772908366534,
+          "cramers_V": 0.1312059622263322,
+          "expected_winners": {
+            "GTA1-7B": 334.66666666666663,
+            "Qwen3-VL-8B-Instruct": 334.66666666666663,
+            "UI-TARS-7B-SFT": 334.66666666666663
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 418,
+            "Qwen3-VL-8B-Instruct": 317,
+            "UI-TARS-7B-SFT": 269
+          },
+          "p_value": 3.1168291972395466e-08,
+          "rows": 1004,
+          "standardized_residuals": {
+            "GTA1-7B": 5.579023033468149,
+            "Qwen3-VL-8B-Instruct": -1.1827528830952445,
+            "UI-TARS-7B-SFT": -4.396270150372898
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 2308,
+            "Qwen3-VL-8B-Instruct": 2308,
+            "UI-TARS-7B-SFT": 2308
+          },
+          "chi_square": 49.50086655112652,
+          "cramers_V": 0.20711115777142444,
+          "expected_winners": {
+            "GTA1-7B": 192.33333333333331,
+            "Qwen3-VL-8B-Instruct": 192.33333333333331,
+            "UI-TARS-7B-SFT": 192.33333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 272,
+            "Qwen3-VL-8B-Instruct": 153,
+            "UI-TARS-7B-SFT": 152
+          },
+          "p_value": 1.7824748206985777e-11,
+          "rows": 577,
+          "standardized_residuals": {
+            "GTA1-7B": 7.035500472443093,
+            "Qwen3-VL-8B-Instruct": -3.4735943755158343,
+            "UI-TARS-7B-SFT": -3.561906096927254
+          }
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N16": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 7905,
+            "UI-TARS-7B-SFT": 7905
+          },
+          "chi_square": 2117.820156019397,
+          "cramers_V": 0.8183962031663992,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 494.0625,
+            "UI-TARS-7B-SFT": 494.0625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1478,
+            "Qwen3-VL-8B-Instruct": 81,
+            "UI-TARS-7B-SFT": 22
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 45.98148890988425,
+            "Qwen3-VL-8B-Instruct": -22.412405538643892,
+            "UI-TARS-7B-SFT": -25.6136933020695
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6048,
+            "Qwen3-VL-8B-Instruct": 5040,
+            "UI-TARS-7B-SFT": 5040
+          },
+          "chi_square": 1465.5238095238096,
+          "cramers_V": 0.8526114789804271,
+          "expected_winners": {
+            "GTA1-7B": 378.0,
+            "Qwen3-VL-8B-Instruct": 315.0,
+            "UI-TARS-7B-SFT": 315.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 966,
+            "Qwen3-VL-8B-Instruct": 39,
+            "UI-TARS-7B-SFT": 3
+          },
+          "p_value": 0.0,
+          "rows": 1008,
+          "standardized_residuals": {
+            "GTA1-7B": 38.2552828595825,
+            "Qwen3-VL-8B-Instruct": -18.75501664490462,
+            "UI-TARS-7B-SFT": -21.201323163805224
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3438,
+            "Qwen3-VL-8B-Instruct": 2865,
+            "UI-TARS-7B-SFT": 2865
+          },
+          "chi_square": 658.8510762070971,
+          "cramers_V": 0.7582306239290157,
+          "expected_winners": {
+            "GTA1-7B": 214.875,
+            "Qwen3-VL-8B-Instruct": 179.0625,
+            "UI-TARS-7B-SFT": 179.0625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 512,
+            "Qwen3-VL-8B-Instruct": 42,
+            "UI-TARS-7B-SFT": 19
+          },
+          "p_value": 8.556705868090037e-144,
+          "rows": 573,
+          "standardized_residuals": {
+            "GTA1-7B": 25.63930456030822,
+            "Qwen3-VL-8B-Instruct": -12.353214312692344,
+            "UI-TARS-7B-SFT": -14.426165916463791
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 7905,
+            "UI-TARS-7B-SFT": 7905
+          },
+          "chi_square": 593.7430740037951,
+          "cramers_V": 0.43332958958283857,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 494.0625,
+            "UI-TARS-7B-SFT": 494.0625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 834,
+            "Qwen3-VL-8B-Instruct": 702,
+            "UI-TARS-7B-SFT": 45
+          },
+          "p_value": 1.1757896851614138e-129,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 12.526238117097403,
+            "Qwen3-VL-8B-Instruct": 11.282504649276476,
+            "UI-TARS-7B-SFT": -24.365733665479855
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6048,
+            "Qwen3-VL-8B-Instruct": 5040,
+            "UI-TARS-7B-SFT": 5040
+          },
+          "chi_square": 451.0111111111111,
+          "cramers_V": 0.47298607688193345,
+          "expected_winners": {
+            "GTA1-7B": 378.0,
+            "Qwen3-VL-8B-Instruct": 315.0,
+            "UI-TARS-7B-SFT": 315.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 447,
+            "Qwen3-VL-8B-Instruct": 541,
+            "UI-TARS-7B-SFT": 20
+          },
+          "p_value": 1.1592619560693916e-98,
+          "rows": 1008,
+          "standardized_residuals": {
+            "GTA1-7B": 4.489140335563253,
+            "Qwen3-VL-8B-Instruct": 15.357368701987117,
+            "UI-TARS-7B-SFT": -20.046122863213274
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3438,
+            "Qwen3-VL-8B-Instruct": 2865,
+            "UI-TARS-7B-SFT": 2865
+          },
+          "chi_square": 272.25514834205933,
+          "cramers_V": 0.4874114662902956,
+          "expected_winners": {
+            "GTA1-7B": 214.875,
+            "Qwen3-VL-8B-Instruct": 179.0625,
+            "UI-TARS-7B-SFT": 179.0625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 387,
+            "Qwen3-VL-8B-Instruct": 161,
+            "UI-TARS-7B-SFT": 25
+          },
+          "p_value": 7.59531347160251e-60,
+          "rows": 573,
+          "standardized_residuals": {
+            "GTA1-7B": 14.852891198798662,
+            "Qwen3-VL-8B-Instruct": -1.6279429714400764,
+            "UI-TARS-7B-SFT": -13.88539593287124
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 9486,
+            "Qwen3-VL-8B-Instruct": 7905,
+            "UI-TARS-7B-SFT": 7905
+          },
+          "chi_square": 53.05405861269239,
+          "cramers_V": 0.12953238846890017,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 494.0625,
+            "UI-TARS-7B-SFT": 494.0625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 733,
+            "Qwen3-VL-8B-Instruct": 420,
+            "UI-TARS-7B-SFT": 428
+          },
+          "p_value": 3.0161820495550683e-12,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 7.2793742505267955,
+            "Qwen3-VL-8B-Instruct": -4.018565677605237,
+            "UI-TARS-7B-SFT": -3.5844927605305785
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 6096,
+            "Qwen3-VL-8B-Instruct": 5080,
+            "UI-TARS-7B-SFT": 5080
+          },
+          "chi_square": 14.58215223097113,
+          "cramers_V": 0.08471278545283885,
+          "expected_winners": {
+            "GTA1-7B": 381.0,
+            "Qwen3-VL-8B-Instruct": 317.5,
+            "UI-TARS-7B-SFT": 317.5
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 439,
+            "Qwen3-VL-8B-Instruct": 297,
+            "UI-TARS-7B-SFT": 280
+          },
+          "p_value": 0.0006815941839072067,
+          "rows": 1016,
+          "standardized_residuals": {
+            "GTA1-7B": 3.7585947002483397,
+            "Qwen3-VL-8B-Instruct": -1.3875404254849826,
+            "UI-TARS-7B-SFT": -2.538183705155456
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 3390,
+            "Qwen3-VL-8B-Instruct": 2825,
+            "UI-TARS-7B-SFT": 2825
+          },
+          "chi_square": 52.70194690265486,
+          "cramers_V": 0.21596039235076495,
+          "expected_winners": {
+            "GTA1-7B": 211.875,
+            "Qwen3-VL-8B-Instruct": 176.5625,
+            "UI-TARS-7B-SFT": 176.5625
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 294,
+            "Qwen3-VL-8B-Instruct": 123,
+            "UI-TARS-7B-SFT": 148
+          },
+          "p_value": 3.5968111620528594e-12,
+          "rows": 565,
+          "standardized_residuals": {
+            "GTA1-7B": 7.136668368239489,
+            "Qwen3-VL-8B-Instruct": -4.861555558223715,
+            "UI-TARS-7B-SFT": -2.5924514470341165
+          }
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N24": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 12648,
+            "Qwen3-VL-8B-Instruct": 12648,
+            "UI-TARS-7B-SFT": 12648
+          },
+          "chi_square": 2368.740037950664,
+          "cramers_V": 0.8655213150044112,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1438,
+            "Qwen3-VL-8B-Instruct": 113,
+            "UI-TARS-7B-SFT": 30
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 48.60251006707096,
+            "Qwen3-VL-8B-Instruct": -22.087199964618417,
+            "UI-TARS-7B-SFT": -26.515310102452542
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 7912,
+            "Qwen3-VL-8B-Instruct": 7912,
+            "UI-TARS-7B-SFT": 7912
+          },
+          "chi_square": 1702.9100101112238,
+          "cramers_V": 0.9278605401989313,
+          "expected_winners": {
+            "GTA1-7B": 329.66666666666663,
+            "Qwen3-VL-8B-Instruct": 329.66666666666663,
+            "UI-TARS-7B-SFT": 329.66666666666663
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 941,
+            "Qwen3-VL-8B-Instruct": 44,
+            "UI-TARS-7B-SFT": 4
+          },
+          "p_value": 0.0,
+          "rows": 989,
+          "standardized_residuals": {
+            "GTA1-7B": 41.2369169128985,
+            "Qwen3-VL-8B-Instruct": -19.269377205209384,
+            "UI-TARS-7B-SFT": -21.967539707689113
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 4736,
+            "Qwen3-VL-8B-Instruct": 4736,
+            "UI-TARS-7B-SFT": 4736
+          },
+          "chi_square": 687.2871621621622,
+          "cramers_V": 0.7618917390918613,
+          "expected_winners": {
+            "GTA1-7B": 197.33333333333331,
+            "Qwen3-VL-8B-Instruct": 197.33333333333331,
+            "UI-TARS-7B-SFT": 197.33333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 497,
+            "Qwen3-VL-8B-Instruct": 69,
+            "UI-TARS-7B-SFT": 26
+          },
+          "p_value": 5.721224569329419e-150,
+          "rows": 592,
+          "standardized_residuals": {
+            "GTA1-7B": 26.126656807673385,
+            "Qwen3-VL-8B-Instruct": -11.188835229092604,
+            "UI-TARS-7B-SFT": -14.937821578580776
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 12648,
+            "Qwen3-VL-8B-Instruct": 12648,
+            "UI-TARS-7B-SFT": 12648
+          },
+          "chi_square": 739.0929791271346,
+          "cramers_V": 0.48346897019172413,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 926,
+            "Qwen3-VL-8B-Instruct": 602,
+            "UI-TARS-7B-SFT": 53
+          },
+          "p_value": 3.221059711853994e-161,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 21.28693909633514,
+            "Qwen3-VL-8B-Instruct": 4.00130434141638,
+            "UI-TARS-7B-SFT": -25.28824343775152
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 8104,
+            "Qwen3-VL-8B-Instruct": 8104,
+            "UI-TARS-7B-SFT": 8104
+          },
+          "chi_square": 515.9545903257651,
+          "cramers_V": 0.5046450524735814,
+          "expected_winners": {
+            "GTA1-7B": 337.66666666666663,
+            "Qwen3-VL-8B-Instruct": 337.66666666666663,
+            "UI-TARS-7B-SFT": 337.66666666666663
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 594,
+            "Qwen3-VL-8B-Instruct": 404,
+            "UI-TARS-7B-SFT": 15
+          },
+          "p_value": 9.159763370564854e-113,
+          "rows": 1013,
+          "standardized_residuals": {
+            "GTA1-7B": 17.08467097227796,
+            "Qwen3-VL-8B-Instruct": 4.421130719744233,
+            "UI-TARS-7B-SFT": -21.505801692022185
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 4544,
+            "Qwen3-VL-8B-Instruct": 4544,
+            "UI-TARS-7B-SFT": 4544
+          },
+          "chi_square": 228.8591549295775,
+          "cramers_V": 0.44884354034074503,
+          "expected_winners": {
+            "GTA1-7B": 189.33333333333331,
+            "Qwen3-VL-8B-Instruct": 189.33333333333331,
+            "UI-TARS-7B-SFT": 189.33333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 332,
+            "Qwen3-VL-8B-Instruct": 198,
+            "UI-TARS-7B-SFT": 38
+          },
+          "p_value": 2.013102742630965e-50,
+          "rows": 568,
+          "standardized_residuals": {
+            "GTA1-7B": 12.698563742674231,
+            "Qwen3-VL-8B-Instruct": 0.7714080778260063,
+            "UI-TARS-7B-SFT": -13.469971820500232
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 12648,
+            "Qwen3-VL-8B-Instruct": 12648,
+            "UI-TARS-7B-SFT": 12648
+          },
+          "chi_square": 19.992409867172675,
+          "cramers_V": 0.07951547187763554,
+          "expected_winners": {
+            "GTA1-7B": 527.0,
+            "Qwen3-VL-8B-Instruct": 527.0,
+            "UI-TARS-7B-SFT": 527.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 609,
+            "Qwen3-VL-8B-Instruct": 501,
+            "UI-TARS-7B-SFT": 471
+          },
+          "p_value": 4.5572552861988574e-05,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 4.374759413281908,
+            "Qwen3-VL-8B-Instruct": -1.3871188383576782,
+            "UI-TARS-7B-SFT": -2.9876405749242303
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 8008,
+            "Qwen3-VL-8B-Instruct": 8008,
+            "UI-TARS-7B-SFT": 8008
+          },
+          "chi_square": 5.6003996003996015,
+          "cramers_V": 0.05289047549230389,
+          "expected_winners": {
+            "GTA1-7B": 333.66666666666663,
+            "Qwen3-VL-8B-Instruct": 333.66666666666663,
+            "UI-TARS-7B-SFT": 333.66666666666663
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 363,
+            "Qwen3-VL-8B-Instruct": 336,
+            "UI-TARS-7B-SFT": 302
+          },
+          "p_value": 0.0607979139762472,
+          "rows": 1001,
+          "standardized_residuals": {
+            "GTA1-7B": 1.966756687577769,
+            "Qwen3-VL-8B-Instruct": 0.1564465546936885,
+            "UI-TARS-7B-SFT": -2.1232032422714497
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 4640,
+            "Qwen3-VL-8B-Instruct": 4640,
+            "UI-TARS-7B-SFT": 4640
+          },
+          "chi_square": 21.56206896551724,
+          "cramers_V": 0.13633778085151183,
+          "expected_winners": {
+            "GTA1-7B": 193.33333333333331,
+            "Qwen3-VL-8B-Instruct": 193.33333333333331,
+            "UI-TARS-7B-SFT": 193.33333333333331
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 246,
+            "Qwen3-VL-8B-Instruct": 165,
+            "UI-TARS-7B-SFT": 169
+          },
+          "p_value": 2.0790082605813983e-05,
+          "rows": 580,
+          "standardized_residuals": {
+            "GTA1-7B": 4.639039734166159,
+            "Qwen3-VL-8B-Instruct": -2.495685932937488,
+            "UI-TARS-7B-SFT": -2.143353801228666
+          }
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N4": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 3162,
+            "Qwen3-VL-8B-Instruct": 1581,
+            "UI-TARS-7B-SFT": 1581
+          },
+          "chi_square": 1441.9184060721063,
+          "cramers_V": 0.6752885873292519,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 395.25,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1545,
+            "Qwen3-VL-8B-Instruct": 36,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 37.951007066761804,
+            "Qwen3-VL-8B-Instruct": -20.86556772552664,
+            "UI-TARS-7B-SFT": -22.956480566497994
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 1956,
+            "Qwen3-VL-8B-Instruct": 978,
+            "UI-TARS-7B-SFT": 978
+          },
+          "chi_square": 885.5337423312883,
+          "cramers_V": 0.6728498065189292,
+          "expected_winners": {
+            "GTA1-7B": 489.0,
+            "Qwen3-VL-8B-Instruct": 244.5,
+            "UI-TARS-7B-SFT": 244.5
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 954,
+            "Qwen3-VL-8B-Instruct": 24,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 5.114357508392595e-193,
+          "rows": 978,
+          "standardized_residuals": {
+            "GTA1-7B": 29.73812079168519,
+            "Qwen3-VL-8B-Instruct": -16.283154003278312,
+            "UI-TARS-7B-SFT": -18.05547008526779
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1206,
+            "Qwen3-VL-8B-Instruct": 603,
+            "UI-TARS-7B-SFT": 603
+          },
+          "chi_square": 556.4328358208955,
+          "cramers_V": 0.679254808138192,
+          "expected_winners": {
+            "GTA1-7B": 301.5,
+            "Qwen3-VL-8B-Instruct": 150.75,
+            "UI-TARS-7B-SFT": 150.75
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 591,
+            "Qwen3-VL-8B-Instruct": 12,
+            "UI-TARS-7B-SFT": 0
+          },
+          "p_value": 1.486431590429673e-121,
+          "rows": 603,
+          "standardized_residuals": {
+            "GTA1-7B": 23.57870276076691,
+            "Qwen3-VL-8B-Instruct": -13.048893893384069,
+            "UI-TARS-7B-SFT": -14.177446878757825
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 3162,
+            "Qwen3-VL-8B-Instruct": 1581,
+            "UI-TARS-7B-SFT": 1581
+          },
+          "chi_square": 1266.55091714105,
+          "cramers_V": 0.6328931483562282,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 395.25,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 509,
+            "Qwen3-VL-8B-Instruct": 995,
+            "UI-TARS-7B-SFT": 77
+          },
+          "p_value": 9.374817414045384e-276,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": -14.159322053404171,
+            "Qwen3-VL-8B-Instruct": 34.83402712146027,
+            "UI-TARS-7B-SFT": -18.484250323309265
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 1894,
+            "Qwen3-VL-8B-Instruct": 947,
+            "UI-TARS-7B-SFT": 947
+          },
+          "chi_square": 1101.4076029567054,
+          "cramers_V": 0.7625776062629706,
+          "expected_winners": {
+            "GTA1-7B": 473.5,
+            "Qwen3-VL-8B-Instruct": 236.75,
+            "UI-TARS-7B-SFT": 236.75
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 229,
+            "Qwen3-VL-8B-Instruct": 676,
+            "UI-TARS-7B-SFT": 42
+          },
+          "p_value": 6.797948260240386e-240,
+          "rows": 947,
+          "standardized_residuals": {
+            "GTA1-7B": -15.890364875663861,
+            "Qwen3-VL-8B-Instruct": 32.963714544825635,
+            "UI-TARS-7B-SFT": -14.615101667853825
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1268,
+            "Qwen3-VL-8B-Instruct": 634,
+            "UI-TARS-7B-SFT": 634
+          },
+          "chi_square": 263.0725552050473,
+          "cramers_V": 0.455489263764374,
+          "expected_winners": {
+            "GTA1-7B": 317.0,
+            "Qwen3-VL-8B-Instruct": 158.5,
+            "UI-TARS-7B-SFT": 158.5
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 280,
+            "Qwen3-VL-8B-Instruct": 319,
+            "UI-TARS-7B-SFT": 35
+          },
+          "p_value": 7.490666591738776e-58,
+          "rows": 634,
+          "standardized_residuals": {
+            "GTA1-7B": -2.938915441921289,
+            "Qwen3-VL-8B-Instruct": 14.720744392095574,
+            "UI-TARS-7B-SFT": -11.327177149057965
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 3162,
+            "Qwen3-VL-8B-Instruct": 1581,
+            "UI-TARS-7B-SFT": 1581
+          },
+          "chi_square": 581.8703352308665,
+          "cramers_V": 0.4289751902636726,
+          "expected_winners": {
+            "GTA1-7B": 790.5,
+            "Qwen3-VL-8B-Instruct": 395.25,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1263,
+            "Qwen3-VL-8B-Instruct": 217,
+            "UI-TARS-7B-SFT": 101
+          },
+          "p_value": 4.451046311902412e-127,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 23.766535240616236,
+            "Qwen3-VL-8B-Instruct": -10.352922608420664,
+            "UI-TARS-7B-SFT": -17.09030842932836
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 1744,
+            "Qwen3-VL-8B-Instruct": 872,
+            "UI-TARS-7B-SFT": 872
+          },
+          "chi_square": 165.954128440367,
+          "cramers_V": 0.3084755804577447,
+          "expected_winners": {
+            "GTA1-7B": 436.0,
+            "Qwen3-VL-8B-Instruct": 218.0,
+            "UI-TARS-7B-SFT": 218.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 612,
+            "Qwen3-VL-8B-Instruct": 181,
+            "UI-TARS-7B-SFT": 79
+          },
+          "p_value": 9.1943045398563e-37,
+          "rows": 872,
+          "standardized_residuals": {
+            "GTA1-7B": 11.920224122023296,
+            "Qwen3-VL-8B-Instruct": -2.893628981921368,
+            "UI-TARS-7B-SFT": -10.870660229380274
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1418,
+            "Qwen3-VL-8B-Instruct": 709,
+            "UI-TARS-7B-SFT": 709
+          },
+          "chi_square": 496.5317348377997,
+          "cramers_V": 0.591746080444985,
+          "expected_winners": {
+            "GTA1-7B": 354.5,
+            "Qwen3-VL-8B-Instruct": 177.25,
+            "UI-TARS-7B-SFT": 177.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 651,
+            "Qwen3-VL-8B-Instruct": 36,
+            "UI-TARS-7B-SFT": 22
+          },
+          "p_value": 1.5118327014662381e-108,
+          "rows": 709,
+          "standardized_residuals": {
+            "GTA1-7B": 22.270582467494354,
+            "Qwen3-VL-8B-Instruct": -12.250807136895375,
+            "UI-TARS-7B-SFT": -13.465046428339873
+          }
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N8": {
+      "B3_mvp": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 4743,
+            "Qwen3-VL-8B-Instruct": 4743,
+            "UI-TARS-7B-SFT": 3162
+          },
+          "chi_square": 2006.3008644317943,
+          "cramers_V": 0.7965574380998638,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 592.875,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 1454,
+            "Qwen3-VL-8B-Instruct": 111,
+            "UI-TARS-7B-SFT": 16
+          },
+          "p_value": 0.0,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 44.734709377233806,
+            "Qwen3-VL-8B-Instruct": -25.032995303997144,
+            "UI-TARS-7B-SFT": -22.027185970510725
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 2940,
+            "Qwen3-VL-8B-Instruct": 2940,
+            "UI-TARS-7B-SFT": 1960
+          },
+          "chi_square": 1379.2925170068029,
+          "cramers_V": 0.8388806064883407,
+          "expected_winners": {
+            "GTA1-7B": 367.5,
+            "Qwen3-VL-8B-Instruct": 367.5,
+            "UI-TARS-7B-SFT": 245.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 930,
+            "Qwen3-VL-8B-Instruct": 46,
+            "UI-TARS-7B-SFT": 4
+          },
+          "p_value": 3.0933956234310634e-300,
+          "rows": 980,
+          "standardized_residuals": {
+            "GTA1-7B": 37.115374447904514,
+            "Qwen3-VL-8B-Instruct": -21.213498462224536,
+            "UI-TARS-7B-SFT": -17.778837836875955
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1803,
+            "Qwen3-VL-8B-Instruct": 1803,
+            "UI-TARS-7B-SFT": 1202
+          },
+          "chi_square": 637.012201885746,
+          "cramers_V": 0.7279836773677909,
+          "expected_winners": {
+            "GTA1-7B": 225.375,
+            "Qwen3-VL-8B-Instruct": 225.375,
+            "UI-TARS-7B-SFT": 150.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 524,
+            "Qwen3-VL-8B-Instruct": 65,
+            "UI-TARS-7B-SFT": 12
+          },
+          "p_value": 4.7266985758558555e-139,
+          "rows": 601,
+          "standardized_residuals": {
+            "GTA1-7B": 25.161312069709894,
+            "Qwen3-VL-8B-Instruct": -13.512751521740391,
+            "UI-TARS-7B-SFT": -13.023486612641005
+          }
+        }
+      },
+      "M1_ccm": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 4743,
+            "Qwen3-VL-8B-Instruct": 4743,
+            "UI-TARS-7B-SFT": 3162
+          },
+          "chi_square": 404.12502635462783,
+          "cramers_V": 0.35750073594782233,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 592.875,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 790,
+            "Qwen3-VL-8B-Instruct": 741,
+            "UI-TARS-7B-SFT": 50
+          },
+          "p_value": 1.759403807918715e-88,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 10.240475640571594,
+            "Qwen3-VL-8B-Instruct": 7.694967428076943,
+            "UI-TARS-7B-SFT": -20.05243495403778
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 2997,
+            "Qwen3-VL-8B-Instruct": 2997,
+            "UI-TARS-7B-SFT": 1998
+          },
+          "chi_square": 266.6216216216216,
+          "cramers_V": 0.36530022593187195,
+          "expected_winners": {
+            "GTA1-7B": 374.625,
+            "Qwen3-VL-8B-Instruct": 374.625,
+            "UI-TARS-7B-SFT": 249.75
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 468,
+            "Qwen3-VL-8B-Instruct": 504,
+            "UI-TARS-7B-SFT": 27
+          },
+          "p_value": 1.270136763977533e-58,
+          "rows": 999,
+          "standardized_residuals": {
+            "GTA1-7B": 6.102281363378605,
+            "Qwen3-VL-8B-Instruct": 8.45496815407879,
+            "UI-TARS-7B-SFT": -16.27549974323037
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1746,
+            "Qwen3-VL-8B-Instruct": 1746,
+            "UI-TARS-7B-SFT": 1164
+          },
+          "chi_square": 154.06643757159222,
+          "cramers_V": 0.3638124275637399,
+          "expected_winners": {
+            "GTA1-7B": 218.25,
+            "Qwen3-VL-8B-Instruct": 218.25,
+            "UI-TARS-7B-SFT": 145.5
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 322,
+            "Qwen3-VL-8B-Instruct": 237,
+            "UI-TARS-7B-SFT": 23
+          },
+          "p_value": 3.506696323934449e-34,
+          "rows": 582,
+          "standardized_residuals": {
+            "GTA1-7B": 8.883231303773108,
+            "Qwen3-VL-8B-Instruct": 1.605403247669839,
+            "UI-TARS-7B-SFT": -11.726649924089722
+          }
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "candidate_members": {
+            "GTA1-7B": 4743,
+            "Qwen3-VL-8B-Instruct": 4743,
+            "UI-TARS-7B-SFT": 3162
+          },
+          "chi_square": 188.36285051655068,
+          "cramers_V": 0.24407128869400746,
+          "expected_winners": {
+            "GTA1-7B": 592.875,
+            "Qwen3-VL-8B-Instruct": 592.875,
+            "UI-TARS-7B-SFT": 395.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 829,
+            "Qwen3-VL-8B-Instruct": 546,
+            "UI-TARS-7B-SFT": 206
+          },
+          "p_value": 1.2517762648102593e-41,
+          "rows": 1581,
+          "standardized_residuals": {
+            "GTA1-7B": 12.266492381128561,
+            "Qwen3-VL-8B-Instruct": -2.435116274707893,
+            "UI-TARS-7B-SFT": -10.99181264316191
+          }
+        },
+        "correct": {
+          "candidate_members": {
+            "GTA1-7B": 3012,
+            "Qwen3-VL-8B-Instruct": 3012,
+            "UI-TARS-7B-SFT": 2008
+          },
+          "chi_square": 75.18193891102257,
+          "cramers_V": 0.1934972987846689,
+          "expected_winners": {
+            "GTA1-7B": 376.5,
+            "Qwen3-VL-8B-Instruct": 376.5,
+            "UI-TARS-7B-SFT": 251.0
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 482,
+            "Qwen3-VL-8B-Instruct": 378,
+            "UI-TARS-7B-SFT": 144
+          },
+          "p_value": 4.725517720348785e-17,
+          "rows": 1004,
+          "standardized_residuals": {
+            "GTA1-7B": 6.87748989078684,
+            "Qwen3-VL-8B-Instruct": 0.09778421645668492,
+            "UI-TARS-7B-SFT": -7.798593532745338
+          }
+        },
+        "incorrect": {
+          "candidate_members": {
+            "GTA1-7B": 1731,
+            "Qwen3-VL-8B-Instruct": 1731,
+            "UI-TARS-7B-SFT": 1154
+          },
+          "chi_square": 136.57134604274984,
+          "cramers_V": 0.34401461271756284,
+          "expected_winners": {
+            "GTA1-7B": 216.375,
+            "Qwen3-VL-8B-Instruct": 216.375,
+            "UI-TARS-7B-SFT": 144.25
+          },
+          "models": [
+            "GTA1-7B",
+            "Qwen3-VL-8B-Instruct",
+            "UI-TARS-7B-SFT"
+          ],
+          "observed_winners": {
+            "GTA1-7B": 347,
+            "Qwen3-VL-8B-Instruct": 168,
+            "UI-TARS-7B-SFT": 62
+          },
+          "p_value": 2.207542196656469e-30,
+          "rows": 577,
+          "standardized_residuals": {
+            "GTA1-7B": 11.232663643346234,
+            "Qwen3-VL-8B-Instruct": -4.1598476841865955,
+            "UI-TARS-7B-SFT": -7.907648638513163
+          }
+        }
+      }
+    }
+  },
+  "schema_version": 1,
+  "source_config": "runs/sourcebias/2026-08-03/configs/b1_pools.yaml",
+  "status": "PASS",
+  "winner_component_composition": {
+    "72B_CALA_S_N8": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-72B": 2260,
+          "Qwen3.5-122B-A10B": 2155,
+          "UI-Venus-Ground-72B": 927
+        },
+        "correct": {
+          "GTA1-72B": 1058,
+          "Qwen3.5-122B-A10B": 1156,
+          "UI-Venus-Ground-72B": 670
+        },
+        "incorrect": {
+          "GTA1-72B": 1202,
+          "Qwen3.5-122B-A10B": 999,
+          "UI-Venus-Ground-72B": 257
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-72B": 2010,
+          "Qwen3.5-122B-A10B": 2463,
+          "UI-Venus-Ground-72B": 1073
+        },
+        "correct": {
+          "GTA1-72B": 1198,
+          "Qwen3.5-122B-A10B": 1421,
+          "UI-Venus-Ground-72B": 822
+        },
+        "incorrect": {
+          "GTA1-72B": 812,
+          "Qwen3.5-122B-A10B": 1042,
+          "UI-Venus-Ground-72B": 251
+        }
+      }
+    },
+    "72B_Uniform_Mixed_N8": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-72B": 2406,
+          "Qwen3.5-122B-A10B": 1034,
+          "UI-Venus-Ground-72B": 2019
+        },
+        "correct": {
+          "GTA1-72B": 1032,
+          "Qwen3.5-122B-A10B": 664,
+          "UI-Venus-Ground-72B": 1019
+        },
+        "incorrect": {
+          "GTA1-72B": 1374,
+          "Qwen3.5-122B-A10B": 370,
+          "UI-Venus-Ground-72B": 1000
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-72B": 2309,
+          "Qwen3.5-122B-A10B": 1193,
+          "UI-Venus-Ground-72B": 2160
+        },
+        "correct": {
+          "GTA1-72B": 1213,
+          "Qwen3.5-122B-A10B": 850,
+          "UI-Venus-Ground-72B": 1235
+        },
+        "incorrect": {
+          "GTA1-72B": 1096,
+          "Qwen3.5-122B-A10B": 343,
+          "UI-Venus-Ground-72B": 925
+        }
+      }
+    },
+    "7B_CALA_S_N12": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 4288,
+          "Qwen3-VL-8B-Instruct": 3028,
+          "UI-TARS-7B-SFT": 2515
+        },
+        "correct": {
+          "GTA1-7B": 3027,
+          "Qwen3-VL-8B-Instruct": 2362,
+          "UI-TARS-7B-SFT": 1862
+        },
+        "incorrect": {
+          "GTA1-7B": 1261,
+          "Qwen3-VL-8B-Instruct": 666,
+          "UI-TARS-7B-SFT": 653
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 4640,
+          "Qwen3-VL-8B-Instruct": 3579,
+          "UI-TARS-7B-SFT": 3003
+        },
+        "correct": {
+          "GTA1-7B": 3358,
+          "Qwen3-VL-8B-Instruct": 2791,
+          "UI-TARS-7B-SFT": 2245
+        },
+        "incorrect": {
+          "GTA1-7B": 1282,
+          "Qwen3-VL-8B-Instruct": 788,
+          "UI-TARS-7B-SFT": 758
+        }
+      }
+    },
+    "7B_Quality_Only_N12": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 6895,
+          "Qwen3-VL-8B-Instruct": 4770,
+          "UI-TARS-7B-SFT": 126
+        },
+        "correct": {
+          "GTA1-7B": 4789,
+          "Qwen3-VL-8B-Instruct": 3717,
+          "UI-TARS-7B-SFT": 93
+        },
+        "incorrect": {
+          "GTA1-7B": 2106,
+          "Qwen3-VL-8B-Instruct": 1053,
+          "UI-TARS-7B-SFT": 33
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 7163,
+          "Qwen3-VL-8B-Instruct": 5689,
+          "UI-TARS-7B-SFT": 158
+        },
+        "correct": {
+          "GTA1-7B": 5046,
+          "Qwen3-VL-8B-Instruct": 4432,
+          "UI-TARS-7B-SFT": 114
+        },
+        "incorrect": {
+          "GTA1-7B": 2117,
+          "Qwen3-VL-8B-Instruct": 1257,
+          "UI-TARS-7B-SFT": 44
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N12": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 4065,
+          "Qwen3-VL-8B-Instruct": 3353,
+          "UI-TARS-7B-SFT": 2825
+        },
+        "correct": {
+          "GTA1-7B": 2890,
+          "Qwen3-VL-8B-Instruct": 2597,
+          "UI-TARS-7B-SFT": 2141
+        },
+        "incorrect": {
+          "GTA1-7B": 1175,
+          "Qwen3-VL-8B-Instruct": 756,
+          "UI-TARS-7B-SFT": 684
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 4388,
+          "Qwen3-VL-8B-Instruct": 4038,
+          "UI-TARS-7B-SFT": 3418
+        },
+        "correct": {
+          "GTA1-7B": 3190,
+          "Qwen3-VL-8B-Instruct": 3129,
+          "UI-TARS-7B-SFT": 2590
+        },
+        "incorrect": {
+          "GTA1-7B": 1198,
+          "Qwen3-VL-8B-Instruct": 909,
+          "UI-TARS-7B-SFT": 828
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N16": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 6102,
+          "Qwen3-VL-8B-Instruct": 4052,
+          "UI-TARS-7B-SFT": 3552
+        },
+        "correct": {
+          "GTA1-7B": 4301,
+          "Qwen3-VL-8B-Instruct": 3174,
+          "UI-TARS-7B-SFT": 2697
+        },
+        "incorrect": {
+          "GTA1-7B": 1801,
+          "Qwen3-VL-8B-Instruct": 878,
+          "UI-TARS-7B-SFT": 855
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 6714,
+          "Qwen3-VL-8B-Instruct": 5038,
+          "UI-TARS-7B-SFT": 4370
+        },
+        "correct": {
+          "GTA1-7B": 4838,
+          "Qwen3-VL-8B-Instruct": 3933,
+          "UI-TARS-7B-SFT": 3303
+        },
+        "incorrect": {
+          "GTA1-7B": 1876,
+          "Qwen3-VL-8B-Instruct": 1105,
+          "UI-TARS-7B-SFT": 1067
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N24": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 7662,
+          "Qwen3-VL-8B-Instruct": 6561,
+          "UI-TARS-7B-SFT": 5703
+        },
+        "correct": {
+          "GTA1-7B": 5497,
+          "Qwen3-VL-8B-Instruct": 4973,
+          "UI-TARS-7B-SFT": 4268
+        },
+        "incorrect": {
+          "GTA1-7B": 2165,
+          "Qwen3-VL-8B-Instruct": 1588,
+          "UI-TARS-7B-SFT": 1435
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 8679,
+          "Qwen3-VL-8B-Instruct": 8278,
+          "UI-TARS-7B-SFT": 7218
+        },
+        "correct": {
+          "GTA1-7B": 6323,
+          "Qwen3-VL-8B-Instruct": 6278,
+          "UI-TARS-7B-SFT": 5366
+        },
+        "incorrect": {
+          "GTA1-7B": 2356,
+          "Qwen3-VL-8B-Instruct": 2000,
+          "UI-TARS-7B-SFT": 1852
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N4": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 2212,
+          "Qwen3-VL-8B-Instruct": 671,
+          "UI-TARS-7B-SFT": 394
+        },
+        "correct": {
+          "GTA1-7B": 1480,
+          "Qwen3-VL-8B-Instruct": 583,
+          "UI-TARS-7B-SFT": 319
+        },
+        "incorrect": {
+          "GTA1-7B": 732,
+          "Qwen3-VL-8B-Instruct": 88,
+          "UI-TARS-7B-SFT": 75
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 2265,
+          "Qwen3-VL-8B-Instruct": 678,
+          "UI-TARS-7B-SFT": 437
+        },
+        "correct": {
+          "GTA1-7B": 1428,
+          "Qwen3-VL-8B-Instruct": 593,
+          "UI-TARS-7B-SFT": 366
+        },
+        "incorrect": {
+          "GTA1-7B": 837,
+          "Qwen3-VL-8B-Instruct": 85,
+          "UI-TARS-7B-SFT": 71
+        }
+      }
+    },
+    "7B_Uniform_Mixed_N8": {
+      "B3_mvp": {
+        "all": {
+          "GTA1-7B": 3131,
+          "Qwen3-VL-8B-Instruct": 2519,
+          "UI-TARS-7B-SFT": 1177
+        },
+        "correct": {
+          "GTA1-7B": 2172,
+          "Qwen3-VL-8B-Instruct": 1940,
+          "UI-TARS-7B-SFT": 907
+        },
+        "incorrect": {
+          "GTA1-7B": 959,
+          "Qwen3-VL-8B-Instruct": 579,
+          "UI-TARS-7B-SFT": 270
+        }
+      },
+      "graph_centroid": {
+        "all": {
+          "GTA1-7B": 3301,
+          "Qwen3-VL-8B-Instruct": 2946,
+          "UI-TARS-7B-SFT": 1399
+        },
+        "correct": {
+          "GTA1-7B": 2377,
+          "Qwen3-VL-8B-Instruct": 2280,
+          "UI-TARS-7B-SFT": 1108
+        },
+        "incorrect": {
+          "GTA1-7B": 924,
+          "Qwen3-VL-8B-Instruct": 666,
+          "UI-TARS-7B-SFT": 291
+        }
+      }
+    }
+  }
+}
