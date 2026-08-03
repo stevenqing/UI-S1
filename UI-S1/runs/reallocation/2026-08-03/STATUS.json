@@ -1,0 +1,43 @@
+{
+  "R1": "FAIL_R_K1",
+  "R2": "CANCELLED_R_K1",
+  "R3": "CANCELLED_R_K1_NO_NEW_INFERENCE",
+  "R4": "PASS_SELECTIVE_ACCURACY",
+  "R5": "FAIL_TIGHTNESS_HYPOTHESIS_WITH_B3_SOURCE_BIAS",
+  "artifacts": {
+    "r1_stratified_accuracy": {
+      "path": "r1_stratified_accuracy.json",
+      "sha256": "3397543230e904b68ed40e42c44f27e9a7b78014221993dad7a4634f58c169f8"
+    },
+    "r2_reallocation": {
+      "path": "r2_reallocation.json",
+      "sha256": "51c23f91d23edfb4f8541f6c481b703db1bc217e94a3594cd5678c830bee3d30"
+    },
+    "r3_conditional_proposal": {
+      "path": "r3_conditional_proposal.json",
+      "sha256": "009fa359d4b90f11dfe8863138d5ace8b6b63436cb2a9fc5da8914aef3cfa17a"
+    },
+    "r4_risk_coverage": {
+      "path": "r4_risk_coverage.json",
+      "sha256": "d279058d55e58e452c5f507ab1434faf5c2d2bb2c42c171ec1f7876cd346a81a"
+    },
+    "r5_72b_pollution": {
+      "path": "r5_72b_pollution.json",
+      "sha256": "970dbda2d854edc29dc4b0057b7de065b3277de905c3a801de4d2edfd774da5b"
+    }
+  },
+  "date": "2026-08-03",
+  "figures": {
+    "risk_coverage": {
+      "path": "fig_risk_coverage.pdf",
+      "sha256": "467e039a92194332ac673b380d148aad38b576e1f7271626c91b0635f66b9c33"
+    },
+    "stratified": {
+      "path": "fig_stratified_curves.pdf",
+      "sha256": "5aeaaad9b78c80a494e92e61497314a31429662a44113614526e9743f01acec3"
+    }
+  },
+  "new_model_forwards": 0,
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

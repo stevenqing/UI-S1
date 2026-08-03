@@ -1,0 +1,161 @@
+{
+  "M1_effects": {
+    "adaptive_mixed_Q4_minus_Q3": -0.02213788741302969,
+    "adaptive_single_Q2_minus_Q1": -0.09171410499683741,
+    "allocation_adaptive_Q4_minus_Q2": 0.1037318153067679,
+    "allocation_fixed_Q3_minus_Q1": 0.034155597722960174
+  },
+  "accuracy": {
+    "Q1": {
+      "B3_mvp": 0.6008855154965211,
+      "M1_ccm": 0.6040480708412397,
+      "pass_at_n": 0.7280202403542062
+    },
+    "Q2": {
+      "B3_mvp": 0.5072738772928527,
+      "M1_ccm": 0.5123339658444023,
+      "pass_at_n": 0.5945604048070842
+    },
+    "Q3": {
+      "B3_mvp": 0.6369386464263125,
+      "M1_ccm": 0.6382036685641999,
+      "pass_at_n": 0.7919038583175205
+    },
+    "Q4": {
+      "B3_mvp": 0.5629348513598988,
+      "M1_ccm": 0.6160657811511702,
+      "pass_at_n": 0.7678684376976597
+    }
+  },
+  "area_strata": [
+    {
+      "Q2_minus_Q1_M1": -0.1608832807570978,
+      "Q4_minus_Q3_M1": -0.08517350157728706,
+      "area_ratio_mean": 7.253376795939835e-05,
+      "bin": 0,
+      "rows": 317
+    },
+    {
+      "Q2_minus_Q1_M1": -0.13924050632911392,
+      "Q4_minus_Q3_M1": -0.0031645569620253164,
+      "area_ratio_mean": 0.00016705238315704342,
+      "bin": 1,
+      "rows": 316
+    },
+    {
+      "Q2_minus_Q1_M1": -0.10443037974683544,
+      "Q4_minus_Q3_M1": -0.03481012658227848,
+      "area_ratio_mean": 0.000364569096296783,
+      "bin": 2,
+      "rows": 316
+    },
+    {
+      "Q2_minus_Q1_M1": -0.0379746835443038,
+      "Q4_minus_Q3_M1": 0.0,
+      "area_ratio_mean": 0.0007041722331424224,
+      "bin": 3,
+      "rows": 316
+    },
+    {
+      "Q2_minus_Q1_M1": -0.015822784810126583,
+      "Q4_minus_Q3_M1": 0.012658227848101266,
+      "area_ratio_mean": 0.0019477087024151348,
+      "bin": 4,
+      "rows": 316
+    }
+  ],
+  "claim_boundary": "Budget-normalized K=3 microchains are an algorithm-level UI-Zoomer extension, not the official K=8 protocol. Q2/Q4 use UI-Zoomer resize and standard checkpoint classes; Q1/Q3 are frozen MVP/fixed-region upstream pools.",
+  "failure_kappa": {
+    "Q1": 0.6891571844180476,
+    "Q2": 0.9082481317089904,
+    "Q3": 0.5942326402792644,
+    "Q4": 0.4153271494045073
+  },
+  "forward_budget": 12,
+  "gate_diagnostics": {
+    "Q2": {
+      "adaptive_trigger_rate": 0.26143790849673204,
+      "branch_counts": {
+        "adaptive_crop_refine": 1240,
+        "global_confirmation": 3503
+      },
+      "chains": 4743,
+      "invalid_forwards": 0,
+      "mean_gate_score": 1.6108976308170704,
+      "realized_forwards_per_row": 12,
+      "rows_with_invalid_forwards": 0
+    },
+    "Q4": {
+      "adaptive_trigger_rate": 0.6390470166561248,
+      "branch_counts": {
+        "adaptive_crop_refine": 3031,
+        "global_confirmation": 1712
+      },
+      "chains": 4743,
+      "invalid_forwards": 38,
+      "mean_gate_score": 1.1356252711488852,
+      "realized_forwards_per_row": 12,
+      "rows_with_invalid_forwards": 26
+    }
+  },
+  "interactions": {
+    "B3_mvp": {
+      "bootstrap_mean": 0.019444368977681207,
+      "ci_99": [
+        -0.015653695003958343,
+        0.05243722950477312
+      ],
+      "classification": "NEAR_ADDITIVE",
+      "p_interaction_negative": 0.0714,
+      "point": 0.019607843137254832,
+      "resamples": 10000,
+      "seed": 20260802
+    },
+    "M1_ccm": {
+      "bootstrap_mean": 0.06954512741211571,
+      "ci_99": [
+        0.030196537699788844,
+        0.10529591478501209
+      ],
+      "classification": "SUPER_ADDITIVE",
+      "p_interaction_negative": 0.0,
+      "point": 0.06957621758380772,
+      "resamples": 10000,
+      "seed": 20260802
+    },
+    "pass_at_n": {
+      "bootstrap_mean": 0.10951030362252537,
+      "ci_99": [
+        0.072060523324374,
+        0.14873751872712423
+      ],
+      "classification": "SUPER_ADDITIVE",
+      "p_interaction_negative": 0.0,
+      "point": 0.10942441492726118,
+      "resamples": 10000,
+      "seed": 20260802
+    }
+  },
+  "kill_conditions": {
+    "X-K1": false
+  },
+  "method": "UI_Zoomer_fixed12_microchains_algorithm_level_extension",
+  "prediction": {
+    "Q4_highest": false,
+    "composability_success": false,
+    "highest_cell": "Q3",
+    "interaction_interpretation": "POSITIVE_INTERACTION_FROM_ATTENUATED_ADAPTIVE_HARM",
+    "primary_interaction_classification": "SUPER_ADDITIVE"
+  },
+  "rows": 1581,
+  "sanity_anchor": {
+    "UI_Zoomer_accuracy": 0.41,
+    "baseline_accuracy": 0.276,
+    "benchmark": "ScreenSpot-Pro",
+    "model": "Qwen2.5-VL-7B-Instruct",
+    "status": "NOT_RUN_MISSING_OFFICIAL_BACKBONE_CHECKPOINT_AND_GENERATIONS",
+    "tolerance_absolute": 0.01
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

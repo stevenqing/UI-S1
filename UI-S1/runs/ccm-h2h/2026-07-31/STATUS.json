@@ -1,0 +1,56 @@
+{
+  "status": "ALL_EXECUTABLE_SLICES_COMPLETE_HK1_HK4_TRIGGERED_H3_PASSED",
+  "upstream_commit": "1d51f56148bb57c9fe20200d0a2f9d32dde7fbb4",
+  "preregistration_commit": "89f492c",
+  "implementation_commit": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
+  "remote_branch": "fork/benchmark-results-20260729",
+  "remote_head_at_h1_queue_start": "3686f61f3ad7ae0029cfa210ce5bb0d984d5a4ee",
+  "zero_gpu": {
+    "c1_mde": "PASS",
+    "c2_sgap": "PASS_3_OF_3",
+    "c3_p1": "FAILED_RHO_0",
+    "h2": "PASS_VIEW_KAPPA_0.895_GT_CROSS_FAMILY_0.398_P_5.49E-4",
+    "h3_gate": "OPEN",
+    "h4": "HK4_TRIGGERED_RHO_BELOW_0.7_AND_ANDROIDCONTROL_AREA_UNAVAILABLE"
+  },
+  "h1": {
+    "status": "PASS_HK1_TRIGGERED_HK2_NOT_TRIGGERED",
+    "gpu_plan": "GPUS_0_7_EIGHT_RESUMABLE_SHARDS",
+    "candidate_plan": "ONE_FULL_PLUS_18_OFFICIAL_SUBIMAGES_DERIVE_N2_N4_N10_AND_THREE_SEEDED_N10",
+    "results_generated": true,
+    "result_sha256": "9991fa6b70eb582b4690dff0c5682af8a85a6f0de23b72aeeca4b3e32f3b98ae",
+    "candidate_manifest_sha256": "a05702aabe2f42f431b685161a5584afce1d79633ecb2075d2ac5c83f30c8752",
+    "P-H1a": "FAILED_DELTA_0.44PP_BELOW_MDE_0.70PP_P_0.148",
+    "P-H1b": "FAILED_M1_N10_MINUS_N4_NEGATIVE_0.51PP_B3_DECLINE_REPRODUCED",
+    "P-H1c": "FAILED_M1_60.91_BELOW_GRPO_62.8",
+    "H-K1": "TRIGGERED",
+    "H-K2": "NOT_TRIGGERED",
+    "worker_pids": [2489755, 2489756, 2489757, 2489758, 2489759, 2489760, 2489761, 2489762],
+    "startup_memory_used_mib_per_gpu": [39409, 39173, 39173, 39175, 39175, 39175, 39175, 39175],
+    "startup_memory_free_mib_per_gpu": [41744, 41980, 41980, 41978, 41978, 41978, 41978, 41978]
+  },
+  "h3": {
+    "status": "PASS_D2_MINUS_D1_3.42PP_EXCEEDS_MDE_0.70PP",
+    "local_assets": {
+      "GTA1-7B": "PRESENT_16G",
+      "UI-TARS-7B-SFT": "PRESENT_31G",
+      "SeeClick-mind2web": "PRESENT_18G",
+      "Qwen3-VL-8B-Instruct": "PRESENT_17G_ELIGIBLE_54.65_PERCENT"
+    },
+    "eligible_models_frozen": true,
+    "selected_models": ["Qwen3-VL-8B-Instruct", "GTA1-7B", "UI-TARS-7B-SFT"],
+    "inference_started": true,
+    "results_generated": true,
+    "result_sha256": "c728eac1eb983033efac1110bb8d2e3874bd74d3bf745ec5e822232a0e02f72b",
+    "D1_M1": 0.6040480708412397,
+    "D2_M1": 0.6382036685641999,
+    "D2_minus_D1_M1": 0.034155597722960174,
+    "MDE": 0.007043345177520599,
+    "prediction_satisfied": true
+  },
+  "protected_process": {
+    "pid": 1814,
+    "policy": "NEVER_KILL_PAUSE_OR_REUSE",
+    "owns_gpus": [0, 1, 2, 3, 4, 5, 6, 7]
+  }
+}

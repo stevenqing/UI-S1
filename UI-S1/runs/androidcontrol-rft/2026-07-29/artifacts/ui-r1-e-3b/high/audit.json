@@ -1,0 +1,14 @@
+{
+  "coverage": "COMPLETE",
+  "data_setting": "high",
+  "data_sha256": "ec70c99046aa4fb1557c61bf2c5d1266f87d4b9dc879128b2de20bf0aca7c72f",
+  "manifest_sha256": "25b567ce7cce9c48766c680df1ef3c19fa9c8f046c4571348d03b3a72b4231da",
+  "metric_counts_sha256": "75c9421ee2e898068edac64a734376fdf9f63149598a92c5e826867b44b95d2b",
+  "model_name": "LZXzju/Qwen2.5-VL-3B-UI-R1-E",
+  "model_revision": "91c3e5f213ab3f42931e6398174f470c8500167f",
+  "predictions_sha256": "8c8306e42ac2dbb87f9fd2da2d3c0db69bd0e6ac9cc44042d05588ccf0f9591e",
+  "rows": 7708,
+  "score_sha256": "78fec3850aebdf4d3ecdac0836e2f82b4329978de2b4df727c8e3a17097da476",
+  "status": "PASS",
+  "unique_ordered_indices": 7708
+}

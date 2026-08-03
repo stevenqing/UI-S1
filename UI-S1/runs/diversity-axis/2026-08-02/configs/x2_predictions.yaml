@@ -1,0 +1,61 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+result_blind: true
+upstream_allocation_commit: 959aec122c1b3d1d77fdcaf9d3ae4f355146da83
+
+benchmark: ScreenSpot-Pro
+rows: 1581
+forward_budget: 12
+folds: application_grouped_5fold
+bootstrap:
+  resamples: 10000
+  seed: 20260802
+  unit: application
+  stratification: frozen_outer_fold
+  confidence_interval: 0.99
+
+cells:
+  Q1:
+    lineage: GTA1-7B
+    view_strategy: fixed_GTA1_official_attention_rank
+    source: allocation_L1_v_only_N12
+  Q2:
+    lineage: GTA1-7B
+    view_strategy: adaptive_UI_Zoomer
+    source: new_inference
+  Q3:
+    lineage: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+    view_strategy: fixed_GTA1_shared_regions
+    source: allocation_L1_mixed_N12
+  Q4:
+    lineage: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+    view_strategy: adaptive_UI_Zoomer
+    source: new_inference
+
+outcomes:
+  primary: M1_ccm_accuracy
+  secondary: [B3_mvp_accuracy, pass_at_12]
+  diagnostics: [mean_pairwise_failure_kappa, per_axis_failure_kappa, adaptive_trigger_rate, realized_forwards]
+
+interaction:
+  definition: (Q4_minus_Q3)_minus_(Q2_minus_Q1)
+  near_additive: bootstrap_99pct_CI_contains_zero
+  super_additive: bootstrap_99pct_CI_lower_bound_greater_than_zero
+  sub_additive: bootstrap_99pct_CI_upper_bound_less_than_zero
+
+predictions:
+  highest_cell: Q4
+  composability_success:
+    - Q4_point_estimate_strictly_greater_than_Q1_Q2_Q3
+    - interaction_is_near_additive_or_super_additive
+  strongest_claim: interaction_near_additive
+  stronger_claim: interaction_super_additive
+  downgrade: interaction_sub_additive
+
+kill_conditions:
+  X-K1: interaction_bootstrap_99pct_CI_upper_bound_less_than_zero
+
+execution_gate:
+  require_zoom_method_status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
+  current_zoom_method_status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
+  no_X2_inference_until_gate_ready: false

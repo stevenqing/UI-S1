@@ -1,0 +1,25 @@
+{
+  "adaptive_CALA_A_N12": "FAIL",
+  "artifacts": {
+    "adaptive": {
+      "path": "cala_adaptive_results.json",
+      "sha256": "514ffb45728d9514785ef0f7b4deceff086e4d4bedc28e25765a217c35ff94ad"
+    },
+    "static": {
+      "path": "cala_static_results.json",
+      "sha256": "625999a06939aa96f0fd76e6ea11b0da926664226ce53450fe47bc3ba8711a8a"
+    },
+    "transfer": {
+      "path": "cala_transfer_72b_results.json",
+      "sha256": "43bf314b019c0871c187551f726c221c721c617efb62dcbc7670b3b20ed7e74b"
+    }
+  },
+  "claim_scope": "fixed_budget_N8_complementarity_aware_lineage_view_allocation",
+  "date": "2026-08-03",
+  "primary_CALA_S_N12": "FAIL",
+  "schema_version": 1,
+  "secondary_CALA_A_7B_N8": "PASS",
+  "status": "COMPLETE",
+  "transfer_CALA_A_72B_N8": "PASS",
+  "transfer_CALA_S_72B_N8": "PASS"
+}

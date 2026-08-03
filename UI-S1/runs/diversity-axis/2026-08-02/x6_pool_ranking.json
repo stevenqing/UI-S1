@@ -1,0 +1,89 @@
+{
+  "claim_boundary": "Ten observations from two new pools are a minimal low-power held-out validation.",
+  "fit_sha256": "28804f21b4e47b76e1fbafcc1d782ec556a3b98ab9aab330e0fe2b693cf7434d",
+  "heldout_observations": 10,
+  "heldout_pools": [
+    "Q2",
+    "Q4"
+  ],
+  "minimum_rho": 0.7,
+  "prediction_X6": true,
+  "records": [
+    {
+      "actual_heldout_pass_at_12": 0.6337579617834395,
+      "feature": 0.014148229640862745,
+      "fold": 0,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6984557577805165
+    },
+    {
+      "actual_heldout_pass_at_12": 0.7170418006430869,
+      "feature": 0.0150585697312735,
+      "fold": 1,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6994294690853863
+    },
+    {
+      "actual_heldout_pass_at_12": 0.5905044510385756,
+      "feature": 0.012471399427895578,
+      "fold": 2,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.696662198920578
+    },
+    {
+      "actual_heldout_pass_at_12": 0.5065359477124183,
+      "feature": 0.013138490825683283,
+      "fold": 3,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6973757283391431
+    },
+    {
+      "actual_heldout_pass_at_12": 0.5239616613418531,
+      "feature": 0.013934547497029676,
+      "fold": 4,
+      "pool": "Q2",
+      "predicted_pass_at_12": 0.6982272006497356
+    },
+    {
+      "actual_heldout_pass_at_12": 0.7898089171974523,
+      "feature": 0.11026723093139994,
+      "fold": 0,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8012658604611126
+    },
+    {
+      "actual_heldout_pass_at_12": 0.8713826366559485,
+      "feature": 0.11904477059235162,
+      "fold": 1,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8106544281918334
+    },
+    {
+      "actual_heldout_pass_at_12": 0.7744807121661721,
+      "feature": 0.10465846630237989,
+      "fold": 2,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.7952666546882826
+    },
+    {
+      "actual_heldout_pass_at_12": 0.6928104575163399,
+      "feature": 0.10128634590154895,
+      "fold": 3,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.7916597919451624
+    },
+    {
+      "actual_heldout_pass_at_12": 0.7092651757188498,
+      "feature": 0.1093044209480615,
+      "fold": 4,
+      "pool": "Q4",
+      "predicted_pass_at_12": 0.8002360266933883
+    }
+  ],
+  "schema_version": 1,
+  "spearman": {
+    "p_value": 0.0003436121977632824,
+    "rho": 0.9030303030303028
+  },
+  "status": "PASS"
+}

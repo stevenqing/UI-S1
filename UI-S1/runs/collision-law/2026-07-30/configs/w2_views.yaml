@@ -1,0 +1,72 @@
+schema_version: 1
+preregistered_at_utc: "2026-07-30"
+base_commit_before_w2_results: "43a62f4"
+
+observation_policy:
+  perturb_current_screenshot: true
+  perturb_history_screenshots: false
+  rationale: isolate current-observation view sensitivity from history perturbation
+
+views:
+  full:
+    transform: identity
+    source: inherited_audited_prediction
+  v1:
+    transform: constant_border
+    border_pixels_each_side: 28
+    fill_rgb: [0, 0, 0]
+  v2:
+    transform: prediction_centered_crop
+    width_fraction: 0.50
+    height_fraction: 0.50
+    center_source: same_model_same_setting_full_prediction
+    center_clamp: image_bounds
+    out_of_bounds_fill_rgb: [0, 0, 0]
+  v3:
+    transform: prediction_centered_crop
+    width_fraction: 0.75
+    height_fraction: 0.75
+    center_source: same_model_same_setting_full_prediction
+    center_clamp: image_bounds
+    out_of_bounds_fill_rgb: [0, 0, 0]
+  v4:
+    transform: identity_with_deployment_processor_profile
+
+processor_profiles:
+  androidcontrol:
+    original_max_visual_tokens: 12800
+    deployment_max_visual_tokens: 768
+  mind2web:
+    original_max_visual_tokens: 1344
+    deployment_max_visual_tokens: 768
+
+models:
+  androidcontrol:
+    - gui-r1-7b
+    - ui-agile-7b
+  mind2web:
+    - tongui-7b
+
+settings:
+  androidcontrol: [low, high]
+  mind2web: [visual]
+
+coordinate_contract:
+  prediction_space: transformed_view_pixels
+  stored_space: original_image_normalized
+  border_inverse: subtract_border_then_divide_by_original_size
+  crop_inverse: add_crop_origin_then_divide_by_original_size
+  deployment_inverse: processor_scale_then_divide_by_original_size
+  clipping: forbidden
+
+no_gt_leak:
+  view_generator_forbidden_fields:
+    - gt_action
+    - gt_bbox
+    - gt_input_text
+    - answer
+  missing_or_invalid_full_prediction_policy: center_at_image_midpoint_and_flag
+
+k1:
+  initial_comparison: full_vs_v1
+  prediction: grounding_flip_rate_greater_than_action_flip_rate

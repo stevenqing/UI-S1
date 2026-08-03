@@ -34,6 +34,11 @@ MODEL_TO_GT_ACTION_MAP = {
     "navigate_back": "press_back",
     "input_text": "type",
 }
+PROMPT_VARIANTS = {
+    "original": "{instruction}",
+    "please_carry_out": "Please carry out the following task: {instruction}",
+    "your_objective": "Your objective is to complete this task: {instruction}",
+}
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -96,10 +101,16 @@ def read_existing(path: Path) -> list[dict]:
     return rows
 
 
-def build_request(sample: dict, processor, prompt_template: str) -> tuple[dict, dict]:
+def build_request(
+    sample: dict,
+    processor,
+    prompt_template: str,
+    prompt_variant: str = "original",
+) -> tuple[dict, dict]:
     image = Image.open(BytesIO(sample["image"]["bytes"])).convert("RGB")
     history = sample.get("history", "None")
-    text_prompt = prompt_template.format(instruction=sample["instruction"], history=history)
+    instruction = PROMPT_VARIANTS[prompt_variant].format(instruction=sample["instruction"])
+    text_prompt = prompt_template.format(instruction=instruction, history=history)
     full_prompt = "<image>\n" + text_prompt
     message = [{
         "role": "user",
@@ -146,6 +157,8 @@ def main() -> None:
     parser.add_argument("--shard-index", type=int, required=True)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--kv-cache-memory-bytes", type=int, default=2 * 1024**3)
+    parser.add_argument("--prompt-variant", choices=PROMPT_VARIANTS, default="original")
+    parser.add_argument("--max-visual-tokens", type=int, default=12800)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
@@ -177,7 +190,9 @@ def main() -> None:
         raise ValueError("existing output contains an index from another shard")
 
     processor = AutoProcessor.from_pretrained(
-        args.model_dir.resolve(), trust_remote_code=True, use_fast=False
+        args.model_dir.resolve(), trust_remote_code=True, use_fast=False,
+        min_pixels=256 * 28 * 28,
+        max_pixels=args.max_visual_tokens * 28 * 28,
     )
     model = LLM(
         model=str(args.model_dir.resolve()),
@@ -203,7 +218,9 @@ def main() -> None:
             requests = []
             request_metadata = []
             for index in batch_indices:
-                request, metadata = build_request(rows[index], processor, prompt_template)
+                request, metadata = build_request(
+                    rows[index], processor, prompt_template, args.prompt_variant
+                )
                 requests.append(request)
                 request_metadata.append(metadata)
             responses = model.generate(requests, sampling_params=sampling, use_tqdm=False)
@@ -253,6 +270,8 @@ def main() -> None:
                     "dataset_revision": DATASET_REVISION,
                     "official_repo_revision": OFFICIAL_REPO_REVISION,
                     "prompt_template": args.prompt_template,
+                    "prompt_variant": args.prompt_variant,
+                    "max_visual_tokens": args.max_visual_tokens,
                     "image_processor": "slow_transformers_4_52_compatible",
                     "generation": "temperature_0_max_tokens_256_skip_special_tokens_false",
                     "tensor_parallel_size": 1,

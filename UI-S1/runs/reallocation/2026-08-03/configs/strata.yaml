@@ -1,0 +1,44 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+uncertainty:
+  implementation: runs/diversity-axis/2026-08-02/x7_safeground_port.py
+  method: SafeGround_official_code_transfer
+  patch_size: 28
+  activation_threshold: 0.0
+  higher_is_more_disagreement: true
+  source_pool: Uniform_Mixed_N12
+  tie_break: [uncertainty, row_id]
+
+R1:
+  bins: 5
+  split: numpy_array_split
+  budgets: [4, 8, 12, 16, 24]
+  rules: [B3_mvp, M1_ccm, pass_at_n]
+  gate_stratum: highest_disagreement_quintile
+  gate_comparison: B3_N24_minus_N4
+  MDE: 0.007043345177520599
+  require_delta_strictly_above_MDE: true
+  require_ci_99_lower_positive: true
+
+R4:
+  pools: [Uniform_Mixed_N12, V_only_N12]
+  retained_coverages: [0.9, 0.8, 0.7]
+  row_count_rounding: floor
+  random_permutations: 10000
+  random_seed: 20260803
+
+statistics:
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260803
+  grouping: application_group_stratified_within_outer_fold
+  confidence: 0.99
+  one_sided_p: plus_one_probability_delta_le_zero
+
+source_hashes:
+  N5: e6fb21ee4029dcbee4c9dae6539710dfed8e652d146a79d18bab28be307a8ce7
+  L1: b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11
+  CALA_static: 625999a06939aa96f0fd76e6ea11b0da926664226ce53450fe47bc3ba8711a8a
+  CALA_adaptive: 514ffb45728d9514785ef0f7b4deceff086e4d4bedc28e25765a217c35ff94ad
+  CALA_72B: 43bf314b019c0871c187551f726c221c721c617efb62dcbc7670b3b20ed7e74b

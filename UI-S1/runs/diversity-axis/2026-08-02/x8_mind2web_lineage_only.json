@@ -1,0 +1,45 @@
+{
+  "L_K4_modified": false,
+  "aligned_full_view_models": [
+    "cogagent-18b",
+    "qwen2.5-vl-3b",
+    "qwen2.5-vl-7b",
+    "seeclick-9.6b",
+    "showui-2b",
+    "tongui-32b",
+    "tongui-3b",
+    "tongui-7b",
+    "ui-tars-2b",
+    "ui-tars-72b",
+    "ui-tars-7b"
+  ],
+  "aligned_model_count": 11,
+  "comparison": "NOT_EVALUATED",
+  "cross_lineage_N6_available": true,
+  "deployable_family_counts": {
+    "CogAgent": 1,
+    "TongUI": 3,
+    "UI-TARS": 2
+  },
+  "deployable_model_count": 6,
+  "deployable_models": [
+    "cogagent-18b",
+    "tongui-32b",
+    "tongui-3b",
+    "tongui-7b",
+    "ui-tars-72b",
+    "ui-tars-7b"
+  ],
+  "forbidden_substitutions": [
+    "model_duplication",
+    "non_deployable_model",
+    "view_reuse"
+  ],
+  "original_L3_modified": false,
+  "required_budget": 6,
+  "rows": 2080,
+  "same_lineage_N6_available": false,
+  "same_lineage_maximum": 3,
+  "schema_version": 1,
+  "status": "BLOCKED_NO_SAME_LINEAGE_N6"
+}

@@ -1,0 +1,73 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+result_blind: true
+selected_method: UI-Zoomer
+fallback_method: ZoomClick
+fallback_allowed_only_if: official_UI_Zoomer_code_or_checkpoint_contract_is_not_executable_before_any_X2_result
+
+upstream:
+  repository: ZJU-REAL/UI-Zoomer
+  commit: 2c1125067958df2468663004b2b4b7c50557da25
+  implementation: UI-Zoomer/uizoomer.py
+  implementation_blob: 1452e90bc3980711aa3d0f4e1c4abef3e2d8150f
+
+official_screenspot_pro:
+  global_samples: 8
+  global_temperature: 0.9
+  gating_threshold: 1.5
+  sigma_scale: 2.5
+  minimum_crop_pixels: 512
+  global_resize_pixels: [2000000, 4800000]
+  crop_resize_pixels: [1000000, 4000000]
+  refinement_samples: 1
+  refinement_temperature: 0.0
+  gate_score: mean_pairwise_box_IoU_plus_mean_token_probability
+  reliable_rule: gate_score_strictly_greater_than_threshold
+  reliable_selector: max_IoU_gt_0.5_vote_then_max_confidence
+  uncertain_selector: density_top_75_percent_then_variance_decomposed_square_crop_then_refine
+
+sanity_anchor:
+  benchmark: ScreenSpot-Pro
+  model: Qwen2.5-VL-7B-Instruct
+  baseline_accuracy: 0.276
+  UI_Zoomer_accuracy: 0.410
+  tolerance_absolute: 0.01
+  source: upstream_README_ScreenSpot-Pro_table
+  correction: "The 83.57 ScreenSpot-v2 value in the supplied spec is OS-Atlas with GUI-RC, not Qwen2.5-VL-3B. The official Qwen2.5-VL-3B GUI-RC anchor is 80.11 to 82.63."
+  failure_policy: mark_algorithm_level_reproduction_do_not_retune_on_target_results
+
+X2_backbones:
+  Q2_single_lineage: GTA1-7B
+  Q4_global_lineages: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  point_to_box_adapter:
+    status: REQUIRED_RESULT_BLIND_ADAPTER
+    expansion_pixels: 50
+    source: GUI-RC_official_POINT_EXPAND_SIZE
+    clipping: image_bounds
+  confidence: geometric_mean_generated_token_probability
+
+forward_budget_gate:
+  required_budget: 12
+  Q1_Q3_existing_forwards: 12
+  official_UI_Zoomer_forwards:
+    reliable_rows: 8
+    uncertain_rows: 9
+  status: READY_AMENDMENT_003_FIXED12_MICROCHAINS
+  forbidden_resolutions:
+    - ignore_conditional_refinement_cost
+    - pad_with_duplicate_candidates
+    - select_budget_rule_after_accuracy_is_seen
+  requirement: "Before X2 inference, freeze an amendment that gives all four cells equal useful model forwards while preserving an identifiable UI-Zoomer intervention."
+
+budget_normalized_extension:
+  name: fixed12_microchains
+  status: algorithm_level_extension
+  forwards_per_chain: 4
+  global_samples_per_chain: 3
+  branch_forward: adaptive_crop_if_unreliable_else_independent_global_sample
+  global_temperature: 0.9
+  global_top_p: 1.0
+  crop_temperature: 0.0
+  Q2_chains: [GTA1-7B, GTA1-7B, GTA1-7B]
+  Q4_chains: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  seed: 20260802

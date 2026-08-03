@@ -1,0 +1,88 @@
+schema_version: 1
+frozen_at_utc: "2026-08-02"
+result_blind: true
+benchmark: ScreenSpot-Pro
+rows: 1581
+dataset_identity_source: runs/closing/2026-08-02/raw/inputs.jsonl
+
+models:
+  UI-Venus-Ground-72B:
+    repository: inclusionAI/UI-Venus-Ground-72B
+    revision: e9d2aa95593df7dc029d7717d59a2abebbea987a
+    architecture: Qwen2_5_VLForConditionalGeneration
+    parameters: 73410777344
+    repository_bytes: 146833555829
+    paper_only_screenspot_pro: 0.619
+    prompt_contract: model_card_bbox_pixels
+    prompt: "Outline the position corresponding to the instruction: {instruction}. The output should be only [x1,y1,x2,y2]."
+    coordinate_contract: bbox_in_resized_image_pixels_then_center_and_rescale
+    min_pixels: 2000000
+    max_pixels: 4800000
+    max_new_tokens: 2048
+  GTA1-72B:
+    repository: HelloKKMe/GTA1-72B
+    revision: 674ce162e90c5b335ad5d1abc08ca7bfc3f42558
+    architecture: Qwen2_5_VLForConditionalGeneration
+    parameters: 73410777344
+    repository_bytes: 146833130663
+    paper_only_screenspot_pro: 0.584
+    prompt_contract: model_card_pixel_point
+    system_prompt: "You are an expert UI element locator. Given a GUI image and a user's element description, provide the coordinates of the specified element as a single (x,y) point. The image resolution is height {height} and width {width}. For elements with area, return the center point.\n\nOutput the coordinate pair exactly:\n(x,y)"
+    coordinate_contract: point_in_resized_image_pixels_then_rescale
+    min_pixels: 3136
+    max_pixels: 8847360
+    max_new_tokens: 32
+  Qwen3.5-122B-A10B:
+    repository: Qwen/Qwen3.5-122B-A10B
+    revision: dc4d348443bc740c68e2d77492492c11606384d5
+    architecture: Qwen3_5MoeForConditionalGeneration
+    parameters: 125086497008
+    activated_parameters: 10000000000
+    repository_bytes: 250186058846
+    paper_only_screenspot_pro: 0.704
+    prompt_contract: frozen_existing_qwen_normalized_point
+    system_prompt: "You are an expert UI element locator. Given a GUI image and a user's element description, provide the coordinates of the specified element as a single (x,y) point. For elements with area, return the center point. Output only one coordinate pair."
+    coordinate_contract: point_normalized_0_to_1000
+    min_pixels: 3136
+    max_pixels: 8847360
+    max_new_tokens: 32
+    enable_thinking: false
+    anchor_protocol_note: official_model_card_reports_70_4_but_does_not_publish_a_screenspot_grounding_prompt
+
+generation:
+  do_sample: false
+  temperature: 0.0
+  batch_semantics: one_output_per_identity
+  parse_failure_point: [0.0, 0.0]
+  no_retry: true
+  no_prompt_or_parser_retuning_after_results: true
+
+statistics:
+  failure_definition: predicted_point_outside_target_bbox
+  pairwise_metric: cohen_kappa_on_binary_failure_vectors
+  matched_marginal_permutations: 1000
+  permutation_seed: 20260802
+  pass_at_3: any_model_point_inside_target_bbox
+  anchor_tolerance_absolute: 0.02
+
+gate:
+  pass_requires:
+    minimum_pass_at_3: 0.78
+    at_least_one_pairwise_kappa_below: 0.45
+  cancel_g2_if_pass_at_3_below: 0.75
+  marginal_pass_at_3_interval: [0.75, 0.78]
+  lineage_concentrated_if_all_pairwise_kappa_at_least: 0.55
+  default_g2_threshold: 0.731
+  concentrated_g2_effective_threshold: 0.704
+  stretch_threshold: 0.731
+
+paper_only_references:
+  view_axis_kappa: 0.895
+  same_family_cross_scale_kappa: 0.618
+  cross_family_kappa: 0.398
+
+prohibitions:
+  - no_target_labels_in_generation_artifacts
+  - no_checkpoint_substitution
+  - no_anchor_driven_prompt_change
+  - no_modification_of_protected_pid_1814

@@ -1,0 +1,4291 @@
+{
+  "contract": {
+    "T0": "instruction hashing embedding, history length, image low-dimensional features",
+    "T1": "T0 plus all released-parser outputs and per-model raw hashing embeddings",
+    "T2": "T1 plus E1 selected-subset vote margin/dispersion and pairwise-action summaries",
+    "pool": "disagreement rows only",
+    "prior_audit_comparator": {
+      "structural_router": 0.2397,
+      "union": 0.3059
+    },
+    "purpose": "routing feasibility upper bound, not deployment recipe"
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "aggregate": {
+        "T0": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.007462686567164495,
+              -0.09051724137931051,
+              -0.019230769230769072,
+              -0.007843137254901725,
+              -0.011194029850746228
+            ],
+            "mean": -0.024264498229712612,
+            "std": 0.034239967574538344
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.7288481141692151,
+              0.7418367346938776,
+              0.7233820459290188,
+              0.753358925143954,
+              0.7376573088092934
+            ],
+            "mean": 0.7370166257490717,
+            "std": 0.010424404278759214
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.7268093781855249,
+              0.763265306122449,
+              0.7286012526096033,
+              0.755278310940499,
+              0.7405614714424008
+            ],
+            "mean": 0.7429031438600954,
+            "std": 0.014399994645186508
+          },
+          "headroom_capture": {
+            "folds": [
+              0.037313432835820844,
+              -0.06896551724137968,
+              -0.019230769230769072,
+              -0.007843137254901725,
+              -0.04850746268656713
+            ],
+            "mean": -0.021446690715559352,
+            "std": 0.03642263952163565
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": -29,
+            "abstain_headroom_capture": -0.022603273577552485,
+            "full_pool_rows": 7650,
+            "headroom_capture": -0.02026500389711612,
+            "headroom_steps": 1283,
+            "projected_abstain_full_pool_delta": -0.0037908496732025933,
+            "projected_full_pool_delta": -0.003398692810457514,
+            "routed_gain_steps": -26
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.7370030581039755,
+              0.746938775510204,
+              0.7233820459290188,
+              0.753358925143954,
+              0.7279767666989352
+            ],
+            "mean": 0.7377319142772174,
+            "std": 0.011230161348783428
+          }
+        },
+        "T1": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.04850746268656718,
+              -0.03448275862069008,
+              0.09615384615384619,
+              0.0627450980392156,
+              0.09328358208955205
+            ],
+            "mean": 0.05324144606969818,
+            "std": 0.04744072686206457
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.7400611620795107,
+              0.7551020408163265,
+              0.7546972860125261,
+              0.7706333973128598,
+              0.7647628267182962
+            ],
+            "mean": 0.757051342587904,
+            "std": 0.01041102100189535
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.7268093781855249,
+              0.763265306122449,
+              0.7286012526096033,
+              0.755278310940499,
+              0.7405614714424008
+            ],
+            "mean": 0.7429031438600954,
+            "std": 0.014399994645186508
+          },
+          "headroom_capture": {
+            "folds": [
+              0.05597014925373168,
+              0.00862068965517205,
+              0.07692307692307711,
+              0.058823529411764976,
+              0.07835820895522361
+            ],
+            "mean": 0.055739130839793885,
+            "std": 0.025259044519452375
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 71,
+            "abstain_headroom_capture": 0.05533904910366318,
+            "full_pool_rows": 7650,
+            "headroom_capture": 0.05689789555728765,
+            "headroom_steps": 1283,
+            "projected_abstain_full_pool_delta": 0.009281045751633969,
+            "projected_full_pool_delta": 0.009542483660130727,
+            "routed_gain_steps": 73
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.7420998980632009,
+              0.7653061224489796,
+              0.7494780793319415,
+              0.7696737044145874,
+              0.7608906098741529
+            ],
+            "mean": 0.7574896828265724,
+            "std": 0.01021904771325587
+          }
+        },
+        "T2": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.04850746268656718,
+              -0.03448275862069008,
+              0.09615384615384619,
+              0.0627450980392156,
+              0.09328358208955205
+            ],
+            "mean": 0.05324144606969818,
+            "std": 0.04744072686206457
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.7400611620795107,
+              0.7551020408163265,
+              0.7546972860125261,
+              0.7706333973128598,
+              0.7647628267182962
+            ],
+            "mean": 0.757051342587904,
+            "std": 0.01041102100189535
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.7268093781855249,
+              0.763265306122449,
+              0.7286012526096033,
+              0.755278310940499,
+              0.7405614714424008
+            ],
+            "mean": 0.7429031438600954,
+            "std": 0.014399994645186508
+          },
+          "headroom_capture": {
+            "folds": [
+              0.05597014925373168,
+              0.00862068965517205,
+              0.07692307692307711,
+              0.058823529411764976,
+              0.07835820895522361
+            ],
+            "mean": 0.055739130839793885,
+            "std": 0.025259044519452375
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 71,
+            "abstain_headroom_capture": 0.05533904910366318,
+            "full_pool_rows": 7650,
+            "headroom_capture": 0.05689789555728765,
+            "headroom_steps": 1283,
+            "projected_abstain_full_pool_delta": 0.009281045751633969,
+            "projected_full_pool_delta": 0.009542483660130727,
+            "routed_gain_steps": 73
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.7420998980632009,
+              0.7653061224489796,
+              0.7494780793319415,
+              0.7696737044145874,
+              0.7608906098741529
+            ],
+            "mean": 0.7574896828265724,
+            "std": 0.01021904771325587
+          }
+        }
+      },
+      "disagreement_rows": 4994,
+      "folds": [
+        {
+          "best_single_selected_on_dev": "ui-agile-7b",
+          "dev_fold": 1,
+          "dev_rows": 980,
+          "fold": 0,
+          "test_fold": 0,
+          "test_rows": 981,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.007462686567164495,
+              "abstain_step_sr": 0.7288481141692151,
+              "abstain_threshold": 0.79,
+              "best_single_step_sr": 0.7268093781855249,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.037313432835820844,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.6967595363072135,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.13555790175594573,
+                    "instruction_embedding": 0.03967548344076455
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.7079382900864937,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.1667893379906853,
+                    "instruction_embedding": 0.06956919494344638
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.5672114895780376,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.020543975597356323,
+                    "instruction_embedding": 0.07024148449415346
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.55514328776873,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0032472629838186107,
+                    "instruction_embedding": 0.06663038244960334
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.6249002683687531,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0729346485819975,
+                    "instruction_embedding": 0.11736781025603826
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7370030581039755
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.04850746268656718,
+              "abstain_step_sr": 0.7400611620795107,
+              "abstain_threshold": 0.61,
+              "best_single_step_sr": 0.7268093781855249,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 145
+              },
+              "features": 218,
+              "headroom_capture": 0.05597014925373168,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8859084069964266,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010530117803956518,
+                    "instruction_embedding": 0.0035093268589601045,
+                    "model_outputs": 0.38077906201378087
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8806012974051897,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0009855289421156765,
+                    "instruction_embedding": 0.0018130405854956955,
+                    "model_outputs": 0.39965069860279445
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7639908490086426,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.001893746822572373,
+                    "instruction_embedding": 0.008525673614641516,
+                    "model_outputs": 0.2473640061006609
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7353676916957987,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0002093320215194039,
+                    "instruction_embedding": 0.023743484540830195,
+                    "model_outputs": 0.23015270770969842
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8789729455283963,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011851744396895625,
+                    "instruction_embedding": 0.0038006818016972366,
+                    "model_outputs": 0.3549176760716617
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7420998980632009
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.04850746268656718,
+              "abstain_step_sr": 0.7400611620795107,
+              "abstain_threshold": 0.61,
+              "best_single_step_sr": 0.7268093781855249,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 145
+              },
+              "features": 223,
+              "headroom_capture": 0.05597014925373168,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8859084069964266,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010530117803956518,
+                    "instruction_embedding": 0.0035093268589601045,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.38077906201378087
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8806012974051897,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0009855289421156765,
+                    "instruction_embedding": 0.0018130405854956955,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.39965069860279445
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7639908490086426,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.001893746822572373,
+                    "instruction_embedding": 0.008525673614641516,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2473640061006609
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7353676916957987,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0002093320215194039,
+                    "instruction_embedding": 0.023743484540830195,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.23015270770969842
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8789729455283963,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011851744396895625,
+                    "instruction_embedding": 0.0038006818016972366,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3549176760716617
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7420998980632009
+            }
+          },
+          "train_folds": [
+            2,
+            3,
+            4
+          ],
+          "train_rows": 3033
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-7b",
+          "dev_fold": 2,
+          "dev_rows": 958,
+          "fold": 1,
+          "test_fold": 1,
+          "test_rows": 980,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": -0.09051724137931051,
+              "abstain_step_sr": 0.7418367346938776,
+              "abstain_threshold": 0.75,
+              "best_single_step_sr": 0.763265306122449,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.06896551724137968,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.6468809824969233,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.104648827430603,
+                    "instruction_embedding": 0.007426842609052353
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.6413320405790531,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.14476959173308818,
+                    "instruction_embedding": 0.024658868168444203
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.5510447745864808,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004780954239438029,
+                    "instruction_embedding": 0.03177460188670522
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.5559480453623455,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.054150147519822944,
+                    "instruction_embedding": 0.07038885303337633
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.6055290122035459,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05047993898227032,
+                    "instruction_embedding": 0.013822530508864839
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.746938775510204
+            },
+            "T1": {
+              "abstain_headroom_capture": -0.03448275862069008,
+              "abstain_step_sr": 0.7551020408163265,
+              "abstain_threshold": 0.66,
+              "best_single_step_sr": 0.763265306122449,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 145
+              },
+              "features": 218,
+              "headroom_capture": 0.00862068965517205,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8691221967728703,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010319807192670671,
+                    "instruction_embedding": 0.002068234650622225,
+                    "model_outputs": 0.3822537775194859
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8286785784739623,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0009695657101124189,
+                    "instruction_embedding": 0.0007198290878107638,
+                    "model_outputs": 0.34242878309010244
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.757321638568076,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.001936004026066751,
+                    "instruction_embedding": 0.0009140814764984073,
+                    "model_outputs": 0.24560290862779943
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7478073713811544,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0031492024709570687,
+                    "instruction_embedding": 0.017082910750507163,
+                    "model_outputs": 0.2606519684676379
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8748560902601888,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02278810729910208,
+                    "instruction_embedding": 0.0009210223347916324,
+                    "model_outputs": 0.3961655249827309
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7653061224489796
+            },
+            "T2": {
+              "abstain_headroom_capture": -0.03448275862069008,
+              "abstain_step_sr": 0.7551020408163265,
+              "abstain_threshold": 0.66,
+              "best_single_step_sr": 0.763265306122449,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 145
+              },
+              "features": 223,
+              "headroom_capture": 0.00862068965517205,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8691221967728703,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010319807192670671,
+                    "instruction_embedding": 0.002068234650622225,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3822537775194859
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8286785784739623,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0009695657101124189,
+                    "instruction_embedding": 0.0007198290878107638,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.34242878309010244
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.757321638568076,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.001936004026066751,
+                    "instruction_embedding": 0.0009140814764984073,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.24560290862779943
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7478073713811544,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0031492024709570687,
+                    "instruction_embedding": 0.017082910750507163,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2606519684676379
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8748560902601888,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02278810729910208,
+                    "instruction_embedding": 0.0009210223347916324,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3961655249827309
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7653061224489796
+            }
+          },
+          "train_folds": [
+            0,
+            3,
+            4
+          ],
+          "train_rows": 3056
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-7b",
+          "dev_fold": 3,
+          "dev_rows": 1042,
+          "fold": 2,
+          "test_fold": 2,
+          "test_rows": 958,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": -0.019230769230769072,
+              "abstain_step_sr": 0.7233820459290188,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.7286012526096033,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.019230769230769072,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.7113851621582316,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.182932482547993,
+                    "instruction_embedding": 0.05282413467132052
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.6855822204400432,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.14659899229401308,
+                    "instruction_embedding": 0.031318647791066634
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.5600098466003317,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015065298507462743,
+                    "instruction_embedding": 0.015992951907131014
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.5512370509147013,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.03285486003967375,
+                    "instruction_embedding": 0.06607064139299096
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.6065245831812097,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.030360076670317704,
+                    "instruction_embedding": 0.09203480589022761
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7233820459290188
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.09615384615384619,
+              "abstain_step_sr": 0.7546972860125261,
+              "abstain_threshold": 0.68,
+              "best_single_step_sr": 0.7286012526096033,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 145
+              },
+              "features": 218,
+              "headroom_capture": 0.07692307692307711,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8657945207969749,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005749163757998832,
+                    "instruction_embedding": 0.0037244582606166254,
+                    "model_outputs": 0.33029513888888884
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8600173471878378,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -5.2303078907911527e-05,
+                    "instruction_embedding": -0.00011768192754280093,
+                    "model_outputs": 0.36037693085532974
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7896040630182422,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008711650082918743,
+                    "instruction_embedding": 0.003993055555555625,
+                    "model_outputs": 0.2894200870646767
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7165803394313423,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0022454264932774137,
+                    "instruction_embedding": 0.010513555212695591,
+                    "model_outputs": 0.19729171258540878
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8411981258366801,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02004989655592071,
+                    "instruction_embedding": -0.004753863940610947,
+                    "model_outputs": 0.35973439211391023
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7494780793319415
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.09615384615384619,
+              "abstain_step_sr": 0.7546972860125261,
+              "abstain_threshold": 0.68,
+              "best_single_step_sr": 0.7286012526096033,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 145
+              },
+              "features": 223,
+              "headroom_capture": 0.07692307692307711,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8657945207969749,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005749163757998832,
+                    "instruction_embedding": 0.0037244582606166254,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.33029513888888884
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8600173471878378,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -5.2303078907911527e-05,
+                    "instruction_embedding": -0.00011768192754280093,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.36037693085532974
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7896040630182422,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008711650082918743,
+                    "instruction_embedding": 0.003993055555555625,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2894200870646767
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7165803394313423,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0022454264932774137,
+                    "instruction_embedding": 0.010513555212695591,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.19729171258540878
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8411981258366801,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02004989655592071,
+                    "instruction_embedding": -0.004753863940610947,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.35973439211391023
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7494780793319415
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            4
+          ],
+          "train_rows": 2994
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-7b",
+          "dev_fold": 4,
+          "dev_rows": 1033,
+          "fold": 3,
+          "test_fold": 3,
+          "test_rows": 1042,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": -0.007843137254901725,
+              "abstain_step_sr": 0.753358925143954,
+              "abstain_threshold": 0.63,
+              "best_single_step_sr": 0.755278310940499,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.007843137254901725,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.6530731962098091,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.11036533791711,
+                    "instruction_embedding": 0.02192105458046356
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.6609240580608732,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.1607505988035003,
+                    "instruction_embedding": 0.04241816967267875
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.5759139482564679,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.038479565054368225,
+                    "instruction_embedding": 0.048542369703787
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.5536736676881681,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04961008545730872,
+                    "instruction_embedding": 0.0426613847572066
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.60972143047163,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05545927868354039,
+                    "instruction_embedding": 0.07137156538593092
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.753358925143954
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.0627450980392156,
+              "abstain_step_sr": 0.7706333973128598,
+              "abstain_threshold": 0.45,
+              "best_single_step_sr": 0.755278310940499,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 145
+              },
+              "features": 218,
+              "headroom_capture": 0.058823529411764976,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8856667329287449,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003862689382866158,
+                    "instruction_embedding": -0.0018748270364870034,
+                    "model_outputs": 0.36014998616291893
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8678904770867703,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0032311399963831366,
+                    "instruction_embedding": -0.00019191236985938165,
+                    "model_outputs": 0.37132460132050477
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7982705286839145,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0012678102737158081,
+                    "instruction_embedding": 0.014979377577802766,
+                    "model_outputs": 0.289923134608174
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.6879138949099335,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.007952761790866347,
+                    "instruction_embedding": -0.011978972020828649,
+                    "model_outputs": 0.1940030395894063
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8462281001786189,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010207882035495719,
+                    "instruction_embedding": 0.0008664918481359196,
+                    "model_outputs": 0.36783339033937595
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7696737044145874
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.0627450980392156,
+              "abstain_step_sr": 0.7706333973128598,
+              "abstain_threshold": 0.45,
+              "best_single_step_sr": 0.755278310940499,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 145
+              },
+              "features": 223,
+              "headroom_capture": 0.058823529411764976,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8856667329287449,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003862689382866158,
+                    "instruction_embedding": -0.0018748270364870034,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.36014998616291893
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8678904770867703,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0032311399963831366,
+                    "instruction_embedding": -0.00019191236985938165,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.37132460132050477
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7982705286839145,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0012678102737158081,
+                    "instruction_embedding": 0.014979377577802766,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.289923134608174
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.6879138949099335,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.007952761790866347,
+                    "instruction_embedding": -0.011978972020828649,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.1940030395894063
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8462281001786189,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010207882035495719,
+                    "instruction_embedding": 0.0008664918481359196,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.36783339033937595
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7696737044145874
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            2
+          ],
+          "train_rows": 2919
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-7b",
+          "dev_fold": 0,
+          "dev_rows": 981,
+          "fold": 4,
+          "test_fold": 4,
+          "test_rows": 1033,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": -0.011194029850746228,
+              "abstain_step_sr": 0.7376573088092934,
+              "abstain_threshold": 0.79,
+              "best_single_step_sr": 0.7405614714424008,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.04850746268656713,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.711147964745087,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.1305806004547011,
+                    "instruction_embedding": 0.04759763617677282
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.6652077707770777,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.1380194269426943,
+                    "instruction_embedding": 0.01240624062406237
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.5569859576925854,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.019486408923543475,
+                    "instruction_embedding": 0.06114179481625881
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.5746585698956199,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.016525217051994945,
+                    "instruction_embedding": 0.0747000292654375
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.6256178591686249,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0437329497879696,
+                    "instruction_embedding": 0.1025308591956351
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7279767666989352
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.09328358208955205,
+              "abstain_step_sr": 0.7647628267182962,
+              "abstain_threshold": 0.56,
+              "best_single_step_sr": 0.7405614714424008,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 145
+              },
+              "features": 218,
+              "headroom_capture": 0.07835820895522361,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.895403157993086,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009304244915755655,
+                    "instruction_embedding": 0.0038832570307389958,
+                    "model_outputs": 0.34916222865863145
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8646977197719772,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0016820432043204159,
+                    "instruction_embedding": 0.0032834533453345305,
+                    "model_outputs": 0.35009375937593756
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7773378275936755,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0060555194570789395,
+                    "instruction_embedding": 0.0073889069381272154,
+                    "model_outputs": 0.2792916576420475
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7079163008486977,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0020876012096380236,
+                    "instruction_embedding": 0.010169739537606137,
+                    "model_outputs": 0.21033069944395671
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8397077492369608,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008899873051886664,
+                    "instruction_embedding": -0.00046592658617616856,
+                    "model_outputs": 0.2977473462442265
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7608906098741529
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.09328358208955205,
+              "abstain_step_sr": 0.7647628267182962,
+              "abstain_threshold": 0.56,
+              "best_single_step_sr": 0.7405614714424008,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 145
+              },
+              "features": 223,
+              "headroom_capture": 0.07835820895522361,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.895403157993086,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009304244915755655,
+                    "instruction_embedding": 0.0038832570307389958,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.34916222865863145
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8646977197719772,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0016820432043204159,
+                    "instruction_embedding": 0.0032834533453345305,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.35009375937593756
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7773378275936755,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0060555194570789395,
+                    "instruction_embedding": 0.0073889069381272154,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2792916576420475
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7079163008486977,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0020876012096380236,
+                    "instruction_embedding": 0.010169739537606137,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.21033069944395671
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8397077492369608,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008899873051886664,
+                    "instruction_embedding": -0.00046592658617616856,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2977473462442265
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7608906098741529
+            }
+          },
+          "train_folds": [
+            1,
+            2,
+            3
+          ],
+          "train_rows": 2980
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ]
+    },
+    "androidcontrol/low": {
+      "aggregate": {
+        "T0": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.16153846153846127,
+              0.10071942446043164,
+              0.10000000000000017,
+              0.17073170731707327,
+              0.1544715447154473
+            ],
+            "mean": 0.1374922276062827,
+            "std": 0.030754797249676318
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.841799709724238,
+              0.8134328358208955,
+              0.8253731343283582,
+              0.8598901098901099,
+              0.8456973293768546
+            ],
+            "mean": 0.8372386238280913,
+            "std": 0.016204619147899484
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.8113207547169812,
+              0.7925373134328358,
+              0.8059701492537313,
+              0.8310439560439561,
+              0.8175074183976261
+            ],
+            "mean": 0.8116759183690261,
+            "std": 0.01271294943969668
+          },
+          "headroom_capture": {
+            "folds": [
+              0.16923076923076877,
+              0.10071942446043164,
+              0.10000000000000017,
+              0.17073170731707327,
+              0.17073170731707327
+            ],
+            "mean": 0.14228272166506944,
+            "std": 0.03423513710440139
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 88,
+            "abstain_headroom_capture": 0.13643410852713184,
+            "full_pool_rows": 7650,
+            "headroom_capture": 0.14108527131782944,
+            "headroom_steps": 645,
+            "projected_abstain_full_pool_delta": 0.01150326797385621,
+            "projected_full_pool_delta": 0.011895424836601304,
+            "routed_gain_steps": 91
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.8432510885341074,
+              0.8134328358208955,
+              0.8253731343283582,
+              0.8598901098901099,
+              0.8486646884272997
+            ],
+            "mean": 0.8381223714001541,
+            "std": 0.01663366970779679
+          }
+        },
+        "T1": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.31538461538461504,
+              0.33093525179856087,
+              0.3153846153846155,
+              0.276422764227642,
+              0.26016260162601607
+            ],
+            "mean": 0.2996579696842899,
+            "std": 0.026730813744044443
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.8708272859216255,
+              0.8611940298507462,
+              0.8671641791044776,
+              0.8777472527472527,
+              0.8649851632047477
+            ],
+            "mean": 0.86838358216577,
+            "std": 0.0056280702297660835
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.8113207547169812,
+              0.7925373134328358,
+              0.8059701492537313,
+              0.8310439560439561,
+              0.8175074183976261
+            ],
+            "mean": 0.8116759183690261,
+            "std": 0.01271294943969668
+          },
+          "headroom_capture": {
+            "folds": [
+              0.31538461538461504,
+              0.33093525179856087,
+              0.30769230769230743,
+              0.276422764227642,
+              0.26016260162601607
+            ],
+            "mean": 0.29811950814582827,
+            "std": 0.02599257932491831
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 194,
+            "abstain_headroom_capture": 0.30077519379844947,
+            "full_pool_rows": 7650,
+            "headroom_capture": 0.2992248062015501,
+            "headroom_steps": 645,
+            "projected_abstain_full_pool_delta": 0.02535947712418299,
+            "projected_full_pool_delta": 0.025228758169934615,
+            "routed_gain_steps": 193
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.8708272859216255,
+              0.8611940298507462,
+              0.8656716417910447,
+              0.8777472527472527,
+              0.8649851632047477
+            ],
+            "mean": 0.8680850747030833,
+            "std": 0.005723600541611445
+          }
+        },
+        "T2": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.31538461538461504,
+              0.33093525179856087,
+              0.3153846153846155,
+              0.276422764227642,
+              0.26016260162601607
+            ],
+            "mean": 0.2996579696842899,
+            "std": 0.026730813744044443
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.8708272859216255,
+              0.8611940298507462,
+              0.8671641791044776,
+              0.8777472527472527,
+              0.8649851632047477
+            ],
+            "mean": 0.86838358216577,
+            "std": 0.0056280702297660835
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.8113207547169812,
+              0.7925373134328358,
+              0.8059701492537313,
+              0.8310439560439561,
+              0.8175074183976261
+            ],
+            "mean": 0.8116759183690261,
+            "std": 0.01271294943969668
+          },
+          "headroom_capture": {
+            "folds": [
+              0.31538461538461504,
+              0.33093525179856087,
+              0.30769230769230743,
+              0.276422764227642,
+              0.26016260162601607
+            ],
+            "mean": 0.29811950814582827,
+            "std": 0.02599257932491831
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 194,
+            "abstain_headroom_capture": 0.30077519379844947,
+            "full_pool_rows": 7650,
+            "headroom_capture": 0.2992248062015501,
+            "headroom_steps": 645,
+            "projected_abstain_full_pool_delta": 0.02535947712418299,
+            "projected_full_pool_delta": 0.025228758169934615,
+            "routed_gain_steps": 193
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.8708272859216255,
+              0.8611940298507462,
+              0.8656716417910447,
+              0.8777472527472527,
+              0.8649851632047477
+            ],
+            "mean": 0.8680850747030833,
+            "std": 0.005723600541611445
+          }
+        }
+      },
+      "disagreement_rows": 3431,
+      "folds": [
+        {
+          "best_single_selected_on_dev": "ui-agile-3b",
+          "dev_fold": 1,
+          "dev_rows": 670,
+          "fold": 0,
+          "test_fold": 0,
+          "test_rows": 689,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.16153846153846127,
+              "abstain_step_sr": 0.841799709724238,
+              "abstain_threshold": 0.6,
+              "best_single_step_sr": 0.8113207547169812,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.16923076923076877,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8391330891330891,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011270780501549726,
+                    "instruction_embedding": 0.3376209260824645
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8762165948079826,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.016045407411449997,
+                    "instruction_embedding": 0.3406192581273081
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7406907940002753,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.057960644007155726,
+                    "instruction_embedding": 0.2475299298197331
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.7129668381791773,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012961914375046235,
+                    "instruction_embedding": 0.13847583643122685
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8153539098774092,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009094097604970375,
+                    "instruction_embedding": 0.38212746768213246
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8432510885341074
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.31538461538461504,
+              "abstain_step_sr": 0.8708272859216255,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8113207547169812,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 150
+              },
+              "features": 223,
+              "headroom_capture": 0.31538461538461504,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.927735512350897,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006236498544190949,
+                    "instruction_embedding": 0.009119939889170703,
+                    "model_outputs": 0.4041748849441158
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9309383470683477,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003620222307118559,
+                    "instruction_embedding": 0.0011006203496516376,
+                    "model_outputs": 0.43647328494242216
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8158249621576992,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012171460024769543,
+                    "instruction_embedding": -0.003928718866107128,
+                    "model_outputs": 0.29365625430026143
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8887589551687634,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003532829464043874,
+                    "instruction_embedding": 0.01911666953888569,
+                    "model_outputs": 0.3109874689184864
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9341116344323078,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0025386645288438814,
+                    "instruction_embedding": 0.016685038581020106,
+                    "model_outputs": 0.43796138557637704
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8708272859216255
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.31538461538461504,
+              "abstain_step_sr": 0.8708272859216255,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8113207547169812,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 150
+              },
+              "features": 228,
+              "headroom_capture": 0.31538461538461504,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.927735512350897,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006236498544190949,
+                    "instruction_embedding": 0.009119939889170703,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.4041748849441158
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9309383470683477,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003620222307118559,
+                    "instruction_embedding": 0.0011006203496516376,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.43647328494242216
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8158249621576992,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012171460024769543,
+                    "instruction_embedding": -0.003928718866107128,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.29365625430026143
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8887589551687634,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003532829464043874,
+                    "instruction_embedding": 0.01911666953888569,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3109874689184864
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9341116344323078,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0025386645288438814,
+                    "instruction_embedding": 0.016685038581020106,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.43796138557637704
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8708272859216255
+            }
+          },
+          "train_folds": [
+            2,
+            3,
+            4
+          ],
+          "train_rows": 2072
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-3b",
+          "dev_fold": 2,
+          "dev_rows": 670,
+          "fold": 1,
+          "test_fold": 1,
+          "test_rows": 670,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.10071942446043164,
+              "abstain_step_sr": 0.8134328358208955,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.7925373134328358,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.10071942446043164,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8182608695652174,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00301877470355727,
+                    "instruction_embedding": 0.2907756916996047
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.857019907199521,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004705508157461513,
+                    "instruction_embedding": 0.3149229157311779
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.6523052744245281,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.028844720833502646,
+                    "instruction_embedding": 0.1433903724478044
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.6668910256410256,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.027474358974359014,
+                    "instruction_embedding": 0.1253653846153846
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8645402298850575,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.010660919540229963,
+                    "instruction_embedding": 0.3102011494252874
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8134328358208955
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.33093525179856087,
+              "abstain_step_sr": 0.8611940298507462,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.7925373134328358,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 150
+              },
+              "features": 223,
+              "headroom_capture": 0.33093525179856087,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8701086956521739,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004649209486165984,
+                    "instruction_embedding": 0.0034535573122529417,
+                    "model_outputs": 0.33662549407114617
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9359049917676995,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003989859302499621,
+                    "instruction_embedding": 0.0019224292770543272,
+                    "model_outputs": 0.43591902409818895
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8081128317684835,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01356880597217136,
+                    "instruction_embedding": 0.01804657968540413,
+                    "model_outputs": 0.28934140822934873
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.823275641025641,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0032756410256410406,
+                    "instruction_embedding": 0.019288461538461532,
+                    "model_outputs": 0.32116025641025636
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9246934865900384,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0007662835249042654,
+                    "instruction_embedding": 0.00839080459770114,
+                    "model_outputs": 0.4328735632183909
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8611940298507462
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.33093525179856087,
+              "abstain_step_sr": 0.8611940298507462,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.7925373134328358,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 150
+              },
+              "features": 228,
+              "headroom_capture": 0.33093525179856087,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8701086956521739,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004649209486165984,
+                    "instruction_embedding": 0.0034535573122529417,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.33662549407114617
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9359049917676995,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003989859302499621,
+                    "instruction_embedding": 0.0019224292770543272,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.43591902409818895
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8081128317684835,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01356880597217136,
+                    "instruction_embedding": 0.01804657968540413,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.28934140822934873
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.823275641025641,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0032756410256410406,
+                    "instruction_embedding": 0.019288461538461532,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.32116025641025636
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9246934865900384,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0007662835249042654,
+                    "instruction_embedding": 0.00839080459770114,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.4328735632183909
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8611940298507462
+            }
+          },
+          "train_folds": [
+            0,
+            3,
+            4
+          ],
+          "train_rows": 2091
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-3b",
+          "dev_fold": 3,
+          "dev_rows": 728,
+          "fold": 2,
+          "test_fold": 2,
+          "test_rows": 670,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.10000000000000017,
+              "abstain_step_sr": 0.8253731343283582,
+              "abstain_threshold": 0.56,
+              "best_single_step_sr": 0.8059701492537313,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.10000000000000017,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8414745145631068,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006245815199196536,
+                    "instruction_embedding": 0.3569948945430198
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8490467671863021,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011668796319959207,
+                    "instruction_embedding": 0.3597699974444161
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7424002849002849,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.025733618233618194,
+                    "instruction_embedding": 0.20316239316239315
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.6998948173646968,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011044176706827225,
+                    "instruction_embedding": 0.179874258940524
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8223601999375195,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00603327085285843,
+                    "instruction_embedding": 0.38350320212433614
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8253731343283582
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.3153846153846155,
+              "abstain_step_sr": 0.8671641791044776,
+              "abstain_threshold": 0.56,
+              "best_single_step_sr": 0.8059701492537313,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 150
+              },
+              "features": 223,
+              "headroom_capture": 0.30769230769230743,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9081174673585537,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0011769752259792599,
+                    "instruction_embedding": 0.0034419986608636988,
+                    "model_outputs": 0.417998828255775
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9386915410171224,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003884487605417819,
+                    "instruction_embedding": 0.002724252491694279,
+                    "model_outputs": 0.4296754408382315
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8402991452991453,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0039886039886040114,
+                    "instruction_embedding": 0.02051282051282055,
+                    "model_outputs": 0.2917450142450142
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8801635111876076,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0006215337540638188,
+                    "instruction_embedding": 0.0139486517498566,
+                    "model_outputs": 0.3732848058902276
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8992599968759762,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0037878787878787845,
+                    "instruction_embedding": 0.006248047485160835,
+                    "model_outputs": 0.3173519993751952
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8656716417910447
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.3153846153846155,
+              "abstain_step_sr": 0.8671641791044776,
+              "abstain_threshold": 0.56,
+              "best_single_step_sr": 0.8059701492537313,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 150
+              },
+              "features": 228,
+              "headroom_capture": 0.30769230769230743,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9081174673585537,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0011769752259792599,
+                    "instruction_embedding": 0.0034419986608636988,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.417998828255775
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9386915410171224,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003884487605417819,
+                    "instruction_embedding": 0.002724252491694279,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.4296754408382315
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8402991452991453,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0039886039886040114,
+                    "instruction_embedding": 0.02051282051282055,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2917450142450142
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8801635111876076,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0006215337540638188,
+                    "instruction_embedding": 0.0139486517498566,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3732848058902276
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8992599968759762,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0037878787878787845,
+                    "instruction_embedding": 0.006248047485160835,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3173519993751952
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8656716417910447
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            4
+          ],
+          "train_rows": 2033
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-3b",
+          "dev_fold": 4,
+          "dev_rows": 674,
+          "fold": 3,
+          "test_fold": 3,
+          "test_rows": 728,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.17073170731707327,
+              "abstain_step_sr": 0.8598901098901099,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8310439560439561,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.17073170731707327,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8428149190710768,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009908515130190088,
+                    "instruction_embedding": 0.349209476894206
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8756039696885428,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012292303948832073,
+                    "instruction_embedding": 0.34896412680756395
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7686084794732245,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.055318148222804564,
+                    "instruction_embedding": 0.22266344151044826
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.6991559301900585,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0217927631578948,
+                    "instruction_embedding": 0.19225146198830412
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8290077543915176,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01901672205517746,
+                    "instruction_embedding": 0.3324453587944647
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8598901098901099
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.276422764227642,
+              "abstain_step_sr": 0.8777472527472527,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8310439560439561,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 150
+              },
+              "features": 223,
+              "headroom_capture": 0.276422764227642,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9178935022284775,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0003471733520994391,
+                    "instruction_embedding": 0.008594886230354204,
+                    "model_outputs": 0.40287590898428327
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9587258412124583,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00581375139043383,
+                    "instruction_embedding": 0.002941636540600645,
+                    "model_outputs": 0.45857376251390436
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8266881677081234,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005012430289592196,
+                    "instruction_embedding": 0.010132365786467812,
+                    "model_outputs": 0.28803332661425785
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8792146381578947,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.002552768640350811,
+                    "instruction_embedding": 0.01828627558479523,
+                    "model_outputs": 0.3855080409356725
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9067538815916724,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.004747586643456314,
+                    "instruction_embedding": 0.008158815565050714,
+                    "model_outputs": 0.40186562571433593
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8777472527472527
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.276422764227642,
+              "abstain_step_sr": 0.8777472527472527,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8310439560439561,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 150
+              },
+              "features": 228,
+              "headroom_capture": 0.276422764227642,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9178935022284775,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0003471733520994391,
+                    "instruction_embedding": 0.008594886230354204,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.40287590898428327
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9587258412124583,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00581375139043383,
+                    "instruction_embedding": 0.002941636540600645,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.45857376251390436
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8266881677081234,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005012430289592196,
+                    "instruction_embedding": 0.010132365786467812,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.28803332661425785
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8792146381578947,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.002552768640350811,
+                    "instruction_embedding": 0.01828627558479523,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3855080409356725
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9067538815916724,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.004747586643456314,
+                    "instruction_embedding": 0.008158815565050714,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.40186562571433593
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8777472527472527
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            2
+          ],
+          "train_rows": 2029
+        },
+        {
+          "best_single_selected_on_dev": "ui-agile-3b",
+          "dev_fold": 0,
+          "dev_rows": 689,
+          "fold": 4,
+          "test_fold": 4,
+          "test_rows": 674,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.1544715447154473,
+              "abstain_step_sr": 0.8456973293768546,
+              "abstain_threshold": 0.67,
+              "best_single_step_sr": 0.8175074183976261,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.17073170731707327,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.8389760185876691,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.020034644427848414,
+                    "instruction_embedding": 0.32089660609078086
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.8535954371560137,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005159170137744362,
+                    "instruction_embedding": 0.32848880764735855
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.7727634898853526,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.042457910967494406,
+                    "instruction_embedding": 0.2842724978973928
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.723774895178197,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.013803721174004191,
+                    "instruction_embedding": 0.23468946540880503
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.8270411605937922,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00413292847503377,
+                    "instruction_embedding": 0.3305921052631579
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8486646884272997
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.26016260162601607,
+              "abstain_step_sr": 0.8649851632047477,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8175074183976261,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 150
+              },
+              "features": 223,
+              "headroom_capture": 0.26016260162601607,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9136326860841424,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.002629449838187692,
+                    "instruction_embedding": 0.010263671064641877,
+                    "model_outputs": 0.37534748153680186
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9448473225255462,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004075394803871646,
+                    "instruction_embedding": -0.00010488148392318042,
+                    "model_outputs": 0.45800245722333766
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8111047172177711,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.008130081300812941,
+                    "instruction_embedding": 0.010402372626267087,
+                    "model_outputs": 0.25058651675445975
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8713901991614256,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0013299266247379649,
+                    "instruction_embedding": 0.00256813417190771,
+                    "model_outputs": 0.37405005241090145
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9265856950067476,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0022435897435897356,
+                    "instruction_embedding": 0.01059379217273948,
+                    "model_outputs": 0.3662027665317138
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8649851632047477
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.26016260162601607,
+              "abstain_step_sr": 0.8649851632047477,
+              "abstain_threshold": 0.0,
+              "best_single_step_sr": 0.8175074183976261,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 150
+              },
+              "features": 228,
+              "headroom_capture": 0.26016260162601607,
+              "heads": {
+                "gui-r1-3b": {
+                  "auroc": 0.9136326860841424,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.002629449838187692,
+                    "instruction_embedding": 0.010263671064641877,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.37534748153680186
+                  }
+                },
+                "gui-r1-7b": {
+                  "auroc": 0.9448473225255462,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004075394803871646,
+                    "instruction_embedding": -0.00010488148392318042,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.45800245722333766
+                  }
+                },
+                "ui-agile-3b": {
+                  "auroc": 0.8111047172177711,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.008130081300812941,
+                    "instruction_embedding": 0.010402372626267087,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.25058651675445975
+                  }
+                },
+                "ui-agile-7b": {
+                  "auroc": 0.8713901991614256,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0013299266247379649,
+                    "instruction_embedding": 0.00256813417190771,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.37405005241090145
+                  }
+                },
+                "ui-r1-e-3b": {
+                  "auroc": 0.9265856950067476,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0022435897435897356,
+                    "instruction_embedding": 0.01059379217273948,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.3662027665317138
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.8649851632047477
+            }
+          },
+          "train_folds": [
+            1,
+            2,
+            3
+          ],
+          "train_rows": 2068
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ]
+    },
+    "mind2web/visual": {
+      "aggregate": {
+        "T0": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.02564102564102557,
+              0.0,
+              -0.05932203389830497,
+              0.04580152671755723,
+              0.0
+            ],
+            "mean": 0.002424103692055567,
+            "std": 0.03534109324247142
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.6779661016949152,
+              0.6198830409356725,
+              0.6418338108882522,
+              0.6130030959752322,
+              0.5825825825825826
+            ],
+            "mean": 0.6270537264153309,
+            "std": 0.03173969890670459
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.6694915254237288,
+              0.6198830409356725,
+              0.66189111747851,
+              0.5944272445820433,
+              0.5825825825825826
+            ],
+            "mean": 0.6256551022005075,
+            "std": 0.03492397037323683
+          },
+          "headroom_capture": {
+            "folds": [
+              -0.04273504273504285,
+              0.05384615384615391,
+              -0.008474576271186423,
+              0.10687022900763372,
+              0.10071942446043178
+            ],
+            "mean": 0.042045237661598026,
+            "std": 0.05920160279291291
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 2,
+            "abstain_headroom_capture": 0.003149606299212604,
+            "full_pool_rows": 2080,
+            "headroom_capture": 0.04566929133858273,
+            "headroom_steps": 635,
+            "projected_abstain_full_pool_delta": 0.0009615384615384632,
+            "projected_full_pool_delta": 0.013942307692307709,
+            "routed_gain_steps": 29
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.655367231638418,
+              0.6403508771929824,
+              0.6590257879656161,
+              0.6377708978328174,
+              0.6246246246246246
+            ],
+            "mean": 0.6434278838508918,
+            "std": 0.01249699689265664
+          }
+        },
+        "T1": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.05128205128205114,
+              0.10769230769230782,
+              0.06779661016949139,
+              0.23664122137404578,
+              0.11510791366906481
+            ],
+            "mean": 0.1157040208373922,
+            "std": 0.065016397198261
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.6864406779661016,
+              0.6608187134502924,
+              0.6848137535816619,
+              0.6904024767801857,
+              0.6306306306306306
+            ],
+            "mean": 0.6706212504817743,
+            "std": 0.02253139033603312
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.6694915254237288,
+              0.6198830409356725,
+              0.66189111747851,
+              0.5944272445820433,
+              0.5825825825825826
+            ],
+            "mean": 0.6256551022005075,
+            "std": 0.03492397037323683
+          },
+          "headroom_capture": {
+            "folds": [
+              0.10256410256410263,
+              0.1000000000000002,
+              0.1271186440677967,
+              0.251908396946565,
+              0.1942446043165469
+            ],
+            "mean": 0.1551671495790023,
+            "std": 0.05913227548527568
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 75,
+            "abstain_headroom_capture": 0.11811023622047244,
+            "full_pool_rows": 2080,
+            "headroom_capture": 0.15748031496063006,
+            "headroom_steps": 635,
+            "projected_abstain_full_pool_delta": 0.036057692307692304,
+            "projected_full_pool_delta": 0.04807692307692312,
+            "routed_gain_steps": 100
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.7033898305084746,
+              0.6578947368421053,
+              0.7048710601719198,
+              0.6965944272445821,
+              0.6636636636636637
+            ],
+            "mean": 0.685282743686149,
+            "std": 0.02028304938007148
+          }
+        },
+        "T2": {
+          "abstain_headroom_capture": {
+            "folds": [
+              0.08547008547008535,
+              -0.007692307692307618,
+              0.03389830508474569,
+              0.23664122137404578,
+              0.11510791366906481
+            ],
+            "mean": 0.09268504358112681,
+            "std": 0.08343825875458269
+          },
+          "abstain_step_sr": {
+            "folds": [
+              0.6977401129943502,
+              0.6169590643274854,
+              0.673352435530086,
+              0.6904024767801857,
+              0.6306306306306306
+            ],
+            "mean": 0.6618169440525475,
+            "std": 0.03232797497540083
+          },
+          "best_single_step_sr": {
+            "folds": [
+              0.6694915254237288,
+              0.6198830409356725,
+              0.66189111747851,
+              0.5944272445820433,
+              0.5825825825825826
+            ],
+            "mean": 0.6256551022005075,
+            "std": 0.03492397037323683
+          },
+          "headroom_capture": {
+            "folds": [
+              0.1623931623931624,
+              0.11538461538461545,
+              -0.008474576271186423,
+              0.251908396946565,
+              0.1942446043165469
+            ],
+            "mean": 0.14309124055394068,
+            "std": 0.08782967407936257
+          },
+          "oracle_step_sr": {
+            "folds": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "pooled": {
+            "abstain_gain_steps": 60,
+            "abstain_headroom_capture": 0.09448818897637795,
+            "full_pool_rows": 2080,
+            "headroom_capture": 0.14645669291338592,
+            "headroom_steps": 635,
+            "projected_abstain_full_pool_delta": 0.028846153846153848,
+            "projected_full_pool_delta": 0.04471153846153849,
+            "routed_gain_steps": 93
+          },
+          "routed_step_sr": {
+            "folds": [
+              0.7231638418079096,
+              0.6637426900584795,
+              0.6590257879656161,
+              0.6965944272445821,
+              0.6636636636636637
+            ],
+            "mean": 0.6812380821480502,
+            "std": 0.024907515331960464
+          }
+        }
+      },
+      "disagreement_rows": 1701,
+      "folds": [
+        {
+          "best_single_selected_on_dev": "tongui-7b",
+          "dev_fold": 1,
+          "dev_rows": 342,
+          "fold": 0,
+          "test_fold": 0,
+          "test_rows": 354,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.02564102564102557,
+              "abstain_step_sr": 0.6779661016949152,
+              "abstain_threshold": 0.81,
+              "best_single_step_sr": 0.6694915254237288,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.04273504273504285,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.49295434969853574,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.038087855297157636,
+                    "instruction_embedding": -0.07531438415159347
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.5660765747221078,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01193906957595714,
+                    "instruction_embedding": 0.04940304652120209
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.638640873015873,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.17551256613756616,
+                    "instruction_embedding": -0.0004133597883597684
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5760874106881712,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.047841891948355864,
+                    "instruction_embedding": 0.0364768311536372
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.4972585513078471,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05206237424547283,
+                    "instruction_embedding": -0.03297283702213277
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5709630084630085,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.052057739557739624,
+                    "instruction_embedding": 0.0688984438984439
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5481482730706961,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.06280356179168911,
+                    "instruction_embedding": -0.0018719643820831466
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5285621551444336,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0004507915900321402,
+                    "instruction_embedding": 0.011900897976847347
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.5644434725563088,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.06175377214082656,
+                    "instruction_embedding": -0.02068663896785483
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.5520860035888234,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04345039733401701,
+                    "instruction_embedding": 0.011855934375801125
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.5495662137829432,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01080373219839581,
+                    "instruction_embedding": -0.0230315927320347
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.655367231638418
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.05128205128205114,
+              "abstain_step_sr": 0.6864406779661016,
+              "abstain_threshold": 0.74,
+              "best_single_step_sr": 0.6694915254237288,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 374
+              },
+              "features": 447,
+              "headroom_capture": 0.10256410256410263,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.6342118863049095,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.006201550387596955,
+                    "instruction_embedding": -0.02067183462532296,
+                    "model_outputs": 0.10044788975021535
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.8855496088925484,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.024289831206257717,
+                    "instruction_embedding": 0.010292301358583833,
+                    "model_outputs": 0.16488266776451221
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.7352843915343915,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008597883597883604,
+                    "instruction_embedding": 0.0666335978835979,
+                    "model_outputs": 0.15922619047619047
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.62545439351523,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.019471023273304633,
+                    "instruction_embedding": 0.01604479171019091,
+                    "model_outputs": 0.12798228387582
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.6904929577464789,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.003672032193158925,
+                    "instruction_embedding": -0.009557344064386242,
+                    "model_outputs": 0.15110663983903427
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5833674583674584,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.012592137592137509,
+                    "instruction_embedding": -0.017028392028392014,
+                    "model_outputs": 0.06831831831831836
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5837830545062062,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02118186724230975,
+                    "instruction_embedding": 0.014065029681597396,
+                    "model_outputs": 0.10975445223961144
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5875797901114357,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.001694976378520674,
+                    "instruction_embedding": 0.020592159832666157,
+                    "model_outputs": 0.10379025568898986
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8054231357970698,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009228077848239757,
+                    "instruction_embedding": -0.001093374152634996,
+                    "model_outputs": 0.319068445221955
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7734555242245578,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01115098692642913,
+                    "instruction_embedding": 0.014739810305049894,
+                    "model_outputs": 0.2607023840041015
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7721722049435259,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02291700769356686,
+                    "instruction_embedding": -0.010476346374202028,
+                    "model_outputs": 0.28710099852676374
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7033898305084746
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.08547008547008535,
+              "abstain_step_sr": 0.6977401129943502,
+              "abstain_threshold": 0.79,
+              "best_single_step_sr": 0.6694915254237288,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 374
+              },
+              "features": 452,
+              "headroom_capture": 0.1623931623931624,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7942635658914728,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0023428079242032718,
+                    "instruction_embedding": 0.0016881998277347154,
+                    "model_consistency": 0.15689922480620155,
+                    "model_outputs": 0.07853574504737293
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.8855496088925484,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.024289831206257717,
+                    "instruction_embedding": 0.010292301358583833,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.16488266776451221
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.6944444444444444,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.019014550264550234,
+                    "instruction_embedding": 0.025793650793650813,
+                    "model_consistency": -0.0018187830687831363,
+                    "model_outputs": 0.18287037037037035
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.6411231354197133,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.013119959888020727,
+                    "instruction_embedding": 0.009443028454435232,
+                    "model_consistency": 0.08586470563656867,
+                    "model_outputs": 0.033008816278778275
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.6846579476861167,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0015593561368208997,
+                    "instruction_embedding": 0.005331991951710191,
+                    "model_consistency": 0.018008048289738343,
+                    "model_outputs": 0.18028169014084505
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.7441987441987442,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006552006552006606,
+                    "instruction_embedding": 0.00467512967512973,
+                    "model_consistency": 0.22498634998635003,
+                    "model_outputs": -3.4125034125032094e-05
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.7069616837560713,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006172423097679514,
+                    "instruction_embedding": -0.0024959525094441215,
+                    "model_consistency": 0.20773745277927685,
+                    "model_outputs": 0.037371829465731254
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.6995744527390098,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.005102960799163281,
+                    "instruction_embedding": 0.01208121461286027,
+                    "model_consistency": 0.20368567204010246,
+                    "model_outputs": 0.027840888600382363
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.7993877104745244,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.008746993221080301,
+                    "instruction_embedding": -0.0022304832713754275,
+                    "model_consistency": -0.0010496391865296717,
+                    "model_outputs": 0.28725125738027557
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.839560369136119,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0016341963599078024,
+                    "instruction_embedding": 0.0011535503716996187,
+                    "model_consistency": 0.24799730838246603,
+                    "model_outputs": 0.10545372981286849
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.776984776559175,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005729251923391687,
+                    "instruction_embedding": -0.008512031429039113,
+                    "model_consistency": 0.1289245375675233,
+                    "model_outputs": 0.22191848092977573
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7231638418079096
+            }
+          },
+          "train_folds": [
+            2,
+            3,
+            4
+          ],
+          "train_rows": 1005
+        },
+        {
+          "best_single_selected_on_dev": "tongui-32b",
+          "dev_fold": 2,
+          "dev_rows": 349,
+          "fold": 1,
+          "test_fold": 1,
+          "test_rows": 342,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.0,
+              "abstain_step_sr": 0.6198830409356725,
+              "abstain_threshold": 0.89,
+              "best_single_step_sr": 0.6198830409356725,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.05384615384615391,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.5315063649222065,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.06628359264497874,
+                    "instruction_embedding": -0.020208628005657703
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.7777777777777778,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.13520157325467064,
+                    "instruction_embedding": 0.2079646017699115
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.6211356466876972,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.1410725552050473,
+                    "instruction_embedding": -0.02504731861198739
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5411319166841995,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.031979802230170384,
+                    "instruction_embedding": -0.06677887649905323
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.5933021143749113,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04682843763303535,
+                    "instruction_embedding": 0.005179509010926675
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5642416545718433,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05302975326560233,
+                    "instruction_embedding": -0.005950653120464389
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5802451936472555,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08433755920869318,
+                    "instruction_embedding": 0.054559069378656955
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5107585635150922,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.014093529788597015,
+                    "instruction_embedding": 0.03446131815955089
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.5738557058285604,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.07108822255378544,
+                    "instruction_embedding": 0.00276748327477494
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.5002738225629791,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.024712486308871906,
+                    "instruction_embedding": -0.09138828039430458
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.5583683972597976,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0010258371874674044,
+                    "instruction_embedding": 0.07462530862050976
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6403508771929824
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.10769230769230782,
+              "abstain_step_sr": 0.6608187134502924,
+              "abstain_threshold": 0.77,
+              "best_single_step_sr": 0.6198830409356725,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 374
+              },
+              "features": 447,
+              "headroom_capture": 0.1000000000000002,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7077439886845828,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.09543847241867043,
+                    "instruction_embedding": 0.007107496463932161,
+                    "model_outputs": 0.14218528995756718
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.9498525073746312,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0,
+                    "instruction_embedding": -0.0068829891838742,
+                    "model_outputs": 0.5801376597836774
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5554574132492114,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.004921135646687724,
+                    "instruction_embedding": -0.04681388012618293,
+                    "model_outputs": -0.013501577287066246
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5965495476541132,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04346728382074472,
+                    "instruction_embedding": 0.0032400589101619914,
+                    "model_outputs": 0.08676625289290973
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7672768553994608,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.00454093940683975,
+                    "instruction_embedding": 0.00014190435646377342,
+                    "model_outputs": 0.2515491225580625
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5530841799709725,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00576923076923086,
+                    "instruction_embedding": -0.004354136429608024,
+                    "model_outputs": 0.07068214804063866
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5846684313179159,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0038311507383672616,
+                    "instruction_embedding": 0.0035525215937587395,
+                    "model_outputs": 0.09853023126219007
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5821306100915703,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.001733428797527914,
+                    "instruction_embedding": -0.005690168444059229,
+                    "model_outputs": 0.068244338093982
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.804206574577658,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.021129133176108206,
+                    "instruction_embedding": 0.01261009770419208,
+                    "model_outputs": 0.214997352842085
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.6989320920043811,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015470974808324156,
+                    "instruction_embedding": 0.013725355969331776,
+                    "model_outputs": 0.190169769989047
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.688388914003547,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.02131654901415303,
+                    "instruction_embedding": -0.0017039329554543459,
+                    "model_outputs": 0.14792919984699382
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6578947368421053
+            },
+            "T2": {
+              "abstain_headroom_capture": -0.007692307692307618,
+              "abstain_step_sr": 0.6169590643274854,
+              "abstain_threshold": 0.89,
+              "best_single_step_sr": 0.6198830409356725,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 374
+              },
+              "features": 452,
+              "headroom_capture": 0.11538461538461545,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7810466760961811,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.030162659123055158,
+                    "instruction_embedding": -0.0009724186704385129,
+                    "model_consistency": 0.1315770862800566,
+                    "model_outputs": 0.06585926449787838
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.9498525073746312,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0,
+                    "instruction_embedding": -0.0068829891838742,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.5801376597836774
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.580441640378549,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.009085173501577226,
+                    "instruction_embedding": -0.02889589905362766,
+                    "model_consistency": 0.010851735015772968,
+                    "model_outputs": -0.03936908517350157
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.6610140963601936,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011445402903429436,
+                    "instruction_embedding": -0.010098884914790607,
+                    "model_consistency": 0.07439511887229122,
+                    "model_outputs": 0.07851883021249739
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7729057282058559,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0050139539283856616,
+                    "instruction_embedding": 0.0014190435646374011,
+                    "model_consistency": 0.062154108131119656,
+                    "model_outputs": 0.17449505699824985
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.7423802612481858,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.011574746008708336,
+                    "instruction_embedding": -0.010105224963715465,
+                    "model_consistency": 0.27149854862119016,
+                    "model_outputs": 0.015348330914368713
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.7719072164948454,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0008010587907495426,
+                    "instruction_embedding": -0.009107690164391169,
+                    "model_consistency": 0.25597311228754527,
+                    "model_outputs": 0.02838534410699367
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.7294343746467197,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0004898820514752655,
+                    "instruction_embedding": -0.0076873798846892605,
+                    "model_consistency": 0.15525492708294075,
+                    "model_outputs": 0.007027923276934134
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8332771814987727,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012080666121191741,
+                    "instruction_embedding": 0.0010107330220917587,
+                    "model_consistency": 0.03335418972902737,
+                    "model_outputs": 0.21533426384944898
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7872056407447974,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0020536692223439568,
+                    "instruction_embedding": 0.0029093647316539295,
+                    "model_consistency": 0.17860076670317637,
+                    "model_outputs": 0.11356790799561889
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7475049553152276,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.008206697499739124,
+                    "instruction_embedding": 0.004416316027402112,
+                    "model_consistency": 0.04162464791181286,
+                    "model_outputs": 0.18475501616997603
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6637426900584795
+            }
+          },
+          "train_folds": [
+            0,
+            3,
+            4
+          ],
+          "train_rows": 1010
+        },
+        {
+          "best_single_selected_on_dev": "tongui-7b",
+          "dev_fold": 3,
+          "dev_rows": 323,
+          "fold": 2,
+          "test_fold": 2,
+          "test_rows": 349,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": -0.05932203389830497,
+              "abstain_step_sr": 0.6418338108882522,
+              "abstain_threshold": 0.76,
+              "best_single_step_sr": 0.66189111747851,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": -0.008474576271186423,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.5827021071477758,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.023188954689436714,
+                    "instruction_embedding": -0.03556672634623326
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.7831395348837209,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05348837209302326,
+                    "instruction_embedding": 0.3020348837209302
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5881010346926354,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00791235544735236,
+                    "instruction_embedding": 0.05148103063501719
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.6090250329380764,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.03833168642951257,
+                    "instruction_embedding": 0.07009634387351782
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.5642234816443918,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.026814413804770787,
+                    "instruction_embedding": 0.014020470309592303
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5363777089783281,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.018099547511312153,
+                    "instruction_embedding": 0.009585615622767274
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5195223260643821,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04645205953617165,
+                    "instruction_embedding": -0.024904811353409495
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.535072272360408,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04470247266857441,
+                    "instruction_embedding": 0.05493799985325415
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.5835391963109354,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.09856719367588929,
+                    "instruction_embedding": 0.04339591567852441
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.55978153582944,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04630848193722448,
+                    "instruction_embedding": 0.02036586168322696
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.5634483227869633,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.052221541811254046,
+                    "instruction_embedding": 0.052646798666394545
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6590257879656161
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.06779661016949139,
+              "abstain_step_sr": 0.6848137535816619,
+              "abstain_threshold": 0.78,
+              "best_single_step_sr": 0.66189111747851,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 374
+              },
+              "features": 447,
+              "headroom_capture": 0.1271186440677967,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.6902974796859936,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.05842859110315379,
+                    "instruction_embedding": 0.01177523757058252,
+                    "model_outputs": 0.17058600743699215
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.9375,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.016279069767441867,
+                    "instruction_embedding": 0.007558139534883712,
+                    "model_outputs": 0.7290697674418605
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.7260093325218097,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0315479813349564,
+                    "instruction_embedding": -0.0069993913572733435,
+                    "model_outputs": 0.2977277338202475
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5731637022397892,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.028573781291172606,
+                    "instruction_embedding": 0.020092226613965702,
+                    "model_outputs": 0.009963768115942018
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7153188969717476,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0010996447301641066,
+                    "instruction_embedding": -0.002537641684994152,
+                    "model_outputs": 0.16207071561495512
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5808128919584028,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.006112566484083537,
+                    "instruction_embedding": -0.021116138763197623,
+                    "model_outputs": 0.06005398110661264
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.599619245413638,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.006403599861543818,
+                    "instruction_embedding": 0.012114918656974782,
+                    "model_outputs": 0.09837313949463489
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5494533714872698,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004402377283733272,
+                    "instruction_embedding": 0.019443833003154998,
+                    "model_outputs": 0.03235747303543912
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8124588274044796,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012269433465085688,
+                    "instruction_embedding": -4.117259552038899e-05,
+                    "model_outputs": 0.3315217391304348
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7638678686582878,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.019049812462986093,
+                    "instruction_embedding": -0.00641573994867406,
+                    "model_outputs": 0.26646706586826346
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7579778186024358,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.00268762332448802,
+                    "instruction_embedding": -0.001292780839627139,
+                    "model_outputs": 0.28308498332993126
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.7048710601719198
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.03389830508474569,
+              "abstain_step_sr": 0.673352435530086,
+              "abstain_threshold": 0.5,
+              "best_single_step_sr": 0.66189111747851,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 374
+              },
+              "features": 452,
+              "headroom_capture": -0.008474576271186423,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7523240600468255,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.024462883900289167,
+                    "instruction_embedding": 0.001187852912821974,
+                    "model_consistency": 0.12930381490152876,
+                    "model_outputs": 0.07035876601019142
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.9375,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.016279069767441867,
+                    "instruction_embedding": 0.007558139534883712,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.7290697674418605
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.6706228443903429,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.023635625887603928,
+                    "instruction_embedding": -0.0029417731791437918,
+                    "model_consistency": -0.004260499087035852,
+                    "model_outputs": 0.19324406573341452
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.643651185770751,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.02375658761528321,
+                    "instruction_embedding": 0.022933135704874874,
+                    "model_consistency": 0.13726943346508558,
+                    "model_outputs": 0.03927865612648218
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7158687193368296,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0042294028083235125,
+                    "instruction_embedding": -0.0024107596007444387,
+                    "model_consistency": 0.02863305701234986,
+                    "model_outputs": 0.11816951446455759
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.7497023100738271,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0025799793601651855,
+                    "instruction_embedding": 0.003095975232198178,
+                    "model_consistency": 0.19677304120028583,
+                    "model_outputs": 0.01536080019052155
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.7740048459674628,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0037037037037036535,
+                    "instruction_embedding": 0.006611284181377575,
+                    "model_consistency": 0.29601938386985116,
+                    "model_outputs": 0.0017653167185877061
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.7484591679506933,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0013207131851199483,
+                    "instruction_embedding": -0.002733142563651092,
+                    "model_consistency": 0.286649790887079,
+                    "model_outputs": 0.0027698290410154147
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8189229249011858,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0032526350461132836,
+                    "instruction_embedding": 0.0041996047430830075,
+                    "model_consistency": 0.03190876152832678,
+                    "model_outputs": 0.32250494071146246
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.8041060735671514,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.00023030861354222942,
+                    "instruction_embedding": -0.000296111074554295,
+                    "model_consistency": 0.20675133249983546,
+                    "model_outputs": 0.18196025531354865
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.8142818262230387,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00034020548411239915,
+                    "instruction_embedding": -0.0006804109682247983,
+                    "model_consistency": 0.11162141933727965,
+                    "model_outputs": 0.2674865618833775
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6590257879656161
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            4
+          ],
+          "train_rows": 1029
+        },
+        {
+          "best_single_selected_on_dev": "cogagent-18b",
+          "dev_fold": 4,
+          "dev_rows": 333,
+          "fold": 3,
+          "test_fold": 3,
+          "test_rows": 323,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.04580152671755723,
+              "abstain_step_sr": 0.6130030959752322,
+              "abstain_threshold": 0.81,
+              "best_single_step_sr": 0.5944272445820433,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.10687022900763372,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.5698155216284987,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08667302798982185,
+                    "instruction_embedding": 0.026995865139949116
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": null,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": null,
+                    "instruction_embedding": null
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.656958861976163,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.18444828911956945,
+                    "instruction_embedding": 0.12716262975778547
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5773721911490531,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04162986949268965,
+                    "instruction_embedding": 0.036527328034540285
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.5848589085820896,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.005480410447761153,
+                    "instruction_embedding": 0.001865671641791078
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5393606870229007,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.026160941475826927,
+                    "instruction_embedding": 0.020574904580152653
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5013617886178862,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.004756097560975614,
+                    "instruction_embedding": 0.011402439024390254
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.4780200761509173,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.025268258913118735,
+                    "instruction_embedding": -0.028772931810314983
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.6099243554229704,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08256978478585131,
+                    "instruction_embedding": -0.0009056040911996632
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.5131721052225565,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.04983414333101904,
+                    "instruction_embedding": 0.0358713260819255
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.5562050359712231,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.06416171410697535,
+                    "instruction_embedding": 0.04828745699092907
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6377708978328174
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.23664122137404578,
+              "abstain_step_sr": 0.6904024767801857,
+              "abstain_threshold": 0.58,
+              "best_single_step_sr": 0.5944272445820433,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 374
+              },
+              "features": 447,
+              "headroom_capture": 0.251908396946565,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7560432569974554,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08707061068702293,
+                    "instruction_embedding": 0.009661259541984712,
+                    "model_outputs": 0.20487436386768443
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": null,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": null,
+                    "instruction_embedding": null,
+                    "model_outputs": null
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5594002306805075,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.025567089580930347,
+                    "instruction_embedding": 0.00865051903114189,
+                    "model_outputs": -0.12033833141099581
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.630752624865077,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.014522617996271192,
+                    "instruction_embedding": 0.007359434795407682,
+                    "model_outputs": 0.07609655578451568
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.6898903917910447,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005072294776119368,
+                    "instruction_embedding": 0.00046641791044765846,
+                    "model_outputs": 0.19857742537313428
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.6018209287531806,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.004214376590330859,
+                    "instruction_embedding": -0.024610368956743067,
+                    "model_outputs": 0.11406647582697194
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.49402439024390243,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0031300813008129924,
+                    "instruction_embedding": -0.014715447154471595,
+                    "model_outputs": -0.04447154471544712
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5297248182762202,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0009518864659051607,
+                    "instruction_embedding": -0.01812911041883003,
+                    "model_outputs": 0.01137937002422984
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.786597059450245,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015182186234817818,
+                    "instruction_embedding": -0.005540166204986097,
+                    "model_outputs": 0.2287982101001491
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7523721360796112,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015891383167476625,
+                    "instruction_embedding": 0.004898557432693074,
+                    "model_outputs": 0.25190928025919923
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7469893650297154,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003636221457616551,
+                    "instruction_embedding": 0.005121989365029722,
+                    "model_outputs": 0.19297388176415387
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6965944272445821
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.23664122137404578,
+              "abstain_step_sr": 0.6904024767801857,
+              "abstain_threshold": 0.58,
+              "best_single_step_sr": 0.5944272445820433,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 374
+              },
+              "features": 452,
+              "headroom_capture": 0.251908396946565,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.7560432569974554,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08707061068702293,
+                    "instruction_embedding": 0.009661259541984712,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.20487436386768443
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": null,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": null,
+                    "instruction_embedding": null,
+                    "model_consistency": null,
+                    "model_outputs": null
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5594002306805075,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.025567089580930347,
+                    "instruction_embedding": 0.00865051903114189,
+                    "model_consistency": 0.0,
+                    "model_outputs": -0.12033833141099581
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.630752624865077,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.014522617996271192,
+                    "instruction_embedding": 0.007359434795407682,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.07609655578451568
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.6898903917910447,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.005072294776119368,
+                    "instruction_embedding": 0.00046641791044765846,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.19857742537313428
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.6018209287531806,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.004214376590330859,
+                    "instruction_embedding": -0.024610368956743067,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.11406647582697194
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.49402439024390243,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.0031300813008129924,
+                    "instruction_embedding": -0.014715447154471595,
+                    "model_consistency": 0.0,
+                    "model_outputs": -0.04447154471544712
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5297248182762202,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0009518864659051607,
+                    "instruction_embedding": -0.01812911041883003,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.01137937002422984
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.786597059450245,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015182186234817818,
+                    "instruction_embedding": -0.005540166204986097,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.2287982101001491
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7523721360796112,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.015891383167476625,
+                    "instruction_embedding": 0.004898557432693074,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.25190928025919923
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7469893650297154,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.003636221457616551,
+                    "instruction_embedding": 0.005121989365029722,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.19297388176415387
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6965944272445821
+            }
+          },
+          "train_folds": [
+            0,
+            1,
+            2
+          ],
+          "train_rows": 1045
+        },
+        {
+          "best_single_selected_on_dev": "tongui-7b",
+          "dev_fold": 0,
+          "dev_rows": 354,
+          "fold": 4,
+          "test_fold": 4,
+          "test_rows": 333,
+          "tiers": {
+            "T0": {
+              "abstain_headroom_capture": 0.0,
+              "abstain_step_sr": 0.5825825825825826,
+              "abstain_threshold": 0.8300000000000001,
+              "best_single_step_sr": 0.5825825825825826,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64
+              },
+              "features": 73,
+              "headroom_capture": 0.10071942446043178,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.6304966474348979,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.10621004210198037,
+                    "instruction_embedding": 0.014599251520349243
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.5672492401215805,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.06420972644376899,
+                    "instruction_embedding": -0.07408814589665658
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5927068723702664,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.12973352033660585,
+                    "instruction_embedding": 0.14523141654978955
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.543969494397891,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.026080406741361473,
+                    "instruction_embedding": 0.0008003012898973871
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.5308046234990461,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.029710470205364103,
+                    "instruction_embedding": 0.008360453372236565
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5338208056798889,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.026142151566599825,
+                    "instruction_embedding": -0.02496527241858315
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.564100666173205,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.009603997039230094,
+                    "instruction_embedding": 0.02329755736491479
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5360268486241935,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.08364236445894835,
+                    "instruction_embedding": -0.010327820218052342
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.5990523465703971,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0793256833419288,
+                    "instruction_embedding": 0.04093604951005669
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.5597575269211047,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.03045564427514469,
+                    "instruction_embedding": 0.0857629477693942
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.5719047247777951,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.024364571963199744,
+                    "instruction_embedding": 0.06724621861843127
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6246246246246246
+            },
+            "T1": {
+              "abstain_headroom_capture": 0.11510791366906481,
+              "abstain_step_sr": 0.6306306306306306,
+              "abstain_threshold": 0.76,
+              "best_single_step_sr": 0.5825825825825826,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_outputs": 374
+              },
+              "features": 447,
+              "headroom_capture": 0.1942446043165469,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.6933572430999532,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01785435833463278,
+                    "instruction_embedding": -0.012318727584593847,
+                    "model_outputs": 0.16981132075471694
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.5227963525835866,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.006079027355623157,
+                    "instruction_embedding": -0.05699088145896658,
+                    "model_outputs": -0.13297872340425532
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5659186535764376,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0042075736325385416,
+                    "instruction_embedding": -0.007152875175315598,
+                    "model_outputs": 0.019074333800841448
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5339892665474061,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0163826381696639,
+                    "instruction_embedding": -0.0033895113454477377,
+                    "model_outputs": 0.022549665756520065
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7476714173493435,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.003871619346874633,
+                    "instruction_embedding": -0.0038155089215575755,
+                    "model_outputs": 0.21254629110088652
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5902145392807532,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0005402068220403677,
+                    "instruction_embedding": -0.015974687451767222,
+                    "model_outputs": 0.08160981632968045
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5958179126572909,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00014803849000744052,
+                    "instruction_embedding": -0.006772760917838627,
+                    "model_outputs": 0.1059215396002961
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5804717051101387,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.007194244604316502,
+                    "instruction_embedding": -0.009753022324408556,
+                    "model_outputs": 0.07906252317733442
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8332903558535327,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.003158844765343005,
+                    "instruction_embedding": 0.012635379061371799,
+                    "model_outputs": 0.33245229499742135
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7766830268844773,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012929455717529792,
+                    "instruction_embedding": -0.001977877078602308,
+                    "model_outputs": 0.24543989451322246
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7894121316076719,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0028457820053017224,
+                    "instruction_embedding": 0.014423826602214196,
+                    "model_outputs": 0.25124746608451576
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6636636636636637
+            },
+            "T2": {
+              "abstain_headroom_capture": 0.11510791366906481,
+              "abstain_step_sr": 0.6306306306306306,
+              "abstain_threshold": 0.76,
+              "best_single_step_sr": 0.5825825825825826,
+              "feature_blocks": {
+                "input_numeric": 9,
+                "instruction_embedding": 64,
+                "model_consistency": 5,
+                "model_outputs": 374
+              },
+              "features": 452,
+              "headroom_capture": 0.1942446043165469,
+              "heads": {
+                "cogagent-18b": {
+                  "auroc": 0.6933572430999532,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.01785435833463278,
+                    "instruction_embedding": -0.012318727584593847,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.16981132075471694
+                  }
+                },
+                "qwen2.5-vl-3b": {
+                  "auroc": 0.5227963525835866,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.006079027355623157,
+                    "instruction_embedding": -0.05699088145896658,
+                    "model_consistency": 0.0,
+                    "model_outputs": -0.13297872340425532
+                  }
+                },
+                "qwen2.5-vl-7b": {
+                  "auroc": 0.5659186535764376,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0042075736325385416,
+                    "instruction_embedding": -0.007152875175315598,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.019074333800841448
+                  }
+                },
+                "seeclick-9.6b": {
+                  "auroc": 0.5339892665474061,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0163826381696639,
+                    "instruction_embedding": -0.0033895113454477377,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.022549665756520065
+                  }
+                },
+                "showui-2b": {
+                  "auroc": 0.7476714173493435,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.003871619346874633,
+                    "instruction_embedding": -0.0038155089215575755,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.21254629110088652
+                  }
+                },
+                "tongui-32b": {
+                  "auroc": 0.5902145392807532,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0005402068220403677,
+                    "instruction_embedding": -0.015974687451767222,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.08160981632968045
+                  }
+                },
+                "tongui-3b": {
+                  "auroc": 0.5958179126572909,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.00014803849000744052,
+                    "instruction_embedding": -0.006772760917838627,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.1059215396002961
+                  }
+                },
+                "tongui-7b": {
+                  "auroc": 0.5804717051101387,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.007194244604316502,
+                    "instruction_embedding": -0.009753022324408556,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.07906252317733442
+                  }
+                },
+                "ui-tars-2b": {
+                  "auroc": 0.8332903558535327,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": -0.003158844765343005,
+                    "instruction_embedding": 0.012635379061371799,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.33245229499742135
+                  }
+                },
+                "ui-tars-72b": {
+                  "auroc": 0.7766830268844773,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.012929455717529792,
+                    "instruction_embedding": -0.001977877078602308,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.24543989451322246
+                  }
+                },
+                "ui-tars-7b": {
+                  "auroc": 0.7894121316076719,
+                  "feature_block_permutation_auc_drop": {
+                    "input_numeric": 0.0028457820053017224,
+                    "instruction_embedding": 0.014423826602214196,
+                    "model_consistency": 0.0,
+                    "model_outputs": 0.25124746608451576
+                  }
+                }
+              },
+              "oracle_step_sr": 1.0,
+              "routed_step_sr": 0.6636636636636637
+            }
+          },
+          "train_folds": [
+            1,
+            2,
+            3
+          ],
+          "train_rows": 1014
+        }
+      ],
+      "models": [
+        "cogagent-18b",
+        "qwen2.5-vl-3b",
+        "qwen2.5-vl-7b",
+        "seeclick-9.6b",
+        "showui-2b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-2b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ]
+    }
+  },
+  "status": "PASS"
+}

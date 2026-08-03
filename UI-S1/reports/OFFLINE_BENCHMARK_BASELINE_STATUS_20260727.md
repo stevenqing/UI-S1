@@ -4,7 +4,7 @@
 
 ## 1. 当前结论
 
-目前有两个 benchmark、二十六个已完成且可审计的模型/设置结果：
+目前有两个 benchmark、三十五个已完成且可审计的模型/设置结果：
 
 1. Mind2Web Cross-Task / SeeClick：论文 anchor 复现通过。
 2. Mind2Web Cross-Task / ShowUI-2B 公共 checkpoint：完整受控结果，但未精确复现论文 ShowUI-ZS anchor。
@@ -32,14 +32,24 @@
 24. MindAct HTML / Mind2Web Cross-Task：官方 2,094-action top-50 tournament 完整结果，独立审计通过。
 25. AndroidControl-Low / UI-AGILE-3B：官方 7,708-step 完整结果，独立审计通过。
 26. AndroidControl-High / UI-AGILE-3B：官方 7,708-step 完整结果，独立审计通过。
+27. AndroidControl-Low / UI-AGILE-7B：官方 7,708-step 完整结果，独立审计通过。
+28. AndroidControl-High / UI-AGILE-7B：官方 7,708-step 完整结果，独立审计通过。
+29. AndroidControl-Low / UI-R1-E-3B：官方 7,708-step 完整受控结果，独立审计通过。
+30. AndroidControl-High / UI-R1-E-3B：官方 7,708-step 完整受控结果，独立审计通过。
+31. AndroidControl-Low / GUI-R1-3B：官方 7,708-step 完整受控结果，独立审计通过。
+32. AndroidControl-High / GUI-R1-3B：官方 7,708-step 完整受控结果，独立审计通过。
+33. AndroidControl-Low / GUI-R1-7B：官方 7,708-step 完整受控结果，独立审计通过。
+34. AndroidControl-High / GUI-R1-7B：官方 7,708-step 完整受控结果，独立审计通过。
+35. AndroidControl selected-Low / UI-R1-3B v1：发布的 7,868-step 独立 lane 完成，Type/Grounding/Average 审计通过。
 
 AndroidControl 论文 Table 5 的 OS-Atlas-7B zero-shot OOD checkpoint 未公开，因此该行精确复现仍为 `BLOCKED`。InfiGUI-R1-3B Low/High 均已完成官方 8,444 行并通过独立严格审计；该 evaluator lane 与 OS-Atlas 7,708-step lane 分开报告。TongUI-3B/7B 和 Qwen2.5-VL-3B/7B 均已完成全部 2,080 行、独立计分和审计。Qwen2.5-VL-7B 两项 anchor delta 略超过 1 pp，因此作为完整受控结果而不是严格 anchor PASS。
 
 | Benchmark | 完成的受控设置 | 精确论文复现 | 当前阻断/运行项 |
 | --- | ---: | ---: | --- |
 | Mind2Web Cross-Task | 12 | 2 | UI-TARS-72B 与 MindAct 均已完成并通过独立审计 |
-| AndroidControl 7,708-step | 12 | 0 | UI-AGILE-3B Low/High 已完成；其余 8 条 UI-AGILE/UI-R1-E/GUI-R1 lane 正在执行 |
+| AndroidControl 7,708-step | 20 | 0 | UI-AGILE-3B/7B、UI-R1-E-3B、GUI-R1-3B/7B 共 10 条新增 Low/High lane 全部完成并通过审计 |
 | AndroidControl InfiGUI official 8,444-step | 2 | 2 | Low/High 均完成并通过严格审计 |
+| AndroidControl UI-R1 selected-Low 7,868-step | 1 | 0 | UI-R1-3B v1 released-code controlled reproduction 完成并通过审计 |
 
 ## 2. 统一口径
 
@@ -284,10 +294,10 @@ AndroidControl 论文 Table 5 的 OS-Atlas-7B zero-shot OOD checkpoint 未公开
 | UI-TARS-7B | **89.53 / 85.42 / 73.85** | **79.58 / 73.46 / 61.01** | **完成公共 checkpoint 受控迁移，Low/High audit PASS** | 论文 anchor 为 98.0/89.3/90.8 与 83.7/80.5/72.5；公开 split contract 未发布 |
 | Qwen2.5-VL-3B/7B | **0.00 / 0.00 / 0.00** (Qwen3/7) | **0.00 / 0.00 / 0.00** (Qwen3/7) | Qwen3 [Low](../runs/androidcontrol-pro/2026-07-27/QWEN3_LOW_REPORT.md)/[High](../runs/androidcontrol-pro/2026-07-27/QWEN3_HIGH_REPORT.md)、Qwen7 [Low](../runs/androidcontrol-pro/2026-07-27/QWEN7_LOW_REPORT.md)/[High](../runs/androidcontrol-pro/2026-07-27/QWEN7_HIGH_REPORT.md) 完成 | strict parser；flexible diagnostic 不混报 |
 | TongUI-3B/7B | - | - | **不属于论文 AndroidControl 评测；完整 transfer blocked** | AITW checkpoint 缺 `LONG_PRESS/OPEN_APP/WAIT`；`mobile_use` utility 未接入模型 |
-| UI-AGILE-3B/7B | **89.48/87.58/79.09**（3B）；98.0/92.2/91.0（7B anchor） | **76.96/55.85/58.60**（3B）；91.0/87.2/81.4（7B anchor） | **UI-AGILE-3B Low/High 完成并 audit PASS；其余 lane 正在执行** | 3B anchors：Low 98.1/91.8/90.8，High 88.8/85.8/78.7 |
-| GUI-R1-3B/7B | 96.9/89.9/87.3；97.5/91.7/89.7 | 58.0/56.2/46.6；71.6/65.6/51.7 | **公开 checkpoint 已固定，Low/High 待统一复测** | `ritzzai/GUI-R1@e74baccc...`，官方 `gui_r1` prompt |
-| UI-R1-E-3B | 97.7/91.2/89.4 | 83.5/78.9/69.8 | **公开 checkpoint 已固定，Low/High 待统一复测** | `LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` |
-| UI-R1-3B v1 original lane | **94.3 / 82.6 / 88.5** | - | **7,868-step selected Low 数据/模型完整，full 待跑** | 数字为 Type / click Grounding / 两者算术平均，绝不是 Step SR；与 7,708-step lane 分开 |
+| UI-AGILE-3B/7B | **89.48/87.58/79.09**（3B）；**87.65/87.95/77.56**（7B） | **76.96/55.85/58.60**（3B）；**79.97/61.98/60.53**（7B） | **Low/High 全部完成并 audit PASS** | anchors：3B Low/High 98.1/91.8/90.8、88.8/85.8/78.7；7B Low/High 98.0/92.2/91.0、91.0/87.2/81.4 |
+| GUI-R1-3B/7B | **84.46/80.04/56.89**（3B）；**83.64/83.54/58.21**（7B） | **64.22/56.96/38.43**（3B）；**71.35/64.78/44.97**（7B） | **Low/High 全部完成并 audit PASS** | `ritzzai/GUI-R1@e74baccc...`；7B anchors：Low 97.5/91.7/89.7，High 71.6/65.6/51.7 |
+| UI-R1-E-3B | **86.68/78.55/48.51** | **66.70/38.94/22.89** | **Low/High 完成并 audit PASS** | anchors：Low 97.7/91.2/89.4，High 83.5/78.9/69.8；`LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` |
+| UI-R1-3B v1 original lane | **94.92 / 76.80 / 85.86** | - | **7,868-step selected Low 完成并 audit PASS** | 论文 anchor 94.3/82.6/88.5；数字为 Type / click Grounding / 两者算术平均，绝不是 Step SR；与 7,708-step lane 分开 |
 | InfiGUI-R1-3B | **95.97 / 93.87 / 92.09** | **82.75 / 74.44 / 71.28** | [**完成，PASS**](../runs/androidcontrol-infigui/2026-07-28/FINAL_REPORT.md) | 官方 8,444-step split；Low/High `--require-complete` 独立审计均 PASS；论文 anchor 为 96.0/93.2/92.1 与 82.7/74.4/71.1 |
 
 AndroidControl 7,708-step 与 InfiGUI 8,444-step 表中数字顺序为
@@ -307,9 +317,8 @@ AndroidControl 7,708-step 与 InfiGUI 8,444-step 表中数字顺序为
 
 ## 8. 推荐执行顺序
 
-1. 完成 UI-AGILE-3B/7B、UI-R1-E-3B、GUI-R1-3B/7B 的 10 条官方 7,708-step Low/High lane。
-2. 完成原始 UI-R1-3B v1 的独立 7,868-step selected-Low Type/Grounding/Average lane。
-3. 其余行等待外部条件：未发布 checkpoint、闭源 API 凭证/日期版本/预算，或官方 action/evaluator contract。
+1. 新增 UI-AGILE/UI-R1-E/GUI-R1 统一矩阵与原始 UI-R1 独立 lane 已全部完成。
+2. 其余行等待外部条件：未发布 checkpoint、闭源 API 凭证/日期版本/预算，或官方 action/evaluator contract。
 
 UI-TARS checkpoint 边界：原论文说明离线 benchmark 主表使用 annealing
 阶段的 SFT 模型。公开原始 checkpoint 已固定为
@@ -361,6 +370,12 @@ Mind2Web evaluator，因此所有公共 checkpoint 结果均与论文 anchor 分
 | UI-AGILE/UI-R1-E/GUI-R1 unified runner | `runs/androidcontrol-rft/2026-07-29/` |
 | RFT checkpoint/data/source manifest | `runs/androidcontrol-rft/2026-07-29/artifact_manifest.json` |
 | Original UI-R1 selected-Low lane | `runs/androidcontrol-rft/2026-07-29/original-ui-r1/` |
+| AndroidControl RFT final report | `runs/androidcontrol-rft/2026-07-29/ANDROIDCONTROL_RFT_FINAL_REPORT.md` |
+| Cross-benchmark trace error-overlap analysis | `reports/BENCHMARK_ERROR_OVERLAP_ANALYSIS_20260729.md` |
+| Complementarity follow-up report | `runs/complementarity/2026-07-30/REPORT.md` |
+| AndroidControl overlap machine-readable summary | `runs/error-overlap-analysis/2026-07-29/androidcontrol_summary.json` |
+| Mind2Web visual/HTML overlap machine-readable summary | `runs/error-overlap-analysis/2026-07-29/mind2web_summary.json` |
+| Original UI-R1 score/audit | `runs/androidcontrol-rft/2026-07-29/original-ui-r1/artifacts/full/score_audit.json` |
 | Official AndroidControl GCS manifest | `runs/androidcontrol-rft/2026-07-29/data/official-gcs/official_gcs_manifest.json` |
 | TongUI AndroidControl scope/action check | `runs/androidcontrol-tongui/2026-07-29/PREFLIGHT.md` |
 | AndroidControl SeeClick preflight | `runs/androidcontrol-seeclick/2026-07-28/PREFLIGHT.md` |

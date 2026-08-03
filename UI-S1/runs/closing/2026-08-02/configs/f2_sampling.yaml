@@ -1,0 +1,59 @@
+schema_version: 1
+frozen_at_utc: "2026-08-02"
+result_blind: true
+benchmark: ScreenSpot-Pro
+rows: 1581
+model:
+  id: GTA1-7B
+  revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+  path: runs/collision-law/2026-07-30/w3_assets/GTA1-7B
+sampling:
+  samples_per_row: 16
+  temperature: 0.5
+  top_p: 0.95
+  seed: 20260802
+  max_new_tokens: 32
+  prompt: pinned_GTA1_model_card_locator
+budgets: [4, 8, 12, 16]
+pools:
+  S_only:
+    sequence: stochastic_sample_prefix
+    available: true
+  mixed_sampling:
+    available: false
+    reason: no_preexisting_matched_Qwen3_UI_TARS_stochastic_traces
+  sampling_plus_views:
+    available: true
+    sequence:
+      - sample0
+      - GTA1_view0
+      - sample1
+      - GTA1_view1
+      - sample2
+      - GTA1_view2
+      - sample3
+      - GTA1_view3
+      - sample4
+      - GTA1_view4
+      - sample5
+      - GTA1_view5
+      - sample6
+      - GTA1_view6
+      - sample7
+      - GTA1_view7
+aggregation: [GUI_RC, B3_mvp]
+bootstrap:
+  resamples: 10000
+  seed: 20260802
+  unit: application
+  stratification: frozen_outer_fold
+  confidence_interval: 0.99
+prediction:
+  primary_pool: S_only
+  primary_rule: GUI_RC
+  sampling_axis_covered_if: slope_CI_upper_lt_0
+  otherwise_title: fixed_view_allocation_axis
+parse_failure:
+  consumes_forward: true
+  representation: null_excluded_from_vote_and_pass
+  no_replacement_inference: true

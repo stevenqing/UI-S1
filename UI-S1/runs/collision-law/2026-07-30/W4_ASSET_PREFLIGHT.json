@@ -1,0 +1,32 @@
+{
+  "status": "READY_FOR_RUNNER_IMPLEMENTATION",
+  "source_repo": "https://github.com/batechworks/AndroidControl_Curated",
+  "source_revision": "955062cc68e20666f71c4930e6025f989393a326",
+  "dataset_repo": "batwBMW/AndroidControl_Curated",
+  "dataset_revision": "62aeecdcafa4097d340c5a4389690a5f14e938ed",
+  "image_archive_sha256": "442d0d6d26f45ffddd3bc45892692055b11c9be55267c7564d6152c3a125d579",
+  "image_files": 9987,
+  "image_coverage": {
+    "low_bbox": {"rows": 8377, "missing": 0},
+    "high_bbox": {"rows": 8435, "missing": 0},
+    "high_task_improved": {"rows": 8377, "missing": 0}
+  },
+  "metadata_sha256": {
+    "android_control_low_bbox.json": "75b442e6b7e627ae4fdf845052734a578999edfa20e09db96007899a85ef2aba",
+    "android_control_high_bbox.json": "7aff232619a3080067d8d0fd4f9562251d8a523ca8272840ade4154d39a81172",
+    "android_control_high_task-improved.json": "e8c851dd1ab367db3e7eef05735920e38d34c43cd8d6f80516fc8bd6aec9656c"
+  },
+  "fixed_scope": {
+    "low": "android_control_low_bbox.json, 8377 identities",
+    "high": "android_control_high_task-improved.json, same 8377 image identities",
+    "high_bbox_extra_excluded": 58,
+    "high_candidate_actions_field_rows": 1274,
+    "high_multi_candidate_rows": 573,
+    "high_additional_candidate_actions": 1233,
+    "high_gt_min_null_rows": 93,
+    "high_gt_min_differs_from_max_rows": 1493
+  },
+  "androidcontrol_v2": {
+    "status": "BLOCKED_NOT_LOCATED"
+  }
+}

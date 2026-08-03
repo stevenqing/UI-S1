@@ -1,0 +1,36 @@
+{
+  "comparisons": {
+    "gta1_n5_minus_bare": -0.0006325110689437295,
+    "official_mvp_minus_reported_anchor": -0.003464263124604683
+  },
+  "gta1_bare": {
+    "accuracy": 0.4939911448450348,
+    "parse_rate": 1.0,
+    "rows": 1581,
+    "source_score_sha256": "e6c24c2c17174704e9393cff28a9b840b66a35dc6324d6facdcf600b0d4726c0",
+    "status": "PASS"
+  },
+  "gta1_self_consistency_n5": {
+    "accuracy": 0.49335863377609107,
+    "parse_rate": 1.0,
+    "rows": 1581,
+    "samples": 5,
+    "seed": 20260730,
+    "source_score_sha256": "332851fe9186db0f24c3c3db9dc762fc41164a23145cc873d9b23dd212c79763",
+    "status": "PASS",
+    "temperature": 0.7
+  },
+  "official_mvp": {
+    "accuracy": {
+      "bare_full": 0.4946236559139785,
+      "graph_centroid_ablation": 0.6204933586337761,
+      "official_code": 0.6135357368753953,
+      "paper_centroid": 0.6173308032890575
+    },
+    "reported_anchor": 0.617,
+    "rows": 1581,
+    "source_score_sha256": "67b27435298ca68be8615f9ffebeea8c1393b81144576d2341280464bb28e4f4",
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

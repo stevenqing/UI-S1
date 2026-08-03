@@ -1,0 +1,720 @@
+{
+  "contract": {
+    "budget": 5,
+    "c3_selection": "highest dev Step SR first; then minimum mean dev failure kappa; ties by dev Step SR then unit key",
+    "c4_seed": 20260730,
+    "folds": "runs/complementarity/2026-07-30/folds.json",
+    "test_label_tuning": false
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "aggregate_step_sr": {
+        "C1_single_model_five_views": 0.44758169934640524,
+        "C2_five_models_full": 0.5036601307189542,
+        "C3_kappa_mixed": 0.4832679738562092,
+        "C4_random_mixed": 0.43699346405228756
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "gui-r1-3b/full",
+        "gui-r1-7b/full",
+        "gui-r1-7b/v1",
+        "gui-r1-7b/v2",
+        "gui-r1-7b/v3",
+        "gui-r1-7b/v4",
+        "ui-agile-3b/full",
+        "ui-agile-7b/full",
+        "ui-r1-e-3b/full"
+      ],
+      "folds": [
+        {
+          "dev_rows": 6120,
+          "fold": 0,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-3b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.43790849673202614,
+            "C2_five_models_full": 0.5013071895424837,
+            "C3_kappa_mixed": 0.4797385620915033,
+            "C4_random_mixed": 0.42091503267973857
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 1,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-3b/full",
+              "ui-agile-3b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.4869281045751634,
+            "C2_five_models_full": 0.5437908496732026,
+            "C3_kappa_mixed": 0.515032679738562,
+            "C4_random_mixed": 0.5130718954248366
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 2,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-3b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full",
+              "ui-r1-e-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.43790849673202614,
+            "C2_five_models_full": 0.48823529411764705,
+            "C3_kappa_mixed": 0.4725490196078431,
+            "C4_random_mixed": 0.4045751633986928
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 3,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-3b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.42745098039215684,
+            "C2_five_models_full": 0.48627450980392156,
+            "C3_kappa_mixed": 0.46797385620915033,
+            "C4_random_mixed": 0.3895424836601307
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 4,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-7b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-3b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.4477124183006536,
+            "C2_five_models_full": 0.49869281045751634,
+            "C3_kappa_mixed": 0.48104575163398694,
+            "C4_random_mixed": 0.4568627450980392
+          },
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-r1-e-3b"
+      ],
+      "p3_prediction_satisfied": false,
+      "representative": "gui-r1-7b"
+    },
+    "androidcontrol/low": {
+      "aggregate_step_sr": {
+        "C1_single_model_five_views": 0.5739869281045752,
+        "C2_five_models_full": 0.7189542483660131,
+        "C3_kappa_mixed": 0.6912418300653594,
+        "C4_random_mixed": 0.5431372549019607
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "gui-r1-3b/full",
+        "gui-r1-7b/full",
+        "gui-r1-7b/v1",
+        "gui-r1-7b/v2",
+        "gui-r1-7b/v3",
+        "gui-r1-7b/v4",
+        "ui-agile-3b/full",
+        "ui-agile-7b/full",
+        "ui-r1-e-3b/full"
+      ],
+      "folds": [
+        {
+          "dev_rows": 6120,
+          "fold": 0,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-7b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5816993464052288,
+            "C2_five_models_full": 0.7261437908496732,
+            "C3_kappa_mixed": 0.6928104575163399,
+            "C4_random_mixed": 0.5392156862745098
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 1,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-7b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.6111111111111112,
+            "C2_five_models_full": 0.7313725490196078,
+            "C3_kappa_mixed": 0.7,
+            "C4_random_mixed": 0.6202614379084967
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 2,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-7b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full",
+              "ui-r1-e-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5607843137254902,
+            "C2_five_models_full": 0.6908496732026144,
+            "C3_kappa_mixed": 0.6594771241830065,
+            "C4_random_mixed": 0.5058823529411764
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 3,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-7b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-3b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4",
+              "ui-agile-3b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5431372549019607,
+            "C2_five_models_full": 0.7215686274509804,
+            "C3_kappa_mixed": 0.7,
+            "C4_random_mixed": 0.5013071895424837
+          },
+          "test_rows": 1530
+        },
+        {
+          "dev_rows": 6120,
+          "fold": 4,
+          "selections": {
+            "C1_single_model_five_views": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v1",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "gui-r1-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "ui-agile-3b/full",
+              "ui-agile-7b/full",
+              "gui-r1-3b/full",
+              "gui-r1-7b/full",
+              "ui-r1-e-3b/full"
+            ],
+            "C3_kappa_mixed": [
+              "ui-agile-3b/full",
+              "gui-r1-7b/v4",
+              "ui-r1-e-3b/full",
+              "gui-r1-7b/v2",
+              "ui-agile-7b/full"
+            ],
+            "C4_random_mixed": [
+              "gui-r1-7b/full",
+              "gui-r1-7b/v2",
+              "gui-r1-7b/v3",
+              "ui-agile-3b/full",
+              "ui-agile-7b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5732026143790849,
+            "C2_five_models_full": 0.7248366013071895,
+            "C3_kappa_mixed": 0.703921568627451,
+            "C4_random_mixed": 0.5490196078431373
+          },
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-r1-e-3b"
+      ],
+      "p3_prediction_satisfied": false,
+      "representative": "gui-r1-7b"
+    },
+    "mind2web/visual": {
+      "aggregate_step_sr": {
+        "C1_single_model_five_views": 0.5475961538461539,
+        "C2_five_models_full": 0.5894230769230769,
+        "C3_kappa_mixed": 0.5850961538461539,
+        "C4_random_mixed": 0.5572115384615385
+      },
+      "c3_exceeds_random": true,
+      "candidate_units": [
+        "cogagent-18b/full",
+        "tongui-32b/full",
+        "tongui-3b/full",
+        "tongui-7b/full",
+        "tongui-7b/v1",
+        "tongui-7b/v2",
+        "tongui-7b/v3",
+        "tongui-7b/v4",
+        "ui-tars-72b/full"
+      ],
+      "folds": [
+        {
+          "dev_rows": 1664,
+          "fold": 0,
+          "selections": {
+            "C1_single_model_five_views": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_kappa_mixed": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-32b/full",
+              "tongui-3b/full"
+            ],
+            "C4_random_mixed": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5793269230769231,
+            "C2_five_models_full": 0.6346153846153846,
+            "C3_kappa_mixed": 0.6346153846153846,
+            "C4_random_mixed": 0.5985576923076923
+          },
+          "test_rows": 416
+        },
+        {
+          "dev_rows": 1663,
+          "fold": 1,
+          "selections": {
+            "C1_single_model_five_views": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_kappa_mixed": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-32b/full",
+              "tongui-7b/v3"
+            ],
+            "C4_random_mixed": [
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5467625899280576,
+            "C2_five_models_full": 0.5779376498800959,
+            "C3_kappa_mixed": 0.5683453237410072,
+            "C4_random_mixed": 0.5539568345323741
+          },
+          "test_rows": 417
+        },
+        {
+          "dev_rows": 1664,
+          "fold": 2,
+          "selections": {
+            "C1_single_model_five_views": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_kappa_mixed": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-32b/full",
+              "tongui-3b/full"
+            ],
+            "C4_random_mixed": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "ui-tars-72b/full"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5985576923076923,
+            "C2_five_models_full": 0.6298076923076923,
+            "C3_kappa_mixed": 0.6298076923076923,
+            "C4_random_mixed": 0.5961538461538461
+          },
+          "test_rows": 416
+        },
+        {
+          "dev_rows": 1664,
+          "fold": 3,
+          "selections": {
+            "C1_single_model_five_views": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_kappa_mixed": [
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-7b/v2",
+              "tongui-3b/full"
+            ],
+            "C4_random_mixed": [
+              "cogagent-18b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.5336538461538461,
+            "C2_five_models_full": 0.5432692307692307,
+            "C3_kappa_mixed": 0.53125,
+            "C4_random_mixed": 0.53125
+          },
+          "test_rows": 416
+        },
+        {
+          "dev_rows": 1665,
+          "fold": 4,
+          "selections": {
+            "C1_single_model_five_views": [
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v2",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ],
+            "C2_five_models_full": [
+              "tongui-7b/full",
+              "tongui-32b/full",
+              "cogagent-18b/full",
+              "tongui-3b/full",
+              "ui-tars-72b/full"
+            ],
+            "C3_kappa_mixed": [
+              "tongui-7b/full",
+              "cogagent-18b/full",
+              "ui-tars-72b/full",
+              "tongui-32b/full",
+              "tongui-3b/full"
+            ],
+            "C4_random_mixed": [
+              "tongui-32b/full",
+              "tongui-7b/full",
+              "tongui-7b/v1",
+              "tongui-7b/v3",
+              "tongui-7b/v4"
+            ]
+          },
+          "step_sr": {
+            "C1_single_model_five_views": 0.4795180722891566,
+            "C2_five_models_full": 0.5614457831325301,
+            "C3_kappa_mixed": 0.5614457831325301,
+            "C4_random_mixed": 0.5060240963855421
+          },
+          "test_rows": 415
+        }
+      ],
+      "models": [
+        "tongui-7b",
+        "tongui-32b",
+        "cogagent-18b",
+        "tongui-3b",
+        "ui-tars-72b"
+      ],
+      "p3_prediction_satisfied": false,
+      "representative": "tongui-7b"
+    }
+  },
+  "status": "PASS"
+}

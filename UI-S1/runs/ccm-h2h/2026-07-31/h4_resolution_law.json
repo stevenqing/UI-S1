@@ -1,0 +1,127 @@
+{
+  "androidcontrol": {
+    "reason": "W2 has point GT only; exact SHA256 link to Curated images matched 0/7708",
+    "status": "UNAVAILABLE"
+  },
+  "benchmarks": {
+    "mind2web": {
+      "bare_accuracy": 0.5295815295815296,
+      "delta": -0.0456950456950457,
+      "equal_count_bins": [
+        {
+          "bare_accuracy": 0.5625,
+          "bin": 0,
+          "delta": -0.026442307692307692,
+          "rows": 416,
+          "x_mean": 3.532877460966748,
+          "zoom_accuracy": 0.5360576923076923
+        },
+        {
+          "bare_accuracy": 0.6153846153846154,
+          "bin": 1,
+          "delta": -0.025240384615384616,
+          "rows": 416,
+          "x_mean": 4.484489254694587,
+          "zoom_accuracy": 0.5901442307692307
+        },
+        {
+          "bare_accuracy": 0.5192307692307693,
+          "bin": 2,
+          "delta": -0.018028846153846152,
+          "rows": 416,
+          "x_mean": 5.113067519086362,
+          "zoom_accuracy": 0.5012019230769231
+        },
+        {
+          "bare_accuracy": 0.5552884615384616,
+          "bin": 3,
+          "delta": -0.07692307692307693,
+          "rows": 416,
+          "x_mean": 5.886449787144922,
+          "zoom_accuracy": 0.47836538461538464
+        },
+        {
+          "bare_accuracy": 0.39518072289156625,
+          "bin": 4,
+          "delta": -0.0819277108433735,
+          "rows": 415,
+          "x_mean": 7.1878423982546575,
+          "zoom_accuracy": 0.3132530120481928
+        }
+      ],
+      "name": "Mind2Web",
+      "row_spearman_p": 0.002627069797445323,
+      "row_spearman_rho": -0.06594520860225137,
+      "rows": 2079,
+      "zoom_accuracy": 0.48388648388648386
+    },
+    "screenspot-pro": {
+      "bare_accuracy": 0.4946236559139785,
+      "delta": 0.11891208096141682,
+      "equal_count_bins": [
+        {
+          "bare_accuracy": 0.6971608832807571,
+          "bin": 0,
+          "delta": 0.0694006309148265,
+          "rows": 317,
+          "x_mean": 6.504207011739359,
+          "zoom_accuracy": 0.7665615141955836
+        },
+        {
+          "bare_accuracy": 0.6677215189873418,
+          "bin": 1,
+          "delta": 0.06962025316455696,
+          "rows": 316,
+          "x_mean": 7.273298353619114,
+          "zoom_accuracy": 0.7373417721518988
+        },
+        {
+          "bare_accuracy": 0.5126582278481012,
+          "bin": 2,
+          "delta": 0.16772151898734178,
+          "rows": 316,
+          "x_mean": 7.949896092972587,
+          "zoom_accuracy": 0.680379746835443
+        },
+        {
+          "bare_accuracy": 0.3069620253164557,
+          "bin": 3,
+          "delta": 0.14556962025316456,
+          "rows": 316,
+          "x_mean": 8.715541661324572,
+          "zoom_accuracy": 0.4525316455696203
+        },
+        {
+          "bare_accuracy": 0.2879746835443038,
+          "bin": 4,
+          "delta": 0.14240506329113925,
+          "rows": 316,
+          "x_mean": 9.609939828432879,
+          "zoom_accuracy": 0.43037974683544306
+        }
+      ],
+      "name": "ScreenSpot-Pro",
+      "row_spearman_p": 0.013254725629146301,
+      "row_spearman_rho": 0.06228101883941187,
+      "rows": 1581,
+      "zoom_accuracy": 0.6135357368753953
+    }
+  },
+  "definition": "x=log(screen_area/target_bbox_area); y=zoom_correct-bare_correct",
+  "figure": "runs/ccm-h2h/2026-07-31/fig1_area_law.pdf",
+  "mind2web_excluded": [
+    {
+      "area": 0.0,
+      "reason": "NONPOSITIVE_AREA",
+      "row_id": "6b215dbb-a2c4-451c-9c34-9bafe6660c14__e285a857-cb15-4f89-9693-ac66aaa53313"
+    }
+  ],
+  "primary": {
+    "available_benchmarks": 2,
+    "kill_condition": "H-K4_TRIGGERED_AREA_AXIS_UNAUDITABLE",
+    "minimum_rho": 0.7,
+    "prediction_satisfied": false,
+    "required_benchmarks": 3
+  },
+  "status": "PASS_DESCRIPTIVE_PRIMARY_BLOCKED"
+}

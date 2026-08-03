@@ -1,0 +1,61 @@
+{
+  "benchmarks": {
+    "androidcontrol": {
+      "cells": [
+        {
+          "max_visual_tokens": 12800,
+          "prompt": "original",
+          "source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/high/score.json",
+          "step_micro": 0.4496626881162429
+        }
+      ],
+      "complete_cells": 1,
+      "expected_cells": 6
+    },
+    "mind2web": {
+      "cells": [
+        {
+          "max_visual_tokens": 1344,
+          "prompt": "original",
+          "source": "runs/mind2web-tongui/2026-07-28/artifacts/tongui-7b/merged/score.json",
+          "step_micro": 0.5293269230769231
+        }
+      ],
+      "complete_cells": 1,
+      "expected_cells": 6
+    }
+  },
+  "contract": {
+    "generation": "greedy; seed dimension skipped",
+    "mde": "2 * sample SD",
+    "prompt_variants": [
+      "original",
+      "please_carry_out",
+      "your_objective"
+    ],
+    "sd": "sample standard deviation, ddof=1",
+    "visual_profiles": {
+      "androidcontrol": {
+        "deployment_max_visual_tokens": 768,
+        "original_max_visual_tokens": 12800
+      },
+      "mind2web": {
+        "deployment_max_visual_tokens": 768,
+        "original_max_visual_tokens": 1344
+      }
+    }
+  },
+  "missing_cells": [
+    "androidcontrol/original_768",
+    "androidcontrol/please_carry_out_12800",
+    "androidcontrol/please_carry_out_768",
+    "androidcontrol/your_objective_12800",
+    "androidcontrol/your_objective_768",
+    "mind2web/original_768",
+    "mind2web/please_carry_out_1344",
+    "mind2web/please_carry_out_768",
+    "mind2web/your_objective_1344",
+    "mind2web/your_objective_768"
+  ],
+  "status": "PENDING_INFERENCE"
+}

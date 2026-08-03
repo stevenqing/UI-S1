@@ -1,0 +1,102 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+benchmark: ScreenSpot-Pro
+rows: 1581
+
+source:
+  models:
+    - GTA1-7B
+    - Qwen3-VL-8B-Instruct
+    - UI-TARS-7B-SFT
+  shared_views: 12
+  action_order: model_order_then_view_index
+  L1_RESULTS_sha256: b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11
+  L2_RESULTS_sha256: ab281bd58a3c11622a343a5a2b605a820e438683fd632fdc1b37589f87eed40a
+  X3_RESULTS_sha256: a5cf1940eb9311118bff659cf71a6cd8eab9fb58d568cdcc8e89d98b5f74c116
+
+folds:
+  groups: 26
+  count: 5
+  assignment: frozen_load_balanced_application_groups
+
+budgets: [4, 8, 12, 16]
+primary_budget: 12
+primary_rule: B3_mvp
+secondary_rules: [M1_ccm, pass_at_n]
+
+cala_static:
+  sequence_length: 16
+  objective: development_marginal_pass_coverage
+  tie_breaks:
+    - development_B3_accuracy
+    - lower_mean_pairwise_failure_kappa
+    - individual_development_accuracy
+    - frozen_action_order
+  nested_prefixes: true
+
+cala_adaptive:
+  budgets: [8, 12, 16]
+  scout:
+    - GTA1-7B/view0
+    - Qwen3-VL-8B-Instruct/view0
+    - UI-TARS-7B-SFT/view0
+    - GTA1-7B/view1
+    - Qwen3-VL-8B-Instruct/view1
+    - UI-TARS-7B-SFT/view1
+  target: correct_action_and_no_selected_action_correct
+  classifier: sklearn_logistic_regression
+  C: 1.0
+  penalty: l2
+  class_weight: balanced
+  continuous_feature_scaling: standard
+  trajectories_per_development_row: 4
+  maximum_random_history_actions: 9
+  seed: 20260803
+  no_hyperparameter_search: true
+
+baselines:
+  - v_only_rank_prefix
+  - uniform_mixed_round_robin
+  - development_quality_only
+  - frozen_random_nested
+  - oracle_coverage_upper_bound
+
+statistics:
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260803
+  grouping: application_group_stratified_within_outer_fold
+  confidence: 0.99
+  one_sided_p: plus_one_probability_delta_le_zero
+  MDE: 0.007043345177520599
+
+primary_success:
+  comparison: CALA_S_N12_B3_minus_Uniform_Mixed_N12_B3
+  delta_positive: true
+  ci_99_lower_positive: true
+  delta_strictly_above_MDE: true
+  pass_at_12_non_decreasing: true
+
+adaptive_success:
+  comparison: CALA_A_N12_B3_minus_CALA_S_N12_B3
+  ci_99_lower_positive: true
+
+transfer_72b:
+  budget: 8
+  guaranteed_regions: [0, 1, 2, 3]
+  models:
+    - GTA1-72B
+    - UI-Venus-Ground-72B
+    - Qwen3.5-122B-A10B
+  scout_size: 6
+  adaptive_topup: 2
+  comparison_scope: equal_scored_model_region_forwards
+  independent_of_G2_N12_absolute_result: true
+
+prohibitions:
+  - no_test_labels_in_allocation
+  - no_unselected_test_points_in_router_features
+  - no_post_result_hyperparameter_search
+  - no_selector_retuning_for_primary_B3
+  - no_relabeling_manual_pool_as_CALA
+  - no_modification_of_active_scaleup_process

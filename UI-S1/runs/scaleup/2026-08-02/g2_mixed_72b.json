@@ -1,0 +1,188 @@
+{
+  "P0_bare": {
+    "GTA1-72B": {
+      "accuracy": 0.5901328273244781,
+      "anchor_consistent_within_2pp": true,
+      "correct": 933,
+      "local_minus_reference": 0.006132827324478174,
+      "paper_only_reference": 0.584,
+      "parse_rate": 1.0,
+      "parse_successes": 1581
+    },
+    "Qwen3.5-122B-A10B": {
+      "accuracy": 0.7084123972169513,
+      "anchor_consistent_within_2pp": true,
+      "correct": 1120,
+      "local_minus_reference": 0.004412397216951303,
+      "paper_only_reference": 0.704,
+      "parse_rate": 1.0,
+      "parse_successes": 1581
+    },
+    "UI-Venus-Ground-72B": {
+      "accuracy": 0.6040480708412397,
+      "anchor_consistent_within_2pp": true,
+      "correct": 955,
+      "local_minus_reference": -0.014951929158760313,
+      "paper_only_reference": 0.619,
+      "parse_rate": 0.9993674889310563,
+      "parse_successes": 1580
+    }
+  },
+  "P1_GTA1_72B": {
+    "accuracy": {
+      "B3_mvp": 0.23845667299177736,
+      "M1_ccm": 0.25743200506008856,
+      "pass_at_n": 0.6932321315623023
+    },
+    "budget": 8,
+    "fold_rows": [
+      314,
+      311,
+      337,
+      306,
+      313
+    ],
+    "rows": 1581
+  },
+  "P2_mixed_72B": {
+    "accuracy": {
+      "B3_mvp": 0.32827324478178366,
+      "M1_ccm": 0.49146110056925996,
+      "pass_at_n": 0.845034788108792
+    },
+    "budget": 12,
+    "fold_rows": [
+      314,
+      311,
+      337,
+      306,
+      313
+    ],
+    "rows": 1581
+  },
+  "comparisons": {
+    "P2_M1_minus_70_4": -0.21253889943074,
+    "P2_M1_minus_73_1": -0.23953889943074003,
+    "P2_M1_minus_P1_M1_unequal_budget_context": 0.2340290955091714
+  },
+  "compute": {
+    "primary_P2_scoring_forwards": 18972,
+    "total_unique_scoring_forwards": 41677,
+    "unique_scored_regions_by_model": {
+      "GTA1-72B": 16113,
+      "Qwen3.5-122B-A10B": 12782,
+      "UI-Venus-Ground-72B": 12782
+    }
+  },
+  "decision": {
+    "P2_above_P1_unequal_budget_context": true,
+    "effective_threshold": 0.731,
+    "effective_threshold_pass": false,
+    "equal_budget_allocation_adjudication": "UNAVAILABLE_P1_N8_FALLBACK",
+    "outcome": "BELOW_PAPER_MODEL_REFERENCE",
+    "system_SOTA_73_1_pass": false
+  },
+  "paper_only_references": {
+    "MVP_GRPO_selector_4B": {
+      "accuracy": 0.628,
+      "comparable_environment": false,
+      "use_in_row_level_difference": false
+    },
+    "Qwen3.5_122B_A10B": {
+      "accuracy": 0.704,
+      "comparable_environment": false,
+      "use_in_row_level_difference": false
+    },
+    "ZoomClick_UI_Venus_Ground_72B": {
+      "accuracy": 0.731,
+      "comparable_environment": false,
+      "use_in_row_level_difference": false
+    }
+  },
+  "proposal_sensitivity": {
+    "M1_accuracies": [
+      0.49778621125869704,
+      0.5003162555344719,
+      0.47881087919038584
+    ],
+    "MDE": 0.023508091696843973,
+    "evaluations": {
+      "20260802": {
+        "accuracy": {
+          "B3_mvp": 0.3592662871600253,
+          "M1_ccm": 0.49778621125869704,
+          "pass_at_n": 0.8437697659709045
+        },
+        "fold_rows": [
+          314,
+          311,
+          337,
+          306,
+          313
+        ],
+        "rows": 1581
+      },
+      "20260803": {
+        "accuracy": {
+          "B3_mvp": 0.36369386464263126,
+          "M1_ccm": 0.5003162555344719,
+          "pass_at_n": 0.845034788108792
+        },
+        "fold_rows": [
+          314,
+          311,
+          337,
+          306,
+          313
+        ],
+        "rows": 1581
+      },
+      "20260804": {
+        "accuracy": {
+          "B3_mvp": 0.34724857685009486,
+          "M1_ccm": 0.47881087919038584,
+          "pass_at_n": 0.8444022770398482
+        },
+        "fold_rows": [
+          314,
+          311,
+          337,
+          306,
+          313
+        ],
+        "rows": 1581
+      }
+    },
+    "sample_sd": 0.011754045848421987,
+    "seeds": [
+      20260802,
+      20260803,
+      20260804
+    ]
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "sources": {
+    "G1": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/g1_lineage_gate.json",
+      "sha256": "a5c310b33d49a5dfa7af461f4b1b09d731a99e9e456b2a13121e48d6d22f2a60"
+    },
+    "GTA1-72B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-gta1.jsonl",
+      "sha256": "8dd735e6431c0f8316985802d054429fa1db2208e00a90aaf51f295cb242607f"
+    },
+    "Qwen3.5-122B-A10B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-qwen35.jsonl",
+      "sha256": "fa59553ca4b536790ee8a9513dec440cb1d4c0e7c0304957a0a91c8b3f59bf8f"
+    },
+    "UI-Venus-Ground-72B": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-venus.jsonl",
+      "sha256": "f7db0405fefece1747733a597bce948661f8f1eb770d975b09dd5123a0cbc3ba"
+    },
+    "regions": {
+      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-regions.jsonl",
+      "sha256": "b85272f7bc8715b2ca0673e07e3ec21e1164cace6d4995d8e886564f16e3fe64"
+    }
+  },
+  "status": "PASS"
+}

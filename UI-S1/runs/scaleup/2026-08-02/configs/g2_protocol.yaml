@@ -1,0 +1,99 @@
+schema_version: 1
+frozen_at_utc: "2026-08-02"
+result_blind: true
+depends_on: g1_lineage_gate.json
+benchmark: ScreenSpot-Pro
+rows: 1581
+
+proposer:
+  model: GTA1-72B
+  source_revision: 674ce162e90c5b335ad5d1abc08ca7bfc3f42558
+  implementation: official_MVP_attention_proposal_path
+  primary_regions_per_row: 4
+  primary_region_order:
+    - full_image
+    - official_attention_rank_1
+    - official_attention_rank_2
+    - official_attention_rank_3
+  freeze_regions_before_cross_model_scoring: true
+  target_fields_visible: false
+
+cells:
+  P0:
+    description: each_model_bare_full_image
+    forwards_per_model_per_row: 1
+    source: g1
+  P1:
+    description: GTA1_72B_single_lineage
+    primary_budget: 12
+    fallback_budget: 8
+    fallback_allowed_only_before_inference: true
+    selected_budget: 8
+    fallback_reason: label_free_official_proposer_returned_only_7_unique_crops_on_stata_windows_27
+    comparison_to_P2: unequal_budget_context_control
+  P2:
+    description: three_lineages_by_four_shared_regions
+    models:
+      - GTA1-72B
+      - UI-Venus-Ground-72B
+      - Qwen3.5-122B-A10B
+    regions_per_model: 4
+    budget: 12
+    primary_scoring_forwards: 18972
+
+aggregation:
+  B3:
+    implementation: runs/ccm-h2h/2026-07-31/h1/aggregators_coord.py
+    rule: official_MVP_semantics
+    retune: false
+  M1:
+    implementation: runs/ccm-h2h/2026-07-31/h3/h3_eval.py
+    rule: fold_local_coordinate_CCM
+    retune: false
+  folds: frozen_26_application_groups_load_balanced_5_folds
+
+proposal_sensitivity:
+  source_ranked_regions: 18
+  source_score: integer_attention_coverage_q_i
+  seeds: [20260802, 20260803, 20260804]
+  rng: numpy_PCG64_SeedSequence_seed_and_stable_row_index
+  perturbed_score: "log(q_i + 1) + 0.25 * Gumbel_i"
+  selected_crops_per_seed: 3
+  tie_break: original_official_rank
+  scoring_reuse: infer_each_unique_cross_seed_region_once
+  mde: two_times_sample_standard_deviation_of_three_P2_M1_accuracies
+  cost_note: additional_unique_region_forwards_are_reported_separately_from_primary_18972
+
+decisions:
+  cancel_if_g1_pass_at_3_below: 0.75
+  standard_system_sota:
+    threshold: 0.731
+    requires_point_accuracy_strictly_above_threshold: true
+    requires_margin_strictly_above_mde: true
+  lineage_concentrated_effective_result:
+    condition: all_G1_pairwise_kappa_at_least_0_55
+    threshold: 0.704
+    stretch_threshold: 0.731
+  between_70_4_and_73_1: exceeds_paper_only_open_model_reference_not_system_reference
+  mixed_below_single_lineage: scaleup_counterexample
+
+paper_only_references:
+  ZoomClick_UI_Venus_Ground_72B:
+    accuracy: 0.731
+    comparable_environment: false
+    use_in_row_level_difference: false
+  Qwen3.5_122B_A10B:
+    accuracy: 0.704
+    comparable_environment: false
+    use_in_row_level_difference: false
+  MVP_GRPO_selector_4B:
+    accuracy: 0.628
+    comparable_environment: false
+    use_in_row_level_difference: false
+
+prohibitions:
+  - no_Venus_or_Qwen_attention_extraction_port
+  - no_selector_retuning
+  - no_result_driven_budget_fallback
+  - no_paper_only_number_in_paired_significance_test
+  - no_modification_of_protected_pid_1814

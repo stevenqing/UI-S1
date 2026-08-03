@@ -1,0 +1,45 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+kernel:
+  type: gaussian_evaluator_kernel
+  sigma_pixels: 14.0
+  similarity: exp_negative_squared_distance_over_2_sigma_squared
+
+estimators:
+  failure_kappa:
+    definition: mean_pairwise_cohen_kappa_of_binary_failure_vectors
+    chance_corrected: true
+    primary: true
+  rho_geom:
+    definition: mean_pairwise_kernel_similarity_over_all_rows_and_candidate_pairs
+    conditioned_on_failure: false
+  rho_cond:
+    definition: mean_pairwise_kernel_similarity_over_row_pair_events_where_both_candidates_fail
+    conditioned_on_failure: both_fail
+
+neff:
+  equicorrelation_formula: K_over_1_plus_K_minus_1_times_rho
+  raw_rho_reported: true
+  clipping: none
+  fail_if_denominator_nonpositive: true
+
+quality:
+  definition: mean_full_bbox_containment_of_selected_shared_proposal_regions
+  full_image_quality: measured_not_forced
+  shared_model_views_use_same_region_quality: true
+  source_7b: runs/allocation-law/2026-08-01/L4_RESULTS.json
+  source_72b: runs/scaleup/2026-08-02/raw/g2-regions.jsonl
+
+source_hashes:
+  H1: 9991fa6b70eb582b4690dff0c5682af8a85a6f0de23b72aeeca4b3e32f3b98ae
+  H2: 47c534850bf505a3318ad6f8586dd6f7ef76367a53219899df8b03210b7ee4e3
+  L1: b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11
+  L4: 3ccbca9ce2f781624b90608f98f121b66d29d836bbe3ca48e941e55a507af0af
+  X3: a5cf1940eb9311118bff659cf71a6cd8eab9fb58d568cdcc8e89d98b5f74c116
+  X7: 9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7
+  CALA_static: 625999a06939aa96f0fd76e6ea11b0da926664226ce53450fe47bc3ba8711a8a
+  CALA_adaptive: 514ffb45728d9514785ef0f7b4deceff086e4d4bedc28e25765a217c35ff94ad
+  CALA_72B: 43bf314b019c0871c187551f726c221c721c617efb62dcbc7670b3b20ed7e74b
+  ScaleUp_G2: 7db1389f887c6b37b5cd484fe52aae3d7254f26b8d25fbaf41057dac67c395e8

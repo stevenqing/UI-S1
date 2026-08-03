@@ -1,0 +1,64 @@
+{
+  "available_budget_result": {
+    "S_only": {
+      "4": {
+        "GUI_RC_mean_max_votes": 3.8197343453510437,
+        "accuracy": {
+          "B3_mvp": 0.49335863377609107,
+          "GUI_RC": 0.48893105629348516,
+          "pass_at_n": 0.5117014547754586
+        },
+        "budget": 4,
+        "parse": {
+          "mean_valid_samples": 4.0,
+          "rows_with_all_samples_valid": 1581
+        },
+        "rows": 1581
+      }
+    }
+  },
+  "kill_conditions": {
+    "X-K3": "NOT_EVALUATED"
+  },
+  "mixed_sampling": "UNAVAILABLE_NO_CROSS_LINEAGE_SAMPLING_TRACES",
+  "port": {
+    "point_expand_size": 50,
+    "source_blob": "20a577695c488ea5a75fe685dabf9e5bc1d50757",
+    "status": "ALGORITHM_LEVEL_PORT",
+    "tie_rule": "largest_max_vote_component_first_in_scan_order",
+    "upstream_commit": "af15ed5fe8b89b0fe5043a3e94f2984c7b126a4b",
+    "upstream_repository": "ZJU-REAL/GUI-RCPO"
+  },
+  "prediction_X1": "NOT_EVALUATED",
+  "required_budgets": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "required_followup": "freeze and generate at least 16 samples per row for each required lineage; never pad the five-sample trace",
+  "sampling_plus_views": "UNAVAILABLE_NO_MATCHED_SAMPLING_VIEW_TRACES",
+  "sanity_anchor": {
+    "GUI_RC": 0.8263,
+    "baseline": 0.8011,
+    "benchmark": "ScreenSpot-v2",
+    "model": "Qwen2.5-VL-3B-Instruct",
+    "status": "NOT_RUN_MISSING_LOCAL_SCREENSPOT_V2_GENERATIONS",
+    "tolerance_absolute": 0.01
+  },
+  "schema_version": 1,
+  "slope": "NOT_EVALUATED",
+  "source": {
+    "available_samples_per_row": 5,
+    "path": "runs/collision-law/2026-07-30/w3_artifacts/gta1_self_consistency_n5_screenspot_pro/predictions.jsonl",
+    "sha256": "78fb03eb62cac4fcef6cb8d8e2b7a0707ed57af653ca9d027ed07a026b69af8e",
+    "temperature": 0.7,
+    "top_p": "UNRECORDED"
+  },
+  "status": "BLOCKED_INSUFFICIENT_SAMPLES",
+  "unavailable_budgets": [
+    8,
+    12,
+    16
+  ]
+}

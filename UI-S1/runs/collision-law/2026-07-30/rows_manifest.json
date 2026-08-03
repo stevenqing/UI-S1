@@ -1,0 +1,25 @@
+{
+  "default_filter": "quarantine == false",
+  "mind2web_area": {
+    "maximum": 9.732009548611112,
+    "minimum": 0.0,
+    "out_of_unit_policy": "preserve released normalized bbox area; flag for annotation audit; assign to regular bin",
+    "out_of_unit_unique_identities": 4,
+    "rows_with_area": 24960
+  },
+  "new_columns": [
+    "view_id",
+    "pred_source",
+    "gt_element_area"
+  ],
+  "output_sha256": "278ec888cb5b7aced4c6873a0494c0978ec8b94b3635622eac203327479e097d",
+  "pred_sources": 17,
+  "rows": 102054,
+  "schema": "bench: string\nsetting: string\nrow_id: string\nepisode_id: string\ngroup_key: string\ngroup_source: string\nmodel: string\ninstruction: string\nhistory: string\nhistory_len: int64\nimage_ref: string\nimage_width: int64\nimage_height: int64\nimage_gray_mean: double\nimage_gray_std: double\nimage_entropy: double\nimage_edge_density: double\ngt_action: string\ngt_x: double\ngt_y: double\ngt_bbox: list<element: double>\n  child 0, element: double\ngt_param: string\npred_action: string\npred_x: double\npred_y: double\npred_param: string\npred_raw: string\nparse_ok: bool\nerr_label: string\nsuccess: bool\nground_dist: double\nbbox_dist: double\nquarantine: bool\nview_id: string\npred_source: string\ngt_element_area: double",
+  "source_manifest_sha256": "354a141b84e5f0b46455c50c7434b2befb416303fcdf40dca0db18137463233b",
+  "source_rows_sha256": "f3effb37b6979ceb8073bf7b47c80448ec9084da8991f3f93205b79f4f77c77e",
+  "status": "PASS",
+  "view_counts": {
+    "full": 102054
+  }
+}

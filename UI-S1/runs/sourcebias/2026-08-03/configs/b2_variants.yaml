@@ -1,0 +1,108 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+r0_variants:
+  R0a: winning_B3_group_member_centroid
+  R0b: equal_weight_mean_of_winning_group_lineage_centroids
+  R0c: development_reliability_weighted_mean_of_winning_group_lineage_centroids
+
+combined_method_order:
+  - R0a
+  - R0b
+  - R0c
+  - R1_D1
+  - R1_D2
+  - R1_D3
+  - R2_D1
+  - R2_D2
+  - R2_D3
+  - R3_D1
+  - R3_D2
+  - R3_D3
+  - R4_D1
+  - R4_D2
+  - R4_D3
+  - R5_D1
+  - R5_D2
+  - R5_D3
+  - R6_D1
+  - R6_D2
+  - R6_D3
+  - R7_D1
+  - R7_D2
+  - R7_D3
+
+r0_only_method_order: [R0a, R0b, R0c]
+
+reductions:
+  R1: largest_official_complete_link_group_centroid
+  R2: geometric_median_weiszfeld_tol_1e-6_max_iter_100
+  R3: euclidean_medoid
+  R4: largest_14px_graph_component_centroid
+  R5: development_strongest_view_candidate
+  R6: view0_candidate
+  R7: development_action_accuracy_weighted_R1_group_centroid
+
+decisions:
+  D1: equal_weight_largest_14px_graph_component_centroid
+  D2: development_lineage_reliability_weighted_14px_support_representative
+  D3: D1_with_all_pairwise_disagreement_fallback_to_dev_strongest_lineage
+
+variant_order:
+  - R1_D1
+  - R1_D2
+  - R1_D3
+  - R2_D1
+  - R2_D2
+  - R2_D3
+  - R3_D1
+  - R3_D2
+  - R3_D3
+  - R4_D1
+  - R4_D2
+  - R4_D3
+  - R5_D1
+  - R5_D2
+  - R5_D3
+  - R6_D1
+  - R6_D2
+  - R6_D3
+  - R7_D1
+  - R7_D2
+  - R7_D3
+
+nested_selection:
+  outer_folds: 5
+  inner_validation_fold: outer_plus_1_mod_5
+  inner_training: remaining_three_folds
+  selection_metric: inner_validation_B3_accuracy
+  tie_break: frozen_variant_order
+  refit_on_full_outer_dev: true
+
+threshold_pixels: 14.0
+bootstrap_resamples: 10000
+bootstrap_seed: 20260803
+MDE: 0.007043345177520599
+
+baselines:
+  7B:
+    B3: 0.6369386464263125
+    M1: 0.6382036685641999
+    best_single: {model: Qwen3-VL-8B-Instruct, accuracy: 0.5464895635673624}
+  72B:
+    B3: 0.41239721695129666
+    M1: 0.5211891208096142
+    best_single: {model: Qwen3.5-122B-A10B, accuracy: 0.7141049968374447}
+
+success:
+  require_both_scales: true
+  delta_strictly_above_MDE: true
+  ci_99_lower_positive: true
+  compare_B3_and_M1_separately: true
+
+prohibitions:
+  - no_post_result_variants
+  - no_headline_full_grid_maximum
+  - no_omission_of_best_single
+  - no_test_label_parameter_fit

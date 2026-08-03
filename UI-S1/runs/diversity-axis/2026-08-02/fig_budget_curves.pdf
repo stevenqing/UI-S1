@@ -1,0 +1,107 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 760 480] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1474 >>
+stream
+0.8 w
+75 70 m 75 430 l 720 430 l 720 70 l h S
+0.7 0.15 0.15 RG 1.8 w
+75.00 257.14 m
+290.00 238.10 l
+505.00 214.30 l
+720.00 147.65 l
+S
+73.00 255.14 4 4 re f
+288.00 236.10 4 4 re f
+503.00 212.30 4 4 re f
+718.00 145.65 4 4 re f
+0.7 0.15 0.15 RG 530 430 m 550 430 l S
+0 0 0 RG
+BT /F1 9 Tf
+555 427 Td (v_only B3_mvp) Tj ET
+0.9 0.45 0.1 RG 1.8 w
+75.00 264.28 m
+290.00 240.48 l
+505.00 226.20 l
+720.00 145.27 l
+S
+73.00 262.28 4 4 re f
+288.00 238.48 4 4 re f
+503.00 224.20 4 4 re f
+718.00 143.27 4 4 re f
+0.9 0.45 0.1 RG 530 413 m 550 413 l S
+0 0 0 RG
+BT /F1 9 Tf
+555 410 Td (v_only M1_ccm) Tj ET
+0.1 0.35 0.7 RG 1.8 w
+75.00 280.94 m
+290.00 285.70 l
+505.00 349.97 l
+720.00 352.35 l
+S
+73.00 278.94 4 4 re f
+288.00 283.70 4 4 re f
+503.00 347.97 4 4 re f
+718.00 350.35 4 4 re f
+0.1 0.35 0.7 RG 530 396 m 550 396 l S
+0 0 0 RG
+BT /F1 9 Tf
+555 393 Td (mixed B3_mvp) Tj ET
+0.1 0.6 0.4 RG 1.8 w
+75.00 207.15 m
+290.00 330.93 l
+505.00 354.73 l
+720.00 352.35 l
+S
+73.00 205.15 4 4 re f
+288.00 328.93 4 4 re f
+503.00 352.73 4 4 re f
+718.00 350.35 4 4 re f
+0.1 0.6 0.4 RG 530 379 m 550 379 l S
+0 0 0 RG
+BT /F1 9 Tf
+555 376 Td (mixed M1_ccm) Tj ET
+0 0 0 RG
+BT /F1 9 Tf
+70.00 54 Td (4) Tj ET
+0 0 0 RG
+BT /F1 9 Tf
+285.00 54 Td (8) Tj ET
+0 0 0 RG
+BT /F1 9 Tf
+500.00 54 Td (12) Tj ET
+0 0 0 RG
+BT /F1 9 Tf
+715.00 54 Td (16) Tj ET
+BT /F1 11 Tf
+320 28 Td (Forward budget N) Tj ET
+BT /F1 11 Tf 0 1 -1 0 18 155 Tm (Accuracy percent) Tj ET
+BT /F1 9 Tf
+40 70 Td (56.3) Tj ET
+BT /F1 9 Tf
+40 430 Td (65.8) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000241 00000 n
+0000001767 00000 n
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1837
+%%EOF

@@ -1,0 +1,20 @@
+{
+  "R1_gate": {
+    "MDE": 0.007043345177520599,
+    "R1_pass": false,
+    "R2_R3_action": "CANCEL",
+    "R_K1": true,
+    "ci_99_lower_positive": false,
+    "delta_above_MDE": false
+  },
+  "executed": false,
+  "mandatory_controls_not_applicable": {
+    "S4_random_budget_multiset": "NOT_RUN_BECAUSE_R2_CANCELLED"
+  },
+  "reason": "R1 highest-disagreement B3 N24-minus-N4 did not exceed MDE with positive 99% CI lower bound.",
+  "schema_version": 1,
+  "sources": {
+    "R1_sha256": "3397543230e904b68ed40e42c44f27e9a7b78014221993dad7a4634f58c169f8"
+  },
+  "status": "CANCELLED_R_K1"
+}

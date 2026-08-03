@@ -1,0 +1,62 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+candidate_sequence:
+  source: runs/allocation-law/2026-08-01/configs/l1_pools.yaml
+  order: Uniform_Mixed_view_major_model_minor
+  maximum_budget: 24
+
+policies:
+  U4:
+    kind: fixed
+    budget: 4
+  U8:
+    kind: fixed
+    budget: 8
+  U12:
+    kind: fixed
+    budget: 12
+  S1:
+    kind: disagreement_quantile
+    quantiles: 5
+    budget_vector: [4, 4, 4, 4, 24]
+    nominal_mean: 8.0
+  S2:
+    kind: disagreement_quantile
+    quantiles: 10
+    budget_vector: [4, 4, 4, 12, 12, 12, 12, 12, 24, 24]
+    nominal_mean: 12.0
+  S3_8:
+    kind: disagreement_quantile
+    quantiles: 10
+    budget_vector: [4, 4, 4, 4, 4, 4, 8, 8, 16, 24]
+    nominal_mean: 8.0
+  S3_12:
+    kind: disagreement_quantile
+    quantiles: 10
+    budget_vector: [4, 4, 4, 8, 8, 12, 16, 16, 24, 24]
+    nominal_mean: 12.0
+
+random_controls:
+  required_for: [S1, S2, S3_8, S3_12]
+  assignment: deterministic_permutation_of_exact_heldout_budget_multiset
+  seed_derivation: sha256_base_seed_outer_fold_policy
+  base_seed: 20260803
+
+success:
+  primary_target_mean: 12.0
+  primary_baseline: U12
+  primary_require_B3_delta_positive: true
+  primary_require_ci_99_lower_positive: true
+  secondary_target_mean: 8.0
+  secondary_max_realized_mean: 8.05
+  secondary_accuracy_tolerance: 0.007043345177520599
+  signal_value_requires_positive_ci_vs_matched_random: true
+
+prohibitions:
+  - no_test_label_threshold_selection
+  - no_candidate_duplication
+  - no_padding
+  - no_omission_of_random_controls
+  - no_R2_when_R1_fails

@@ -1,0 +1,35 @@
+{
+  "contract": {
+    "a3_scope": "W1 deployable grouped folds",
+    "absolute_full_pool_delta": "pooled routed gain steps / full clean rows",
+    "e2_scope": "disagreement_pool_nested_grouped_test_folds",
+    "warning": "reranker runs all models and is compared against equal-compute A3, not single-model compute"
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "e2_projected_full_pool_delta": 0.009542483660130727,
+      "e2_routed_gain_steps": 73,
+      "e2_t2_headroom_capture": 0.05689789555728765,
+      "w1_a3_delta": -0.10431372549019613,
+      "w1_a3_step_sr": 0.5032679738562091,
+      "w1_heldout_best_step_sr": 0.6075816993464053
+    },
+    "androidcontrol/low": {
+      "e2_projected_full_pool_delta": 0.025228758169934615,
+      "e2_routed_gain_steps": 193,
+      "e2_t2_headroom_capture": 0.2992248062015501,
+      "w1_a3_delta": -0.10849673202614374,
+      "w1_a3_step_sr": 0.6826143790849674,
+      "w1_heldout_best_step_sr": 0.7911111111111111
+    },
+    "mind2web/visual": {
+      "e2_projected_full_pool_delta": 0.04471153846153849,
+      "e2_routed_gain_steps": 93,
+      "e2_t2_headroom_capture": 0.14645669291338592,
+      "w1_a3_delta": 0.06634615384615383,
+      "w1_a3_step_sr": 0.5841346153846154,
+      "w1_heldout_best_step_sr": 0.5177884615384616
+    }
+  },
+  "status": "PASS"
+}

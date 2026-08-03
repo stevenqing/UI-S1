@@ -97,7 +97,7 @@ def main() -> None:
         f"**{percentage(original['grounding_accuracy'])}** | **{percentage(original['reported_average'])}** | "
         "94.3 / 82.6 / 88.5 | PASS |",
         "",
-        "发布代码存在可复核的坐标矛盾：模型实际 slow-processor grid 为 672x1484，但 `eval_ac.py` 硬编码按 644x1484 缩放。这里按发布 evaluator 复测并在逐行 provenance 中同时记录实际 grid，因此该行标为 released-code controlled reproduction，而不是无保留的 strict paper reproduction。",
+        "发布代码存在可复核的坐标矛盾：7,744张标准截图的 slow-processor grid 为 672x1484，另外124张为 672x1456 或 700x1400，但 `eval_ac.py` 对全部样本统一按 644x1484 缩放。这里按发布 evaluator 复测并在逐行 provenance 中记录、审计实际 grid，因此该行标为 released-code controlled reproduction，而不是无保留的 strict paper reproduction。",
         "",
         "## 3. Provenance",
         "",

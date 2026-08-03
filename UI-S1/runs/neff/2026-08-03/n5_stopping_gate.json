@@ -1,0 +1,100 @@
+{
+  "bins": [
+    {
+      "bin": 0,
+      "label": "ordered_uncertainty_quintile",
+      "pass_at_n": {
+        "12": 0.9495268138801262,
+        "4": 0.9495268138801262,
+        "8": 0.9495268138801262
+      },
+      "rows": 317,
+      "uncertainty_max": 0.29333333333333333,
+      "uncertainty_min": 0.18
+    },
+    {
+      "bin": 1,
+      "label": "ordered_uncertainty_quintile",
+      "pass_at_n": {
+        "12": 0.8955696202531646,
+        "4": 0.8924050632911392,
+        "8": 0.8955696202531646
+      },
+      "rows": 316,
+      "uncertainty_max": 0.4174520304471744,
+      "uncertainty_min": 0.29333333333333333
+    },
+    {
+      "bin": 2,
+      "label": "ordered_uncertainty_quintile",
+      "pass_at_n": {
+        "12": 0.870253164556962,
+        "4": 0.810126582278481,
+        "8": 0.8544303797468354
+      },
+      "rows": 316,
+      "uncertainty_max": 0.6347706325721688,
+      "uncertainty_min": 0.4174520304471744
+    },
+    {
+      "bin": 3,
+      "label": "ordered_uncertainty_quintile",
+      "pass_at_n": {
+        "12": 0.7310126582278481,
+        "4": 0.6360759493670886,
+        "8": 0.7088607594936709
+      },
+      "rows": 316,
+      "uncertainty_max": 0.7692652031118838,
+      "uncertainty_min": 0.6347706325721688
+    },
+    {
+      "bin": 4,
+      "label": "highest_disagreement",
+      "pass_at_n": {
+        "12": 0.5126582278481012,
+        "4": 0.3829113924050633,
+        "8": 0.4588607594936709
+      },
+      "rows": 316,
+      "uncertainty_max": 0.9454545452809515,
+      "uncertainty_min": 0.7692652031118838
+    }
+  ],
+  "gate": {
+    "NOA_stop_mode": "accuracy_plus_compute_saving",
+    "point_increment_positive": true
+  },
+  "highest_disagreement_increment": {
+    "bootstrap_mean": 0.1301418961537397,
+    "ci_99": [
+      0.08333333333333333,
+      0.18118478591305567
+    ],
+    "fold_rows": [
+      314,
+      311,
+      337,
+      306,
+      313
+    ],
+    "groups": 26,
+    "p_delta_nonpositive": 9.999000099990002e-05,
+    "point_delta": 0.12974683544303797,
+    "resamples": 10000,
+    "seed": 20260803
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "score": {
+    "activation_threshold": 0.0,
+    "higher_is_more_disagreement": true,
+    "method": "SafeGround_official_code_transfer",
+    "patch_size": 28
+  },
+  "sources": {
+    "L1_sha256": "b06486a9aa2c1caa026d35d10ee84ae0e67f51080b60f60c26f25f5f51d2fa11",
+    "X7_sha256": "9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7"
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,72 @@
+{
+  "date": "2026-08-02",
+  "experiments": {
+    "X1": {
+      "path": "x1/x1_sampling_axis.json",
+      "sha256": "5bac747504bf902a064c705fa64aeb9f90d83ab94b969793a6731690551a980a",
+      "status": "BLOCKED_INSUFFICIENT_SAMPLES"
+    },
+    "X2": {
+      "path": "x2/x2_composability.json",
+      "sha256": "7ea25c0ce2ea2de7b989dc293f6a63a0cbcbef7bc247b82321ea2a46bf0195fb",
+      "status": "PASS"
+    },
+    "X3": {
+      "path": "x3_curve_stats.json",
+      "sha256": "a5cf1940eb9311118bff659cf71a6cd8eab9fb58d568cdcc8e89d98b5f74c116",
+      "status": "PASS"
+    },
+    "X4": {
+      "path": "x4_scanner_locator.json",
+      "sha256": "b38fa20ecbc5b8379d6fdfbf20d95bd4157d0fcd7f6bc0477028bca47d96d3ff",
+      "status": "UNAVAILABLE_NO_RELEASED_IMPLEMENTATION_OR_FIXED_BUDGET_TRACE"
+    },
+    "X5": {
+      "path": "x5_allocation_topology.json",
+      "sha256": "013245fa61d294155969e59ca020b3821b7a1c6377adf2523e80ca9ed0e6b0b2",
+      "status": "BLOCKED_INCOMPLETE_TOPOLOGY_TRIANGLE"
+    },
+    "X6": {
+      "path": "x6_pool_ranking.json",
+      "sha256": "3de1535d56386b774787ed3252e9bfe01c501ad17b394c927547e5e83e6639e0",
+      "status": "PASS"
+    },
+    "X7": {
+      "path": "x7_confidence.json",
+      "sha256": "9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7",
+      "status": "PASS_MIGRATION_DIAGNOSTIC_NO_FDR_GUARANTEE"
+    },
+    "X8": {
+      "path": "x8_mind2web_lineage_only.json",
+      "sha256": "6b668212b61eb7955ac29daf730a1fe1574d52e78fc7344e8aaa826655ae235d",
+      "status": "BLOCKED_NO_SAME_LINEAGE_N6"
+    }
+  },
+  "kill_conditions": {
+    "X-K1": false,
+    "X-K2": false,
+    "X-K3": "NOT_EVALUATED",
+    "X-K4": "NOT_EVALUATED"
+  },
+  "predictions": {
+    "X1_sampling_slope": "NOT_EVALUATED",
+    "X2_composability": false,
+    "X2_interaction_classification": "SUPER_ADDITIVE",
+    "X2_interaction_interpretation": "POSITIVE_INTERACTION_FROM_ATTENUATED_ADAPTIVE_HARM",
+    "X3_curve_slope": true,
+    "X4_scanner_locator": "NOT_EVALUATED",
+    "X5_topology": "NOT_EVALUATED",
+    "X6_unlabeled_ranking": true,
+    "X7_confidence": "PASS_MIGRATION_DIAGNOSTIC_NO_FDR_GUARANTEE",
+    "X8_mind2web": "NOT_EVALUATED"
+  },
+  "schema_version": 1,
+  "status": "COMPLETE_WITH_BLOCKED_COMPARISONS",
+  "validation": {
+    "protected_pid_1814_modified": false,
+    "x2_forward_budget": 12,
+    "x2_rows": 1581,
+    "x3_bootstrap_resamples": 10000,
+    "x6_heldout_observations": 10
+  }
+}

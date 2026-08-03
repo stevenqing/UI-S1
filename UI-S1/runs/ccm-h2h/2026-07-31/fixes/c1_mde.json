@@ -1,0 +1,65 @@
+{
+  "cells": {
+    "androidcontrol/gui-r1-7b/high": {
+      "absolute_delta": 0.00209150326797386,
+      "full_step_sr": 0.45215686274509803,
+      "mde_v1_only": 0.002957832287316283,
+      "original_five_view_mde": 0.301619567843777,
+      "original_five_view_sample_sd": 0.1508097839218885,
+      "sample_sd_full_v1": 0.0014789161436581412,
+      "signed_delta": 0.00209150326797386,
+      "v1_step_sr": 0.4542483660130719
+    },
+    "androidcontrol/gui-r1-7b/low": {
+      "absolute_delta": 0.00091503267973847,
+      "full_step_sr": 0.5813071895424836,
+      "mde_v1_only": 0.0012940516257007413,
+      "original_five_view_mde": 0.40894607861091364,
+      "original_five_view_sample_sd": 0.20447303930545682,
+      "sample_sd_full_v1": 0.0006470258128503705,
+      "signed_delta": -0.00091503267973847,
+      "v1_step_sr": 0.5803921568627451
+    },
+    "androidcontrol/ui-agile-7b/high": {
+      "absolute_delta": 0.0006535947712418277,
+      "full_step_sr": 0.6075816993464053,
+      "mde_v1_only": 0.0009243225897863334,
+      "original_five_view_mde": 0.29947706141964353,
+      "original_five_view_sample_sd": 0.14973853070982177,
+      "sample_sd_full_v1": 0.00046216129489316663,
+      "signed_delta": 0.0006535947712418277,
+      "v1_step_sr": 0.6082352941176471
+    },
+    "androidcontrol/ui-agile-7b/low": {
+      "absolute_delta": 0.0014379084967320876,
+      "full_step_sr": 0.7756862745098039,
+      "mde_v1_only": 0.002033509697530028,
+      "original_five_view_mde": 0.4247116156017106,
+      "original_five_view_sample_sd": 0.2123558078008553,
+      "sample_sd_full_v1": 0.0010167548487650137,
+      "signed_delta": 0.0014379084967320876,
+      "v1_step_sr": 0.777124183006536
+    },
+    "mind2web/tongui-7b/visual": {
+      "absolute_delta": 0.008173076923076894,
+      "full_step_sr": 0.5293269230769231,
+      "mde_v1_only": 0.011558476230933909,
+      "original_five_view_mde": 0.04644041642908159,
+      "original_five_view_sample_sd": 0.023220208214540794,
+      "sample_sd_full_v1": 0.005779238115466954,
+      "signed_delta": -0.008173076923076894,
+      "v1_step_sr": 0.5211538461538462
+    }
+  },
+  "definition": "MDE_v1 = 2 * sample SD(full,v1) = sqrt(2) * abs(v1-full)",
+  "excluded_distribution_shift_views": [
+    "v2",
+    "v3",
+    "v4"
+  ],
+  "main_exchangeable_views": [
+    "full",
+    "v1"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,37 @@
+{
+  "B1_source_bias": "PASS_BOTH_SCALES",
+  "B2_72B_bias_correction": "PASS",
+  "B2_nested_primary": "FAIL_7B",
+  "B3x": "NOT_RUN_B2_GATE_FAILED",
+  "B_K4": true,
+  "artifacts": {
+    "B1": {
+      "path": "results/b1_source_bias.json",
+      "sha256": "5990a34acd131d589692b99804db817c95e8faf19b15e26e4b1f1199bb6ead08"
+    },
+    "B2": {
+      "path": "results/b2_lineage_normalized.json",
+      "sha256": "8dfab1283d39480950f779d6c3f10b5150e51c4039a05470292ffe71153973ed"
+    },
+    "B2_VARIANT_GRID.md": {
+      "path": "B2_VARIANT_GRID.md",
+      "sha256": "072fef5c4313bc02ccf4bc245e73ab63e09ceb33560145fe99632676eae449e5"
+    },
+    "B4": {
+      "path": "results/b4_attribution.json",
+      "sha256": "272f6b7bf0d2f17ae57e2a1a62c10f9b1c344e39ffd728134e0787bbb68ff2f6"
+    },
+    "MAIN_TABLE.md": {
+      "path": "MAIN_TABLE.md",
+      "sha256": "12593a6669412c3c643ea45a4fbd1f7a963c4314c10c6741467c71a2c35aea25"
+    },
+    "REPORT.md": {
+      "path": "REPORT.md",
+      "sha256": "99ff16ec8ae94a4cc5b47e3f4801dc1aca55fb49ccc2299186512528dbda19f5"
+    }
+  },
+  "mechanism_scope": "heterogeneous_pool_aggregation_effect",
+  "proposal_source_attribution": "NOT_SUPPORTED_BOTH_SCALES",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

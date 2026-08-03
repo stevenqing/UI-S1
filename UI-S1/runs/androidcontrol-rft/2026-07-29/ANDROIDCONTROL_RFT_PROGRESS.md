@@ -10,20 +10,25 @@
 | --- | --- | --- | --- | --- | ---: | --- |
 | UI-AGILE-3B | Low | **89.4785 / 87.5787 / 79.0867** | 98.1 / 91.8 / 90.8 | -8.6215 / -4.2213 / -11.7133 pp | 7,708 / 7,708 | PASS |
 | UI-AGILE-3B | High | **76.9590 / 55.8523 / 58.6015** | 88.8 / 85.8 / 78.7 | -11.8410 / -29.9477 / -20.0985 pp | 7,708 / 7,708 | PASS |
+| UI-AGILE-7B | Low | **87.6492 / 87.9479 / 77.5558** | 98.0 / 92.2 / 91.0 | -10.3508 / -4.2521 / -13.4442 pp | 7,708 / 7,708 | PASS |
+| UI-AGILE-7B | High | **79.9689 / 61.9761 / 60.5345** | 91.0 / 87.2 / 81.4 | -11.0311 / -25.2239 / -20.8655 pp | 7,708 / 7,708 | PASS |
+| UI-R1-E-3B | Low | **86.6762 / 78.5451 / 48.5080** | 97.7 / 91.2 / 89.4 | -11.0238 / -12.6549 / -40.8920 pp | 7,708 / 7,708 | PASS |
+| UI-R1-E-3B | High | **66.6969 / 38.9359 / 22.8853** | 83.5 / 78.9 / 69.8 | -16.8031 / -39.9641 / -46.9147 pp | 7,708 / 7,708 | PASS |
+| GUI-R1-3B | Low | **84.4577 / 80.0434 / 56.8889** | 96.9 / 89.9 / 87.3 | -12.4423 / -9.8566 / -30.4111 pp | 7,708 / 7,708 | PASS |
+| GUI-R1-3B | High | **64.2190 / 56.9598 / 38.4276** | 58.0 / 56.2 / 46.6 | +6.2190 / +0.7598 / -8.1724 pp | 7,708 / 7,708 | PASS |
+| GUI-R1-7B | Low | **83.6404 / 83.5396 / 58.2122** | 97.5 / 91.7 / 89.7 | -13.8596 / -8.1604 / -31.4878 pp | 7,708 / 7,708 | PASS |
+| GUI-R1-7B | High | **71.3544 / 64.7774 / 44.9663** | 71.6 / 65.6 / 51.7 | -0.2456 / -0.8226 / -6.7337 pp | 7,708 / 7,708 | PASS |
 
-该结果来自固定 checkpoint `KDEGroup/UI-AGILE-3B@84c28b06a7bda29a741139d64e227d176c0fb1c0`。预测按四个 GPU shard 生成后严格按全局 index 合并；独立 audit 从官方 parquet、原始模型输出和固定 parser 逐行重算指标。未使用 GT output repair。
+结果来自固定 checkpoint：`KDEGroup/UI-AGILE-3B@84c28b06...`、`KDEGroup/UI-AGILE@de013669...`、`LZXzju/Qwen2.5-VL-3B-UI-R1-E@91c3e5f...` 和 `ritzzai/GUI-R1@e74baccc...`。预测按四个 GPU shard 生成后严格按全局 index 合并；独立 audit 从官方 parquet、原始模型输出和固定 parser 逐行重算指标。未使用 GT output repair。
 
-## 正在运行
+## 运行状态
 
-严格串行队列继续执行：
+严格串行队列已全部完成：
 
-1. UI-AGILE-7B Low / High
-2. UI-R1-E-3B Low / High
-3. GUI-R1-3B Low / High
-4. GUI-R1-7B Low / High
-5. 原始 UI-R1-3B v1 selected-Low 7,868-step 独立 lane
+1. 10 条统一 7,708-step Low/High lane：全部 audit PASS
+2. 原始 UI-R1-3B v1 selected-Low 7,868-step lane：audit PASS
 
-原始 UI-R1 lane 不与统一 7,708-step lane 混报。其发布指标 `94.3 / 82.6 / 88.5` 表示 Type / click Grounding / 两者算术平均，不是 Step SR。发布代码还存在可复核的坐标矛盾：实际 slow-processor grid 为 672x1484，但 `eval_ac.py` 按 644x1484 缩放；本地 runner 同时记录两者并按发布 evaluator 计分。
+原始 UI-R1 lane 结果为 Type `94.9161`、click Grounding `76.8033`、两者算术平均 `85.8597`，不含 Step SR。发布代码存在可复核的坐标矛盾：7,744张标准截图的 slow-processor grid 为 672x1484，另外124张为 672x1456 或 700x1400，但 `eval_ac.py` 对全部样本统一按 644x1484 缩放；本地 runner 逐行记录并审计实际 grid，同时按发布 evaluator 计分。因此该结果属于 released-code controlled reproduction，不是无保留的 strict paper reproduction。
 
 ## Provenance
 
@@ -34,6 +39,16 @@
 - UI-AGILE-3B Low score SHA256: `b829c64c11dfa0ebcaac539819ec9f97f28ef8ba52e69060318cc78d5fc783f1`
 - UI-AGILE-3B High predictions SHA256: `9e96878fc3638ac49039a400ad15177bb5c318479247719bdaa2cd7f26b8d812`
 - UI-AGILE-3B High score SHA256: `29cc90b4ecf09bc47569e0ff0cb16030ae6c8aee5632cffc409b472630432e6e`
+- UI-AGILE-7B Low/High score SHA256: `e64ce51215be564f59d922a081a9aa409d8bb49ff2005bd34fb7fc82c7cae08f` / `d5999f117e4530945b77e69af6d90fd88e6bcaa025e1830e880ee7989a5c358b`
+- UI-R1-E-3B Low/High score SHA256: `61e93dc644e98aeb2e519a45a382f751942659521f9a693447e60ea69858247a` / `78fec3850aebdf4d3ecdac0836e2f82b4329978de2b4df727c8e3a17097da476`
+- GUI-R1-3B Low score SHA256: `9d4368656c70b1f811ec60cd4964cc0c14b42ca157031964c8286c05680f744e`
+- GUI-R1-3B High predictions SHA256: `1f5e265c2dc0cece17a4e1eb8afe9a7537858c5be697b02441c067737f581deb`
+- GUI-R1-3B High score SHA256: `d043527c9df03cdd3a0da24ff59834c5e3a828fe1638508aa66a826fec3db9d3`
+- GUI-R1-7B Low predictions SHA256: `4e33ae3eeb63a263c8bbc0016be6961560e4abc8ea79854190ff9fc226030c16`
+- GUI-R1-7B Low score SHA256: `80e347852de8a2abfd0070d3e02f79f0ab25b8e1cbc077eb4df9e8b172595a1e`
+- GUI-R1-7B High predictions SHA256: `357d7c6c9cdc4110649b7799e0927181210478543ffff4b038323516db83f6df`
+- GUI-R1-7B High score SHA256: `a7c45f65ecaf98cbfd47de45c0ead6a70e09479fe18a1bb25c374eceed9f77a7`
+- Original UI-R1 predictions SHA256: `656ae66fb8501bb86e5af07cdf8bae93215ebe34e57480eba59e5899483b2579`
 - Official AndroidControl source: 20 TFRecord shards plus two split files, 49,930,349,992 bytes, all public GCS MD5 checks PASS
 - Checkpoint/data/source manifest: `artifact_manifest.json`
 - Completed score/audit: `artifacts/ui-agile-3b/low/{score,audit}.json`

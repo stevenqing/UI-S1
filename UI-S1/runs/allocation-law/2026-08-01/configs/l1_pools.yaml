@@ -1,0 +1,48 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+shared_region_source: GTA1_official_attention_rank
+models:
+  - GTA1-7B
+  - Qwen3-VL-8B-Instruct
+  - UI-TARS-7B-SFT
+
+allocation_order: round_robin_by_view_then_model
+allocation_sequence:
+  - GTA1-7B/view0
+  - Qwen3-VL-8B-Instruct/view0
+  - UI-TARS-7B-SFT/view0
+  - GTA1-7B/view1
+  - Qwen3-VL-8B-Instruct/view1
+  - UI-TARS-7B-SFT/view1
+  - GTA1-7B/view2
+  - Qwen3-VL-8B-Instruct/view2
+  - UI-TARS-7B-SFT/view2
+  - GTA1-7B/view3
+  - Qwen3-VL-8B-Instruct/view3
+  - UI-TARS-7B-SFT/view3
+  - GTA1-7B/view4
+  - Qwen3-VL-8B-Instruct/view4
+  - UI-TARS-7B-SFT/view4
+  - GTA1-7B/view5
+  - Qwen3-VL-8B-Instruct/view5
+  - UI-TARS-7B-SFT/view5
+  - GTA1-7B/view6
+  - Qwen3-VL-8B-Instruct/view6
+  - UI-TARS-7B-SFT/view6
+  - GTA1-7B/view7
+  - Qwen3-VL-8B-Instruct/view7
+  - UI-TARS-7B-SFT/view7
+
+budget_prefixes:
+  4: [GTA1-7B/view0, Qwen3-VL-8B-Instruct/view0, UI-TARS-7B-SFT/view0, GTA1-7B/view1]
+  8: [GTA1-7B/view0, Qwen3-VL-8B-Instruct/view0, UI-TARS-7B-SFT/view0, GTA1-7B/view1, Qwen3-VL-8B-Instruct/view1, UI-TARS-7B-SFT/view1, GTA1-7B/view2, Qwen3-VL-8B-Instruct/view2]
+  12: first_12_allocation_sequence
+  16: first_16_allocation_sequence
+  24: full_allocation_sequence
+
+v_only:
+  source: GTA1-7B
+  order: official_rank_prefix
+  minimum_unique_candidates_observed: 16
+  maximum_requested_budget: 24
+  unavailable_policy: truncate_curve_no_padding

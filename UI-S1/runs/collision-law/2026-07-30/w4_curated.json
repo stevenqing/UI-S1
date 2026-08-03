@@ -1,0 +1,367 @@
+{
+  "settings": {
+    "high": {
+      "aggregate_step_sr": {
+        "A0_heldout_best": 0.5713262504476543,
+        "A1_plurality_median": 0.5655962755162947,
+        "A2_plurality_density": 0.5721618717918109,
+        "A3_pka_joint": 0.5494807210218455,
+        "A4_pka_continuous": 0.5523457084875254,
+        "oracle": 0.7133818789542796
+      },
+      "fold_method": "deterministic_group_balance_v1_on_image_parent",
+      "fold_rows": [
+        1676,
+        1676,
+        1675,
+        1675,
+        1675
+      ],
+      "folds": [
+        {
+          "dev_rows": 6701,
+          "fold": 0,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5166393075660349,
+            "gui-r1-7b": 0.504103865094762,
+            "ui-agile-3b": 0.5102223548724071,
+            "ui-agile-7b": 0.4723175645426056,
+            "ui-r1-e-3b": 0.504103865094762
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-r1-e-3b",
+            "gui-r1-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.5715990453460621,
+            "A2_plurality_density": 0.581145584725537,
+            "A3_pka_joint": 0.5584725536992841,
+            "A4_pka_continuous": 0.5638424821002387
+          },
+          "test_rows": 1676
+        },
+        {
+          "dev_rows": 6701,
+          "fold": 1,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5155946873600955,
+            "gui-r1-7b": 0.5051484853007013,
+            "ui-agile-3b": 0.5117146694523206,
+            "ui-agile-7b": 0.46992986121474406,
+            "ui-r1-e-3b": 0.5017161617669005
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-r1-e-3b",
+            "gui-r1-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.5769689737470167,
+            "A2_plurality_density": 0.5823389021479713,
+            "A3_pka_joint": 0.5542959427207638,
+            "A4_pka_continuous": 0.5590692124105012
+          },
+          "test_rows": 1676
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 2,
+          "grounding_weights": {
+            "gui-r1-3b": 0.523575052223217,
+            "gui-r1-7b": 0.5068636227991644,
+            "ui-agile-3b": 0.5182035213369144,
+            "ui-agile-7b": 0.4743360190987765,
+            "ui-r1-e-3b": 0.5076096687555953
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-r1-e-3b",
+            "gui-r1-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.5552238805970149,
+            "A2_plurality_density": 0.5570149253731344,
+            "A3_pka_joint": 0.5367164179104478,
+            "A4_pka_continuous": 0.5367164179104478
+          },
+          "test_rows": 1675
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 3,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5192479856759177,
+            "gui-r1-7b": 0.5099970158161743,
+            "ui-agile-3b": 0.5183527305282005,
+            "ui-agile-7b": 0.4744852282900627,
+            "ui-r1-e-3b": 0.5068636227991644
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-r1-e-3b",
+            "gui-r1-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.5558208955223881,
+            "A2_plurality_density": 0.5629850746268656,
+            "A3_pka_joint": 0.5414925373134328,
+            "A4_pka_continuous": 0.5450746268656717
+          },
+          "test_rows": 1675
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 4,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5207400775887795,
+            "gui-r1-7b": 0.5064159952253059,
+            "ui-agile-3b": 0.5140256639809012,
+            "ui-agile-7b": 0.47194867203819757,
+            "ui-r1-e-3b": 0.5074604595643092
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "ui-agile-3b",
+            "ui-r1-e-3b",
+            "gui-r1-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.5683582089552239,
+            "A2_plurality_density": 0.5773134328358209,
+            "A3_pka_joint": 0.5564179104477612,
+            "A4_pka_continuous": 0.5570149253731344
+          },
+          "test_rows": 1675
+        }
+      ],
+      "groups": 1540,
+      "hard_core_rate": 0.28661812104572043,
+      "hard_core_rows": 2401,
+      "models": {
+        "gui-r1-3b": {
+          "parse_rate": 0.99964187656679,
+          "step_sr": 0.5263220723409335,
+          "type_accuracy": 0.6199116628864749
+        },
+        "gui-r1-7b": {
+          "parse_rate": 0.9997612510445267,
+          "step_sr": 0.5713262504476543,
+          "type_accuracy": 0.6797182762325414
+        },
+        "ui-agile-3b": {
+          "parse_rate": 1.0,
+          "step_sr": 0.5464963590784291,
+          "type_accuracy": 0.6480840396323266
+        },
+        "ui-agile-7b": {
+          "parse_rate": 1.0,
+          "step_sr": 0.5201145994986272,
+          "type_accuracy": 0.664796466515459
+        },
+        "ui-r1-e-3b": {
+          "parse_rate": 0.99964187656679,
+          "step_sr": 0.5405276351915961,
+          "type_accuracy": 0.6454578011221201
+        }
+      },
+      "rows": 8377
+    },
+    "low": {
+      "aggregate_step_sr": {
+        "A0_heldout_best": 0.7552823206398472,
+        "A1_plurality_median": 0.7238868329951057,
+        "A2_plurality_density": 0.7242449564283157,
+        "A3_pka_joint": 0.676733914289125,
+        "A4_pka_continuous": 0.6850901277306912,
+        "oracle": 0.8295332457920497
+      },
+      "fold_method": "deterministic_group_balance_v1_on_image_parent",
+      "fold_rows": [
+        1676,
+        1676,
+        1675,
+        1675,
+        1675
+      ],
+      "folds": [
+        {
+          "dev_rows": 6701,
+          "fold": 0,
+          "grounding_weights": {
+            "gui-r1-3b": 0.9546252193532213,
+            "gui-r1-7b": 0.9315617949360742,
+            "ui-agile-3b": 0.9541238405615442,
+            "ui-agile-7b": 0.818751566808724,
+            "ui-r1-e-3b": 0.9415893707696165
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "gui-r1-3b",
+            "ui-r1-e-3b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.7136038186157518,
+            "A2_plurality_density": 0.7136038186157518,
+            "A3_pka_joint": 0.668854415274463,
+            "A4_pka_continuous": 0.6778042959427207
+          },
+          "test_rows": 1676
+        },
+        {
+          "dev_rows": 6701,
+          "fold": 1,
+          "grounding_weights": {
+            "gui-r1-3b": 0.9562609347663085,
+            "gui-r1-7b": 0.9320169957510622,
+            "ui-agile-3b": 0.9572606848287928,
+            "ui-agile-7b": 0.8170457385653587,
+            "ui-r1-e-3b": 0.9390152461884529
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "gui-r1-3b",
+            "ui-r1-e-3b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.7297136038186157,
+            "A2_plurality_density": 0.7297136038186157,
+            "A3_pka_joint": 0.6867541766109785,
+            "A4_pka_continuous": 0.6945107398568019
+          },
+          "test_rows": 1676
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 2,
+          "grounding_weights": {
+            "gui-r1-3b": 0.9535573122529645,
+            "gui-r1-7b": 0.9283596837944664,
+            "ui-agile-3b": 0.9550395256916996,
+            "ui-agile-7b": 0.816699604743083,
+            "ui-r1-e-3b": 0.9367588932806324
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "gui-r1-3b",
+            "ui-r1-e-3b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.7128358208955224,
+            "A2_plurality_density": 0.7146268656716418,
+            "A3_pka_joint": 0.6549253731343283,
+            "A4_pka_continuous": 0.6626865671641791
+          },
+          "test_rows": 1675
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 3,
+          "grounding_weights": {
+            "gui-r1-3b": 0.9528535980148883,
+            "gui-r1-7b": 0.9297766749379652,
+            "ui-agile-3b": 0.9558312655086849,
+            "ui-agile-7b": 0.813151364764268,
+            "ui-r1-e-3b": 0.9392059553349876
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "gui-r1-3b",
+            "ui-r1-e-3b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.706865671641791,
+            "A2_plurality_density": 0.7062686567164179,
+            "A3_pka_joint": 0.6656716417910448,
+            "A4_pka_continuous": 0.6776119402985075
+          },
+          "test_rows": 1675
+        },
+        {
+          "dev_rows": 6702,
+          "fold": 4,
+          "grounding_weights": {
+            "gui-r1-3b": 0.9554554554554554,
+            "gui-r1-7b": 0.9324324324324325,
+            "ui-agile-3b": 0.9554554554554554,
+            "ui-agile-7b": 0.8063063063063063,
+            "ui-r1-e-3b": 0.9384384384384384
+          },
+          "heldout_best_model": "gui-r1-7b",
+          "priority": [
+            "gui-r1-7b",
+            "gui-r1-3b",
+            "ui-r1-e-3b",
+            "ui-agile-3b",
+            "ui-agile-7b"
+          ],
+          "step_sr": {
+            "A1_plurality_median": 0.7564179104477612,
+            "A2_plurality_density": 0.7570149253731343,
+            "A3_pka_joint": 0.7074626865671642,
+            "A4_pka_continuous": 0.7128358208955224
+          },
+          "test_rows": 1675
+        }
+      ],
+      "groups": 1540,
+      "hard_core_rate": 0.17046675420795035,
+      "hard_core_rows": 1428,
+      "models": {
+        "gui-r1-3b": {
+          "parse_rate": 0.9997612510445267,
+          "step_sr": 0.7078906529783933,
+          "type_accuracy": 0.734988659424615
+        },
+        "gui-r1-7b": {
+          "parse_rate": 0.9998806255222633,
+          "step_sr": 0.7552823206398472,
+          "type_accuracy": 0.7963471409812583
+        },
+        "ui-agile-3b": {
+          "parse_rate": 1.0,
+          "step_sr": 0.6859257490748478,
+          "type_accuracy": 0.7123075086546496
+        },
+        "ui-agile-7b": {
+          "parse_rate": 1.0,
+          "step_sr": 0.6258803867733078,
+          "type_accuracy": 0.7368986510684016
+        },
+        "ui-r1-e-3b": {
+          "parse_rate": 1.0,
+          "step_sr": 0.7012056822251402,
+          "type_accuracy": 0.7373761489793482
+        }
+      },
+      "rows": 8377
+    }
+  },
+  "status": "PASS"
+}

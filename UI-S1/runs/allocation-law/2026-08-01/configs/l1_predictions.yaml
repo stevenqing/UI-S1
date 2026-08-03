@@ -1,0 +1,30 @@
+schema_version: 1
+frozen_at_utc: "2026-08-01"
+upstream_commit: d9754844f7f563a4a30deeefbcb3a7137a059176
+seed: 20260801
+
+budgets: [4, 8, 12, 16, 24]
+mde: 0.007043345177520599
+rules: [B3_mvp, M1_ccm]
+
+P-L1a:
+  statement: V-only saturates while Mixed continues improving beyond the same breakpoint
+  breakpoint_max: 24
+  v_only_increment: less_than_mde
+  mixed_increment: greater_than_mde
+  full_pass_requires_both_rules: true
+  one_rule_only: partial_pass
+
+P-L1b:
+  statement: allocation gain dominates rule gain at every jointly available budget
+  sign_condition: mixed_minus_v_only_same_sign_under_B3_and_M1
+  magnitude_condition: abs_B3_vs_M1_allocation_gap_difference_lt_abs_mixed_minus_v_only
+
+report:
+  pass_at_n: true
+  oracle_gap: true
+  v_only_n24_policy: TRUNCATED_UNAVAILABLE_IF_ANY_ROW_HAS_LT_24_UNIQUE_CANDIDATES
+
+kill_conditions:
+  L-K1: P-L1a_fails_under_B3_and_M1
+  L-K2: P-L1b_fails

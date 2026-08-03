@@ -1,0 +1,13 @@
+{
+  "bare_accuracy": 0.33459835547122074,
+  "correct": 529,
+  "eligible": true,
+  "minimum_bare_accuracy": 0.2469955724225174,
+  "model_id": "UI-TARS-7B-SFT",
+  "model_revision": "3434901a9dd04dd3625617d839a5724fe5e2db20",
+  "parse_rate": 1.0,
+  "parse_successes": 1581,
+  "rows": 1581,
+  "source_sha256": "b2f5b2f7831bf50e984fc763cc5015ffb86e29d2cb2950b776fead9f8cbdf063",
+  "status": "PASS"
+}

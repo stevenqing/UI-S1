@@ -1,0 +1,14 @@
+{
+  "coverage": "COMPLETE",
+  "data_setting": "high",
+  "data_sha256": "ec70c99046aa4fb1557c61bf2c5d1266f87d4b9dc879128b2de20bf0aca7c72f",
+  "manifest_sha256": "25b567ce7cce9c48766c680df1ef3c19fa9c8f046c4571348d03b3a72b4231da",
+  "metric_counts_sha256": "0d7fb91fc19d2b6422763c46e54578b1850980c2e0194cd8ad715cfb65e7cb57",
+  "model_name": "KDEGroup/UI-AGILE",
+  "model_revision": "de01366937b3c921f49ae1abe3b2c4a39b40ce8d",
+  "predictions_sha256": "11c129e4dad08b644aa55ca7d765ab13119121a5edee534f05ccaa43e8c028f2",
+  "rows": 7708,
+  "score_sha256": "d5999f117e4530945b77e69af6d90fd88e6bcaa025e1830e880ee7989a5c358b",
+  "status": "PASS",
+  "unique_ordered_indices": 7708
+}

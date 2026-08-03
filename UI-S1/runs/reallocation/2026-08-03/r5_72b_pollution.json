@@ -1,0 +1,82 @@
+{
+  "budget": 8,
+  "failed_distance_bootstrap": {
+    "bootstrap_mean": 0.06152390028659057,
+    "ci_99": [
+      0.03682679978853626,
+      0.08477752859780412
+    ],
+    "fold_rows": [
+      314,
+      311,
+      337,
+      306,
+      313
+    ],
+    "p_delta_nonnegative": 1.0,
+    "paired_rows": 967,
+    "point_delta_72B_minus_7B": 0.06156618091935383,
+    "resamples": 10000,
+    "seed": 20260803
+  },
+  "hypothesis": {
+    "72B_failed_candidates_tighter_point_estimate": false,
+    "72B_wrong_winner_group_nonuniform_p_lt_0_01": true,
+    "pollution_hypothesis_supported": false
+  },
+  "records_sha256": {
+    "72B": "312c8d83a1fe9746f7fcbe6b02388d3f87eaa862beccad24e8df95d918633fe1",
+    "7B": "3b26ecd9b4bca173b03952ea58277f7cc5c3cde857ff0a51fc35a6dd27747b25"
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "status": "PASS",
+  "summaries": {
+    "72B_Uniform_Mixed_N8": {
+      "B3_accuracy": 0.41239721695129666,
+      "B3_wrong_rows": 929,
+      "mean_failed_pair_distance": 0.15391514142101997,
+      "mean_largest_failed_cluster_fraction": 0.43021896930815334,
+      "median_row_mean_failed_pair_distance": 0.13792541284183918,
+      "rows": 1581,
+      "rows_with_failed_pairs": 1396,
+      "winner_group_model_uniformity": {
+        "chi_square": 562.9708454810497,
+        "p_value": 5.655020291164452e-123
+      },
+      "wrong_selected_model": {
+        "GTA1-72B": 872,
+        "Qwen3.5-122B-A10B": 5,
+        "UI-Venus-Ground-72B": 52
+      },
+      "wrong_winner_group_model_members": {
+        "GTA1-72B": 1374,
+        "Qwen3.5-122B-A10B": 370,
+        "UI-Venus-Ground-72B": 1000
+      }
+    },
+    "7B_Uniform_Mixed_N8": {
+      "B3_accuracy": 0.6198608475648324,
+      "B3_wrong_rows": 601,
+      "mean_failed_pair_distance": 0.11366608029907511,
+      "mean_largest_failed_cluster_fraction": 0.4104545043823981,
+      "median_row_mean_failed_pair_distance": 0.07982018067927632,
+      "rows": 1581,
+      "rows_with_failed_pairs": 1036,
+      "winner_group_model_uniformity": {
+        "chi_square": 395.2444690265487,
+        "p_value": 1.491949246651827e-86
+      },
+      "wrong_selected_model": {
+        "GTA1-7B": 524,
+        "Qwen3-VL-8B-Instruct": 65,
+        "UI-TARS-7B-SFT": 12
+      },
+      "wrong_winner_group_model_members": {
+        "GTA1-7B": 959,
+        "Qwen3-VL-8B-Instruct": 579,
+        "UI-TARS-7B-SFT": 270
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+schema_version: 1
+frozen_at_utc: "2026-08-03"
+result_blind: true
+
+primary_panel: B3_pool_budget_points
+stress_panel: all_available_B3_M1_pass_points
+
+fit:
+  family: ordinary_least_squares
+  formula_neff: accuracy_intercept_plus_beta_times_Neff
+  formula_budget: accuracy_intercept_plus_beta_times_K
+  nonlinear_fits_prohibited: true
+  residual_sd: sqrt_SSE_over_n_minus_2
+
+collapse_success:
+  maximum_residual_sd: 0.014
+  require_neff_residual_sd_strictly_below_K: true
+
+two_factor:
+  formula: accuracy_intercept_plus_beta_N_times_Neff_plus_beta_Q_times_mean_proposal_containment
+  report_adjusted_r_squared: true
+  does_not_rescue_one_factor_status: true
+
+N2:
+  rho_view: 0.895
+  asymptotic_Neff: 1.1173184357541899
+  estimator_tie_order: [failure_kappa, rho_geom, rho_cond]
+  paper_only_62_8_excluded_from_pass_fail: true
+
+statistics:
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260803
+  confidence: 0.99
+  MDE: 0.007043345177520599
+
+N3:
+  anchors:
+    GTA1-72B: 0.584
+    UI-Venus-Ground-72B: 0.619
+    Qwen3.5-122B-A10B: 0.704
+  absolute_tolerance: 0.02
+  no_repair_if_all_anchors_pass: true
+  quarantine_until_artifact_complete: true
+
+N4:
+  generalized_Neff: K_squared_over_one_transpose_R_one
+  static_tie_breaks: [individual_development_accuracy, frozen_action_order]
+  minimum_success: N12_B3_point_not_lower_than_Uniform_Mixed
+  strong_success: N12_B3_CI_99_lower_positive
+
+N5:
+  quantiles: 5
+  tie_break: score_then_row_id
+  budgets: [4, 8, 12]
+  gate: highest_disagreement_pass_at_12_minus_pass_at_4_positive

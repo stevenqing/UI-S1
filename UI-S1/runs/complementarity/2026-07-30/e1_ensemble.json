@@ -1,0 +1,1132 @@
+{
+  "contract": {
+    "folds": "shared deterministic group folds from folds.json",
+    "full": "stage_ab plus token-F1 text medoid",
+    "stage_a": "plurality action plus dev-best winning-model coordinate and parameter",
+    "stage_ab": "plurality action plus unweighted geometric median plus dev-best parameter",
+    "subset_selection": "greedy weighted-full dev improvement only",
+    "weighted_full": "dev-grounding-weighted geometric median plus text medoid"
+  },
+  "pools": {
+    "androidcontrol/high": {
+      "aggregate": {
+        "best_single": {
+          "folds": [
+            0.5888888888888889,
+            0.6326797385620915,
+            0.5843137254901961,
+            0.6222222222222222,
+            0.6098039215686275
+          ],
+          "mean": 0.6075816993464053,
+          "std": 0.01865483596458702
+        },
+        "full": {
+          "folds": [
+            0.5888888888888889,
+            0.6326797385620915,
+            0.5843137254901961,
+            0.6222222222222222,
+            0.6098039215686275
+          ],
+          "mean": 0.6075816993464053,
+          "std": 0.01865483596458702
+        },
+        "full_oracle": {
+          "folds": [
+            0.7640522875816993,
+            0.7843137254901961,
+            0.7542483660130719,
+            0.7888888888888889,
+            0.7849673202614379
+          ],
+          "mean": 0.7752941176470587,
+          "std": 0.013631172984291465
+        },
+        "logistic_combination_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "negative_geometric_dispersion_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "stage_a": {
+          "folds": [
+            0.5888888888888889,
+            0.6326797385620915,
+            0.5843137254901961,
+            0.6222222222222222,
+            0.6098039215686275
+          ],
+          "mean": 0.6075816993464053,
+          "std": 0.01865483596458702
+        },
+        "stage_ab": {
+          "folds": [
+            0.5888888888888889,
+            0.6326797385620915,
+            0.5843137254901961,
+            0.6222222222222222,
+            0.6098039215686275
+          ],
+          "mean": 0.6075816993464053,
+          "std": 0.01865483596458702
+        },
+        "vote_margin_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "weighted_full": {
+          "folds": [
+            0.5888888888888889,
+            0.6326797385620915,
+            0.5843137254901961,
+            0.6222222222222222,
+            0.6098039215686275
+          ],
+          "mean": 0.6075816993464053,
+          "std": 0.01865483596458702
+        },
+        "weighted_full_delta_over_best_single": 0.0
+      },
+      "folds": [
+        {
+          "best_single": "ui-agile-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.45680052389480735,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 0,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5664944248028284,
+            "gui-r1-7b": 0.6518901278215937,
+            "ui-agile-3b": 0.5648626597769921,
+            "ui-agile-7b": 0.6304052216480827,
+            "ui-r1-e-3b": 0.3856404677726407
+          },
+          "metrics": {
+            "best_single": 0.5888888888888889,
+            "full": 0.5888888888888889,
+            "full_oracle": 0.7640522875816993,
+            "stage_a": 0.5888888888888889,
+            "stage_ab": 0.5888888888888889,
+            "weighted_full": 0.5888888888888889
+          },
+          "selected_models": [
+            "ui-agile-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.6122549019607844,
+              "models": [
+                "ui-agile-7b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.41091474531059474,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 1,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5682747342600164,
+            "gui-r1-7b": 0.6394112837285364,
+            "ui-agile-3b": 0.5481057508857999,
+            "ui-agile-7b": 0.60670482420278,
+            "ui-r1-e-3b": 0.3856636685745435
+          },
+          "metrics": {
+            "best_single": 0.6326797385620915,
+            "full": 0.6326797385620915,
+            "full_oracle": 0.7843137254901961,
+            "stage_a": 0.6326797385620915,
+            "stage_ab": 0.6326797385620915,
+            "weighted_full": 0.6326797385620915
+          },
+          "selected_models": [
+            "ui-agile-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.6013071895424836,
+              "models": [
+                "ui-agile-7b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.46162116067488573,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 2,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5715444955369219,
+            "gui-r1-7b": 0.651879902623749,
+            "ui-agile-3b": 0.5604544225047335,
+            "ui-agile-7b": 0.6221260481471463,
+            "ui-r1-e-3b": 0.38598863943738165
+          },
+          "metrics": {
+            "best_single": 0.5843137254901961,
+            "full": 0.5843137254901961,
+            "full_oracle": 0.7542483660130719,
+            "stage_a": 0.5843137254901961,
+            "stage_ab": 0.5843137254901961,
+            "weighted_full": 0.5843137254901961
+          },
+          "selected_models": [
+            "ui-agile-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.6133986928104576,
+              "models": [
+                "ui-agile-7b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.4218320276057988,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 3,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5722729715206878,
+            "gui-r1-7b": 0.646963997850618,
+            "ui-agile-3b": 0.5591080064481462,
+            "ui-agile-7b": 0.6190220311660397,
+            "ui-r1-e-3b": 0.3954862976894143
+          },
+          "metrics": {
+            "best_single": 0.6222222222222222,
+            "full": 0.6222222222222222,
+            "full_oracle": 0.7888888888888889,
+            "stage_a": 0.6222222222222222,
+            "stage_ab": 0.6222222222222222,
+            "weighted_full": 0.6222222222222222
+          },
+          "selected_models": [
+            "ui-agile-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.6039215686274509,
+              "models": [
+                "ui-agile-7b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.4348287311090494,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 4,
+          "grounding_weights": {
+            "gui-r1-3b": 0.5693570451436388,
+            "gui-r1-7b": 0.6487004103967168,
+            "ui-agile-3b": 0.5600547195622435,
+            "ui-agile-7b": 0.6205198358413133,
+            "ui-r1-e-3b": 0.39398084815321477
+          },
+          "metrics": {
+            "best_single": 0.6098039215686275,
+            "full": 0.6098039215686275,
+            "full_oracle": 0.7849673202614379,
+            "stage_a": 0.6098039215686275,
+            "stage_ab": 0.6098039215686275,
+            "weighted_full": 0.6098039215686275
+          },
+          "selected_models": [
+            "ui-agile-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.6070261437908496,
+              "models": [
+                "ui-agile-7b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ]
+    },
+    "androidcontrol/low": {
+      "aggregate": {
+        "best_single": {
+          "folds": [
+            0.7888888888888889,
+            0.7895424836601307,
+            0.7823529411764706,
+            0.796078431372549,
+            0.7986928104575164
+          ],
+          "mean": 0.7911111111111111,
+          "std": 0.0057664692810752444
+        },
+        "full": {
+          "folds": [
+            0.7888888888888889,
+            0.7895424836601307,
+            0.7823529411764706,
+            0.796078431372549,
+            0.7986928104575164
+          ],
+          "mean": 0.7911111111111111,
+          "std": 0.0057664692810752444
+        },
+        "full_oracle": {
+          "folds": [
+            0.8738562091503268,
+            0.8803921568627451,
+            0.8673202614379085,
+            0.8764705882352941,
+            0.8790849673202614
+          ],
+          "mean": 0.8754248366013073,
+          "std": 0.004632691541612886
+        },
+        "logistic_combination_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "negative_geometric_dispersion_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "stage_a": {
+          "folds": [
+            0.7888888888888889,
+            0.7895424836601307,
+            0.7823529411764706,
+            0.796078431372549,
+            0.7986928104575164
+          ],
+          "mean": 0.7911111111111111,
+          "std": 0.0057664692810752444
+        },
+        "stage_ab": {
+          "folds": [
+            0.7888888888888889,
+            0.7895424836601307,
+            0.7823529411764706,
+            0.796078431372549,
+            0.7986928104575164
+          ],
+          "mean": 0.7911111111111111,
+          "std": 0.0057664692810752444
+        },
+        "vote_margin_auroc": {
+          "folds": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "weighted_full": {
+          "folds": [
+            0.7888888888888889,
+            0.7895424836601307,
+            0.7823529411764706,
+            0.796078431372549,
+            0.7986928104575164
+          ],
+          "mean": 0.7911111111111111,
+          "std": 0.0057664692810752444
+        },
+        "weighted_full_delta_over_best_single": 0.0
+      },
+      "folds": [
+        {
+          "best_single": "ui-agile-3b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              1.3350010587832866,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 0,
+          "grounding_weights": {
+            "gui-r1-3b": 0.7960293717704651,
+            "gui-r1-7b": 0.834647810715257,
+            "ui-agile-3b": 0.881153113951591,
+            "ui-agile-7b": 0.8841446831656241,
+            "ui-r1-e-3b": 0.7854228991025293
+          },
+          "metrics": {
+            "best_single": 0.7888888888888889,
+            "full": 0.7888888888888889,
+            "full_oracle": 0.8738562091503268,
+            "stage_a": 0.7888888888888889,
+            "stage_ab": 0.7888888888888889,
+            "weighted_full": 0.7888888888888889
+          },
+          "selected_models": [
+            "ui-agile-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.7916666666666666,
+              "models": [
+                "ui-agile-3b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-3b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              1.3340106373912695,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 1,
+          "grounding_weights": {
+            "gui-r1-3b": 0.7983101662578359,
+            "gui-r1-7b": 0.8285636413191605,
+            "ui-agile-3b": 0.8689016080675933,
+            "ui-agile-7b": 0.8738075769964568,
+            "ui-r1-e-3b": 0.7825020441537204
+          },
+          "metrics": {
+            "best_single": 0.7895424836601307,
+            "full": 0.7895424836601307,
+            "full_oracle": 0.8803921568627451,
+            "stage_a": 0.7895424836601307,
+            "stage_ab": 0.7895424836601307,
+            "weighted_full": 0.7895424836601307
+          },
+          "selected_models": [
+            "ui-agile-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.7915032679738562,
+              "models": [
+                "ui-agile-3b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-3b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              1.3449369810815124,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 2,
+          "grounding_weights": {
+            "gui-r1-3b": 0.8044360292128753,
+            "gui-r1-7b": 0.8404111441709494,
+            "ui-agile-3b": 0.8755747903705707,
+            "ui-agile-7b": 0.8793616445766838,
+            "ui-r1-e-3b": 0.7865837165269137
+          },
+          "metrics": {
+            "best_single": 0.7823529411764706,
+            "full": 0.7823529411764706,
+            "full_oracle": 0.8673202614379085,
+            "stage_a": 0.7823529411764706,
+            "stage_ab": 0.7823529411764706,
+            "weighted_full": 0.7823529411764706
+          },
+          "selected_models": [
+            "ui-agile-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.7933006535947712,
+              "models": [
+                "ui-agile-3b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-3b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              1.3241376551077193,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 3,
+          "grounding_weights": {
+            "gui-r1-3b": 0.8046749059645352,
+            "gui-r1-7b": 0.8369156367544331,
+            "ui-agile-3b": 0.8753358409457281,
+            "ui-agile-7b": 0.8793659322944654,
+            "ui-r1-e-3b": 0.7896292315959161
+          },
+          "metrics": {
+            "best_single": 0.796078431372549,
+            "full": 0.796078431372549,
+            "full_oracle": 0.8764705882352941,
+            "stage_a": 0.796078431372549,
+            "stage_ab": 0.796078431372549,
+            "weighted_full": 0.796078431372549
+          },
+          "selected_models": [
+            "ui-agile-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.7898692810457516,
+              "models": [
+                "ui-agile-3b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        },
+        {
+          "best_single": "ui-agile-3b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              1.320204205339432,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 4,
+          "grounding_weights": {
+            "gui-r1-3b": 0.7986320109439125,
+            "gui-r1-7b": 0.8363885088919288,
+            "ui-agile-3b": 0.8779753761969904,
+            "ui-agile-7b": 0.8807113543091655,
+            "ui-r1-e-3b": 0.7830369357045144
+          },
+          "metrics": {
+            "best_single": 0.7986928104575164,
+            "full": 0.7986928104575164,
+            "full_oracle": 0.8790849673202614,
+            "stage_a": 0.7986928104575164,
+            "stage_ab": 0.7986928104575164,
+            "weighted_full": 0.7986928104575164
+          },
+          "selected_models": [
+            "ui-agile-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.7892156862745098,
+              "models": [
+                "ui-agile-3b"
+              ]
+            }
+          ],
+          "test_rows": 1530,
+          "train_rows": 6120
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ]
+    },
+    "mind2web/visual": {
+      "aggregate": {
+        "best_single": {
+          "folds": [
+            0.5697115384615384,
+            0.5347721822541966,
+            0.5552884615384616,
+            0.46153846153846156,
+            0.4674698795180723
+          ],
+          "mean": 0.5177561046621462,
+          "std": 0.044914851994001415
+        },
+        "full": {
+          "folds": [
+            0.6105769230769231,
+            0.5731414868105515,
+            0.59375,
+            0.46153846153846156,
+            0.4674698795180723
+          ],
+          "mean": 0.5412953501888017,
+          "std": 0.06383880395705446
+        },
+        "full_oracle": {
+          "folds": [
+            0.8509615384615384,
+            0.8201438848920863,
+            0.8389423076923077,
+            0.7764423076923077,
+            0.8024096385542169
+          ],
+          "mean": 0.8177799354584913,
+          "std": 0.02645561766279565
+        },
+        "logistic_combination_auroc": {
+          "folds": [
+            0.519024138946129,
+            0.7816745804146491,
+            0.8130345207579714,
+            0.5,
+            0.5
+          ],
+          "mean": 0.6227466480237499,
+          "std": 0.1430799778412419
+        },
+        "negative_geometric_dispersion_auroc": {
+          "folds": [
+            0.7188327936414484,
+            0.7617413379718866,
+            0.815909254246221,
+            0.5,
+            0.502262443438914
+          ],
+          "mean": 0.659749165859694,
+          "std": 0.13311732808362084
+        },
+        "stage_a": {
+          "folds": [
+            0.5745192307692307,
+            0.539568345323741,
+            0.5552884615384616,
+            0.46153846153846156,
+            0.4674698795180723
+          ],
+          "mean": 0.5196768757375935,
+          "std": 0.04642668450540118
+        },
+        "stage_ab": {
+          "folds": [
+            0.6105769230769231,
+            0.5731414868105515,
+            0.59375,
+            0.46153846153846156,
+            0.4674698795180723
+          ],
+          "mean": 0.5412953501888017,
+          "std": 0.06383880395705446
+        },
+        "vote_margin_auroc": {
+          "folds": [
+            0.5999411245216367,
+            0.5773118330120822,
+            0.5624895192008241,
+            0.5,
+            0.502262443438914
+          ],
+          "mean": 0.5484009840346914,
+          "std": 0.04040329263060022
+        },
+        "weighted_full": {
+          "folds": [
+            0.6201923076923077,
+            0.5731414868105515,
+            0.59375,
+            0.46153846153846156,
+            0.4674698795180723
+          ],
+          "mean": 0.5432184271118785,
+          "std": 0.06600494964854343
+        },
+        "weighted_full_delta_over_best_single": 0.025462322449732344
+      },
+      "folds": [
+        {
+          "best_single": "tongui-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.2652766150349912,
+              0.26576672664309364,
+              -0.043696893689127034
+            ],
+            "logistic_combination_auroc": 0.519024138946129,
+            "negative_geometric_dispersion_auroc": 0.7188327936414484,
+            "vote_margin_auroc": 0.5999411245216367
+          },
+          "fold": 0,
+          "grounding_weights": {
+            "cogagent-18b": 0.5512412476129853,
+            "qwen2.5-vl-3b": 0.05509181969949917,
+            "qwen2.5-vl-7b": 0.08236895847515316,
+            "seeclick-9.6b": 0.2421875,
+            "showui-2b": 0.2220125786163522,
+            "tongui-32b": 0.5586289837642814,
+            "tongui-3b": 0.5294471153846154,
+            "tongui-7b": 0.5682501503307276,
+            "ui-tars-2b": 0.30114942528735633,
+            "ui-tars-72b": 0.5077922077922078,
+            "ui-tars-7b": 0.4115409004438808
+          },
+          "metrics": {
+            "best_single": 0.5697115384615384,
+            "full": 0.6105769230769231,
+            "full_oracle": 0.8509615384615384,
+            "stage_a": 0.5745192307692307,
+            "stage_ab": 0.6105769230769231,
+            "weighted_full": 0.6201923076923077
+          },
+          "selected_models": [
+            "tongui-7b",
+            "ui-tars-72b",
+            "cogagent-18b",
+            "tongui-32b",
+            "qwen2.5-vl-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.5192307692307693,
+              "models": [
+                "tongui-7b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5198317307692307,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5408653846153846,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5643028846153846,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5649038461538461,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b",
+                "qwen2.5-vl-3b"
+              ]
+            }
+          ],
+          "test_rows": 416,
+          "train_rows": 1664
+        },
+        {
+          "best_single": "tongui-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.281028945842376,
+              0.3968688147781447,
+              1.101588190321854
+            ],
+            "logistic_combination_auroc": 0.7816745804146491,
+            "negative_geometric_dispersion_auroc": 0.7617413379718866,
+            "vote_margin_auroc": 0.5773118330120822
+          },
+          "fold": 1,
+          "grounding_weights": {
+            "cogagent-18b": 0.5633802816901409,
+            "qwen2.5-vl-3b": 0.05909797822706065,
+            "qwen2.5-vl-7b": 0.07382091592617908,
+            "seeclick-9.6b": 0.2423331328923632,
+            "showui-2b": 0.21871049304677623,
+            "tongui-32b": 0.5673886883273165,
+            "tongui-3b": 0.539987973541792,
+            "tongui-7b": 0.5734055354993983,
+            "ui-tars-2b": 0.3075734157650695,
+            "ui-tars-72b": 0.5188067444876784,
+            "ui-tars-7b": 0.4076190476190476
+          },
+          "metrics": {
+            "best_single": 0.5347721822541966,
+            "full": 0.5731414868105515,
+            "full_oracle": 0.8201438848920863,
+            "stage_a": 0.539568345323741,
+            "stage_ab": 0.5731414868105515,
+            "weighted_full": 0.5731414868105515
+          },
+          "selected_models": [
+            "tongui-7b",
+            "ui-tars-72b",
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.5279615153337343,
+              "models": [
+                "tongui-7b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5285628382441371,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5514131088394468,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5742633794347565,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5748647023451593,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b",
+                "tongui-3b"
+              ]
+            }
+          ],
+          "test_rows": 417,
+          "train_rows": 1663
+        },
+        {
+          "best_single": "tongui-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.255308477707789,
+              0.4026555079710424,
+              1.0684672579595302
+            ],
+            "logistic_combination_auroc": 0.8130345207579714,
+            "negative_geometric_dispersion_auroc": 0.815909254246221,
+            "vote_margin_auroc": 0.5624895192008241
+          },
+          "fold": 2,
+          "grounding_weights": {
+            "cogagent-18b": 0.5618193465727098,
+            "qwen2.5-vl-3b": 0.05,
+            "qwen2.5-vl-7b": 0.07254237288135593,
+            "seeclick-9.6b": 0.2403846153846154,
+            "showui-2b": 0.2123503465658475,
+            "tongui-32b": 0.5486778846153846,
+            "tongui-3b": 0.5336538461538461,
+            "tongui-7b": 0.5724594107035478,
+            "ui-tars-2b": 0.303078137332281,
+            "ui-tars-72b": 0.5080801551389786,
+            "ui-tars-7b": 0.41523809523809524
+          },
+          "metrics": {
+            "best_single": 0.5552884615384616,
+            "full": 0.59375,
+            "full_oracle": 0.8389423076923077,
+            "stage_a": 0.5552884615384616,
+            "stage_ab": 0.59375,
+            "weighted_full": 0.59375
+          },
+          "selected_models": [
+            "tongui-7b",
+            "ui-tars-72b",
+            "cogagent-18b",
+            "tongui-32b",
+            "tongui-3b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.5228365384615384,
+              "models": [
+                "tongui-7b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5234375,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5480769230769231,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5643028846153846,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b"
+              ]
+            },
+            {
+              "dev_step_micro": 0.5685096153846154,
+              "models": [
+                "tongui-7b",
+                "ui-tars-72b",
+                "cogagent-18b",
+                "tongui-32b",
+                "tongui-3b"
+              ]
+            }
+          ],
+          "test_rows": 416,
+          "train_rows": 1664
+        },
+        {
+          "best_single": "tongui-32b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.1266448298230425,
+              0.19294393509737898,
+              0.192943935097382
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.5,
+            "vote_margin_auroc": 0.5
+          },
+          "fold": 3,
+          "grounding_weights": {
+            "cogagent-18b": 0.5689764780673872,
+            "qwen2.5-vl-3b": 0.0583596214511041,
+            "qwen2.5-vl-7b": 0.0783132530120482,
+            "seeclick-9.6b": 0.2439903846153846,
+            "showui-2b": 0.22032828282828282,
+            "tongui-32b": 0.5784726398075767,
+            "tongui-3b": 0.5366586538461539,
+            "tongui-7b": 0.5814792543595911,
+            "ui-tars-2b": 0.2999240698557327,
+            "ui-tars-72b": 0.5181644359464627,
+            "ui-tars-7b": 0.4144486692015209
+          },
+          "metrics": {
+            "best_single": 0.46153846153846156,
+            "full": 0.46153846153846156,
+            "full_oracle": 0.7764423076923077,
+            "stage_a": 0.46153846153846156,
+            "stage_ab": 0.46153846153846156,
+            "weighted_full": 0.46153846153846156
+          },
+          "selected_models": [
+            "tongui-32b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.5348557692307693,
+              "models": [
+                "tongui-32b"
+              ]
+            }
+          ],
+          "test_rows": 416,
+          "train_rows": 1664
+        },
+        {
+          "best_single": "tongui-7b",
+          "confidence": {
+            "logistic_coefficients_intercept_margin_negative_dispersion": [
+              0.17945908882236858,
+              0.0,
+              0.0
+            ],
+            "logistic_combination_auroc": 0.5,
+            "negative_geometric_dispersion_auroc": 0.502262443438914,
+            "vote_margin_auroc": 0.502262443438914
+          },
+          "fold": 4,
+          "grounding_weights": {
+            "cogagent-18b": 0.5610223642172524,
+            "qwen2.5-vl-3b": 0.05521472392638037,
+            "qwen2.5-vl-7b": 0.07525423728813559,
+            "seeclick-9.6b": 0.24504504504504504,
+            "showui-2b": 0.22145110410094637,
+            "tongui-32b": 0.5703125,
+            "tongui-3b": 0.5405405405405406,
+            "tongui-7b": 0.5903903903903904,
+            "ui-tars-2b": 0.3191981495759445,
+            "ui-tars-72b": 0.5231065468549422,
+            "ui-tars-7b": 0.4219435736677116
+          },
+          "metrics": {
+            "best_single": 0.4674698795180723,
+            "full": 0.4674698795180723,
+            "full_oracle": 0.8024096385542169,
+            "stage_a": 0.4674698795180723,
+            "stage_ab": 0.4674698795180723,
+            "weighted_full": 0.4674698795180723
+          },
+          "selected_models": [
+            "tongui-7b"
+          ],
+          "selection_trace": [
+            {
+              "dev_step_micro": 0.5447447447447448,
+              "models": [
+                "tongui-7b"
+              ]
+            }
+          ],
+          "test_rows": 415,
+          "train_rows": 1665
+        }
+      ],
+      "models": [
+        "cogagent-18b",
+        "qwen2.5-vl-3b",
+        "qwen2.5-vl-7b",
+        "seeclick-9.6b",
+        "showui-2b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-2b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ]
+    }
+  },
+  "status": "PASS"
+}

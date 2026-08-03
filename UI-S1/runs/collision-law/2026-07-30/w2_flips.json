@@ -1,0 +1,879 @@
+{
+  "androidcontrol": {
+    "cells": {
+      "gui-r1-7b/high/full": {
+        "action_accuracy": 0.7141176470588235,
+        "rows": 7650,
+        "sha256": "357d7c6c9cdc4110649b7799e0927181210478543ffff4b038323516db83f6df",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/high/predictions.jsonl",
+        "step_sr": 0.45215686274509803,
+        "step_successes": 3459
+      },
+      "gui-r1-7b/high/v1": {
+        "action_accuracy": 0.7186928104575163,
+        "rows": 7650,
+        "sha256": "8358d29c72698bdf31f29f178c5f4bb13230d7d178a93f0c1f860cf1a09116fb",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/high/v1/predictions.jsonl",
+        "step_sr": 0.4542483660130719,
+        "step_successes": 3475
+      },
+      "gui-r1-7b/high/v2": {
+        "action_accuracy": 0.6537254901960784,
+        "rows": 7650,
+        "sha256": "71bef5a72dbe11a527c24d5f930079fc9c8ee477257e46a651266b5ba667938c",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/high/v2/predictions.jsonl",
+        "step_sr": 0.36718954248366015,
+        "step_successes": 2809
+      },
+      "gui-r1-7b/high/v3": {
+        "action_accuracy": 0.6722875816993464,
+        "rows": 7650,
+        "sha256": "3f737b710dd7174c2f32d371e1a160ac1fdcf7d8e67537b7aba52860f5809573",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/high/v3/predictions.jsonl",
+        "step_sr": 0.37607843137254904,
+        "step_successes": 2877
+      },
+      "gui-r1-7b/high/v4": {
+        "action_accuracy": 0.7145098039215686,
+        "rows": 7650,
+        "sha256": "87e428f8d433d52bd2f19ff92c52929b805e4c3400fc25cc0e2b773e36084390",
+        "source": "runs/complementarity/2026-07-30/e5_artifacts/androidcontrol/original_768/predictions.jsonl",
+        "step_sr": 0.08784313725490196,
+        "step_successes": 672
+      },
+      "gui-r1-7b/low/full": {
+        "action_accuracy": 0.8369934640522876,
+        "rows": 7650,
+        "sha256": "4e33ae3eeb63a263c8bbc0016be6961560e4abc8ea79854190ff9fc226030c16",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/low/predictions.jsonl",
+        "step_sr": 0.5813071895424836,
+        "step_successes": 4447
+      },
+      "gui-r1-7b/low/v1": {
+        "action_accuracy": 0.8358169934640522,
+        "rows": 7650,
+        "sha256": "58625b40f8a8c13ae620184683894262f4961b448ae43aa01db7f8576a547fe2",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/low/v1/predictions.jsonl",
+        "step_sr": 0.5803921568627451,
+        "step_successes": 4440
+      },
+      "gui-r1-7b/low/v2": {
+        "action_accuracy": 0.7751633986928105,
+        "rows": 7650,
+        "sha256": "a3c1b348ed429ea7c1be9809d614747daf97d1bf6c7bb79eb8406c08b2f4f0b9",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/low/v2/predictions.jsonl",
+        "step_sr": 0.5033986928104576,
+        "step_successes": 3851
+      },
+      "gui-r1-7b/low/v3": {
+        "action_accuracy": 0.7909803921568628,
+        "rows": 7650,
+        "sha256": "3e7035f2aedfcf7ab99c7b6351e450df7fb1d83f76433d89cc55db2483ec7a50",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/low/v3/predictions.jsonl",
+        "step_sr": 0.5096732026143791,
+        "step_successes": 3899
+      },
+      "gui-r1-7b/low/v4": {
+        "action_accuracy": 0.8371241830065359,
+        "rows": 7650,
+        "sha256": "10a0af6a6602fb1357f72bfb3c97223edaa0b1b468ac00623e491fbdc7828476",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/gui-r1-7b/low/v4/predictions.jsonl",
+        "step_sr": 0.09411764705882353,
+        "step_successes": 720
+      },
+      "ui-agile-7b/high/full": {
+        "action_accuracy": 0.7990849673202615,
+        "rows": 7650,
+        "sha256": "11c129e4dad08b644aa55ca7d765ab13119121a5edee534f05ccaa43e8c028f2",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/high/predictions.jsonl",
+        "step_sr": 0.6075816993464053,
+        "step_successes": 4648
+      },
+      "ui-agile-7b/high/v1": {
+        "action_accuracy": 0.7992156862745098,
+        "rows": 7650,
+        "sha256": "aef0a9b677aac0086d51f707385c193387bfb4b7ea575b27ac4a45f17e45fcb6",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/high/v1/predictions.jsonl",
+        "step_sr": 0.6082352941176471,
+        "step_successes": 4653
+      },
+      "ui-agile-7b/high/v2": {
+        "action_accuracy": 0.6716339869281046,
+        "rows": 7650,
+        "sha256": "b6480e900fdfc40e62ba3a4062c4479be36f50bd76ee1eb7948494bcb69d7096",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/high/v2/predictions.jsonl",
+        "step_sr": 0.44130718954248366,
+        "step_successes": 3376
+      },
+      "ui-agile-7b/high/v3": {
+        "action_accuracy": 0.6899346405228758,
+        "rows": 7650,
+        "sha256": "b68bb21f3f07839994182219a52f1ece92af366be97c884bf449a9a0809dde1e",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/high/v3/predictions.jsonl",
+        "step_sr": 0.46627450980392154,
+        "step_successes": 3567
+      },
+      "ui-agile-7b/high/v4": {
+        "action_accuracy": 0.798954248366013,
+        "rows": 7650,
+        "sha256": "67cc4added7079a9bcd0865d5b786414c6b752f01a01248a961d1380f3c4ff1e",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/high/v4/predictions.jsonl",
+        "step_sr": 0.24444444444444444,
+        "step_successes": 1870
+      },
+      "ui-agile-7b/low/full": {
+        "action_accuracy": 0.8768627450980392,
+        "rows": 7650,
+        "sha256": "287c36778fbfd7ef8ac9b21cbebbb3fb24873d94caf9f453a146be933fee33b9",
+        "source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/low/predictions.jsonl",
+        "step_sr": 0.7756862745098039,
+        "step_successes": 5934
+      },
+      "ui-agile-7b/low/v1": {
+        "action_accuracy": 0.8786928104575163,
+        "rows": 7650,
+        "sha256": "bd414c14acdf7f7ae0da45fbec76b63f856fb33eb265ff340904776429f6b432",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/low/v1/predictions.jsonl",
+        "step_sr": 0.777124183006536,
+        "step_successes": 5945
+      },
+      "ui-agile-7b/low/v2": {
+        "action_accuracy": 0.7478431372549019,
+        "rows": 7650,
+        "sha256": "139fc610db86432bbc42a88d7438b19b47217477d8d1208d047fa9e362a20444",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/low/v2/predictions.jsonl",
+        "step_sr": 0.6222222222222222,
+        "step_successes": 4760
+      },
+      "ui-agile-7b/low/v3": {
+        "action_accuracy": 0.7759477124183006,
+        "rows": 7650,
+        "sha256": "963a3d47ac9f3847d805771a20571f811e871af89c5efc72a3323cfe54f791be",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/low/v3/predictions.jsonl",
+        "step_sr": 0.6630065359477124,
+        "step_successes": 5072
+      },
+      "ui-agile-7b/low/v4": {
+        "action_accuracy": 0.8776470588235294,
+        "rows": 7650,
+        "sha256": "d0793572956d7670eb71e69e061aa26cfc6fcbe2a6bc60e1b7ff7ba966aa264c",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/androidcontrol/ui-agile-7b/low/v4/predictions.jsonl",
+        "step_sr": 0.26,
+        "step_successes": 1989
+      }
+    },
+    "full_to_view_flips": {
+      "gui-r1-7b/high/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 573,
+          "rate": 0.07490196078431373,
+          "wilson_95": [
+            0.06921421858177619,
+            0.08101641593124413
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4436,
+          "flips": 332,
+          "gt_grounding_rows": 4605,
+          "rate": 0.07484220018034266,
+          "stable_type_rows": 4436,
+          "wilson_95": [
+            0.06746123893754948,
+            0.08295887516221963
+          ]
+        }
+      },
+      "gui-r1-7b/high/full_to_v2": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 1738,
+          "rate": 0.22718954248366013,
+          "wilson_95": [
+            0.21793820354428003,
+            0.23671472826035508
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 3875,
+          "flips": 315,
+          "gt_grounding_rows": 4605,
+          "rate": 0.08129032258064516,
+          "stable_type_rows": 3875,
+          "wilson_95": [
+            0.07309486304248293,
+            0.09031513077907545
+          ]
+        }
+      },
+      "gui-r1-7b/high/full_to_v3": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 1375,
+          "rate": 0.17973856209150327,
+          "wilson_95": [
+            0.17129568656236852,
+            0.18850291569990077
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4089,
+          "flips": 437,
+          "gt_grounding_rows": 4605,
+          "rate": 0.10687209586696014,
+          "stable_type_rows": 4089,
+          "wilson_95": [
+            0.09776880119178424,
+            0.11671335445800587
+          ]
+        }
+      },
+      "gui-r1-7b/high/full_to_v4": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 49,
+          "rate": 0.006405228758169935,
+          "wilson_95": [
+            0.004848646106056467,
+            0.00845728129897576
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4585,
+          "flips": 2942,
+          "gt_grounding_rows": 4605,
+          "rate": 0.6416575790621593,
+          "stable_type_rows": 4585,
+          "wilson_95": [
+            0.6276646253616699,
+            0.6554133610226834
+          ]
+        }
+      },
+      "gui-r1-7b/low/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 284,
+          "rate": 0.03712418300653595,
+          "wilson_95": [
+            0.0331144654745383,
+            0.04159853477472524
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4588,
+          "flips": 142,
+          "gt_grounding_rows": 4605,
+          "rate": 0.03095030514385353,
+          "stable_type_rows": 4588,
+          "wilson_95": [
+            0.026318253100140913,
+            0.03636715566277823
+          ]
+        }
+      },
+      "gui-r1-7b/low/full_to_v2": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 956,
+          "rate": 0.1249673202614379,
+          "wilson_95": [
+            0.11774485530394503,
+            0.13256624261052463
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4483,
+          "flips": 285,
+          "gt_grounding_rows": 4605,
+          "rate": 0.06357349988846754,
+          "stable_type_rows": 4483,
+          "wilson_95": [
+            0.05679812915540654,
+            0.07109617334832415
+          ]
+        }
+      },
+      "gui-r1-7b/low/full_to_v3": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 802,
+          "rate": 0.10483660130718954,
+          "wilson_95": [
+            0.09816903704769529,
+            0.11190083015183129
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4557,
+          "flips": 333,
+          "gt_grounding_rows": 4605,
+          "rate": 0.07307439104674128,
+          "stable_type_rows": 4557,
+          "wilson_95": [
+            0.06587222884886318,
+            0.08099572630121485
+          ]
+        }
+      },
+      "gui-r1-7b/low/full_to_v4": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 30,
+          "rate": 0.00392156862745098,
+          "wilson_95": [
+            0.0027484016179314627,
+            0.0055926986209714254
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4601,
+          "flips": 3754,
+          "gt_grounding_rows": 4605,
+          "rate": 0.8159095848728537,
+          "stable_type_rows": 4601,
+          "wilson_95": [
+            0.8044491492046028,
+            0.8268429432585515
+          ]
+        }
+      },
+      "ui-agile-7b/high/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 348,
+          "rate": 0.04549019607843137,
+          "wilson_95": [
+            0.04104445799892709,
+            0.050392170599403686
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4460,
+          "flips": 257,
+          "gt_grounding_rows": 4605,
+          "rate": 0.05762331838565023,
+          "stable_type_rows": 4460,
+          "wilson_95": [
+            0.051157375238822834,
+            0.0648506558702173
+          ]
+        }
+      },
+      "ui-agile-7b/high/full_to_v2": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 1917,
+          "rate": 0.25058823529411767,
+          "wilson_95": [
+            0.24100417907722455,
+            0.26042265076620813
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 3905,
+          "flips": 382,
+          "gt_grounding_rows": 4605,
+          "rate": 0.09782330345710627,
+          "stable_type_rows": 3905,
+          "wilson_95": [
+            0.08889713339406798,
+            0.10753996105190468
+          ]
+        }
+      },
+      "ui-agile-7b/high/full_to_v3": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 1702,
+          "rate": 0.22248366013071896,
+          "wilson_95": [
+            0.21330413022828748,
+            0.23194176062999733
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 3922,
+          "flips": 394,
+          "gt_grounding_rows": 4605,
+          "rate": 0.10045894951555329,
+          "stable_type_rows": 3922,
+          "wilson_95": [
+            0.09143834432409172,
+            0.1102614612148105
+          ]
+        }
+      },
+      "ui-agile-7b/high/full_to_v4": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 32,
+          "rate": 0.004183006535947713,
+          "wilson_95": [
+            0.0029646849978457457,
+            0.005899028626965494
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4590,
+          "flips": 2797,
+          "gt_grounding_rows": 4605,
+          "rate": 0.6093681917211329,
+          "stable_type_rows": 4590,
+          "wilson_95": [
+            0.5951678440192782,
+            0.6233856278407937
+          ]
+        }
+      },
+      "ui-agile-7b/low/full_to_v1": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 110,
+          "rate": 0.01437908496732026,
+          "wilson_95": [
+            0.011944667583486482,
+            0.017300968091750468
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4602,
+          "flips": 98,
+          "gt_grounding_rows": 4605,
+          "rate": 0.021295089091699262,
+          "stable_type_rows": 4602,
+          "wilson_95": [
+            0.017506012756104777,
+            0.02588268409927128
+          ]
+        }
+      },
+      "ui-agile-7b/low/full_to_v2": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 1066,
+          "rate": 0.13934640522875816,
+          "wilson_95": [
+            0.13176693662589473,
+            0.14728789751353422
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4583,
+          "flips": 366,
+          "gt_grounding_rows": 4605,
+          "rate": 0.07986035348025311,
+          "stable_type_rows": 4583,
+          "wilson_95": [
+            0.07235949819457542,
+            0.08806493884491266
+          ]
+        }
+      },
+      "ui-agile-7b/low/full_to_v3": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 861,
+          "rate": 0.11254901960784314,
+          "wilson_95": [
+            0.10566051524074471,
+            0.11982644684307825
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4587,
+          "flips": 254,
+          "gt_grounding_rows": 4605,
+          "rate": 0.055373882712012205,
+          "stable_type_rows": 4587,
+          "wilson_95": [
+            0.049119646572345924,
+            0.06237221465001419
+          ]
+        }
+      },
+      "ui-agile-7b/low/full_to_v4": {
+        "action_type": {
+          "denominator": 7650,
+          "flips": 14,
+          "rate": 0.0018300653594771241,
+          "wilson_95": [
+            0.0010904787324536457,
+            0.00306971441918243
+          ]
+        },
+        "grounding_given_stable_type": {
+          "denominator": 4605,
+          "flips": 3959,
+          "gt_grounding_rows": 4605,
+          "rate": 0.8597176981541802,
+          "stable_type_rows": 4605,
+          "wilson_95": [
+            0.849387302644604,
+            0.8694484459054722
+          ]
+        }
+      }
+    },
+    "k1": {
+      "gui-r1-7b/high": {
+        "action_flip_rate": 0.07490196078431373,
+        "difference": -5.976060397107352e-05,
+        "grounding_flip_rate": 0.07484220018034266,
+        "prediction_satisfied": false
+      },
+      "gui-r1-7b/low": {
+        "action_flip_rate": 0.03712418300653595,
+        "difference": -0.00617387786268242,
+        "grounding_flip_rate": 0.03095030514385353,
+        "prediction_satisfied": false
+      },
+      "ui-agile-7b/high": {
+        "action_flip_rate": 0.04549019607843137,
+        "difference": 0.012133122307218858,
+        "grounding_flip_rate": 0.05762331838565023,
+        "prediction_satisfied": true
+      },
+      "ui-agile-7b/low": {
+        "action_flip_rate": 0.01437908496732026,
+        "difference": 0.006916004124379002,
+        "grounding_flip_rate": 0.021295089091699262,
+        "prediction_satisfied": true
+      }
+    },
+    "noise": {
+      "gui-r1-7b/high": {
+        "available_views": [
+          "full",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "complete": true,
+        "mde": 0.301619567843777,
+        "mean_step_sr": 0.3475032679738562,
+        "sample_sd": 0.1508097839218885
+      },
+      "gui-r1-7b/low": {
+        "available_views": [
+          "full",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "complete": true,
+        "mde": 0.40894607861091364,
+        "mean_step_sr": 0.4537777777777777,
+        "sample_sd": 0.20447303930545682
+      },
+      "ui-agile-7b/high": {
+        "available_views": [
+          "full",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "complete": true,
+        "mde": 0.29947706141964353,
+        "mean_step_sr": 0.4735686274509804,
+        "sample_sd": 0.14973853070982177
+      },
+      "ui-agile-7b/low": {
+        "available_views": [
+          "full",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "complete": true,
+        "mde": 0.4247116156017106,
+        "mean_step_sr": 0.6196078431372548,
+        "sample_sd": 0.2123558078008553
+      }
+    }
+  },
+  "contract": {
+    "action_flip": "pred_action(view) != pred_action(full)",
+    "grounding_flip": "GT grounding row; predicted type stable; grounding correctness changes",
+    "quarantine_excluded": true
+  },
+  "mind2web": {
+    "cells": {
+      "tongui-7b/visual/full": {
+        "element_accuracy": 0.5769230769230769,
+        "parse_rate": 0.9995192307692308,
+        "rows": 2080,
+        "source": "collision rows.parquet",
+        "step_sr": 0.5293269230769231,
+        "step_successes": 1101
+      },
+      "tongui-7b/visual/v1": {
+        "element_accuracy": 0.56875,
+        "parse_rate": 1.0,
+        "rows": 2080,
+        "sha256": "504066f631f1870fdfd37e57fd8a941a1fe5f223e06d95ef5fd304ff63962b80",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/mind2web/tongui-7b/v1/scored_rows.jsonl",
+        "step_sr": 0.5211538461538462,
+        "step_successes": 1084
+      },
+      "tongui-7b/visual/v2": {
+        "element_accuracy": 0.5153846153846153,
+        "parse_rate": 0.9995192307692308,
+        "rows": 2080,
+        "sha256": "95617b37525abc3c8db93aa80a80806d8122ebceb3a14873bfb06033228c6782",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/mind2web/tongui-7b/v2/scored_rows.jsonl",
+        "step_sr": 0.46971153846153846,
+        "step_successes": 977
+      },
+      "tongui-7b/visual/v3": {
+        "element_accuracy": 0.5403846153846154,
+        "parse_rate": 1.0,
+        "rows": 2080,
+        "sha256": "ca2ff735e083910587f03dce2f69aaeac3796e9dad9431bdf1bf453a88b83635",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/mind2web/tongui-7b/v3/scored_rows.jsonl",
+        "step_sr": 0.49759615384615385,
+        "step_successes": 1035
+      },
+      "tongui-7b/visual/v4": {
+        "element_accuracy": 0.5447115384615384,
+        "parse_rate": 0.9995192307692308,
+        "rows": 2080,
+        "sha256": "1a02d6cd67b7c5c02373276d75c47c72a767ab0252c6126a5ad0b0abea8ff026",
+        "source": "runs/collision-law/2026-07-30/w2_artifacts/mind2web/tongui-7b/v4/scored_rows.jsonl",
+        "step_sr": 0.5019230769230769,
+        "step_successes": 1044
+      }
+    },
+    "full_to_view_flips": {
+      "tongui-7b/visual/full_to_v1": {
+        "action_type": {
+          "denominator": 2080,
+          "flips": 69,
+          "rate": 0.03317307692307692,
+          "wilson_95": [
+            0.02629640928474493,
+            0.04177088931913556
+          ]
+        },
+        "grounding_given_stable_type": {
+          "by_gt_element_area": {
+            "regular": {
+              "flips": 93,
+              "rate": 0.08281389136242208,
+              "rows": 1123,
+              "wilson_95": [
+                0.06808185485216248,
+                0.10039034443962996
+              ]
+            },
+            "small": {
+              "flips": 83,
+              "rate": 0.12351190476190477,
+              "rows": 672,
+              "wilson_95": [
+                0.1007539245290751,
+                0.15054977488743904
+              ]
+            },
+            "tiny": {
+              "flips": 39,
+              "rate": 0.18055555555555555,
+              "rows": 216,
+              "wilson_95": [
+                0.13498578371629236,
+                0.23728912411829042
+              ]
+            }
+          },
+          "denominator": 2011,
+          "flips": 215,
+          "rate": 0.10691198408751865,
+          "stable_type_rows": 2011,
+          "wilson_95": [
+            0.09414827776942697,
+            0.1211745988377606
+          ]
+        }
+      },
+      "tongui-7b/visual/full_to_v2": {
+        "action_type": {
+          "denominator": 2080,
+          "flips": 98,
+          "rate": 0.047115384615384615,
+          "wilson_95": [
+            0.03881462741323017,
+            0.057085882663860894
+          ]
+        },
+        "grounding_given_stable_type": {
+          "by_gt_element_area": {
+            "regular": {
+              "flips": 113,
+              "rate": 0.10300820419325434,
+              "rows": 1097,
+              "wilson_95": [
+                0.08638391493004013,
+                0.12240315152630316
+              ]
+            },
+            "small": {
+              "flips": 126,
+              "rate": 0.1880597014925373,
+              "rows": 670,
+              "wilson_95": [
+                0.16028059591573982,
+                0.2193954472717012
+              ]
+            },
+            "tiny": {
+              "flips": 57,
+              "rate": 0.2651162790697674,
+              "rows": 215,
+              "wilson_95": [
+                0.2106137104630238,
+                0.32786496471911564
+              ]
+            }
+          },
+          "denominator": 1982,
+          "flips": 296,
+          "rate": 0.14934409687184663,
+          "stable_type_rows": 1982,
+          "wilson_95": [
+            0.1343313289232006,
+            0.16571349901313365
+          ]
+        }
+      },
+      "tongui-7b/visual/full_to_v3": {
+        "action_type": {
+          "denominator": 2080,
+          "flips": 88,
+          "rate": 0.04230769230769231,
+          "wilson_95": [
+            0.03446785710770861,
+            0.05183499384068915
+          ]
+        },
+        "grounding_given_stable_type": {
+          "by_gt_element_area": {
+            "regular": {
+              "flips": 110,
+              "rate": 0.09954751131221719,
+              "rows": 1105,
+              "wilson_95": [
+                0.08325815679494031,
+                0.11861151270565737
+              ]
+            },
+            "small": {
+              "flips": 138,
+              "rate": 0.20597014925373133,
+              "rows": 670,
+              "wilson_95": [
+                0.17706596311717596,
+                0.23822676658581868
+              ]
+            },
+            "tiny": {
+              "flips": 40,
+              "rate": 0.18433179723502305,
+              "rows": 217,
+              "wilson_95": [
+                0.13838833209257823,
+                0.24125713515081104
+              ]
+            }
+          },
+          "denominator": 1992,
+          "flips": 288,
+          "rate": 0.14457831325301204,
+          "stable_type_rows": 1992,
+          "wilson_95": [
+            0.1298186368777653,
+            0.16070617222371103
+          ]
+        }
+      },
+      "tongui-7b/visual/full_to_v4": {
+        "action_type": {
+          "denominator": 2080,
+          "flips": 70,
+          "rate": 0.03365384615384615,
+          "wilson_95": [
+            0.02672312753137064,
+            0.04230393698537918
+          ]
+        },
+        "grounding_given_stable_type": {
+          "by_gt_element_area": {
+            "regular": {
+              "flips": 121,
+              "rate": 0.10755555555555556,
+              "rows": 1125,
+              "wilson_95": [
+                0.09076842442193186,
+                0.12701367146027098
+              ]
+            },
+            "small": {
+              "flips": 114,
+              "rate": 0.16989567809239942,
+              "rows": 671,
+              "wilson_95": [
+                0.14337872523993783,
+                0.20017079411805194
+              ]
+            },
+            "tiny": {
+              "flips": 39,
+              "rate": 0.1822429906542056,
+              "rows": 214,
+              "wilson_95": [
+                0.13627671229184474,
+                0.23941604731301103
+              ]
+            }
+          },
+          "denominator": 2010,
+          "flips": 274,
+          "rate": 0.136318407960199,
+          "stable_type_rows": 2010,
+          "wilson_95": [
+            0.12200996090974377,
+            0.15201432059643427
+          ]
+        }
+      }
+    },
+    "k1": {
+      "tongui-7b/visual": {
+        "action_flip_rate": 0.03317307692307692,
+        "difference": 0.07373890716444173,
+        "grounding_flip_rate": 0.10691198408751865,
+        "prediction_satisfied": true
+      }
+    },
+    "noise": {
+      "tongui-7b/visual": {
+        "available_views": [
+          "full",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "complete": true,
+        "mde": 0.04644041642908159,
+        "mean_step_sr": 0.5039423076923077,
+        "sample_sd": 0.023220208214540794
+      }
+    }
+  },
+  "status": "PASS"
+}

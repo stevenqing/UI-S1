@@ -1,0 +1,262 @@
+{
+  "definition": "inclusive OOF S_gap 90th percentile; failed selected rows; exact hard-core enrichment",
+  "pools": {
+    "androidcontrol/high": {
+      "diagnostic_failed_high_gap_rows": 476,
+      "diagnostic_hard_core_overlap": 223,
+      "diagnostic_hard_core_rate": 0.4684873949579832,
+      "enrichment_ratio": 1.974616292798111,
+      "finite_gap_rows": 7650,
+      "folds": [
+        {
+          "best_single_successes": 968,
+          "best_source": "ui-agile-7b",
+          "candidate_thresholds": 152,
+          "fold": 0,
+          "risk_threshold": 0.0,
+          "selected_successes": 983,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 894,
+          "best_source": "ui-agile-7b",
+          "candidate_thresholds": 161,
+          "fold": 1,
+          "risk_threshold": 0.0,
+          "selected_successes": 907,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 952,
+          "best_source": "ui-agile-7b",
+          "candidate_thresholds": 181,
+          "fold": 2,
+          "risk_threshold": 0.0,
+          "selected_successes": 961,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 933,
+          "best_source": "ui-agile-7b",
+          "candidate_thresholds": 194,
+          "fold": 3,
+          "risk_threshold": 0.0,
+          "selected_successes": 947,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 901,
+          "best_source": "ui-agile-7b",
+          "candidate_thresholds": 156,
+          "fold": 4,
+          "risk_threshold": 0.0,
+          "selected_successes": 918,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        }
+      ],
+      "hard_core_base_rate": 0.2372549019607843,
+      "hard_core_rows": 1815,
+      "high_gap_quantile": 0.9,
+      "high_gap_threshold": 0.48453988687310623,
+      "hypergeometric_p_greater_equal": 3.1094485111378555e-30,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ],
+      "prediction_satisfied": true,
+      "random_expected_overlap": 112.93333333333334,
+      "rows": 7650
+    },
+    "androidcontrol/low": {
+      "diagnostic_failed_high_gap_rows": 371,
+      "diagnostic_hard_core_overlap": 125,
+      "diagnostic_hard_core_rate": 0.33692722371967654,
+      "enrichment_ratio": 2.7046099280750533,
+      "finite_gap_rows": 7650,
+      "folds": [
+        {
+          "best_single_successes": 1208,
+          "best_source": "ui-agile-3b",
+          "candidate_thresholds": 292,
+          "fold": 0,
+          "risk_threshold": 1.4709364218046261,
+          "selected_successes": 1208,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 1197,
+          "best_source": "ui-agile-3b",
+          "candidate_thresholds": 308,
+          "fold": 1,
+          "risk_threshold": 1.5113555479157843,
+          "selected_successes": 1197,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 1218,
+          "best_source": "ui-agile-3b",
+          "candidate_thresholds": 298,
+          "fold": 2,
+          "risk_threshold": 1.754482480531303,
+          "selected_successes": 1218,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 1222,
+          "best_source": "ui-agile-3b",
+          "candidate_thresholds": 303,
+          "fold": 3,
+          "risk_threshold": 1.470949243698868,
+          "selected_successes": 1222,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        },
+        {
+          "best_single_successes": 1207,
+          "best_source": "ui-agile-3b",
+          "candidate_thresholds": 267,
+          "fold": 4,
+          "risk_threshold": 0.6250839189653077,
+          "selected_successes": 1208,
+          "test_rows": 1530,
+          "threshold_dev_rows": 1530,
+          "threshold_rows": 1530,
+          "train_rows": 4590
+        }
+      ],
+      "hard_core_base_rate": 0.1245751633986928,
+      "hard_core_rows": 953,
+      "high_gap_quantile": 0.9,
+      "high_gap_threshold": 0.6473006846142635,
+      "hypergeometric_p_greater_equal": 5.254714207165447e-28,
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "prediction_satisfied": true,
+      "random_expected_overlap": 46.21738562091503,
+      "rows": 7650
+    },
+    "mind2web/visual": {
+      "diagnostic_failed_high_gap_rows": 82,
+      "diagnostic_hard_core_overlap": 38,
+      "diagnostic_hard_core_rate": 0.4634146341463415,
+      "enrichment_ratio": 2.300483148029571,
+      "finite_gap_rows": 2079,
+      "folds": [
+        {
+          "best_single_successes": 212,
+          "best_source": "tongui-32b",
+          "candidate_thresholds": 216,
+          "fold": 0,
+          "risk_threshold": 0.0,
+          "selected_successes": 253,
+          "test_rows": 416,
+          "threshold_dev_rows": 417,
+          "threshold_rows": 417,
+          "train_rows": 1247
+        },
+        {
+          "best_single_successes": 231,
+          "best_source": "tongui-7b",
+          "candidate_thresholds": 175,
+          "fold": 1,
+          "risk_threshold": 0.0,
+          "selected_successes": 266,
+          "test_rows": 417,
+          "threshold_dev_rows": 416,
+          "threshold_rows": 416,
+          "train_rows": 1247
+        },
+        {
+          "best_single_successes": 216,
+          "best_source": "tongui-7b",
+          "candidate_thresholds": 190,
+          "fold": 2,
+          "risk_threshold": 0.0,
+          "selected_successes": 243,
+          "test_rows": 416,
+          "threshold_dev_rows": 416,
+          "threshold_rows": 416,
+          "train_rows": 1248
+        },
+        {
+          "best_single_successes": 194,
+          "best_source": "tongui-7b",
+          "candidate_thresholds": 186,
+          "fold": 3,
+          "risk_threshold": 0.0,
+          "selected_successes": 242,
+          "test_rows": 416,
+          "threshold_dev_rows": 415,
+          "threshold_rows": 415,
+          "train_rows": 1249
+        },
+        {
+          "best_single_successes": 237,
+          "best_source": "tongui-7b",
+          "candidate_thresholds": 174,
+          "fold": 4,
+          "risk_threshold": 0.0,
+          "selected_successes": 276,
+          "test_rows": 415,
+          "threshold_dev_rows": 416,
+          "threshold_rows": 416,
+          "train_rows": 1249
+        }
+      ],
+      "hard_core_base_rate": 0.2014423076923077,
+      "hard_core_rows": 419,
+      "high_gap_quantile": 0.9,
+      "high_gap_threshold": 2.006696404247199,
+      "hypergeometric_p_greater_equal": 4.2288799833669144e-08,
+      "models": [
+        "cogagent-18b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ],
+      "prediction_satisfied": true,
+      "random_expected_overlap": 16.51826923076923,
+      "rows": 2080
+    }
+  },
+  "status": "PASS",
+  "summary": {
+    "directional_passes": 3,
+    "pools": 3
+  }
+}

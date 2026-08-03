@@ -1,0 +1,399 @@
+{
+  "pools": {
+    "androidcontrol/high": {
+      "aggregation_contract": {
+        "episode_macro": "mean of within-episode Step SR over episodes",
+        "step_micro": "mean over row identities"
+      },
+      "deployable_definition": "parse_failure_rate < 0.05 and step_micro > 0.30",
+      "deployable_models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ],
+      "deployable_oracle": {
+        "episode_macro": 0.7665564747350352,
+        "step_micro": 0.7627450980392156,
+        "successes": 5835
+      },
+      "episodes": 1393,
+      "full_models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "full_oracle": {
+        "episode_macro": 0.7798272243563233,
+        "step_micro": 0.7752941176470588,
+        "successes": 5931
+      },
+      "greedy_forward_curve": [
+        {
+          "added_model": "ui-agile-7b",
+          "marginal_successes": 4648,
+          "oracle_micro": 0.6075816993464053,
+          "oracle_successes": 4648,
+          "step": 1
+        },
+        {
+          "added_model": "ui-agile-3b",
+          "marginal_successes": 623,
+          "oracle_micro": 0.6890196078431372,
+          "oracle_successes": 5271,
+          "step": 2
+        },
+        {
+          "added_model": "gui-r1-7b",
+          "marginal_successes": 374,
+          "oracle_micro": 0.7379084967320262,
+          "oracle_successes": 5645,
+          "step": 3
+        },
+        {
+          "added_model": "gui-r1-3b",
+          "marginal_successes": 190,
+          "oracle_micro": 0.7627450980392156,
+          "oracle_successes": 5835,
+          "step": 4
+        },
+        {
+          "added_model": "ui-r1-e-3b",
+          "marginal_successes": 96,
+          "oracle_micro": 0.7752941176470588,
+          "oracle_successes": 5931,
+          "step": 5
+        }
+      ],
+      "minimum_models_for_95_percent_full_oracle": 3,
+      "per_model": {
+        "gui-r1-3b": {
+          "episode_macro": 0.39302670202371026,
+          "parse_failure_rate": 0.00169934640522873,
+          "step_micro": 0.38640522875816996,
+          "step_successes": 2956
+        },
+        "gui-r1-7b": {
+          "episode_macro": 0.4701246658079635,
+          "parse_failure_rate": 0.00039215686274507444,
+          "step_micro": 0.45215686274509803,
+          "step_successes": 3459
+        },
+        "ui-agile-3b": {
+          "episode_macro": 0.59396237959255,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.5883660130718954,
+          "step_successes": 4501
+        },
+        "ui-agile-7b": {
+          "episode_macro": 0.6160548075624499,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.6075816993464053,
+          "step_successes": 4648
+        },
+        "ui-r1-e-3b": {
+          "episode_macro": 0.2572115965733489,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.23058823529411765,
+          "step_successes": 1764
+        }
+      },
+      "rows": 7650,
+      "saturation_step_first_zero_marginal_or_full_length": 5
+    },
+    "androidcontrol/low": {
+      "aggregation_contract": {
+        "episode_macro": "mean of within-episode Step SR over episodes",
+        "step_micro": "mean over row identities"
+      },
+      "deployable_definition": "parse_failure_rate < 0.05 and step_micro > 0.30",
+      "deployable_models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "deployable_oracle": {
+        "episode_macro": 0.8817977146450175,
+        "step_micro": 0.8754248366013072,
+        "successes": 6697
+      },
+      "episodes": 1393,
+      "full_models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "full_oracle": {
+        "episode_macro": 0.8817977146450175,
+        "step_micro": 0.8754248366013072,
+        "successes": 6697
+      },
+      "greedy_forward_curve": [
+        {
+          "added_model": "ui-agile-3b",
+          "marginal_successes": 6052,
+          "oracle_micro": 0.7911111111111111,
+          "oracle_successes": 6052,
+          "step": 1
+        },
+        {
+          "added_model": "gui-r1-3b",
+          "marginal_successes": 417,
+          "oracle_micro": 0.8456209150326798,
+          "oracle_successes": 6469,
+          "step": 2
+        },
+        {
+          "added_model": "gui-r1-7b",
+          "marginal_successes": 121,
+          "oracle_micro": 0.8614379084967321,
+          "oracle_successes": 6590,
+          "step": 3
+        },
+        {
+          "added_model": "ui-agile-7b",
+          "marginal_successes": 75,
+          "oracle_micro": 0.8712418300653595,
+          "oracle_successes": 6665,
+          "step": 4
+        },
+        {
+          "added_model": "ui-r1-e-3b",
+          "marginal_successes": 32,
+          "oracle_micro": 0.8754248366013072,
+          "oracle_successes": 6697,
+          "step": 5
+        }
+      ],
+      "minimum_models_for_95_percent_full_oracle": 2,
+      "per_model": {
+        "gui-r1-3b": {
+          "episode_macro": 0.5796971657380234,
+          "parse_failure_rate": 0.0005228758169935066,
+          "step_micro": 0.5679738562091503,
+          "step_successes": 4345
+        },
+        "gui-r1-7b": {
+          "episode_macro": 0.5913937948917968,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.5813071895424836,
+          "step_successes": 4447
+        },
+        "ui-agile-3b": {
+          "episode_macro": 0.7999965400122373,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.7911111111111111,
+          "step_successes": 6052
+        },
+        "ui-agile-7b": {
+          "episode_macro": 0.7847518942102487,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.7756862745098039,
+          "step_successes": 5934
+        },
+        "ui-r1-e-3b": {
+          "episode_macro": 0.5062994745057202,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.4887581699346405,
+          "step_successes": 3739
+        }
+      },
+      "rows": 7650,
+      "saturation_step_first_zero_marginal_or_full_length": 5
+    },
+    "mind2web/visual": {
+      "aggregation_contract": {
+        "episode_macro": "mean of within-episode Step SR over episodes",
+        "step_micro": "mean over row identities"
+      },
+      "deployable_definition": "parse_failure_rate < 0.05 and step_micro > 0.30",
+      "deployable_models": [
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-7b"
+      ],
+      "deployable_oracle": {
+        "episode_macro": 0.7286300302374829,
+        "step_micro": 0.7091346153846154,
+        "successes": 1475
+      },
+      "episodes": 252,
+      "full_models": [
+        "cogagent-18b",
+        "qwen2.5-vl-3b",
+        "qwen2.5-vl-7b",
+        "seeclick-9.6b",
+        "showui-2b",
+        "tongui-32b",
+        "tongui-3b",
+        "tongui-7b",
+        "ui-tars-2b",
+        "ui-tars-72b",
+        "ui-tars-7b"
+      ],
+      "full_oracle": {
+        "episode_macro": 0.8396636136738069,
+        "step_micro": 0.8177884615384615,
+        "successes": 1701
+      },
+      "greedy_forward_curve": [
+        {
+          "added_model": "tongui-7b",
+          "marginal_successes": 1101,
+          "oracle_micro": 0.5293269230769231,
+          "oracle_successes": 1101,
+          "step": 1
+        },
+        {
+          "added_model": "cogagent-18b",
+          "marginal_successes": 336,
+          "oracle_micro": 0.6908653846153846,
+          "oracle_successes": 1437,
+          "step": 2
+        },
+        {
+          "added_model": "tongui-32b",
+          "marginal_successes": 116,
+          "oracle_micro": 0.7466346153846154,
+          "oracle_successes": 1553,
+          "step": 3
+        },
+        {
+          "added_model": "ui-tars-72b",
+          "marginal_successes": 61,
+          "oracle_micro": 0.7759615384615385,
+          "oracle_successes": 1614,
+          "step": 4
+        },
+        {
+          "added_model": "tongui-3b",
+          "marginal_successes": 26,
+          "oracle_micro": 0.7884615384615384,
+          "oracle_successes": 1640,
+          "step": 5
+        },
+        {
+          "added_model": "seeclick-9.6b",
+          "marginal_successes": 22,
+          "oracle_micro": 0.7990384615384616,
+          "oracle_successes": 1662,
+          "step": 6
+        },
+        {
+          "added_model": "ui-tars-7b",
+          "marginal_successes": 18,
+          "oracle_micro": 0.8076923076923077,
+          "oracle_successes": 1680,
+          "step": 7
+        },
+        {
+          "added_model": "ui-tars-2b",
+          "marginal_successes": 9,
+          "oracle_micro": 0.8120192307692308,
+          "oracle_successes": 1689,
+          "step": 8
+        },
+        {
+          "added_model": "showui-2b",
+          "marginal_successes": 9,
+          "oracle_micro": 0.8163461538461538,
+          "oracle_successes": 1698,
+          "step": 9
+        },
+        {
+          "added_model": "qwen2.5-vl-7b",
+          "marginal_successes": 3,
+          "oracle_micro": 0.8177884615384615,
+          "oracle_successes": 1701,
+          "step": 10
+        },
+        {
+          "added_model": "qwen2.5-vl-3b",
+          "marginal_successes": 0,
+          "oracle_micro": 0.8177884615384615,
+          "oracle_successes": 1701,
+          "step": 11
+        }
+      ],
+      "minimum_models_for_95_percent_full_oracle": 5,
+      "per_model": {
+        "cogagent-18b": {
+          "episode_macro": 0.560391794836095,
+          "parse_failure_rate": 0.05865384615384617,
+          "step_micro": 0.5014423076923077,
+          "step_successes": 1043
+        },
+        "qwen2.5-vl-3b": {
+          "episode_macro": 0.007949237517950966,
+          "parse_failure_rate": 0.22067307692307692,
+          "step_micro": 0.009134615384615385,
+          "step_successes": 19
+        },
+        "qwen2.5-vl-7b": {
+          "episode_macro": 0.05898338997830988,
+          "parse_failure_rate": 0.11298076923076927,
+          "step_micro": 0.05480769230769231,
+          "step_successes": 114
+        },
+        "seeclick-9.6b": {
+          "episode_macro": 0.25976474626569196,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.21923076923076923,
+          "step_successes": 456
+        },
+        "showui-2b": {
+          "episode_macro": 0.19960915795950418,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.18125,
+          "step_successes": 377
+        },
+        "tongui-32b": {
+          "episode_macro": 0.5433409343091102,
+          "parse_failure_rate": 0.00048076923076922906,
+          "step_micro": 0.5201923076923077,
+          "step_successes": 1082
+        },
+        "tongui-3b": {
+          "episode_macro": 0.5138235450085448,
+          "parse_failure_rate": 0.0,
+          "step_micro": 0.48990384615384613,
+          "step_successes": 1019
+        },
+        "tongui-7b": {
+          "episode_macro": 0.5560946256905104,
+          "parse_failure_rate": 0.00048076923076922906,
+          "step_micro": 0.5293269230769231,
+          "step_successes": 1101
+        },
+        "ui-tars-2b": {
+          "episode_macro": 0.22663028746123978,
+          "parse_failure_rate": 0.22115384615384615,
+          "step_micro": 0.18846153846153846,
+          "step_successes": 392
+        },
+        "ui-tars-72b": {
+          "episode_macro": 0.4340520279331568,
+          "parse_failure_rate": 0.05673076923076925,
+          "step_micro": 0.3995192307692308,
+          "step_successes": 831
+        },
+        "ui-tars-7b": {
+          "episode_macro": 0.3787457318816487,
+          "parse_failure_rate": 0.014903846153846101,
+          "step_micro": 0.33653846153846156,
+          "step_successes": 700
+        }
+      },
+      "rows": 2080,
+      "saturation_step_first_zero_marginal_or_full_length": 11
+    }
+  },
+  "status": "PASS"
+}

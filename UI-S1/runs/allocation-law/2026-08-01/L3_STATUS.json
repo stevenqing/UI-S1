@@ -1,0 +1,71 @@
+{
+  "corrected_label_release": "UNAVAILABLE_VERSIONED_RELEASE",
+  "kill_conditions": {
+    "L-K4": "NOT_EVALUATED"
+  },
+  "lineage_only": {
+    "aligned_full_view_models": 11,
+    "deployable_full_view_models": 6,
+    "required_full_view_models": 12,
+    "status": "UNAVAILABLE_FEWER_THAN_12"
+  },
+  "mde": 0.011558476230933909,
+  "mixed": {
+    "aligned_full_view_models": [
+      "cogagent-18b",
+      "qwen2.5-vl-3b",
+      "qwen2.5-vl-7b",
+      "seeclick-9.6b",
+      "showui-2b",
+      "tongui-32b",
+      "tongui-3b",
+      "tongui-7b",
+      "ui-tars-2b",
+      "ui-tars-72b",
+      "ui-tars-7b"
+    ],
+    "deployable_full_view_models": [
+      "cogagent-18b",
+      "tongui-32b",
+      "tongui-3b",
+      "tongui-7b",
+      "ui-tars-72b",
+      "ui-tars-7b"
+    ],
+    "deployable_model_count": 6,
+    "lineages_with_four_compliant_views": [],
+    "required": "three deployable lineages x four aligned views",
+    "status": "UNAVAILABLE_INCOMPLETE_POOL"
+  },
+  "prediction": "NOT_EVALUATED",
+  "rows": 2080,
+  "schema_version": 1,
+  "stage": "discovery",
+  "status": "BLOCKED_PREREGISTRATION_GAP",
+  "v_only": {
+    "available_attention_proposed_crop_views": 0,
+    "available_full_views": 1,
+    "noncompliant_geometry_views": {
+      "v1": {
+        "rows": 2080,
+        "sha256": "be09efefdff491af1581d6c86d6b0fd79acae94675a2198e62fb627d9ddba5b6"
+      },
+      "v2": {
+        "rows": 2080,
+        "sha256": "96a68da0a25d258c068cff82baa98f21b172aee7b0dda68f56a8e8aab4582841"
+      },
+      "v3": {
+        "rows": 2080,
+        "sha256": "a549b90c87cdec223966528dcb97c8363237e6e171debfa96a1988b46a28ef89"
+      },
+      "v4": {
+        "rows": 2080,
+        "sha256": "076d375d04c3ee3ea56f73530f8d45ffa89af6836b99d89445c6b40d349baa95"
+      }
+    },
+    "required": "TongUI-7B full plus 11 attention-proposed crops",
+    "required_budget": 12,
+    "status": "UNAVAILABLE_INCOMPLETE_POOL",
+    "view_protocol_sha256": "79953b898fc05bf0bbca61e927b7a6fc0ed2e6c472fe84a9d25e9607d3b15bf1"
+  }
+}

@@ -1,0 +1,1173 @@
+{
+  "protocol": "AMENDMENT_008_CCM_CONFIRMATION_DEPLOYMENT.md",
+  "settings": {
+    "high": {
+      "discovery_rows": 7650,
+      "final_calibration": {
+        "bench": "androidcontrol",
+        "cell_tables": {
+          "cross-family|coordinate-bearing": {
+            "boundaries": [
+              0.0,
+              1.753613240696581e-21,
+              0.011460783842270358,
+              2.931985900430782,
+              3.242308612186308,
+              3.254846313741206,
+              3.255788701766251
+            ],
+            "failures": 18629,
+            "log_ratios": [
+              -0.12341303509999513,
+              -1.2753858312280482,
+              -0.8362667803232096,
+              0.17120575319213716,
+              0.7758801204055885,
+              0.8720501364745752,
+              0.8340799574208309,
+              0.743730942294454
+            ],
+            "successes": 21077
+          },
+          "cross-family|parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "failures": 2710,
+            "log_ratios": [
+              0.14590661005217598,
+              0.14590661005217598,
+              0.14590661005217598,
+              0.14590661005217598,
+              0.14590661005217598,
+              -0.7072664553126797,
+              0.14590661005217598,
+              1.4154892611775056
+            ],
+            "successes": 2341
+          },
+          "cross-family|string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "failures": 8685,
+            "log_ratios": [
+              0.12103806870420897,
+              0.12103806870420897,
+              0.12103806870420897,
+              0.12103806870420897,
+              0.12103806870420897,
+              0.12103806870420897,
+              -0.2871908037366922,
+              1.15280520178073
+            ],
+            "successes": 7694
+          },
+          "same-family|coordinate-bearing": {
+            "boundaries": [
+              0.0,
+              5.423275373291487e-10,
+              0.7166500824684121,
+              3.1930284081177907,
+              3.247777266473581,
+              3.254846313741206,
+              3.25596059148052
+            ],
+            "failures": 9317,
+            "log_ratios": [
+              -0.12295284840085863,
+              -1.1529003675152936,
+              -0.8728052521566119,
+              0.49679426199050614,
+              0.6152964307597784,
+              0.5772915940298482,
+              0.6589506927648778,
+              0.7836936017615594
+            ],
+            "successes": 10537
+          },
+          "same-family|parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 1356,
+            "log_ratios": [
+              0.1491534118251483,
+              0.1491534118251483,
+              0.1491534118251483,
+              -0.9139250524485713,
+              0.1491534118251483,
+              0.1491534118251483,
+              0.1491534118251483,
+              0.7044828665798853
+            ],
+            "successes": 1167
+          },
+          "same-family|string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 4340,
+            "log_ratios": [
+              0.11930788670348136,
+              0.11930788670348136,
+              0.11930788670348136,
+              -1.225145250833107,
+              0.11930788670348136,
+              0.11930788670348136,
+              0.11930788670348136,
+              0.8166210723273243
+            ],
+            "successes": 3851
+          }
+        },
+        "class_tables": {
+          "coordinate-bearing": {
+            "boundaries": [
+              0.0,
+              2.385487436006836e-16,
+              0.04619538822066445,
+              3.086453868003061,
+              3.244806614014921,
+              3.254846313741206,
+              3.255788701766251
+            ],
+            "failures": 27946,
+            "log_ratios": [
+              -0.12329277882523826,
+              -1.2343008069185322,
+              -0.8578251755480382,
+              0.30057087384525527,
+              0.724262564666059,
+              0.7532740707309116,
+              0.7832417781035519,
+              0.744885138413923
+            ],
+            "successes": 31614
+          },
+          "parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 4066,
+            "log_ratios": [
+              0.14730133798168232,
+              0.14730133798168232,
+              0.14730133798168232,
+              0.14730133798168232,
+              -0.7585393260891868,
+              0.14730133798168232,
+              0.14730133798168232,
+              1.074229264190934
+            ],
+            "successes": 3508
+          },
+          "string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "failures": 13025,
+            "log_ratios": [
+              0.12053945904770202,
+              0.12053945904770202,
+              0.12053945904770202,
+              0.12053945904770202,
+              0.12053945904770202,
+              -0.4622286114673858,
+              0.12053945904770202,
+              0.9536435327583519
+            ],
+            "successes": 11545
+          }
+        },
+        "global_table": {
+          "boundaries": [
+            0.0,
+            0.0,
+            7.919149687938688e-19,
+            0.990974896977718,
+            1.1561244040169318,
+            3.2414811728162567,
+            3.255681986288306
+          ],
+          "failures": 45037,
+          "log_ratios": [
+            -0.03554669932438337,
+            -0.03554669932438337,
+            -0.910974242882063,
+            -0.5344801403877943,
+            0.8133298245122782,
+            0.7950965379760364,
+            0.8352603811982073,
+            0.8545545115944022
+          ],
+          "successes": 46667
+        },
+        "source_priors": {
+          "gui-r1-3b": 0.38643491897543125,
+          "gui-r1-7b": 0.4521693674856247,
+          "ui-agile-3b": 0.5883429168844746,
+          "ui-agile-7b": 0.6075535807631992
+        },
+        "table_report": {
+          "bins": 8,
+          "cells": {
+            "cross-family/coordinate-bearing": {
+              "failures": 18629,
+              "successes": 21077
+            },
+            "cross-family/parameterless": {
+              "failures": 2710,
+              "successes": 2341
+            },
+            "cross-family/string-bearing": {
+              "failures": 8685,
+              "successes": 7694
+            },
+            "same-family/coordinate-bearing": {
+              "failures": 9317,
+              "successes": 10537
+            },
+            "same-family/parameterless": {
+              "failures": 1356,
+              "successes": 1167
+            },
+            "same-family/string-bearing": {
+              "failures": 4340,
+              "successes": 3851
+            }
+          },
+          "classes": {
+            "coordinate-bearing": {
+              "failures": 27946,
+              "successes": 31614
+            },
+            "parameterless": {
+              "failures": 4066,
+              "successes": 3508
+            },
+            "string-bearing": {
+              "failures": 13025,
+              "successes": 11545
+            }
+          },
+          "global": {
+            "failures": 45037,
+            "successes": 46667
+          },
+          "minimum_successes_and_failures": 32,
+          "mode": "nine"
+        }
+      },
+      "fixed_best_source": "ui-agile-7b",
+      "folds": [
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 15045,
+                "successes": 16993
+              },
+              "cross-family/parameterless": {
+                "failures": 2194,
+                "successes": 1952
+              },
+              "cross-family/string-bearing": {
+                "failures": 6678,
+                "successes": 6066
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 7523,
+                "successes": 8495
+              },
+              "same-family/parameterless": {
+                "failures": 1098,
+                "successes": 975
+              },
+              "same-family/string-bearing": {
+                "failures": 3338,
+                "successes": 3035
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 22568,
+                "successes": 25488
+              },
+              "parameterless": {
+                "failures": 3292,
+                "successes": 2927
+              },
+              "string-bearing": {
+                "failures": 10016,
+                "successes": 9101
+              }
+            },
+            "global": {
+              "failures": 35876,
+              "successes": 37516
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 14932,
+                "successes": 16542
+              },
+              "cross-family/parameterless": {
+                "failures": 2248,
+                "successes": 1777
+              },
+              "cross-family/string-bearing": {
+                "failures": 7163,
+                "successes": 6242
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 7468,
+                "successes": 8270
+              },
+              "same-family/parameterless": {
+                "failures": 1125,
+                "successes": 886
+              },
+              "same-family/string-bearing": {
+                "failures": 3578,
+                "successes": 3125
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 22400,
+                "successes": 24812
+              },
+              "parameterless": {
+                "failures": 3373,
+                "successes": 2663
+              },
+              "string-bearing": {
+                "failures": 10741,
+                "successes": 9367
+              }
+            },
+            "global": {
+              "failures": 36514,
+              "successes": 36842
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 14719,
+                "successes": 16997
+              },
+              "cross-family/parameterless": {
+                "failures": 2144,
+                "successes": 1795
+              },
+              "cross-family/string-bearing": {
+                "failures": 6957,
+                "successes": 6292
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 7362,
+                "successes": 8497
+              },
+              "same-family/parameterless": {
+                "failures": 1073,
+                "successes": 894
+              },
+              "same-family/string-bearing": {
+                "failures": 3477,
+                "successes": 3149
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 22081,
+                "successes": 25494
+              },
+              "parameterless": {
+                "failures": 3217,
+                "successes": 2689
+              },
+              "string-bearing": {
+                "failures": 10434,
+                "successes": 9441
+              }
+            },
+            "global": {
+              "failures": 35732,
+              "successes": 37624
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 14991,
+                "successes": 17035
+              },
+              "cross-family/parameterless": {
+                "failures": 2144,
+                "successes": 1875
+              },
+              "cross-family/string-bearing": {
+                "failures": 6869,
+                "successes": 5990
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 7498,
+                "successes": 8517
+              },
+              "same-family/parameterless": {
+                "failures": 1072,
+                "successes": 934
+              },
+              "same-family/string-bearing": {
+                "failures": 3433,
+                "successes": 2998
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 22489,
+                "successes": 25552
+              },
+              "parameterless": {
+                "failures": 3216,
+                "successes": 2809
+              },
+              "string-bearing": {
+                "failures": 10302,
+                "successes": 8988
+              }
+            },
+            "global": {
+              "failures": 36007,
+              "successes": 37349
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 14829,
+                "successes": 16741
+              },
+              "cross-family/parameterless": {
+                "failures": 2110,
+                "successes": 1965
+              },
+              "cross-family/string-bearing": {
+                "failures": 7073,
+                "successes": 6186
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 7417,
+                "successes": 8369
+              },
+              "same-family/parameterless": {
+                "failures": 1056,
+                "successes": 979
+              },
+              "same-family/string-bearing": {
+                "failures": 3534,
+                "successes": 3097
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 22246,
+                "successes": 25110
+              },
+              "parameterless": {
+                "failures": 3166,
+                "successes": 2944
+              },
+              "string-bearing": {
+                "failures": 10607,
+                "successes": 9283
+              }
+            },
+            "global": {
+              "failures": 36019,
+              "successes": 37337
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b"
+      ],
+      "oof_threshold": 0.0,
+      "oof_threshold_report": {
+        "best_source_successes": 4648,
+        "candidate_thresholds": 823,
+        "overrides": 1698,
+        "rows": 7650,
+        "selected_successes": 4711
+      }
+    },
+    "low": {
+      "discovery_rows": 7650,
+      "final_calibration": {
+        "bench": "androidcontrol",
+        "cell_tables": {
+          "cross-family|coordinate-bearing": {
+            "boundaries": [
+              0.001261142147389844,
+              2.5368124265356795,
+              3.214238588715506,
+              3.248545235962871,
+              3.2534540028054724,
+              3.254903592720132,
+              3.255788701766251
+            ],
+            "failures": 24684,
+            "log_ratios": [
+              -2.041772128216252,
+              -0.4663217551706864,
+              0.502187236963411,
+              0.5792398589461341,
+              0.27958046667596337,
+              0.49399509141520914,
+              0.6508471018875355,
+              0.648326335180061
+            ],
+            "successes": 60923
+          },
+          "cross-family|parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "failures": 828,
+            "log_ratios": [
+              -1.164570256459907,
+              -1.164570256459907,
+              -1.164570256459907,
+              -1.164570256459907,
+              -1.164570256459907,
+              -0.6158659442819313,
+              -1.164570256459907,
+              2.6965492421514003
+            ],
+            "successes": 2671
+          },
+          "cross-family|string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "failures": 19578,
+            "log_ratios": [
+              0.35741919246452447,
+              0.35741919246452447,
+              0.35741919246452447,
+              0.35741919246452447,
+              0.35741919246452447,
+              0.35741919246452447,
+              0.35741919246452447,
+              -0.0001536174605158501
+            ],
+            "successes": 13692
+          },
+          "same-family|coordinate-bearing": {
+            "boundaries": [
+              0.4548984390157908,
+              3.099367991993569,
+              3.228755078556524,
+              3.251505768017095,
+              3.254846313741206,
+              3.255681986288306,
+              3.25596059148052
+            ],
+            "failures": 5837,
+            "log_ratios": [
+              -2.137363190951694,
+              0.10980681540068105,
+              0.46818479061811114,
+              0.636357179229829,
+              0.26148372725461977,
+              0.2726118982889676,
+              0.37113003412152734,
+              0.5557080743731355
+            ],
+            "successes": 15517
+          },
+          "same-family|parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 268,
+            "log_ratios": [
+              -0.9377969370951194,
+              -0.9377969370951194,
+              -0.9377969370951194,
+              -0.9377969370951194,
+              -0.4443154267871005,
+              -0.9377969370951194,
+              -0.9377969370951194,
+              0.9904656951466164
+            ],
+            "successes": 697
+          },
+          "same-family|string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 3709,
+            "log_ratios": [
+              -0.20703385461744972,
+              -0.20703385461744972,
+              -1.76699170978818,
+              -0.20703385461744972,
+              -0.20703385461744972,
+              -0.20703385461744972,
+              -0.20703385461744972,
+              0.8861915454119033
+            ],
+            "successes": 4564
+          }
+        },
+        "class_tables": {
+          "coordinate-bearing": {
+            "boundaries": [
+              0.003067342363398586,
+              2.729677883822884,
+              3.216085905354577,
+              3.2488769075986403,
+              3.253511257282428,
+              3.255223673102323,
+              3.25596059148052
+            ],
+            "failures": 30521,
+            "log_ratios": [
+              -2.0595905003083166,
+              -0.3707244200785951,
+              0.4947203738446677,
+              0.5812852209596227,
+              0.24130959656193873,
+              0.6092846172311899,
+              0.5046034027677444,
+              0.6562874445384823
+            ],
+            "successes": 76440
+          },
+          "parameterless": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "failures": 1096,
+            "log_ratios": [
+              -1.117751628878807,
+              -1.117751628878807,
+              -1.117751628878807,
+              -1.117751628878807,
+              -0.5803040625445818,
+              -1.117751628878807,
+              -1.117751628878807,
+              1.9543242112625177
+            ],
+            "successes": 3368
+          },
+          "string-bearing": {
+            "boundaries": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "failures": 23287,
+            "log_ratios": [
+              0.24330683604126513,
+              0.24330683604126513,
+              0.24330683604126513,
+              0.24330683604126513,
+              0.24330683604126513,
+              0.24330683604126513,
+              -0.4405695451802725,
+              1.7623319883155022
+            ],
+            "successes": 18256
+          }
+        },
+        "global_table": {
+          "boundaries": [
+            0.0,
+            0.0,
+            1.0,
+            3.044262228459264,
+            3.245089094372192,
+            3.253987250005118,
+            3.2557392799734477
+          ],
+          "failures": 54904,
+          "log_ratios": [
+            -0.5799699989271954,
+            -0.5799699989271954,
+            -1.2071968700959959,
+            0.899580098542005,
+            0.9075391973164519,
+            0.5926284801749799,
+            0.9548780327988691,
+            0.943702776802887
+          ],
+          "successes": 98064
+        },
+        "source_priors": {
+          "gui-r1-3b": 0.5679560899111343,
+          "gui-r1-7b": 0.5812859383167799,
+          "ui-agile-3b": 0.7910350235232619,
+          "ui-agile-7b": 0.775614218504966,
+          "ui-r1-e-3b": 0.4887611082070047
+        },
+        "table_report": {
+          "bins": 8,
+          "cells": {
+            "cross-family/coordinate-bearing": {
+              "failures": 24684,
+              "successes": 60923
+            },
+            "cross-family/parameterless": {
+              "failures": 828,
+              "successes": 2671
+            },
+            "cross-family/string-bearing": {
+              "failures": 19578,
+              "successes": 13692
+            },
+            "same-family/coordinate-bearing": {
+              "failures": 5837,
+              "successes": 15517
+            },
+            "same-family/parameterless": {
+              "failures": 268,
+              "successes": 697
+            },
+            "same-family/string-bearing": {
+              "failures": 3709,
+              "successes": 4564
+            }
+          },
+          "classes": {
+            "coordinate-bearing": {
+              "failures": 30521,
+              "successes": 76440
+            },
+            "parameterless": {
+              "failures": 1096,
+              "successes": 3368
+            },
+            "string-bearing": {
+              "failures": 23287,
+              "successes": 18256
+            }
+          },
+          "global": {
+            "failures": 54904,
+            "successes": 98064
+          },
+          "minimum_successes_and_failures": 32,
+          "mode": "nine"
+        }
+      },
+      "fixed_best_source": "ui-agile-3b",
+      "folds": [
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 19998,
+                "successes": 48735
+              },
+              "cross-family/parameterless": {
+                "failures": 693,
+                "successes": 2244
+              },
+              "cross-family/string-bearing": {
+                "failures": 15441,
+                "successes": 10785
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 4719,
+                "successes": 12421
+              },
+              "same-family/parameterless": {
+                "failures": 223,
+                "successes": 588
+              },
+              "same-family/string-bearing": {
+                "failures": 2926,
+                "successes": 3595
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 24717,
+                "successes": 61156
+              },
+              "parameterless": {
+                "failures": 916,
+                "successes": 2832
+              },
+              "string-bearing": {
+                "failures": 18367,
+                "successes": 14380
+              }
+            },
+            "global": {
+              "failures": 44000,
+              "successes": 78368
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 0,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 19900,
+                "successes": 48252
+              },
+              "cross-family/parameterless": {
+                "failures": 638,
+                "successes": 2148
+              },
+              "cross-family/string-bearing": {
+                "failures": 15897,
+                "successes": 11067
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 4726,
+                "successes": 12280
+              },
+              "same-family/parameterless": {
+                "failures": 206,
+                "successes": 558
+              },
+              "same-family/string-bearing": {
+                "failures": 3015,
+                "successes": 3689
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 24626,
+                "successes": 60532
+              },
+              "parameterless": {
+                "failures": 844,
+                "successes": 2706
+              },
+              "string-bearing": {
+                "failures": 18912,
+                "successes": 14756
+              }
+            },
+            "global": {
+              "failures": 44382,
+              "successes": 77994
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 1,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 19348,
+                "successes": 49009
+              },
+              "cross-family/parameterless": {
+                "failures": 665,
+                "successes": 1966
+              },
+              "cross-family/string-bearing": {
+                "failures": 15856,
+                "successes": 11052
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 4573,
+                "successes": 12483
+              },
+              "same-family/parameterless": {
+                "failures": 215,
+                "successes": 518
+              },
+              "same-family/string-bearing": {
+                "failures": 2999,
+                "successes": 3684
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 23921,
+                "successes": 61492
+              },
+              "parameterless": {
+                "failures": 880,
+                "successes": 2484
+              },
+              "string-bearing": {
+                "failures": 18855,
+                "successes": 14736
+              }
+            },
+            "global": {
+              "failures": 43656,
+              "successes": 78712
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 2,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 19835,
+                "successes": 49350
+              },
+              "cross-family/parameterless": {
+                "failures": 672,
+                "successes": 2102
+              },
+              "cross-family/string-bearing": {
+                "failures": 15131,
+                "successes": 10824
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 4708,
+                "successes": 12558
+              },
+              "same-family/parameterless": {
+                "failures": 220,
+                "successes": 544
+              },
+              "same-family/string-bearing": {
+                "failures": 2840,
+                "successes": 3608
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 24543,
+                "successes": 61908
+              },
+              "parameterless": {
+                "failures": 892,
+                "successes": 2646
+              },
+              "string-bearing": {
+                "failures": 17971,
+                "successes": 14432
+              }
+            },
+            "global": {
+              "failures": 43406,
+              "successes": 78986
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 3,
+          "test_rows": 1530
+        },
+        {
+          "calibration": {
+            "bins": 8,
+            "cells": {
+              "cross-family/coordinate-bearing": {
+                "failures": 19655,
+                "successes": 48346
+              },
+              "cross-family/parameterless": {
+                "failures": 644,
+                "successes": 2224
+              },
+              "cross-family/string-bearing": {
+                "failures": 15987,
+                "successes": 11040
+              },
+              "same-family/coordinate-bearing": {
+                "failures": 4622,
+                "successes": 12326
+              },
+              "same-family/parameterless": {
+                "failures": 208,
+                "successes": 580
+              },
+              "same-family/string-bearing": {
+                "failures": 3056,
+                "successes": 3680
+              }
+            },
+            "classes": {
+              "coordinate-bearing": {
+                "failures": 24277,
+                "successes": 60672
+              },
+              "parameterless": {
+                "failures": 852,
+                "successes": 2804
+              },
+              "string-bearing": {
+                "failures": 19043,
+                "successes": 14720
+              }
+            },
+            "global": {
+              "failures": 44172,
+              "successes": 78196
+            },
+            "minimum_successes_and_failures": 32,
+            "mode": "nine"
+          },
+          "dev_rows": 6120,
+          "fold": 4,
+          "test_rows": 1530
+        }
+      ],
+      "models": [
+        "gui-r1-3b",
+        "gui-r1-7b",
+        "ui-agile-3b",
+        "ui-agile-7b",
+        "ui-r1-e-3b"
+      ],
+      "oof_threshold": 1.5070437170218178,
+      "oof_threshold_report": {
+        "best_source_successes": 6052,
+        "candidate_thresholds": 1469,
+        "overrides": 416,
+        "rows": 7650,
+        "selected_successes": 6052
+      }
+    }
+  },
+  "status": "PASS",
+  "w4_labels_read": false
+}

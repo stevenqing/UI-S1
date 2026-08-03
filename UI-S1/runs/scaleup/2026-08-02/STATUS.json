@@ -1,0 +1,42 @@
+{
+  "G1_gate": {
+    "G1_pass": false,
+    "G2_action": "RUN_G2_MARGINAL_GATE_STANDARD_THRESHOLD",
+    "G2_cancelled": false,
+    "G2_effective_threshold": 0.731,
+    "G2_stretch_threshold": 0.731,
+    "lineage_concentrated": false
+  },
+  "G2_decision": {
+    "P2_above_P1_unequal_budget_context": true,
+    "effective_threshold": 0.731,
+    "effective_threshold_pass": false,
+    "equal_budget_allocation_adjudication": "UNAVAILABLE_P1_N8_FALLBACK",
+    "outcome": "BELOW_PAPER_MODEL_REFERENCE",
+    "system_SOTA_73_1_pass": false
+  },
+  "artifacts": {
+    "G1": {
+      "path": "g1_lineage_gate.json",
+      "sha256": "a5c310b33d49a5dfa7af461f4b1b09d731a99e9e456b2a13121e48d6d22f2a60"
+    },
+    "G2": {
+      "path": "g2_mixed_72b.json",
+      "sha256": "7db1389f887c6b37b5cd484fe52aae3d7254f26b8d25fbaf41057dac67c395e8"
+    },
+    "Z": {
+      "path": "z_closing_stats.json",
+      "sha256": "81c1a4f19c269715b2eca3b39738a1a96f9df2e505109b24482387b49d67df28"
+    },
+    "Z5": {
+      "path": "z5_sampling_axis.json",
+      "sha256": "e315041a2a15ef544fda72c7578cc92ea4ef0827cf048a774eb479943973483c"
+    }
+  },
+  "date": "2026-08-02",
+  "endpoint": "B_CONTROLLED_7B_PLUS_SCALEUP_BOUNDARY",
+  "protected_pid_1814_modified": false,
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "title_scope": "fixed_view_allocation_axis"
+}

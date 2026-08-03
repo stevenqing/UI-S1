@@ -1,0 +1,40 @@
+{
+  "N2_upper_bound": "BLOCKED",
+  "N3_72B": "PASS_NO_GLOBAL_COORDINATE_BUG",
+  "N4_NOA_static": "FAIL",
+  "N4_NOA_stop": "FAIL",
+  "N5_stopping_gate": "PASS",
+  "N6_action_space_extension": "NOT_RUN_N4_GATE_FAILED",
+  "artifacts": {
+    "n1_collapse": {
+      "path": "n1_collapse.json",
+      "sha256": "d959d19dcabd9b3fe061af9e8c0c3f2f98eacf09c9344388cb00c608074ecc86"
+    },
+    "n2_upper_bound": {
+      "path": "n2_upper_bound.json",
+      "sha256": "7dfc25cb7854176a9b01ef2b06a1662a0373dbf0bc58e3d26061084a488825cb"
+    },
+    "n3_72b_repair": {
+      "path": "n3_72b_repair.json",
+      "sha256": "1cc2f01b613fa5f14142f38df043b9573df87ec2485bae42e8b331598d63fa1a"
+    },
+    "n4_noa": {
+      "path": "n4_noa.json",
+      "sha256": "05e7d85299bf3ec7bcac7ca032be1fe430afc44900314a5274221c33b144820f"
+    },
+    "n5_stopping_gate": {
+      "path": "n5_stopping_gate.json",
+      "sha256": "e6fb21ee4029dcbee4c9dae6539710dfed8e652d146a79d18bab28be307a8ce7"
+    }
+  },
+  "date": "2026-08-03",
+  "figure": {
+    "path": "fig2_neff_collapse.pdf",
+    "sha256": "06b0795fae40f1afbb340c7b08f1bd72fa0ff99e2dd06181a62e3be22ecf0572"
+  },
+  "paper_scope": "equal_compute_allocation_result_plus_qualitative_correlation_quality_mechanism",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "strong_Neff_law": "FAIL",
+  "two_factor_explanation": "QUALITATIVE_ONLY"
+}

@@ -1,0 +1,386 @@
+{
+  "model_pairs": [
+    {
+      "axis": "same-family-scale",
+      "id": "androidcontrol/low/gui-r1-3b-gui-r1-7b",
+      "null_mean": -0.00010305661106643183,
+      "null_sd": 0.011605873182624281,
+      "observed_kappa": 0.7743581284508448,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-3b-ui-agile-3b",
+      "null_mean": 0.00016706519201777206,
+      "null_sd": 0.010047432548544023,
+      "observed_kappa": 0.2785849931546174,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-3b-ui-agile-7b",
+      "null_mean": -0.0006573028041712475,
+      "null_sd": 0.010289055530472758,
+      "observed_kappa": 0.3293363464976399,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-3b-ui-r1-e-3b",
+      "null_mean": 0.000168244766988543,
+      "null_sd": 0.011246353195151087,
+      "observed_kappa": 0.7284118363145807,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-7b-ui-agile-3b",
+      "null_mean": -0.0001444535855420227,
+      "null_sd": 0.010189743388610662,
+      "observed_kappa": 0.3632426910079409,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-7b-ui-agile-7b",
+      "null_mean": 0.00022121317440331056,
+      "null_sd": 0.010102746095453861,
+      "observed_kappa": 0.4396972796478247,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/gui-r1-7b-ui-r1-e-3b",
+      "null_mean": 0.00014296399300004587,
+      "null_sd": 0.01103389741371689,
+      "observed_kappa": 0.7134659169495856,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "androidcontrol/low/ui-agile-3b-ui-agile-7b",
+      "null_mean": 0.00019611668429351855,
+      "null_sd": 0.011811979971313537,
+      "observed_kappa": 0.7843743261697694,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/ui-agile-3b-ui-r1-e-3b",
+      "null_mean": 0.00011073631910407928,
+      "null_sd": 0.00911466207729494,
+      "observed_kappa": 0.29265814190076506,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/low/ui-agile-7b-ui-r1-e-3b",
+      "null_mean": -1.909938017139079e-05,
+      "null_sd": 0.009820319735492427,
+      "observed_kappa": 0.30456888364629253,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "androidcontrol/high/gui-r1-3b-gui-r1-7b",
+      "null_mean": 4.2392802802545595e-05,
+      "null_sd": 0.011171306660737915,
+      "observed_kappa": 0.6090167867114861,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/high/gui-r1-3b-ui-agile-3b",
+      "null_mean": 0.0002393141994559606,
+      "null_sd": 0.009845774962021762,
+      "observed_kappa": 0.30352037436549933,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/high/gui-r1-3b-ui-agile-7b",
+      "null_mean": -0.00018968367395610442,
+      "null_sd": 0.010389769000960888,
+      "observed_kappa": 0.3065762828320848,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/high/gui-r1-7b-ui-agile-3b",
+      "null_mean": 0.00021182224192023273,
+      "null_sd": 0.010699690523166149,
+      "observed_kappa": 0.3120263615350972,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "androidcontrol/high/gui-r1-7b-ui-agile-7b",
+      "null_mean": 0.0003104204886161682,
+      "null_sd": 0.010658485014826581,
+      "observed_kappa": 0.40595578188171416,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "androidcontrol/high/ui-agile-3b-ui-agile-7b",
+      "null_mean": -0.0005230144326418958,
+      "null_sd": 0.011470351387276003,
+      "observed_kappa": 0.6214210506159571,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/cogagent-18b-tongui-32b",
+      "null_mean": 0.00013736807357368514,
+      "null_sd": 0.021392310205036118,
+      "observed_kappa": 0.31049660001072615,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/cogagent-18b-tongui-3b",
+      "null_mean": 0.000133239280626192,
+      "null_sd": 0.02207790506269182,
+      "observed_kappa": 0.3250393144630074,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/cogagent-18b-tongui-7b",
+      "null_mean": -0.0011097661679075636,
+      "null_sd": 0.02272383102870862,
+      "observed_kappa": 0.2979581419563406,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/cogagent-18b-ui-tars-72b",
+      "null_mean": -0.0017808093865705906,
+      "null_sd": 0.022609179240297345,
+      "observed_kappa": 0.2562004089715003,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/cogagent-18b-ui-tars-7b",
+      "null_mean": -0.00022212780107527116,
+      "null_sd": 0.02147118073478163,
+      "observed_kappa": 0.22092701040069465,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "mind2web/visual/tongui-32b-tongui-3b",
+      "null_mean": -8.639404627516834e-05,
+      "null_sd": 0.021946137691011003,
+      "observed_kappa": 0.5455628823389211,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "mind2web/visual/tongui-32b-tongui-7b",
+      "null_mean": -0.0013411205166082801,
+      "null_sd": 0.02140366964948761,
+      "observed_kappa": 0.5229083683799829,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-32b-ui-tars-72b",
+      "null_mean": -0.0008694966332776393,
+      "null_sd": 0.021954510132493367,
+      "observed_kappa": 0.36000176085724406,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-32b-ui-tars-7b",
+      "null_mean": 0.0003063109099536674,
+      "null_sd": 0.020618485682364098,
+      "observed_kappa": 0.32810161696536116,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "mind2web/visual/tongui-3b-tongui-7b",
+      "null_mean": 0.00031859456394569923,
+      "null_sd": 0.02158929335760393,
+      "observed_kappa": 0.5870275681261375,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-3b-ui-tars-72b",
+      "null_mean": -0.0002685824782701742,
+      "null_sd": 0.02215053203668975,
+      "observed_kappa": 0.32997342210578984,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-3b-ui-tars-7b",
+      "null_mean": -0.00015814455633530439,
+      "null_sd": 0.0206083502083191,
+      "observed_kappa": 0.31761070677363507,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-7b-ui-tars-72b",
+      "null_mean": 0.0003028284395563391,
+      "null_sd": 0.02149115339714732,
+      "observed_kappa": 0.3423670145447201,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "cross-family",
+      "id": "mind2web/visual/tongui-7b-ui-tars-7b",
+      "null_mean": 0.0006871201262769293,
+      "null_sd": 0.02009517210721131,
+      "observed_kappa": 0.30090534680770015,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    },
+    {
+      "axis": "same-family-scale",
+      "id": "mind2web/visual/ui-tars-72b-ui-tars-7b",
+      "null_mean": 0.0015551289409622975,
+      "null_sd": 0.021308327211700145,
+      "observed_kappa": 0.5029192313020763,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    }
+  ],
+  "pairwise_permutations": 1000,
+  "seed": 20260731,
+  "status": "PASS",
+  "summary": {
+    "h2_positive": true,
+    "h3_gate": "OPEN",
+    "primary": {
+      "cross_family_mean_kappa": 0.3981704074778036,
+      "cross_family_pairs": 12,
+      "difference": 0.4964997766691011,
+      "null_draws": 1820,
+      "p_greater_equal": 0.0005494505494505495,
+      "prediction_satisfied": true,
+      "test": "exact_label_enumeration",
+      "view_axis_mean_kappa": 0.8946701841469047,
+      "view_axis_pairs": 4
+    },
+    "same_family_scale_mean_kappa": 0.6184485427618969,
+    "same_family_scale_pairs": 8
+  },
+  "view_pairs": [
+    {
+      "axis": "same-model-view",
+      "id": "androidcontrol/low/gui-r1-7b/full-v1",
+      "null_mean": 0.0005578956344691378,
+      "null_sd": 0.011734131606481096,
+      "observed_kappa": 0.9240266856727164,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-model-view",
+      "id": "androidcontrol/high/gui-r1-7b/full-v1",
+      "null_mean": 0.00020145112661426102,
+      "null_sd": 0.011309777435789743,
+      "observed_kappa": 0.8596865028676041,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-model-view",
+      "id": "androidcontrol/low/ui-agile-7b/full-v1",
+      "null_mean": 0.0003908738038960381,
+      "null_sd": 0.011460477040454109,
+      "observed_kappa": 0.9235718725592534,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-model-view",
+      "id": "androidcontrol/high/ui-agile-7b/full-v1",
+      "null_mean": -0.00014623439182545562,
+      "null_sd": 0.010841283762808544,
+      "observed_kappa": 0.8713956754880446,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 7650
+    },
+    {
+      "axis": "same-model-view-descriptive",
+      "id": "mind2web/visual/tongui-7b/full-v1",
+      "null_mean": 0.0006296690381826759,
+      "null_sd": 0.021610909189967338,
+      "observed_kappa": 0.7715484801411786,
+      "p_greater_equal": 0.000999000999000999,
+      "permutations": 1000,
+      "rows": 2080
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "PARTIAL_ASSETS_AVAILABLE",
+  "gta1": {
+    "model": "HelloKKMe/GTA1-7B",
+    "revision": "701bedc80b447863bd60e3318ae44f6cbbfafd78",
+    "license": "apache-2.0",
+    "model_card_screenspotpro": 50.1,
+    "source_readme_updated_screenspotpro": 55.5,
+    "anchor_conflict_policy": "report deltas to both; primary pinned-checkpoint card protocol",
+    "source_repo": "https://github.com/Yan98/GTA1",
+    "source_revision": "81f0c4c2997cf6ad696d42f47c5480f4c856b73a",
+    "downloaded": true,
+    "checkpoint_index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6"
+  },
+  "mvp": {
+    "status": "OFFICIAL_SOURCE_RUN_PASS",
+    "requested_anchor": 61.7,
+    "anchor_verified_from_paper": true,
+    "paper": "arXiv:2512.08529",
+    "source_repo": "https://github.com/ZJUSCL/MVP",
+    "source_revision": "988ff3c61b9f7632d780ae27c83260de75b3c95f",
+    "algorithm_level_implementation": "w3_baselines/mvp_port.py",
+    "implemented_components": ["spec_defined_28px_border_view_in_W2", "graph_centroid_ablation"],
+    "runtime_gate": {
+      "status": "PASS",
+      "python": "runs/mind2web-tongui/2026-07-28/.venv/bin/python",
+      "torch": "2.6.0+cu124",
+      "flash_attn": "2.7.4.post1",
+      "transformers_overlay": "4.51.2",
+      "official_fork_config": "PASS",
+      "bare_gta1_one_row_generation": "PASS"
+    },
+    "official_parameters": {
+      "attention_layer": 20,
+      "max_subimage_inferences": 4,
+      "top_attention_tokens": 100,
+      "consistency_threshold_pixels": 14,
+      "subimage_resize_factor": 2
+    },
+    "official_screenspot_pro_result": {
+      "status": "PASS",
+      "rows": 1581,
+      "official_code_accuracy": 0.6135357368753953,
+      "paper_centroid_accuracy": 0.6173308032890575,
+      "graph_centroid_ablation_accuracy": 0.6204933586337761,
+      "bare_full_accuracy": 0.4946236559139785,
+      "delta_to_61_7_anchor": -0.003464263124604683
+    },
+    "pending_components": ["query_token_layer_ablation"]
+  },
+  "reguide": {
+    "status": "CHECKPOINT_ONLY_OFFICIAL_METHOD_SOURCE_UNVERIFIED",
+    "gui_stage2_model": "hyunseoki/regUIDE-gta1-7b-sft-2k",
+    "revision": "93166cb69ddce1b10d12458ecf6d3c312b74d9d3",
+    "model_card_present": false,
+    "source_located": false,
+    "training_metadata_sha256": "58300af07989d90c437821d05936c220294faa40d1d4e5e5ec9cf1a8e53021f0",
+    "training_output_dir": "/workspace/training_output/gta1_7b_sft_2k",
+    "official_result_claim_allowed": false,
+    "algorithm_level_implementation": "w3_baselines/reguide_port.py",
+    "excluded_name_collision": "daintlab/reguide is Reflexive Guidance for OOD classification, not GUI KDE grounding"
+  },
+  "self_consistency": {
+    "status": "IMPLEMENTED_PENDING_INFERENCE",
+    "temperature": 0.7,
+    "samples": 5,
+    "implementation": "w3_baselines/selfconsistency.py"
+  },
+  "screenspot_pro": {
+    "dataset": "likaixin/ScreenSpot-Pro",
+    "dataset_revision": "210e78d3844251110bff86c95835ebd37a6930fa",
+    "source_repo": "https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding",
+    "source_revision": "dbe00114bc53a32c61c1a267786da85967710da8",
+    "annotation_rows": 1581,
+    "image_files_in_repo": 1585,
+    "local_image_files": 1585,
+    "annotation_missing_images": 0,
+    "metric": "predicted normalized point inside GT bbox",
+    "sanity_runner": "w3_baselines/gta1_sanity.py"
+  }
+}

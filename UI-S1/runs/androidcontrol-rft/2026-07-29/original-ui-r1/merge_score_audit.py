@@ -4,6 +4,8 @@ import json
 import math
 from pathlib import Path
 
+from transformers.models.qwen2_vl.image_processing_qwen2_vl import smart_resize
+
 from infer import (
     MAX_PIXELS,
     MODEL_NAME,
@@ -112,7 +114,15 @@ def main() -> None:
             raise ValueError(f"action parser mismatch at row {row_index}")
         if prediction["pred_coordinate_original"] != scaled:
             raise ValueError(f"coordinate parser mismatch at row {row_index}")
-        if prediction["resized_image_size"] != [672, 1484]:
+        image_width, image_height = prediction["image_size"]
+        resized_height, resized_width = smart_resize(
+            image_height,
+            image_width,
+            factor=28,
+            min_pixels=3136,
+            max_pixels=MAX_PIXELS,
+        )
+        if prediction["resized_image_size"] != [resized_width, resized_height]:
             raise ValueError(f"unexpected processor grid at row {row_index}")
         ground_truth_action = source_row["gt"]["action_type"]
         action_correct = parsed_action == ground_truth_action

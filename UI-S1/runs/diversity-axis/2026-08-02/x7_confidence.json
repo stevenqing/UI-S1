@@ -1,0 +1,159 @@
+{
+  "claim_boundary": "N12 pools are deterministic views/lineages, so scores are candidate-dispersion transfers rather than SafeGround stochastic uncertainty with FDR control.",
+  "cross_task_s_gap_correctness_auroc": 0.39310293492742826,
+  "official_protocol": {
+    "samples": 10,
+    "temperature": 1.0
+  },
+  "official_source": {
+    "commit": "5e8fca7ef091bc6751cad9703ca430e775aa4433",
+    "official_code": {
+      "activation_threshold": 0.0,
+      "patch_size": 28
+    },
+    "paper_v1": {
+      "activation_threshold": 0.3,
+      "patch_size": 14
+    },
+    "repository": "UCSB-AI/SAFEGROUND",
+    "weights": {
+      "concentration": 0.6,
+      "entropy": 0.2,
+      "margin": 0.2
+    }
+  },
+  "pools": {
+    "mixed_N12": {
+      "candidates": 12,
+      "primary_label": "M1_ccm",
+      "source_kind": "DETERMINISTIC_CANDIDATE_SET_NOT_STOCHASTIC_SAMPLES",
+      "variants": {
+        "official_code": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.8193265607645437,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.4262236258371154,
+            "failure_auroc_uncertainty": 0.8193265607645437,
+            "mean_uncertainty": 0.5291963505627495,
+            "rows": 1581,
+            "std_uncertainty": 0.22812249448160296
+          },
+          "M1_ccm": {
+            "correctness_auroc_negative_uncertainty": 0.8296650079355729,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.4365620730081446,
+            "failure_auroc_uncertainty": 0.829665007935573,
+            "mean_uncertainty": 0.5291963505627495,
+            "rows": 1581,
+            "std_uncertainty": 0.22812249448160296
+          }
+        },
+        "paper_v1": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.7737068741803887,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.3806039392529605,
+            "failure_auroc_uncertainty": 0.7737068741803887,
+            "mean_uncertainty": 0.4998331471392506,
+            "rows": 1581,
+            "std_uncertainty": 0.2605305416581974
+          },
+          "M1_ccm": {
+            "correctness_auroc_negative_uncertainty": 0.7802166861879449,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.38711375126051667,
+            "failure_auroc_uncertainty": 0.7802166861879448,
+            "mean_uncertainty": 0.4998331471392506,
+            "rows": 1581,
+            "std_uncertainty": 0.2605305416581974
+          }
+        }
+      }
+    },
+    "stochastic_GTA1_N4": {
+      "candidates": 4,
+      "primary_label": "GUI_RC",
+      "source_kind": "STOCHASTIC_SAMPLES_PROTOCOL_MISMATCH_K4_T0.7",
+      "source_sha256": "78fb03eb62cac4fcef6cb8d8e2b7a0707ed57af653ca9d027ed07a026b69af8e",
+      "variants": {
+        "official_code": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.6172884855469124,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.22418555061948414,
+            "failure_auroc_uncertainty": 0.6172884855469126,
+            "mean_uncertainty": 0.2453102130874988,
+            "rows": 1581,
+            "std_uncertainty": 0.13703065645835097
+          },
+          "GUI_RC": {
+            "correctness_auroc_negative_uncertainty": 0.6277994633227877,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.23469652839535943,
+            "failure_auroc_uncertainty": 0.6277994633227876,
+            "mean_uncertainty": 0.2453102130874988,
+            "rows": 1581,
+            "std_uncertainty": 0.13703065645835097
+          }
+        },
+        "paper_v1": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.6220469605301067,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.2289440256026784,
+            "failure_auroc_uncertainty": 0.6220469605301066,
+            "mean_uncertainty": 0.2722763506276286,
+            "rows": 1581,
+            "std_uncertainty": 0.1591014128671796
+          },
+          "GUI_RC": {
+            "correctness_auroc_negative_uncertainty": 0.630942355231642,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.23783942030421373,
+            "failure_auroc_uncertainty": 0.6309423552316423,
+            "mean_uncertainty": 0.2722763506276286,
+            "rows": 1581,
+            "std_uncertainty": 0.1591014128671796
+          }
+        }
+      }
+    },
+    "v_only_N12": {
+      "candidates": 12,
+      "primary_label": "M1_ccm",
+      "source_kind": "DETERMINISTIC_CANDIDATE_SET_NOT_STOCHASTIC_SAMPLES",
+      "variants": {
+        "official_code": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.7421361247810493,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.34903318985362103,
+            "failure_auroc_uncertainty": 0.7421361247810493,
+            "mean_uncertainty": 0.4432817659847683,
+            "rows": 1581,
+            "std_uncertainty": 0.2372369062000925
+          },
+          "M1_ccm": {
+            "correctness_auroc_negative_uncertainty": 0.7441588745964571,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.35105593966902887,
+            "failure_auroc_uncertainty": 0.7441588745964572,
+            "mean_uncertainty": 0.4432817659847683,
+            "rows": 1581,
+            "std_uncertainty": 0.2372369062000925
+          }
+        },
+        "paper_v1": {
+          "B3_mvp": {
+            "correctness_auroc_negative_uncertainty": 0.7274393193760946,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.33433638444866637,
+            "failure_auroc_uncertainty": 0.7274393193760947,
+            "mean_uncertainty": 0.39429721543547,
+            "rows": 1581,
+            "std_uncertainty": 0.24481954158956656
+          },
+          "M1_ccm": {
+            "correctness_auroc_negative_uncertainty": 0.7267877155713163,
+            "delta_vs_cross_task_s_gap_correctness_auroc": 0.333684780643888,
+            "failure_auroc_uncertainty": 0.7267877155713163,
+            "mean_uncertainty": 0.39429721543547,
+            "rows": 1581,
+            "std_uncertainty": 0.24481954158956656
+          }
+        }
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_MIGRATION_DIAGNOSTIC_NO_FDR_GUARANTEE"
+}

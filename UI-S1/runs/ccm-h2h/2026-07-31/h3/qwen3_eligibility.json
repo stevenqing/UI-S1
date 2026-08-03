@@ -1,0 +1,13 @@
+{
+  "bare_accuracy": 0.5464895635673624,
+  "correct": 864,
+  "eligible": true,
+  "minimum_bare_accuracy": 0.2469955724225174,
+  "model_id": "Qwen3-VL-8B-Instruct",
+  "model_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "parse_rate": 0.9993674889310563,
+  "parse_successes": 1580,
+  "rows": 1581,
+  "source_sha256": "bde27a80602066974d411399266b7723175b18f9b5755dfe3526b4f251680776",
+  "status": "PASS"
+}
