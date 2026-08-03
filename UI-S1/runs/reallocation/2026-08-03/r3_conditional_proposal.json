@@ -1,0 +1,14 @@
+{
+  "executed": false,
+  "mandatory_controls_not_applicable": {
+    "C_rand": "NOT_RUN_BECAUSE_R3_CANCELLED"
+  },
+  "new_inference_forwards": 0,
+  "reason": "R1 showed pass@N growth without B3 realization on the target high-disagreement stratum.",
+  "schema_version": 1,
+  "sources": {
+    "R1_sha256": "3397543230e904b68ed40e42c44f27e9a7b78014221993dad7a4634f58c169f8",
+    "R2_sha256": "51c23f91d23edfb4f8541f6c481b703db1bc217e94a3594cd5678c830bee3d30"
+  },
+  "status": "CANCELLED_R_K1"
+}
