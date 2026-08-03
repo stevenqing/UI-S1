@@ -1,0 +1,34 @@
+{
+  "adjudication": "No impossibility upper-bound claim is made because no preregistered one-factor collapse passed.",
+  "asymptotic_N_eff": 1.1173184357541899,
+  "claim_eligible": false,
+  "diagnostic_extrapolations": {
+    "failure_kappa": {
+      "N_eff_limit": 1.1173184357541899,
+      "fit_collapse_success": false,
+      "fit_residual_sd": 0.07304077504100641,
+      "predicted_accuracy": 0.6564508712085773
+    },
+    "rho_cond": {
+      "N_eff_limit": 1.1173184357541899,
+      "fit_collapse_success": false,
+      "fit_residual_sd": 0.08874013937634391,
+      "predicted_accuracy": 0.57505026009148
+    },
+    "rho_geom": {
+      "N_eff_limit": 1.1173184357541899,
+      "fit_collapse_success": false,
+      "fit_residual_sd": 0.08022998811238594,
+      "predicted_accuracy": 0.64681615317648
+    }
+  },
+  "observed_references": {
+    "H1_graph_centroid_N10": 0.6179633143580012,
+    "H1_official_B3_N10": 0.6046805819101835,
+    "V_only_N16_B3": 0.5831752055660974,
+    "paper_only_GRPO_selector": 0.628
+  },
+  "rho_view_external_reference": 0.895,
+  "schema_version": 1,
+  "status": "BLOCKED_N1_COLLAPSE"
+}
