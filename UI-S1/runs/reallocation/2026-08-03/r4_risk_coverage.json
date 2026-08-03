@@ -1,0 +1,187 @@
+{
+  "curves": {
+    "Uniform_Mixed_N12": [
+      {
+        "accuracy_gain_vs_full": 0.0,
+        "coverage": 1.0,
+        "gain_vs_random_mean": 1.1102230246251565e-16,
+        "random_rejection": {
+          "ci_99": [
+            0.6369386464263125,
+            0.6369386464263125
+          ],
+          "mean_accuracy": 0.6369386464263124,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 0,
+        "rejected_rows": 0,
+        "rejected_successes": 0,
+        "retained_accuracy": 0.6369386464263125,
+        "retained_errors": 574,
+        "retained_rows": 1581
+      },
+      {
+        "accuracy_gain_vs_full": 0.053638006175656616,
+        "coverage": 0.9,
+        "gain_vs_random_mean": 0.05370457102672288,
+        "random_rejection": {
+          "ci_99": [
+            0.6272819971870606,
+            0.6476793248945147
+          ],
+          "mean_accuracy": 0.6368720815752462,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 134,
+        "rejected_rows": 159,
+        "rejected_successes": 25,
+        "retained_accuracy": 0.6905766526019691,
+        "retained_errors": 440,
+        "retained_rows": 1422
+      },
+      {
+        "accuracy_gain_vs_full": 0.10910565737115585,
+        "coverage": 0.8,
+        "gain_vs_random_mean": 0.10911479430379734,
+        "random_rejection": {
+          "ci_99": [
+            0.6210443037974683,
+            0.6534810126582279
+          ],
+          "mean_accuracy": 0.636929509493671,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 253,
+        "rejected_rows": 317,
+        "rejected_successes": 64,
+        "retained_accuracy": 0.7460443037974683,
+        "retained_errors": 321,
+        "retained_rows": 1264
+      },
+      {
+        "accuracy_gain_vs_full": 0.15329643494800937,
+        "coverage": 0.7,
+        "gain_vs_random_mean": 0.15334321880650992,
+        "random_rejection": {
+          "ci_99": [
+            0.6166365280289331,
+            0.6573236889692586
+          ],
+          "mean_accuracy": 0.6368918625678119,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 342,
+        "rejected_rows": 475,
+        "rejected_successes": 133,
+        "retained_accuracy": 0.7902350813743219,
+        "retained_errors": 232,
+        "retained_rows": 1106
+      }
+    ],
+    "V_only_N12": [
+      {
+        "accuracy_gain_vs_full": 0.0,
+        "coverage": 1.0,
+        "gain_vs_random_mean": 0.0,
+        "random_rejection": {
+          "ci_99": [
+            0.6008855154965211,
+            0.6008855154965211
+          ],
+          "mean_accuracy": 0.6008855154965211,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 0,
+        "rejected_rows": 0,
+        "rejected_successes": 0,
+        "retained_accuracy": 0.6008855154965211,
+        "retained_errors": 631,
+        "retained_rows": 1581
+      },
+      {
+        "accuracy_gain_vs_full": 0.03835499083259275,
+        "coverage": 0.9,
+        "gain_vs_random_mean": 0.03842130801687771,
+        "random_rejection": {
+          "ci_99": [
+            0.5907172995780591,
+            0.6118143459915611
+          ],
+          "mean_accuracy": 0.6008191983122362,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 118,
+        "rejected_rows": 159,
+        "rejected_successes": 41,
+        "retained_accuracy": 0.6392405063291139,
+        "retained_errors": 513,
+        "retained_rows": 1422
+      },
+      {
+        "accuracy_gain_vs_full": 0.07395625665537764,
+        "coverage": 0.8,
+        "gain_vs_random_mean": 0.07395482594936709,
+        "random_rejection": {
+          "ci_99": [
+            0.5846518987341772,
+            0.6170886075949367
+          ],
+          "mean_accuracy": 0.6008869462025317,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 220,
+        "rejected_rows": 317,
+        "rejected_successes": 97,
+        "retained_accuracy": 0.6748417721518988,
+        "retained_errors": 411,
+        "retained_rows": 1264
+      },
+      {
+        "accuracy_gain_vs_full": 0.10616692573313524,
+        "coverage": 0.7,
+        "gain_vs_random_mean": 0.10621564195298372,
+        "random_rejection": {
+          "ci_99": [
+            0.5804701627486437,
+            0.6220614828209765
+          ],
+          "mean_accuracy": 0.6008367992766727,
+          "permutations": 10000,
+          "seed": 20260803
+        },
+        "rejected_failures": 307,
+        "rejected_rows": 475,
+        "rejected_successes": 168,
+        "retained_accuracy": 0.7070524412296564,
+        "retained_errors": 324,
+        "retained_rows": 1106
+      }
+    ]
+  },
+  "figure": "runs/reallocation/2026-08-03/fig_risk_coverage.pdf",
+  "interpretation": {
+    "claim": "Cross-lineage allocation changes both grounding accuracy and selective-error ranking.",
+    "mixed_AUROC": 0.83,
+    "v_only_AUROC": 0.744
+  },
+  "retained_coverages": [
+    1.0,
+    0.9,
+    0.8,
+    0.7
+  ],
+  "rows": 1581,
+  "schema_version": 1,
+  "sources": {
+    "X7_sha256": "9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7",
+    "strata_config_sha256": "5ecdfdc4fe19e866b4ec878ea8794d0f1a5e3a7ec280452a4d2e819e48a329e2"
+  },
+  "status": "PASS"
+}
