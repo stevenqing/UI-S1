@@ -233,16 +233,24 @@ def evaluate_arms(rows_by_id, consensus, stage1, stage2, model_order, image_size
     return evaluations, candidate_summaries
 
 
-def view_candidate(full_lanes, view1_lanes, tongui_views, shared_views, model, view_index, row_id):
+def missing_prediction():
+    return {"action": None, "value": None, "position": None, "parse_ok": False}
+
+
+def view_candidate(full_lanes, view1_lanes, tongui_views, stage2, model, view_index, row_id):
     if view_index == 0:
         return model_candidate(full_lanes[model][row_id]["prediction"], model, view_index, "curve")
     if view_index == 1:
         return model_candidate(crop_prediction(view1_lanes[model][row_id], "view1"), model, view_index, "curve")
-    lane = tongui_views if model == "TongUI-7B" else shared_views[model]
-    return model_candidate(crop_prediction(lane[row_id], f"view{view_index}"), model, view_index, "curve")
+    if model == "TongUI-7B":
+        prediction = crop_prediction(tongui_views[row_id], f"view{view_index}")
+    else:
+        values = stage2[model][row_id]["predictions"]["C_uni"]
+        prediction = values[view_index - 2]["prediction"] if len(values) == 2 else missing_prediction()
+    return model_candidate(prediction, model, view_index, "curve")
 
 
-def evaluate_curves(rows_by_id, full_lanes, view1_lanes, tongui_views, shared_views, model_order, image_sizes):
+def evaluate_curves(rows_by_id, full_lanes, view1_lanes, tongui_views, stage2, model_order, image_sizes):
     curve_config = yaml.safe_load((RUN_DIR / "configs/curves.yaml").read_text())
     if curve_config["status"] != "RESULT_BLIND_BEFORE_CURVE_SCORING":
         raise ValueError("curve protocol is not frozen")
@@ -253,7 +261,7 @@ def evaluate_curves(rows_by_id, full_lanes, view1_lanes, tongui_views, shared_vi
         for budget in curve_config["budgets"]:
             candidates_by_id = {
                 row_id: [
-                    view_candidate(full_lanes, view1_lanes, tongui_views, shared_views, model, view, row_id)
+                    view_candidate(full_lanes, view1_lanes, tongui_views, stage2, model, view, row_id)
                     for model, view in sequence[:budget]
                 ]
                 for row_id in rows_by_id
@@ -300,7 +308,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage2-root", type=Path, required=True)
     parser.add_argument("--tongui-views", type=Path, required=True)
-    parser.add_argument("--shared-views-root", type=Path, required=True)
     parser.add_argument("--mde", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -331,11 +338,7 @@ def main():
         for reference in ("C_uni", "C_rand", "C_self")
     }
     tongui_views = load_unique(args.tongui_views)
-    shared_views = {
-        model: load_unique(args.shared_views_root / MODEL_DIRS[model])
-        for model in model_order if model != "TongUI-7B"
-    }
-    curves = evaluate_curves(rows_by_id, full_lanes, view1_lanes, tongui_views, shared_views, model_order, image_sizes)
+    curves = evaluate_curves(rows_by_id, full_lanes, view1_lanes, tongui_views, stage2, model_order, image_sizes)
     curve_deltas = {
         pool: paired_episode_bootstrap(
             rows_by_id, fold_for_website,
