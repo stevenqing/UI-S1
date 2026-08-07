@@ -1,0 +1,26 @@
+schema_version: 1
+frozen_at: 2026-08-07
+status: RESULT_BLIND_BEFORE_MDE_SCORING
+source_protocol: runs/ccm-h2h/2026-07-31/AMENDMENT_002_H1_MDE_PERTURBATION.md
+definition: two_times_sample_standard_deviation_of_step_sr
+perturbation:
+  seeds: [20260807, 20260808, 20260809]
+  rng: numpy_pcg64_seed_sequence_seed_and_stable_index
+  score: log_coverage_plus_one_plus_0.25_gumbel
+  tie_break: lower_official_rank
+  target_free: true
+mind2web:
+  proposer_model: TongUI-7B
+  candidate_pool: one_full_image_plus_top_16_attention_regions
+  per_seed_pool: one_full_image_plus_15_perturbed_attention_regions
+  metric: micro_step_success_rate
+  appendix_metric: episode_macro_step_success_rate
+androidcontrol:
+  proposer_model: GUI-R1-7B
+  candidate_pool: one_full_image_plus_top_16_attention_regions
+  per_seed_pool: one_full_image_plus_15_perturbed_attention_regions
+  metric: step_success_rate_separately_for_low_and_high
+prohibitions:
+  - no_target_bbox_in_perturbation
+  - no_result_based_seed_or_noise_scale_change
+  - no_v2_v3_v4_distribution_shift_as_exchangeable_noise
