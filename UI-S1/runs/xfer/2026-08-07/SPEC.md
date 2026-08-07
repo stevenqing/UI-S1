@@ -48,6 +48,8 @@ Stage 1 uses six forwards: three lineages by full image and proposer view1. Acti
 
 Stage 2 uses two RoIs by three lineages, six forwards when triggered.
 
+All Mind2Web stage-2 model lanes use eight deterministic modulo shards. CogAgent may run shards 4-7 before shards 0-3 when only four GPUs are free; this changes scheduling only, not row assignment, prompts, generation, or aggregation.
+
 Arms:
 
 - C-uni: proposer views 2/3 by three lineages;

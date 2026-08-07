@@ -13,7 +13,7 @@ MODEL_DIRS = {
     "CogAgent-18B": "cogagent",
     "UI-TARS-7B": "uitars",
 }
-EXPECTED_SHARDS = {"TongUI-7B": 2, "CogAgent-18B": 4, "UI-TARS-7B": 2}
+EXPECTED_SHARDS = {"TongUI-7B": 8, "CogAgent-18B": 8, "UI-TARS-7B": 8}
 ARMS = ["C_uni", "C_cond", "C_rand", "C_self"]
 
 
