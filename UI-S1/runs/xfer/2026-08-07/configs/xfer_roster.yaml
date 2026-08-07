@@ -55,6 +55,13 @@ mind2web:
     query_token_candidates: [first_coordinate_comma]
     crop_geometry: {width: 448, height: 448, boundary_policy: clamp_preserve_size}
     attention: {top_k: 100, patch_size: 28, max_regions: 16}
+    fallback:
+      status: RESULT_BLIND_BEFORE_CROP_INFERENCE
+      missing_query_capture: deterministic_4_by_4_grid
+      insufficient_unique_regions: append_unseen_deterministic_grid_regions
+      fallback_coverage: 0
+      grid_order: top_to_bottom_then_left_to_right
+      target_free: true
     metric_order: [rank0_target_containment, mean_rank0_to_rank11_containment, lower_layer_index]
     selected_layer: 14
     selected_query_token: first_coordinate_comma

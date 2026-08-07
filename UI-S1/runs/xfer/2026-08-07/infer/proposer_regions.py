@@ -7,6 +7,7 @@ from pathlib import Path
 
 import torch
 import yaml
+import numpy as np
 from PIL import Image
 
 
@@ -27,6 +28,36 @@ def completed_ids(path):
     if len(ids) != len(set(ids)):
         raise ValueError("duplicate proposer-region ids")
     return set(ids)
+
+
+def deterministic_grid(image_size, crop_geometry):
+    width, height = image_size
+    crop_width = min(crop_geometry["width"], width)
+    crop_height = min(crop_geometry["height"], height)
+    lefts = np.rint(np.linspace(0, width - crop_width, 4)).astype(int)
+    tops = np.rint(np.linspace(0, height - crop_height, 4)).astype(int)
+    return [
+        {"region": [int(left), int(top), int(left + crop_width), int(top + crop_height)], "coverage": 0}
+        for top in tops for left in lefts
+    ]
+
+
+def complete_regions(regions, image_size, proposer):
+    maximum = proposer["attention"]["max_regions"]
+    values = list(regions)
+    seen = {tuple(value["region"]) for value in values}
+    added = 0
+    for fallback in deterministic_grid(image_size, proposer["crop_geometry"]):
+        key = tuple(fallback["region"])
+        if len(values) >= maximum:
+            break
+        if key not in seen:
+            values.append(fallback)
+            seen.add(key)
+            added += 1
+    if len(values) != maximum:
+        raise ValueError(f"fallback could not produce {maximum} unique regions")
+    return values, added
 
 
 def main():
@@ -71,12 +102,21 @@ def main():
             if row["id"] in completed:
                 continue
             image = Image.open(ROOT / row["image"]).convert("RGB")
-            response, resized_size, layers = generate_multilayer(
-                image, prompt_text(roster, row), processor, model, [layer], proposer
-            )
-            regions = layers[str(layer)]
-            if len(regions) != proposer["attention"]["max_regions"]:
-                raise ValueError(f"incomplete proposer regions: {row['id']}")
+            fallback_reason = None
+            try:
+                response, resized_size, layers = generate_multilayer(
+                    image, prompt_text(roster, row), processor, model, [layer], proposer
+                )
+                regions = layers[str(layer)]
+            except ValueError as error:
+                if not str(error).startswith("missing layer captures"):
+                    raise
+                response, resized_size, regions = None, None, []
+                fallback_reason = "missing_query_capture"
+            original_region_count = len(regions)
+            regions, fallback_regions_added = complete_regions(regions, image.size, proposer)
+            if fallback_regions_added and fallback_reason is None:
+                fallback_reason = "insufficient_unique_regions"
             artifact = {
                 "stable_index": index,
                 "id": row["id"],
@@ -89,6 +129,9 @@ def main():
                 "resized_size": resized_size,
                 "response": response,
                 "regions": regions,
+                "original_region_count": original_region_count,
+                "fallback_reason": fallback_reason,
+                "fallback_regions_added": fallback_regions_added,
                 "regions_sha256": hashlib.sha256(json.dumps(regions, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
                 "shard_index": args.shard_index,
                 "num_shards": args.num_shards,
