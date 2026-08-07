@@ -1,0 +1,29 @@
+schema_version: 1
+frozen_at: '2026-08-07'
+status: FROZEN_BEFORE_INFERENCE
+seed: 20260807
+source_rows_per_setting: 7708
+parameter_conflicts_excluded: 58
+clean_rows_per_setting: 7650
+sample_rows_per_setting: 2000
+stratification: proportional_by_low_gt_action_largest_remainder
+full_clean_action_counts:
+  click: 4598
+  long_press: 7
+  open_app: 547
+  press_back: 315
+  scroll: 1138
+  type: 518
+  wait: 527
+sample_action_counts:
+  click: 1202
+  long_press: 2
+  open_app: 143
+  press_back: 82
+  scroll: 298
+  type: 135
+  wait: 138
+row_manifest: runs/xfer/2026-08-07/data/androidcontrol/subsample.jsonl
+row_manifest_sha256: 42fb5516d9c3743f5cf43d247cb0d970cb0402029f751978edfb14f42fae8f79
+low_data_sha256: ffb8e19f5091c339aea4060e062cc47405f57da3f35c22699a82390d5769cf47
+high_data_sha256: ec70c99046aa4fb1557c61bf2c5d1266f87d4b9dc879128b2de20bf0aca7c72f

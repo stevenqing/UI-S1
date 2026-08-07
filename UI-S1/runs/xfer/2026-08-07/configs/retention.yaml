@@ -1,0 +1,34 @@
+schema_version: 1
+frozen_at: 2026-08-07
+status: ACTIVE_BEFORE_INFERENCE
+local_run_root: runs/xfer/2026-08-07
+protected_local_paths:
+  - runs/xfer/2026-08-07/raw
+  - runs/xfer/2026-08-07/predictions
+  - runs/xfer/2026-08-07/manifests
+backup:
+  kind: azure_blobfuse_workspace_store
+  root: /scratch/workspaceblobstore/xfer-traces/2026-08-07
+  independent_of_git: true
+  copy_after_each_completed_lane: true
+  verify_sha256_after_copy: true
+  manifest: /scratch/workspaceblobstore/xfer-traces/2026-08-07/BACKUP_MANIFEST.json
+write_contract:
+  format: JSONL
+  flush_each_row: true
+  fsync_each_row: true
+  resume_required: true
+  unique_identity_required: true
+  lane_sha256_required: true
+cleanup_prohibitions:
+  - no_recursive_delete_of_raw
+  - no_recursive_delete_of_predictions_jsonl
+  - no_cleanup_before_backup_hash_verification
+  - no_overwrite_without_resume_or_explicit_version
+status_requirements:
+  - record_local_path
+  - record_backup_path
+  - record_rows
+  - record_bytes
+  - record_sha256
+  - record_backup_verified_at_utc

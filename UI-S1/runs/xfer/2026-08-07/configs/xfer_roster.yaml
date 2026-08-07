@@ -1,0 +1,91 @@
+schema_version: 1
+frozen_at: 2026-08-07
+status: MODEL_SELECTION_FROZEN_ASSET_RESTORE_PENDING
+mind2web:
+  rows: 2080
+  episodes: 252
+  prompt_contract:
+    status: NEW_TRANSFER_CONTRACT_FROZEN_BEFORE_INFERENCE
+    history_steps: 2
+    user_template: |-
+      Task: {task}
+      Recent action history:
+      {history}
+      Predict the next action on the current screenshot.
+      Output exactly one JSON object with keys action, value, and position.
+      action must be CLICK, TYPE, or SELECT.
+      value must be null for CLICK and a string for TYPE or SELECT.
+      position must be [x,y] normalized to [0,1].
+    output_schema: '{"action":"CLICK|TYPE|SELECT","value":null_or_string,"position":[x,y]}'
+    parse_failure: strict_failure
+    note: historical aggregate scores use older model-specific prompts and are not mixed with this run
+  models:
+    - id: TongUI-7B
+      repository: Bofeee5675/TongUI-7B
+      revision: a3e0cf46c3164bbd885dea2694f2ad7a31f1661d
+      architecture_family: Qwen2.5-VL
+      role: [proposer, scorer]
+      historical_micro_step_sr: 0.5293269230769231
+      local_path: runs/xfer/2026-08-07/models/TongUI-7B
+    - id: CogAgent-18B
+      repository: zai-org/cogagent-chat-hf
+      revision: 26eec27a44348fbe0c9fad89348cf6a505f5a5ae
+      tokenizer_repository: lmsys/vicuna-7b-v1.5
+      tokenizer_revision: 3321f76e3f527bd14065daf69dad9344000a201d
+      architecture_family: GLM
+      role: [scorer]
+      historical_micro_step_sr: 0.5014423076923077
+      local_path: runs/xfer/2026-08-07/models/CogAgent-18B
+    - id: UI-TARS-7B
+      repository: ByteDance-Seed/UI-TARS-7B-SFT
+      revision: 3434901a9dd04dd3625617d839a5724fe5e2db20
+      architecture_family: Qwen2-VL
+      role: [scorer]
+      historical_micro_step_sr: 0.33653846153846156
+      local_path: runs/mind2web-tongui/2026-07-28/models/UI-TARS-7B-SFT
+  proposer:
+    model: TongUI-7B
+    selection_status: PENDING_DEV_ABLATION
+    dev_fold: 0
+    layer_candidates: [14, 17, 20, 23, 26]
+    query_token_candidates: [first_coordinate_comma]
+    metric_order: [rank0_target_containment, mean_rank0_to_rank11_containment, lower_layer_index]
+androidcontrol:
+  settings: [low, high]
+  clean_rows_per_setting: 7650
+  subsample_rows_per_setting: 2000
+  models:
+    - id: UI-AGILE-7B
+      repository: KDEGroup/UI-AGILE
+      revision: de01366937b3c921f49ae1abe3b2c4a39b40ce8d
+      architecture_family: Qwen2.5-VL
+      role: [scorer]
+      historical_step_sr: {low: 0.775558, high: 0.605345}
+      local_path: runs/xfer/2026-08-07/models/UI-AGILE-7B
+    - id: GUI-R1-7B
+      repository: ritzzai/GUI-R1
+      subfolder: GUI-R1-7B
+      revision: e74baccc4cfa77074e2d53e99a8244ab9fc2ca10
+      architecture_family: Qwen2.5-VL
+      role: [proposer, scorer]
+      historical_step_sr: {low: 0.582122, high: 0.449663}
+      local_path: runs/xfer/2026-08-07/models/GUI-R1/GUI-R1-7B
+    - id: UI-R1-E-3B
+      repository: LZXzju/Qwen2.5-VL-3B-UI-R1-E
+      revision: 91c3e5f213ab3f42931e6398174f470c8500167f
+      architecture_family: Qwen2.5-VL
+      role: [scorer]
+      historical_step_sr: {low: 0.485080, high: 0.228853}
+      local_path: runs/xfer/2026-08-07/models/UI-R1-E-3B
+  proposer:
+    model: GUI-R1-7B
+    selection_status: PENDING_DEV_ABLATION
+    dev_fold: 0
+    layer_candidates: [14, 17, 20, 23, 26]
+    query_token_candidates: [first_coordinate_comma]
+    metric_order: [rank0_target_containment, mean_rank0_to_rank11_containment, lower_layer_index]
+prohibitions:
+  - no_roster_change_after_inference
+  - no_old_aggregate_new_trace_mixing
+  - no_non_proposer_attention_extraction
+  - no_result_based_layer_or_query_token_change
