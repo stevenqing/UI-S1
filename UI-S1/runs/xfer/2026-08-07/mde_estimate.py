@@ -76,7 +76,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--proposer-regions", type=Path, required=True)
     parser.add_argument("--full-lane", type=Path, required=True)
-    parser.add_argument("--view-lane", type=Path, required=True)
+    parser.add_argument("--view1-lane", type=Path, required=True)
+    parser.add_argument("--extended-view-lane", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     config = yaml.safe_load((RUN_DIR / "configs/mde.yaml").read_text())
@@ -85,13 +86,15 @@ def main():
     rows = [json.loads(line) for line in (RUN_DIR / "data/mind2web/mind2web_test_task.jsonl").read_text().splitlines() if line.strip()]
     regions = load_unique(args.proposer_regions)
     full_rows = load_unique(args.full_lane)
-    view_rows = load_unique(args.view_lane)
+    view1_rows = load_unique(args.view1_lane)
+    extended_rows = load_unique(args.extended_view_lane)
     full_predictions = {row_id: value["prediction"] for row_id, value in full_rows.items()}
     view_predictions = {}
     for view_index in range(1, 17):
         set_name = f"view{view_index}"
         values = {}
-        for row_id, value in view_rows.items():
+        source_rows = view1_rows if view_index == 1 else extended_rows
+        for row_id, value in source_rows.items():
             if value["source_hashes"][set_name] != regions[row_id]["regions_sha256"]:
                 raise ValueError(f"MDE proposer provenance mismatch: {row_id}/{set_name}")
             values[row_id] = value["predictions"][set_name][0]["prediction"]

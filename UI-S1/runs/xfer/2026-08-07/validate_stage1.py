@@ -130,11 +130,12 @@ def main():
     parser.add_argument("--crop-sets")
     parser.add_argument("--models", default=",".join(MODEL_DIRS))
     parser.add_argument("--num-shards", type=int)
+    parser.add_argument("--root", type=Path)
     args = parser.parse_args()
     roster = yaml.safe_load((RUN_DIR / "configs/xfer_roster.yaml").read_text())
     specs = {model["id"]: model for model in roster["mind2web"]["models"]}
     canonical_rows = [json.loads(line) for line in (RUN_DIR / "data/mind2web/mind2web_test_task.jsonl").read_text().splitlines() if line.strip()]
-    base = RUN_DIR / "raw/stage1"
+    base = args.root or RUN_DIR / "raw/stage1"
     if args.crop_set and args.crop_sets:
         raise ValueError("use either --crop-set or --crop-sets")
     crop_sets = args.crop_sets.split(",") if args.crop_sets else [args.crop_set] if args.crop_set else []
