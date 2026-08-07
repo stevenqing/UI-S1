@@ -1,0 +1,24 @@
+schema_version: 1
+frozen_at: 2026-08-07
+status: RESULT_BLIND_BEFORE_CURVE_SCORING
+budgets: [4, 8, 12, 16]
+v_only:
+  sequence: TongUI_views_0_through_15
+  view_zero: full_image
+  views_1_through_15: proposer_attention_regions_0_through_14
+mixed:
+  sequence:
+    - views_0_through_3_view_major_three_lineages
+    - TongUI_views_4_through_7
+  rationale: uses_only_the_frozen_91520_forward_trace_budget
+  first_12_order: view_major_then_frozen_model_order
+  final_4_order: TongUI_view_4_to_7
+aggregation: product_action_plurality_density_cluster_parameter_token_set_f1
+bootstrap:
+  resamples: 10000
+  seed: 20260807
+  unit: episode_stratified_by_website_fold
+primary_comparison: paired_N16_minus_N4
+prohibitions:
+  - no_result_based_candidate_reordering
+  - no_extra_unregistered_model_view_inference

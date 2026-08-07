@@ -95,12 +95,19 @@ def main():
                 candidate for candidate in candidates
                 if candidate["model"] == "TongUI-7B" and candidate.get("parse_ok") and candidate.get("position") is not None
             ]
-            self_centers = [
-                [candidate["position"][0] * image_size[0], candidate["position"][1] * image_size[1]]
-                for candidate in proposer_predictions
-            ]
-            if len(self_centers) == 1:
-                self_centers.append(list(self_centers[0]))
+            proposer_by_view = {candidate["view_index"]: candidate for candidate in proposer_predictions}
+            view1_region = proposer_source["regions"][0]["region"]
+            self_fallbacks = {
+                0: [image_size[0] / 2, image_size[1] / 2],
+                1: [(view1_region[0] + view1_region[2]) / 2, (view1_region[1] + view1_region[3]) / 2],
+            }
+            self_centers = []
+            for view_index in (0, 1):
+                candidate = proposer_by_view.get(view_index)
+                self_centers.append(
+                    [candidate["position"][0] * image_size[0], candidate["position"][1] * image_size[1]]
+                    if candidate is not None else self_fallbacks[view_index]
+                )
             rng = np.random.default_rng(np.random.SeedSequence([SEED, row["stable_index"]]))
             crop_width, crop_height = min(448, image_size[0]), min(448, image_size[1])
             random_regions = []
@@ -109,7 +116,7 @@ def main():
                 top = int(rng.integers(0, image_size[1] - crop_height + 1))
                 random_regions.append([left, top, left + crop_width, top + crop_height])
             arms = {
-                "C_uni": [proposer_source["regions"][index]["region"] for index in (2, 3)],
+                "C_uni": [proposer_source["regions"][index]["region"] for index in (1, 2)],
                 "C_cond": [crop_around(center, image_size) for center in centers],
                 "C_rand": random_regions,
                 "C_self": [crop_around(center, image_size) for center in self_centers],

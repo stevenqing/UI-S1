@@ -43,8 +43,10 @@ def load_sources(path):
 
 def regions_for(source, set_name):
     if set_name.startswith("view"):
-        index = int(set_name.removeprefix("view"))
-        return [source["regions"][index]["region"]]
+        view_index = int(set_name.removeprefix("view"))
+        if not 1 <= view_index <= len(source["regions"]):
+            raise ValueError(f"attention view outside 1..{len(source['regions'])}: {set_name}")
+        return [source["regions"][view_index - 1]["region"]]
     return source["arms"][set_name]
 
 
