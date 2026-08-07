@@ -67,6 +67,8 @@ def main():
         image = Image.open(ROOT / row["image"])
         image_size = image.size
         proposer_source = proposer_regions[row["id"]]
+        if len(proposer_source.get("regions", [])) != 16:
+            raise ValueError(f"proposer region count mismatch: {row['id']}")
         candidates = []
         for view_index in (0, 1):
             for model in model_order:
@@ -84,6 +86,7 @@ def main():
         retained = [candidate for candidate in candidates if candidate.get("parse_ok") and candidate["action"] == winning_type and candidate.get("position") is not None]
         trigger = winning_type in COORDINATE_ACTIONS and len(retained) >= 1
         arms = {"C_uni": [], "C_cond": [], "C_rand": [], "C_self": []}
+        cluster_fallback = None
         if trigger:
             triggers += 1
             points = [[candidate["position"][0] * image_size[0], candidate["position"][1] * image_size[1]] for candidate in retained]
@@ -91,6 +94,7 @@ def main():
             centers = [[float(np.mean([points[index][axis] for index in group])) for axis in (0, 1)] for group in groups[:2]]
             if len(centers) == 1:
                 centers.append(list(farthest(points, centers[0])))
+                cluster_fallback = "single_cluster_farthest_winning_type_point"
             proposer_predictions = [
                 candidate for candidate in candidates
                 if candidate["model"] == "TongUI-7B" and candidate.get("parse_ok") and candidate.get("position") is not None
@@ -133,6 +137,8 @@ def main():
             "winning_type": winning_type,
             "stage2_trigger": trigger,
             "trigger_candidate_count": len(retained),
+            "stage1_group_count": len(groups) if trigger else 0,
+            "cluster_fallback": cluster_fallback,
             "proposer_regions_sha256": proposer_source["regions_sha256"],
             "arms": arms,
         }

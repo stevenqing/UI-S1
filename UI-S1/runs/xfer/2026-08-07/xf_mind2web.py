@@ -137,6 +137,20 @@ def load_unique(directory, expected_rows=2080):
     return rows
 
 
+def load_unique_file(path, expected_rows=2080):
+    rows = {}
+    for line in path.read_text().splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        if row["id"] in rows:
+            raise ValueError(f"duplicate row: {path}/{row['id']}")
+        rows[row["id"]] = row
+    if len(rows) != expected_rows:
+        raise ValueError(f"expected {expected_rows} rows in {path}, found {len(rows)}")
+    return rows
+
+
 def crop_prediction(row, set_name, crop_index=0):
     return row["predictions"][set_name][crop_index]["prediction"]
 
@@ -255,6 +269,33 @@ def strip_successes(value):
     return value
 
 
+def proposer_rank_containment(rows_by_id, proposer_regions):
+    full_bbox = []
+    center = []
+    for rank in range(16):
+        full_values = []
+        center_values = []
+        for row_id, row in rows_by_id.items():
+            left, top, right, bottom = proposer_regions[row_id]["regions"][rank]["region"]
+            bbox = row["step"]["bbox"]
+            full_values.append(
+                left <= bbox["x"] and top <= bbox["y"]
+                and right >= bbox["x"] + bbox["width"]
+                and bottom >= bbox["y"] + bbox["height"]
+            )
+            x = bbox["x"] + bbox["width"] / 2
+            y = bbox["y"] + bbox["height"] / 2
+            center_values.append(left <= x <= right and top <= y <= bottom)
+        full_bbox.append(float(np.mean(full_values)))
+        center.append(float(np.mean(center_values)))
+    return {
+        "full_bbox_containment_by_rank": full_bbox,
+        "center_containment_by_rank": center,
+        "rank0_full_bbox_containment": full_bbox[0],
+        "mean_rank0_to_rank11_full_bbox_containment": float(np.mean(full_bbox[:12])),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage2-root", type=Path, required=True)
@@ -270,11 +311,7 @@ def main():
     image_sizes = {row["id"]: Image.open(ROOT / row["image"]).size for row in rows}
     full_lanes = {model: load_unique(RUN_DIR / "raw/stage1" / directory) for model, directory in MODEL_DIRS.items()}
     view1_lanes = {model: load_unique(RUN_DIR / "raw/stage1/view1" / directory) for model, directory in MODEL_DIRS.items()}
-    consensus_rows = load_unique(RUN_DIR / "raw", expected_rows=0) if False else {
-        row["id"]: row for row in map(json.loads, (RUN_DIR / "raw/mind2web-consensus-roi.jsonl").read_text().splitlines())
-    }
-    if len(consensus_rows) != 2080:
-        raise ValueError("consensus row coverage mismatch")
+    consensus_rows = load_unique_file(RUN_DIR / "raw/mind2web-consensus-roi.jsonl")
     stage2 = {model: load_unique(args.stage2_root / directory) for model, directory in MODEL_DIRS.items()}
     for row_id, source in consensus_rows.items():
         for model in model_order:
@@ -314,10 +351,23 @@ def main():
         )
         for model in model_order
     }
+    proposer_regions = load_unique(RUN_DIR / "raw/proposer-regions")
+    rank_containment = proposer_rank_containment(rows_by_id, proposer_regions)
     mde = json.loads(args.mde.read_text())
     xf1 = comparisons["C_uni"]["point_delta"] > mde["micro_mde"] and comparisons["C_uni"]["ci_99"][0] > 0
     xf2 = comparisons["C_rand"]["ci_99"][0] > 0 and comparisons["C_self"]["ci_99"][0] > 0
     xf4 = curve_deltas["v_only"]["ci_99"][1] < 0 and curve_deltas["mixed"]["ci_99"][0] > 0
+    forward_means = {arm: evaluation["mean_forwards"] for arm, evaluation in evaluations.items()}
+    forward_spread = max(forward_means.values()) - min(forward_means.values())
+    budget_matching = {
+        "arm_mean_forwards": forward_means,
+        "max_arm_mean_difference": forward_spread,
+        "threshold": 0.5,
+        "required": forward_spread > 0.5,
+        "control": None,
+    }
+    if budget_matching["required"]:
+        raise ValueError("budget-matched control required before XF adjudication")
     result = {
         "schema_version": 1,
         "status": "PASS",
@@ -329,6 +379,9 @@ def main():
         "full_image_single_models": strip_successes(full_single),
         "curves": strip_successes(curves),
         "paired_N16_minus_N4": curve_deltas,
+        "proposer_rank_containment": rank_containment,
+        "budget_matching": budget_matching,
+        "cluster_fallback_rows": sum(value.get("cluster_fallback") is not None for value in consensus_rows.values()),
         "mde": mde,
         "XF1": xf1,
         "XF2": xf2,
