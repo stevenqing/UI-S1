@@ -1,0 +1,251 @@
+{
+  "artifact_count": 47,
+  "artifacts": {
+    "raw/ac-proposer-ablation.jsonl": {
+      "bytes": 1152934,
+      "rows": 238,
+      "sha256": "89a1d0d3e65673cd54119e241bc85cee71b45c26ae31b29701a64e91b057310a"
+    },
+    "raw/mind2web-consensus-roi.jsonl": {
+      "bytes": 15420601,
+      "rows": 2080,
+      "sha256": "8a23ae6a447141eb04673691574c470655ea32e93b6a17d2ebc9531eebb2ea37"
+    },
+    "raw/mind2web-proposer-ablation.jsonl": {
+      "bytes": 1806807,
+      "rows": 416,
+      "sha256": "e4affe2e49b10bfec183a19b0cbaa1fc7d9acf23a9c6cb9fe75614e8ef9bea04"
+    },
+    "raw/stage1/cogagent/shard-0.jsonl": {
+      "bytes": 610985,
+      "rows": 520,
+      "sha256": "2e0ed130f96946debfa714e9c07ca1dc1d275ce9ba07c137244f1fe0ca08b6ed"
+    },
+    "raw/stage1/cogagent/shard-1.jsonl": {
+      "bytes": 614091,
+      "rows": 520,
+      "sha256": "fed4881f6e4689519d5e3db6e0ca6a5e480530d9627373106ee60c0b0061ceaf"
+    },
+    "raw/stage1/cogagent/shard-2.jsonl": {
+      "bytes": 614430,
+      "rows": 520,
+      "sha256": "13b7e66e55ec35fb3518efa97800e838e101aa5e02d6ffbcc0eb61e564b3f699"
+    },
+    "raw/stage1/cogagent/shard-3.jsonl": {
+      "bytes": 616895,
+      "rows": 520,
+      "sha256": "c27821d7f4f0e0e3a7afddf7db9f2c881f1e99eb8dd7965551180e5f16e40ea8"
+    },
+    "raw/stage1/tongui/shard-0.jsonl": {
+      "bytes": 713013,
+      "rows": 1040,
+      "sha256": "216ce6ca9b518d85d0e4ec43e0b0072cf55ac6d235d71eafa597048f1f072196"
+    },
+    "raw/stage1/tongui/shard-1.jsonl": {
+      "bytes": 713420,
+      "rows": 1040,
+      "sha256": "fe87e181fdc583eb5500eecb8bf9ca057f148cdd8d1ee0870020d635a7cf1b5b"
+    },
+    "raw/stage1/uitars/shard-0.jsonl": {
+      "bytes": 673670,
+      "rows": 1040,
+      "sha256": "abf3c641faf82a734fc9de13707fbe7d51f62609760889f1d6c896728ca4ec3a"
+    },
+    "raw/stage1/uitars/shard-1.jsonl": {
+      "bytes": 674964,
+      "rows": 1040,
+      "sha256": "557a228af00de6b1e8002c988483faa6c15ce69b1afc49979df19da35e1d05e5"
+    },
+    "raw/stage1/view1/cogagent/shard-0.jsonl": {
+      "bytes": 726526,
+      "rows": 520,
+      "sha256": "d747d78f6ad10ab11c7ed6a3d2691b7fc97d40d69c39dc4d0d995eaec68032c5"
+    },
+    "raw/stage1/view1/cogagent/shard-1.jsonl": {
+      "bytes": 729633,
+      "rows": 520,
+      "sha256": "313bb6c266ca04b3a8c512b0789a561eb43dbb194ea3ffa7cfdaa287dacceaf8"
+    },
+    "raw/stage1/view1/cogagent/shard-2.jsonl": {
+      "bytes": 732982,
+      "rows": 520,
+      "sha256": "8afcf9a25d8ad9e7622c62239a643145a9251ea9c46b981dc81d6a01c232a947"
+    },
+    "raw/stage1/view1/cogagent/shard-3.jsonl": {
+      "bytes": 731239,
+      "rows": 520,
+      "sha256": "b1325221d74b80be8b6daf33cf98bd5c6d4c1ac2df122c0b190ac8e54973bb02"
+    },
+    "raw/stage1/view1/tongui/shard-0.jsonl": {
+      "bytes": 950528,
+      "rows": 1040,
+      "sha256": "a0c02aaa3a994f5c21be07e5106c5037196ed34bf9bf5c7a1be35ae5e8ab156b"
+    },
+    "raw/stage1/view1/tongui/shard-1.jsonl": {
+      "bytes": 952340,
+      "rows": 1040,
+      "sha256": "c691394fb81463365f7b8b2049d06310f21f89086df4550d8c88bda13ad16f7a"
+    },
+    "raw/stage1/view1/uitars/shard-0.jsonl": {
+      "bytes": 917619,
+      "rows": 1040,
+      "sha256": "d304dd08ec9500606813a19ebacf1fffc05422a2d1c348e1f6c29cdd8dfa5967"
+    },
+    "raw/stage1/view1/uitars/shard-1.jsonl": {
+      "bytes": 918200,
+      "rows": 1040,
+      "sha256": "6a40a1d06ce8652fc4ce873515aa9a0a6f080794fd53b6fe93444b47a4c7a20c"
+    },
+    "raw/stage2/cogagent/shard-0.jsonl": {
+      "bytes": 1833698,
+      "rows": 260,
+      "sha256": "6cf4aab6eb84c75c9d4d7e3d58d7739b550d6c965a8e476112054e25dbaf7ca8"
+    },
+    "raw/stage2/cogagent/shard-1.jsonl": {
+      "bytes": 1814201,
+      "rows": 260,
+      "sha256": "a1af3a7be977052931cb0bc3282a0a52c0514fe91b0bd03395adc6dd1edeb4ed"
+    },
+    "raw/stage2/cogagent/shard-2.jsonl": {
+      "bytes": 1859888,
+      "rows": 260,
+      "sha256": "cfbe2385703853ff81e81dbd003e3bef0bd5aefb8d2a00ec94858e3e02aba36b"
+    },
+    "raw/stage2/cogagent/shard-3.jsonl": {
+      "bytes": 1828295,
+      "rows": 260,
+      "sha256": "79db0890d5e24a11b2db8c3783769a67b6a4beba45831c786a5069882a61d9bb"
+    },
+    "raw/stage2/cogagent/shard-4.jsonl": {
+      "bytes": 1823575,
+      "rows": 260,
+      "sha256": "06a95bbc2e8f4f6f11ad8a819ded30f0bb82878350ef991f2fb78e02f74a8537"
+    },
+    "raw/stage2/cogagent/shard-5.jsonl": {
+      "bytes": 1841774,
+      "rows": 260,
+      "sha256": "36a61a35a674d02b0474faa5db500094a5157cb293620d2684e12363a66a7d74"
+    },
+    "raw/stage2/cogagent/shard-6.jsonl": {
+      "bytes": 1836853,
+      "rows": 260,
+      "sha256": "3ecd8a2f750a5fbcd994d650f4ff81431ad84015339af48b69cbdf1596c460f2"
+    },
+    "raw/stage2/cogagent/shard-7.jsonl": {
+      "bytes": 1837025,
+      "rows": 260,
+      "sha256": "3f86b4000862b39831493ff56a61fe771c19253d37fd8fe9176ff1ebce0b13c9"
+    },
+    "raw/stage2/tongui/shard-0.jsonl": {
+      "bytes": 822436,
+      "rows": 260,
+      "sha256": "77334aa9bc6eb6d07e1f287286cbf246d65ec92a696630a846582991291e6e5a"
+    },
+    "raw/stage2/tongui/shard-1.jsonl": {
+      "bytes": 826119,
+      "rows": 260,
+      "sha256": "60603b39ebf327bbb29fd275271d7874ec030815f975a345fb3ab4610277a217"
+    },
+    "raw/stage2/tongui/shard-2.jsonl": {
+      "bytes": 822798,
+      "rows": 260,
+      "sha256": "d2e42384ad1785335b94318700971943fcc86876d56020863981c2da0afc46bf"
+    },
+    "raw/stage2/tongui/shard-3.jsonl": {
+      "bytes": 824743,
+      "rows": 260,
+      "sha256": "35639e754491bacff6571b56608ac0ba188c54d1a1d811ffc350dcffef5b22ab"
+    },
+    "raw/stage2/tongui/shard-4.jsonl": {
+      "bytes": 827349,
+      "rows": 260,
+      "sha256": "d6c402aeab465f5766cc2d2c0c69974a9b69aa3427c12b1255bdd0efa96bc4f4"
+    },
+    "raw/stage2/tongui/shard-5.jsonl": {
+      "bytes": 825947,
+      "rows": 260,
+      "sha256": "ed85e0dfa15f949e2320397f1a740052feb9fdc5f391b8a4bfbd74204e9be3b2"
+    },
+    "raw/stage2/tongui/shard-6.jsonl": {
+      "bytes": 822453,
+      "rows": 260,
+      "sha256": "c91d8126cd3753ab4cde70606bf8b8730716904e831b6f1d74a088c0d409b66b"
+    },
+    "raw/stage2/tongui/shard-7.jsonl": {
+      "bytes": 830478,
+      "rows": 260,
+      "sha256": "32dc17b8bcfc7f13c9899ca5d86ac195588582db19cf0aaa7ef6e726c6bc4882"
+    },
+    "raw/stage2/uitars/shard-0.jsonl": {
+      "bytes": 754887,
+      "rows": 260,
+      "sha256": "77747d9bb117e4bc1e5c8153db852521636789c2e05972cede39f1767895a6b3"
+    },
+    "raw/stage2/uitars/shard-1.jsonl": {
+      "bytes": 755425,
+      "rows": 260,
+      "sha256": "04fe4a2a5fc8cbeb5a2753ee1320c64bf77465c9d56a54e856faf0218463e43f"
+    },
+    "raw/stage2/uitars/shard-2.jsonl": {
+      "bytes": 755269,
+      "rows": 260,
+      "sha256": "cc676aa023b1c6e3760e9c8c029699411fdfce4b10220fe03a9a1dc446cd2973"
+    },
+    "raw/stage2/uitars/shard-3.jsonl": {
+      "bytes": 754843,
+      "rows": 260,
+      "sha256": "6896a6adff9e76ca660fb3b645d8ca72e25dd418b8ed16550e29c1a77cc7d0ad"
+    },
+    "raw/stage2/uitars/shard-4.jsonl": {
+      "bytes": 756505,
+      "rows": 260,
+      "sha256": "90f2fdbcb59a3b9a941df7c7bda568db5f189ae9cb2c9cf095243666401532dd"
+    },
+    "raw/stage2/uitars/shard-5.jsonl": {
+      "bytes": 754547,
+      "rows": 260,
+      "sha256": "8dd456e7ca80ea8b4c4b9113da00545f58a5d0fd67342e6d25b6d9d6e9414cc6"
+    },
+    "raw/stage2/uitars/shard-6.jsonl": {
+      "bytes": 754864,
+      "rows": 260,
+      "sha256": "4b93be87a3c161da04aa5eb9b3e169859ce3677be5ddebc38c6bae6dee406563"
+    },
+    "raw/stage2/uitars/shard-7.jsonl": {
+      "bytes": 755775,
+      "rows": 260,
+      "sha256": "38336c4ed406592d6f7007f2b33aa74d927789ce02c155c02d3ff7ba6a20b11d"
+    },
+    "raw/views/tongui/shard-0.jsonl": {
+      "bytes": 3222912,
+      "rows": 520,
+      "sha256": "8ba497b65b70ae325665bcfe16427a3b0fdfa3a59d8a9f1be52c5c445a79fe24"
+    },
+    "raw/views/tongui/shard-1.jsonl": {
+      "bytes": 3235730,
+      "rows": 520,
+      "sha256": "6e8b6e3c177b0de2f942905fc3e117b005c4883985ea0532a26c1a7518714887"
+    },
+    "raw/views/tongui/shard-2.jsonl": {
+      "bytes": 3227787,
+      "rows": 520,
+      "sha256": "76074209ce6af74f6650f517da0a45679f8551b94093fdb7a1ecde4f2384ed51"
+    },
+    "raw/views/tongui/shard-3.jsonl": {
+      "bytes": 3234990,
+      "rows": 520,
+      "sha256": "34b2ad54c65db0b274eab2a05d9a7585799807446624f5fd30bd0a279e36b3e4"
+    }
+  },
+  "durable_full_trace_backup": "/scratch/workspaceblobstore/xfer-traces/2026-08-07/BACKUP_MANIFEST.json",
+  "excluded": [
+    "model weights",
+    "benchmark images and archives",
+    "AndroidControl source parquet files",
+    "incomplete AndroidControl formal inference traces"
+  ],
+  "schema_version": 1,
+  "scope": "Mind2Web Q1 paired row-level reproducibility plus AC proposer ablation",
+  "status": "PASS",
+  "total_bytes": 70512043
+}
