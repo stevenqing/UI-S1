@@ -1,0 +1,27 @@
+schema_version: 1
+frozen_at: 2026-08-08
+status: RESULT_BLIND_BEFORE_E3_COMPUTATION
+benchmarks: [screenspot_pro, mind2web]
+containment:
+  metric: full_bbox_containment
+  ranks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+budget_curve:
+  pool: v_only
+  comparison: N16_minus_N4
+  interval: 99_percentile
+hypothesis:
+  statement: significant_V_only_decline_requires_both_higher_rank0_containment_and_larger_rank0_to_rank11_drop
+  support_requires:
+    - screenspot_rank0_containment_gt_mind2web_rank0_containment
+    - screenspot_rank0_to_rank11_drop_gt_mind2web_rank0_to_rank11_drop
+    - screenspot_V_only_N16_minus_N4_ci_upper_lt_zero
+    - mind2web_V_only_N16_minus_N4_ci_includes_zero
+  interpretation_if_pass: mechanism_supported_with_high_start_condition
+  interpretation_if_fail: XF4_unsupported_rank_decay_limited_to_screenspot
+limitations:
+  - only_two_benchmark_points
+  - qualitative_mechanism_support_not_a_fitted_law
+  - no_causal_claim
+plot:
+  output: fig_containment.pdf
+  panels: [containment_by_rank, v_only_budget_curve]

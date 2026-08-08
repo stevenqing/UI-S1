@@ -1,9 +1,10 @@
 {
   "schema_version": 1,
-  "status": "PAUSED_BY_CLOSURE_SPEC",
+  "status": "CANCELLED_BY_E_K1",
   "paused_at": "2026-08-08",
   "external_pid_2274_untouched": true,
-  "resume_allowed_only_if": "E1_and_E2_pass",
+  "resume_allowed_only_if": "never_under_current_closure_protocol",
+  "cancel_reason": "E1 C-cond-majority failed the preregistered primary gate on both Mind2Web and ScreenSpot-Pro; E2 and AndroidControl cancelled",
   "completed_rows": {
     "ui-agile/low": 2000,
     "ui-agile/high": 2000,
