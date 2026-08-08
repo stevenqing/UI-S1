@@ -1,0 +1,576 @@
+{
+  "action_spaces": {
+    "mind2web": {
+      "action_strata": [
+        "CLICK",
+        "TYPE",
+        "SELECT"
+      ],
+      "dimensions": "action_type_x_coordinate_x_parameter",
+      "kind": "product_action"
+    },
+    "screenspot_pro": {
+      "dimensions": "implicit_single_action_x_2d_coordinate",
+      "kind": "coordinate_only"
+    }
+  },
+  "analysis_role": "NEW_PRIMARY_RESULT",
+  "benchmarks": {
+    "mind2web": {
+      "comparisons": {
+        "C_cond": {
+          "A1_geometric_median": {
+            "ci_99": [
+              0.04120601066408144,
+              0.09099774833434617
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.06682692307692308,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              0.022804401647196406,
+              0.07362545921292724
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 0.00019998000199980003,
+            "point_delta": 0.04855769230769231,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              0.022476596064110028,
+              0.07383182531663839
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 0.00019998000199980003,
+            "point_delta": 0.04855769230769231,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              0.16226040562650282,
+              0.21506952784916497
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.18846153846153846,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "sequential": {
+            "ci_99": [
+              -0.01711505413901502,
+              0.032440916447095625
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 0.22977702229777022,
+            "point_delta": 0.007211538461538462,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          }
+        },
+        "C_rand": {
+          "A1_geometric_median": {
+            "ci_99": [
+              0.0779154978898099,
+              0.1267470228904392
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.10240384615384615,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              0.1083557458370017,
+              0.16318018951390037
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.13557692307692307,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              0.10857739887099846,
+              0.16318013764320266
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.13557692307692307,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              0.24134651695668335,
+              0.2959240226298841
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.26826923076923076,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "sequential": {
+            "ci_99": [
+              0.008893140470383764,
+              0.06118300704694572
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 0.00029997000299970003,
+            "point_delta": 0.03461538461538462,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          }
+        },
+        "C_self": {
+          "A1_geometric_median": {
+            "ci_99": [
+              0.03685491908751243,
+              0.09018837105246916
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.06442307692307692,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              0.021719789910175032,
+              0.07738102260724959
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.05,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              0.021521252905426645,
+              0.077322094072214
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.05,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              0.14682873038771652,
+              0.2000943990776638
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.17307692307692307,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "sequential": {
+            "ci_99": [
+              0.0019059733760043583,
+              0.05463310181198109
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 0.0028997100289971,
+            "point_delta": 0.028365384615384615,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          }
+        },
+        "C_uni": {
+          "A1_geometric_median": {
+            "ci_99": [
+              0.05985143141555234,
+              0.1156788367417305
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.08798076923076924,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              0.05020239004184008,
+              0.10716085726596596
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.07836538461538461,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              0.050588299787285906,
+              0.10744256528062719
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.07884615384615384,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              0.16164839509463225,
+              0.2130457821270982
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.18701923076923077,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          },
+          "sequential": {
+            "ci_99": [
+              0.024987628793291132,
+              0.08040725805987978
+            ],
+            "groups": 252,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.05336538461538461,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20260809
+          }
+        }
+      }
+    },
+    "screenspot_pro": {
+      "comparisons": {
+        "C_cond": {
+          "A1_geometric_median": {
+            "ci_99": [
+              -0.027388286351614794,
+              0.017133330362522774
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.7070292970702929,
+            "point_delta": -0.004427577482605946,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              -0.0703071938993174,
+              -0.03646814928770535
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.053763440860215055,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              -0.0703071938993174,
+              -0.03646814928770535
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.053763440860215055,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              -0.06947904727992968,
+              -0.03435972818945542
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.05186590765338393,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "B3_official": {
+            "ci_99": [
+              -0.06543972428029617,
+              -0.0312889158322904
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.0480708412397217,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          }
+        },
+        "C_rand": {
+          "A1_geometric_median": {
+            "ci_99": [
+              0.19649527250924648,
+              0.3254248697207345
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+            "point_delta": 0.25869702719797594,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              -0.024830687903091234,
+              0.03194341429652152
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.40345965403459655,
+            "point_delta": 0.0031625553447185324,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              -0.024830687903091234,
+              0.03194341429652152
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.40345965403459655,
+            "point_delta": 0.0031625553447185324,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              -0.026667894239848916,
+              0.028302269250382397
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.4938506149385061,
+            "point_delta": 0.0006325110689437065,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "B3_official": {
+            "ci_99": [
+              -0.031520511693116864,
+              0.017835288174310297
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.7691230876912308,
+            "point_delta": -0.006957621758380772,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          }
+        },
+        "C_self": {
+          "A1_geometric_median": {
+            "ci_99": [
+              -0.01991022154994928,
+              0.024898236727238374
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.36966303369663034,
+            "point_delta": 0.0031625553447185324,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              -0.06195284277244912,
+              -0.02291894215869156
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.04174573055028463,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              -0.06195284277244912,
+              -0.02291894215869156
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.04174573055028463,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              -0.0646606914212548,
+              -0.023994913764105397
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.04364326375711575,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "B3_official": {
+            "ci_99": [
+              -0.06312068618849162,
+              -0.01898333541326262
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.0392156862745098,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          }
+        },
+        "C_uni": {
+          "A1_geometric_median": {
+            "ci_99": [
+              -0.028290369949853345,
+              0.018382374747051844
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 0.7171282871712829,
+            "point_delta": -0.005060088551549652,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A2_density_medoid": {
+            "ci_99": [
+              -0.06112163690908965,
+              -0.020793938172196384
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.04048070841239722,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A3_joint_PKA_medoid": {
+            "ci_99": [
+              -0.06112163690908965,
+              -0.020793938172196384
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.04048070841239722,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "A4_continuous_PKA": {
+            "ci_99": [
+              -0.06112173752503421,
+              -0.02153970404020598
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.041113219481340925,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          },
+          "B3_official": {
+            "ci_99": [
+              -0.058365793168636666,
+              -0.01917976749631309
+            ],
+            "groups": 26,
+            "p_delta_le_zero_plus_one": 1.0,
+            "point_delta": -0.038583175205566096,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20260810
+          }
+        }
+      }
+    }
+  },
+  "config": "configs/f1_families.yaml",
+  "config_sha256": "4bfc34026654ef2428629f0c6740dc098269d0a10d2d30695e891df5624472ed",
+  "effect_convention": "majority_minus_density",
+  "gates": {
+    "F_K1": false,
+    "F_K2": false,
+    "mind2web_A1_A4_all_point_positive": true,
+    "mind2web_sequential_ci_lower_gt_zero": true,
+    "mind2web_sequential_delta_gt_mde": true,
+    "new_primary_line_pass": true,
+    "screenspot_A2_opposite_ci_upper_lt_zero": true
+  },
+  "mind2web_action_strata": {
+    "CLICK": {
+      "ci_99": [
+        0.028616926844199576,
+        0.09546515369617191
+      ],
+      "groups": 252,
+      "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+      "point_delta": 0.06257046223224352,
+      "resamples": 10000,
+      "rows": 1774,
+      "seed": 20260909
+    },
+    "SELECT": {
+      "ci_99": [
+        -0.058823529411764705,
+        0.0
+      ],
+      "groups": 43,
+      "p_delta_le_zero_plus_one": 1.0,
+      "point_delta": -0.012658227848101266,
+      "resamples": 10000,
+      "rows": 79,
+      "seed": 20260911
+    },
+    "TYPE": {
+      "ci_99": [
+        -0.02475319419908796,
+        0.036364466583644534
+      ],
+      "groups": 146,
+      "p_delta_le_zero_plus_one": 0.42485751424857515,
+      "point_delta": 0.004405286343612335,
+      "resamples": 10000,
+      "rows": 227,
+      "seed": 20260910
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

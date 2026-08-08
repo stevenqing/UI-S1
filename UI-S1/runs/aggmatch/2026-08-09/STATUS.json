@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_F1_PRIMARY_F3_APPENDIX",
+  "workdir": "runs/aggmatch/2026-08-09",
+  "F0": {
+    "status": "PASS_ARCHIVED",
+    "result": "f0_ac_archive.json",
+    "backup_root": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09",
+    "backup_manifest": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/BACKUP_MANIFEST.json",
+    "lanes": 6,
+    "rows_across_lanes": 10768
+  },
+  "F1": {
+    "status": "PASS_NEW_PRIMARY_RESULT",
+    "F_K1": false,
+    "F_K2": false,
+    "mind2web_C_uni_majority_minus_sequential_pp": 5.336538461538461,
+    "screenspot_C_uni_majority_minus_A2_pp": -4.048070841239722
+  },
+  "F2": {
+    "status": "PASS_POST_HOC_EXPLORATORY",
+    "F_K4": false,
+    "may_reinstate_four_arm_claim": false
+  },
+  "F3": {
+    "status": "PASS_APPENDIX_ONLY",
+    "F_K3": true,
+    "low_rows": 1096,
+    "high_rows": 1056,
+    "pool_forwards_per_row": 3,
+    "four_arm_status": "CANCELLED_UNCHANGED",
+    "C_cond_conclusion": "PROHIBITED_NOT_EVALUATED"
+  },
+  "primary_claim": "two_benchmark_empirical_aggregator_matching_by_action_space_and_error_structure",
+  "claim_boundaries": {
+    "causal_parameter_action_mechanism": false,
+    "androidcontrol_third_primary_data_point": false,
+    "aggregator_independent_C_cond_superiority": false,
+    "absolute_or_SOTA_claim": false
+  },
+  "cleanup_protection": {
+    "recursive_raw_deletion": "PROHIBITED",
+    "protected_patterns": [
+      "raw/",
+      "predictions*.jsonl",
+      "*.jsonl"
+    ]
+  },
+  "external_pid_2274_untouched": true,
+  "new_inference_started": false
+}

@@ -1,0 +1,505 @@
+{
+  "C_cond_conclusion": "PROHIBITED_NOT_EVALUATED",
+  "analysis_scope": "SAME_POOL_AGGREGATOR_COMPARISON_ONLY",
+  "androidcontrol_action_space": "product_action_type_x_coordinate_x_parameter_including_parameterless_actions",
+  "collection_context": "partial_completed_subset_from_a_cancelled_protocol_with_sampling_bias_risk",
+  "config": "configs/f3_rows.yaml",
+  "config_sha256": "7a713d41dac0911d17b1262af9aa720c44a0550646bbc113142a2ce635a3b108",
+  "four_arm_status": "CANCELLED_UNCHANGED",
+  "gates": {
+    "F_K3": true,
+    "bias_over_2pp": true,
+    "intersection_failure": false
+  },
+  "high": {
+    "accuracy": {
+      "A1": 0.5833333333333334,
+      "A2": 0.5890151515151515,
+      "A3": 0.5132575757575758,
+      "A4": 0.5142045454545454,
+      "majority": 0.603219696969697,
+      "sequential": 0.59375
+    },
+    "direction_matches_Mind2Web": true,
+    "episodes": 552,
+    "folds": [
+      {
+        "dev_rows": 857,
+        "fold": 0,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.4807467911318553,
+          "UI-AGILE-7B": 0.6441073512252042,
+          "UI-R1-E-3B": 0.2427071178529755
+        },
+        "test_rows": 199,
+        "weights": {
+          "GUI-R1-7B": 0.6628787878787878,
+          "UI-AGILE-7B": 0.6534090909090909,
+          "UI-R1-E-3B": 0.3484848484848485
+        }
+      },
+      {
+        "dev_rows": 850,
+        "fold": 1,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.4717647058823529,
+          "UI-AGILE-7B": 0.62,
+          "UI-R1-E-3B": 0.24705882352941178
+        },
+        "test_rows": 206,
+        "weights": {
+          "GUI-R1-7B": 0.6463878326996197,
+          "UI-AGILE-7B": 0.6330798479087453,
+          "UI-R1-E-3B": 0.3669201520912547
+        }
+      },
+      {
+        "dev_rows": 824,
+        "fold": 2,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.47815533980582525,
+          "UI-AGILE-7B": 0.6419902912621359,
+          "UI-R1-E-3B": 0.22936893203883496
+        },
+        "test_rows": 232,
+        "weights": {
+          "GUI-R1-7B": 0.6470588235294118,
+          "UI-AGILE-7B": 0.6450980392156863,
+          "UI-R1-E-3B": 0.33137254901960783
+        }
+      },
+      {
+        "dev_rows": 829,
+        "fold": 3,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.47406513872135103,
+          "UI-AGILE-7B": 0.6344993968636912,
+          "UI-R1-E-3B": 0.2545235223160434
+        },
+        "test_rows": 227,
+        "weights": {
+          "GUI-R1-7B": 0.6568627450980392,
+          "UI-AGILE-7B": 0.6529411764705882,
+          "UI-R1-E-3B": 0.3686274509803922
+        }
+      },
+      {
+        "dev_rows": 864,
+        "fold": 4,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.4722222222222222,
+          "UI-AGILE-7B": 0.6319444444444444,
+          "UI-R1-E-3B": 0.2523148148148148
+        },
+        "test_rows": 192,
+        "weights": {
+          "GUI-R1-7B": 0.6460674157303371,
+          "UI-AGILE-7B": 0.6367041198501873,
+          "UI-R1-E-3B": 0.36329588014981273
+        }
+      }
+    ],
+    "majority_minus_density": {
+      "A1": {
+        "ci_99": [
+          0.0009451751215167143,
+          0.03896140105247906
+        ],
+        "groups": 552,
+        "p_delta_le_zero_plus_one": 0.0035996400359964,
+        "point_delta": 0.019886363636363636,
+        "resamples": 10000,
+        "rows": 1056,
+        "seed": 20260812
+      },
+      "A2": {
+        "ci_99": [
+          -0.0028089887640449437,
+          0.03130930719614403
+        ],
+        "groups": 552,
+        "p_delta_le_zero_plus_one": 0.017598240175982403,
+        "point_delta": 0.014204545454545454,
+        "resamples": 10000,
+        "rows": 1056,
+        "seed": 20260812
+      },
+      "A3": {
+        "ci_99": [
+          0.059098341506878094,
+          0.12100705745820974
+        ],
+        "groups": 552,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.08996212121212122,
+        "resamples": 10000,
+        "rows": 1056,
+        "seed": 20260812
+      },
+      "A4": {
+        "ci_99": [
+          0.05730119519767421,
+          0.1213874213905989
+        ],
+        "groups": 552,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.08901515151515152,
+        "resamples": 10000,
+        "rows": 1056,
+        "seed": 20260812
+      },
+      "sequential": {
+        "ci_99": [
+          -0.0009737145796439601,
+          0.020561036708738753
+        ],
+        "groups": 552,
+        "p_delta_le_zero_plus_one": 0.013998600139986002,
+        "point_delta": 0.00946969696969697,
+        "resamples": 10000,
+        "rows": 1056,
+        "seed": 20260812
+      }
+    },
+    "max_absolute_bias": 0.029124600965545477,
+    "pool": {
+      "forwards_per_row": 3,
+      "model_count": 3,
+      "models": [
+        "UI-AGILE-7B",
+        "GUI-R1-7B",
+        "UI-R1-E-3B"
+      ],
+      "not_Mind2Web_12_forward_pool": true,
+      "stages": [
+        "stage1"
+      ],
+      "views_per_model": 1
+    },
+    "row_ids_sha256": "a45d31ad92105fc9617c3d4e3dcb84be73fba26dbc22917b18a93a6ccb409d40",
+    "rows": 1056,
+    "single_model_subset_bias": {
+      "GUI-R1-7B": {
+        "absolute_delta": 0.02571609976254502,
+        "delta_subset_minus_historical": 0.02571609976254502,
+        "historical_full_step_sr": 0.4496626881162429,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/high/score.json",
+        "historical_source_sha256": "a7c45f65ecaf98cbfd47de45c0ead6a70e09479fe18a1bb25c374eceed9f77a7",
+        "subset_step_sr": 0.4753787878787879
+      },
+      "UI-AGILE-7B": {
+        "absolute_delta": 0.029124600965545477,
+        "delta_subset_minus_historical": 0.029124600965545477,
+        "historical_full_step_sr": 0.6053450960041515,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/high/score.json",
+        "historical_source_sha256": "d5999f117e4530945b77e69af6d90fd88e6bcaa025e1830e880ee7989a5c358b",
+        "subset_step_sr": 0.634469696969697
+      },
+      "UI-R1-E-3B": {
+        "absolute_delta": 0.01641201191992578,
+        "delta_subset_minus_historical": 0.01641201191992578,
+        "historical_full_step_sr": 0.22885313959522574,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-r1-e-3b/high/score.json",
+        "historical_source_sha256": "78fec3850aebdf4d3ecdac0836e2f82b4329978de2b4df727c8e3a17097da476",
+        "subset_step_sr": 0.24526515151515152
+      }
+    },
+    "source_files": {
+      "GUI-R1-7B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/high/shard-0.jsonl",
+          "sha256": "313a134dbfa7c00a95af9508a8c7b7ba6dbc55e9a9bae0629686deeb51bfaab3"
+        }
+      ],
+      "UI-AGILE-7B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-0.jsonl",
+          "sha256": "a4f2298f9e856b96f3ed78512b86b820f2c94a0e5606be6f857fa689444a4d5f"
+        },
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-1.jsonl",
+          "sha256": "b239a8345d3563fd90df964b917c63847f79466e6b5c4c27c8cd5f43418dc104"
+        }
+      ],
+      "UI-R1-E-3B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/high/shard-0.jsonl",
+          "sha256": "3ed11a3adb99294b5a42aeba48a23bd29dd58d49c13915f6a147a31ca9da5b35"
+        }
+      ]
+    },
+    "status": "PASS"
+  },
+  "limitation": "Rows are a partially completed subset collected under a cancelled protocol; subset-vs-historical single-model deltas estimate selection and rerun bias.",
+  "low": {
+    "accuracy": {
+      "A1": 0.7627737226277372,
+      "A2": 0.7627737226277372,
+      "A3": 0.7253649635036497,
+      "A4": 0.7253649635036497,
+      "majority": 0.7755474452554745,
+      "sequential": 0.7682481751824818
+    },
+    "direction_matches_Mind2Web": true,
+    "episodes": 571,
+    "folds": [
+      {
+        "dev_rows": 894,
+        "fold": 0,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.5894854586129754,
+          "UI-AGILE-7B": 0.7874720357941835,
+          "UI-R1-E-3B": 0.5044742729306487
+        },
+        "test_rows": 202,
+        "weights": {
+          "GUI-R1-7B": 0.8457350272232305,
+          "UI-AGILE-7B": 0.8838475499092558,
+          "UI-R1-E-3B": 0.7840290381125227
+        }
+      },
+      {
+        "dev_rows": 886,
+        "fold": 1,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.5970654627539503,
+          "UI-AGILE-7B": 0.781038374717833,
+          "UI-R1-E-3B": 0.5022573363431151
+        },
+        "test_rows": 210,
+        "weights": {
+          "GUI-R1-7B": 0.8469945355191257,
+          "UI-AGILE-7B": 0.8761384335154827,
+          "UI-R1-E-3B": 0.7832422586520947
+        }
+      },
+      {
+        "dev_rows": 850,
+        "fold": 2,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.6,
+          "UI-AGILE-7B": 0.7717647058823529,
+          "UI-R1-E-3B": 0.5023529411764706
+        },
+        "test_rows": 246,
+        "weights": {
+          "GUI-R1-7B": 0.8481973434535104,
+          "UI-AGILE-7B": 0.872865275142315,
+          "UI-R1-E-3B": 0.7836812144212524
+        }
+      },
+      {
+        "dev_rows": 855,
+        "fold": 3,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.6081871345029239,
+          "UI-AGILE-7B": 0.7859649122807018,
+          "UI-R1-E-3B": 0.519298245614035
+        },
+        "test_rows": 241,
+        "weights": {
+          "GUI-R1-7B": 0.8614800759013282,
+          "UI-AGILE-7B": 0.889943074003795,
+          "UI-R1-E-3B": 0.8102466793168881
+        }
+      },
+      {
+        "dev_rows": 899,
+        "fold": 4,
+        "priority": [
+          "UI-AGILE-7B",
+          "GUI-R1-7B",
+          "UI-R1-E-3B"
+        ],
+        "reliability": {
+          "GUI-R1-7B": 0.6028921023359288,
+          "UI-AGILE-7B": 0.778642936596218,
+          "UI-R1-E-3B": 0.5083426028921023
+        },
+        "test_rows": 197,
+        "weights": {
+          "GUI-R1-7B": 0.8592057761732852,
+          "UI-AGILE-7B": 0.8790613718411552,
+          "UI-R1-E-3B": 0.7906137184115524
+        }
+      }
+    ],
+    "majority_minus_density": {
+      "A1": {
+        "ci_99": [
+          -0.004608358816664821,
+          0.030461318887434325
+        ],
+        "groups": 571,
+        "p_delta_le_zero_plus_one": 0.032396760323967606,
+        "point_delta": 0.012773722627737226,
+        "resamples": 10000,
+        "rows": 1096,
+        "seed": 20260811
+      },
+      "A2": {
+        "ci_99": [
+          -0.004608358816664821,
+          0.030461318887434325
+        ],
+        "groups": 571,
+        "p_delta_le_zero_plus_one": 0.032396760323967606,
+        "point_delta": 0.012773722627737226,
+        "resamples": 10000,
+        "rows": 1096,
+        "seed": 20260811
+      },
+      "A3": {
+        "ci_99": [
+          0.027173790084595712,
+          0.07529843893480258
+        ],
+        "groups": 571,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.05018248175182482,
+        "resamples": 10000,
+        "rows": 1096,
+        "seed": 20260811
+      },
+      "A4": {
+        "ci_99": [
+          0.026556291944065665,
+          0.07518135981787864
+        ],
+        "groups": 571,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.05018248175182482,
+        "resamples": 10000,
+        "rows": 1096,
+        "seed": 20260811
+      },
+      "sequential": {
+        "ci_99": [
+          -0.0064220478344748574,
+          0.020851532085253713
+        ],
+        "groups": 571,
+        "p_delta_le_zero_plus_one": 0.09669033096690331,
+        "point_delta": 0.0072992700729927005,
+        "resamples": 10000,
+        "rows": 1096,
+        "seed": 20260811
+      }
+    },
+    "max_absolute_bias": 0.022218834162250622,
+    "pool": {
+      "forwards_per_row": 3,
+      "model_count": 3,
+      "models": [
+        "UI-AGILE-7B",
+        "GUI-R1-7B",
+        "UI-R1-E-3B"
+      ],
+      "not_Mind2Web_12_forward_pool": true,
+      "stages": [
+        "stage1"
+      ],
+      "views_per_model": 1
+    },
+    "row_ids_sha256": "707822008c9d32ebea297f69d3d16ae96a8face70f9ae85f33f5f3f6219cebcf",
+    "rows": 1096,
+    "single_model_subset_bias": {
+      "GUI-R1-7B": {
+        "absolute_delta": 0.017330084583653704,
+        "delta_subset_minus_historical": 0.017330084583653704,
+        "historical_full_step_sr": 0.5821224701608718,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/gui-r1-7b/low/score.json",
+        "historical_source_sha256": "80e347852de8a2abfd0070d3e02f79f0ab25b8e1cbc077eb4df9e8b172595a1e",
+        "subset_step_sr": 0.5994525547445255
+      },
+      "UI-AGILE-7B": {
+        "absolute_delta": 0.005464035848620652,
+        "delta_subset_minus_historical": 0.005464035848620652,
+        "historical_full_step_sr": 0.7755578619615984,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-7b/low/score.json",
+        "historical_source_sha256": "e64ce51215be564f59d922a081a9aa409d8bb49ff2005bd34fb7fc82c7cae08f",
+        "subset_step_sr": 0.781021897810219
+      },
+      "UI-R1-E-3B": {
+        "absolute_delta": 0.022218834162250622,
+        "delta_subset_minus_historical": 0.022218834162250622,
+        "historical_full_step_sr": 0.48508043591074207,
+        "historical_source": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-r1-e-3b/low/score.json",
+        "historical_source_sha256": "61e93dc644e98aeb2e519a45a382f751942659521f9a693447e60ea69858247a",
+        "subset_step_sr": 0.5072992700729927
+      }
+    },
+    "source_files": {
+      "GUI-R1-7B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/low/shard-0.jsonl",
+          "sha256": "28409dca2116dfcb757d967122cc5663a936f17a439c95168a0add09ec240279"
+        }
+      ],
+      "UI-AGILE-7B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-0.jsonl",
+          "sha256": "de7518dcc2c6288524a6289ccf680a114d84ed598a523a6fea0ea70023ac2b8f"
+        },
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-1.jsonl",
+          "sha256": "63aab88e7fcf602d7e15e9c4508b4b15f22785fe25e1a38388ede96ea3d3c266"
+        }
+      ],
+      "UI-R1-E-3B": [
+        {
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/low/shard-0.jsonl",
+          "sha256": "5768959b6b2e87c8b5e3134dfc7fb3a631325cb657214e8553c3522c909704a5"
+        }
+      ]
+    },
+    "status": "PASS"
+  },
+  "schema_version": 1,
+  "status": "PASS_APPENDIX_ONLY"
+}

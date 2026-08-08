@@ -1,0 +1,134 @@
+{
+  "androidcontrol_four_arm_status": "CANCELLED_BY_E_K1",
+  "archived_at_utc": "2026-08-08T22:17:33.960611+00:00",
+  "backup_manifest": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/BACKUP_MANIFEST.json",
+  "backup_root": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09",
+  "cleanup_protection": {
+    "protected_patterns": [
+      "raw/",
+      "predictions*.jsonl",
+      "*.jsonl"
+    ],
+    "recursive_raw_deletion": "PROHIBITED"
+  },
+  "lanes": {
+    "gui-r1/high": {
+      "lane_sha256": "313a134dbfa7c00a95af9508a8c7b7ba6dbc55e9a9bae0629686deeb51bfaab3",
+      "model_id": "GUI-R1-7B",
+      "row_ids_sha256": "a45d31ad92105fc9617c3d4e3dcb84be73fba26dbc22917b18a93a6ccb409d40",
+      "rows": 1056,
+      "setting": "high",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/high/shard-0.jsonl",
+          "bytes": 1404312,
+          "rows": 1056,
+          "sha256": "313a134dbfa7c00a95af9508a8c7b7ba6dbc55e9a9bae0629686deeb51bfaab3",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/high/shard-0.jsonl"
+        }
+      ]
+    },
+    "gui-r1/low": {
+      "lane_sha256": "28409dca2116dfcb757d967122cc5663a936f17a439c95168a0add09ec240279",
+      "model_id": "GUI-R1-7B",
+      "row_ids_sha256": "707822008c9d32ebea297f69d3d16ae96a8face70f9ae85f33f5f3f6219cebcf",
+      "rows": 1096,
+      "setting": "low",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/low/shard-0.jsonl",
+          "bytes": 1447831,
+          "rows": 1096,
+          "sha256": "28409dca2116dfcb757d967122cc5663a936f17a439c95168a0add09ec240279",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/low/shard-0.jsonl"
+        }
+      ]
+    },
+    "ui-agile/high": {
+      "lane_sha256": "a93bd76929e6b3c8579a072e9be42010fc5679e85ba9800fab8535647dbe615a",
+      "model_id": "UI-AGILE-7B",
+      "row_ids_sha256": "55e0c25e6235f53e8b8618f764a964b89f9d5b2e7a3493769f144ec3b32778fd",
+      "rows": 2000,
+      "setting": "high",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-0.jsonl",
+          "bytes": 1153161,
+          "rows": 1000,
+          "sha256": "a4f2298f9e856b96f3ed78512b86b820f2c94a0e5606be6f857fa689444a4d5f",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-0.jsonl"
+        },
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-1.jsonl",
+          "bytes": 1152622,
+          "rows": 1000,
+          "sha256": "b239a8345d3563fd90df964b917c63847f79466e6b5c4c27c8cd5f43418dc104",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-1.jsonl"
+        }
+      ]
+    },
+    "ui-agile/low": {
+      "lane_sha256": "721afc1c25704381b548e0fda002c2770f65e3dd7234a22e15e0c781b82e4e57",
+      "model_id": "UI-AGILE-7B",
+      "row_ids_sha256": "55e0c25e6235f53e8b8618f764a964b89f9d5b2e7a3493769f144ec3b32778fd",
+      "rows": 2000,
+      "setting": "low",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-0.jsonl",
+          "bytes": 1143987,
+          "rows": 1000,
+          "sha256": "de7518dcc2c6288524a6289ccf680a114d84ed598a523a6fea0ea70023ac2b8f",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-0.jsonl"
+        },
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-1.jsonl",
+          "bytes": 1143810,
+          "rows": 1000,
+          "sha256": "63aab88e7fcf602d7e15e9c4508b4b15f22785fe25e1a38388ede96ea3d3c266",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-1.jsonl"
+        }
+      ]
+    },
+    "ui-r1-e/high": {
+      "lane_sha256": "3ed11a3adb99294b5a42aeba48a23bd29dd58d49c13915f6a147a31ca9da5b35",
+      "model_id": "UI-R1-E-3B",
+      "row_ids_sha256": "7ef3f335e800904da9ed660645efb742b0b04d286452c4818ba83bf3b7c4c3b0",
+      "rows": 1792,
+      "setting": "high",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/high/shard-0.jsonl",
+          "bytes": 1780012,
+          "rows": 1792,
+          "sha256": "3ed11a3adb99294b5a42aeba48a23bd29dd58d49c13915f6a147a31ca9da5b35",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/high/shard-0.jsonl"
+        }
+      ]
+    },
+    "ui-r1-e/low": {
+      "lane_sha256": "5768959b6b2e87c8b5e3134dfc7fb3a631325cb657214e8553c3522c909704a5",
+      "model_id": "UI-R1-E-3B",
+      "row_ids_sha256": "cd7288db00103c8231af52aa12cef352ab2e57e2b912c7603122faf81d100c2d",
+      "rows": 1824,
+      "setting": "low",
+      "shards": [
+        {
+          "backup_path": "/scratch/workspaceblobstore/aggmatch-traces/2026-08-09/runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/low/shard-0.jsonl",
+          "bytes": 1806323,
+          "rows": 1824,
+          "sha256": "5768959b6b2e87c8b5e3134dfc7fb3a631325cb657214e8553c3522c909704a5",
+          "source_path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/low/shard-0.jsonl"
+        }
+      ]
+    }
+  },
+  "schema_version": 1,
+  "source_root": "runs/xfer/2026-08-07/raw/ac-stage1",
+  "source_writer_row_flush_fsync_verified": {
+    "path": "runs/xfer/2026-08-07/infer/ac_stage1_vllm.py",
+    "sha256": "e71732952d9afc76f94ddcf856696767078c461f94a8251685959017d6ef0ae0"
+  },
+  "status": "PASS",
+  "total_rows_across_lanes": 9768
+}

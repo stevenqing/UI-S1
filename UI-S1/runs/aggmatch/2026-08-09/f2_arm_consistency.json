@@ -1,0 +1,82 @@
+{
+  "F_K4": false,
+  "analysis_role": "POST_HOC_EXPLORATORY_NOT_PREREGISTERED_NOT_A_PRIMARY_GATE",
+  "claim": "arm_ranking_consistent_across_aggregators_but_preregistered_majority_gate_failed",
+  "config": "configs/f1_families.yaml",
+  "config_sha256": "4bfc34026654ef2428629f0c6740dc098269d0a10d2d30695e891df5624472ed",
+  "effect_convention": "C_cond_minus_C_uni_then_mean_across_seven_aggregators_within_each_bootstrap_sample",
+  "mind2web": {
+    "C_cond_best_count": 4,
+    "aggregator_count": 7,
+    "best_arm_by_aggregator": {
+      "A0": "C_uni",
+      "A1": "C_self",
+      "A2": "C_cond",
+      "A3": "C_cond",
+      "A4": "C_self",
+      "majority": "C_cond",
+      "ours": "C_cond"
+    },
+    "combined_C_cond_minus_C_uni": {
+      "ci_99": [
+        0.012283651937488253,
+        0.02945306524928683
+      ],
+      "groups": 252,
+      "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+      "point_delta": 0.020467032967032967,
+      "resamples": 10000,
+      "rows": 2080,
+      "seed": 20261009
+    },
+    "heterogeneity_std_across_aggregators": 0.017848423484079626,
+    "per_aggregator_effects": {
+      "A0": 0.0,
+      "A1": 0.02403846153846154,
+      "A2": 0.032692307692307694,
+      "A3": 0.03317307692307692,
+      "A4": 0.0014423076923076924,
+      "majority": 0.0028846153846153848,
+      "ours": 0.04903846153846154
+    }
+  },
+  "prohibition": "must_not_be_used_to_reinstate_the_primary_four_arm_claim",
+  "schema_version": 1,
+  "screenspot_pro": {
+    "C_cond_best_count": 7,
+    "aggregator_count": 7,
+    "best_arm_by_aggregator": {
+      "A0": "C_cond",
+      "A1": "C_cond",
+      "A2": "C_cond",
+      "A3": "C_cond",
+      "A4": "C_cond",
+      "majority": "C_cond",
+      "ours": "C_cond"
+    },
+    "combined_C_cond_minus_C_uni": {
+      "ci_99": [
+        0.008375680721290893,
+        0.03232744550296354
+      ],
+      "groups": 26,
+      "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+      "point_delta": 0.01924640824071564,
+      "resamples": 10000,
+      "rows": 1581,
+      "seed": 20261010
+    },
+    "heterogeneity_std_across_aggregators": 0.006027678713348845,
+    "per_aggregator_effects": {
+      "A0": 0.01265022137887413,
+      "A1": 0.012017710309930424,
+      "A2": 0.025932953826691967,
+      "A3": 0.025932953826691967,
+      "A4": 0.02340290955091714,
+      "majority": 0.01265022137887413,
+      "ours": 0.022137887413029727
+    }
+  },
+  "shared_candidate_dependence": "handled_by_row_paired_stratified_bootstrap_not_a_sign_test",
+  "status": "PASS"
+}
