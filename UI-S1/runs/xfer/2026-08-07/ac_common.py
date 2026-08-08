@@ -1,4 +1,5 @@
 import ast
+import functools
 import hashlib
 import json
 import sys
@@ -58,6 +59,7 @@ def prompt_text(model_id, sample, templates=None):
     )
 
 
+@functools.lru_cache(maxsize=1)
 def load_official_parsers():
     source_dir = OFFICIAL_REPO / "eval/android_control"
     sys.path.insert(0, str(source_dir))
