@@ -14,6 +14,21 @@ models:
 eligibility:
   operation: exact_row_id_intersection
   require_all_models: true
+  frozen_intersections:
+    low:
+      rows: 1096
+      row_ids_sha256: 707822008c9d32ebea297f69d3d16ae96a8face70f9ae85f33f5f3f6219cebcf
+      nonintersection_rows_by_model:
+        UI-AGILE-7B: 904
+        GUI-R1-7B: 0
+        UI-R1-E-3B: 728
+    high:
+      rows: 1056
+      row_ids_sha256: a45d31ad92105fc9617c3d4e3dcb84be73fba26dbc22917b18a93a6ccb409d40
+      nonintersection_rows_by_model:
+        UI-AGILE-7B: 944
+        GUI-R1-7B: 0
+        UI-R1-E-3B: 736
   require_fields:
     - id
     - episode_id
