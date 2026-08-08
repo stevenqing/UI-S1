@@ -1,0 +1,17 @@
+{
+  "XF1": true,
+  "XF2": true,
+  "XF4": false,
+  "XF_K1": false,
+  "XF_K2": false,
+  "XF_K3": false,
+  "androidcontrol_decision": "PROCEED",
+  "completed_at_utc": "2026-08-08T15:00:45.851225+00:00",
+  "schema_version": 1,
+  "sources": {
+    "CONSOLIDATED_SUMMARY_ZH.md": "4110c413ddf811f56f98c07e196e2ab30f6db44a668b76984901b8af6dfbfd22",
+    "mde_mind2web.json": "2f80ae83e95515301c9f606831f87974c057c75c720d5a4fad92e4c7d90da7b6",
+    "xf_mind2web.json": "912c819f3b50ef4e824a1cf36391b95c7ba6b72d925c32994d9935c8023eb2f9"
+  },
+  "status": "MIND2WEB_COMPLETE"
+}

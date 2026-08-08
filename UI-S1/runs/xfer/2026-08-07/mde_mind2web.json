@@ -1,0 +1,28 @@
+{
+  "benchmark": "mind2web",
+  "episode_macro_mde": 0.0057321391893967975,
+  "episode_macro_sample_sd": 0.0028660695946983988,
+  "micro_mde": 0.006106589385659482,
+  "micro_sample_sd": 0.003053294692829741,
+  "protocol": "configs/mde.yaml",
+  "rows": 2080,
+  "schema_version": 1,
+  "seeds": [
+    {
+      "episode_macro_step_sr": 0.3145623882003874,
+      "micro_step_sr": 0.2644230769230769,
+      "seed": 20260807
+    },
+    {
+      "episode_macro_step_sr": 0.3103492158867103,
+      "micro_step_sr": 0.2591346153846154,
+      "seed": 20260808
+    },
+    {
+      "episode_macro_step_sr": 0.30908980307497913,
+      "micro_step_sr": 0.2591346153846154,
+      "seed": 20260809
+    }
+  ],
+  "status": "PASS"
+}

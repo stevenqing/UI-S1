@@ -96,13 +96,20 @@ androidcontrol:
       local_path: runs/xfer/2026-08-07/models/UI-R1-E-3B
   proposer:
     model: GUI-R1-7B
-    selection_status: PENDING_DEV_ABLATION
+    selection_status: FROZEN_AFTER_DEV_ABLATION
     dev_fold: 0
+    selection_setting: low
+    selection_scope: paired_sample_high_goal_fold0_grounding_actions_only
+    selection_group_key: sha256_high_full_instruction_first_20_hex
     layer_candidates: [14, 17, 20, 23, 26]
     query_token_candidates: [first_coordinate_comma]
     crop_geometry: {width: 448, height: 448, boundary_policy: clamp_preserve_size}
     attention: {top_k: 100, patch_size: 28, max_regions: 16}
-    metric_order: [rank0_target_containment, mean_rank0_to_rank11_containment, lower_layer_index]
+    metric_order: [rank0_gt_point_containment, mean_rank0_to_rank11_gt_point_containment, lower_layer_index]
+    selected_layer: 20
+    selected_query_token: first_coordinate_comma
+    ablation_summary: runs/xfer/2026-08-07/raw/ac-proposer-ablation.summary.json
+    ablation_trace_sha256: 89a1d0d3e65673cd54119e241bc85cee71b45c26ae31b29701a64e91b057310a
 prohibitions:
   - no_roster_change_after_inference
   - no_old_aggregate_new_trace_mixing
