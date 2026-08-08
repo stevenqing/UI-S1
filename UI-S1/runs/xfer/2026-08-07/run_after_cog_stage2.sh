@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/../../../.."
+cd "$(dirname "$0")/../../.."
 RUN="runs/xfer/2026-08-07"
 
 if [[ "$#" -eq 0 ]]; then
@@ -9,11 +9,9 @@ if [[ "$#" -eq 0 ]]; then
     exit 2
 fi
 
-tail_args=()
 for pid in "$@"; do
-    tail_args+=("--pid=$pid")
+    tail --pid="$pid" -f /dev/null
 done
-tail "${tail_args[@]}" -f /dev/null
 
 test -d /proc/2274
 .venv-scaleup/bin/python "$RUN/validate_stage2.py" \
