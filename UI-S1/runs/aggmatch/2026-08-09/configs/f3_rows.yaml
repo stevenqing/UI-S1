@@ -1,0 +1,62 @@
+schema_version: 1
+status: FROZEN_BEFORE_RESULTS
+frozen_at: 2026-08-09
+analysis_role: third_data_point_from_cancelled_protocol_partial_rows
+source_root: runs/xfer/2026-08-07/raw/ac-stage1
+settings: [low, high]
+models:
+  - id: UI-AGILE-7B
+    directory: ui-agile
+  - id: GUI-R1-7B
+    directory: gui-r1
+  - id: UI-R1-E-3B
+    directory: ui-r1-e
+eligibility:
+  operation: exact_row_id_intersection
+  require_all_models: true
+  require_fields:
+    - id
+    - episode_id
+    - setting
+    - source_sha256
+    - image_sha256
+    - image_size
+    - model_id
+    - model_revision
+    - prediction
+  require_prediction_fields: [action, value, position, parse_ok]
+  reject_duplicate_ids_within_lane: true
+  minimum_rows_per_setting: 800
+pool:
+  stages: [stage1]
+  model_count: 3
+  views_per_model: 1
+  forwards_per_row: 3
+  warning: this_is_not_the_12_forward_Mind2Web_pool
+comparison_scope: same_pool_aggregator_only
+four_arm_claim_status: CANCELLED_NO_CONCLUSIONS_ALLOWED
+aggregators:
+  majority: majority_exact_action_with_fold_local_priority_tie_break
+  density_family:
+    sequential: product_space_sequential_complete_link
+    A1_geometric_median: plurality_then_weighted_geometric_median
+    A2_density_medoid: plurality_then_discrete_density_medoid
+    A3_joint_PKA_medoid: joint_PKA_candidate_medoid
+    A4_continuous_PKA: continuous_PKA_mode
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  unit: episode_within_frozen_androidcontrol_fold
+  seed: 20260811
+bias:
+  historical_full_scores_source: runs/androidcontrol-rft/2026-07-29/ANDROIDCONTROL_RFT_FINAL_REPORT.md
+  compare_each_model_subset_step_sr_to_historical_full_step_sr: true
+  appendix_threshold_absolute: 0.02
+kill_conditions:
+  F_K3_low_intersection: 800
+  F_K3_high_intersection: 800
+  F_K3_bias_absolute_gt: 0.02
+reporting:
+  sampling_bias_must_be_declared: true
+  report_model_count_x_view_count: true
+  prohibit_C_cond_or_four_arm_conclusions: true

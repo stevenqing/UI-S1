@@ -1,0 +1,60 @@
+schema_version: 1
+status: FROZEN_BEFORE_RESULTS
+frozen_at: 2026-08-09
+analysis_role: new_primary_result
+arms:
+  primary: C_uni
+  robustness: [C_cond, C_rand, C_self]
+aggregators:
+  mind2web:
+    majority: majority
+    density_family:
+      sequential: ours
+      A1_geometric_median: A1
+      A2_density_medoid: A2
+      A3_joint_PKA_medoid: A3
+      A4_continuous_PKA: A4
+  screenspot_pro:
+    majority: majority
+    density_family:
+      B3_official: ours
+      A1_geometric_median: A1
+      A2_density_medoid: A2
+      A3_joint_PKA_medoid: A3
+      A4_continuous_PKA: A4
+    primary_opposite_direction_member: A2_density_medoid
+action_spaces:
+  screenspot_pro:
+    kind: coordinate_only
+    dimensions: implicit_single_action_x_2d_coordinate
+  mind2web:
+    kind: product_action
+    dimensions: action_type_x_coordinate_x_parameter
+    action_strata: [CLICK, TYPE, SELECT]
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  mind2web:
+    unit: episode_within_website_fold
+    seed: 20260809
+  screenspot_pro:
+    unit: application_group
+    seed: 20260810
+gates:
+  mind2web_mde: 0.0061
+  F_K1:
+    comparison: mind2web.C_uni.majority_minus_sequential
+    trigger: ci_99_includes_zero
+  F_K2:
+    comparison: screenspot_pro.C_uni.majority_minus_A2_density_medoid
+    trigger: point_delta_nonnegative_or_ci_99_includes_zero
+  primary_pass_requires:
+    - mind2web.C_uni.majority_minus_sequential.ci_99.lower_gt_zero
+    - mind2web.C_uni.majority_minus_sequential.point_delta_gt_mde
+    - mind2web.C_uni.majority_minus_A1_A4.all_point_deltas_gt_zero
+    - screenspot_pro.C_uni.majority_minus_A2_density_medoid.ci_99.upper_lt_zero
+reporting:
+  paired_differences_for_all_arms: true
+  mind2web_action_strata: true
+  all_effects_reported_as_majority_minus_density: true
+  screenspot_B3_mapping_note: official_B3_is_stored_as_ours_and_is_not_implementation_equivalent_to_A2
