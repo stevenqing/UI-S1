@@ -2,7 +2,11 @@
 
 日期：2026-08-08
 
-状态：`MIND2WEB_PRIMARY_TRANSFER_PASS_BASELINE_GAP_OPEN`
+状态：`MIND2WEB_PRIMARY_TRANSFER_PASS_E_K1_CLOSED`
+
+## 0. Closure update（2026-08-08）
+
+后续四臂 × 聚合器矩阵已经完成，详见 [Aggregator Closure Report](../../close/2026-08-08/REPORT.md)。结论是 E-K1 触发：C-cond 在 majority 下仍是两个 benchmark 的点估计最优 arm，但 C-cond − C-uni 的 99% CI 均跨0，且三个强制对照没有重新全部通过。因此候选生成改进必须限定在原冻结 sequential/density 聚合器下；E2 原生 prompt 重跑与 AndroidControl 均按预注册取消，SOTA 线保持开放。
 
 ## 1. 结论
 

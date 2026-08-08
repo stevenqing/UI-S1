@@ -1,0 +1,90 @@
+{
+  "E_K4": false,
+  "claim_boundary": "two_benchmark_qualitative_support_not_a_law",
+  "conditions": {
+    "mind2web_V_only_N16_minus_N4_ci_includes_zero": true,
+    "screenspot_V_only_N16_minus_N4_ci_upper_lt_zero": true,
+    "screenspot_rank0_containment_gt_mind2web_rank0_containment": true,
+    "screenspot_rank0_to_rank11_drop_gt_mind2web_rank0_to_rank11_drop": true
+  },
+  "config": "configs/e3_mechanism.yaml",
+  "interpretation": "MECHANISM_SUPPORTED_WITH_HIGH_START_CONDITION",
+  "mechanism_supported_with_high_start_condition": true,
+  "mind2web": {
+    "N16_minus_N4": {
+      "ci_99": [
+        -0.012159651587897544,
+        0.01980209431731553
+      ],
+      "p_delta_le_zero_plus_one": 0.3080691930806919,
+      "point_delta": 0.0033653846153846156,
+      "resamples": 10000,
+      "seed": 20260807,
+      "unit": "episode_stratified_by_website_fold"
+    },
+    "full_bbox_containment_by_rank": [
+      0.40384615384615385,
+      0.39615384615384613,
+      0.3875,
+      0.37548076923076923,
+      0.36009615384615384,
+      0.34951923076923075,
+      0.3403846153846154,
+      0.33605769230769234,
+      0.3230769230769231,
+      0.3235576923076923,
+      0.30673076923076925,
+      0.31153846153846154
+    ],
+    "rank0": 0.40384615384615385,
+    "rank0_minus_rank11": 0.09230769230769231,
+    "rank11": 0.31153846153846154,
+    "rows": 2080,
+    "v_only_curve": {
+      "12": 0.24951923076923077,
+      "16": 0.2586538461538462,
+      "4": 0.2552884615384615,
+      "8": 0.2485576923076923
+    }
+  },
+  "schema_version": 1,
+  "screenspot_pro": {
+    "N16_minus_N4": {
+      "N16": 0.5831752055660974,
+      "N4": 0.6122707147375079,
+      "ci_99": [
+        -0.055810618782438336,
+        -0.003573334968293487
+      ],
+      "p_delta_le_zero_plus_one": 0.9988001199880012,
+      "point_delta": -0.0290955091714105,
+      "resamples": 10000,
+      "seed": 20260806
+    },
+    "full_bbox_containment_by_rank": [
+      0.9993674889310563,
+      0.8026565464895635,
+      0.7760910815939279,
+      0.7571157495256167,
+      0.7311827956989247,
+      0.7115749525616698,
+      0.6957621758380772,
+      0.6736242884250474,
+      0.661606578115117,
+      0.6489563567362429,
+      0.6331435800126503,
+      0.6103731815306768
+    ],
+    "rank0": 0.9993674889310563,
+    "rank0_minus_rank11": 0.38899430740037955,
+    "rank11": 0.6103731815306768,
+    "rows": 1581,
+    "v_only_curve": {
+      "12": 0.6008855154965211,
+      "16": 0.5831752055660974,
+      "4": 0.6122707147375079,
+      "8": 0.6072106261859582
+    }
+  },
+  "status": "PASS"
+}

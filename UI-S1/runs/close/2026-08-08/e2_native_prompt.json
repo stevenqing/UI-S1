@@ -1,0 +1,12 @@
+{
+  "anchor_inference_started": false,
+  "androidcontrol_decision": "CANCELLED_BY_E_K1",
+  "e1_sha256": "7ce7f8fb7fe396bbe30babbab8122509ad2ce80097f099d3a4ff0c80eab42d6b",
+  "four_arm_inference_started": false,
+  "native_adapter_config_sha256": "ef8d3c786ec17db380f9f3ee1ad4f7a1f6fe8ba5e8ffa6fd7e49d193e66c5d78",
+  "note": "E1 failed the preregistered majority primary gate on both Mind2Web and ScreenSpot-Pro. Per SPEC, no native-prompt GPU inference is launched and paused AndroidControl lanes are not resumed.",
+  "reason": "E_K1_TRIGGERED",
+  "schema_version": 1,
+  "sota_claim": "OPEN_NOT_EVALUATED",
+  "status": "CANCELLED_NOT_RUN"
+}

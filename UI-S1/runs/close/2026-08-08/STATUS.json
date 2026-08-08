@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_E_K1_TRIGGERED",
+  "E1": {
+    "status": "PASS",
+    "E_K1": true,
+    "decision": "CANCEL_E2_AND_ANDROIDCONTROL",
+    "mind2web_majority_primary_pass": false,
+    "screenspot_pro_majority_primary_pass": false
+  },
+  "E2": {
+    "status": "CANCELLED_NOT_RUN",
+    "E_K2": null,
+    "E_K3": null,
+    "sota_claim": "OPEN_NOT_EVALUATED"
+  },
+  "E3": {
+    "status": "PASS",
+    "mechanism_supported_with_high_start_condition": true,
+    "E_K4": false,
+    "claim_boundary": "two_benchmark_qualitative_support_not_a_law"
+  },
+  "AndroidControl": {
+    "status": "CANCELLED_BY_E_K1",
+    "resume": false,
+    "external_pid_2274_untouched": true
+  },
+  "primary_claim": "aggregator_specific_cross_lineage_consensus_roi_improvement",
+  "majority_claim": "not_supported",
+  "sota_claim": "open"
+}
