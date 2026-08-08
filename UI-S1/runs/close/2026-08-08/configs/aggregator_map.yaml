@@ -1,0 +1,51 @@
+schema_version: 1
+frozen_at: 2026-08-08
+status: RESULT_BLIND_BEFORE_E1
+arms: [C_uni, C_cond, C_rand, C_self]
+mind2web:
+  rows: 2080
+  episodes: 252
+  aggregators:
+    majority: action_plurality_then_dev_priority_exact_candidate
+    A0: fold_heldout_best_candidate_slot
+    ours: action_plurality_then_complete_link_density_cluster_then_priority_candidate
+    A1: action_plurality_then_weighted_geometric_median_and_text_medoid
+    A2: action_plurality_then_discrete_density_medoid_and_text_medoid
+    A3: joint_product_kernel_candidate_medoid
+    A4: joint_product_kernel_continuous_coordinate_mode
+  primary: C_cond_majority_minus_C_uni_majority
+  mandatory_controls: [C_rand, C_self]
+  bootstrap:
+    unit: episode_stratified_by_website_fold
+    resamples: 10000
+    seed: 20260808
+    interval: 99_percentile
+  mde: 0.006106589385659482
+screenspot_pro:
+  rows: 1581
+  aggregators:
+    majority: dev_priority_exact_candidate_on_single_implicit_action
+    A0: fold_heldout_best_candidate_slot
+    ours: official_MVP_complete_link_group_then_coverage_candidate
+    A1: geometric_median_over_points
+    A2: discrete_density_medoid_over_points
+    A3: joint_coordinate_kernel_candidate_medoid
+    A4: continuous_coordinate_density_mode
+  mapping_note: B3_official_MVP_is_in_the_A2_sequential_density_family_but_is_not_implementation_equivalent
+  primary: C_cond_majority_minus_C_uni_majority
+  mandatory_controls: [C_rand, C_self]
+  bootstrap:
+    unit: application_group
+    resamples: 10000
+    seed: 20260808
+    interval: 99_percentile
+  mde: 0.007
+matrix_reporting:
+  - row_best_by_arm
+  - column_best_by_aggregator
+  - global_best_cell
+  - arm_aggregator_interaction
+prohibitions:
+  - no_result_based_aggregator_change
+  - no_historical_aggregate_new_trace_pairing
+  - no_default_equivalence_between_B3_and_A2

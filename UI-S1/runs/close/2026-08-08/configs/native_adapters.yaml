@@ -1,0 +1,53 @@
+schema_version: 1
+frozen_at: 2026-08-08
+status: FROZEN_BEFORE_NATIVE_INFERENCE_ASSET_RESTORE_PENDING
+benchmark:
+  id: mind2web_test_task
+  rows: 2080
+  episodes: 252
+  score_contract: released_element_and_operation_f1_step_success
+anchor_tolerance_absolute: 0.02
+models:
+  TongUI-7B:
+    repository: Bofeee5675/TongUI-7B
+    revision: a3e0cf46c3164bbd885dea2694f2ad7a31f1661d
+    adapter_source: released_TongUI_Mind2WebDataset
+    adapter_source_revision: 82631b583180cdc870b4774d2495dd94f1558c46
+    config: {version: v2, num_history: 2, interleaved_history: vtvt, generation: greedy}
+    parser: released_v2_Action_dict_strict
+    historical_micro_step_sr: 0.529
+    local_adapter_status: RESTORE_REQUIRED
+  CogAgent-18B:
+    repository: zai-org/cogagent-chat-hf
+    revision: 26eec27a44348fbe0c9fad89348cf6a505f5a5ae
+    tokenizer_repository: lmsys/vicuna-7b-v1.5
+    tokenizer_revision: 3321f76e3f527bd14065daf69dad9344000a201d
+    adapter_source: released_generic_single_round_with_grounding
+    prompt_template: 'What steps do I need to take to "{task}"?(with grounding)'
+    parser: Grounded_Operation_strict
+    coordinate_space: bbox_0_1000
+    generation: greedy
+    historical_micro_step_sr: 0.501
+    local_adapter_status: PRESENT
+  UI-TARS-7B:
+    repository: ByteDance-Seed/UI-TARS-7B-SFT
+    revision: 3434901a9dd04dd3625617d839a5724fe5e2db20
+    adapter_source: released_v1_computer_use_single_round
+    parser: action_call_strict
+    coordinate_space: point_0_1000
+    generation: greedy_frequency_penalty_1
+    historical_micro_step_sr: 0.337
+    local_adapter_status: PRESENT
+format_adapter:
+  output: [action_type, normalized_coordinate, parameter]
+  strict_only: true
+  semantic_repair: forbidden
+  ground_truth_repair: forbidden
+anchor_gate:
+  all_models_required: true
+  continue_four_arms_only_if_all_pass: true
+prohibitions:
+  - no_loose_parser
+  - no_best_of_n_against_ground_truth
+  - no_prompt_change_after_anchor_inference
+  - no_anchor_tolerance_change_after_results

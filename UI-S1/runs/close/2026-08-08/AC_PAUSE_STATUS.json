@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "PAUSED_BY_CLOSURE_SPEC",
+  "paused_at": "2026-08-08",
+  "external_pid_2274_untouched": true,
+  "resume_allowed_only_if": "E1_and_E2_pass",
+  "completed_rows": {
+    "ui-agile/low": 2000,
+    "ui-agile/high": 2000,
+    "gui-r1/low": 1096,
+    "gui-r1/high": 1056,
+    "ui-r1-e/low": 1824,
+    "ui-r1-e/high": 1792
+  },
+  "source_traces": "runs/xfer/2026-08-07/raw/ac-stage1"
+}

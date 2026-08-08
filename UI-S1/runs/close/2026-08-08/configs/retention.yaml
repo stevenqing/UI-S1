@@ -1,0 +1,18 @@
+schema_version: 1
+frozen_at: 2026-08-08
+status: ACTIVE_BEFORE_E1
+local_root: runs/close/2026-08-08
+backup_root: /scratch/workspaceblobstore/close-traces/2026-08-08
+manifest: /scratch/workspaceblobstore/close-traces/2026-08-08/BACKUP_MANIFEST.json
+write_contract:
+  format: JSONL
+  flush_each_row: true
+  fsync_each_row: true
+  resume_required: true
+backup_contract:
+  after_each_completed_lane: true
+  verify_sha256_after_copy: true
+cleanup_prohibitions:
+  - no_recursive_delete_of_raw
+  - no_recursive_delete_of_predictions
+  - no_cleanup_before_hash_verification
