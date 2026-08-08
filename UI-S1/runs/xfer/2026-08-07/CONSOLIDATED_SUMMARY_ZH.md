@@ -45,3 +45,5 @@
 - `STATUS.json`
 - `raw/mind2web-consensus-roi.jsonl`
 - `/scratch/workspaceblobstore/xfer-traces/2026-08-07/BACKUP_MANIFEST.json`
+
+完整的 ScreenSpot-Pro 交叉验证、majority/A0-A4 baseline 结果与论文主张边界见 [MIND2WEB_SCREENSPOT_CROSS_VALIDATION_ZH.md](MIND2WEB_SCREENSPOT_CROSS_VALIDATION_ZH.md)。

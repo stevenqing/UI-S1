@@ -10,6 +10,6 @@ Published row-level data includes:
 - the target-free consensus RoI manifest;
 - Mind2Web and AndroidControl proposer-ablation traces.
 
-`PUBLICATION_MANIFEST.json` records the byte size, row count, and SHA-256 digest of every published trace. The compact primary outputs are `xf_mind2web.json`, `mde_mind2web.json`, `STATUS.json`, and `CONSOLIDATED_SUMMARY_ZH.md`.
+`PUBLICATION_MANIFEST.json` records the byte size, row count, and SHA-256 digest of every published trace. The compact primary outputs are `xf_mind2web.json`, `mde_mind2web.json`, `baseline_mind2web.json`, `STATUS.json`, `CONSOLIDATED_SUMMARY_ZH.md`, and `MIND2WEB_SCREENSPOT_CROSS_VALIDATION_ZH.md`.
 
 Model weights, benchmark images, downloaded archives, source parquet files, and incomplete AndroidControl formal lanes are intentionally excluded. Complete retained traces are also independently hash-verified under the blobfuse path recorded in the publication manifest.
