@@ -1,0 +1,109 @@
+schema_version: 1
+status: FROZEN_BEFORE_RESULTS
+frozen_at: 2026-08-09
+method_name: EQV
+analysis_role: unified_aggregator_attempt
+definition_boundary:
+  requested_name: evaluator_equivalence_class
+  implemented_name: GT_free_evaluator_aligned_proxy_equivalence
+  reason: Mind2Web_and_ScreenSpot_use_point_in_bbox_and_have_no_fixed_candidate_pair_radius_without_ground_truth
+  prohibition: do_not_claim_literal_if_and_only_if_evaluator_equivalence
+arms:
+  primary: C_uni
+  robustness: [C_cond, C_rand, C_self]
+candidate_order: frozen_E1_slot_order
+lineage:
+  key: model_id
+  one_vote_per_lineage_per_class: true
+  frozen_order:
+    mind2web: [TongUI-7B, CogAgent-18B, UI-TARS-7B]
+    screenspot_pro: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+equivalence:
+  action:
+    main: exact_normalized_action_type
+  coordinate:
+    mind2web:
+      metric: axis_aligned_complete_link
+      threshold_source: outer_dev_only_median_normalized_target_bbox_width_and_height
+      ground_truth_at_test_time: prohibited
+    screenspot_pro:
+      metric: euclidean_pixels
+      threshold: 14.0
+      provenance: E1_A2_family_geometry_scale_not_a_literal_evaluator_radius
+    androidcontrol:
+      metric: euclidean_normalized
+      threshold: 0.14
+  parameter:
+    metric: token_set_f1
+    thresholds:
+      mind2web: 1.0
+      androidcontrol: 0.5
+    no_parameter_action: ignore_parameter
+clustering:
+  main: deterministic_greedy_complete_link
+  assignment_order: frozen_candidate_order
+  rule: candidate_joins_first_existing_class_iff_equivalent_to_every_member_else_starts_new_class
+  nontransitivity_is_order_sensitive: true
+  ablation_single_link: connected_components
+voting:
+  class_score: distinct_lineage_count
+  within_class_lineage_dedup: keep_highest_dev_reliability_candidate_then_frozen_slot_order
+  class_tie_break:
+    - sum_of_retained_lineage_dev_reliabilities
+    - best_retained_candidate_dev_reliability
+    - earliest_frozen_lineage_order
+    - earliest_frozen_candidate_order
+  output: highest_dev_reliability_real_candidate_in_winning_class
+  generate_new_point: false
+dev_reliability:
+  source: outer_dev_only_step_success
+  tie_break: frozen_slot_order
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  mind2web:
+    unit: episode_within_website_fold
+    seed: 20260813
+  screenspot_pro:
+    unit: application_group_within_outer_fold
+    seed: 20260814
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+gates:
+  U1:
+    benchmark: screenspot_pro
+    reference: max_of_A2_A3
+    pass_if: ci_99_upper_nonnegative_or_absolute_point_delta_below_mde
+  U2:
+    benchmark: mind2web
+    reference: majority
+    pass_if: ci_99_upper_nonnegative_or_absolute_point_delta_below_mde
+  U3:
+    comparisons:
+      - screenspot_pro.EQV_minus_majority.ci_99_lower_gt_zero
+      - mind2web.EQV_minus_sequential.ci_99_lower_gt_zero
+  U_K4:
+    comparison: screenspot_pro.C_uni.ABL4_minus_A2
+    trigger: absolute_point_delta_gt_screenspot_mde
+    action: pause_all_primary_adjudication_and_debug
+ablations:
+  ABL1:
+    change: no_lineage_dedup_candidate_count_votes
+  ABL2:
+    change: single_link_connected_components
+  ABL3:
+    change: action_only_ignore_coordinate_and_parameter
+  ABL4:
+    change: coordinate_only_ignore_action_and_parameter
+    self_check: compare_with_E1_A2_on_screenspot_C_uni_before_main
+  ABL5:
+    tolerance_multipliers: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
+    report_rank_flip: true
+reporting:
+  correct_E1_majority_definition:
+    mind2web: action_plurality_then_dev_priority_real_candidate
+    screenspot_pro: single_implicit_action_therefore_dev_best_slot
+  PKA_difference_required: true
+  all_four_arms: true
+  action_strata: [CLICK, TYPE, SELECT]
