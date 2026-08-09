@@ -1,0 +1,8 @@
+{
+  "new_inference_started": false,
+  "reason": "ABL4 implementation self-check exceeded the frozen ScreenSpot MDE; primary adjudication paused before downstream diagnostics",
+  "result_claim": null,
+  "schema_version": 1,
+  "scope": "B1_winner_source_distribution",
+  "status": "CANCELLED_NOT_RUN_BY_U_K4"
+}
