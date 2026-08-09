@@ -22,7 +22,7 @@ selection:
     - grounding_weights
   outer_refit: use_all_four_outer_dev_folds_after_aggregator_selection
 evaluation:
-  one_selected_aggregator_per_outer_fold
+  one_selected_aggregator_per_outer_fold: true
   outer_heldout_micro_accuracy: true
 comparison:
   paired_bootstrap_resamples: 10000
