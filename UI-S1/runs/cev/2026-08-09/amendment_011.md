@@ -22,7 +22,11 @@ Before this amendment, the following ScreenSpot-Pro C-uni cells had been observe
 | Single-link + lineage dedup | 62.5553% |
 | Single-link + candidate votes | 63.2511% |
 
-These values are contamination anchors. They cannot be used for threshold selection, method optimization, or confirmatory claims. V1 uses row-wise A2 reproduction solely as an implementation check.
+These values are contamination anchors. They cannot be used for threshold selection, method optimization, or confirmatory claims. V1 uses exact aggregate A2 reproduction solely as an implementation check and reports row-wise agreement diagnostically.
+
+## 2.1 Pre-result clarification
+
+After the reconstruction commit but before any CEV execution, “逐位复现 63.8836” was clarified as digit-wise reproduction of the frozen aggregate accuracy, not row-wise equality of correctness vectors. The earlier EQV paired comparison already showed that complete-link candidate voting and A2 exchange individual successes despite identical aggregate accuracy. Treating row-wise equality as a gate would add a condition not present in the handoff. This clarification changes no threshold, method, or observed CEV result.
 
 Known F1 results also motivate the experiment and are not new evidence: Mind2Web favors majority, while ScreenSpot-Pro favors coordinate density.
 
