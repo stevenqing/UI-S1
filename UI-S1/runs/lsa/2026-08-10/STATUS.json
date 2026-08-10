@@ -26,9 +26,14 @@
   "paper_position": "MAIN_LSA_NOT_A_METHOD_CONTRIBUTION",
   "best_preregistered_ablation": {
     "id": "no_action",
-    "status": "EXPLORATORY_REQUIRES_CROSS_ARM_CONFIRMATION",
+    "status": "PARTIAL_CROSS_ARM_TRANSFER_NOT_CONFIRMED_BEST",
     "mind2web_safe": 0.3375,
     "screenspot_pro_safe": 0.6382036685641999
+  },
+  "confirmation": {
+    "workdir": "runs/lsa-confirm/2026-08-10",
+    "status": "PARTIAL_TRANSFER",
+    "continue_on_current_data": false
   },
   "new_model_inference_started": false,
   "gpu_used": false,

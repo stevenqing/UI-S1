@@ -10,6 +10,7 @@
 | --- | --- | --- |
 | Primary | F1 aggregator matching | Mind2Web majority−sequential +5.34 pp [2.50,8.04]；ScreenSpot majority−B3 −3.86 pp [−5.84,−1.92] |
 | Explanatory follow-up | CEV-A | 恢复 Mind2Web G0 与 ScreenSpot G4；与 nested dev-selection 打平，V4=`EXPLANATORY_CONTRIBUTION` |
+| Learned appendix | LSA / no-action | 主 LSA 安全但不显著；no-action C-uni 显著、跨臂仅 partial transfer，不替换 CEV-A |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -62,6 +63,8 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/aggmatch/2026-08-09/` | COMPLETE | F1 becomes primary；F-K3 only |
 | `runs/eqv/2026-08-09/` | STOPPED | U-K4 implementation self-check |
 | `runs/cev/2026-08-09/` | COMPLETE | V4 explanatory contribution；C-K5 |
+| `runs/lsa/2026-08-10/` | COMPLETE | L1/L4 pass，L2/L3 fail；主模型安全但不显著 |
+| `runs/lsa-confirm/2026-08-10/` | COMPLETE | T1/T3/T4 pass，T2 fail；LT-K3 partial transfer |
 
 ## 7. Reproducibility boundaries
 

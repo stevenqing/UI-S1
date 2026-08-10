@@ -22,6 +22,8 @@
 
 本项目研究多模型 GUI grounding 的 test-time scaling。论文主结果为**聚合器与动作空间/错误结构的匹配**（F1，双向显著）；次级结果为跨谱系共识 RoI 两阶段候选生成（Q1，仅在匹配聚合器下成立）。CEV-A 作为统一解释恢复 Mind2Web G0 与 ScreenSpot G4，但与 nested dev-selection 打平，因此不是方法优势。当前实验主线已冻结，可以进入论文写作与主表整理。
 
+学习聚合器附录也已关闭：主 LSA 安全但无显著增益；no-action 消融在 C-uni 显著，但 C-cond/C-rand/C-self 跨臂确认仅为 partial transfer，Mind2Web 三臂平均 CI 略跨零。当前最强可辩护方案仍是 CEV-A，除非获得新的独立 benchmark/trace，不再在现有数据上搜索模型。
+
 ## 2. 论文骨架（冻结）
 
 ### 2.1 主结果：F1
@@ -273,6 +275,8 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 | `runs/aggmatch/2026-08-09/` | 完成，F1 成为主结果 |
 | `runs/eqv/2026-08-09/` | U-K4 停止 |
 | `runs/cev/2026-08-09/` | 完成；V4 解释贡献，C-K5 触发 |
+| `runs/lsa/2026-08-10/` | 完成；主模型安全但不显著 |
+| `runs/lsa-confirm/2026-08-10/` | 完成；partial transfer，停止当前数据上的 learned 搜索 |
 
 ## 10. 已知未完事项
 

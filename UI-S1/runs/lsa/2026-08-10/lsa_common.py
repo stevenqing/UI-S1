@@ -62,7 +62,7 @@ def normalize_action(action):
     return value if value in {"POINT", "CLICK", "TYPE", "SELECT"} else "OTHER"
 
 
-def load_rows():
+def load_rows(arm="C_uni"):
     e1 = load_module(CLOSE / "e1_arm_aggregator_matrix.py", "lsa_e1")
     output = {"mind2web": {}, "screenspot_pro": {}}
 
@@ -72,7 +72,7 @@ def load_rows():
     full = {model: e1.load_unique(e1.XFER / "raw/stage1" / directory) for model, directory in e1.MODEL_DIRS.items()}
     view1 = {model: e1.load_unique(e1.XFER / "raw/stage1/view1" / directory) for model, directory in e1.MODEL_DIRS.items()}
     stage2 = {model: e1.load_unique(e1.XFER / "raw/stage2" / directory) for model, directory in e1.MODEL_DIRS.items()}
-    slots = e1.mind_slots(mind_by_id, full, view1, stage2, "C_uni")
+    slots = e1.mind_slots(mind_by_id, full, view1, stage2, arm)
     fold_map = json.loads((ROOT / "runs/complementarity/2026-07-30/folds.json").read_text())["pools"]["mind2web/visual"]["group_to_fold"]
     for row_id, row in mind_by_id.items():
         candidates = []
@@ -101,14 +101,15 @@ def load_rows():
 
     common = e1.load_module(e1.CONSOLIDATE / "common.py", "lsa_screen_common")
     context = common.load_context()
-    actions = [(model, view) for view in range(4) for model in e1.SCREEN_MODELS]
+    regions = {row["id"]: row for row in map(json.loads, (e1.CONSOLIDATE / "raw/q1_regions.jsonl").read_text().splitlines())}
+    q1 = {model: e1.load_screen_q1(model) for model in e1.SCREEN_MODELS}
     for row_id in context["row_ids"]:
         metadata = context["metadata"][row_id]
         width, height = metadata["img_size"]
         candidates = []
-        for order, (lineage, view) in enumerate(actions):
-            source = f"{lineage}_view{view}"
-            prediction = context["bank"][(lineage, view)][row_id]
+        slots = e1.screen_slots(context, regions, q1, arm, row_id)
+        for order, (source, prediction) in enumerate(slots):
+            lineage = prediction["model"]
             point = tuple(prediction["point"])
             candidates.append(Candidate(
                 source=source,
@@ -118,7 +119,7 @@ def load_rows():
                 baseline_coordinate=point,
                 parameter="",
                 parse_ok=True,
-                stage="stage1",
+                stage="stage2" if "_crop" in source else "stage1",
                 success=bool(e1.point_in_bbox(point, metadata["target_bbox"])),
                 order=order,
             ))

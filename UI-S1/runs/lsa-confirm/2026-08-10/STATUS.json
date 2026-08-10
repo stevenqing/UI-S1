@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL_TRANSFER",
+  "workdir": "runs/lsa-confirm/2026-08-10",
+  "preregistration_commit": "cdb7f26",
+  "gates": {
+    "T1": true,
+    "T2": false,
+    "T3": true,
+    "T4": true
+  },
+  "kill_conditions": {
+    "LT_K1": false,
+    "LT_K2": false,
+    "LT_K3": true,
+    "LT_K4": false
+  },
+  "mind2web_equal_arm_delta": 0.006570512820512821,
+  "mind2web_equal_arm_ci_99": [
+    -0.00018592313333632655,
+    0.013242101570526294
+  ],
+  "screenspot_equal_arm_delta": 0.0002108370229812355,
+  "screenspot_equal_arm_ci_99": [
+    -0.0008791977804459664,
+    0.0013569552793784836
+  ],
+  "paper_position": "APPENDIX_SAFE_LEARNED_ATTEMPT_NOT_BEST_AGGREGATOR",
+  "continue_on_current_data": false,
+  "new_model_inference_started": false,
+  "gpu_used": false,
+  "external_pid_2274_untouched": true,
+  "retention": {
+    "backup_root": "/scratch/workspaceblobstore/lsa-confirm/2026-08-10",
+    "manifest": "/scratch/workspaceblobstore/lsa-confirm/2026-08-10/BACKUP_MANIFEST.json"
+  }
+}

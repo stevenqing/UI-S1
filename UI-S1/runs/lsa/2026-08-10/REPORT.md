@@ -76,8 +76,6 @@ Candidate AUROC fold 均值约为 Mind2Web 0.745、ScreenSpot 0.828，但 direct
 
 当前论文不应把主 LSA 写成新方法贡献。F1 与 CEV-A 定位不变。
 
-唯一值得继续的学习方向是 `LSA-no-action-safe`，并且下一轮不能复用 C-uni 来确认。应冻结主模型/特征/阈值选择流程，然后训练仅基于 C-uni outer-dev，迁移评估到尚未跑 learned selector 的 C-cond、C-rand、C-self 候选池。三臂全部报告，禁止根据结果挑 arm。
-
-如果跨臂确认失败，则 no-action 只保留为探索性消融，停止 learned aggregator 线。若确认成功，再讨论独立新 benchmark 或新 trace 的最终验证。
+后续 `runs/lsa-confirm/2026-08-10/` 已冻结并执行跨臂确认。六个单元均安全，但 Mind2Web 三臂平均 +0.66 pp 的 99% CI [−0.02,+1.32] 略跨零，结果为 `PARTIAL_TRANSFER`。因此 no-action 只保留为探索性安全消融，learned aggregator 线在当前数据上停止。只有新 benchmark、新模型 bank 或未使用 trace 才能提供有效的下一次确认。
 
 外部 PID 2274 未触碰，无 GPU/model inference worker 启动。
