@@ -1,0 +1,132 @@
+schema_version: 1
+status: FROZEN_BEFORE_LSA_RESULTS
+frozen_at: 2026-08-10
+method: LSA
+workdir: runs/lsa/2026-08-10
+upstream:
+  cev: runs/cev/2026-08-09
+  aggmatch: runs/aggmatch/2026-08-09
+compute:
+  main: cpu
+  gpu: prohibited
+  new_model_inference: prohibited
+  candidate_banks_only: true
+arms:
+  primary: C_uni
+  robustness_after_primary: [C_cond, C_rand, C_self]
+benchmarks:
+  screenspot_pro:
+    rows: 1581
+    group: application_within_outer_fold
+    mde: 0.007
+    bootstrap_seed: 20260821
+    fallback: CEV_G4
+  mind2web:
+    rows: 2080
+    group: episode_within_website_fold
+    mde: 0.006106589385659482
+    bootstrap_seed: 20260822
+    fallback: CEV_G0
+features:
+  allowed:
+    - parse_ok
+    - generic_action_category
+    - coordinate_present
+    - parameter_present
+    - log_parameter_length
+    - generic_stage
+    - cross_fitted_source_reliability
+    - parsed_fraction
+    - action_support_fraction
+    - action_vote_margin
+    - distinct_action_rate
+    - action_entropy
+    - coordinate_min_mean_median_distance
+    - coordinate_medoid_distance
+    - local_coordinate_support_radii
+    - same_action_coordinate_support_radii
+    - distinct_lineage_support_radii
+    - exact_parameter_support
+    - mean_max_parameter_token_f1
+    - same_lineage_count
+    - total_lineage_count
+    - row_coordinate_dispersion
+    - parameter_bearing_fraction
+  coordinate_radii: [0.01, 0.03, 0.07, 0.14]
+  prohibited:
+    - benchmark_id
+    - model_id
+    - source_id
+    - source_one_hot
+    - raw_slot_index
+    - instruction_text_or_hash
+    - raw_response_text_or_hash
+    - screenshot_pixels_or_embedding
+    - test_gt
+    - gt_derived_test_scale
+labels:
+  screenspot_pro: point_in_target_bbox
+  mind2web: frozen_step_success
+  train_rows: mixed_candidate_success_only
+  row_weighting:
+    positive_total: 0.5
+    negative_total: 0.5
+  benchmark_total_mass: equal
+models:
+  H1: {learning_rate: 0.05, max_leaf_nodes: 7, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
+  H2: {learning_rate: 0.05, max_leaf_nodes: 15, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
+  H3: {learning_rate: 0.10, max_leaf_nodes: 15, min_samples_leaf: 20, l2_regularization: 1.0, max_iter: 100}
+  H4: {learning_rate: 0.05, max_leaf_nodes: 31, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
+  random_state: 20260810
+safe_override:
+  margin: learned_winner_probability_minus_fallback_probability
+  threshold_candidates: [infinity, zero, positive_margin_deciles]
+  eligibility: nonnegative_OOF_point_delta_each_benchmark
+  objective: equal_benchmark_mean_standardized_delta
+  tie_break: [larger_threshold, H1, H2, H3, H4]
+nested_protocol:
+  outer_folds: 5
+  simultaneous_benchmark_holdout: true
+  outer_test: same_fold_index_both_benchmarks
+  development_OOF: leave_one_of_four_outer_dev_folds_out
+  train_final: all_four_outer_dev_folds_both_benchmarks
+  test_access_during_selection: prohibited
+variants:
+  main: LSA_pooled_safe
+  required:
+    - LSA_pooled_direct
+    - LSA_within_safe
+    - reliability_only
+    - no_geometry
+    - no_action
+    - no_parameter
+    - CEV_A
+    - nested_dev_selection
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  interval: percentile
+gates:
+  L1: noninferior_to_CEV_A_each_benchmark
+  L2: significant_gain_vs_CEV_A_at_least_one_and_L1_other
+  L3_strong: significant_gain_vs_dev_selection_both
+  L3_safe: significant_equal_benchmark_mean_gain_and_no_MDE_loss
+  L4: pooled_safe_pointwise_not_worse_than_pooled_direct_both
+kill_conditions:
+  LSA_K1: mixed_rows_absent_or_bank_identity_mismatch
+  LSA_K2: L1_failure_any_benchmark
+  LSA_K3: infinity_threshold_at_least_three_outer_folds
+  LSA_K4: within_safe_passes_but_pooled_safe_fails_L1
+  LSA_K5: source_ID_required_for_gain
+oracle:
+  compute_after_prereg_commit: true
+  role: descriptive_headroom_only
+reporting:
+  outer_fold_models_thresholds_override_rates: required
+  wins_losses: required
+  candidate_AUROC: diagnostic_only
+  feature_importance: required
+  source_or_benchmark_identity_in_main: prohibited
+retention:
+  backup_root: /scratch/workspaceblobstore/lsa-traces/2026-08-10
+  manifest: /scratch/workspaceblobstore/lsa-traces/2026-08-10/BACKUP_MANIFEST.json
