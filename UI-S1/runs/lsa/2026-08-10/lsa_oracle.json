@@ -1,0 +1,31 @@
+{
+  "LSA_K1": false,
+  "benchmarks": {
+    "mind2web": {
+      "all_negative_rows": 891,
+      "all_positive_rows": 21,
+      "candidates_per_row": [
+        12
+      ],
+      "fallback_accuracy_in_sample_diagnostic": 0.32019230769230766,
+      "mean_successful_candidates": 2.3673076923076923,
+      "mixed_label_rows": 1168,
+      "oracle_pass_at_12": 0.5716346153846154,
+      "rows": 2080
+    },
+    "screenspot_pro": {
+      "all_negative_rows": 329,
+      "all_positive_rows": 324,
+      "candidates_per_row": [
+        12
+      ],
+      "fallback_accuracy_in_sample_diagnostic": 0.6394686907020873,
+      "mean_successful_candidates": 6.369386464263124,
+      "mixed_label_rows": 928,
+      "oracle_pass_at_12": 0.7919038583175205,
+      "rows": 1581
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

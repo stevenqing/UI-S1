@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "SAFE_BUT_NO_SIGNIFICANT_GAIN",
+  "workdir": "runs/lsa/2026-08-10",
+  "preregistration_commit": "1ee0933",
+  "main_accuracy": {
+    "mind2web_safe": 0.33028846153846153,
+    "mind2web_fallback": 0.32019230769230766,
+    "screenspot_pro_safe": 0.6363061353573688,
+    "screenspot_pro_fallback": 0.6388361796331435
+  },
+  "gates": {
+    "L1": true,
+    "L2": false,
+    "L3_strong": false,
+    "L3_safe": false,
+    "L4": true
+  },
+  "kill_conditions": {
+    "LSA_K1": false,
+    "LSA_K2": false,
+    "LSA_K3": false,
+    "LSA_K4": false,
+    "LSA_K5": null
+  },
+  "paper_position": "MAIN_LSA_NOT_A_METHOD_CONTRIBUTION",
+  "best_preregistered_ablation": {
+    "id": "no_action",
+    "status": "EXPLORATORY_REQUIRES_CROSS_ARM_CONFIRMATION",
+    "mind2web_safe": 0.3375,
+    "screenspot_pro_safe": 0.6382036685641999
+  },
+  "new_model_inference_started": false,
+  "gpu_used": false,
+  "external_pid_2274_untouched": true,
+  "retention": {
+    "backup_root": "/scratch/workspaceblobstore/lsa-traces/2026-08-10",
+    "manifest": "/scratch/workspaceblobstore/lsa-traces/2026-08-10/BACKUP_MANIFEST.json"
+  }
+}
