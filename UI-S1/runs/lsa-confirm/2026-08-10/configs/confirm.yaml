@@ -1,0 +1,56 @@
+schema_version: 1
+status: FROZEN_BEFORE_CONFIRMATION_RESULTS
+frozen_at: 2026-08-10
+upstream:
+  lsa: runs/lsa/2026-08-10
+  cev: runs/cev/2026-08-09
+discovery:
+  variant: no_action
+  status: preregistered_ablation_not_main
+train_arm: C_uni
+test_arms: [C_cond, C_rand, C_self]
+model:
+  feature_variant: no_action
+  estimator_by_outer_fold: [H3, H3, H3, H3, H3]
+  threshold_by_outer_fold:
+    - 0.19777147655873645
+    - 0.18570657406035798
+    - 0.26659044214294886
+    - 0.2094857223674213
+    - 0.2762614019099612
+  fit_rows: C_uni_outer_development_only
+  target_arm_labels_for_training_or_tuning: prohibited
+reliability_transfer:
+  shared_source: exact_C_uni_train_only_source_reliability
+  unseen_source: C_uni_train_only_lineage_average
+baselines: [CEV_A, nested_dev_selection]
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  mind2web_seed: 20260861
+  screenspot_seed: 20260862
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+gates:
+  T1: all_six_cells_noninferior_to_CEV_A
+  T2: mind2web_equal_arm_mean_ci_lower_positive
+  T3: screenspot_equal_arm_mean_noninferior_and_loss_below_mde
+  T4: equal_benchmark_equal_arm_standardized_mean_vs_devsel_ci_lower_positive_and_no_cell_mde_loss
+outcomes:
+  all_T1_T4: CONFIRMED_SAFE_LEARNED_AGGREGATOR
+  T1_T3_only: CONFIRMED_VS_CEV_ONLY
+  T1_only: PARTIAL_TRANSFER
+  T1_failure: FAILED_CROSS_ARM_CONFIRMATION
+kill_conditions:
+  LT_K1: candidate_identity_or_count_mismatch
+  LT_K2: any_cell_T1_failure
+  LT_K3: mind2web_equal_arm_ci_crosses_zero
+  LT_K4: screenspot_equal_arm_loss_exceeds_mde
+compute:
+  gpu: prohibited
+  new_model_inference: prohibited
+  cpu_training_only: true
+retention:
+  backup_root: /scratch/workspaceblobstore/lsa-confirm/2026-08-10
+  manifest: /scratch/workspaceblobstore/lsa-confirm/2026-08-10/BACKUP_MANIFEST.json
