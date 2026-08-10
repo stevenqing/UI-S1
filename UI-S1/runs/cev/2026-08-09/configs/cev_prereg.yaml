@@ -1,0 +1,176 @@
+schema_version: 1
+status: POST_LEAKAGE_RECONSTRUCTED_FROZEN_BEFORE_CEV_RESULTS
+frozen_at: 2026-08-10
+canonical_spec: cev-spec-2026-08-09.md
+amendment: runs/cev/2026-08-09/amendment_011.md
+upstream:
+  aggmatch: runs/aggmatch/2026-08-09
+  eqv: runs/eqv/2026-08-09
+leakage:
+  disclosed_screenspot_c_uni_accuracies:
+    A2: 0.6388361796331435
+    complete_candidate_votes: 0.6388361796331435
+    complete_lineage_dedup: 0.6306135357368754
+    single_lineage_dedup: 0.6255534471853258
+    single_candidate_votes: 0.6325110689437066
+  allowed_use: [rowwise_implementation_anchor, contamination_reporting]
+  prohibited_use: [threshold_selection, granularity_selection, optimization_target, confirmatory_claim]
+compute:
+  zero_gpu: true
+  new_inference: prohibited
+  candidate_banks_only: true
+arms:
+  primary: C_uni
+  robustness: [C_cond, C_rand, C_self]
+benchmarks:
+  screenspot_pro:
+    rows: 1581
+    outer_folds: 5
+    group: application
+    action_space: implicit_single_action_2d_coordinate
+    coordinate_metric: euclidean_pixels
+    coordinate_base_tolerance: 14.0
+    parameter: absent
+    allowed_granularities: [G4]
+    mde: 0.007
+    bootstrap_seed: 20260817
+  mind2web:
+    rows: 2080
+    outer_folds: 5
+    group: episode_within_website_fold
+    action_space: action_type_x_coordinate_x_parameter
+    coordinate_metric: axis_aligned_normalized
+    coordinate_base_scale: median_normalized_target_bbox_width_height_inner_training_only
+    coordinate_multipliers: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
+    parameter_metric: token_set_f1
+    parameter_thresholds: [0.5, 0.75, 1.0]
+    allowed_granularities: [G0, G1, G2, G3]
+    mde: 0.006106589385659482
+    bootstrap_seed: 20260818
+candidate:
+  order: frozen_E1_slot_order
+  output: highest_dev_reliability_real_candidate_in_winning_class
+  generate_new_point: false
+  lineage_vote_default: candidate_votes_unlimited
+granularity:
+  G0: {action: exact, coordinate: ignored, parameter: ignored}
+  G1: {action: exact, coordinate: tolerance, parameter: ignored}
+  G2: {action: exact, coordinate: ignored, parameter: token_f1_threshold}
+  G3: {action: exact, coordinate: tolerance, parameter: token_f1_threshold}
+  G4: {action: ignored, coordinate: tolerance, parameter: ignored}
+clustering:
+  main: deterministic_greedy_complete_link
+  rule: candidate_joins_first_existing_class_if_equivalent_to_every_member_else_new_class
+  tie_break:
+    - candidate_vote_count
+    - summed_dev_reliability
+    - maximum_member_dev_reliability
+    - earliest_frozen_candidate_order
+  sensitivity_only: single_link_connected_components
+cev:
+  fixed_endpoint:
+    screenspot_pro: G4
+    mind2web: nested_global_selection_from_G0_G3
+cev_a:
+  variants: [global, action_conditional]
+  action_min_inner_validation_rows: 30
+  sparse_action_backoff: global
+  configuration_selection_metric: inner_validation_micro_accuracy
+  granularity_tie_order: [G0, G4, G1, G2, G3]
+  parameter_threshold_tie_order: [1.0, 0.75, 0.5]
+  coordinate_multiplier_tie_order: [1.0, 0.75, 1.25, 0.5, 1.5, 2.0]
+nested_protocol:
+  outer_test_fold: k
+  inner_validation_fold: (k_plus_1)_mod_5
+  inner_training_folds: remaining_three
+  fit_on_inner_training: [dev_reliability, coordinate_base_scale]
+  select_on_inner_validation: [cev_configuration, cev_a_variant]
+  refit_on_all_outer_development: true
+  outer_test_access_during_selection: prohibited
+dev_selection_control:
+  mandatory: true
+  candidate_aggregators: [majority, A0, ours, A1, A2, A3, A4]
+  selection_metric: inner_validation_micro_accuracy
+  tie_order: [majority, A0, ours, A1, A2, A3, A4]
+statistics:
+  paired_bootstrap_resamples: 10000
+  confidence: 0.99
+  interval: percentile
+validations:
+  V1:
+    name: rowwise_A2_anchor
+    condition: screenspot_G4_complete_candidate_votes_identical_to_A2_every_row
+  V2:
+    name: local_endpoint_noninferiority
+    condition:
+      - screenspot_CEV_A_minus_A2_ci_upper_nonnegative_or_abs_delta_below_mde
+      - mind2web_CEV_A_minus_majority_ci_upper_nonnegative_or_abs_delta_below_mde
+  V3:
+    name: cross_endpoint_superiority
+    condition:
+      - screenspot_CEV_A_minus_majority_ci_lower_positive
+      - mind2web_CEV_A_minus_sequential_ci_lower_positive
+  V4:
+    name: nested_dev_selection_comparison
+    method_contribution: CEV_A_minus_devsel_ci_lower_positive_both_benchmarks
+    explanatory_contribution: no_significant_deficit_and_each_abs_delta_below_mde_or_ci_includes_zero
+    failed_unification: any_ci_upper_negative_and_abs_deficit_at_least_mde
+predictions:
+  P_A:
+    statement: candidate_votes_selected_on_7B_screenspot_and_dedup_only_analyzed_as_source_bias_tradeoff
+    evidential_status: contaminated_inherited_diagnostic
+  P_B:
+    statement: screenspot_selects_G4_coordinate_endpoint
+    evidential_status: contaminated_anchor
+  P_C:
+    statement: mind2web_selects_G0_or_action_mixture_dominated_by_G0
+    evidential_status: prospective_motivated_by_F1
+  P_D:
+    statement: mind2web_CLICK_prefers_G0_while_TYPE_SELECT_may_prefer_G2_G3_or_backoff
+    evidential_status: prospective
+  P_E:
+    statement: C_cond_minus_C_uni_under_CEV_A_is_smaller_than_under_sequential
+    evidential_status: prospective
+  P_F:
+    statement: selected_granularity_stable_in_at_least_four_of_five_outer_folds
+    evidential_status: prospective
+  P_G:
+    statement: cluster_support_or_margin_explains_granularity_better_than_action_space_dimension_label
+    evidential_status: prospective_mechanism
+ablations:
+  fixed_order:
+    - G0_action_endpoint
+    - G4_coordinate_endpoint
+    - global_nested_granularity
+    - action_conditional_granularity
+    - parameter_threshold_selection
+    - coordinate_tolerance_selection
+    - lineage_vote_cap_unlimited_1_2
+    - single_link_sensitivity
+  lineage_vote_cap_main: unlimited
+  lineage_vote_cap_one_status: contaminated_analysis_only
+kill_conditions:
+  C_K1:
+    trigger: V1_rowwise_mismatch
+    consequence: stop_and_debug_no_performance_results
+  C_K2:
+    trigger: V2_screenspot_failure
+    consequence: unified_endpoint_recovery_fails_continuous_side_no_retuning
+  C_K3:
+    trigger: V2_mind2web_failure
+    consequence: unified_endpoint_recovery_fails_product_side_no_retuning
+  C_K4:
+    trigger: V4_failed_unification
+    consequence: keep_F1_primary_report_CEV_as_failed_attempt
+  C_K5:
+    trigger: selected_granularity_changes_more_than_two_outer_folds_or_central_tolerance_rank_flip
+    consequence: require_split_tolerance_dependence_no_universal_rule_wording
+reporting:
+  must_say_post_leakage_reconstructed_preregistration: true
+  must_report_all_outer_fold_selections: true
+  must_report_dev_selection: true
+  literal_evaluator_equivalence_claim: prohibited
+  native_prompt_SOTA_claim: prohibited
+retention:
+  backup_root: /scratch/workspaceblobstore/cev-traces/2026-08-10
+  manifest: /scratch/workspaceblobstore/cev-traces/2026-08-10/BACKUP_MANIFEST.json
