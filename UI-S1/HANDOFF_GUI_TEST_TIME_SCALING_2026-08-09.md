@@ -6,13 +6,13 @@
 
 本文自包含，所有数字使用冻结口径。逐轮完整数据以各 `runs/*/REPORT.md` 为准。
 
-## 0. Repo 审计与当前阻塞
+## 0. Repo 审计与当前状态
 
 截至 commit `02b8a575db4c7c2c8ec151568bdc1dcb04f84cb6`：
 
-- 当前 repo **没有** `MASTER_RESULTS.md`；不能按旧说明直接引用该文件。
-- 当前 repo **没有** `cev-spec-2026-08-09.md`、`amendment_011.md`、`cev_prereg.yaml` 或 `runs/cev/2026-08-09/`。
-- 因此 CEV/CEV-A 是下一优先级，但在恢复并提交上述预注册正本前处于阻塞状态，不能开始跑数。
+- `MASTER_RESULTS.md` 已于 2026-08-10 创建并覆盖 consolidation、xfer、close、aggmatch、eqv、cev。
+- 原 CEV 正本未找到；已透明重建为 `post-leakage reconstructed preregistration`，正本为 `cev-spec-2026-08-09.md`、`runs/cev/2026-08-09/amendment_011.md` 与 `configs/cev_prereg.yaml`。
+- CEV/CEV-A 已执行完成：V1–V3 通过，V4 为 `EXPLANATORY_CONTRIBUTION`，C-K5 触发。
 - 08-03 之后已完成的是五轮：consolidation、xfer、close、aggmatch、eqv，而不是“六轮”。
 - 原 handoff 中的 N12 manifest SHA 有转写错误；repo 正本为 `2a7233cf0fbab109ea481ba891d2d7e65a481c48cd73c623d7d76fc61c06ae17`。
 
@@ -20,7 +20,7 @@
 
 ## 1. 一句话状态
 
-本项目研究多模型 GUI grounding 的 test-time scaling。约 16 轮预注册实验后，论文主结果收敛为**聚合器与动作空间/错误结构的匹配**（F1，双向显著）；次级结果为跨谱系共识 RoI 两阶段候选生成（Q1，仅在密度族聚合器下成立）。EQV 统一尝试因 U-K4 在实现自检阶段停止。下一项计划工作是 CEV/CEV-A，但其 spec 尚未出现在当前 repo，必须先恢复并 result-blind commit。
+本项目研究多模型 GUI grounding 的 test-time scaling。论文主结果为**聚合器与动作空间/错误结构的匹配**（F1，双向显著）；次级结果为跨谱系共识 RoI 两阶段候选生成（Q1，仅在匹配聚合器下成立）。CEV-A 作为统一解释恢复 Mind2Web G0 与 ScreenSpot G4，但与 nested dev-selection 打平，因此不是方法优势。当前实验主线已冻结，可以进入论文写作与主表整理。
 
 ## 2. 论文骨架（冻结）
 
@@ -74,7 +74,7 @@
 
 必须说明：信号本身来自 SafeGround（arXiv 2602.02419）；本项目确定性 N12 不继承其 K=10 随机协议、Learn-Then-Test/FDR 保证。定位为算法级迁移与信号增强。
 
-### 2.6 EQV 与计划中的 CEV/CEV-A
+### 2.6 EQV 与 CEV/CEV-A
 
 EQV 在第一顺序 ABL-4 自检触发 U-K4：
 
@@ -86,37 +86,17 @@ EQV 在第一顺序 ABL-4 自检触发 U-K4：
 
 这说明 complete-link 本身逐位复现 A2，但谱系去重损伤 ScreenSpot-Pro 的密度信号。U1–U3、dev-selection 和后续诊断均未运行，不能读作 null。
 
-计划中的 CEV/CEV-A 应按其 V4 结果决定最后一节定位：
-
-- 显著优于 dev-selection：方法贡献；
-- 与 dev-selection 打平：解释贡献，即一个过程、两个极点、处处匹配；
-- 显著劣于 dev-selection：如实报告失败，F1 维持主结果。
-
-当前 repo 缺 CEV 正本，因此尚不能执行或声称“已冻结”。
+CEV/CEV-A 已完成。Mind2Web 选择 G0 主导并精确匹配 majority；ScreenSpot-Pro 选择 G4 并精确匹配 A2 aggregate。相对 nested dev-selection 两端 CI 均跨零，因此定位为解释贡献。C-K5 因中央容差排名跨折翻转而触发，禁止“处处匹配”或普适无容差规则表述。
 
 ## 3. 立即要做的事
 
-### 3.1 阻塞解除
+### 3.1 论文写作
 
-先恢复以下正本，并在任何结果计算前 commit：
-
-```text
-cev-spec-2026-08-09.md
-runs/cev/2026-08-09/amendment_011.md
-runs/cev/2026-08-09/configs/cev_prereg.yaml
-```
-
-恢复后必须核对其 SHA、git 时间戳和 result-blind 状态。若正本内容与本 handoff 冲突，以正本为准，并在 amendment 中解释差异。
-
-### 3.2 CEV 执行顺序
-
-1. Commit Amendment 011 与 `cev_prereg.yaml`。
-2. 运行 A1 实现锚：complete-link + candidate votes 必须逐位复现 63.8836%，即 A2。
-3. 运行 inner-dev 校准。
-4. 执行 V1–V4 判定。
-5. 执行 P-A 到 P-G 七条预测。
-6. 执行消融阶梯。
-7. 根据 V4 冻结 CEV 一节定位与全部主表。
+1. 以 F1 为主结果，CEV-A 为紧随其后的统一解释。
+2. 把 P-E difference-in-differences `−4.47 pp [−7.34,−1.68]` 写入机制段，解释 pool effect 被匹配聚合器吸收。
+3. 明确 CEV-A 与 nested dev-selection 打平，不写方法优势。
+4. 在 limitation 中披露 post-leakage reconstruction、五个泄漏格子与 C-K5 容差翻转。
+5. 使用 `MASTER_RESULTS.md` 冻结全部论文主表。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：
 
@@ -124,10 +104,9 @@ runs/cev/2026-08-09/configs/cev_prereg.yaml
 63.8836 / 63.8836 / 63.0614 / 62.5553 / 63.2511
 ```
 
-### 3.3 可选项
+### 3.2 可选项
 
 - F3 按动作类型重加权：将 AndroidControl 子集动作分布配平到全量 7,650 行。方案必须在看结果前冻结；若单模偏差降到 2 pp 内，才可能把 AC 从附录救回第三数据点。
-- 创建并刷新 `MASTER_RESULTS.md`，覆盖 consolidation、xfer、close、aggmatch、eqv，之后再加入 cev。
 
 ### 3.4 永久不做
 
@@ -293,25 +272,23 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 | `runs/close/2026-08-08/` | 完成，E-K1 触发，E3 通过 |
 | `runs/aggmatch/2026-08-09/` | 完成，F1 成为主结果 |
 | `runs/eqv/2026-08-09/` | U-K4 停止 |
-| `runs/cev/2026-08-09/` | **当前不存在；待恢复 spec 后创建** |
+| `runs/cev/2026-08-09/` | 完成；V4 解释贡献，C-K5 触发 |
 
 ## 10. 已知未完事项
 
-1. 当前 repo 没有 `MASTER_RESULTS.md`。应新建并回填至少 consolidation、xfer、close、aggmatch、eqv 五轮，随后再加入 CEV。
-2. CEV/CEV-A spec、Amendment 011 与 prereg config 缺失，是最高优先级阻塞。
-3. SafeGround 锚是 `ALGORITHM_LEVEL_PORT`：本地 0.6278 vs 官方 0.6344，差 0.0066 且协议不同。
-4. X1 sampling 轴始终未补，每行仅 5 采样；标题只能写固定视角轴 + 跨谱系轴。
-5. Thesis 层面对应 GUI agent 章节，与 Cooperation through Diversity 主线如何衔接由作者决定，不在本 handoff 范围。
+1. SafeGround 锚是 `ALGORITHM_LEVEL_PORT`：本地 0.6278 vs 官方 0.6344，差 0.0066 且协议不同。
+2. X1 sampling 轴始终未补，每行仅 5 采样；标题只能写固定视角轴 + 跨谱系轴。
+3. Thesis 层面对应 GUI agent 章节，与 Cooperation through Diversity 主线如何衔接由作者决定，不在本 handoff 范围。
 
 ## 11. 接手者启动检查表
 
 - [ ] 阅读本文件与 `runs/aggmatch/2026-08-09/CONSOLIDATED_SUMMARY_ZH.md`。
 - [ ] 阅读 `runs/eqv/2026-08-09/REPORT.md`，确认理解 U-K4 与五个已泄漏格子。
-- [ ] 恢复 CEV spec、Amendment 011、`cev_prereg.yaml`。
-- [ ] 在任何跑数前 commit CEV 配置并记录 SHA。
-- [ ] 验证 complete-link + candidate votes 逐位复现 A2 63.8836%。
+- [x] 重建 CEV spec、Amendment 011、`cev_prereg.yaml`，并披露 post-leakage 状态。
+- [x] 在跑数前提交 CEV 配置：`d873c41`、`de5b125`。
+- [x] 验证 complete-link + candidate votes 精确复现 A2 aggregate 63.8836%。
 - [ ] 保证全程零 GPU，不启动模型推理。
 - [ ] 保持 PID 2274 不被 signal、暂停、kill 或改优先级。
 - [ ] 新产物逐行 fsync、SHA manifest、独立备份。
 - [ ] 按 kill condition 停止，不以已泄漏格子调参。
-- [ ] CEV 完成后刷新主表与 `MASTER_RESULTS.md`。
+- [x] CEV 完成并刷新主表与 `MASTER_RESULTS.md`。

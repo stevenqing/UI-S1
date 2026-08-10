@@ -1,0 +1,412 @@
+{
+  "P_A": {
+    "inherited_72B_lineage_normalization": {
+      "B3": 0.41239721695129666,
+      "LN_minus_B3": {
+        "ci_99": [
+          0.21567314486280004,
+          0.3578169442360267
+        ],
+        "left_accuracy": 0.7058823529411765,
+        "p_one_sided_delta_le_zero": 9.999000099990002e-05,
+        "point_delta": 0.2934851359898798,
+        "resamples": 10000,
+        "right_accuracy": 0.41239721695129666,
+        "seed": 20260803
+      },
+      "LN_minus_best_single": {
+        "ci_99": [
+          -0.030140919298109376,
+          0.017154305636482254
+        ],
+        "left_accuracy": 0.7058823529411765,
+        "p_one_sided_delta_le_zero": 0.8222177782221778,
+        "point_delta": -0.008222643896268185,
+        "resamples": 10000,
+        "right_accuracy": 0.7141049968374447,
+        "seed": 20260803
+      },
+      "best_single": 0.7141049968374447,
+      "nested_LN": 0.7058823529411765
+    },
+    "interpretation": "vote caps trade source concentration against density signal; cap 1 harms 7B while historical 72B normalization improves B3 but approaches best-single",
+    "screenspot_7B": {
+      "cap_1": {
+        "accuracy": 0.6306135357368754,
+        "selected_lineage_distribution": {
+          "counts": {
+            "GTA1-7B": 1357,
+            "Qwen3-VL-8B-Instruct": 209,
+            "UI-TARS-7B-SFT": 15
+          },
+          "entropy_nats": 0.44281943172364285,
+          "max_share": 0.8583175205566097,
+          "shares": {
+            "GTA1-7B": 0.8583175205566097,
+            "Qwen3-VL-8B-Instruct": 0.13219481340923467,
+            "UI-TARS-7B-SFT": 0.009487666034155597
+          }
+        }
+      },
+      "cap_2": {
+        "accuracy": 0.640101201771031,
+        "selected_lineage_distribution": {
+          "counts": {
+            "GTA1-7B": 1343,
+            "Qwen3-VL-8B-Instruct": 222,
+            "UI-TARS-7B-SFT": 16
+          },
+          "entropy_nats": 0.46073390914989537,
+          "max_share": 0.8494623655913979,
+          "shares": {
+            "GTA1-7B": 0.8494623655913979,
+            "Qwen3-VL-8B-Instruct": 0.14041745730550284,
+            "UI-TARS-7B-SFT": 0.010120177103099304
+          }
+        }
+      },
+      "unlimited": {
+        "accuracy": 0.6388361796331435,
+        "selected_lineage_distribution": {
+          "counts": {
+            "GTA1-7B": 1321,
+            "Qwen3-VL-8B-Instruct": 229,
+            "UI-TARS-7B-SFT": 31
+          },
+          "entropy_nats": 0.507069909678193,
+          "max_share": 0.8355471220746363,
+          "shares": {
+            "GTA1-7B": 0.8355471220746363,
+            "Qwen3-VL-8B-Instruct": 0.14484503478810878,
+            "UI-TARS-7B-SFT": 0.0196078431372549
+          }
+        }
+      }
+    },
+    "screenspot_cap_1_minus_unlimited_pp": -0.8222643896268145,
+    "screenspot_cap_2_minus_unlimited_pp": 0.12650221378874837,
+    "status": "CONTAMINATED_INHERITED_DIAGNOSTIC"
+  },
+  "P_B": {
+    "selected_granularity_all_folds": "G4",
+    "status": "CONTAMINATED_ANCHOR",
+    "supported": true
+  },
+  "P_C": {
+    "CEV_A_accuracy": 0.32019230769230766,
+    "global_granularity_counts": {
+      "G0": 4,
+      "G2": 1
+    },
+    "majority_accuracy": 0.32019230769230766,
+    "status": "PROSPECTIVE_MOTIVATED_BY_F1",
+    "supported": true
+  },
+  "P_D": {
+    "action_selections": {
+      "CLICK": [
+        {
+          "backoff": false,
+          "granularity": "G0",
+          "outer_fold": 0,
+          "validation_accuracy": 0.32038834951456313,
+          "validation_rows": 412
+        },
+        {
+          "backoff": false,
+          "granularity": "G0",
+          "outer_fold": 1,
+          "validation_accuracy": 0.3301204819277108,
+          "validation_rows": 415
+        },
+        {
+          "backoff": false,
+          "granularity": "G0",
+          "outer_fold": 2,
+          "validation_accuracy": 0.29055690072639223,
+          "validation_rows": 413
+        },
+        {
+          "backoff": false,
+          "granularity": "G0",
+          "outer_fold": 3,
+          "validation_accuracy": 0.30413625304136255,
+          "validation_rows": 411
+        },
+        {
+          "backoff": false,
+          "granularity": "G0",
+          "outer_fold": 4,
+          "validation_accuracy": 0.3502415458937198,
+          "validation_rows": 414
+        }
+      ],
+      "SELECT": [
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 0,
+          "validation_rows": 3
+        },
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 3,
+          "validation_rows": 1
+        }
+      ],
+      "TYPE": [
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 0,
+          "validation_rows": 2
+        },
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 1,
+          "validation_rows": 1
+        },
+        {
+          "backoff": true,
+          "granularity": "G2",
+          "outer_fold": 2,
+          "parameter_threshold": 1.0,
+          "validation_rows": 3
+        },
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 3,
+          "validation_rows": 3
+        },
+        {
+          "backoff": true,
+          "granularity": "G0",
+          "outer_fold": 4,
+          "validation_rows": 2
+        }
+      ]
+    },
+    "limitation": "TYPE/SELECT predicted plurality rows are below 30 in every fold and therefore back off; no independent sparse-action conclusion",
+    "status": "PROSPECTIVE",
+    "supported": true
+  },
+  "P_E": {
+    "C_cond_minus_C_uni_CEV_A": {
+      "ci_99": [
+        -0.01567723755538272,
+        0.025702389367271095
+      ],
+      "groups": 252,
+      "p_delta_le_zero_plus_one": 0.3043695630436956,
+      "point_delta": 0.004326923076923077,
+      "resamples": 10000,
+      "rows": 2080,
+      "seed": 20260858
+    },
+    "C_cond_minus_C_uni_sequential": {
+      "ci_99": [
+        0.029702780804396228,
+        0.06873839164455654
+      ],
+      "groups": 252,
+      "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+      "point_delta": 0.04903846153846154,
+      "resamples": 10000,
+      "rows": 2080,
+      "seed": 20260859
+    },
+    "difference_in_differences": {
+      "ci_99": [
+        -0.07338558492043669,
+        -0.016848096022553303
+      ],
+      "groups": 252,
+      "p_delta_le_zero_plus_one": 1.0,
+      "point_delta": -0.04471153846153846,
+      "resamples": 10000,
+      "rows": 2080,
+      "seed": 20260860
+    },
+    "status": "PROSPECTIVE",
+    "supported": true
+  },
+  "P_F": {
+    "C_K5": true,
+    "interpretation": "selected endpoint is stable, but unused coordinate-tolerance rankings flip; universal tolerance-free wording is prohibited",
+    "mind2web_global_granularities": [
+      "G0",
+      "G0",
+      "G2",
+      "G0",
+      "G0"
+    ],
+    "screenspot_global_granularities": [
+      "G4",
+      "G4",
+      "G4",
+      "G4",
+      "G4"
+    ],
+    "status": "PROSPECTIVE",
+    "supported": true,
+    "tolerance_rank_flip": true
+  },
+  "P_G": {
+    "action_strata_CEV_A_minus_majority": {
+      "CLICK": {
+        "ci_99": [
+          0.0,
+          0.0
+        ],
+        "groups": 252,
+        "p_delta_le_zero_plus_one": 1.0,
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "rows": 1774,
+        "seed": 20260868
+      },
+      "SELECT": {
+        "ci_99": [
+          0.0,
+          0.0
+        ],
+        "groups": 43,
+        "p_delta_le_zero_plus_one": 1.0,
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "rows": 79,
+        "seed": 20260870
+      },
+      "TYPE": {
+        "ci_99": [
+          0.0,
+          0.0
+        ],
+        "groups": 146,
+        "p_delta_le_zero_plus_one": 1.0,
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "rows": 227,
+        "seed": 20260869
+      }
+    },
+    "interpretation": "support margin is reported directly; action-space dimensionality alone is not treated as causal",
+    "mind2web_action_support_margin": {
+      "margin_1": {
+        "CEV_minus_sequential": {
+          "ci_99": [
+            0.0,
+            0.16666666666666666
+          ],
+          "groups": 17,
+          "p_delta_le_zero_plus_one": 0.2903709629037096,
+          "point_delta": 0.05,
+          "resamples": 10000,
+          "rows": 20,
+          "seed": 20260849
+        },
+        "mean_margin": 1.0,
+        "rows": 20
+      },
+      "margin_2plus": {
+        "CEV_minus_sequential": {
+          "ci_99": [
+            0.02279382395787312,
+            0.08029934212559824
+          ],
+          "groups": 252,
+          "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+          "point_delta": 0.05170731707317073,
+          "resamples": 10000,
+          "rows": 2050,
+          "seed": 20260850
+        },
+        "mean_margin": 10.021463414634146,
+        "rows": 2050
+      },
+      "tie": {
+        "CEV_minus_sequential": {
+          "ci_99": [
+            0.1,
+            0.8
+          ],
+          "groups": 10,
+          "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+          "point_delta": 0.4,
+          "resamples": 10000,
+          "rows": 10,
+          "seed": 20260848
+        },
+        "mean_margin": 0.0,
+        "rows": 10
+      }
+    },
+    "screenspot_coordinate_support_margin": {
+      "margin_1": {
+        "CEV_minus_majority": {
+          "ci_99": [
+            -0.018797051405944325,
+            0.08461538461538462
+          ],
+          "groups": 26,
+          "p_delta_le_zero_plus_one": 0.0690930906909309,
+          "point_delta": 0.030821917808219176,
+          "resamples": 10000,
+          "rows": 292,
+          "seed": 20260838
+        },
+        "mean_margin": 1.0,
+        "rows": 292
+      },
+      "margin_2plus": {
+        "CEV_minus_majority": {
+          "ci_99": [
+            0.02414102080437138,
+            0.06341465656384505
+          ],
+          "groups": 26,
+          "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+          "point_delta": 0.044384057971014496,
+          "resamples": 10000,
+          "rows": 1104,
+          "seed": 20260839
+        },
+        "mean_margin": 5.732789855072464,
+        "rows": 1104
+      },
+      "tie": {
+        "CEV_minus_majority": {
+          "ci_99": [
+            -0.020512820512820513,
+            0.08620733415018372
+          ],
+          "groups": 26,
+          "p_delta_le_zero_plus_one": 0.07699230076992301,
+          "point_delta": 0.032432432432432434,
+          "resamples": 10000,
+          "rows": 185,
+          "seed": 20260837
+        },
+        "mean_margin": 0.0,
+        "rows": 185
+      }
+    },
+    "status": "PROSPECTIVE_MECHANISM_DIAGNOSTIC",
+    "supported": true
+  },
+  "ablation_reference": "cev_ablations.json",
+  "predictions_supported": {
+    "P_A": null,
+    "P_B": true,
+    "P_C": true,
+    "P_D": true,
+    "P_E": true,
+    "P_F": true,
+    "P_G": true
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

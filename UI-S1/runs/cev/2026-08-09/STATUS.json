@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_EXPLANATORY_CONTRIBUTION_WITH_C_K5",
+  "workdir": "runs/cev/2026-08-09",
+  "preregistration": {
+    "status": "POST_LEAKAGE_RECONSTRUCTED",
+    "initial_commit": "d873c41",
+    "pre_result_anchor_clarification_commit": "de5b125"
+  },
+  "V1": "PASS_EXACT_AGGREGATE_ANCHOR",
+  "V2": "PASS_BOTH_BENCHMARKS",
+  "V3": "PASS_BOTH_BENCHMARKS",
+  "V4": "EXPLANATORY_CONTRIBUTION",
+  "kill_conditions": {
+    "C_K1": false,
+    "C_K2": false,
+    "C_K3": false,
+    "C_K4": false,
+    "C_K5": true
+  },
+  "paper_position": "KEEP_F1_PRIMARY_CEV_AS_UNIFIED_EXPLANATION_NOT_METHOD_ADVANTAGE",
+  "primary_results": {
+    "mind2web_CEV_A_accuracy": 0.32019230769230766,
+    "screenspot_pro_CEV_A_accuracy": 0.6388361796331435,
+    "mind2web_CEV_A_minus_dev_selection": 0.0019230769230769232,
+    "screenspot_CEV_A_minus_dev_selection": 0.0006325110689437065
+  },
+  "new_inference_started": false,
+  "zero_gpu": true,
+  "external_pid_2274_untouched": true,
+  "retention": {
+    "backup_root": "/scratch/workspaceblobstore/cev-traces/2026-08-10",
+    "manifest": "/scratch/workspaceblobstore/cev-traces/2026-08-10/BACKUP_MANIFEST.json"
+  }
+}

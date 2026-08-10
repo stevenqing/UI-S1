@@ -1,0 +1,1339 @@
+{
+  "A0_G0_action_endpoint": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    }
+  },
+  "A1_G4_coordinate_endpoint": {
+    "screenspot_pro": {
+      "accuracy": 0.6388361796331435
+    }
+  },
+  "A2_global_fixed_threshold_granularity": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G2",
+              "parameter_threshold": 1.0,
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G2",
+            "parameter_threshold": 1.0
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    }
+  },
+  "A3_action_conditional_fixed_threshold": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G2",
+              "parameter_threshold": 1.0,
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G2",
+            "parameter_threshold": 1.0
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    }
+  },
+  "A4_parameter_threshold_selection": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G2",
+              "parameter_threshold": 1.0,
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G2",
+            "parameter_threshold": 1.0
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    }
+  },
+  "A5_full_coordinate_tolerance_selection": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G2",
+              "parameter_threshold": 1.0,
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G2",
+            "parameter_threshold": 1.0
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    },
+    "screenspot_pro": {
+      "accuracy": 0.6388361796331435
+    }
+  },
+  "A6_lineage_vote_cap": {
+    "cap_1": {
+      "mind2web": {
+        "accuracy": 0.31971153846153844,
+        "folds": [
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.32116788321167883,
+                "validation_rows": 411
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 6
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 0,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.3301204819277108,
+                "validation_rows": 415
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 1,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.2891566265060241,
+                "validation_rows": 415
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G2",
+                "parameter_threshold": 1.0,
+                "validation_rows": 1
+              }
+            },
+            "global_configuration": {
+              "granularity": "G2",
+              "parameter_threshold": 1.0
+            },
+            "outer_fold": 2,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.30413625304136255,
+                "validation_rows": 411
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 4
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 3,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.35108958837772397,
+                "validation_rows": 413
+              },
+              "SELECT": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 2
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 4,
+            "selected_variant": "global"
+          }
+        ]
+      },
+      "screenspot_pro": {
+        "accuracy": 0.6306135357368754,
+        "folds": [
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 0
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 1
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 2
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 3
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 4
+          }
+        ]
+      }
+    },
+    "cap_2": {
+      "mind2web": {
+        "accuracy": 0.31971153846153844,
+        "folds": [
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.32116788321167883,
+                "validation_rows": 411
+              },
+              "SELECT": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 5
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 0,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.3301204819277108,
+                "validation_rows": 415
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 1,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.2891566265060241,
+                "validation_rows": 415
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G2",
+                "parameter_threshold": 1.0,
+                "validation_rows": 1
+              }
+            },
+            "global_configuration": {
+              "granularity": "G2",
+              "parameter_threshold": 1.0
+            },
+            "outer_fold": 2,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.30413625304136255,
+                "validation_rows": 411
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 4
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 3,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.3502415458937198,
+                "validation_rows": 414
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 2
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 4,
+            "selected_variant": "global"
+          }
+        ]
+      },
+      "screenspot_pro": {
+        "accuracy": 0.640101201771031,
+        "folds": [
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 0
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 1
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 2
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 3
+          },
+          {
+            "configuration": {
+              "coordinate_tolerance": 14.0,
+              "granularity": "G4"
+            },
+            "outer_fold": 4
+          }
+        ]
+      }
+    },
+    "unlimited": {
+      "mind2web": {
+        "accuracy": 0.32019230769230766,
+        "folds": [
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.32038834951456313,
+                "validation_rows": 412
+              },
+              "SELECT": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 3
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 2
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 0,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.3301204819277108,
+                "validation_rows": 415
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 1,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.29055690072639223,
+                "validation_rows": 413
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G2",
+                "parameter_threshold": 1.0,
+                "validation_rows": 3
+              }
+            },
+            "global_configuration": {
+              "granularity": "G2",
+              "parameter_threshold": 1.0
+            },
+            "outer_fold": 2,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.30413625304136255,
+                "validation_rows": 411
+              },
+              "SELECT": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 1
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 3
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 3,
+            "selected_variant": "global"
+          },
+          {
+            "action_configurations": {
+              "CLICK": {
+                "backoff": false,
+                "granularity": "G0",
+                "validation_accuracy": 0.3502415458937198,
+                "validation_rows": 414
+              },
+              "TYPE": {
+                "backoff": true,
+                "granularity": "G0",
+                "validation_rows": 2
+              }
+            },
+            "global_configuration": {
+              "granularity": "G0"
+            },
+            "outer_fold": 4,
+            "selected_variant": "global"
+          }
+        ]
+      },
+      "screenspot_pro": {
+        "accuracy": 0.6388361796331435
+      }
+    }
+  },
+  "A7_single_link_sensitivity": {
+    "mind2web": {
+      "accuracy": 0.32019230769230766,
+      "folds": [
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.32038834951456313,
+              "validation_rows": 412
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 0,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3301204819277108,
+              "validation_rows": 415
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 1,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.29055690072639223,
+              "validation_rows": 413
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G2",
+              "parameter_threshold": 1.0,
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G2",
+            "parameter_threshold": 1.0
+          },
+          "outer_fold": 2,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.30413625304136255,
+              "validation_rows": 411
+            },
+            "SELECT": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 1
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 3
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 3,
+          "selected_variant": "global"
+        },
+        {
+          "action_configurations": {
+            "CLICK": {
+              "backoff": false,
+              "granularity": "G0",
+              "validation_accuracy": 0.3502415458937198,
+              "validation_rows": 414
+            },
+            "TYPE": {
+              "backoff": true,
+              "granularity": "G0",
+              "validation_rows": 2
+            }
+          },
+          "global_configuration": {
+            "granularity": "G0"
+          },
+          "outer_fold": 4,
+          "selected_variant": "global"
+        }
+      ]
+    },
+    "screenspot_pro": {
+      "accuracy": 0.6325110689437066,
+      "folds": [
+        {
+          "configuration": {
+            "coordinate_tolerance": 14.0,
+            "granularity": "G4"
+          },
+          "outer_fold": 0
+        },
+        {
+          "configuration": {
+            "coordinate_tolerance": 14.0,
+            "granularity": "G4"
+          },
+          "outer_fold": 1
+        },
+        {
+          "configuration": {
+            "coordinate_tolerance": 14.0,
+            "granularity": "G4"
+          },
+          "outer_fold": 2
+        },
+        {
+          "configuration": {
+            "coordinate_tolerance": 14.0,
+            "granularity": "G4"
+          },
+          "outer_fold": 3
+        },
+        {
+          "configuration": {
+            "coordinate_tolerance": 14.0,
+            "granularity": "G4"
+          },
+          "outer_fold": 4
+        }
+      ]
+    }
+  },
+  "central_tolerance_rank_audit": [
+    {
+      "best": "G1_c1.25",
+      "granularity": "G1",
+      "outer_fold": 0,
+      "scores": {
+        "G1_c0.75": 0.2278177458033573,
+        "G1_c1.0": 0.23741007194244604,
+        "G1_c1.25": 0.23741007194244604
+      }
+    },
+    {
+      "best": "G3_c1.25_p1.0",
+      "granularity": "G3",
+      "outer_fold": 0,
+      "scores": {
+        "G3_c0.75_p0.5": 0.2278177458033573,
+        "G3_c0.75_p0.75": 0.2278177458033573,
+        "G3_c0.75_p1.0": 0.2278177458033573,
+        "G3_c1.0_p0.5": 0.23741007194244604,
+        "G3_c1.0_p0.75": 0.23741007194244604,
+        "G3_c1.0_p1.0": 0.23741007194244604,
+        "G3_c1.25_p0.5": 0.23741007194244604,
+        "G3_c1.25_p0.75": 0.23741007194244604,
+        "G3_c1.25_p1.0": 0.23741007194244604
+      }
+    },
+    {
+      "best": "G1_c1.0",
+      "granularity": "G1",
+      "outer_fold": 1,
+      "scores": {
+        "G1_c0.75": 0.30528846153846156,
+        "G1_c1.0": 0.3076923076923077,
+        "G1_c1.25": 0.2980769230769231
+      }
+    },
+    {
+      "best": "G3_c1.0_p1.0",
+      "granularity": "G3",
+      "outer_fold": 1,
+      "scores": {
+        "G3_c0.75_p0.5": 0.30528846153846156,
+        "G3_c0.75_p0.75": 0.3076923076923077,
+        "G3_c0.75_p1.0": 0.3076923076923077,
+        "G3_c1.0_p0.5": 0.3076923076923077,
+        "G3_c1.0_p0.75": 0.31009615384615385,
+        "G3_c1.0_p1.0": 0.31009615384615385,
+        "G3_c1.25_p0.5": 0.2980769230769231,
+        "G3_c1.25_p0.75": 0.3004807692307692,
+        "G3_c1.25_p1.0": 0.3004807692307692
+      }
+    },
+    {
+      "best": "G1_c1.25",
+      "granularity": "G1",
+      "outer_fold": 2,
+      "scores": {
+        "G1_c0.75": 0.24759615384615385,
+        "G1_c1.0": 0.24278846153846154,
+        "G1_c1.25": 0.25
+      }
+    },
+    {
+      "best": "G3_c1.25_p1.0",
+      "granularity": "G3",
+      "outer_fold": 2,
+      "scores": {
+        "G3_c0.75_p0.5": 0.24759615384615385,
+        "G3_c0.75_p0.75": 0.24759615384615385,
+        "G3_c0.75_p1.0": 0.24759615384615385,
+        "G3_c1.0_p0.5": 0.24278846153846154,
+        "G3_c1.0_p0.75": 0.24278846153846154,
+        "G3_c1.0_p1.0": 0.24278846153846154,
+        "G3_c1.25_p0.5": 0.25,
+        "G3_c1.25_p0.75": 0.25,
+        "G3_c1.25_p1.0": 0.25
+      }
+    },
+    {
+      "best": "G1_c0.75",
+      "granularity": "G1",
+      "outer_fold": 3,
+      "scores": {
+        "G1_c0.75": 0.2674698795180723,
+        "G1_c1.0": 0.25783132530120484,
+        "G1_c1.25": 0.25301204819277107
+      }
+    },
+    {
+      "best": "G3_c0.75_p0.5",
+      "granularity": "G3",
+      "outer_fold": 3,
+      "scores": {
+        "G3_c0.75_p0.5": 0.26987951807228916,
+        "G3_c0.75_p0.75": 0.2674698795180723,
+        "G3_c0.75_p1.0": 0.2674698795180723,
+        "G3_c1.0_p0.5": 0.26265060240963856,
+        "G3_c1.0_p0.75": 0.26024096385542167,
+        "G3_c1.0_p1.0": 0.26024096385542167,
+        "G3_c1.25_p0.5": 0.25783132530120484,
+        "G3_c1.25_p0.75": 0.25542168674698795,
+        "G3_c1.25_p1.0": 0.25542168674698795
+      }
+    },
+    {
+      "best": "G1_c1.0",
+      "granularity": "G1",
+      "outer_fold": 4,
+      "scores": {
+        "G1_c0.75": 0.2932692307692308,
+        "G1_c1.0": 0.30528846153846156,
+        "G1_c1.25": 0.3004807692307692
+      }
+    },
+    {
+      "best": "G3_c1.0_p1.0",
+      "granularity": "G3",
+      "outer_fold": 4,
+      "scores": {
+        "G3_c0.75_p0.5": 0.2932692307692308,
+        "G3_c0.75_p0.75": 0.2932692307692308,
+        "G3_c0.75_p1.0": 0.2932692307692308,
+        "G3_c1.0_p0.5": 0.30528846153846156,
+        "G3_c1.0_p0.75": 0.30528846153846156,
+        "G3_c1.0_p1.0": 0.30528846153846156,
+        "G3_c1.25_p0.5": 0.3004807692307692,
+        "G3_c1.25_p0.75": 0.3004807692307692,
+        "G3_c1.25_p1.0": 0.3004807692307692
+      }
+    }
+  ],
+  "contamination_note": "ScreenSpot cap-1 and linkage outcomes are analysis-only because related EQV cells were disclosed before reconstruction.",
+  "fixed_order": [
+    "G0_action_endpoint",
+    "G4_coordinate_endpoint",
+    "global_nested_granularity",
+    "action_conditional_granularity",
+    "parameter_threshold_selection",
+    "coordinate_tolerance_selection",
+    "lineage_vote_cap_unlimited_1_2",
+    "single_link_sensitivity"
+  ],
+  "schema_version": 1,
+  "status": "PASS"
+}
