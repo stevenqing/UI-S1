@@ -1,0 +1,57 @@
+schema_version: 1
+status: FROZEN_AFTER_CARE_A1_BEFORE_RAVEL_RESULTS
+frozen_at: 2026-08-11
+method: RAVEL
+acquisition:
+  primary: C_cond
+  mandatory_evaluation_arms: [C_uni, C_cond, C_rand, C_self]
+  candidate_forwards: 12
+  adaptive_routing: prohibited
+evidence:
+  model: Qwen3-VL-8B-Instruct
+  model_path: runs/ccm-h2h/2026-07-31/h3/models/Qwen3-VL-8B-Instruct
+  selector_vlm_invocations: 1
+  images: [unmarked_global, fine_candidate_mosaic, context_candidate_mosaic]
+  crop_short_edge_fractions: [0.07, 0.21]
+  total_visual_pixel_ratio_max_vs_VUS: 1.02
+  pixel_allocation: {global: 0.50, fine: 0.25, context: 0.25}
+  output: one_step_A_to_L_logits
+  prohibited: [target_bbox, positive_dom, candidate_success, evaluator_field, source_id, model_id, slot_id, fallback_identity]
+controls:
+  - compute_matched_full_screen
+  - random_center_mosaics
+  - global_only
+  - fine_only
+  - context_only
+relational_model:
+  pair_score: antisymmetric
+  outcomes: [REPAIR, SAME, BREAK]
+  losses:
+    listwise_repair_or_keep: 1.0
+    discordant_bradley_terry: 1.0
+    fallback_correct_bce: 0.5
+    expected_u_grpo: 0.1
+risk_control:
+  confidence: 0.99
+  target: mean_net_utility
+  threshold_order: conservative_to_permissive
+  familywise_correction: true
+  selection: most_permissive_nonnegative_lower_bound
+nested_protocol:
+  outer_folds: 5
+  fold_sealed_labels: true
+  atomic_pretest: true
+  outer_test_access: once
+statistics:
+  resamples: 10000
+  confidence: 0.99
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+compute:
+  gpu_ids: [0, 1, 2, 3, 4, 5, 6, 7]
+  protected_pid: 2274
+confirmation:
+  required: true
+  benchmark: untouched_third_benchmark
+  tuning_on_confirmation: prohibited

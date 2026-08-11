@@ -12,6 +12,7 @@
 | Learned method candidate | VUS-SR | Mind2Web equal-arm +2.99 pp [2.10,3.91]；ScreenSpot +0.11 pp [−0.17,0.37]；八 cells safe |
 | Explanatory follow-up | CEV-A | 恢复 Mind2Web G0 与 ScreenSpot G4；与 nested dev-selection 打平，V4=`EXPLANATORY_CONTRIBUTION` |
 | Learned precursors | LSA / Utility-LSA | correctness-LSA partial transfer；Utility-LSA safe exploratory；均被 VUS-SR 显著超过 |
+| Post-VUS negative | CARE A1 router | corrected structural routing fails：M2W pass@12 −1.01 pp；SSPro safe −1.27 pp；`CLOSE_ROUTING` |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -35,6 +36,14 @@ CEV-A 选择：Mind2Web G0/G0/G2/G0/G0，ScreenSpot-Pro 五折 G4。C-K5 触发�
 Mind2Web 四臂 CI 均为正；ScreenSpot 四臂均安全。相对 Utility-LSA 的 equal-benchmark/equal-arm standardized 99% CI 为 `[+1.57,+3.17]` MDE。相对同一 blind Qwen3-VL anchor，Mind2Web 仍增加 +1.35 pp `[+0.50,+2.21]`，证明 listwise utility/downside training 有独立增量。
 
 VUS-SR 为当前最强经验统一聚合器，但仍是同两 benchmark 上的 nested discovery；需第三个独立 benchmark 才能最终确认。CEV-A 保持最强 training-free 规则。
+
+### 3.1 Post-VUS diagnostic and CARE A1
+
+VUS-SR 剩余瓶颈主要是 candidate identification，而非 safe gate：Mind2Web pass@12 59.21%、candidate-ranking gap 18.52 pp、gate gap 5.77 pp；ScreenSpot-Pro 对应 79.57%、14.60 pp、0.71 pp。最小目标 quartile 的 conditional ranking failure 为 53.57%/32.99%，显著高于最大 quartile 的 34.75%/13.32%。
+
+四臂前六候选逐行相同，虽存在 oracle stage-2 routing coverage gain +6.06/+3.67 pp，但 corrected CARE A1 structural router 未能泛化：相对 nested static C-cond，Mind2Web pass@12 −1.01 pp `[−2.10,0.00]`，ScreenSpot +0.06 pp `[−0.81,+1.05]`，且 ScreenSpot safe −1.27 pp。三项 A1 gates 全失败，routing 分支关闭。初版遗漏 cross-fitted reliability 的实现已作废；Correction 002 重跑后结论更强。
+
+后续只冻结 RAVEL E0：在固定 C-cond acquisition 下，以 token-matched global + fine/context candidate mosaics 测试局部 evidence。RAVEL 当前无结果，不进入论文结论。
 
 ## 4. Q1 与聚合器限定
 
@@ -79,6 +88,8 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/lsa-confirm/2026-08-10/` | COMPLETE | T1/T3/T4 pass，T2 fail；LT-K3 partial transfer |
 | `runs/lsa-utility/2026-08-11/` | COMPLETE | safe exploratory；UR2/UR5 fail；fixed ablations complete，UR-K5 false |
 | `runs/visual-utility-selector/2026-08-11/` | COMPLETE | VUS-SR method candidate；SR1–SR4 pass |
+| `runs/care/2026-08-11/` | A1 COMPLETE | structural acquisition router fails；`CLOSE_ROUTING` |
+| `runs/ravel/2026-08-11/` | PREREGISTERED | evidence-first protocol frozen；E0 not run |
 
 ## 8. Reproducibility boundaries
 
@@ -89,3 +100,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - 08-06 后至 Utility-LSA 的聚合分析均为 retained candidate banks 上的零 GPU 重算；VUS 显式例外，使用 Qwen3-VL-8B blind visual logits 与 GPU set-ranker。
 - VUS-SR 是已知两 benchmark 上的 nested discovery，不是第三 benchmark 独立确认。
 - VUS 首次 formal process eager-loaded all-fold labels；Correction 006 物理 fold-seal 后 bit-identical rerun，只有 hardened outputs 用于结论。
+- CARE/RAVEL 均为 VUS 结果已知后的 post-hoc research sequence；RAVEL 必须在第三个 untouched benchmark 才能升级为确认结果。
