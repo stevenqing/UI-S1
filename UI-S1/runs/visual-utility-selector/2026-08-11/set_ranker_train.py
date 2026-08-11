@@ -331,11 +331,18 @@ def final_epoch(inner_reports, config_id):
     return max(1, int(math.floor(float(np.median(epochs)) + 0.5))), epochs
 
 
-def run_outer(outer_fold, config, device, pretest_output):
+def run_outer(
+    outer_fold,
+    config,
+    device,
+    pretest_output,
+    predictions_path=RUN_DIR / "zero_shot/predictions.jsonl",
+    predictions_manifest_path=RUN_DIR / "zero_shot/predictions.manifest.json",
+):
     banks = load_banks()
     cev = load_cev()
     cev_config = load_cev_config()
-    public, visual_predictions = load_public_predictions()
+    public, visual_predictions = load_public_predictions(predictions_path=predictions_path)
     dev_folds = [fold for fold in range(5) if fold != outer_fold]
     development_labels = load_label_folds(dev_folds)
     oof_by_config = {config_id: [] for config_id in CONFIG_IDS}
@@ -430,7 +437,7 @@ def run_outer(outer_fold, config, device, pretest_output):
         "selected_inner_epochs": inner_epochs,
         "final_epochs": epochs,
         "blind_predictions_sha256": json.loads(
-            (RUN_DIR / "zero_shot/predictions.manifest.json").read_text()
+            Path(predictions_manifest_path).read_text()
         )["predictions_sha256"],
     }
     atomic_json(pretest_output, pretest_record)
