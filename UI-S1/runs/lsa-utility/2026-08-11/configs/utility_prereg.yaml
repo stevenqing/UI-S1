@@ -19,7 +19,14 @@ references:
     tie_break: AGVP_coverage
     output: real_candidate
     pinned_commit: 988ff3c61b9f7632d780ae27c83260de75b3c95f
-    boundary: AGVP_coverage_not_available_cross_benchmark_and_not_fabricated
+    appendix_GRPO_selector:
+      base_model: Qwen3VL_4B_Instruct
+      candidates: 2_to_4_numbered_red_points
+      reward: correct_point_label_binary
+      rollouts_per_group: 8
+      optimization_steps: 170
+      result: improves_base_but_not_consistently_better_than_clustering
+    boundary: main_MVP_is_training_free_appendix_selector_is_learned_AGVP_coverage_not_available_cross_benchmark
 upstream:
   cev: runs/cev/2026-08-09
   lsa: runs/lsa/2026-08-10
