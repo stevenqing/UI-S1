@@ -1,0 +1,315 @@
+{
+  "comparisons": {
+    "mind2web": {
+      "C_cond_minus_correctness_LSA": {
+        "ci_99": [
+          -0.004953020817878441,
+          0.02982989938840224
+        ],
+        "losses": 83,
+        "point_delta": 0.01201923076923077,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261492,
+        "wins": 108
+      },
+      "C_cond_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.009301054641130188,
+          0.02484487500386265
+        ],
+        "losses": 89,
+        "point_delta": 0.007692307692307693,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261392,
+        "wins": 105
+      },
+      "C_rand_minus_correctness_LSA": {
+        "ci_99": [
+          0.013847353540709985,
+          0.05393384623818575
+        ],
+        "losses": 103,
+        "point_delta": 0.03317307692307692,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261493,
+        "wins": 172
+      },
+      "C_rand_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.003489766607252855,
+          0.029815902505450916
+        ],
+        "losses": 85,
+        "point_delta": 0.0125,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261393,
+        "wins": 111
+      },
+      "C_self_minus_correctness_LSA": {
+        "ci_99": [
+          0.007831486455833722,
+          0.04602540524401719
+        ],
+        "losses": 110,
+        "point_delta": 0.026923076923076925,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261494,
+        "wins": 166
+      },
+      "C_self_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.0030936670887965435,
+          0.030106676198520924
+        ],
+        "losses": 91,
+        "point_delta": 0.012980769230769231,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261394,
+        "wins": 118
+      },
+      "C_uni_minus_correctness_LSA": {
+        "ci_99": [
+          -0.009924550333837967,
+          0.030115438822118916
+        ],
+        "losses": 123,
+        "point_delta": 0.010576923076923078,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261491,
+        "wins": 145
+      },
+      "C_uni_minus_zero_shot_anchor": {
+        "ci_99": [
+          0.0025225410165593933,
+          0.03889474955609178
+        ],
+        "losses": 79,
+        "point_delta": 0.020673076923076922,
+        "resamples": 10000,
+        "rows": 2080,
+        "seed": 20261391,
+        "wins": 122
+      },
+      "equal_arm_mean_minus_correctness_LSA": {
+        "ci_99": [
+          0.011180088185897084,
+          0.030235638645317517
+        ],
+        "point_delta": 0.020673076923076926
+      },
+      "equal_arm_mean_minus_zero_shot_anchor": {
+        "ci_99": [
+          0.005022174958784436,
+          0.022132712284447905
+        ],
+        "point_delta": 0.013461538461538462
+      }
+    },
+    "screenspot_pro": {
+      "C_cond_minus_correctness_LSA": {
+        "ci_99": [
+          -0.00927160519139688,
+          0.005642757594182051
+        ],
+        "losses": 8,
+        "point_delta": -0.001265022137887413,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261493,
+        "wins": 6
+      },
+      "C_cond_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.0071245611888406946,
+          0.0073711437028329534
+        ],
+        "losses": 5,
+        "point_delta": 0.0006325110689437065,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261393,
+        "wins": 6
+      },
+      "C_rand_minus_correctness_LSA": {
+        "ci_99": [
+          -0.0013698818304982688,
+          0.006053268765133172
+        ],
+        "losses": 1,
+        "point_delta": 0.0018975332068311196,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261494,
+        "wins": 4
+      },
+      "C_rand_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.0013736310939919188,
+          0.006031417752980141
+        ],
+        "losses": 1,
+        "point_delta": 0.0018975332068311196,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261394,
+        "wins": 4
+      },
+      "C_self_minus_correctness_LSA": {
+        "ci_99": [
+          -0.004905514673657968,
+          0.006068849228810531
+        ],
+        "losses": 6,
+        "point_delta": 0.0006325110689437065,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261495,
+        "wins": 7
+      },
+      "C_self_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.005420054200542005,
+          0.005275544708014743
+        ],
+        "losses": 5,
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261395,
+        "wins": 5
+      },
+      "C_uni_minus_correctness_LSA": {
+        "ci_99": [
+          -0.0019505978746749025,
+          0.007989423669146291
+        ],
+        "losses": 3,
+        "point_delta": 0.0031625553447185324,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261492,
+        "wins": 8
+      },
+      "C_uni_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.0012004874065010618,
+          0.007312703601250322
+        ],
+        "losses": 2,
+        "point_delta": 0.0031625553447185324,
+        "resamples": 10000,
+        "rows": 1581,
+        "seed": 20261392,
+        "wins": 7
+      },
+      "equal_arm_mean_minus_correctness_LSA": {
+        "ci_99": [
+          -0.0017468701183522147,
+          0.0038979163541563028
+        ],
+        "point_delta": 0.0011068943706514863
+      },
+      "equal_arm_mean_minus_zero_shot_anchor": {
+        "ci_99": [
+          -0.0013264302228830963,
+          0.004008380402627597
+        ],
+        "point_delta": 0.0014231499051233396
+      }
+    }
+  },
+  "formal_override_behavior": {
+    "mind2web": {
+      "C_cond": {
+        "losses": 55,
+        "net_wins": 45,
+        "override_rate": 0.22163461538461537,
+        "overrides": 461,
+        "precision_among_decisive_overrides": 0.6451612903225806,
+        "rows": 2080,
+        "wins": 100
+      },
+      "C_rand": {
+        "losses": 95,
+        "net_wins": 76,
+        "override_rate": 0.35336538461538464,
+        "overrides": 735,
+        "precision_among_decisive_overrides": 0.6428571428571429,
+        "rows": 2080,
+        "wins": 171
+      },
+      "C_self": {
+        "losses": 89,
+        "net_wins": 70,
+        "override_rate": 0.33990384615384617,
+        "overrides": 707,
+        "precision_among_decisive_overrides": 0.6411290322580645,
+        "rows": 2080,
+        "wins": 159
+      },
+      "C_uni": {
+        "losses": 85,
+        "net_wins": 58,
+        "override_rate": 0.3211538461538462,
+        "overrides": 668,
+        "precision_among_decisive_overrides": 0.6271929824561403,
+        "rows": 2080,
+        "wins": 143
+      },
+      "equal_arm_mean_override_rate": 0.30901442307692306,
+      "total_losses": 324,
+      "total_wins": 573
+    },
+    "screenspot_pro": {
+      "C_cond": {
+        "losses": 6,
+        "net_wins": 0,
+        "override_rate": 0.026565464895635674,
+        "overrides": 42,
+        "precision_among_decisive_overrides": 0.5,
+        "rows": 1581,
+        "wins": 6
+      },
+      "C_rand": {
+        "losses": 1,
+        "net_wins": 3,
+        "override_rate": 0.02340290955091714,
+        "overrides": 37,
+        "precision_among_decisive_overrides": 0.8,
+        "rows": 1581,
+        "wins": 4
+      },
+      "C_self": {
+        "losses": 5,
+        "net_wins": 0,
+        "override_rate": 0.02340290955091714,
+        "overrides": 37,
+        "precision_among_decisive_overrides": 0.5,
+        "rows": 1581,
+        "wins": 5
+      },
+      "C_uni": {
+        "losses": 2,
+        "net_wins": 4,
+        "override_rate": 0.015812776723592662,
+        "overrides": 25,
+        "precision_among_decisive_overrides": 0.75,
+        "rows": 1581,
+        "wins": 6
+      },
+      "equal_arm_mean_override_rate": 0.022296015180265655,
+      "total_losses": 14,
+      "total_wins": 21
+    }
+  },
+  "gate_effect": "NONE",
+  "schema_version": 1,
+  "status": "PASS_POST_GATE_DESCRIPTIVE"
+}

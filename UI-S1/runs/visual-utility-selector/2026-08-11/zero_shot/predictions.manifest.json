@@ -1,0 +1,10 @@
+{
+  "model_index_sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+  "predictions_sha256": "b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40",
+  "private_labels_opened": false,
+  "public_records_sha256": "d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb",
+  "records": 14644,
+  "schema_version": 1,
+  "shards": 8,
+  "status": "PASS_BLIND_INFERENCE_COMPLETE"
+}

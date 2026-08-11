@@ -1,0 +1,57 @@
+schema_version: 1
+status: FROZEN_BEFORE_VUS_RESULTS
+frozen_at: 2026-08-11
+seed: 20260811
+base_model:
+  family: Qwen3-VL-8B-Instruct
+  path: auto_discover_retained_checkpoint
+  vision_encoder: frozen
+compute:
+  gpu_ids: [0, 1, 2, 3, 4, 5, 6, 7]
+  dtype: bfloat16
+  distributed: torchrun_or_fsdp
+  protected_pid: 2274
+data:
+  arms: [C_uni, C_cond, C_rand, C_self]
+  benchmarks: [mind2web, screenspot_pro]
+  candidates_per_row: 12
+  candidate_permutation: deterministic_each_epoch
+  mind2web_history_actions: 4
+eligibility_anchor:
+  mode: blind_zero_shot_single_token_logits
+  fallback_in_prompt: false
+  output_labels: 12
+  permutation_epoch: 0
+  shards: 8
+  minimum_cell_opportunities: 200
+  threshold_quantiles: 11
+  proceed_candidate_utility_auroc_each_benchmark: 0.55
+model:
+  output_labels: 13
+  keep_label: KEEP_CEV
+  lora_rank: [16, 32]
+  learning_rate: [1.0e-5, 3.0e-5]
+  epochs: [1, 2]
+  gradient_checkpointing: true
+  objective: listwise_positive_utility_plus_fallback_correct_auxiliary
+nested_protocol:
+  outer_folds: 5
+  inner_folds: 4
+  all_arms_same_row_fold: true
+  outer_test_access: once_after_inner_selection
+safe_policy:
+  threshold_scope: benchmark_arm_with_hierarchical_shrinkage
+  minimum_cell_opportunities: 200
+  cell_loss_max_mde_fraction: 0.5
+  benchmark_loss_max_mde_fraction: 0.25
+  objective: equal_benchmark_equal_arm_standardized_step_sr_delta
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  mind2web_seed: 20260891
+  screenspot_seed: 20260892
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+retention:
+  backup_root: /scratch/workspaceblobstore/visual-utility-selector/2026-08-11

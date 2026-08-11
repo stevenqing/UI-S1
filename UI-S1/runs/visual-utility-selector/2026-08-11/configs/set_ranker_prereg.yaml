@@ -1,0 +1,73 @@
+schema_version: 1
+status: FROZEN_BEFORE_SET_RANKER_RESULTS
+frozen_at: 2026-08-11
+seed: 20260811
+architecture:
+  width: 64
+  transformer_layers: 2
+  attention_heads: 4
+  feedforward_multiplier: 4
+  dropout: 0.1
+  positional_embeddings: false
+  output_labels: 13
+  keep_index: 12
+optimizer:
+  name: AdamW
+  train_batch_size: 256
+  evaluation_batch_size: 1024
+  gradient_clip_norm: 1.0
+  patience_epochs: 5
+  minimum_validation_improvement: 1.0e-5
+  mixed_precision: false
+configurations:
+  S1:
+    learning_rate: 3.0e-4
+    weight_decay: 1.0e-3
+    maximum_epochs: 30
+    auxiliary_weight: 0.0
+    grpo_weight: 0.0
+  S2:
+    learning_rate: 3.0e-4
+    weight_decay: 1.0e-3
+    maximum_epochs: 30
+    auxiliary_weight: 0.5
+    grpo_weight: 0.0
+  S3:
+    learning_rate: 1.0e-4
+    weight_decay: 1.0e-3
+    maximum_epochs: 50
+    auxiliary_weight: 0.5
+    grpo_weight: 0.25
+checkpoint:
+  validation_fold: first_cyclic_training_fold_after_oof_holdout
+  metric: weighted_total_configuration_loss
+  tie: earliest_epoch
+  final_epochs: rounded_median_selected_inner_epoch_minimum_one
+  median_rounding: half_up
+prediction:
+  direct: highest_candidate_utility_logit_A_to_L
+  margin: direct_candidate_logit_minus_KEEP_logit
+  fallback_wrong_score:
+    S1: constant_one_no_auxiliary_gate
+    S2: one_minus_sigmoid_fallback_correct_logit
+    S3: one_minus_sigmoid_fallback_correct_logit
+safe_policy:
+  threshold_axes: [margin, fallback_wrong_score]
+  threshold_candidates: [infinity, zero, positive_deciles]
+  threshold_scope: benchmark_arm_with_benchmark_backoff_below_200_changed_opportunities
+  cell_loss_max_mde_fraction: 0.5
+  benchmark_equal_arm_loss_max_mde_fraction: 0.25
+  configuration_objective: equal_benchmark_mean_of_equal_arm_delta_divided_by_MDE
+  configuration_tie_order: [S1, S2, S3]
+nested_protocol:
+  outer_folds: 5
+  oof_holdouts_per_outer: 4
+  model_training_folds_per_inner: 2
+  checkpoint_validation_folds_per_inner: 1
+  outer_test_access: after_configuration_threshold_and_epoch_selection
+compute:
+  gpu_outer_fold_mapping: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+  protected_pid: 2274
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007

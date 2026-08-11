@@ -1,6 +1,6 @@
 # HANDOFF — GUI Test-Time Scaling 论文项目
 
-日期：2026-08-09
+日期：2026-08-11
 
 读者：接手实验执行或论文写作的人。
 
@@ -20,9 +20,9 @@
 
 ## 1. 一句话状态
 
-本项目研究多模型 GUI grounding 的 test-time scaling。论文主结果为**聚合器与动作空间/错误结构的匹配**（F1，双向显著）；次级结果为跨谱系共识 RoI 两阶段候选生成（Q1，仅在匹配聚合器下成立）。CEV-A 作为统一解释恢复 Mind2Web G0 与 ScreenSpot G4，但与 nested dev-selection 打平，因此不是方法优势。当前实验主线已冻结，可以进入论文写作与主表整理。
+本项目研究多模型 GUI grounding 的 test-time scaling。论文主结果为**聚合器与动作空间/错误结构的匹配**（F1，双向显著）；次级结果为跨谱系共识 RoI 两阶段候选生成（Q1，仅在匹配聚合器下成立）。CEV-A 作为统一解释恢复 Mind2Web G0 与 ScreenSpot G4，但与 nested dev-selection 打平。VUS-SR 进一步加入 fallback-agnostic blind visual evidence 与 triple-nested listwise utility/downside training，在 Mind2Web 四臂平均相对 CEV-A +2.99 pp `[+2.10,+3.91]`，并保持 ScreenSpot-Pro +0.11 pp `[−0.17,+0.37]`。
 
-学习聚合器附录也已关闭：主 LSA 安全但无显著增益；no-action 消融在 C-uni 显著，但 C-cond/C-rand/C-self 跨臂确认仅为 partial transfer，Mind2Web 三臂平均 CI 略跨零。当前最强可辩护方案仍是 CEV-A，除非获得新的独立 benchmark/trace，不再在现有数据上搜索模型。
+学习聚合器路线现已晋级：主 LSA 安全但无显著增益，Utility-LSA 只在 ScreenSpot 获得 +0.25 pp；VUS-SR 的八个 cells 全部安全，相对 Utility-LSA 的平衡 standardized CI `[+1.57,+3.17]` MDE。当前最强经验聚合器为 VUS-SR，最强 training-free 规则仍为 CEV-A。VUS-SR 仍需新的独立 benchmark/trace 才能从 method candidate 升级为最终确认。
 
 ## 2. 论文骨架（冻结）
 
@@ -90,6 +90,20 @@ EQV 在第一顺序 ABL-4 自检触发 U-K4：
 
 CEV/CEV-A 已完成。Mind2Web 选择 G0 主导并精确匹配 majority；ScreenSpot-Pro 选择 G4 并精确匹配 A2 aggregate。相对 nested dev-selection 两端 CI 均跨零，因此定位为解释贡献。C-K5 因中央容差排名跨折翻转而触发，禁止“处处匹配”或普适无容差规则表述。
 
+### 2.7 VUS-SR learned aggregator
+
+VUS 先在 GPU 0--7 对 14,644 个 row-arm records 提取 fallback-agnostic Qwen3-VL-8B A--L logits，再用无位置编码 set ranker 联合视觉证据、fallback-pair 结构特征与 benchmark/arm downside state。五个 outer folds 各自进行两折 model fit、一折 checkpoint selection、一折 OOF selection，outer-test 只访问一次。
+
+- Mind2Web C-uni/C-cond/C-rand/C-self：+2.79/+2.16/+3.65/+3.37 pp，四个 99% CI 下界均为正；
+- Mind2Web equal-arm：+2.99 pp `[+2.10,+3.91]`；
+- ScreenSpot-Pro equal-arm：+0.11 pp `[−0.17,+0.37]`；
+- 相对 blind visual anchor：Mind2Web 再增 +1.35 pp `[+0.50,+2.21]`；
+- 五折选择 S1/S2/S2/S2/S2，显示 downside BCE 在 4/5 folds 被选择。
+
+一次含 fallback prompt 的 early anchor 在 10,278/14,644 时因 second-level stacking leakage 主动停止并隔离，未进入判定。clean visual prompt 不含 CEV 或 GT；73,220 nested fallback contexts 与 outer CEV-A mismatch 为 0。
+
+另一次 post-result 代码审计发现 formal process 在 selection 前 eager parse 了五折 label 文件，虽未索引 test labels，仍按 V-K5 严格作废。Correction 006 把 labels 物理拆成五折文件；每折先只打开四个 dev files，fsync pretest selection 后才由 guard 打开 test file。hardened 五折 JSON、adjudication 与 controls 均 bit-identical，只有 hardened outputs 用于主表。
+
 ## 3. 立即要做的事
 
 ### 3.1 论文写作
@@ -97,8 +111,9 @@ CEV/CEV-A 已完成。Mind2Web 选择 G0 主导并精确匹配 majority；Screen
 1. 以 F1 为主结果，CEV-A 为紧随其后的统一解释。
 2. 把 P-E difference-in-differences `−4.47 pp [−7.34,−1.68]` 写入机制段，解释 pool effect 被匹配聚合器吸收。
 3. 明确 CEV-A 与 nested dev-selection 打平，不写方法优势。
-4. 在 limitation 中披露 post-leakage reconstruction、五个泄漏格子与 C-K5 容差翻转。
-5. 使用 `MASTER_RESULTS.md` 冻结全部论文主表。
+4. 将 VUS-SR 写为 learned method candidate / strongest observed unified aggregator，不写独立跨 benchmark confirmation 或 absolute SOTA。
+5. 在 limitation 中披露 post-leakage reconstruction、五个泄漏格子、C-K5 容差翻转，以及 VUS-SR 仍缺第三 benchmark。
+6. 使用 `MASTER_RESULTS.md` 冻结全部论文主表。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：
 
@@ -277,6 +292,8 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 | `runs/cev/2026-08-09/` | 完成；V4 解释贡献，C-K5 触发 |
 | `runs/lsa/2026-08-10/` | 完成；主模型安全但不显著 |
 | `runs/lsa-confirm/2026-08-10/` | 完成；partial transfer，停止当前数据上的 learned 搜索 |
+| `runs/lsa-utility/2026-08-11/` | 完成；safe exploratory，UR2/UR5 失败，UR-K5 false |
+| `runs/visual-utility-selector/2026-08-11/` | 完成；VUS-SR method candidate，SR1--SR4 通过 |
 
 ## 10. 已知未完事项
 
@@ -291,7 +308,7 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 - [x] 重建 CEV spec、Amendment 011、`cev_prereg.yaml`，并披露 post-leakage 状态。
 - [x] 在跑数前提交 CEV 配置：`d873c41`、`de5b125`。
 - [x] 验证 complete-link + candidate votes 精确复现 A2 aggregate 63.8836%。
-- [ ] 保证全程零 GPU，不启动模型推理。
+- [x] VUS 获授权使用 GPU 0--7；blind visual inference 与 formal set-ranker 已完成。
 - [ ] 保持 PID 2274 不被 signal、暂停、kill 或改优先级。
 - [ ] 新产物逐行 fsync、SHA manifest、独立备份。
 - [ ] 按 kill condition 停止，不以已泄漏格子调参。
