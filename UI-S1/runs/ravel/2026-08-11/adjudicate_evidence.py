@@ -54,7 +54,7 @@ def target_areas():
     return output
 
 
-def metrics(predictions, labels, fallback_outputs, areas, benchmark):
+def arm_metrics(predictions, labels, fallback_outputs, areas, benchmark, arm):
     candidate_labels = []
     candidate_scores = []
     direct = []
@@ -62,7 +62,7 @@ def metrics(predictions, labels, fallback_outputs, areas, benchmark):
     small = []
     cuts = np.quantile(list(areas[benchmark].values()), [0.25, 0.5, 0.75])
     for key, row in predictions.items():
-        if row["benchmark"] != benchmark:
+        if row["benchmark"] != benchmark or row["arm"] != arm:
             continue
         success = np.asarray(labels[key]["candidate_success"], dtype=np.bool_)
         scores = original_scores(row)
@@ -88,6 +88,43 @@ def metrics(predictions, labels, fallback_outputs, areas, benchmark):
         "small_quartile_covered_rows": len(covered_small),
         "small_quartile_recall_given_coverage": float(np.mean(covered_small)),
         "target_area_q25": float(cuts[0]),
+    }
+
+
+def metrics(predictions, labels, fallback_outputs, areas, benchmark):
+    by_arm = {
+        arm: arm_metrics(predictions, labels, fallback_outputs, areas, benchmark, arm)
+        for arm in ARMS
+    }
+    primary_keys = (
+        "utility_positive_auroc", "direct_accuracy",
+        "unique_correct_recall", "small_quartile_recall_given_coverage",
+    )
+    equal_arm = {
+        key: float(np.mean([by_arm[arm][key] for arm in ARMS]))
+        for key in primary_keys
+    }
+    pooled_labels = []
+    pooled_scores = []
+    pooled_direct = []
+    for key, row in predictions.items():
+        if row["benchmark"] != benchmark:
+            continue
+        success = np.asarray(labels[key]["candidate_success"], dtype=np.bool_)
+        scores = original_scores(row)
+        fallback_success = bool(fallback_outputs[benchmark][row["arm"]]["fallback"][row["row_id"]])
+        pooled_labels.extend((success & (not fallback_success)).astype(np.int8).tolist())
+        pooled_scores.extend(scores.tolist())
+        pooled_direct.append(bool(success[int(np.argmax(scores))]))
+    return {
+        "equal_arm": equal_arm,
+        "by_arm": by_arm,
+        "pooled_descriptive": {
+            "utility_positive_auroc": float(roc_auc_score(pooled_labels, pooled_scores)),
+            "candidate_rows": len(pooled_labels),
+            "utility_positive_candidates": int(sum(pooled_labels)),
+            "direct_accuracy": float(np.mean(pooled_direct)),
+        },
     }
 
 
@@ -131,10 +168,10 @@ def main():
     random_control = result["metrics"]["random"]
     deltas = {
         benchmark: {
-            "auroc_local_minus_vus": local[benchmark]["utility_positive_auroc"] - baseline[benchmark]["utility_positive_auroc"],
-            "auroc_local_minus_random": local[benchmark]["utility_positive_auroc"] - random_control[benchmark]["utility_positive_auroc"],
-            "unique_recall_local_minus_vus": local[benchmark]["unique_correct_recall"] - baseline[benchmark]["unique_correct_recall"],
-            "small_recall_local_minus_vus": local[benchmark]["small_quartile_recall_given_coverage"] - baseline[benchmark]["small_quartile_recall_given_coverage"],
+            "auroc_local_minus_vus": local[benchmark]["equal_arm"]["utility_positive_auroc"] - baseline[benchmark]["equal_arm"]["utility_positive_auroc"],
+            "auroc_local_minus_random": local[benchmark]["equal_arm"]["utility_positive_auroc"] - random_control[benchmark]["equal_arm"]["utility_positive_auroc"],
+            "unique_recall_local_minus_vus": local[benchmark]["equal_arm"]["unique_correct_recall"] - baseline[benchmark]["equal_arm"]["unique_correct_recall"],
+            "small_recall_local_minus_vus": local[benchmark]["equal_arm"]["small_quartile_recall_given_coverage"] - baseline[benchmark]["equal_arm"]["small_quartile_recall_given_coverage"],
         }
         for benchmark in BENCHMARKS
     }
