@@ -1,0 +1,60 @@
+schema_version: 1
+status: FROZEN_AFTER_RAVEL_K4_BEFORE_DELTA_RESULTS
+frozen_at: 2026-08-11
+method: DELTA
+channels:
+  vus_binding:
+    path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl
+    sha256: b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40
+  global_semantic:
+    path: runs/ravel/2026-08-11/evidence/global_only/predictions.jsonl
+    sha256: 93541d1d1381a627ff1b5dfc6d75a170efb141bd9509fd0254b0ea5d7805feaf
+  fine_local:
+    path: runs/ravel/2026-08-11/evidence/fine_only/predictions.jsonl
+    sha256: 102c40dfe05bf858f86001ab6726f4b9c9578b0f10214507ed644bf7553c73ec
+  context_local:
+    path: runs/ravel/2026-08-11/evidence/context_only/predictions.jsonl
+    sha256: 49ee984916cd7cc9a042b4279241d41be2c811e5eee9c8a5cd3f4dc01fbd3979
+  random_placebo:
+    path: runs/ravel/2026-08-11/evidence/random/predictions.jsonl
+    sha256: 03f7fb254d9d3e2a64b47ffba0a66b321706a9457f22466a1ddc0de7e1f9efc8
+architecture:
+  channel_encoder_width: 32
+  channel_gate_width: 32
+  candidate_width: 64
+  set_layers: 2
+  attention_heads: 4
+  dropout: 0.1
+  positional_embeddings: false
+losses:
+  listwise_repair_or_keep: 1.0
+  fallback_correct_bce: 0.5
+  permutation_channel_consistency: 0.1
+  expected_u_grpo: 0.1
+controls:
+  - VUS_SR_frozen
+  - VUS_only_same_capacity
+  - VUS_plus_global
+  - VUS_plus_local_no_global
+  - VUS_plus_random_placebo
+  - fixed_equal_weight_average
+  - channel_dropout
+nested_protocol:
+  outer_folds: 5
+  model_train_folds: 2
+  checkpoint_folds: 1
+  oof_selection_folds: 1
+  fold_sealed_labels: true
+  atomic_pretest: true
+statistics:
+  resamples: 10000
+  confidence: 0.99
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+deployment_boundary:
+  late_fusion_is_multi_call_oracle: true
+  distillation_required: true
+  student_selector_calls: 1
+  confirmation_benchmark: GUI_Odyssey_app_split
+  confirmation_data_currently_mounted: false

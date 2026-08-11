@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-11",
+  "status": "PREREGISTERED_NO_RESULTS",
+  "outcome": "DELTA_NOT_RUN",
+  "upstream": {
+    "CARE_A1": "CLOSE_ROUTING",
+    "RAVEL_E0": "STOPPED_BY_RAVEL_K4"
+  },
+  "next_action": "late_fusion_viability_with_locked_channels",
+  "protected_pid": 2274,
+  "protected_pid_touched": false,
+  "retention": {
+    "backup_root": "/scratch/workspaceblobstore/delta/2026-08-11",
+    "manifest": "/scratch/workspaceblobstore/delta/2026-08-11/BACKUP_MANIFEST.json",
+    "manifest_authoritative": true,
+    "verified": true
+  }
+}

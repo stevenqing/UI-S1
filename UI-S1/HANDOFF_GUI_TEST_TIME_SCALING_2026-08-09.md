@@ -128,6 +128,7 @@ RAVEL E0 已完成并触发 RAVEL-K4。local 相对 random-center 的 utility AU
 - CARE routing 与 RAVEL early fusion 均已关闭，不再调参。
 - 新研究只能测试 independently locked global/binding/local evidence 的 late fusion；必须另立 prereg，不能称 RAVEL continuation。
 - 多调用 late-fusion 若显著胜 VUS-SR，只证明 evidence complementarity；还需单调用 distillation 和第三 benchmark 才能成为部署方法。
+- 该新研究已冻结为 `runs/delta/2026-08-11/`；当前 `DELTA_NOT_RUN`。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：
 
@@ -310,6 +311,7 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 | `runs/visual-utility-selector/2026-08-11/` | 完成；VUS-SR method candidate，SR1--SR4 通过 |
 | `runs/care/2026-08-11/` | A1 完成；structural routing 失败，`CLOSE_ROUTING` |
 | `runs/ravel/2026-08-11/` | E0 完成；RAVEL-K4，停止 relational/LoRA |
+| `runs/delta/2026-08-11/` | 协议冻结；locked-channel late fusion 尚未运行 |
 
 ## 10. 已知未完事项
 
@@ -327,6 +329,7 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 - [x] VUS 获授权使用 GPU 0--7；blind visual inference 与 formal set-ranker 已完成。
 - [x] CARE A1 完成并按 gate 关闭 routing。
 - [x] RAVEL E0 完成并按 RAVEL-K4 停止。
+- [ ] DELTA：先跑多通道 late-fusion viability，未通过不得蒸馏。
 - [ ] 保持 PID 2274 不被 signal、暂停、kill 或改优先级。
 - [ ] 新产物逐行 fsync、SHA manifest、独立备份。
 - [ ] 按 kill condition 停止，不以已泄漏格子调参。

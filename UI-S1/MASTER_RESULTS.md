@@ -90,6 +90,7 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/visual-utility-selector/2026-08-11/` | COMPLETE | VUS-SR method candidate；SR1–SR4 pass |
 | `runs/care/2026-08-11/` | A1 COMPLETE | structural acquisition router fails；`CLOSE_ROUTING` |
 | `runs/ravel/2026-08-11/` | STOPPED | local evidence early fusion fails；Mind2Web −2.19 pp [−2.98,−1.41]；RAVEL-K4 |
+| `runs/delta/2026-08-11/` | PREREGISTERED | locked-channel late-fusion viability；no result |
 
 ## 8. Reproducibility boundaries
 
@@ -102,3 +103,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - VUS 首次 formal process eager-loaded all-fold labels；Correction 006 物理 fold-seal 后 bit-identical rerun，只有 hardened outputs 用于结论。
 - CARE/RAVEL 均为 VUS 结果已知后的 post-hoc research sequence；RAVEL 必须在第三个 untouched benchmark 才能升级为确认结果。
 - RAVEL local evidence beats random centers in AUROC but loses global/unique-candidate information; no relational/LoRA stage was run. Any late-fusion follow-up is a new study, not a RAVEL rescue.
+- DELTA is a multi-call research oracle protocol over already locked channels; even a positive result requires one-call distillation and untouched GUI-Odyssey confirmation.
