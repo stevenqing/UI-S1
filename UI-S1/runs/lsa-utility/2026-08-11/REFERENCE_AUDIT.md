@@ -6,6 +6,7 @@ Date: 2026-08-11
 
 Verified sources:
 
+- `Yan98/GTA1@81f0c4c2997cf6ad696d42f47c5480f4c856b73a`
 - `Yan98/GTA1/src/grpo_grounding.py`
 - `Yan98/GTA1/src/trainer/grpo_trainer.py`
 - `Yan98/GTA1/src/trainer/grpo_config.py`

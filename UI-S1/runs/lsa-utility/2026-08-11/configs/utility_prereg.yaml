@@ -5,6 +5,7 @@ method: Utility_LSA
 references:
   GTA1:
     role: group_relative_evaluator_aligned_reward
+    pinned_commit: 81f0c4c2997cf6ad696d42f47c5480f4c856b73a
     num_generations: 8
     reward: successful_click_accuracy
     beta: 0
