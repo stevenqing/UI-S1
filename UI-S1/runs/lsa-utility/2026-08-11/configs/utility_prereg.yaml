@@ -21,6 +21,11 @@ upstream:
   cev: runs/cev/2026-08-09
   lsa: runs/lsa/2026-08-10
   lsa_confirm: runs/lsa-confirm/2026-08-10
+fallback_reference:
+  policy: each_row_uses_own_frozen_CEV_outer_fold
+  reliability: other_four_folds_of_row_own_fold
+  invariant_across_utility_inner_splits: true
+  exposed_as_learned_feature: false
 compute:
   cpu: true
   gpu: prohibited

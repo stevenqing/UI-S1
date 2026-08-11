@@ -12,6 +12,8 @@ from utility_common import (
     OBJECTIVES,
     evaluation_rows,
     ids_for_folds,
+    crossfit_fallback_reliability,
+    exact_fallback_index,
     load_banks,
     load_cev,
     metadata,
@@ -39,9 +41,9 @@ def make_model(model_id, config):
     )
 
 
-def fit_model(model_id, objective, config, banks, ids, reliability, cev, outer_fold, feature_mode="pair"):
+def fit_model(model_id, objective, config, banks, ids, reliability, fallback_reliability, cev, feature_mode="pair"):
     values, targets, weights, active = training_matrix(
-        banks, ids, reliability, cev, outer_fold, objective, feature_mode
+        banks, ids, reliability, fallback_reliability, cev, objective, feature_mode
     )
     model = make_model(model_id, config)
     with threadpool_limits(limits=1):
@@ -140,9 +142,32 @@ def select_configuration(oof, config):
     ))
 
 
+def validate_frozen_fallbacks(banks, fallback_reliability, cev):
+    report = {benchmark: {} for benchmark in BENCHMARKS}
+    for benchmark in BENCHMARKS:
+        for arm in ARMS:
+            mismatches = []
+            indices = {}
+            for row_id, row in banks[arm][benchmark].items():
+                sums, counts = fallback_reliability[arm][benchmark][row.fold]
+                fold_record = cev[benchmark]["folds"][row.fold]["arms"][arm]
+                index = exact_fallback_index(row, sums, counts, fold_record)
+                indices[row_id] = index
+                observed = bool(row.candidates[index].success)
+                expected = bool(cev["outputs"][benchmark][arm]["CEV_A"][row_id])
+                if observed != expected:
+                    mismatches.append(row_id)
+            if mismatches:
+                raise ValueError(f"UR-K1 fallback mismatch: {benchmark}/{arm}/{len(mismatches)}")
+            report[benchmark][arm] = {"rows": len(indices), "mismatches": 0}
+    return report
+
+
 def run(config, feature_mode="pair"):
     banks = load_banks()
     cev = load_cev()
+    fallback_reliability = crossfit_fallback_reliability(banks)
+    fallback_validation = validate_frozen_fallbacks(banks, fallback_reliability, cev)
     outputs = {
         benchmark: {arm: {"safe": {}, "direct": {}, "fallback": {}} for arm in ARMS}
         for benchmark in BENCHMARKS
@@ -160,11 +185,11 @@ def run(config, feature_mode="pair"):
             train_ids = ids_for_folds(banks, train_folds)
             holdout_ids = ids_for_folds(banks, [holdout_fold])
             reliability = reliability_by_arm(banks, train_ids)
-            evaluation = evaluation_rows(banks, holdout_ids, reliability, cev, outer_fold, feature_mode)
+            evaluation = evaluation_rows(banks, holdout_ids, reliability, fallback_reliability, cev, feature_mode)
             report = {"holdout_fold": holdout_fold, "train_folds": train_folds, "configurations": {}}
             for objective in OBJECTIVES:
                 for model_id in MODEL_IDS:
-                    model, training = fit_model(model_id, objective, config, banks, train_ids, reliability, cev, outer_fold, feature_mode)
+                    model, training = fit_model(model_id, objective, config, banks, train_ids, reliability, fallback_reliability, cev, feature_mode)
                     predictions = predict(model, evaluation)
                     for benchmark in BENCHMARKS:
                         for arm in ARMS:
@@ -175,8 +200,8 @@ def run(config, feature_mode="pair"):
         dev_ids = ids_for_folds(banks, dev_folds)
         test_ids = ids_for_folds(banks, [outer_fold])
         reliability = reliability_by_arm(banks, dev_ids)
-        model, training = fit_model(selected["model_id"], selected["objective"], config, banks, dev_ids, reliability, cev, outer_fold, feature_mode)
-        evaluation = evaluation_rows(banks, test_ids, reliability, cev, outer_fold, feature_mode)
+        model, training = fit_model(selected["model_id"], selected["objective"], config, banks, dev_ids, reliability, fallback_reliability, cev, feature_mode)
+        evaluation = evaluation_rows(banks, test_ids, reliability, fallback_reliability, cev, feature_mode)
         predictions = predict(model, evaluation)
         fold_report = {
             "outer_fold": outer_fold,
@@ -207,6 +232,7 @@ def run(config, feature_mode="pair"):
         print(f"completed utility outer_fold={outer_fold} objective={selected['objective']} model={selected['model_id']} threshold={selected['threshold']}", flush=True)
     return {
         "feature_mode": feature_mode,
+        "fallback_validation": fallback_validation,
         "folds": folds,
         "outputs": outputs,
         "accuracy": {
