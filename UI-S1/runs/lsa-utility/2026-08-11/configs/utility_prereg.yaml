@@ -1,0 +1,100 @@
+schema_version: 1
+status: FROZEN_BEFORE_UTILITY_RESULTS
+frozen_at: 2026-08-11
+method: Utility_LSA
+references:
+  GTA1:
+    role: group_relative_evaluator_aligned_reward
+    num_generations: 8
+    reward: successful_click_accuracy
+    beta: 0
+    advantage: reward_minus_group_mean_over_group_std_plus_1e_5
+    boundary: GTA1_trains_grounder_policy_not_aggregator
+  MVP:
+    role: structural_inference_prior
+    grouping: deterministic_14px_complete_link
+    primary_vote: cluster_size
+    tie_break: AGVP_coverage
+    output: real_candidate
+    boundary: AGVP_coverage_not_available_cross_benchmark_and_not_fabricated
+upstream:
+  cev: runs/cev/2026-08-09
+  lsa: runs/lsa/2026-08-10
+  lsa_confirm: runs/lsa-confirm/2026-08-10
+compute:
+  cpu: true
+  gpu: prohibited
+  new_model_inference: prohibited
+arms: [C_uni, C_cond, C_rand, C_self]
+benchmarks: [mind2web, screenspot_pro]
+utility:
+  raw: candidate_step_success_minus_exact_CEV_candidate_step_success
+  values: [-1, 0, 1]
+  inactive_group: exclude_training_keep_evaluation
+  objectives:
+    U_RAW: raw_utility
+    U_GRPO: group_centered_std_normalized_utility
+    U_HYBRID: half_raw_half_group_normalized
+features:
+  base: frozen_LSA_no_action
+  pair_transform: [candidate, fallback, candidate_minus_fallback, absolute_difference]
+  prohibited: [action_one_hot, benchmark_id, source_id, model_id, slot_id, text_hash, raw_response, screenshot_embedding, test_gt]
+  mvp_structural_blocks: [coordinate_support, medoid_distance, lineage_support, dispersion, cross_fitted_reliability]
+weights:
+  benchmark_underlying_row_total: equal
+  arms_per_row: equal_quarters
+  candidates_per_active_arm_group: equal
+models:
+  H1: {learning_rate: 0.05, max_leaf_nodes: 7, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
+  H2: {learning_rate: 0.05, max_leaf_nodes: 15, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
+  H3: {learning_rate: 0.10, max_leaf_nodes: 15, min_samples_leaf: 20, l2_regularization: 1.0, max_iter: 100}
+  random_state: 20260811
+safe_policy:
+  conditions: [learned_not_fallback, score_margin_at_least_threshold, learned_score_positive]
+  threshold_candidates: [infinity, zero, positive_margin_deciles]
+  eligibility:
+    equal_arm_loss_each_benchmark_max_MDE_fraction: 0.25
+    individual_cell_loss_max_MDE_fraction: 0.5
+  objective: equal_benchmark_equal_arm_standardized_step_sr_delta
+  tie_order:
+    objective: [U_GRPO, U_HYBRID, U_RAW]
+    model: [H1, H2, H3]
+    threshold: larger
+nested_protocol:
+  outer_folds: 5
+  all_arms_same_row_fold: true
+  inner_OOF: leave_one_of_four_outer_dev_folds_out
+  final_fit: all_four_outer_dev_folds_all_arms_both_benchmarks
+  outer_test_access: prohibited
+controls:
+  - CEV_A
+  - nested_dev_selection
+  - correctness_LSA_safe
+  - utility_direct
+  - each_objective_selection_frequency
+ablations:
+  no_MVP_structure: remove_geometry_support_medoid_lineage_dispersion
+  absolute_only: omit_fallback_pair_transform
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  mind2web_seed: 20260891
+  screenspot_seed: 20260892
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+gates:
+  UR1: all_eight_cells_noninferior_CEV_A
+  UR2: mind2web_equal_arm_mean_ci_lower_positive
+  UR3: screenspot_equal_arm_mean_noninferior
+  UR4: balanced_mean_vs_devsel_ci_lower_positive_no_cell_MDE_loss
+  UR5: better_than_correctness_LSA_or_UR2_when_prior_failed
+kill_conditions:
+  UR_K1: exact_CEV_candidate_reconstruction_mismatch
+  UR_K2: any_UR1_cell_failure
+  UR_K3: infinity_threshold_at_least_three_folds
+  UR_K4: U_GRPO_selected_zero_and_worse_than_U_RAW_four_folds
+  UR_K5: no_MVP_structure_not_worse_and_structure_importance_negligible
+retention:
+  backup_root: /scratch/workspaceblobstore/lsa-utility/2026-08-11
+  manifest: /scratch/workspaceblobstore/lsa-utility/2026-08-11/BACKUP_MANIFEST.json
