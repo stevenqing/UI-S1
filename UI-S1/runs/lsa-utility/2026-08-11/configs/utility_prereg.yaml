@@ -8,7 +8,8 @@ references:
     num_generations: 8
     reward: successful_click_accuracy
     beta: 0
-    advantage: reward_minus_group_mean_over_group_std_plus_1e_5
+    advantage: reward_minus_group_mean_over_group_std_plus_1e_4
+    source_paths: [src/grpo_grounding.py, src/trainer/grpo_trainer.py, src/trainer/grpo_config.py]
     boundary: GTA1_trains_grounder_policy_not_aggregator
   MVP:
     role: structural_inference_prior
@@ -16,6 +17,7 @@ references:
     primary_vote: cluster_size
     tie_break: AGVP_coverage
     output: real_candidate
+    pinned_commit: 988ff3c61b9f7632d780ae27c83260de75b3c95f
     boundary: AGVP_coverage_not_available_cross_benchmark_and_not_fabricated
 upstream:
   cev: runs/cev/2026-08-09

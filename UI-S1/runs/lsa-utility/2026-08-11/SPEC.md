@@ -54,7 +54,7 @@ Regression target is $u_{ri}$.
 Regression target is the GTA-style group-relative advantage:
 
 $$
-A_{ri}=\frac{u_{ri}-\bar u_r}{\sigma(u_r)+10^{-5}}.
+A_{ri}=\frac{u_{ri}-\bar u_r}{\sigma(u_r)+10^{-4}}.
 $$
 
 ### U-HYBRID

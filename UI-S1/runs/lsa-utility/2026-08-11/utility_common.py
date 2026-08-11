@@ -31,6 +31,19 @@ def no_action_indices():
     return [index for index, name in enumerate(feature_names()) if "action" not in name]
 
 
+def feature_indices_for_mode(feature_mode):
+    names = feature_names()
+    indices = no_action_indices()
+    if feature_mode == "no_mvp":
+        indices = [
+            index for index in indices
+            if not any(token in names[index] for token in (
+                "coordinate_", "lineage_support", "row_coordinate_dispersion"
+            ))
+        ]
+    return indices
+
+
 def exact_fallback_index(row, sums, counts, fold_record, leave_one=False):
     candidates = []
     for candidate in row.candidates:
@@ -98,6 +111,19 @@ def pair_features(row, sums, counts, fallback_index, leave_one):
     return np.concatenate([values, repeated, values - repeated, np.abs(values - repeated)], axis=1)
 
 
+def transformed_features(row, sums, counts, fallback_index, leave_one, feature_mode):
+    all_no_action = no_action_indices()
+    selected = feature_indices_for_mode(feature_mode)
+    values = row_features(row, sums, counts, leave_one=leave_one)[:, all_no_action]
+    positions = [all_no_action.index(index) for index in selected]
+    values = values[:, positions]
+    if feature_mode == "absolute":
+        return values
+    fallback = values[fallback_index]
+    repeated = np.repeat(fallback[None, :], len(values), axis=0)
+    return np.concatenate([values, repeated, values - repeated, np.abs(values - repeated)], axis=1)
+
+
 def utility_targets(row, fallback_index, objective):
     success = np.asarray([candidate.success for candidate in row.candidates], dtype=np.float32)
     utility = success - success[fallback_index]
@@ -105,7 +131,7 @@ def utility_targets(row, fallback_index, objective):
         target = utility
     else:
         std = float(np.std(utility))
-        advantage = (utility - float(np.mean(utility))) / (std + 1e-5)
+        advantage = (utility - float(np.mean(utility))) / (std + 1e-4)
         target = advantage if objective == "U_GRPO" else 0.5 * utility + 0.5 * advantage
     return utility, target.astype(np.float32)
 
@@ -128,9 +154,7 @@ def training_matrix(banks, ids_by_benchmark, reliability, fallback_reliability, 
                 utility, target = utility_targets(row, fallback, objective)
                 if float(np.std(utility)) == 0.0:
                     continue
-                features = pair_features(row, sums, counts, fallback, leave_one=True)
-                if feature_mode == "absolute":
-                    features = features[:, :features.shape[1] // 4]
+                features = transformed_features(row, sums, counts, fallback, leave_one=True, feature_mode=feature_mode)
                 row_groups.append((arm, features, target))
                 report[benchmark][arm] += 1
             if row_groups:
@@ -157,9 +181,7 @@ def evaluation_rows(banks, ids_by_benchmark, reliability, fallback_reliability, 
                 fallback_sums, fallback_counts = fallback_reliability[arm][benchmark][row.fold]
                 row_fold_record = cev_result[benchmark]["folds"][row.fold]["arms"][arm]
                 fallback = exact_fallback_index(row, fallback_sums, fallback_counts, row_fold_record, leave_one=False)
-                features = pair_features(row, sums, counts, fallback, leave_one=False)
-                if feature_mode == "absolute":
-                    features = features[:, :features.shape[1] // 4]
+                features = transformed_features(row, sums, counts, fallback, leave_one=False, feature_mode=feature_mode)
                 output[benchmark][arm][row_id] = {
                     "features": features,
                     "labels": np.asarray([candidate.success for candidate in row.candidates], dtype=np.int8),
