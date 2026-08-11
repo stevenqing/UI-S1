@@ -89,7 +89,7 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/lsa-utility/2026-08-11/` | COMPLETE | safe exploratory；UR2/UR5 fail；fixed ablations complete，UR-K5 false |
 | `runs/visual-utility-selector/2026-08-11/` | COMPLETE | VUS-SR method candidate；SR1–SR4 pass |
 | `runs/care/2026-08-11/` | A1 COMPLETE | structural acquisition router fails；`CLOSE_ROUTING` |
-| `runs/ravel/2026-08-11/` | PREREGISTERED | evidence-first protocol frozen；E0 not run |
+| `runs/ravel/2026-08-11/` | STOPPED | local evidence early fusion fails；Mind2Web −2.19 pp [−2.98,−1.41]；RAVEL-K4 |
 
 ## 8. Reproducibility boundaries
 
@@ -101,3 +101,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - VUS-SR 是已知两 benchmark 上的 nested discovery，不是第三 benchmark 独立确认。
 - VUS 首次 formal process eager-loaded all-fold labels；Correction 006 物理 fold-seal 后 bit-identical rerun，只有 hardened outputs 用于结论。
 - CARE/RAVEL 均为 VUS 结果已知后的 post-hoc research sequence；RAVEL 必须在第三个 untouched benchmark 才能升级为确认结果。
+- RAVEL local evidence beats random centers in AUROC but loses global/unique-candidate information; no relational/LoRA stage was run. Any late-fusion follow-up is a new study, not a RAVEL rescue.

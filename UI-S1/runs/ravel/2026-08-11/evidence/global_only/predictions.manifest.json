@@ -1,0 +1,21 @@
+{
+  "mode": "global_only",
+  "model_index_sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+  "pixel_ratio": {
+    "max": 1.0,
+    "mean": 0.9879632503177486,
+    "min": 0.9565217391304348
+  },
+  "predictions_sha256": "93541d1d1381a627ff1b5dfc6d75a170efb141bd9509fd0254b0ea5d7805feaf",
+  "private_labels_opened": false,
+  "public_records_sha256": "d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb",
+  "records": 14644,
+  "schema_version": 1,
+  "shards": 8,
+  "status": "PASS_BLIND_EVIDENCE_LOCKED",
+  "visual_tokens": {
+    "max": 925,
+    "mean": 882.0264954930346,
+    "min": 686
+  }
+}

@@ -1,16 +1,31 @@
 {
   "schema_version": 1,
   "date": "2026-08-11",
-  "status": "E0_READY_NO_RESULTS",
-  "outcome": "E0_NOT_RUN",
-  "next_action": "token_matched_local_evidence_anchor",
+  "status": "E0_COMPLETE",
+  "outcome": "STOPPED_BY_RAVEL_K4",
+  "next_action": "new_protocol_only_late_fusion_viability",
   "routing": "prohibited_after_corrected_CARE_A1_failure",
   "protected_pid": 2274,
   "protected_pid_touched": false,
+  "E0": {
+    "blind_modes_complete": ["local", "random", "global_only", "fine_only", "context_only"],
+    "AUROC_gate_pass": false,
+    "safe_step_gate_pass": false,
+    "RAVEL_K4": true,
+    "mind2web_AUROC_local_minus_VUS": -0.04260790964292349,
+    "screenspot_AUROC_local_minus_VUS": 0.01457006806597927,
+    "mind2web_safe_delta_pp": -2.1875,
+    "mind2web_safe_ci_99_pp": [-2.983906109772222, -1.4079428370385707],
+    "screenspot_safe_delta_pp": -0.03162555344718533,
+    "screenspot_safe_ci_99_pp": [-0.23907296228731323, 0.16266807917018704],
+    "relational_training_run": false,
+    "full_VLM_LoRA_run": false
+  },
   "retention": {
+    "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/ravel/2026-08-11",
     "manifest": "/scratch/workspaceblobstore/ravel/2026-08-11/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
-    "verified": false
+    "verified": true
   }
 }

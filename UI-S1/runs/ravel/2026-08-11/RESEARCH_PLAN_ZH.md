@@ -35,4 +35,6 @@ oracle routing 存在，但 stage1 structural state 无法预测。继续增加�
 
 ## 下一步执行
 
-先只跑 E0 frozen anchor：生成 token-matched multi-scale evidence logits，比较 AUROC、unique-correct recall、small-target recall 和 safe Step-SR。E0 不通过就停止；通过后才训练 relational model。
+E0 已完成并触发 RAVEL-K4。local 相对 VUS 在 Mind2Web AUROC −0.043，ScreenSpot +0.015；nested safe Step-SR 为 −2.19 pp `[−2.98,−1.41]` / −0.03 pp `[−0.24,+0.16]`。因此 relational model 与 full LoRA 均取消。
+
+局部证据相对 random-center 的 AUROC 两端均高约 +0.046，说明局部像素确有信息；失败来自 fixed-token early fusion 的 evidence competition。后续只能以新的 late-fusion 协议继续，不能改 RAVEL prompt/crop scale 搜救。

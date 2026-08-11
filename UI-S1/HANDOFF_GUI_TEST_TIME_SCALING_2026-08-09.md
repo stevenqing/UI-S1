@@ -110,7 +110,7 @@ VUS-SR 后的 error decomposition 显示主要 headroom 是 candidate identifica
 
 四臂共享前六 candidates，因此 CARE A1 严格测试了固定 12-forward 预算下的 stage-2 acquisition routing。虽然 oracle routing coverage gain 为 +6.06/+3.67 pp，corrected structural router 相对 nested static C-cond 的 pass@12 为 −1.01 pp `[−2.10,0.00]` / +0.06 pp `[−0.81,+1.05]`，ScreenSpot final safe 还下降 1.27 pp。A1 三项 gates 全失败，`CLOSE_ROUTING`；禁止增加结构容量或使用 stage-2 信息搜救。初版遗漏 cross-fitted reliability 的实现已按 Correction 002 作废并重跑。
 
-下一步单独冻结为 RAVEL：固定 C-cond，不做 routing；在与 VUS 相同总 visual-pixel budget 和一次 selector VLM invocation 下，比较 unmarked global + fine/context candidate mosaics。E0 只有在 utility-positive AUROC 或最终 safe Step-SR 达到冻结门槛后，才授权 relational REPAIR/SAME/BREAK model 和 lower-bound safety。RAVEL 当前没有结果。
+RAVEL E0 已完成并触发 RAVEL-K4。local 相对 random-center 的 utility AUROC 两端均高约 +0.046，说明 candidate-centered pixels 有信息；但相对 VUS，Mind2Web AUROC −0.043，ScreenSpot +0.015。unchanged nested VUS-SR 的最终差值为 Mind2Web −2.19 pp `[−2.98,−1.41]`、ScreenSpot −0.03 pp `[−0.24,+0.16]`。因此 relational/lower-bound/LoRA stages 均取消。该结果支持 evidence competition，而不支持 pixel-level early fusion。
 
 ## 3. 立即要做的事
 
@@ -125,10 +125,9 @@ VUS-SR 后的 error decomposition 显示主要 headroom 是 candidate identifica
 
 ### 3.2 唯一授权的下一实验
 
-- 运行 `runs/ravel/2026-08-11/` 的 E0 token-matched local-evidence anchor。
-- 不再训练 CARE acquisition router。
-- E0 未通过时禁止 full VLM LoRA；E0 通过后才运行 relational utility model。
-- RAVEL 的 local evidence 只服务 selector，不产生新候选，不等同于已永久删除的 X2 adaptive zoom。
+- CARE routing 与 RAVEL early fusion 均已关闭，不再调参。
+- 新研究只能测试 independently locked global/binding/local evidence 的 late fusion；必须另立 prereg，不能称 RAVEL continuation。
+- 多调用 late-fusion 若显著胜 VUS-SR，只证明 evidence complementarity；还需单调用 distillation 和第三 benchmark 才能成为部署方法。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：
 
@@ -310,7 +309,7 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 | `runs/lsa-utility/2026-08-11/` | 完成；safe exploratory，UR2/UR5 失败，UR-K5 false |
 | `runs/visual-utility-selector/2026-08-11/` | 完成；VUS-SR method candidate，SR1--SR4 通过 |
 | `runs/care/2026-08-11/` | A1 完成；structural routing 失败，`CLOSE_ROUTING` |
-| `runs/ravel/2026-08-11/` | 协议冻结；E0 尚未运行，无结果 |
+| `runs/ravel/2026-08-11/` | E0 完成；RAVEL-K4，停止 relational/LoRA |
 
 ## 10. 已知未完事项
 
@@ -327,7 +326,7 @@ Kill condition 触发即按预注册处理，不搜救、不换判据。已触�
 - [x] 验证 complete-link + candidate votes 精确复现 A2 aggregate 63.8836%。
 - [x] VUS 获授权使用 GPU 0--7；blind visual inference 与 formal set-ranker 已完成。
 - [x] CARE A1 完成并按 gate 关闭 routing。
-- [ ] RAVEL E0：只跑 token-matched local-evidence anchor，不调 crop scales。
+- [x] RAVEL E0 完成并按 RAVEL-K4 停止。
 - [ ] 保持 PID 2274 不被 signal、暂停、kill 或改优先级。
 - [ ] 新产物逐行 fsync、SHA manifest、独立备份。
 - [ ] 按 kill condition 停止，不以已泄漏格子调参。
