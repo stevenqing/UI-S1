@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-11",
-  "status": "PREREGISTERED_NO_RESULTS",
+  "status": "E0_READY_NO_RESULTS",
   "outcome": "E0_NOT_RUN",
   "next_action": "token_matched_local_evidence_anchor",
   "routing": "prohibited_after_corrected_CARE_A1_failure",
@@ -11,6 +11,6 @@
     "backup_root": "/scratch/workspaceblobstore/ravel/2026-08-11",
     "manifest": "/scratch/workspaceblobstore/ravel/2026-08-11/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
-    "verified": true
+    "verified": false
   }
 }
