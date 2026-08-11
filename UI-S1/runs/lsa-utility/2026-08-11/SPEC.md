@@ -54,8 +54,10 @@ Regression target is $u_{ri}$.
 Regression target is the GTA-style group-relative advantage:
 
 $$
-A_{ri}=\frac{u_{ri}-\bar u_r}{\sigma(u_r)+10^{-4}}.
+A_{ri}=\frac{u_{ri}-\bar u_r}{s(u_r)+10^{-4}},
 $$
+
+where $s$ is sample standard deviation, matching GTA1's default `torch.std(dim=1)` behavior.
 
 ### U-HYBRID
 

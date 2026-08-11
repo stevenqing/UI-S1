@@ -115,7 +115,7 @@ def utility_targets(row, fallback_index, objective):
     if objective == "U_RAW":
         target = utility
     else:
-        std = float(np.std(utility))
+        std = float(np.std(utility, ddof=1))
         advantage = (utility - float(np.mean(utility))) / (std + 1e-4)
         target = advantage if objective == "U_GRPO" else 0.5 * utility + 0.5 * advantage
     return utility, target.astype(np.float32)

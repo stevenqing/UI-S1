@@ -8,7 +8,7 @@ references:
     num_generations: 8
     reward: successful_click_accuracy
     beta: 0
-    advantage: reward_minus_group_mean_over_group_std_plus_1e_4
+    advantage: reward_minus_group_mean_over_sample_group_std_plus_1e_4
     source_paths: [src/grpo_grounding.py, src/trainer/grpo_trainer.py, src/trainer/grpo_config.py]
     boundary: GTA1_trains_grounder_policy_not_aggregator
   MVP:
