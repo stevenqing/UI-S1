@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "utility_counts": {
+    "mind2web": {
+      "C_cond": {
+        "active_rate": 0.6033653846153846,
+        "active_rows": 1255,
+        "candidate_utility_counts": {
+          "-1": 4217,
+          "0": 19386,
+          "1": 1357
+        },
+        "total_rows": 2080
+      },
+      "C_rand": {
+        "active_rate": 0.5918269230769231,
+        "active_rows": 1231,
+        "candidate_utility_counts": {
+          "-1": 5585,
+          "0": 18122,
+          "1": 1253
+        },
+        "total_rows": 2080
+      },
+      "C_self": {
+        "active_rate": 0.583173076923077,
+        "active_rows": 1213,
+        "candidate_utility_counts": {
+          "-1": 4207,
+          "0": 19200,
+          "1": 1553
+        },
+        "total_rows": 2080
+      },
+      "C_uni": {
+        "active_rate": 0.5615384615384615,
+        "active_rows": 1168,
+        "candidate_utility_counts": {
+          "-1": 4801,
+          "0": 18426,
+          "1": 1733
+        },
+        "total_rows": 2080
+      }
+    },
+    "screenspot_pro": {
+      "C_cond": {
+        "active_rate": 0.5958254269449715,
+        "active_rows": 942,
+        "candidate_utility_counts": {
+          "-1": 2931,
+          "0": 15492,
+          "1": 549
+        },
+        "total_rows": 1581
+      },
+      "C_rand": {
+        "active_rate": 0.7507906388361796,
+        "active_rows": 1187,
+        "candidate_utility_counts": {
+          "-1": 5812,
+          "0": 12627,
+          "1": 533
+        },
+        "total_rows": 1581
+      },
+      "C_self": {
+        "active_rate": 0.571157495256167,
+        "active_rows": 903,
+        "candidate_utility_counts": {
+          "-1": 2669,
+          "0": 15813,
+          "1": 490
+        },
+        "total_rows": 1581
+      },
+      "C_uni": {
+        "active_rate": 0.5869702719797596,
+        "active_rows": 928,
+        "candidate_utility_counts": {
+          "-1": 2544,
+          "0": 15934,
+          "1": 494
+        },
+        "total_rows": 1581
+      }
+    }
+  }
+}

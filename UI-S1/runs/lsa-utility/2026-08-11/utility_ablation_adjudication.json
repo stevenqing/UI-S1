@@ -1,0 +1,266 @@
+{
+  "UR_K5": false,
+  "UR_K5_components": {
+    "logic": "UR_K5 is a conjunction; importance is unnecessary after no-MVP-not-worse is false",
+    "no_MVP_structure_not_worse": false,
+    "no_MVP_structure_significantly_worse_on_screenspot": true,
+    "structure_permutation_importance": null,
+    "structure_permutation_importance_required": false
+  },
+  "comparisons": {
+    "absolute_only": {
+      "comparison_direction": "main_Utility_LSA_minus_ablation",
+      "comparisons": {
+        "mind2web": {
+          "C_cond_main_minus_ablation": {
+            "ci_99": [
+              -0.017314001705672273,
+              0.005507482404921789
+            ],
+            "losses": 53,
+            "point_delta": -0.0057692307692307696,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261492,
+            "wins": 41
+          },
+          "C_rand_main_minus_ablation": {
+            "ci_99": [
+              -0.012639125315175795,
+              0.007204209292867324
+            ],
+            "losses": 39,
+            "point_delta": -0.0028846153846153848,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261493,
+            "wins": 33
+          },
+          "C_self_main_minus_ablation": {
+            "ci_99": [
+              -0.021414432442732986,
+              0.008759145409704402
+            ],
+            "losses": 79,
+            "point_delta": -0.00625,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261494,
+            "wins": 66
+          },
+          "C_uni_main_minus_ablation": {
+            "ci_99": [
+              -0.02827764687935376,
+              0.009251400293479635
+            ],
+            "losses": 106,
+            "point_delta": -0.009615384615384616,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261491,
+            "wins": 86
+          },
+          "equal_arm_mean_main_minus_ablation": {
+            "ci_99": [
+              -0.013341696073655294,
+              0.0009515141355799572
+            ],
+            "point_delta": -0.006129807692307693
+          }
+        },
+        "screenspot_pro": {
+          "C_cond_main_minus_ablation": {
+            "ci_99": [
+              -0.00959080050537575,
+              0.0013698960110871173
+            ],
+            "losses": 12,
+            "point_delta": -0.003795066413662239,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261493,
+            "wins": 6
+          },
+          "C_rand_main_minus_ablation": {
+            "ci_99": [
+              -0.011208005027874442,
+              0.0012507856521715302
+            ],
+            "losses": 15,
+            "point_delta": -0.005060088551549652,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261494,
+            "wins": 7
+          },
+          "C_self_main_minus_ablation": {
+            "ci_99": [
+              -0.004460983138608604,
+              0.004021478572332065
+            ],
+            "losses": 6,
+            "point_delta": 0.0,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261495,
+            "wins": 6
+          },
+          "C_uni_main_minus_ablation": {
+            "ci_99": [
+              -0.0006157673431207595,
+              0.005799119304524307
+            ],
+            "losses": 1,
+            "point_delta": 0.002530044275774826,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261492,
+            "wins": 5
+          },
+          "equal_arm_mean_main_minus_ablation": {
+            "ci_99": [
+              -0.0041268084905286195,
+              0.0008413359182168952
+            ],
+            "point_delta": -0.0015812776723592662
+          }
+        }
+      },
+      "equal_benchmark_standardized": {
+        "ci_99": [
+          -1.2459006053890325,
+          -0.003354757259343202
+        ],
+        "point": -0.6146203844049488
+      }
+    },
+    "no_MVP_structure": {
+      "comparison_direction": "main_Utility_LSA_minus_ablation",
+      "comparisons": {
+        "mind2web": {
+          "C_cond_main_minus_ablation": {
+            "ci_99": [
+              -0.00991571641051066,
+              0.003033405473385132
+            ],
+            "losses": 18,
+            "point_delta": -0.0033653846153846156,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261392,
+            "wins": 11
+          },
+          "C_rand_main_minus_ablation": {
+            "ci_99": [
+              -0.0029254236690943445,
+              0.004975124378109453
+            ],
+            "losses": 4,
+            "point_delta": 0.0009615384615384616,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261393,
+            "wins": 6
+          },
+          "C_self_main_minus_ablation": {
+            "ci_99": [
+              -0.009513883285186321,
+              0.0029791459781529296
+            ],
+            "losses": 14,
+            "point_delta": -0.0028846153846153848,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261394,
+            "wins": 8
+          },
+          "C_uni_main_minus_ablation": {
+            "ci_99": [
+              -0.0041026180096564,
+              0.005762242172859314
+            ],
+            "losses": 8,
+            "point_delta": 0.0009615384615384616,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261391,
+            "wins": 10
+          },
+          "equal_arm_mean_main_minus_ablation": {
+            "ci_99": [
+              -0.003842171752494923,
+              0.0016677761652596072
+            ],
+            "point_delta": -0.0010817307692307693
+          }
+        },
+        "screenspot_pro": {
+          "C_cond_main_minus_ablation": {
+            "ci_99": [
+              -0.00658349461043648,
+              0.002040851152747783
+            ],
+            "losses": 5,
+            "point_delta": -0.0018975332068311196,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261393,
+            "wins": 2
+          },
+          "C_rand_main_minus_ablation": {
+            "ci_99": [
+              0.0033668572687264274,
+              0.016300957475807547
+            ],
+            "losses": 7,
+            "point_delta": 0.009487666034155597,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261394,
+            "wins": 22
+          },
+          "C_self_main_minus_ablation": {
+            "ci_99": [
+              0.0,
+              0.004944467789477543
+            ],
+            "losses": 1,
+            "point_delta": 0.001265022137887413,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261395,
+            "wins": 3
+          },
+          "C_uni_main_minus_ablation": {
+            "ci_99": [
+              0.0,
+              0.0033113132824360214
+            ],
+            "losses": 0,
+            "point_delta": 0.001265022137887413,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261392,
+            "wins": 2
+          },
+          "equal_arm_mean_main_minus_ablation": {
+            "ci_99": [
+              0.00047217347414193626,
+              0.004750207215605318
+            ],
+            "point_delta": 0.0025300442757748257
+          }
+        }
+      },
+      "equal_benchmark_standardized": {
+        "ci_99": [
+          -0.17544091524227776,
+          0.36419201769938847
+        ],
+        "point": 0.0921999007107337
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_ADJUDICATED"
+}

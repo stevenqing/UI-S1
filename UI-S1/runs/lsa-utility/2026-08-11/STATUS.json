@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-11",
+  "status": "COMPLETE",
+  "outcome": "SAFE_EXPLORATORY_OVERRIDE",
+  "main_gates": {
+    "UR1": true,
+    "UR2": false,
+    "UR3": true,
+    "UR4": true,
+    "UR5": false,
+    "UR_K1": false,
+    "UR_K2": false,
+    "UR_K3": false,
+    "UR_K4": false,
+    "UR_K5": false
+  },
+  "main_effects_pp": {
+    "mind2web_equal_arm_vs_CEV_A": -0.02403846153846154,
+    "screenspot_equal_arm_vs_CEV_A": 0.25300442757748257
+  },
+  "ablations": {
+    "no_MVP_structure_complete": true,
+    "absolute_only_complete": true,
+    "no_MVP_screenspot_main_minus_ablation_pp": 0.25300442757748257,
+    "no_MVP_screenspot_ci_99_pp": [0.04721734741419363, 0.4750207215605318],
+    "absolute_only_balanced_main_minus_ablation_ci_99_MDE": [-1.2459006053890325, -0.003354757259343202]
+  },
+  "retention": {
+    "backup_root": "/scratch/workspaceblobstore/lsa-utility/2026-08-11",
+    "manifest": "/scratch/workspaceblobstore/lsa-utility/2026-08-11/BACKUP_MANIFEST.json",
+    "manifest_authoritative": true,
+    "verified": true
+  }
+}

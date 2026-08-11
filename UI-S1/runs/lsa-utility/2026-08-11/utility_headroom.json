@@ -1,0 +1,74 @@
+{
+  "row_utility_headroom": {
+    "mind2web": {
+      "C_cond": {
+        "baseline_correct_all_correct": 18,
+        "baseline_correct_at_risk": 657,
+        "baseline_wrong_all_wrong": 807,
+        "oracle_override_gain_pp": 28.75,
+        "repairable": 598,
+        "risk_to_repairable_ratio": 1.0986622073578596
+      },
+      "C_rand": {
+        "baseline_correct_all_correct": 1,
+        "baseline_correct_at_risk": 661,
+        "baseline_wrong_all_wrong": 848,
+        "oracle_override_gain_pp": 27.403846153846153,
+        "repairable": 570,
+        "risk_to_repairable_ratio": 1.1596491228070176
+      },
+      "C_self": {
+        "baseline_correct_all_correct": 19,
+        "baseline_correct_at_risk": 634,
+        "baseline_wrong_all_wrong": 848,
+        "oracle_override_gain_pp": 27.83653846153846,
+        "repairable": 579,
+        "risk_to_repairable_ratio": 1.0949913644214162
+      },
+      "C_uni": {
+        "baseline_correct_all_correct": 21,
+        "baseline_correct_at_risk": 645,
+        "baseline_wrong_all_wrong": 891,
+        "oracle_override_gain_pp": 25.14423076923077,
+        "repairable": 523,
+        "risk_to_repairable_ratio": 1.2332695984703632
+      }
+    },
+    "screenspot_pro": {
+      "C_cond": {
+        "baseline_correct_all_correct": 341,
+        "baseline_correct_at_risk": 710,
+        "baseline_wrong_all_wrong": 298,
+        "oracle_override_gain_pp": 14.67425679949399,
+        "repairable": 232,
+        "risk_to_repairable_ratio": 3.060344827586207
+      },
+      "C_rand": {
+        "baseline_correct_all_correct": 57,
+        "baseline_correct_at_risk": 909,
+        "baseline_wrong_all_wrong": 337,
+        "oracle_override_gain_pp": 17.58380771663504,
+        "repairable": 278,
+        "risk_to_repairable_ratio": 3.2697841726618706
+      },
+      "C_self": {
+        "baseline_correct_all_correct": 350,
+        "baseline_correct_at_risk": 680,
+        "baseline_wrong_all_wrong": 328,
+        "oracle_override_gain_pp": 14.104996837444656,
+        "repairable": 223,
+        "risk_to_repairable_ratio": 3.0493273542600896
+      },
+      "C_uni": {
+        "baseline_correct_all_correct": 324,
+        "baseline_correct_at_risk": 686,
+        "baseline_wrong_all_wrong": 329,
+        "oracle_override_gain_pp": 15.306767868437698,
+        "repairable": 242,
+        "risk_to_repairable_ratio": 2.834710743801653
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}
