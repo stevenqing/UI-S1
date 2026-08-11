@@ -25,7 +25,7 @@ No new VLM inference or GPU training is used.
 
 ## 3. Exact fallback
 
-For every benchmark, arm, and row, reconstruct the frozen CEV-A candidate using that row's own upstream outer fold, whose source reliability is fitted on the other four folds. Use that fold's original configuration, scale, and threshold. The reconstructed candidate correctness must match the stored CEV-A output row by row and remain invariant across Utility-LSA inner splits.
+CEV is nested inside Utility-LSA. Each inner holdout receives a CEV-global policy selected/fitted only on the other three Utility development folds. Final outer test uses the exact frozen upstream outer-fold CEV-A global configuration with reliability refit on the other four folds. Outer-test reconstructed correctness must match stored CEV-A outputs row by row.
 
 This exact CEV candidate is the reference action $b_r$.
 

@@ -16,6 +16,7 @@ sys.path.insert(0, str(CEV))
 from cev import Candidate as CEVCandidate
 from cev import select as cev_select
 from lsa_common import feature_names, load_rows, reliability_statistics, row_features
+from behavior_policy import apply_policy
 
 
 ARMS = ("C_uni", "C_cond", "C_rand", "C_self")
@@ -87,22 +88,6 @@ def reliability_by_arm(banks, ids_by_benchmark):
     }
 
 
-def crossfit_fallback_reliability(banks):
-    return {
-        arm: {
-            benchmark: {
-                fold: reliability_statistics(
-                    banks[arm][benchmark],
-                    [row_id for row_id, row in banks[arm][benchmark].items() if row.fold != fold],
-                )
-                for fold in range(5)
-            }
-            for benchmark in BENCHMARKS
-        }
-        for arm in ARMS
-    }
-
-
 def pair_features(row, sums, counts, fallback_index, leave_one):
     indices = no_action_indices()
     values = row_features(row, sums, counts, leave_one=leave_one)[:, indices]
@@ -136,7 +121,7 @@ def utility_targets(row, fallback_index, objective):
     return utility, target.astype(np.float32)
 
 
-def training_matrix(banks, ids_by_benchmark, reliability, fallback_reliability, cev_result, objective, feature_mode="pair"):
+def training_matrix(banks, ids_by_benchmark, reliability, policies, objective, feature_mode="pair"):
     arrays = []
     targets = []
     weights = []
@@ -148,9 +133,7 @@ def training_matrix(banks, ids_by_benchmark, reliability, fallback_reliability, 
             for arm in ARMS:
                 row = banks[arm][benchmark][row_id]
                 sums, counts = reliability[arm][benchmark]
-                fallback_sums, fallback_counts = fallback_reliability[arm][benchmark][row.fold]
-                fold_record = cev_result[benchmark]["folds"][row.fold]["arms"][arm]
-                fallback = exact_fallback_index(row, fallback_sums, fallback_counts, fold_record, leave_one=False)
+                fallback = apply_policy(row, policies[benchmark][arm])
                 utility, target = utility_targets(row, fallback, objective)
                 if float(np.std(utility)) == 0.0:
                     continue
@@ -171,16 +154,14 @@ def training_matrix(banks, ids_by_benchmark, reliability, fallback_reliability, 
     return np.concatenate(arrays), np.concatenate(targets), np.concatenate(weights), report
 
 
-def evaluation_rows(banks, ids_by_benchmark, reliability, fallback_reliability, cev_result, feature_mode="pair"):
+def evaluation_rows(banks, ids_by_benchmark, reliability, policies, feature_mode="pair"):
     output = {benchmark: {arm: {} for arm in ARMS} for benchmark in BENCHMARKS}
     for benchmark in BENCHMARKS:
         for arm in ARMS:
             sums, counts = reliability[arm][benchmark]
             for row_id in ids_by_benchmark[benchmark]:
                 row = banks[arm][benchmark][row_id]
-                fallback_sums, fallback_counts = fallback_reliability[arm][benchmark][row.fold]
-                row_fold_record = cev_result[benchmark]["folds"][row.fold]["arms"][arm]
-                fallback = exact_fallback_index(row, fallback_sums, fallback_counts, row_fold_record, leave_one=False)
+                fallback = apply_policy(row, policies[benchmark][arm])
                 features = transformed_features(row, sums, counts, fallback, leave_one=False, feature_mode=feature_mode)
                 output[benchmark][arm][row_id] = {
                     "features": features,
