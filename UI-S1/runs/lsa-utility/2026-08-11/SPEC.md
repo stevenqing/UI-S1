@@ -79,7 +79,7 @@ MVP AGVP coverage is not available on both benchmarks and is not fabricated. Cro
 
 ## 6. Training groups and weights
 
-Training pools all four arms but keeps the same underlying row entirely within one fold. Each benchmark × underlying row has total weight one; its four arms each receive one quarter. Each active arm-group divides its weight equally over 12 candidates.
+Training pools all four arms but keeps the same underlying row entirely within one fold. Constant-utility arm-groups are excluded. Each underlying row with at least one active arm has fixed total weight, split equally across its active arms and then equally across 12 candidates. Each benchmark is normalized to equal total mass.
 
 Rows shared across arms never cross train/test boundaries. Exact duplicate candidate feature/utility pairs within an underlying row may be retained but their total row weight remains fixed, preventing repeated candidates from increasing row influence.
 

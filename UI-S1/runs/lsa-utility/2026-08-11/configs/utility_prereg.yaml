@@ -42,7 +42,7 @@ features:
   mvp_structural_blocks: [coordinate_support, medoid_distance, lineage_support, dispersion, cross_fitted_reliability]
 weights:
   benchmark_underlying_row_total: equal
-  arms_per_row: equal_quarters
+  arms_per_row: equal_across_active_nonconstant_utility_arms
   candidates_per_active_arm_group: equal
 models:
   H1: {learning_rate: 0.05, max_leaf_nodes: 7, min_samples_leaf: 50, l2_regularization: 10.0, max_iter: 100}
