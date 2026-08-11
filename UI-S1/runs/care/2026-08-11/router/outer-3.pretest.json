@@ -1,0 +1,40 @@
+{
+  "final_epochs": 50,
+  "opened_development_folds": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "outer_fold": 3,
+  "schema_version": 1,
+  "selected_epochs": [
+    50,
+    50,
+    50,
+    33
+  ],
+  "static_arms": {
+    "mind2web": {
+      "all_arms": {
+        "C_cond": 0.6171875,
+        "C_rand": 0.5997596383094788,
+        "C_self": 0.5997596383094788,
+        "C_uni": 0.5769230723381042
+      },
+      "arm": "C_cond",
+      "development_pass_at_12": 0.6171875
+    },
+    "screenspot_pro": {
+      "all_arms": {
+        "C_cond": 0.8250980377197266,
+        "C_rand": 0.8054901957511902,
+        "C_self": 0.8094117641448975,
+        "C_uni": 0.8062745332717896
+      },
+      "arm": "C_cond",
+      "development_pass_at_12": 0.8250980377197266
+    }
+  },
+  "status": "PASS_A1_SELECTION_FROZEN"
+}

@@ -1,0 +1,287 @@
+{
+  "benchmarks": {
+    "mind2web": {
+      "acquisition": {
+        "best_static_pass_at_12": 0.6120192307692308,
+        "oracle_route_coverage_gain_over_best_arm": 0.060576923076923084,
+        "pass_at_12_per_arm": {
+          "C_cond": 0.6120192307692308,
+          "C_rand": 0.5923076923076923,
+          "C_self": 0.5923076923076923,
+          "C_uni": 0.5716346153846154
+        },
+        "shared_first6_fraction": 1.0,
+        "stage1_pass_at_6": 0.53125,
+        "union_pass_at_48": 0.6725961538461539
+      },
+      "arms": {
+        "C_cond": {
+          "candidate_ranking_gap": 0.20769230769230773,
+          "direct": 0.34951923076923075,
+          "fallback": 0.3245192307692308,
+          "gate_gap": 0.05817307692307694,
+          "pair_oracle": 0.4043269230769231,
+          "pass_at_12": 0.6120192307692308,
+          "safe": 0.34615384615384615
+        },
+        "C_rand": {
+          "candidate_ranking_gap": 0.18028846153846156,
+          "direct": 0.35721153846153847,
+          "fallback": 0.31826923076923075,
+          "gate_gap": 0.057211538461538425,
+          "pair_oracle": 0.41201923076923075,
+          "pass_at_12": 0.5923076923076923,
+          "safe": 0.3548076923076923
+        },
+        "C_self": {
+          "candidate_ranking_gap": 0.18365384615384617,
+          "direct": 0.35528846153846155,
+          "fallback": 0.3139423076923077,
+          "gate_gap": 0.06105769230769231,
+          "pair_oracle": 0.40865384615384615,
+          "pass_at_12": 0.5923076923076923,
+          "safe": 0.34759615384615383
+        },
+        "C_uni": {
+          "candidate_ranking_gap": 0.16923076923076918,
+          "direct": 0.35,
+          "fallback": 0.32019230769230766,
+          "gate_gap": 0.054326923076923106,
+          "pair_oracle": 0.40240384615384617,
+          "pass_at_12": 0.5716346153846154,
+          "safe": 0.34807692307692306
+        }
+      },
+      "equal_arm": {
+        "candidate_ranking_gap": 0.18521634615384616,
+        "direct": 0.3530048076923077,
+        "fallback": 0.3192307692307692,
+        "gate_gap": 0.057692307692307696,
+        "pair_oracle": 0.40685096153846156,
+        "pass_at_12": 0.5920673076923078,
+        "safe": 0.34915865384615385
+      },
+      "evidence": {
+        "by_correct_candidate_count": {
+          "1": {
+            "arm_rows": 1474,
+            "direct_accuracy": 0.4118046132971506,
+            "direct_recall_given_any_correct": 0.4118046132971506,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.5881953867028494,
+            "safe_accuracy": 0.3968792401628223
+          },
+          "2-3": {
+            "arm_rows": 4677,
+            "direct_accuracy": 0.13598460551635663,
+            "direct_recall_given_any_correct": 0.49571317225253314,
+            "pass_rate": 0.2743211460337823,
+            "ranking_failure_rate_given_coverage": 0.5042868277474669,
+            "safe_accuracy": 0.13213598460551634
+          },
+          "4-6": {
+            "arm_rows": 1209,
+            "direct_accuracy": 0.707196029776675,
+            "direct_recall_given_any_correct": 0.707196029776675,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.29280397022332505,
+            "safe_accuracy": 0.7096774193548387
+          },
+          "7-12": {
+            "arm_rows": 960,
+            "direct_accuracy": 0.8739583333333333,
+            "direct_recall_given_any_correct": 0.8739583333333333,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.12604166666666666,
+            "safe_accuracy": 0.8791666666666667
+          }
+        },
+        "by_target_area_quartile": {
+          "0": {
+            "arm_rows": 2080,
+            "direct_accuracy": 0.23125,
+            "direct_recall_given_any_correct": 0.4642857142857143,
+            "pass_rate": 0.4980769230769231,
+            "ranking_failure_rate_given_coverage": 0.5357142857142857,
+            "safe_accuracy": 0.23076923076923078
+          },
+          "1": {
+            "arm_rows": 2072,
+            "direct_accuracy": 0.34025096525096526,
+            "direct_recall_given_any_correct": 0.5745721271393643,
+            "pass_rate": 0.5921814671814671,
+            "ranking_failure_rate_given_coverage": 0.4254278728606357,
+            "safe_accuracy": 0.33832046332046334
+          },
+          "2": {
+            "arm_rows": 2088,
+            "direct_accuracy": 0.4267241379310345,
+            "direct_recall_given_any_correct": 0.6624535315985131,
+            "pass_rate": 0.6441570881226054,
+            "ranking_failure_rate_given_coverage": 0.337546468401487,
+            "safe_accuracy": 0.4272030651340996
+          },
+          "3": {
+            "arm_rows": 2080,
+            "direct_accuracy": 0.41346153846153844,
+            "direct_recall_given_any_correct": 0.6525037936267072,
+            "pass_rate": 0.6336538461538461,
+            "ranking_failure_rate_given_coverage": 0.34749620637329287,
+            "safe_accuracy": 0.4
+          }
+        },
+        "target_area_quantile_cuts": [
+          0.002187228732638889,
+          0.0061097203954346814,
+          0.013145234849717882
+        ]
+      }
+    },
+    "screenspot_pro": {
+      "acquisition": {
+        "best_static_pass_at_12": 0.8115117014547755,
+        "oracle_route_coverage_gain_over_best_arm": 0.03668564199873492,
+        "pass_at_12_per_arm": {
+          "C_cond": 0.8115117014547755,
+          "C_rand": 0.7868437697659709,
+          "C_self": 0.7925363693864642,
+          "C_uni": 0.7919038583175205
+        },
+        "shared_first6_fraction": 1.0,
+        "stage1_pass_at_6": 0.7577482605945604,
+        "union_pass_at_48": 0.8481973434535104
+      },
+      "arms": {
+        "C_cond": {
+          "candidate_ranking_gap": 0.13978494623655913,
+          "direct": 0.6622390891840607,
+          "fallback": 0.6647691334598356,
+          "gate_gap": 0.006957621758380772,
+          "pair_oracle": 0.6717267552182163,
+          "pass_at_12": 0.8115117014547755,
+          "safe": 0.6647691334598356
+        },
+        "C_rand": {
+          "candidate_ranking_gap": 0.1631878557874763,
+          "direct": 0.6211258697027198,
+          "fallback": 0.6110056925996205,
+          "gate_gap": 0.010752688172043001,
+          "pair_oracle": 0.6236559139784946,
+          "pass_at_12": 0.7868437697659709,
+          "safe": 0.6129032258064516
+        },
+        "C_self": {
+          "candidate_ranking_gap": 0.1353573687539531,
+          "direct": 0.6457938013915243,
+          "fallback": 0.6514864010120177,
+          "gate_gap": 0.005692599620493399,
+          "pair_oracle": 0.6571790006325111,
+          "pass_at_12": 0.7925363693864642,
+          "safe": 0.6514864010120177
+        },
+        "C_uni": {
+          "candidate_ranking_gap": 0.14547754585705241,
+          "direct": 0.6419987349778621,
+          "fallback": 0.6388361796331435,
+          "gate_gap": 0.005060088551549713,
+          "pair_oracle": 0.6464263124604681,
+          "pass_at_12": 0.7919038583175205,
+          "safe": 0.6413662239089184
+        }
+      },
+      "equal_arm": {
+        "candidate_ranking_gap": 0.14595192915876024,
+        "direct": 0.6427893738140418,
+        "fallback": 0.6415243516761543,
+        "gate_gap": 0.007115749525616721,
+        "pair_oracle": 0.6497469955724225,
+        "pass_at_12": 0.7956989247311829,
+        "safe": 0.6426312460468058
+      },
+      "evidence": {
+        "by_correct_candidate_count": {
+          "1": {
+            "arm_rows": 478,
+            "direct_accuracy": 0.08368200836820083,
+            "direct_recall_given_any_correct": 0.08368200836820083,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.9163179916317992,
+            "safe_accuracy": 0.05230125523012552
+          },
+          "2-3": {
+            "arm_rows": 1933,
+            "direct_accuracy": 0.14123124676668392,
+            "direct_recall_given_any_correct": 0.42589703588143524,
+            "pass_rate": 0.3316088980858769,
+            "ranking_failure_rate_given_coverage": 0.5741029641185648,
+            "safe_accuracy": 0.14330056906363167
+          },
+          "4-6": {
+            "arm_rows": 1078,
+            "direct_accuracy": 0.8766233766233766,
+            "direct_recall_given_any_correct": 0.8766233766233766,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.12337662337662338,
+            "safe_accuracy": 0.8840445269016698
+          },
+          "7-12": {
+            "arm_rows": 2835,
+            "direct_accuracy": 0.9901234567901235,
+            "direct_recall_given_any_correct": 0.9901234567901235,
+            "pass_rate": 1.0,
+            "ranking_failure_rate_given_coverage": 0.009876543209876543,
+            "safe_accuracy": 0.9908289241622575
+          }
+        },
+        "by_target_area_quartile": {
+          "0": {
+            "arm_rows": 1580,
+            "direct_accuracy": 0.41012658227848103,
+            "direct_recall_given_any_correct": 0.6701137538779731,
+            "pass_rate": 0.6120253164556962,
+            "ranking_failure_rate_given_coverage": 0.3298862461220269,
+            "safe_accuracy": 0.41455696202531644
+          },
+          "1": {
+            "arm_rows": 1580,
+            "direct_accuracy": 0.5373417721518987,
+            "direct_recall_given_any_correct": 0.760752688172043,
+            "pass_rate": 0.7063291139240506,
+            "ranking_failure_rate_given_coverage": 0.239247311827957,
+            "safe_accuracy": 0.5386075949367088
+          },
+          "2": {
+            "arm_rows": 1580,
+            "direct_accuracy": 0.810126582278481,
+            "direct_recall_given_any_correct": 0.8749145591250854,
+            "pass_rate": 0.9259493670886076,
+            "ranking_failure_rate_given_coverage": 0.12508544087491455,
+            "safe_accuracy": 0.8088607594936709
+          },
+          "3": {
+            "arm_rows": 1584,
+            "direct_accuracy": 0.8131313131313131,
+            "direct_recall_given_any_correct": 0.8667563930013459,
+            "pass_rate": 0.9381313131313131,
+            "ranking_failure_rate_given_coverage": 0.13324360699865412,
+            "safe_accuracy": 0.8080808080808081
+          }
+        },
+        "target_area_quantile_cuts": [
+          0.0001433497299382716,
+          0.00035493827160493826,
+          0.000804639274691358
+        ]
+      }
+    }
+  },
+  "diagnostic_gates": {
+    "D1_candidate_ranking_gap_above_MDE_both": true,
+    "D2_first_six_shared_all_rows": true,
+    "D3_oracle_route_coverage_gain_above_MDE_both": true,
+    "D4_small_target_failure_exceeds_large_by_10pp_both": true,
+    "D5_unique_correct_direct_recall_below_half_both": true
+  },
+  "schema_version": 1,
+  "status": "PASS_DIAGNOSTIC"
+}
