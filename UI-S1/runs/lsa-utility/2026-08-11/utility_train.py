@@ -17,6 +17,7 @@ from utility_common import (
     metadata,
     reliability_by_arm,
     training_matrix,
+    training_matrices,
 )
 from behavior_policy import apply_policy, fit_final_policies, fit_inner_policies, load_cev_config
 
@@ -48,6 +49,14 @@ def fit_model(model_id, objective, config, banks, ids, reliability, policies, fe
     with threadpool_limits(limits=1):
         model.fit(values, targets, sample_weight=weights)
     return model, {"candidates": len(targets), "active_groups": active}
+
+
+def fit_prepared(model_id, objective, config, prepared):
+    values, targets, weights, active = prepared
+    model = make_model(model_id, config)
+    with threadpool_limits(limits=1):
+        model.fit(values, targets[objective], sample_weight=weights)
+    return model, {"candidates": len(targets[objective]), "active_groups": active}
 
 
 def predict(model, evaluation):
@@ -185,10 +194,11 @@ def run(config, feature_mode="pair"):
             reliability = reliability_by_arm(banks, train_ids)
             policies, policy_report = fit_inner_policies(banks, train_folds, holdout_fold, cev_config)
             evaluation = evaluation_rows(banks, holdout_ids, reliability, policies, feature_mode)
+            prepared = training_matrices(banks, train_ids, reliability, policies, feature_mode)
             report = {"holdout_fold": holdout_fold, "train_folds": train_folds, "behavior_policy": policy_report, "configurations": {}}
             for objective in OBJECTIVES:
                 for model_id in MODEL_IDS:
-                    model, training = fit_model(model_id, objective, config, banks, train_ids, reliability, policies, feature_mode)
+                    model, training = fit_prepared(model_id, objective, config, prepared)
                     predictions = predict(model, evaluation)
                     for benchmark in BENCHMARKS:
                         for arm in ARMS:
@@ -201,7 +211,8 @@ def run(config, feature_mode="pair"):
         reliability = reliability_by_arm(banks, dev_ids)
         final_policies = fit_final_policies(banks, outer_fold, cev)
         fallback_validation = validate_frozen_fallbacks(banks, final_policies, cev, outer_fold)
-        model, training = fit_model(selected["model_id"], selected["objective"], config, banks, dev_ids, reliability, final_policies, feature_mode)
+        prepared = training_matrices(banks, dev_ids, reliability, final_policies, feature_mode)
+        model, training = fit_prepared(selected["model_id"], selected["objective"], config, prepared)
         evaluation = evaluation_rows(banks, test_ids, reliability, final_policies, feature_mode)
         predictions = predict(model, evaluation)
         fold_report = {

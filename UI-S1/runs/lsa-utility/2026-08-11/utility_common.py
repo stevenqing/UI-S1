@@ -121,9 +121,9 @@ def utility_targets(row, fallback_index, objective):
     return utility, target.astype(np.float32)
 
 
-def training_matrix(banks, ids_by_benchmark, reliability, policies, objective, feature_mode="pair"):
+def training_matrices(banks, ids_by_benchmark, reliability, policies, feature_mode="pair"):
     arrays = []
-    targets = []
+    targets = {objective: [] for objective in OBJECTIVES}
     weights = []
     report = {benchmark: {arm: 0 for arm in ARMS} for benchmark in BENCHMARKS}
     for benchmark in BENCHMARKS:
@@ -134,24 +134,42 @@ def training_matrix(banks, ids_by_benchmark, reliability, policies, objective, f
                 row = banks[arm][benchmark][row_id]
                 sums, counts = reliability[arm][benchmark]
                 fallback = apply_policy(row, policies[benchmark][arm])
-                utility, target = utility_targets(row, fallback, objective)
+                utility, _ = utility_targets(row, fallback, "U_RAW")
                 if float(np.std(utility)) == 0.0:
                     continue
                 features = transformed_features(row, sums, counts, fallback, leave_one=True, feature_mode=feature_mode)
-                row_groups.append((arm, features, target))
+                objective_targets = {
+                    objective: utility_targets(row, fallback, objective)[1]
+                    for objective in OBJECTIVES
+                }
+                row_groups.append((arm, features, objective_targets))
                 report[benchmark][arm] += 1
             if row_groups:
                 active_rows.append(row_groups)
         benchmark_row_weight = 1.0 / max(1, len(active_rows))
         for row_groups in active_rows:
             arm_weight = benchmark_row_weight / len(row_groups)
-            for arm, features, target in row_groups:
+            for arm, features, objective_targets in row_groups:
                 arrays.append(features)
-                targets.append(target)
-                weights.append(np.full(len(target), arm_weight / len(target), dtype=np.float64))
+                for objective in OBJECTIVES:
+                    targets[objective].append(objective_targets[objective])
+                candidate_count = len(objective_targets["U_RAW"])
+                weights.append(np.full(candidate_count, arm_weight / candidate_count, dtype=np.float64))
     if not arrays:
         raise ValueError("no active utility groups")
-    return np.concatenate(arrays), np.concatenate(targets), np.concatenate(weights), report
+    return (
+        np.concatenate(arrays),
+        {objective: np.concatenate(values) for objective, values in targets.items()},
+        np.concatenate(weights),
+        report,
+    )
+
+
+def training_matrix(banks, ids_by_benchmark, reliability, policies, objective, feature_mode="pair"):
+    values, targets, weights, report = training_matrices(
+        banks, ids_by_benchmark, reliability, policies, feature_mode
+    )
+    return values, targets[objective], weights, report
 
 
 def evaluation_rows(banks, ids_by_benchmark, reliability, policies, feature_mode="pair"):
