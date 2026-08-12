@@ -1,13 +1,18 @@
 schema_version: 1
 status: FROZEN_AFTER_R1_BEFORE_PUBLIC_BANK_AND_SELECTOR_INFERENCE
 seed: 20260812
+python: .venv-scaleup/bin/python
 expected_records: 4000
 settings: [low, high]
 candidates: 3
 canonical_private_source_order: [UI-AGILE-7B, GUI-R1-7B, UI-R1-E-3B]
+public_candidate_order: sha256_sample_key_seed_public_bank_order
 recovery_manifest:
   path: runs/trivus/2026-08-12/RECOVERY_MANIFEST.json
   sha256: c3ad66721c0f760275dc4ae891df02077fb7e1c13e259b2d1c12881c98e744df
+folds:
+  path: runs/complementarity/2026-07-30/folds.json
+  sha256: 0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec
 model:
   path: runs/ccm-h2h/2026-07-31/h3/models/Qwen3-VL-8B-Instruct
   index_sha256: 520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070
@@ -53,6 +58,12 @@ public_prohibited_tokens:
   - response
   - reliability
   - fallback
+candidate_normalization:
+  coordinate_actions: [click, long_press, moveto, doubleclick, rightclick]
+  parameter_actions: [type, open_app, scroll, select]
+  missing_action: UNKNOWN
+  parameter_max_chars: 256
+  history_max_chars: 512
 blind_lock:
   private_labels_created: false
   scorer_imported: false
