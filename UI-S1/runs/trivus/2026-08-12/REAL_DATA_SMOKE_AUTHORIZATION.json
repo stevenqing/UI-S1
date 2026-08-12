@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "status": "AUTHORIZED_TRIVUS_REAL_DATA_SMOKE_ONCE",
-  "implementation_commit": "b49b0e3974b441e27291f6380396c6e9c39682d7",
-  "authorization_nonce": "cc348f98470aba453326c323cfea2f8425954fbeba59a8ae8b3a73a4c3be0b05",
+  "implementation_commit": "99bc7640cfe1cfc36bf4f18d1b97ccc4d4a9c5d2",
+  "authorization_nonce": "0539883db414f9f95d4a42ffe05652ff351946503b1212224d57b4ddc4ed7e15",
   "result_must_not_exist": true,
   "files": {
     "AMENDMENT_012_NO_OPTIMIZER_REAL_DATA_SMOKE.md": "de0fe7f31fe51dac901c2991df0590e950a86dd99937338700f5417b51ff6e2b",
-    "configs/real_data_smoke_prereg.yaml": "b255bd55046436891eac35d90bd042a2cc62c7ba1eaaae7132ca18db01b6a300",
+    "configs/real_data_smoke_prereg.yaml": "5b00924ad4849739e68c729bc838068b65462805f9edde1fc8156fe40704c9f5",
     "run_real_data_smoke.py": "2ceeb7d04dc8a8ec7d67e980226535b6e1813143dd28953336da148be6b6975c",
     "test_real_data_smoke.py": "ee0ac2d441f4200d310f3629827933ef9a70ef18a32b215199ba211ca52a3997"
   },
