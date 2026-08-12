@@ -1,0 +1,43 @@
+schema_version: 1
+status: FROZEN_AFTER_PRIVATE_LABEL_SEAL_BEFORE_SELECTOR_METRICS
+private_label_seal_commit: 0c74d064913c9b91e5c570eb4b366dfde0b0d08d
+settings: [low, high]
+models: [UI-AGILE-7B, GUI-R1-7B, UI-R1-E-3B]
+seed: 20260812
+noninferiority_margin: 0.01
+repair_auroc_threshold: 0.55
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  seed:
+    low_majority: 20260831
+    high_majority: 20260832
+    low_random: 20260833
+    high_random: 20260834
+dependencies:
+  private_manifest:
+    path: runs/trivus/2026-08-12/data/PRIVATE_LABEL_MANIFEST.json
+    sha256: efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972
+  r1:
+    path: runs/trivus/2026-08-12/R1_HEADROOM.json
+    sha256: 093fcd8241fc3d1609db510629994527e125a598bbc311e921492aaeaefb20b2
+  blind_manifest:
+    path: runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json
+    sha256: 0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764
+  public_manifest:
+    path: runs/trivus/2026-08-12/data/PUBLIC_MANIFEST.json
+    sha256: c8531b2456155005baaf825f9ba36382ec44398ede9ed858cbe3df890a949e10
+  public_records:
+    path: runs/trivus/2026-08-12/data/public_records.jsonl
+    sha256: 4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd
+  selector_predictions:
+    path: runs/trivus/2026-08-12/selector/predictions.jsonl
+    sha256: b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d
+  bootstrap:
+    path: runs/aggmatch/2026-08-09/aggmatch_common.py
+    sha256: 9481abb5a20e1b302b7dbb2b85fb74df8b54312b6dc45c36563aa17194f5f305
+gates:
+  sanity_random_ci_positive_each_setting: true
+  route_A1_direct_safe: true
+  route_A2_repair_auroc: true
+  proceed: sanity_and_A1_or_A2

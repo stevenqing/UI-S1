@@ -47,6 +47,10 @@
   "private_label_records": 4000,
   "private_label_protocol_frozen": true,
   "private_label_builder_implemented": true,
+  "representation_gate_preregistered": true,
+  "representation_gate_implemented": true,
+  "representation_gate_authorized": false,
+  "representation_gate_result_exists": false,
   "invalid_public_attempt_001": {
     "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",
     "failed_on_first_row": true,
