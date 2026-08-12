@@ -1,0 +1,78 @@
+{
+  "comparisons": {
+    "high": {
+      "direct_minus_hash_random": {
+        "ci_99": [
+          0.10247325345357843,
+          0.1595589816458444
+        ],
+        "groups": 1039,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.131,
+        "resamples": 10000,
+        "rows": 2000,
+        "seed": 20260834
+      },
+      "direct_minus_majority": {
+        "ci_99": [
+          -0.04925378061444934,
+          -0.005002426400232547
+        ],
+        "groups": 1039,
+        "p_delta_le_zero_plus_one": 0.9994000599940006,
+        "point_delta": -0.0275,
+        "resamples": 10000,
+        "rows": 2000,
+        "seed": 20260832
+      }
+    },
+    "low": {
+      "direct_minus_hash_random": {
+        "ci_99": [
+          0.09040928783741926,
+          0.14452008597848223
+        ],
+        "groups": 1039,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.1175,
+        "resamples": 10000,
+        "rows": 2000,
+        "seed": 20260833
+      },
+      "direct_minus_majority": {
+        "ci_99": [
+          -0.059850554306026364,
+          -0.021717612979773804
+        ],
+        "groups": 1039,
+        "p_delta_le_zero_plus_one": 1.0,
+        "point_delta": -0.0405,
+        "resamples": 10000,
+        "rows": 2000,
+        "seed": 20260831
+      }
+    }
+  },
+  "config_sha256": "2398a4b95f035d7b39ef2d4b9ae02ac534fe1b13c5243d26e316301939bcebc7",
+  "direct_minus_majority_equal_setting_point": -0.034,
+  "gates": {
+    "RG_A1_direct_safe": false,
+    "RG_A2_repair_auroc": true,
+    "RG_S_random_sanity": true
+  },
+  "outcome": "PROCEED_TO_TRIVUS_TRAINING_IMPLEMENTATION",
+  "repair_auroc": {
+    "high": {
+      "candidates": 6000,
+      "positives": 267,
+      "value": 0.6083369101025602
+    },
+    "low": {
+      "candidates": 6000,
+      "positives": 132,
+      "value": 0.6125447987027742
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_TRIVUS_REPRESENTATION_ADJUDICATED"
+}

@@ -51,7 +51,19 @@
   "representation_gate_implemented": true,
   "representation_gate_authorized": true,
   "representation_gate_implementation_commit": "c84dac03c04fe7e8e369105b56580e4a89b9b75c",
-  "representation_gate_result_exists": false,
+  "representation_gate_result_exists": true,
+  "representation_gate_result": "runs/trivus/2026-08-12/REPRESENTATION_GATE.json",
+  "representation_gate_sha256": "c1bbf8648e25388594b43cd4acec044a393b94e23bd867176ba68b71e7ee0fc5",
+  "representation_gate_outcome": "PROCEED_TO_TRIVUS_TRAINING_IMPLEMENTATION",
+  "representation_gates": {
+    "RG_S": true,
+    "RG_A1": false,
+    "RG_A2": true
+  },
+  "android_low_direct_majority_random": [0.7415, 0.782, 0.624],
+  "android_high_direct_majority_random": [0.5715, 0.599, 0.4405],
+  "android_low_repair_auroc": 0.6125447987027742,
+  "android_high_repair_auroc": 0.6083369101025602,
   "invalid_public_attempt_001": {
     "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",
     "failed_on_first_row": true,
@@ -74,7 +86,7 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "PUBLISH_PRIVATE_LABEL_SEAL_THEN_FREEZE_REPRESENTATION_GATE",
+  "next_action": "PUBLISH_REPRESENTATION_GATE_THEN_IMPLEMENT_SEALED_TRIVUS_TRAINING",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
