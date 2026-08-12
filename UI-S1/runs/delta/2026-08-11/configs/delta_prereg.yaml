@@ -2,6 +2,7 @@ schema_version: 1
 status: FROZEN_AFTER_RAVEL_K4_BEFORE_DELTA_RESULTS
 frozen_at: 2026-08-11
 method: DELTA
+seed: 20260811
 channels:
   vus_binding:
     path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl
@@ -26,11 +27,40 @@ architecture:
   attention_heads: 4
   dropout: 0.1
   positional_embeddings: false
+  standardization: train_only_base_and_shared_across_channel_slots
+variants:
+  FULL: [vus_binding, global_semantic, fine_local, context_local]
+  VUS_ONLY: [vus_binding]
+  VUS_GLOBAL: [vus_binding, global_semantic]
+  VUS_LOCAL: [vus_binding, fine_local, context_local]
+  RANDOM_PLACEBO: [vus_binding, global_semantic, random_placebo]
+  FIXED_AVERAGE: [vus_binding, global_semantic, fine_local, context_local]
 losses:
   listwise_repair_or_keep: 1.0
   fallback_correct_bce: 0.5
   permutation_channel_consistency: 0.1
   expected_u_grpo: 0.1
+optimizer:
+  name: AdamW
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-3
+  batch_size: 256
+  maximum_epochs: 30
+  patience: 5
+  minimum_improvement: 1.0e-5
+  gradient_clip_norm: 1.0
+  optimizer_steps_per_epoch: 1
+  paired_variant_seed: true
+safe_policy:
+  threshold_axes: [candidate_minus_KEEP, fallback_wrong]
+  threshold_candidates: [infinity, zero, positive_deciles]
+  minimum_cell_opportunities: 200
+  cell_loss_max_mde_fraction: 0.5
+  benchmark_loss_max_mde_fraction: 0.25
+attribution:
+  nontrivial_gate_mass: 0.10
+  required_outer_folds: 4
+  permutation_max_error: 1.0e-5
 controls:
   - VUS_SR_frozen
   - VUS_only_same_capacity
