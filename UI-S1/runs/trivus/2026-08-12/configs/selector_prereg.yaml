@@ -1,0 +1,60 @@
+schema_version: 1
+status: FROZEN_AFTER_R1_BEFORE_PUBLIC_BANK_AND_SELECTOR_INFERENCE
+seed: 20260812
+expected_records: 4000
+settings: [low, high]
+candidates: 3
+canonical_private_source_order: [UI-AGILE-7B, GUI-R1-7B, UI-R1-E-3B]
+recovery_manifest:
+  path: runs/trivus/2026-08-12/RECOVERY_MANIFEST.json
+  sha256: c3ad66721c0f760275dc4ae891df02077fb7e1c13e259b2d1c12881c98e744df
+model:
+  path: runs/ccm-h2h/2026-07-31/h3/models/Qwen3-VL-8B-Instruct
+  index_sha256: 520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070
+  config_sha256: 5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661
+  preprocessor_sha256: 27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516
+  tokenizer_config_sha256: c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399
+processor:
+  min_pixels: 200704
+  max_pixels: 1003520
+  max_rendered_edge: 1600
+inference:
+  dtype: bfloat16
+  attention: sdpa
+  use_cache: false
+  batch_size: 1
+  num_shards: 8
+  gpu_mapping: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  fsync_every_rows: 25
+  resume: true
+public_allowed_row_fields:
+  - schema_version
+  - sample_key
+  - benchmark
+  - setting
+  - row_id
+  - fold
+  - group
+  - image_path
+  - image_sha256
+  - instruction
+  - history
+  - candidates
+public_allowed_candidate_fields: [action, coordinate, parameter, parse_ok]
+public_prohibited_tokens:
+  - gt_
+  - target
+  - evaluator
+  - success
+  - label
+  - source
+  - model
+  - slot
+  - response
+  - reliability
+  - fallback
+blind_lock:
+  private_labels_created: false
+  scorer_imported: false
+  evaluator_imported: false
+  label_metrics_computed: false
