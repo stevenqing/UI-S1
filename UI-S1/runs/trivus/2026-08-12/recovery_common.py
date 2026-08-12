@@ -47,6 +47,11 @@ def load_jsonl(path):
     return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
 
 
+def identity_hash(rows):
+    ordered = sorted(rows, key=lambda row: row["stable_index"])
+    return hashlib.sha256("\n".join(row["id"] for row in ordered).encode()).hexdigest()
+
+
 def atomic_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)

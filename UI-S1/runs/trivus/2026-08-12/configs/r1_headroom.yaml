@@ -1,0 +1,33 @@
+schema_version: 1
+status: FROZEN_BEFORE_R0_COMPLETION_AND_R1_RESULTS
+models: [UI-AGILE-7B, GUI-R1-7B, UI-R1-E-3B]
+settings: [low, high]
+expected_rows_per_setting: 2000
+baseline: fold_local_exact_action_plurality_dev_reliability_tiebreak
+oracle: any_real_candidate_success
+coordinate_radius: 0.14
+text_f1_threshold: 0.5
+practical_headroom_margin: 0.01
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  seed:
+    low: 20260821
+    high: 20260822
+dependencies:
+  scoring:
+    path: runs/collision-law/2026-07-30/scoring.py
+    sha256: 4f337dec10235ad8071452b55bbf5d5b74502e46b2506ba13d5fca21e6909fcd
+  upstream_scoring:
+    path: runs/complementarity/2026-07-30/scoring.py
+    sha256: 4ee0d12ca4762cd2378befb3b2ce7db8f1535da29cade53e1c8c6df6911374b3
+  bootstrap:
+    path: runs/aggmatch/2026-08-09/aggmatch_common.py
+    sha256: 9481abb5a20e1b302b7dbb2b85fb74df8b54312b6dc45c36563aa17194f5f305
+  folds:
+    path: runs/complementarity/2026-07-30/folds.json
+    sha256: 0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec
+gate:
+  require_each_setting_point_above_margin: true
+  require_each_setting_ci_99_lower_positive: true
+  no_balanced_compensation: true

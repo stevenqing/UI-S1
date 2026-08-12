@@ -1,14 +1,9 @@
-import hashlib
 from pathlib import Path
 
 from recovery_common import (
-    ROOT, RUN_DIR, assert_protected_process, atomic_json, load_config, load_jsonl, references, sha256_file,
+    ROOT, RUN_DIR, assert_protected_process, atomic_json, identity_hash, load_config, load_jsonl, references, sha256_file,
     validate_lane_rows,
 )
-
-
-def identity_hash(rows):
-    return hashlib.sha256("\n".join(row["id"] for row in rows).encode()).hexdigest()
 
 
 def main():
