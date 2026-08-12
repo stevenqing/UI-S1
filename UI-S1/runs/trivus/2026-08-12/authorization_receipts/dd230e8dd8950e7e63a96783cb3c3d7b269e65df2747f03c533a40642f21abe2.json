@@ -1,0 +1,8 @@
+{
+  "authorization_nonce": "dd230e8dd8950e7e63a96783cb3c3d7b269e65df2747f03c533a40642f21abe2",
+  "authorization_sha256": "8d95b2023c8c08b19498208f3524c48725e318deebb776d03d108463a4482847",
+  "implementation_commit": "9be120227a3e962b493bf9acdbe1a001619d056b",
+  "prereg_sha256": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+  "schema_version": 1,
+  "status": "CONSUMED_TRIVUS_FALLBACK_CONTEXT_AUTHORIZATION"
+}

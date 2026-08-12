@@ -86,7 +86,7 @@
   "training_protocol_frozen": true,
   "fallback_context_protocol_frozen": true,
   "fallback_context_implementation_complete": true,
-  "fallback_context_implementation_tests": 14,
+  "fallback_context_implementation_tests": 15,
   "private_scale_seal_created": true,
   "private_scale_seal_authorized": true,
   "private_scale_manifest": "runs/trivus/2026-08-12/data/private_scales/PRIVATE_SCALE_MANIFEST.json",
@@ -113,6 +113,15 @@
     "training_started": false
   },
   "fallback_contexts_created": false,
+  "invalid_fallback_context_attempt_001": {
+    "reason": "screenspot_normalized_pixel_roundtrip_changed_hard_threshold_complete_link",
+    "failed_at_final_index_anchor": "outer2/screenspot_pro/C_self/powerpoint_windows_24",
+    "authorization_receipt_created": true,
+    "fallback_context_artifact_written": false,
+    "performance_metric_computed": false,
+    "feature_assembly_started": false,
+    "training_started": false
+  },
   "training_data_adapter_implemented": false,
   "nested_training_runner_implemented": false,
   "final_adjudicator_implemented": false,

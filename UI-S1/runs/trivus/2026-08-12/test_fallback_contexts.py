@@ -11,12 +11,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from context_common import (
     ARMS, BENCHMARKS, ContextCandidate, ContextRow, android_majority_index,
-    apply_vus_policies, checkpoint_and_fit_folds, context_record,
+    apply_vus_policies, build_vus_banks, checkpoint_and_fit_folds, context_record,
     committed_file, fit_final_vus_policies, fit_inner_vus_policies,
     git_blob_sha256, load_prereg,
     load_sealed_rows, mind_layout, publish_directory, safe_child_path,
-    require_commit_order, screen_layout, set_private_scales, sha256_file,
-    staging_directory,
+    require_commit_order, restore_coordinate, screen_layout, set_private_scales,
+    sha256_file, staging_directory,
 )
 from prepare_fallback_contexts import validate_context_coverage, write_authorization_receipt
 from representation_gate import majority_public_index
@@ -59,6 +59,12 @@ class FallbackContextTest(unittest.TestCase):
         layout = screen_layout(record, region)
         self.assertEqual(len(layout), 12)
         self.assertEqual(layout[6], ("GTA1-7B_C_cond_crop0", "GTA1-7B"))
+
+    def test_screenspot_public_coordinates_restore_exact_pixel_grid(self):
+        normalized = (838.0 / 1920.0, 242.0 / 1080.0)
+        self.assertEqual(restore_coordinate(normalized, (1920, 1080)), (838.0, 242.0))
+        self.assertEqual(restore_coordinate(normalized), normalized)
+        self.assertIsNone(restore_coordinate(None, (1920, 1080)))
 
     def test_android_policy_matches_frozen_representation_semantics(self):
         config = load_prereg()

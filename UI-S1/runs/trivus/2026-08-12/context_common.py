@@ -338,6 +338,18 @@ def screen_layout(record, region):
     return tuple(values)
 
 
+def restore_coordinate(coordinate, size=None):
+    if coordinate is None:
+        return None
+    values = tuple(float(value) for value in coordinate)
+    if size is None:
+        return values
+    return (
+        float(round(values[0] * size[0])),
+        float(round(values[1] * size[1])),
+    )
+
+
 def build_vus_banks(public_rows, screen_regions):
     regions = {row["id"]: row for row in screen_regions}
     public = {}
@@ -359,11 +371,7 @@ def build_vus_banks(public_rows, screen_regions):
             size = tuple(region["img_size"])
         candidates = []
         for order, (candidate, (source, lineage)) in enumerate(zip(record["candidates"], layout)):
-            coordinate = candidate["coordinate"]
-            if coordinate is not None:
-                coordinate = tuple(float(value) for value in coordinate)
-                if size is not None:
-                    coordinate = (coordinate[0] * size[0], coordinate[1] * size[1])
+            coordinate = restore_coordinate(candidate["coordinate"], size)
             candidates.append(ContextCandidate(
                 source=source,
                 lineage=lineage,
