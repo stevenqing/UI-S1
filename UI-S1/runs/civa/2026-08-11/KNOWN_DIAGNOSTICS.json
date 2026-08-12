@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "KNOWN_BEFORE_CIVA_PREREGISTRATION",
+  "source": "post_DELTA_descriptive_only",
+  "mind2web": {
+    "VUS_GLOBAL_rescue_pp": 4.423,
+    "VUS_GLOBAL_harm_pp": 3.774,
+    "all_real_policies_oracle_switch_gain_pp": 6.322,
+    "random_placebo_rescue_pp": 4.255
+  },
+  "screenspot_pro": {
+    "all_real_policies_oracle_switch_gain_pp": 0.806
+  },
+  "interpretation": "Heterogeneous policy outcomes exist, but comparable random-placebo rescue means oracle headroom alone does not establish learnability or real-evidence specificity."
+}

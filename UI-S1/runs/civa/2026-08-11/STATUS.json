@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-11",
+  "status": "PREREGISTERED_NO_RESULTS",
+  "outcome": "CIVA_NOT_RUN",
+  "upstream": {
+    "VUS_SR": "VUS_SET_RANKER_METHOD_CANDIDATE",
+    "CARE_A1": "CLOSE_ROUTING",
+    "RAVEL_E0": "STOPPED_BY_RAVEL_K4",
+    "DELTA": "DELTA_NOT_SUPPORTED"
+  },
+  "phase": "A0_pre_admission_uplift_learnability",
+  "protected_pid": 2274,
+  "protected_pid_touched": false,
+  "formal_fit_started": false,
+  "outer_labels_opened": false,
+  "next_action": "IMPLEMENT_AND_TEST_WITHOUT_FORMAL_FIT"
+}

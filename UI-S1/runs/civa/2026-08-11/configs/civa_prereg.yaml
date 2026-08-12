@@ -1,0 +1,77 @@
+schema_version: 1
+status: PREREGISTERED_AFTER_DELTA_BEFORE_CIVA_FIT
+seed: 20260811
+channels:
+  vus_binding:
+    path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl
+    sha256: b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40
+  global_semantic:
+    path: runs/ravel/2026-08-11/evidence/global_only/predictions.jsonl
+    sha256: 93541d1d1381a627ff1b5dfc6d75a170efb141bd9509fd0254b0ea5d7805feaf
+  fine_local:
+    path: runs/ravel/2026-08-11/evidence/fine_only/predictions.jsonl
+    sha256: 102c40dfe05bf858f86001ab6726f4b9c9578b0f10214507ed644bf7553c73ec
+  context_local:
+    path: runs/ravel/2026-08-11/evidence/context_only/predictions.jsonl
+    sha256: 49ee984916cd7cc9a042b4279241d41be2c811e5eee9c8a5cd3f4dc01fbd3979
+  random_placebo:
+    path: runs/ravel/2026-08-11/evidence/random/predictions.jsonl
+    sha256: 03f7fb254d9d3e2a64b47ffba0a66b321706a9457f22466a1ddc0de7e1f9efc8
+baseline: vus_binding
+real_experts: [global_semantic, fine_local, context_local]
+placebo_expert: random_placebo
+features:
+  instruction_hash_dimensions: 256
+  instruction_ngram_range: [1, 2]
+  instruction_alternate_sign: false
+  shared_across_benchmarks: true
+  include_vus_binding_state: true
+  include_candidate_public_structure: true
+  include_benchmark_arm_state: true
+  prohibited:
+    - expert_channel_logits
+    - source_model_slot_identity
+    - website_application_identity
+    - target_bbox_area
+    - evaluator_outputs
+    - private_labels
+    - outer_fold_identity
+learner:
+  name: HistGradientBoostingClassifier
+  heads: [rescue, harm]
+  learning_rate: 0.05
+  max_iter: 200
+  max_leaf_nodes: 15
+  max_depth: null
+  min_samples_leaf: 30
+  l2_regularization: 0.1
+  early_stopping: false
+variants:
+  REAL_FULL: [instruction, base_state, public_structure]
+  REAL_NO_TEXT: [base_state, public_structure]
+  REAL_TEXT_ONLY: [instruction, benchmark_arm]
+  PLACEBO_FULL: [instruction, base_state, public_structure]
+  MATCHED_RANDOM: [hash_order, matched_coverage]
+thresholds:
+  candidates: [infinity, zero, positive_deciles]
+  minimum_cell_rows: 200
+  cell_loss_max_mde_fraction: 0.5
+  benchmark_loss_max_mde_fraction: 0.25
+nested_protocol:
+  outer_folds: 5
+  development_oof_folds: 4
+  fold_sealed_labels: true
+  atomic_pretest: true
+statistics:
+  resamples: 10000
+  confidence: 0.99
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+gates:
+  CIVA_1: balanced_ci_positive_vs_vus_direct
+  CIVA_2: one_benchmark_ci_positive_other_all_cells_noninferior
+  CIVA_3: balanced_ci_positive_vs_matched_random
+  CIVA_4: balanced_ci_positive_vs_placebo
+  CIVA_5: balanced_ci_positive_vs_no_text
+  CIVA_6: all_cells_noninferior_vs_vus_direct
