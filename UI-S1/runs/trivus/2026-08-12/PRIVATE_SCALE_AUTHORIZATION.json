@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED_TRIVUS_PRIVATE_SCALE_SEAL_ONCE",
+  "implementation_commit": "d039d31af06090056023bb821b657109bd835e2a",
+  "authorization_nonce": "d38729052c1e4597818718ee6174b6eee5fced8e37308b60014084b322be967c",
+  "result_must_not_exist": true,
+  "files": {
+    "configs/fallback_contexts_prereg.yaml": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+    "context_common.py": "f0a02457c2eac25244563ea84ec9c28721314c974af8fd1475801b2c4c44afe0",
+    "prepare_private_scales.py": "e0bc40816c2674bd8421dcc5dc2df1f858bff790c971397a7c183b904690ad2c",
+    "prepare_fallback_contexts.py": "e49d774a312a59e0c04f1451c210327cf26dd09cebcad2e8f64c88fe3d05371e",
+    "test_fallback_contexts.py": "9eeca92605a8b1c9956df2fb61612967a6218ecea2a50482d4dfcf6f6b1ffa0f"
+  },
+  "permitted_output": "five_fold_sealed_normalized_target_width_height_only",
+  "candidate_success_access": false,
+  "performance_metric_computation": false,
+  "training_authorized": false
+}
