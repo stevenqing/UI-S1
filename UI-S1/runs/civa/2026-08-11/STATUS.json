@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-11",
-  "status": "PREREGISTERED_NO_RESULTS",
+  "status": "CIVA_READY_NO_RESULTS",
   "outcome": "CIVA_NOT_RUN",
   "upstream": {
     "VUS_SR": "VUS_SET_RANKER_METHOD_CANDIDATE",
@@ -14,5 +14,12 @@
   "protected_pid_touched": false,
   "formal_fit_started": false,
   "outer_labels_opened": false,
-  "next_action": "IMPLEMENT_AND_TEST_WITHOUT_FORMAL_FIT"
+  "next_action": "RUN_FIVE_SEALED_OUTER_FOLDS",
+  "retention": {
+    "format": "per_file_sha256_manifest",
+    "backup_root": "/scratch/workspaceblobstore/civa/2026-08-11",
+    "manifest": "/scratch/workspaceblobstore/civa/2026-08-11/BACKUP_MANIFEST.json",
+    "manifest_authoritative": true,
+    "verified": true
+  }
 }
