@@ -11,6 +11,7 @@ import tempfile
 from collections import Counter
 from contextlib import contextmanager
 from dataclasses import dataclass, replace
+from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
@@ -95,25 +96,42 @@ def load_prereg():
     return config
 
 
+@lru_cache(maxsize=1)
+def git_root():
+    completed = subprocess.run(
+        ["git", "rev-parse", "--show-toplevel"],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    )
+    return Path(completed.stdout.strip()).resolve()
+
+
+def git_relative_path(path):
+    path = Path(path).resolve()
+    try:
+        return path.relative_to(git_root()).as_posix()
+    except ValueError as error:
+        raise PermissionError(f"TriVUS file is outside Git repository: {path}") from error
+
+
 def committed_file(path):
     path = Path(path).resolve()
-    relative = path.relative_to(ROOT.resolve()).as_posix()
+    relative = git_relative_path(path)
     completed = subprocess.run(
         ["git", "log", "-1", "--format=%H", "--", relative],
-        cwd=ROOT, check=True, capture_output=True, text=True,
+        cwd=git_root(), check=True, capture_output=True, text=True,
     )
     commit = completed.stdout.strip()
     if not commit:
         raise PermissionError(f"TriVUS file is not committed: {relative}")
     ancestor = subprocess.run(
         ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
-        cwd=ROOT, check=False,
+        cwd=git_root(), check=False,
     )
     if ancestor.returncode:
         raise PermissionError(f"TriVUS file commit is not an ancestor: {relative}")
     blob = subprocess.run(
         ["git", "show", f"{commit}:{relative}"],
-        cwd=ROOT, check=True, capture_output=True,
+        cwd=git_root(), check=True, capture_output=True,
     ).stdout
     if blob != path.read_bytes():
         raise PermissionError(f"TriVUS committed file differs from working tree: {relative}")
@@ -121,11 +139,10 @@ def committed_file(path):
 
 
 def git_blob_sha256(commit, path):
-    path = Path(path).resolve()
-    relative = path.relative_to(ROOT.resolve()).as_posix()
+    relative = git_relative_path(path)
     blob = subprocess.run(
         ["git", "show", f"{commit}:{relative}"],
-        cwd=ROOT, check=True, capture_output=True,
+        cwd=git_root(), check=True, capture_output=True,
     ).stdout
     return hashlib.sha256(blob).hexdigest()
 

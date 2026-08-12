@@ -89,6 +89,14 @@
   "fallback_context_implementation_tests": 13,
   "private_scale_seal_created": false,
   "private_scale_seal_authorized": false,
+  "invalid_private_scale_attempt_001": {
+    "reason": "authorization_blob_path_was_workspace_relative_in_nested_git_repository",
+    "failed_before_private_scale_construction": true,
+    "authorization_receipt_created": false,
+    "private_scale_artifact_written": false,
+    "fallback_context_written": false,
+    "training_started": false
+  },
   "fallback_contexts_created": false,
   "training_data_adapter_implemented": false,
   "nested_training_runner_implemented": false,

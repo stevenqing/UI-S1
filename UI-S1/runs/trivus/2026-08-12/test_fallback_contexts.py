@@ -12,7 +12,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from context_common import (
     ARMS, BENCHMARKS, ContextCandidate, ContextRow, android_majority_index,
     apply_vus_policies, checkpoint_and_fit_folds, context_record,
-    committed_file, fit_final_vus_policies, fit_inner_vus_policies, load_prereg,
+    committed_file, fit_final_vus_policies, fit_inner_vus_policies,
+    git_blob_sha256, load_prereg,
     load_sealed_rows, mind_layout, publish_directory, safe_child_path,
     require_commit_order, screen_layout, sha256_file, staging_directory,
 )
@@ -150,6 +151,10 @@ class FallbackContextTest(unittest.TestCase):
         with self.assertRaisesRegex(PermissionError, "not strict"):
             require_commit_order("same", "same", "test")
         run_dir = Path(__file__).resolve().parent
+        authorization = run_dir / "PRIVATE_SCALE_AUTHORIZATION.json"
+        commit = committed_file(authorization)
+        self.assertEqual(len(commit), 40)
+        self.assertEqual(git_blob_sha256(commit, authorization), sha256_file(authorization))
         with tempfile.TemporaryDirectory(prefix=".untracked-auth-", dir=run_dir) as directory:
             path = Path(directory) / "authorization.json"
             path.write_text("{}\n")
