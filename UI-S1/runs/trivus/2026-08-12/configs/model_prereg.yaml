@@ -1,0 +1,51 @@
+schema_version: 1
+status: FROZEN_BEFORE_R0_R1_AND_TRIVUS_RESULTS
+seed: 20260812
+candidate_contract:
+  maximum_candidates: 12
+  valid_counts: [3, 12]
+  padding_features: zero
+  padding_utility: minimum_finite_dtype
+  fallback_must_be_valid: true
+architecture:
+  width: 64
+  transformer_layers: 2
+  attention_heads: 4
+  feedforward_multiplier: 4
+  dropout: 0.1
+  pre_norm: true
+  positional_embeddings: false
+loss:
+  listwise_repair_or_keep: 1.0
+  fallback_correct_bce: 0.5
+  expected_u_grpo: 0.0
+  permutation_consistency: 0.0
+optimizer:
+  name: AdamW
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-3
+  batch_size: 256
+  gradient_clip_norm: 1.0
+  maximum_epochs: 30
+  patience: 5
+  minimum_improvement: 1.0e-5
+  optimizer_steps_per_epoch: 1
+variants: [JOINT3, TARGET_ONLY, JOINT2_NO_ANDROID, NO_VISUAL, RANDOM_ID_PLACEBO]
+features:
+  action_categories: [POINT, CLICK, TYPE, SELECT, OPEN, BACK, SCROLL, WAIT, LONG_PRESS, OTHER]
+  parameter_hash_dimensions: 64
+  parameter_hash_analyzer: char
+  parameter_hash_ngram_range: [2, 4]
+  parameter_hash_alternate_sign: false
+  direct_instruction_hash: false
+  true_source_model_slot_identity: prohibited
+thresholds:
+  axes: [candidate_minus_KEEP, fallback_wrong]
+  candidates: [infinity, zero, positive_deciles]
+nested_protocol:
+  outer_folds: 5
+  model_train_folds: 2
+  checkpoint_folds: 1
+  oof_threshold_folds: 1
+  atomic_pretest: true
+  fold_sealed_labels: true

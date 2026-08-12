@@ -1,0 +1,105 @@
+{
+  "accuracy_or_oracle_computed": false,
+  "expected_rows_per_lane": 2000,
+  "ground_truth_fields_used": false,
+  "historical_files_modified": false,
+  "lanes": {
+    "gui_r1_high": {
+      "bytes": 2660377,
+      "model_id": "GUI-R1-7B",
+      "path": "runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/high/shard-0.jsonl",
+      "recovered_from_rows": 1056,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "high",
+      "sha256": "e8a5d40fbd1c15b192555eddf85090f77a634f71f427f54662fade793ebc628f"
+    },
+    "gui_r1_low": {
+      "bytes": 2635942,
+      "model_id": "GUI-R1-7B",
+      "path": "runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/low/shard-0.jsonl",
+      "recovered_from_rows": 1096,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "low",
+      "sha256": "62d0d07a395753f6a021ada36d7b1a91d9646113b41be947cfc462692f9600ab"
+    },
+    "ui_agile_high": {
+      "files": [
+        {
+          "bytes": 1153161,
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-0.jsonl",
+          "rows": 1000,
+          "sha256": "a4f2298f9e856b96f3ed78512b86b820f2c94a0e5606be6f857fa689444a4d5f",
+          "shard_index": 0
+        },
+        {
+          "bytes": 1152622,
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-1.jsonl",
+          "rows": 1000,
+          "sha256": "b239a8345d3563fd90df964b917c63847f79466e6b5c4c27c8cd5f43418dc104",
+          "shard_index": 1
+        }
+      ],
+      "model_id": "UI-AGILE-7B",
+      "preexisting_complete": true,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "high"
+    },
+    "ui_agile_low": {
+      "files": [
+        {
+          "bytes": 1143987,
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-0.jsonl",
+          "rows": 1000,
+          "sha256": "de7518dcc2c6288524a6289ccf680a114d84ed598a523a6fea0ea70023ac2b8f",
+          "shard_index": 0
+        },
+        {
+          "bytes": 1143810,
+          "path": "runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-1.jsonl",
+          "rows": 1000,
+          "sha256": "63aab88e7fcf602d7e15e9c4508b4b15f22785fe25e1a38388ede96ea3d3c266",
+          "shard_index": 1
+        }
+      ],
+      "model_id": "UI-AGILE-7B",
+      "preexisting_complete": true,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "low"
+    },
+    "ui_r1_e_high": {
+      "bytes": 1986448,
+      "model_id": "UI-R1-E-3B",
+      "path": "runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/high/shard-0.jsonl",
+      "recovered_from_rows": 1792,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "high",
+      "sha256": "246c9bdde73bc9b35f7668d699d79d997303849b8d402ffc0a2f6cc6e90ce26c"
+    },
+    "ui_r1_e_low": {
+      "bytes": 1980667,
+      "model_id": "UI-R1-E-3B",
+      "path": "runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/low/shard-0.jsonl",
+      "recovered_from_rows": 1824,
+      "row_ids_sha256": "0669928f4dfa0852472a39819f45f0ee88c7cc889969aeb833e749ad2b08d2cd",
+      "rows": 2000,
+      "setting": "low",
+      "sha256": "80b43fc4c633ca71e000ddc95826452202409cb75b26d7cd488c51323cf560a8"
+    }
+  },
+  "protected_process": {
+    "cmdline_sha256": "be2930b0047e353a955176e078f89501247cdb69dce9e802b3fd9c15fa851baf",
+    "comm": "python",
+    "executable": "/opt/conda/envs/ptca/bin/python3.10",
+    "pid": 2274,
+    "start_ticks": 111845856
+  },
+  "reference_rows_contain_gt_fields": true,
+  "schema_version": 1,
+  "scorer_or_evaluator_imported": false,
+  "status": "PASS_TRIVUS_R0_RESULT_BLIND_RECOVERY"
+}
