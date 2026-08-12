@@ -1,0 +1,90 @@
+schema_version: 1
+status: FROZEN_AFTER_AMENDMENT_009_BEFORE_PRIVATE_SCALE_SEAL_AND_CONTEXTS
+protocol_commit: c9c40b4
+python: .venv-scaleup/bin/python
+environment:
+  python: 3.12.13
+  numpy: 2.3.5
+  scikit_learn: 1.9.0
+  torch: 2.13.0+cu132
+  pyyaml: 6.0.3
+seed: 20260812
+folds: 5
+expected:
+  vus_records: 14644
+  android_records: 4000
+  total_records: 18644
+  contexts_per_record: 21
+  contexts: 391524
+  final_anchor_records: 14644
+  candidates: {vus: 12, android: 3}
+  vus_label_rows_by_fold: {0: 2920, 1: 2912, 2: 3012, 3: 2888, 4: 2912}
+  android_label_rows_by_fold: {0: 792, 1: 754, 2: 826, 3: 870, 4: 758}
+  mind_scale_rows_by_fold: {0: 416, 1: 417, 2: 416, 3: 416, 4: 415}
+context_schema:
+  - schema_version
+  - context_key
+  - sample_key
+  - outer_fold
+  - role
+  - holdout_fold
+  - fit_folds
+  - fallback_index
+private_scale_schema:
+  - schema_version
+  - row_id
+  - normalized_width
+  - normalized_height
+source_layout:
+  mind_models: [TongUI-7B, CogAgent-18B, UI-TARS-7B]
+  screen_models: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  android_canonical_sources: [UI-AGILE-7B, GUI-R1-7B, UI-R1-E-3B]
+  true_identity_in_context_output: false
+split:
+  checkpoint: first_cyclic_candidate_training_fold_after_holdout
+  model_training: remaining_two_development_folds
+  inner_apply: all_four_outer_development_folds
+  final_fit: all_four_outer_development_folds
+  final_apply: all_five_folds
+output:
+  path: runs/trivus/2026-08-12/data/fallback_contexts/fallback_contexts.jsonl
+  manifest: runs/trivus/2026-08-12/data/fallback_contexts/FALLBACK_CONTEXT_MANIFEST.json
+  private_scale_manifest: runs/trivus/2026-08-12/data/private_scales/PRIVATE_SCALE_MANIFEST.json
+  authorization: runs/trivus/2026-08-12/FALLBACK_CONTEXT_AUTHORIZATION.json
+  private_scale_authorization: runs/trivus/2026-08-12/PRIVATE_SCALE_AUTHORIZATION.json
+  authorization_receipts: runs/trivus/2026-08-12/authorization_receipts
+  private_scale_authorization_receipts: runs/trivus/2026-08-12/private_scale_authorization_receipts
+  publication: atomic_same_filesystem_directory_rename_manifest_inside_directory
+authorization_receipt_schema:
+  - schema_version
+  - status
+  - authorization_sha256
+  - authorization_nonce
+  - implementation_commit
+  - prereg_sha256
+dependencies:
+  amendment_008: {path: runs/trivus/2026-08-12/AMENDMENT_008_EXACT_TRAINING_AND_ADJUDICATION.md, sha256: 3620a69d6f10a3d4baac6053e1aa227fa57cd96dab88a32d20a6ff68871bc236}
+  amendment_009: {path: runs/trivus/2026-08-12/AMENDMENT_009_FALLBACK_CONTEXT_EXECUTION_FIREWALL.md, sha256: 543823e82c63b304b697343b08c2211d977f5d64742d5117be4d8c22006db863}
+  training_prereg: {path: runs/trivus/2026-08-12/configs/training_prereg.yaml, sha256: 5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364}
+  behavior_policy: {path: runs/lsa-utility/2026-08-11/behavior_policy.py, sha256: c1f610c37863f619bf5c2b3388af1bde612170e048cb43becc53cb59fce7689e}
+  cev_selector: {path: runs/cev/2026-08-09/cev.py, sha256: 7221ffe5b488a7b111de58fb9224258f23c9d3c263b9f96852fdc0e1bdfdbfa1}
+  cev_helpers: {path: runs/cev/2026-08-09/cev_main.py, sha256: 6a71ea88f65795449882eb6fbc2db8a8b052e9dbfe1ec2b7cb3d11abd7a1e13e}
+  cev_config: {path: runs/cev/2026-08-09/configs/cev_prereg.yaml, sha256: e588e6e595d60b3c18742eb6a12dad8e766ffe9086ce55bf94eb8be418f4006d}
+  selector_data: {path: runs/trivus/2026-08-12/selector_data.py, sha256: 5c35bf2d8d9a33755fd9a403d4acf72bbb6a7abdf4942810dfc4582c49dc856a}
+  selector_config: {path: runs/trivus/2026-08-12/configs/selector_prereg.yaml, sha256: 93b1540b135087063060dba82676defe2c426a11f0526c2545bc1ce52612a5d3}
+  recovery_common: {path: runs/trivus/2026-08-12/recovery_common.py, sha256: 8a92844929fc03bad3577be84360cf74e16b2d5ce05165f339e56f444585e69c}
+  recovery_config: {path: runs/trivus/2026-08-12/configs/recovery.yaml, sha256: 67237ee1efefb83fbc637b860573050ae172b110ebf57926b10e31fc0ebf4281}
+  vus_public: {path: runs/visual-utility-selector/2026-08-11/data/public_records.jsonl, sha256: d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb}
+  vus_public_manifest: {path: runs/visual-utility-selector/2026-08-11/data/MANIFEST.json, sha256: cb26372062041e6dd34ac7c6077f8ed8520ec2dfb299bc999e8bd668d1cd64e0}
+  vus_private_manifest: {path: runs/visual-utility-selector/2026-08-11/data/private_label_folds.manifest.json, sha256: b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43}
+  vus_final_anchors: {path: runs/visual-utility-selector/2026-08-11/data/nested_fallbacks.jsonl, sha256: 8d2e3b7043e2c7b1dccdd002ea371c194a5f765f7bb595aa6e2011679762706f}
+  vus_final_anchor_manifest: {path: runs/visual-utility-selector/2026-08-11/data/nested_fallbacks.manifest.json, sha256: 9cf0b8f21c544aec9e0aec5c7120a269ee2b60a8c24419d01a94965a737279b8}
+  android_public: {path: runs/trivus/2026-08-12/data/public_records.jsonl, sha256: 4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd}
+  android_public_manifest: {path: runs/trivus/2026-08-12/data/PUBLIC_MANIFEST.json, sha256: c8531b2456155005baaf825f9ba36382ec44398ede9ed858cbe3df890a949e10}
+  android_private_manifest: {path: runs/trivus/2026-08-12/data/PRIVATE_LABEL_MANIFEST.json, sha256: efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972}
+  screen_regions: {path: runs/consolidate/2026-08-06/raw/q1_regions.jsonl, sha256: 74d038d216615321eef72bd145a0b223add98a7006f52d7758b2d9074559084b}
+  mind_targets: {path: runs/xfer/2026-08-07/data/mind2web/mind2web_test_task.jsonl, sha256: 407d05fd7c5514d61bf415129892e5a7ffe9bf56646bea4c3b5f38aacd015352}
+  e1_source_layout: {path: runs/close/2026-08-08/e1_arm_aggregator_matrix.py, sha256: bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148}
+  mind_source_roster: {path: runs/xfer/2026-08-07/xf_mind2web.py, sha256: 7fe76b609b8b0f188b8b35552ec6f17502bf416847005a3d71f72c05dc63b71b}
+  android_fallback_semantics: {path: runs/trivus/2026-08-12/representation_gate.py, sha256: 12d45f5177f1e3a9e56744b32d5ccc2dc4a13bf5763ea6986e95cc542a058277}
+  frozen_nested_runner: {path: runs/visual-utility-selector/2026-08-11/set_ranker_train.py, sha256: b59d49b8a27690a9612b9afc681b35b92e618b0892b4992a952078487fe57dd4}
