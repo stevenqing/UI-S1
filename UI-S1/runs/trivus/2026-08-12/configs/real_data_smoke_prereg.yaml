@@ -37,9 +37,9 @@ result_allowed_fields:
 dependencies:
   amendment_012: {path: runs/trivus/2026-08-12/AMENDMENT_012_NO_OPTIMIZER_REAL_DATA_SMOKE.md, sha256: de0fe7f31fe51dac901c2991df0590e950a86dd99937338700f5417b51ff6e2b}
   amendment_011: {path: runs/trivus/2026-08-12/AMENDMENT_011_FOLD_SCOPED_ASSEMBLY.md, sha256: bc021611d069a5ec5c844e52b71179fb82bf3c690d15cdc1f46008bc51044bba}
-  assembly_config: {path: runs/trivus/2026-08-12/configs/assembly_prereg.yaml, sha256: b1ab28b8a0a5f8c90fa815966dbb7b90a571d31abe2945858d8f0ba511ea7cd2}
+  assembly_config: {path: runs/trivus/2026-08-12/configs/assembly_prereg.yaml, sha256: ba57e1ef58485f88a33794f323964ff1794300eceb207e6aa72c47a133279f26}
   assembly_code: {path: runs/trivus/2026-08-12/trivus_assembly.py, sha256: 534ae8b708597d037a02617dd9c2f4da57b857db2323d47019ac69e8fa382183}
-  data_code: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 7f11abae0024180591d1155e7cab52f490c47611dbaf1503f1d41461f44a6f43}
+  data_code: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de}
   model_code: {path: runs/trivus/2026-08-12/trivus_model.py, sha256: ce76a2c7e493e317a35b35b8b844c51953c34cd8c396d991cf1b00b81b4e311e}
   model_config: {path: runs/trivus/2026-08-12/configs/model_prereg.yaml, sha256: 1e6d87e49fd6b47cdc8fe7e5bf0c6bf455bdf2d491eaf4ed648795132cce55af}
   context_manifest: {path: runs/trivus/2026-08-12/data/fallback_contexts/FALLBACK_CONTEXT_MANIFEST.json, sha256: 8b391a5a381714e4dec777a93c59871359bb195368c9c3d66198d8cc3b51562a}

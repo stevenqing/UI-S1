@@ -116,9 +116,12 @@ class TriVUSDataTest(unittest.TestCase):
 
     def test_public_candidate_schema_is_fail_closed(self):
         malformed = candidates(3)
-        malformed[0] = {**malformed[0], "coordinate": [1.01, 0.2]}
+        malformed[0] = {**malformed[0], "coordinate": [float("inf"), 0.2]}
         with self.assertRaisesRegex(ValueError, "coordinate"):
             structural_features(malformed)
+        outside = candidates(3)
+        outside[0] = {**outside[0], "coordinate": [1.05, -0.01]}
+        self.assertTrue(np.isfinite(structural_features(outside)).all())
         malformed = candidates(3)
         malformed[0] = {**malformed[0], "parameter": "x" * 257}
         with self.assertRaisesRegex(ValueError, "schema"):

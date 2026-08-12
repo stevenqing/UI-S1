@@ -149,6 +149,16 @@
   "real_data_smoke_run": false,
   "real_data_smoke_optimizer_constructed": false,
   "real_data_smoke_backward_called": false,
+  "invalid_real_data_smoke_attempt_001": {
+    "reason": "strict_viewport_range_rejected_frozen_finite_screenspot_coordinate",
+    "failed_before_private_label_access": true,
+    "authorization_receipt_created": true,
+    "smoke_result_written": false,
+    "optimizer_constructed": false,
+    "backward_called": false,
+    "performance_metric_computed": false,
+    "training_started": false
+  },
   "nested_training_runner_implemented": false,
   "final_adjudicator_implemented": false,
   "new_accuracy_computed": true,

@@ -33,10 +33,11 @@ schemas:
   vus_prediction: [schema_version, sample_key, benchmark, arm, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, image_sha256, model_index_sha256]
   android_prediction: [schema_version, sample_key, benchmark, setting, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, overlay_sha256, image_sha256, model_index_sha256]
 dependencies:
+  correction_006: {path: runs/trivus/2026-08-12/CORRECTION_006_FINITE_OUT_OF_VIEW_COORDINATES.md, sha256: 8bb8608da1493f6debe1a58b04800081df78634a036d27525a80dd04a82559a2}
   amendment_011: {path: runs/trivus/2026-08-12/AMENDMENT_011_FOLD_SCOPED_ASSEMBLY.md, sha256: bc021611d069a5ec5c844e52b71179fb82bf3c690d15cdc1f46008bc51044bba}
   amendment_010: {path: runs/trivus/2026-08-12/AMENDMENT_010_UNIFIED_DATA_ADAPTER.md, sha256: 981bf20deec8a585972e688557c1ba0aec545df1bca6ce4b9e2bb87bac7fcf52}
-  data_primitives: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 7f11abae0024180591d1155e7cab52f490c47611dbaf1503f1d41461f44a6f43}
-  data_tests: {path: runs/trivus/2026-08-12/test_trivus_data.py, sha256: a15d16d73401ce1739f1a933e52d4c980be86983eaa845eb87285b87b76b3543}
+  data_primitives: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de}
+  data_tests: {path: runs/trivus/2026-08-12/test_trivus_data.py, sha256: d96361d9a1a6f6a276352ab8ac8174d583a75f505bab54fa2ff2cc97c4da9b99}
   training_prereg: {path: runs/trivus/2026-08-12/configs/training_prereg.yaml, sha256: 5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364}
   context_common: {path: runs/trivus/2026-08-12/context_common.py, sha256: a1086387b0560f0dd0b11a5655307dc464d085ce6347d3332b6de767033ae085}
   context_manifest: {path: runs/trivus/2026-08-12/data/fallback_contexts/FALLBACK_CONTEXT_MANIFEST.json, sha256: 8b391a5a381714e4dec777a93c59871359bb195368c9c3d66198d8cc3b51562a}

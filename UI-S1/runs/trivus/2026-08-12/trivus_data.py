@@ -182,7 +182,6 @@ def structural_features(candidates):
                     isinstance(value, (int, float, np.integer, np.floating))
                     and not isinstance(value, (bool, np.bool_))
                     and math.isfinite(float(value))
-                    and 0.0 <= float(value) <= 1.0
                     for value in coordinate
                 )
             ):
