@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "status": "AUTHORIZED_TRIVUS_PRIVATE_SCALE_SEAL_ONCE",
-  "implementation_commit": "d039d31af06090056023bb821b657109bd835e2a",
-  "authorization_nonce": "d38729052c1e4597818718ee6174b6eee5fced8e37308b60014084b322be967c",
+  "implementation_commit": "d10a93bc17902342e114227551a561bc2d81e248",
+  "authorization_nonce": "c99b9b2ee7a54274b8932e468dcc27628ff6eed082940efab39591eba680ad8d",
   "result_must_not_exist": true,
   "files": {
     "configs/fallback_contexts_prereg.yaml": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
-    "context_common.py": "f0a02457c2eac25244563ea84ec9c28721314c974af8fd1475801b2c4c44afe0",
+    "context_common.py": "9a9d12ba6dabb66055c2455bdbefbc6e71f61387d834b52513bc0d3cb9aa25c1",
     "prepare_private_scales.py": "e0bc40816c2674bd8421dcc5dc2df1f858bff790c971397a7c183b904690ad2c",
     "prepare_fallback_contexts.py": "e49d774a312a59e0c04f1451c210327cf26dd09cebcad2e8f64c88fe3d05371e",
-    "test_fallback_contexts.py": "9eeca92605a8b1c9956df2fb61612967a6218ecea2a50482d4dfcf6f6b1ffa0f"
+    "test_fallback_contexts.py": "1b32d42d5d891987de594a4129eece6134e96de3d8afc616d38780e8976a8c24"
   },
   "permitted_output": "five_fold_sealed_normalized_target_width_height_only",
   "candidate_success_access": false,
