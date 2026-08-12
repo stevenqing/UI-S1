@@ -46,6 +46,11 @@ class SelectorTest(unittest.TestCase):
         self.assertEqual(first, deterministic_permutation("row", config["seed"]))
         self.assertEqual(sorted(first), [0, 1, 2])
         self.assertEqual(sorted(public_candidate_permutation("row", config["seed"])), [0, 1, 2])
+        for key in (
+            "public_candidate_order", "python", "image_hash_semantics",
+            "source_image_hash_semantics",
+        ):
+            self.assertIn(key, config)
 
     def test_public_schema_rejects_identity_and_target_fields(self):
         record = self.record()

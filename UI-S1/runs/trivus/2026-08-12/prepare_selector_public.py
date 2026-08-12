@@ -78,6 +78,7 @@ def build_public_records():
 
 
 def main():
+    config = load_config()
     output = RUN_DIR / "data/public_records.jsonl"
     manifest_path = RUN_DIR / "data/PUBLIC_MANIFEST.json"
     if output.exists() or manifest_path.exists():

@@ -45,6 +45,15 @@
     "private_labels_created": false,
     "selector_inference_started": false
   },
+  "invalid_public_attempt_002": {
+    "reason": "manifest_config_name_not_bound_in_main_scope",
+    "unsealed_public_rows": 4000,
+    "unsealed_public_bytes": 3406130,
+    "unsealed_public_sha256": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
+    "public_manifest_written": false,
+    "private_labels_created": false,
+    "selector_inference_started": false
+  },
   "variable_set_model_preregistered": true,
   "variable_set_model_implemented_synthetic_only": true,
   "trivus_training_started": false,
