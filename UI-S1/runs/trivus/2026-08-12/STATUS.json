@@ -38,6 +38,13 @@
   "selector_inference_started": false,
   "selector_blind_manifest_exists": false,
   "trivus_private_labels_created": false,
+  "invalid_public_attempt_001": {
+    "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",
+    "failed_on_first_row": true,
+    "public_artifact_written": false,
+    "private_labels_created": false,
+    "selector_inference_started": false
+  },
   "variable_set_model_preregistered": true,
   "variable_set_model_implemented_synthetic_only": true,
   "trivus_training_started": false,

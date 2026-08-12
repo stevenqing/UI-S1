@@ -70,6 +70,11 @@ def load_config():
         raise ValueError("TriVUS selector private source order mismatch")
     if config.get("public_candidate_order") != "sha256_sample_key_seed_public_bank_order":
         raise ValueError("TriVUS selector public candidate order mismatch")
+    if (
+        config.get("image_hash_semantics") != "extracted_png_file_bytes"
+        or config.get("source_image_hash_semantics") != "original_parquet_compressed_bytes_provenance_only"
+    ):
+        raise ValueError("TriVUS selector image-hash semantics mismatch")
     if set(config.get("public_allowed_row_fields", ())) != ROW_FIELDS:
         raise ValueError("TriVUS selector row schema mismatch")
     if set(config.get("public_allowed_candidate_fields", ())) != CANDIDATE_FIELDS:

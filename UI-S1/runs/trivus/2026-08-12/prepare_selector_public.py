@@ -2,6 +2,8 @@ import json
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 
 RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[2]
@@ -24,6 +26,8 @@ def build_public_records():
     folds = json.loads((ROOT / config["folds"]["path"]).read_text())["pools"]
     records = []
     paired = {}
+    source_byte_hash_matches = 0
+    image_hashes = {}
     for setting in config["settings"]:
         references = load_jsonl(ROOT / recovery_config["references"][setting]["path"])
         fold_map = folds[f"androidcontrol/{setting}"]["group_to_fold"]
@@ -36,6 +40,12 @@ def build_public_records():
             sample_key = f"androidcontrol/{setting}/{row_id}"
             public_order = public_candidate_permutation(sample_key, config["seed"])
             candidates = [candidates[index] for index in public_order]
+            image_path = ROOT / reference["image"]
+            actual_image_hash = image_hashes.setdefault(str(image_path), sha256_file(image_path))
+            with Image.open(image_path) as image:
+                if image.mode != "RGB" or list(image.size) != reference["image_size"]:
+                    raise ValueError(f"TriVUS extracted image geometry mismatch: {sample_key}")
+            source_byte_hash_matches += int(actual_image_hash == reference["image_sha256"])
             record = {
                 "schema_version": 1,
                 "sample_key": sample_key,
@@ -45,7 +55,7 @@ def build_public_records():
                 "fold": int(fold_map[reference["episode_id"]]),
                 "group": reference["episode_id"],
                 "image_path": reference["image"],
-                "image_sha256": reference["image_sha256"],
+                "image_sha256": actual_image_hash,
                 "instruction": str(reference["instruction"]),
                 "history": str(reference.get("history") or "")[-config["candidate_normalization"]["history_max_chars"]:],
                 "candidates": candidates,
@@ -58,7 +68,13 @@ def build_public_records():
         raise ValueError("TriVUS public coverage mismatch")
     if any(set(value) != {"low", "high"} or value["low"] != value["high"] for value in paired.values()):
         raise ValueError("TriVUS Low/High pairing mismatch")
-    return sorted(records, key=lambda row: row["sample_key"])
+    return sorted(records, key=lambda row: row["sample_key"]), {
+        "extracted_files": len(records),
+        "source_byte_hash_matches": source_byte_hash_matches,
+        "source_byte_hash_mismatches": len(records) - source_byte_hash_matches,
+        "unique_extracted_png_hashes": len({row["image_sha256"] for row in records}),
+        "low_high_actual_hash_mismatches": 0,
+    }
 
 
 def main():
@@ -68,7 +84,7 @@ def main():
         raise FileExistsError(output)
     if any((RUN_DIR / "data").glob("private*")):
         raise PermissionError("TriVUS private labels must not exist before blind lock")
-    rows = build_public_records()
+    rows, image_audit = build_public_records()
     write_jsonl(output, rows)
     manifest = {
         "schema_version": 1,
@@ -80,6 +96,9 @@ def main():
         "sample_keys_sha256": __import__("hashlib").sha256("\n".join(row["sample_key"] for row in rows).encode()).hexdigest(),
         "public_candidate_order": config["public_candidate_order"],
         "python": config["python"],
+        "image_hash_semantics": config["image_hash_semantics"],
+        "source_image_hash_semantics": config["source_image_hash_semantics"],
+        "image_audit": image_audit,
         "private_labels_created": False,
         "ground_truth_fields_used": False,
         "scorer_or_evaluator_imported": False,
