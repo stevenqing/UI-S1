@@ -1,0 +1,27 @@
+{
+  "candidates_per_record": 3,
+  "ground_truth_fields_used": false,
+  "image_audit": {
+    "extracted_files": 4000,
+    "low_high_actual_hash_mismatches": 0,
+    "source_byte_hash_matches": 0,
+    "source_byte_hash_mismatches": 4000,
+    "unique_extracted_png_hashes": 1988
+  },
+  "image_hash_semantics": "extracted_png_file_bytes",
+  "label_metrics_computed": false,
+  "private_labels_created": false,
+  "public_candidate_order": "sha256_sample_key_seed_public_bank_order",
+  "public_sha256": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
+  "python": ".venv-scaleup/bin/python",
+  "records": 4000,
+  "sample_keys_sha256": "d8d6580c3e57c061963bae4ec1d14b02fc82248f79bfdfa33778cc38dbd0487f",
+  "schema_version": 1,
+  "scorer_or_evaluator_imported": false,
+  "settings": {
+    "high": 2000,
+    "low": 2000
+  },
+  "source_image_hash_semantics": "original_parquet_compressed_bytes_provenance_only",
+  "status": "PASS_TRIVUS_PUBLIC_BANK_LOCKED"
+}
