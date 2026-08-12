@@ -1,0 +1,110 @@
+schema_version: 1
+status: FROZEN_AFTER_REPRESENTATION_GATE_BEFORE_CONTEXTS_AND_TRAINING
+seed: 20260812
+expected:
+  vus_samples: 14644
+  android_samples: 4000
+  total_samples: 18644
+  fallback_contexts: 391524
+  input_dimension: 115
+  maximum_candidates: 12
+  valid_candidate_counts: [3, 12]
+families: [mind2web, screenspot_pro, androidcontrol]
+cells:
+  mind2web: [C_uni, C_cond, C_rand, C_self]
+  screenspot_pro: [C_uni, C_cond, C_rand, C_self]
+  androidcontrol: [low, high]
+variants:
+  - JOINT3
+  - TARGET_ONLY
+  - JOINT2_NO_ANDROID
+  - NO_VISUAL
+  - RANDOM_ID_PLACEBO
+target_only_models: [mind2web, screenspot_pro, androidcontrol]
+features:
+  generic_dimensions: 103
+  placebo_dimensions: 12
+  visual_slice: [85, 92]
+  placebo_slice: [103, 115]
+  parameter_hash_dimensions: 64
+  parameter_ngram_range: [2, 4]
+  parameter_hash_lowercase: true
+  parameter_hash_norm: l2
+  parameter_hash_alternate_sign: false
+  pair_kernel_sigma: 0.07
+  coordinate_neighborhood_radius: 0.14
+  action_categories: [POINT, CLICK, TYPE, SELECT, OPEN, BACK, SCROLL, WAIT, LONG_PRESS, OTHER]
+model:
+  width: 64
+  layers: 2
+  heads: 4
+  dropout: 0.1
+  listwise_weight: 1.0
+  fallback_bce_weight: 0.5
+optimizer:
+  name: AdamW
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-3
+  batch_size: 256
+  evaluation_batch_size: 1024
+  maximum_epochs: 30
+  patience: 5
+  minimum_improvement: 1.0e-5
+  gradient_clip_norm: 1.0
+  optimizer_steps_per_epoch: 1
+seeds:
+  inner: 20260812_plus_1000_outer_plus_10_holdout
+  final: 20260812_plus_1000_outer_plus_999
+  model_specific_offset: 0
+  row_and_candidate_order: sha256_model_seed_epoch_sample_key
+thresholds:
+  axes: [candidate_minus_KEEP, fallback_wrong]
+  candidates: [infinity, zero, positive_deciles]
+  minimum_cell_opportunities: 200
+  cell_loss_max_mde_fraction: 0.5
+  family_loss_max_mde_fraction: 0.25
+  tie: larger_fallback_wrong_then_larger_margin
+nested:
+  outer_folds: 5
+  oof_holdouts_per_outer: 4
+  model_training_folds_per_inner: 2
+  checkpoint_folds_per_inner: 1
+  final_epoch: half_up_median_inner_epochs
+  atomic_pretest: true
+  physical_fold_seals: true
+mde:
+  mind2web: 0.006106589385659482
+  screenspot_pro: 0.007
+  androidcontrol: 0.01
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  standardized_family_weights: [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+  cell_order: [mind2web/C_uni, mind2web/C_cond, mind2web/C_rand, mind2web/C_self, screenspot_pro/C_uni, screenspot_pro/C_cond, screenspot_pro/C_rand, screenspot_pro/C_self, androidcontrol/low, androidcontrol/high]
+  bootstrap_seed_base: 20260900
+  control_offsets: {PRIMARY: 0, TARGET_ONLY: 100, NO_VISUAL: 200, STRONGEST: 300}
+baselines:
+  mind2web: frozen_VUS_SR_safe_success_bits
+  screenspot_pro: frozen_VUS_SR_safe_success_bits
+  androidcontrol_primary: fold_local_majority_success_bits
+  androidcontrol_strongest: UI_AGILE_success_bits
+dependencies:
+  representation_gate: {path: runs/trivus/2026-08-12/REPRESENTATION_GATE.json, sha256: c1bbf8648e25388594b43cd4acec044a393b94e23bd867176ba68b71e7ee0fc5}
+  model_config: {path: runs/trivus/2026-08-12/configs/model_prereg.yaml, sha256: 1e6d87e49fd6b47cdc8fe7e5bf0c6bf455bdf2d491eaf4ed648795132cce55af}
+  model_code: {path: runs/trivus/2026-08-12/trivus_model.py, sha256: ce76a2c7e493e317a35b35b8b844c51953c34cd8c396d991cf1b00b81b4e311e}
+  vus_baseline: {path: runs/visual-utility-selector/2026-08-11/set_ranker_adjudication.json, sha256: 3bc252f2906a1a2a1d4cfdba90542edb1ab0325e90e875c87e0ebcd9571922fe}
+  vus_public: {path: runs/visual-utility-selector/2026-08-11/data/public_records.jsonl, sha256: d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb}
+  vus_predictions: {path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl, sha256: b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40}
+  vus_label_manifest: {path: runs/visual-utility-selector/2026-08-11/data/private_label_folds.manifest.json, sha256: b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43}
+  android_private_manifest: {path: runs/trivus/2026-08-12/data/PRIVATE_LABEL_MANIFEST.json, sha256: efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972}
+  android_public_manifest: {path: runs/trivus/2026-08-12/data/PUBLIC_MANIFEST.json, sha256: c8531b2456155005baaf825f9ba36382ec44398ede9ed858cbe3df890a949e10}
+  android_blind_manifest: {path: runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json, sha256: 0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764}
+  android_r1: {path: runs/trivus/2026-08-12/R1_HEADROOM.json, sha256: 093fcd8241fc3d1609db510629994527e125a598bbc311e921492aaeaefb20b2}
+  behavior_policy: {path: runs/lsa-utility/2026-08-11/behavior_policy.py, sha256: c1f610c37863f619bf5c2b3388af1bde612170e048cb43becc53cb59fce7689e}
+  utility_common: {path: runs/lsa-utility/2026-08-11/utility_common.py, sha256: 33fa3aaa9174a0582bfacd724e6a7c629e1c72e03128991e795dc46612bf4639}
+  vus_train: {path: runs/visual-utility-selector/2026-08-11/set_ranker_train.py, sha256: b59d49b8a27690a9612b9afc681b35b92e618b0892b4992a952078487fe57dd4}
+  vus_data: {path: runs/visual-utility-selector/2026-08-11/set_ranker_data.py, sha256: a8f9456cac6ab4e86355203f6195d625d1921693d6934827cbc1eca7ac6d31e2}
+  bootstrap: {path: runs/aggmatch/2026-08-09/aggmatch_common.py, sha256: 9481abb5a20e1b302b7dbb2b85fb74df8b54312b6dc45c36563aa17194f5f305}
+  cev_result: {path: runs/cev/2026-08-09/cev_main.json, sha256: 94460bfed166042d421bd79db4f359c82e4692912323ea77870c9c9ac895a565}
+  cev_config: {path: runs/cev/2026-08-09/configs/cev_prereg.yaml, sha256: e588e6e595d60b3c18742eb6a12dad8e766ffe9086ce55bf94eb8be418f4006d}
+  bank_loader: {path: runs/lsa/2026-08-10/lsa_common.py, sha256: 9fb1270eec1efe711d1efde19484c598ff420dca083deb5189237dcb2aac8239}
