@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED_TRIVUS_FALLBACK_CONTEXT_GENERATION_ONCE",
+  "implementation_commit": "9be120227a3e962b493bf9acdbe1a001619d056b",
+  "private_scale_commit": "07130de20e81989946359989d6911fb78d682e13",
+  "authorization_nonce": "dd230e8dd8950e7e63a96783cb3c3d7b269e65df2747f03c533a40642f21abe2",
+  "result_must_not_exist": true,
+  "files": {
+    "configs/fallback_contexts_prereg.yaml": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+    "context_common.py": "e44407344a80b67a60d73b90bbb0555abbbc7905edae8cf2c63e2793f2b99403",
+    "prepare_private_scales.py": "3354071b6ec833895205826b0a8f23c25b9d1a737933abc9e7120da1095a84b3",
+    "prepare_fallback_contexts.py": "e49d774a312a59e0c04f1451c210327cf26dd09cebcad2e8f64c88fe3d05371e",
+    "test_fallback_contexts.py": "8da0f97e4e04d794f3e2d445965028e1670dbd2a95833459b0f9dc6fcb5e438b",
+    "data/private_scales/PRIVATE_SCALE_MANIFEST.json": "4de7d94c3494a60645696d3188a344147094e14c3c8367541e18d1b58bc5de27"
+  },
+  "expected_records": 391524,
+  "expected_public_records": 18644,
+  "expected_per_sample": {
+    "final": 5,
+    "inner": 16
+  },
+  "candidate_success_emission": false,
+  "source_identity_emission": false,
+  "performance_metric_computation": false,
+  "feature_assembly_authorized": false,
+  "training_authorized": false
+}
