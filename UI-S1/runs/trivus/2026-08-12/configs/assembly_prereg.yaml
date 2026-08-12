@@ -1,0 +1,51 @@
+schema_version: 1
+status: FROZEN_AFTER_CONTEXT_SEAL_BEFORE_REAL_DATA_ASSEMBLY
+implementation_commit_floor: 2a15152
+python: .venv-scaleup/bin/python
+environment:
+  python: 3.12.13
+  numpy: 2.3.5
+  scikit_learn: 1.9.0
+  torch: 2.13.0+cu132
+  pyyaml: 6.0.3
+seed: 20260812
+expected:
+  public_records: 18644
+  vus_records: 14644
+  android_records: 4000
+  context_records: 391524
+  context_records_by_public_fold: {0: 3712, 1: 3666, 2: 3838, 3: 3758, 4: 3670}
+  vus_label_rows_by_fold: {0: 2920, 1: 2912, 2: 3012, 3: 2888, 4: 2912}
+  android_label_rows_by_fold: {0: 792, 1: 754, 2: 826, 3: 870, 4: 758}
+  input_dimension: 115
+  valid_candidate_counts: [3, 12]
+families: [mind2web, screenspot_pro, androidcontrol]
+variants:
+  JOINT3: [mind2web, screenspot_pro, androidcontrol]
+  JOINT2_NO_ANDROID: [mind2web, screenspot_pro]
+  NO_VISUAL: [mind2web, screenspot_pro, androidcontrol]
+  RANDOM_ID_PLACEBO: [mind2web, screenspot_pro, androidcontrol]
+  TARGET_ONLY: explicit_one_family
+schemas:
+  vus_public: [schema_version, sample_key, benchmark, arm, row_id, fold, group, image_path, image_sha256, instruction, history, candidates]
+  android_public: [schema_version, sample_key, benchmark, setting, row_id, fold, group, image_path, image_sha256, instruction, history, candidates]
+  candidate: [action, coordinate, parameter, parse_ok]
+  vus_prediction: [schema_version, sample_key, benchmark, arm, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, image_sha256, model_index_sha256]
+  android_prediction: [schema_version, sample_key, benchmark, setting, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, overlay_sha256, image_sha256, model_index_sha256]
+dependencies:
+  amendment_011: {path: runs/trivus/2026-08-12/AMENDMENT_011_FOLD_SCOPED_ASSEMBLY.md, sha256: bc021611d069a5ec5c844e52b71179fb82bf3c690d15cdc1f46008bc51044bba}
+  amendment_010: {path: runs/trivus/2026-08-12/AMENDMENT_010_UNIFIED_DATA_ADAPTER.md, sha256: 981bf20deec8a585972e688557c1ba0aec545df1bca6ce4b9e2bb87bac7fcf52}
+  data_primitives: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 7f11abae0024180591d1155e7cab52f490c47611dbaf1503f1d41461f44a6f43}
+  data_tests: {path: runs/trivus/2026-08-12/test_trivus_data.py, sha256: a15d16d73401ce1739f1a933e52d4c980be86983eaa845eb87285b87b76b3543}
+  training_prereg: {path: runs/trivus/2026-08-12/configs/training_prereg.yaml, sha256: 5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364}
+  context_common: {path: runs/trivus/2026-08-12/context_common.py, sha256: a1086387b0560f0dd0b11a5655307dc464d085ce6347d3332b6de767033ae085}
+  context_manifest: {path: runs/trivus/2026-08-12/data/fallback_contexts/FALLBACK_CONTEXT_MANIFEST.json, sha256: 8b391a5a381714e4dec777a93c59871359bb195368c9c3d66198d8cc3b51562a}
+  contexts: {path: runs/trivus/2026-08-12/data/fallback_contexts/fallback_contexts.jsonl, sha256: 470b41f623bca5bcf740ce4a599258d27432a4e2946751559a525e3c4082ef7b}
+  vus_public: {path: runs/visual-utility-selector/2026-08-11/data/public_records.jsonl, sha256: d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb}
+  vus_predictions: {path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl, sha256: b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40}
+  vus_prediction_manifest: {path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.manifest.json, sha256: e8a0be90697ad401d003f094c1fb69132397ea3912a6bafe46564fd1458b201a}
+  vus_private_manifest: {path: runs/visual-utility-selector/2026-08-11/data/private_label_folds.manifest.json, sha256: b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43}
+  android_public: {path: runs/trivus/2026-08-12/data/public_records.jsonl, sha256: 4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd}
+  android_predictions: {path: runs/trivus/2026-08-12/selector/predictions.jsonl, sha256: b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d}
+  android_prediction_manifest: {path: runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json, sha256: 0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764}
+  android_private_manifest: {path: runs/trivus/2026-08-12/data/PRIVATE_LABEL_MANIFEST.json, sha256: efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972}
