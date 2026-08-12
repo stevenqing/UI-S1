@@ -1,0 +1,38 @@
+schema_version: 1
+status: FROZEN_AFTER_REAL_DATA_SMOKE_BEFORE_ANY_TRIVUS_OPTIMIZER_STEP
+seed: 20260812
+model_specs:
+  JOINT3: {variant: JOINT3, families: [mind2web, screenspot_pro, androidcontrol]}
+  TARGET_ONLY_MIND2WEB: {variant: TARGET_ONLY, target_family: mind2web, families: [mind2web]}
+  TARGET_ONLY_SCREENSPOT_PRO: {variant: TARGET_ONLY, target_family: screenspot_pro, families: [screenspot_pro]}
+  TARGET_ONLY_ANDROIDCONTROL: {variant: TARGET_ONLY, target_family: androidcontrol, families: [androidcontrol]}
+  JOINT2_NO_ANDROID: {variant: JOINT2_NO_ANDROID, families: [mind2web, screenspot_pro]}
+  NO_VISUAL: {variant: NO_VISUAL, families: [mind2web, screenspot_pro, androidcontrol]}
+  RANDOM_ID_PLACEBO: {variant: RANDOM_ID_PLACEBO, families: [mind2web, screenspot_pro, androidcontrol]}
+optimizer:
+  name: AdamW
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-3
+  batch_size: 256
+  evaluation_batch_size: 1024
+  maximum_epochs: 30
+  patience: 5
+  minimum_improvement: 1.0e-5
+  gradient_clip_norm: 1.0
+  optimizer_steps_per_epoch: 1
+model: {input_dimension: 115, width: 64, layers: 2, heads: 4, dropout: 0.1}
+thresholds:
+  minimum_cell_opportunities: 200
+  cell_loss_max_mde_fraction: 0.5
+  family_loss_max_mde_fraction: 0.25
+  mde: {mind2web: 0.006106589385659482, screenspot_pro: 0.007, androidcontrol: 0.01}
+dependencies:
+  amendment_013: {path: runs/trivus/2026-08-12/AMENDMENT_013_FORMAL_RUNNER_PRIMITIVES.md, sha256: d9647db3798d4c126925b3fc073e9f012d78e44d8b1cd49a87ef4885131448a5}
+  training_prereg: {path: runs/trivus/2026-08-12/configs/training_prereg.yaml, sha256: 5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364}
+  real_data_smoke: {path: runs/trivus/2026-08-12/REAL_DATA_SMOKE.json, sha256: b9f7685d55874f2617230e1c6630d082d8acd5233a7c40a05e923912b5f70ec0}
+  assembly_config: {path: runs/trivus/2026-08-12/configs/assembly_prereg.yaml, sha256: e2d00304e3b824169e664a60f96bb3c2e6aea9ba2f9c209dd65ebf2c7f3a93a2}
+  assembly_code: {path: runs/trivus/2026-08-12/trivus_assembly.py, sha256: d6273358785eef3392c13d20d543bc373062d205499a774bc58318a2c6ff3a01}
+  data_code: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de}
+  model_code: {path: runs/trivus/2026-08-12/trivus_model.py, sha256: ce76a2c7e493e317a35b35b8b844c51953c34cd8c396d991cf1b00b81b4e311e}
+  prior_thresholds: {path: runs/visual-utility-selector/2026-08-11/adjudicate_anchor.py, sha256: 948d4643ff183c30ae9364f73852fac6addfad2a5ff5c47a09df9c2959d94b16}
+  prior_runner: {path: runs/visual-utility-selector/2026-08-11/set_ranker_train.py, sha256: b59d49b8a27690a9612b9afc681b35b92e618b0892b4992a952078487fe57dd4}
