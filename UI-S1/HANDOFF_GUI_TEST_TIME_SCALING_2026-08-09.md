@@ -104,7 +104,7 @@ VUS 先在 GPU 0--7 对 14,644 个 row-arm records 提取 fallback-agnostic Qwen
 
 另一次 post-result 代码审计发现 formal process 在 selection 前 eager parse 了五折 label 文件，虽未索引 test labels，仍按 V-K5 严格作废。Correction 006 把 labels 物理拆成五折文件；每折先只打开四个 dev files，fsync pretest selection 后才由 guard 打开 test file。hardened 五折 JSON、adjudication 与 controls 均 bit-identical，只有 hardened outputs 用于主表。
 
-### 2.8 CARE, RAVEL, and DELTA negative sequence
+### 2.8 CARE, RAVEL, DELTA, and CIVA sequence
 
 VUS-SR 后的 error decomposition 显示主要 headroom 是 candidate identification：Mind2Web/ScreenSpot candidate-ranking gap 为 18.52/14.60 pp，pairwise safe-gate gap 只有 5.77/0.71 pp。最小目标 quartile 与 unique-correct rows 尤其困难。
 
@@ -113,6 +113,8 @@ VUS-SR 后的 error decomposition 显示主要 headroom 是 candidate identifica
 RAVEL E0 已完成并触发 RAVEL-K4。local 相对 random-center 的 utility AUROC 两端均高约 +0.046，说明 candidate-centered pixels 有信息；但相对 VUS，Mind2Web AUROC −0.043，ScreenSpot +0.015。unchanged nested VUS-SR 的最终差值为 Mind2Web −2.19 pp `[−2.98,−1.41]`、ScreenSpot −0.03 pp `[−0.24,+0.16]`。因此 relational/lower-bound/LoRA stages 均取消。该结果支持 evidence competition，而不支持 pixel-level early fusion。
 
 DELTA 随后按独立 result-free commit `de6a716` 测试 locked channels 的 decision-level late fusion。FULL 相对 VUS-SR 为 Mind2Web −0.41 pp `[−1.20,+0.40]`、ScreenSpot +0.11 pp `[−0.20,+0.41]`；DELTA-1/3/4/5 失败。FULL 无法超过同容量 VUS_ONLY 或 RANDOM_PLACEBO，并显著差于 VUS_GLOBAL。dropout 显示移除 fine/context 使 Mind2Web +0.83/+0.56 pp，说明当前 objective 仍让 local evidence 稀释 global/binding utility。结论为 `DELTA_NOT_SUPPORTED`，不运行 distillation 或 GUI-Odyssey confirmation。
+
+CIVA-A0 再把问题改写为 pre-admission uplift：只用 instruction、VUS-binding uncertainty 与公开候选结构预测 raw expert 的 rescue/harm。REAL_FULL 相对 raw VUS direct 在 Mind2Web/ScreenSpot-Pro 为 +1.57 pp `[+0.79,+2.39]` / +5.41 pp `[+4.12,+6.81]`，且超过 matched-random/placebo；但 FULL 不优于 NO_TEXT，Mind2Web C-uni 也未满足 frozen noninferiority。CIVA-5/6 失败，结论为 `CIVA_ADMISSION_NOT_SUPPORTED`。该结果不能写成 VUS-SR improvement，因为 REAL_FULL 绝对准确率只有 32.07%/50.62%，低于 VUS-SR 34.92%/64.26%。
 
 ## 3. 立即要做的事
 
@@ -127,9 +129,10 @@ DELTA 随后按独立 result-free commit `de6a716` 测试 locked channels 的 de
 
 ### 3.2 实验停止边界
 
-- CARE routing、RAVEL early fusion 与 DELTA late fusion 均已关闭，不再调参。
+- CARE routing、RAVEL early fusion、DELTA late fusion 与 CIVA admission 均已关闭，不再调参。
 - DELTA 未通过 same-capacity/placebo controls；其单调用 distillation 与第三 benchmark confirmation 取消。
 - VUS_GLOBAL 是事后可见的 diagnostic control，不允许晋升为 selected method。
+- CIVA NO_TEXT 同样只是事后 diagnostic control；不得据其更高 point estimate 另开同数据 policy-level 调参。
 - 新研究必须另立 result-free preregistration，且不能在当前两 benchmark 上调整 DELTA channel masks、loss、gate regularization 或 threshold 后再称确认。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：

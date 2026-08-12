@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "date": "2026-08-11",
-  "status": "CIVA_READY_NO_RESULTS",
-  "outcome": "CIVA_NOT_RUN",
+  "status": "COMPLETE",
+  "outcome": "CIVA_ADMISSION_NOT_SUPPORTED",
   "upstream": {
     "VUS_SR": "VUS_SET_RANKER_METHOD_CANDIDATE",
     "CARE_A1": "CLOSE_ROUTING",
@@ -12,8 +12,8 @@
   "phase": "A0_pre_admission_uplift_learnability",
   "protected_pid": 2274,
   "protected_pid_touched": false,
-  "formal_fit_started": false,
-  "outer_labels_opened": false,
+  "formal_fit_started": true,
+  "outer_labels_opened": true,
   "invalid_runtime_001": {
     "reason": "resolved_virtualenv_symlink_selected_system_python_without_numpy",
     "workers": 5,
@@ -23,7 +23,31 @@
     "outer_results_written": false,
     "log_sha256": "b56ddc008eb67f0e3a066c5617e46c010ba9e5cfe666b4fa8e9a661c3132de28"
   },
-  "next_action": "RUN_FIVE_SEALED_OUTER_FOLDS",
+  "formal": {
+    "outer_folds_complete": 5,
+    "coverage_complete": true,
+    "adjudication_sha256": "2f1cdea6c2a28de0c89557117d8c32e57cdfc040f3fda75b32ab36722070add0",
+    "mind2web_REAL_FULL_minus_baseline_pp": 1.5745192307692306,
+    "mind2web_REAL_FULL_minus_baseline_ci_99_pp": [0.7876489184679415, 2.3875959976068194],
+    "screenspot_REAL_FULL_minus_baseline_pp": 5.407969639468691,
+    "screenspot_REAL_FULL_minus_baseline_ci_99_pp": [4.116818242838369, 6.812793264961504],
+    "balanced_vs_baseline_ci_99_MDE": [4.020008538489243, 6.333825033816794],
+    "balanced_vs_matched_random_ci_99_MDE": [5.695810891577053, 8.035976133248921],
+    "balanced_vs_placebo_ci_99_MDE": [2.1336853149962725, 4.4092868145065856],
+    "balanced_vs_no_text_ci_99_MDE": [-1.1606806841296258, 0.3050272392780253],
+    "gates": {
+      "CIVA_1": true,
+      "CIVA_2": true,
+      "CIVA_3": true,
+      "CIVA_4": true,
+      "CIVA_5": false,
+      "CIVA_6": false
+    },
+    "policy_level_followup_run": false,
+    "post_result_tuning_run": false,
+    "third_benchmark_confirmation_run": false
+  },
+  "next_action": "STOP_NO_POLICY_LEVEL_FOLLOWUP_NEW_PROTOCOL_ONLY",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/civa/2026-08-11",
