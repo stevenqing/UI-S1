@@ -189,6 +189,8 @@ class TriVUSAssemblyTest(unittest.TestCase):
         bad = dict(self.predictions[key], model_index_sha256="e" * 64)
         with self.assertRaisesRegex(ValueError, "values"):
             audit_prediction(bad, self.public[key], self.config, "c" * 64)
+        android = next(row for row in self.public.values() if row["benchmark"] == "androidcontrol")
+        self.assertTrue(audit_public_row({**android, "instruction": ""}, self.config))
 
     def test_phase_contract_and_illegal_fold_requests(self):
         contract = phase_contract(0, "inner", 1)

@@ -33,6 +33,7 @@ schemas:
   vus_prediction: [schema_version, sample_key, benchmark, arm, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, image_sha256, model_index_sha256]
   android_prediction: [schema_version, sample_key, benchmark, setting, row_id, fold, group, display_to_candidate, selected_label, selected_candidate_index, label_logits, label_probabilities, prompt_sha256, overlay_sha256, image_sha256, model_index_sha256]
 dependencies:
+  correction_007: {path: runs/trivus/2026-08-12/CORRECTION_007_EMPTY_ANDROID_INSTRUCTION.md, sha256: 66b5e1dc5c88f5a1036873f093ce32e74298168452ffd8c30972862e978f1c62}
   correction_006: {path: runs/trivus/2026-08-12/CORRECTION_006_FINITE_OUT_OF_VIEW_COORDINATES.md, sha256: 8bb8608da1493f6debe1a58b04800081df78634a036d27525a80dd04a82559a2}
   amendment_011: {path: runs/trivus/2026-08-12/AMENDMENT_011_FOLD_SCOPED_ASSEMBLY.md, sha256: bc021611d069a5ec5c844e52b71179fb82bf3c690d15cdc1f46008bc51044bba}
   amendment_010: {path: runs/trivus/2026-08-12/AMENDMENT_010_UNIFIED_DATA_ADAPTER.md, sha256: 981bf20deec8a585972e688557c1ba0aec545df1bca6ce4b9e2bb87bac7fcf52}

@@ -135,7 +135,8 @@ def audit_public_row(row, config):
         or row[cell_key] not in valid_cells
         or type(row["fold"]) is not int
         or row["fold"] not in range(5)
-        or any(not isinstance(row[key], str) or not row[key] for key in ("sample_key", "row_id", "group", "image_path", "instruction"))
+        or any(not isinstance(row[key], str) or not row[key] for key in ("sample_key", "row_id", "group", "image_path"))
+        or not isinstance(row["instruction"], str)
         or not is_sha256(row["image_sha256"])
         or (family == "androidcontrol" and not isinstance(row["history"], str))
         or (family != "androidcontrol" and (

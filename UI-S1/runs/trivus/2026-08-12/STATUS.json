@@ -159,6 +159,16 @@
     "performance_metric_computed": false,
     "training_started": false
   },
+  "invalid_real_data_smoke_attempt_002": {
+    "reason": "nonempty_instruction_check_rejected_frozen_empty_android_task",
+    "failed_before_private_label_access": true,
+    "authorization_receipt_created": true,
+    "smoke_result_written": false,
+    "optimizer_constructed": false,
+    "backward_called": false,
+    "performance_metric_computed": false,
+    "training_started": false
+  },
   "nested_training_runner_implemented": false,
   "final_adjudicator_implemented": false,
   "new_accuracy_computed": true,
