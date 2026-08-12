@@ -1,0 +1,37 @@
+{
+  "accuracy_computed": false,
+  "ground_truth_fields_used": false,
+  "lanes": {
+    "gui_r1_high": {
+      "bytes": 1404312,
+      "destination": "runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/high/shard-0.jsonl",
+      "rows": 1056,
+      "sha256": "313a134dbfa7c00a95af9508a8c7b7ba6dbc55e9a9bae0629686deeb51bfaab3",
+      "source": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/high/shard-0.jsonl"
+    },
+    "gui_r1_low": {
+      "bytes": 1447831,
+      "destination": "runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/low/shard-0.jsonl",
+      "rows": 1096,
+      "sha256": "28409dca2116dfcb757d967122cc5663a936f17a439c95168a0add09ec240279",
+      "source": "runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/low/shard-0.jsonl"
+    },
+    "ui_r1_e_high": {
+      "bytes": 1780012,
+      "destination": "runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/high/shard-0.jsonl",
+      "rows": 1792,
+      "sha256": "3ed11a3adb99294b5a42aeba48a23bd29dd58d49c13915f6a147a31ca9da5b35",
+      "source": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/high/shard-0.jsonl"
+    },
+    "ui_r1_e_low": {
+      "bytes": 1806323,
+      "destination": "runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/low/shard-0.jsonl",
+      "rows": 1824,
+      "sha256": "5768959b6b2e87c8b5e3134dfc7fb3a631325cb657214e8553c3522c909704a5",
+      "source": "runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/low/shard-0.jsonl"
+    }
+  },
+  "schema_version": 1,
+  "scoring_imported": false,
+  "status": "PASS_RESULT_BLIND_SEEDS_COPIED"
+}
