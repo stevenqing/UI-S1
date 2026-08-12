@@ -49,7 +49,8 @@
   "private_label_builder_implemented": true,
   "representation_gate_preregistered": true,
   "representation_gate_implemented": true,
-  "representation_gate_authorized": false,
+  "representation_gate_authorized": true,
+  "representation_gate_implementation_commit": "c84dac03c04fe7e8e369105b56580e4a89b9b75c",
   "representation_gate_result_exists": false,
   "invalid_public_attempt_001": {
     "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",

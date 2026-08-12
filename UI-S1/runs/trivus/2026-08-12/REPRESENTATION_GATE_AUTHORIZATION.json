@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED_TRIVUS_REPRESENTATION_GATE_ONCE",
+  "implementation_commit": "c84dac03c04fe7e8e369105b56580e4a89b9b75c",
+  "result_must_not_exist": true,
+  "files": {
+    "AMENDMENT_007_SELECTOR_REPRESENTATION_GATE.md": "b080043ffce2d0fc08e0e378d57666c827182021946f48be344ecf9e99c8e969",
+    "configs/representation_gate.yaml": "2398a4b95f035d7b39ef2d4b9ae02ac534fe1b13c5243d26e316301939bcebc7",
+    "representation_gate.py": "12d45f5177f1e3a9e56744b32d5ccc2dc4a13bf5763ea6986e95cc542a058277",
+    "test_representation_gate.py": "27360afd03f71ca6fb0e2760f8606bcd9f937b342df8efcab0b0cad5de72aee8"
+  }
+}
