@@ -13,6 +13,7 @@
 | Explanatory follow-up | CEV-A | 恢复 Mind2Web G0 与 ScreenSpot G4；与 nested dev-selection 打平，V4=`EXPLANATORY_CONTRIBUTION` |
 | Learned precursors | LSA / Utility-LSA | correctness-LSA partial transfer；Utility-LSA safe exploratory；均被 VUS-SR 显著超过 |
 | Post-VUS negative | CARE A1 router | corrected structural routing fails：M2W pass@12 −1.01 pp；SSPro safe −1.27 pp；`CLOSE_ROUTING` |
+| Post-VUS negative | DELTA late fusion | M2W −0.41 pp `[−1.20,+0.40]`；SSPro +0.11 pp `[−0.20,+0.41]`；same-capacity/placebo gates fail；`DELTA_NOT_SUPPORTED` |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -43,7 +44,7 @@ VUS-SR 剩余瓶颈主要是 candidate identification，而非 safe gate：Mind2
 
 四臂前六候选逐行相同，虽存在 oracle stage-2 routing coverage gain +6.06/+3.67 pp，但 corrected CARE A1 structural router 未能泛化：相对 nested static C-cond，Mind2Web pass@12 −1.01 pp `[−2.10,0.00]`，ScreenSpot +0.06 pp `[−0.81,+1.05]`，且 ScreenSpot safe −1.27 pp。三项 A1 gates 全失败，routing 分支关闭。初版遗漏 cross-fitted reliability 的实现已作废；Correction 002 重跑后结论更强。
 
-后续只冻结 RAVEL E0：在固定 C-cond acquisition 下，以 token-matched global + fine/context candidate mosaics 测试局部 evidence。RAVEL 当前无结果，不进入论文结论。
+RAVEL E0 随后验证 local 相对 random-center 有信号，但 pixel-level early fusion 使 Mind2Web 最终下降 2.19 pp，触发 RAVEL-K4。DELTA 再测试 independently locked channels 的 decision-level late fusion：相对 VUS-SR，Mind2Web −0.41 pp `[−1.20,+0.40]`，ScreenSpot +0.11 pp `[−0.20,+0.41]`。FULL 无法超过 VUS_ONLY 或 RANDOM_PLACEBO，且显著差于 VUS_GLOBAL；证据互补性不成立，distillation/third-benchmark confirmation 取消。
 
 ## 4. Q1 与聚合器限定
 
@@ -90,7 +91,7 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/visual-utility-selector/2026-08-11/` | COMPLETE | VUS-SR method candidate；SR1–SR4 pass |
 | `runs/care/2026-08-11/` | A1 COMPLETE | structural acquisition router fails；`CLOSE_ROUTING` |
 | `runs/ravel/2026-08-11/` | STOPPED | local evidence early fusion fails；Mind2Web −2.19 pp [−2.98,−1.41]；RAVEL-K4 |
-| `runs/delta/2026-08-11/` | PREREGISTERED | locked-channel late-fusion viability；no result |
+| `runs/delta/2026-08-11/` | COMPLETE | only DELTA-2/6 pass；local channels dilute M2W global/binding evidence；`DELTA_NOT_SUPPORTED` |
 
 ## 8. Reproducibility boundaries
 
@@ -104,3 +105,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - CARE/RAVEL 均为 VUS 结果已知后的 post-hoc research sequence；RAVEL 必须在第三个 untouched benchmark 才能升级为确认结果。
 - RAVEL local evidence beats random centers in AUROC but loses global/unique-candidate information; no relational/LoRA stage was run. Any late-fusion follow-up is a new study, not a RAVEL rescue.
 - DELTA is a multi-call research oracle protocol over already locked channels; even a positive result requires one-call distillation and untouched GUI-Odyssey confirmation.
+- DELTA was negative: FULL did not beat VUS_ONLY or RANDOM_PLACEBO, so no distillation or GUI-Odyssey confirmation was run. VUS_GLOBAL remains a diagnostic control, not a post-hoc selected method.

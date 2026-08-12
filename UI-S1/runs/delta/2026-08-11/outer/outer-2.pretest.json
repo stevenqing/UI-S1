@@ -1,0 +1,1326 @@
+{
+  "channel_hashes": {
+    "context_local": "49ee984916cd7cc9a042b4279241d41be2c811e5eee9c8a5cd3f4dc01fbd3979",
+    "fine_local": "102c40dfe05bf858f86001ab6726f4b9c9578b0f10214507ed644bf7553c73ec",
+    "global_semantic": "93541d1d1381a627ff1b5dfc6d75a170efb141bd9509fd0254b0ea5d7805feaf",
+    "random_placebo": "03f7fb254d9d3e2a64b47ffba0a66b321706a9457f22466a1ddc0de7e1f9efc8",
+    "vus_binding": "b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40"
+  },
+  "final_epochs": {
+    "FULL": 30,
+    "RANDOM_PLACEBO": 30,
+    "VUS_GLOBAL": 30,
+    "VUS_LOCAL": 30,
+    "VUS_ONLY": 30
+  },
+  "inner_epochs": {
+    "FULL": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "RANDOM_PLACEBO": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "VUS_GLOBAL": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "VUS_LOCAL": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "VUS_ONLY": [
+      30,
+      30,
+      30,
+      30
+    ]
+  },
+  "opened_development_folds": [
+    0,
+    1,
+    3,
+    4
+  ],
+  "opened_development_label_sha256": {
+    "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+    "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+    "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+    "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+  },
+  "outer_fold": 2,
+  "schema_version": 1,
+  "sealed_outer_label_sha256": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+  "status": "PASS_DELTA_SELECTION_FROZEN",
+  "thresholds": {
+    "FIXED_AVERAGE": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 1508,
+              "selection": {
+                "losses": 69,
+                "override_rate": 0.27283653846153844,
+                "overrides": 454,
+                "point_delta": 0.010216346153846154,
+                "wins": 86
+              },
+              "threshold": [
+                5.78125,
+                1.0
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 1431,
+              "selection": {
+                "losses": 81,
+                "override_rate": 0.34615384615384615,
+                "overrides": 576,
+                "point_delta": 0.028846153846153848,
+                "wins": 129
+              },
+              "threshold": [
+                4.625,
+                1.0
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 1413,
+              "selection": {
+                "losses": 40,
+                "override_rate": 0.1700721153846154,
+                "overrides": 283,
+                "point_delta": 0.019831730769230768,
+                "wins": 73
+              },
+              "threshold": [
+                6.712499999999999,
+                1.0
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 1397,
+              "selection": {
+                "losses": 76,
+                "override_rate": 0.3371394230769231,
+                "overrides": 561,
+                "point_delta": 0.015625,
+                "wins": 102
+              },
+              "threshold": [
+                4.6875,
+                1.0
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 73,
+                "override_rate": 0.29146634615384615,
+                "overrides": 485,
+                "point_delta": 0.010216346153846154,
+                "wins": 90
+              },
+              "C_rand": {
+                "losses": 60,
+                "override_rate": 0.25,
+                "overrides": 416,
+                "point_delta": 0.025841346153846152,
+                "wins": 103
+              },
+              "C_self": {
+                "losses": 64,
+                "override_rate": 0.25180288461538464,
+                "overrides": 419,
+                "point_delta": 0.018629807692307692,
+                "wins": 95
+              },
+              "C_uni": {
+                "losses": 56,
+                "override_rate": 0.24338942307692307,
+                "overrides": 405,
+                "point_delta": 0.012620192307692308,
+                "wins": 77
+              }
+            },
+            "equal_arm_delta": 0.016826923076923076
+          },
+          "benchmark_threshold": [
+            5.59375,
+            1.0
+          ],
+          "equal_arm_delta": 0.018629807692307692
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 1173,
+              "selection": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 1142,
+              "selection": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 1179,
+              "selection": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 1167,
+              "selection": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_self": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "override_rate": 0.0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              }
+            },
+            "equal_arm_delta": 0.0
+          },
+          "benchmark_threshold": [
+            Infinity,
+            Infinity
+          ],
+          "equal_arm_delta": 0.0
+        }
+      },
+      "eligible": true,
+      "selection_objective": 1.5253856543930506
+    },
+    "FULL": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 628,
+              "selection": {
+                "losses": 36,
+                "override_rate": 0.20552884615384615,
+                "overrides": 342,
+                "point_delta": 0.0234375,
+                "wins": 75
+              },
+              "threshold": [
+                0.22799569368362427,
+                0.640192186832428
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 649,
+              "selection": {
+                "losses": 80,
+                "override_rate": 0.33774038461538464,
+                "overrides": 562,
+                "point_delta": 0.029447115384615384,
+                "wins": 129
+              },
+              "threshold": [
+                0.11076261401176453,
+                0.1312776356935501
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 662,
+              "selection": {
+                "losses": 60,
+                "override_rate": 0.3034855769230769,
+                "overrides": 505,
+                "point_delta": 0.03485576923076923,
+                "wins": 118
+              },
+              "threshold": [
+                0.227056622505188,
+                0.06744502484798431
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 602,
+              "selection": {
+                "losses": 72,
+                "override_rate": 0.3407451923076923,
+                "overrides": 567,
+                "point_delta": 0.028245192307692308,
+                "wins": 119
+              },
+              "threshold": [
+                0.00015997886657714844,
+                0.16729438304901123
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 62,
+                "override_rate": 0.28665865384615385,
+                "overrides": 477,
+                "point_delta": 0.0234375,
+                "wins": 101
+              },
+              "C_rand": {
+                "losses": 74,
+                "override_rate": 0.30528846153846156,
+                "overrides": 508,
+                "point_delta": 0.028245192307692308,
+                "wins": 121
+              },
+              "C_self": {
+                "losses": 61,
+                "override_rate": 0.30528846153846156,
+                "overrides": 508,
+                "point_delta": 0.034254807692307696,
+                "wins": 118
+              },
+              "C_uni": {
+                "losses": 52,
+                "override_rate": 0.2620192307692308,
+                "overrides": 436,
+                "point_delta": 0.028245192307692308,
+                "wins": 99
+              }
+            },
+            "equal_arm_delta": 0.028545673076923076
+          },
+          "benchmark_threshold": [
+            0.21886632442474366,
+            0.06744502484798431
+          ],
+          "equal_arm_delta": 0.02899639423076923
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 90,
+              "selection": {
+                "losses": 6,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": 0.003215434083601286,
+                "wins": 10
+              },
+              "threshold": [
+                0.07730311155319214,
+                0.11470290273427963
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 160,
+              "selection": {
+                "losses": 16,
+                "override_rate": 0.11254019292604502,
+                "overrides": 140,
+                "point_delta": 0.006430868167202572,
+                "wins": 24
+              },
+              "threshold": [
+                0.07730311155319214,
+                0.11470290273427963
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 102,
+              "selection": {
+                "losses": 4,
+                "override_rate": 0.06430868167202572,
+                "overrides": 80,
+                "point_delta": 0.01045016077170418,
+                "wins": 17
+              },
+              "threshold": [
+                0.07730311155319214,
+                0.11470290273427963
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 94,
+              "selection": {
+                "losses": 4,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": 0.00964630225080386,
+                "wins": 16
+              },
+              "threshold": [
+                0.07730311155319214,
+                0.11470290273427963
+              ],
+              "threshold_source": "benchmark_backoff"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 6,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": 0.003215434083601286,
+                "wins": 10
+              },
+              "C_rand": {
+                "losses": 16,
+                "override_rate": 0.11254019292604502,
+                "overrides": 140,
+                "point_delta": 0.006430868167202572,
+                "wins": 24
+              },
+              "C_self": {
+                "losses": 4,
+                "override_rate": 0.06430868167202572,
+                "overrides": 80,
+                "point_delta": 0.01045016077170418,
+                "wins": 17
+              },
+              "C_uni": {
+                "losses": 4,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": 0.00964630225080386,
+                "wins": 16
+              }
+            },
+            "equal_arm_delta": 0.007435691318327975
+          },
+          "benchmark_threshold": [
+            0.07730311155319214,
+            0.11470290273427963
+          ],
+          "equal_arm_delta": 0.007435691318327975
+        }
+      },
+      "eligible": true,
+      "selection_objective": 2.9053097705315043
+    },
+    "RANDOM_PLACEBO": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 646,
+              "selection": {
+                "losses": 37,
+                "override_rate": 0.23197115384615385,
+                "overrides": 386,
+                "point_delta": 0.034254807692307696,
+                "wins": 94
+              },
+              "threshold": [
+                0.28506414890289306,
+                0.46831168234348297
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 652,
+              "selection": {
+                "losses": 53,
+                "override_rate": 0.2668269230769231,
+                "overrides": 444,
+                "point_delta": 0.039663461538461536,
+                "wins": 119
+              },
+              "threshold": [
+                0.3686584711074829,
+                0.1409091353416443
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 657,
+              "selection": {
+                "losses": 75,
+                "override_rate": 0.3395432692307692,
+                "overrides": 565,
+                "point_delta": 0.039663461538461536,
+                "wins": 141
+              },
+              "threshold": [
+                0.11115652322769165,
+                0.09315403550863266
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 602,
+              "selection": {
+                "losses": 39,
+                "override_rate": 0.20673076923076922,
+                "overrides": 344,
+                "point_delta": 0.034254807692307696,
+                "wins": 96
+              },
+              "threshold": [
+                0.48163824081420903,
+                0.07152821123600006
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 45,
+                "override_rate": 0.24519230769230768,
+                "overrides": 408,
+                "point_delta": 0.03365384615384615,
+                "wins": 101
+              },
+              "C_rand": {
+                "losses": 57,
+                "override_rate": 0.27283653846153844,
+                "overrides": 454,
+                "point_delta": 0.03786057692307692,
+                "wins": 120
+              },
+              "C_self": {
+                "losses": 58,
+                "override_rate": 0.2722355769230769,
+                "overrides": 453,
+                "point_delta": 0.038461538461538464,
+                "wins": 122
+              },
+              "C_uni": {
+                "losses": 47,
+                "override_rate": 0.23798076923076922,
+                "overrides": 396,
+                "point_delta": 0.03365384615384615,
+                "wins": 103
+              }
+            },
+            "equal_arm_delta": 0.03590745192307692
+          },
+          "benchmark_threshold": [
+            0.3473377108573914,
+            0.07152821123600006
+          ],
+          "equal_arm_delta": 0.036959134615384616
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 79,
+              "selection": {
+                "losses": 9,
+                "override_rate": 0.0594855305466238,
+                "overrides": 74,
+                "point_delta": -0.001607717041800643,
+                "wins": 7
+              },
+              "threshold": [
+                0.0006272643804550171,
+                0.08233185857534409
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 142,
+              "selection": {
+                "losses": 15,
+                "override_rate": 0.10932475884244373,
+                "overrides": 136,
+                "point_delta": 0.001607717041800643,
+                "wins": 17
+              },
+              "threshold": [
+                0.0006272643804550171,
+                0.08233185857534409
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 89,
+              "selection": {
+                "losses": 7,
+                "override_rate": 0.06672025723472669,
+                "overrides": 83,
+                "point_delta": 0.0040192926045016075,
+                "wins": 12
+              },
+              "threshold": [
+                0.0006272643804550171,
+                0.08233185857534409
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 68,
+              "selection": {
+                "losses": 5,
+                "override_rate": 0.05144694533762058,
+                "overrides": 64,
+                "point_delta": 0.008038585209003215,
+                "wins": 15
+              },
+              "threshold": [
+                0.0006272643804550171,
+                0.08233185857534409
+              ],
+              "threshold_source": "benchmark_backoff"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 9,
+                "override_rate": 0.0594855305466238,
+                "overrides": 74,
+                "point_delta": -0.001607717041800643,
+                "wins": 7
+              },
+              "C_rand": {
+                "losses": 15,
+                "override_rate": 0.10932475884244373,
+                "overrides": 136,
+                "point_delta": 0.001607717041800643,
+                "wins": 17
+              },
+              "C_self": {
+                "losses": 7,
+                "override_rate": 0.06672025723472669,
+                "overrides": 83,
+                "point_delta": 0.0040192926045016075,
+                "wins": 12
+              },
+              "C_uni": {
+                "losses": 5,
+                "override_rate": 0.05144694533762058,
+                "overrides": 64,
+                "point_delta": 0.008038585209003215,
+                "wins": 15
+              }
+            },
+            "equal_arm_delta": 0.0030144694533762056
+          },
+          "benchmark_threshold": [
+            0.0006272643804550171,
+            0.08233185857534409
+          ],
+          "equal_arm_delta": 0.0030144694533762056
+        }
+      },
+      "eligible": true,
+      "selection_objective": 3.2414875610301364
+    },
+    "VUS_GLOBAL": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 689,
+              "selection": {
+                "losses": 33,
+                "override_rate": 0.22235576923076922,
+                "overrides": 370,
+                "point_delta": 0.042067307692307696,
+                "wins": 103
+              },
+              "threshold": [
+                0.4964661836624146,
+                0.4608996272087097
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 723,
+              "selection": {
+                "losses": 70,
+                "override_rate": 0.3347355769230769,
+                "overrides": 557,
+                "point_delta": 0.04447115384615385,
+                "wins": 144
+              },
+              "threshold": [
+                0.2971443891525269,
+                0.1487218290567398
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 740,
+              "selection": {
+                "losses": 52,
+                "override_rate": 0.29747596153846156,
+                "overrides": 495,
+                "point_delta": 0.048677884615384616,
+                "wins": 133
+              },
+              "threshold": [
+                0.39462969601154335,
+                0.08565300703048706
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 705,
+              "selection": {
+                "losses": 62,
+                "override_rate": 0.32271634615384615,
+                "overrides": 537,
+                "point_delta": 0.04026442307692308,
+                "wins": 129
+              },
+              "threshold": [
+                0.2358601659536362,
+                0.059263695031404495
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 57,
+                "override_rate": 0.3076923076923077,
+                "overrides": 512,
+                "point_delta": 0.0390625,
+                "wins": 122
+              },
+              "C_rand": {
+                "losses": 75,
+                "override_rate": 0.3485576923076923,
+                "overrides": 580,
+                "point_delta": 0.042067307692307696,
+                "wins": 145
+              },
+              "C_self": {
+                "losses": 63,
+                "override_rate": 0.34435096153846156,
+                "overrides": 573,
+                "point_delta": 0.04807692307692308,
+                "wins": 143
+              },
+              "C_uni": {
+                "losses": 61,
+                "override_rate": 0.31971153846153844,
+                "overrides": 532,
+                "point_delta": 0.04026442307692308,
+                "wins": 128
+              }
+            },
+            "equal_arm_delta": 0.042367788461538464
+          },
+          "benchmark_threshold": [
+            0.2556098699569702,
+            0.059263695031404495
+          ],
+          "equal_arm_delta": 0.04387019230769231
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 78,
+              "selection": {
+                "losses": 10,
+                "override_rate": 0.06028938906752412,
+                "overrides": 75,
+                "point_delta": 0.0,
+                "wins": 10
+              },
+              "threshold": [
+                0.0005457103252410889,
+                0.0863611027598381
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 152,
+              "selection": {
+                "losses": 18,
+                "override_rate": 0.1157556270096463,
+                "overrides": 144,
+                "point_delta": 0.0040192926045016075,
+                "wins": 23
+              },
+              "threshold": [
+                0.0005457103252410889,
+                0.0863611027598381
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 97,
+              "selection": {
+                "losses": 6,
+                "override_rate": 0.07315112540192927,
+                "overrides": 91,
+                "point_delta": 0.008038585209003215,
+                "wins": 16
+              },
+              "threshold": [
+                0.0005457103252410889,
+                0.0863611027598381
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 90,
+              "selection": {
+                "losses": 6,
+                "override_rate": 0.06832797427652733,
+                "overrides": 85,
+                "point_delta": 0.013665594855305467,
+                "wins": 23
+              },
+              "threshold": [
+                0.0005457103252410889,
+                0.0863611027598381
+              ],
+              "threshold_source": "benchmark_backoff"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 10,
+                "override_rate": 0.06028938906752412,
+                "overrides": 75,
+                "point_delta": 0.0,
+                "wins": 10
+              },
+              "C_rand": {
+                "losses": 18,
+                "override_rate": 0.1157556270096463,
+                "overrides": 144,
+                "point_delta": 0.0040192926045016075,
+                "wins": 23
+              },
+              "C_self": {
+                "losses": 6,
+                "override_rate": 0.07315112540192927,
+                "overrides": 91,
+                "point_delta": 0.008038585209003215,
+                "wins": 16
+              },
+              "C_uni": {
+                "losses": 6,
+                "override_rate": 0.06832797427652733,
+                "overrides": 85,
+                "point_delta": 0.013665594855305467,
+                "wins": 23
+              }
+            },
+            "equal_arm_delta": 0.006430868167202572
+          },
+          "benchmark_threshold": [
+            0.0005457103252410889,
+            0.0863611027598381
+          ],
+          "equal_arm_delta": 0.006430868167202572
+        }
+      },
+      "eligible": true,
+      "selection_objective": 4.051384912380133
+    },
+    "VUS_LOCAL": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 585,
+              "selection": {
+                "losses": 44,
+                "override_rate": 0.2403846153846154,
+                "overrides": 400,
+                "point_delta": 0.019831730769230768,
+                "wins": 77
+              },
+              "threshold": [
+                0.0018601417541503906,
+                0.6277461409568786
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 594,
+              "selection": {
+                "losses": 63,
+                "override_rate": 0.23858173076923078,
+                "overrides": 397,
+                "point_delta": 0.018028846153846152,
+                "wins": 93
+              },
+              "threshold": [
+                0.28447375297546396,
+                0.14577704668045044
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 597,
+              "selection": {
+                "losses": 64,
+                "override_rate": 0.3088942307692308,
+                "overrides": 514,
+                "point_delta": 0.027043269230769232,
+                "wins": 109
+              },
+              "threshold": [
+                0.006430625915527344,
+                0.5246236562728882
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 545,
+              "selection": {
+                "losses": 75,
+                "override_rate": 0.31189903846153844,
+                "overrides": 519,
+                "point_delta": 0.013221153846153846,
+                "wins": 97
+              },
+              "threshold": [
+                0.00015461444854736328,
+                0.17368672788143158
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 79,
+                "override_rate": 0.3389423076923077,
+                "overrides": 564,
+                "point_delta": 0.015024038461538462,
+                "wins": 104
+              },
+              "C_rand": {
+                "losses": 90,
+                "override_rate": 0.34134615384615385,
+                "overrides": 568,
+                "point_delta": 0.015625,
+                "wins": 116
+              },
+              "C_self": {
+                "losses": 78,
+                "override_rate": 0.34375,
+                "overrides": 572,
+                "point_delta": 0.026442307692307692,
+                "wins": 122
+              },
+              "C_uni": {
+                "losses": 75,
+                "override_rate": 0.31189903846153844,
+                "overrides": 519,
+                "point_delta": 0.013221153846153846,
+                "wins": 97
+              }
+            },
+            "equal_arm_delta": 0.017578125
+          },
+          "benchmark_threshold": [
+            0.00015461444854736328,
+            0.06994622945785522
+          ],
+          "equal_arm_delta": 0.01953125
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 84,
+              "selection": {
+                "losses": 9,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": -0.001607717041800643,
+                "wins": 7
+              },
+              "threshold": [
+                0.0009976625442504883,
+                0.10068248212337494
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 156,
+              "selection": {
+                "losses": 16,
+                "override_rate": 0.12218649517684887,
+                "overrides": 152,
+                "point_delta": 0.008842443729903537,
+                "wins": 27
+              },
+              "threshold": [
+                0.0009976625442504883,
+                0.10068248212337494
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 100,
+              "selection": {
+                "losses": 8,
+                "override_rate": 0.07315112540192927,
+                "overrides": 91,
+                "point_delta": 0.006430868167202572,
+                "wins": 16
+              },
+              "threshold": [
+                0.0009976625442504883,
+                0.10068248212337494
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 81,
+              "selection": {
+                "losses": 4,
+                "override_rate": 0.06109324758842444,
+                "overrides": 76,
+                "point_delta": 0.01045016077170418,
+                "wins": 17
+              },
+              "threshold": [
+                0.0009976625442504883,
+                0.10068248212337494
+              ],
+              "threshold_source": "benchmark_backoff"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 9,
+                "override_rate": 0.06189710610932476,
+                "overrides": 77,
+                "point_delta": -0.001607717041800643,
+                "wins": 7
+              },
+              "C_rand": {
+                "losses": 16,
+                "override_rate": 0.12218649517684887,
+                "overrides": 152,
+                "point_delta": 0.008842443729903537,
+                "wins": 27
+              },
+              "C_self": {
+                "losses": 8,
+                "override_rate": 0.07315112540192927,
+                "overrides": 91,
+                "point_delta": 0.006430868167202572,
+                "wins": 16
+              },
+              "C_uni": {
+                "losses": 4,
+                "override_rate": 0.06109324758842444,
+                "overrides": 76,
+                "point_delta": 0.01045016077170418,
+                "wins": 17
+              }
+            },
+            "equal_arm_delta": 0.006028938906752412
+          },
+          "benchmark_threshold": [
+            0.0009976625442504883,
+            0.10068248212337494
+          ],
+          "equal_arm_delta": 0.006028938906752412
+        }
+      },
+      "eligible": true,
+      "selection_objective": 2.0298331310095916
+    },
+    "VUS_ONLY": {
+      "benchmarks": {
+        "mind2web": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 683,
+              "selection": {
+                "losses": 14,
+                "override_rate": 0.1502403846153846,
+                "overrides": 250,
+                "point_delta": 0.0390625,
+                "wins": 79
+              },
+              "threshold": [
+                0.852411508560181,
+                0.46681212782859804
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 738,
+              "selection": {
+                "losses": 70,
+                "override_rate": 0.34194711538461536,
+                "overrides": 569,
+                "point_delta": 0.042067307692307696,
+                "wins": 140
+              },
+              "threshold": [
+                0.26997268199920654,
+                0.1520378142595291
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 738,
+              "selection": {
+                "losses": 61,
+                "override_rate": 0.3395432692307692,
+                "overrides": 565,
+                "point_delta": 0.04927884615384615,
+                "wins": 143
+              },
+              "threshold": [
+                0.24822470545768738,
+                0.11844344437122345
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 698,
+              "selection": {
+                "losses": 77,
+                "override_rate": 0.3623798076923077,
+                "overrides": 603,
+                "point_delta": 0.03665865384615385,
+                "wins": 138
+              },
+              "threshold": [
+                0.1172629088163376,
+                0.08414241671562195
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 49,
+                "override_rate": 0.2722355769230769,
+                "overrides": 453,
+                "point_delta": 0.03786057692307692,
+                "wins": 112
+              },
+              "C_rand": {
+                "losses": 65,
+                "override_rate": 0.3137019230769231,
+                "overrides": 522,
+                "point_delta": 0.040865384615384616,
+                "wins": 133
+              },
+              "C_self": {
+                "losses": 53,
+                "override_rate": 0.2926682692307692,
+                "overrides": 487,
+                "point_delta": 0.04266826923076923,
+                "wins": 124
+              },
+              "C_uni": {
+                "losses": 56,
+                "override_rate": 0.2776442307692308,
+                "overrides": 462,
+                "point_delta": 0.03545673076923077,
+                "wins": 115
+              }
+            },
+            "equal_arm_delta": 0.03921274038461538
+          },
+          "benchmark_threshold": [
+            0.3867695331573487,
+            0.0702226534485817
+          ],
+          "equal_arm_delta": 0.04176682692307693
+        },
+        "screenspot_pro": {
+          "arms": {
+            "C_cond": {
+              "changed_opportunities": 79,
+              "selection": {
+                "losses": 9,
+                "override_rate": 0.06109324758842444,
+                "overrides": 76,
+                "point_delta": 0.0008038585209003215,
+                "wins": 10
+              },
+              "threshold": [
+                0.0015387535095214844,
+                0.10218720138072968
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 146,
+              "selection": {
+                "losses": 21,
+                "override_rate": 0.1157556270096463,
+                "overrides": 144,
+                "point_delta": 0.0,
+                "wins": 21
+              },
+              "threshold": [
+                0.0015387535095214844,
+                0.10218720138072968
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 108,
+              "selection": {
+                "losses": 10,
+                "override_rate": 0.08279742765273312,
+                "overrides": 103,
+                "point_delta": 0.006430868167202572,
+                "wins": 18
+              },
+              "threshold": [
+                0.0015387535095214844,
+                0.10218720138072968
+              ],
+              "threshold_source": "benchmark_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 81,
+              "selection": {
+                "losses": 8,
+                "override_rate": 0.06511254019292605,
+                "overrides": 81,
+                "point_delta": 0.00964630225080386,
+                "wins": 20
+              },
+              "threshold": [
+                0.0015387535095214844,
+                0.10218720138072968
+              ],
+              "threshold_source": "benchmark_backoff"
+            }
+          },
+          "benchmark_selection": {
+            "arms": {
+              "C_cond": {
+                "losses": 9,
+                "override_rate": 0.06109324758842444,
+                "overrides": 76,
+                "point_delta": 0.0008038585209003215,
+                "wins": 10
+              },
+              "C_rand": {
+                "losses": 21,
+                "override_rate": 0.1157556270096463,
+                "overrides": 144,
+                "point_delta": 0.0,
+                "wins": 21
+              },
+              "C_self": {
+                "losses": 10,
+                "override_rate": 0.08279742765273312,
+                "overrides": 103,
+                "point_delta": 0.006430868167202572,
+                "wins": 18
+              },
+              "C_uni": {
+                "losses": 8,
+                "override_rate": 0.06511254019292605,
+                "overrides": 81,
+                "point_delta": 0.00964630225080386,
+                "wins": 20
+              }
+            },
+            "equal_arm_delta": 0.0042202572347266884
+          },
+          "benchmark_threshold": [
+            0.0015387535095214844,
+            0.10218720138072968
+          ],
+          "equal_arm_delta": 0.0042202572347266884
+        }
+      },
+      "eligible": true,
+      "selection_objective": 3.721263170509138
+    }
+  }
+}

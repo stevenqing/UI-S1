@@ -1,16 +1,41 @@
 {
   "schema_version": 1,
   "date": "2026-08-11",
-  "status": "DELTA_READY_NO_RESULTS",
-  "outcome": "DELTA_NOT_RUN",
+  "status": "COMPLETE",
+  "outcome": "DELTA_NOT_SUPPORTED",
   "upstream": {
     "CARE_A1": "CLOSE_ROUTING",
     "RAVEL_E0": "STOPPED_BY_RAVEL_K4"
   },
-  "next_action": "late_fusion_viability_with_locked_channels",
+  "next_action": "STOP_NO_DISTILLATION_NEW_PROTOCOL_ONLY",
   "protected_pid": 2274,
   "protected_pid_touched": false,
+  "result_free_implementation_commit": "de6a716",
+  "formal": {
+    "outer_folds_complete": 5,
+    "coverage_complete": true,
+    "fallback_mismatches": 0,
+    "mind2web_full_minus_VUS_SR_pp": -0.4086538461538462,
+    "mind2web_full_minus_VUS_SR_ci_99_pp": [-1.2045041912275884, 0.4017681674299638],
+    "screenspot_full_minus_VUS_SR_pp": 0.11068943706514865,
+    "screenspot_full_minus_VUS_SR_ci_99_pp": [-0.2009107740913099, 0.413580823875956],
+    "balanced_vs_VUS_SR_ci_99_MDE": [-0.9491427142551461, 0.4292937063089165],
+    "balanced_vs_VUS_ONLY_ci_99_MDE": [-1.1554076852905624, 0.10097322044666522],
+    "balanced_vs_RANDOM_PLACEBO_ci_99_MDE": [-0.7721795342418374, 0.36692909634590626],
+    "gates": {
+      "DELTA_1": false,
+      "DELTA_2": true,
+      "DELTA_3": false,
+      "DELTA_4": false,
+      "DELTA_5": false,
+      "DELTA_6": true
+    },
+    "distillation_run": false,
+    "third_benchmark_confirmation_run": false,
+    "post_result_tuning_run": false
+  },
   "retention": {
+    "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/delta/2026-08-11",
     "manifest": "/scratch/workspaceblobstore/delta/2026-08-11/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,

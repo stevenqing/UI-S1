@@ -104,13 +104,15 @@ VUS 先在 GPU 0--7 对 14,644 个 row-arm records 提取 fallback-agnostic Qwen
 
 另一次 post-result 代码审计发现 formal process 在 selection 前 eager parse 了五折 label 文件，虽未索引 test labels，仍按 V-K5 严格作废。Correction 006 把 labels 物理拆成五折文件；每折先只打开四个 dev files，fsync pretest selection 后才由 guard 打开 test file。hardened 五折 JSON、adjudication 与 controls 均 bit-identical，只有 hardened outputs 用于主表。
 
-### 2.8 CARE A1 negative and RAVEL next method
+### 2.8 CARE, RAVEL, and DELTA negative sequence
 
 VUS-SR 后的 error decomposition 显示主要 headroom 是 candidate identification：Mind2Web/ScreenSpot candidate-ranking gap 为 18.52/14.60 pp，pairwise safe-gate gap 只有 5.77/0.71 pp。最小目标 quartile 与 unique-correct rows 尤其困难。
 
 四臂共享前六 candidates，因此 CARE A1 严格测试了固定 12-forward 预算下的 stage-2 acquisition routing。虽然 oracle routing coverage gain 为 +6.06/+3.67 pp，corrected structural router 相对 nested static C-cond 的 pass@12 为 −1.01 pp `[−2.10,0.00]` / +0.06 pp `[−0.81,+1.05]`，ScreenSpot final safe 还下降 1.27 pp。A1 三项 gates 全失败，`CLOSE_ROUTING`；禁止增加结构容量或使用 stage-2 信息搜救。初版遗漏 cross-fitted reliability 的实现已按 Correction 002 作废并重跑。
 
 RAVEL E0 已完成并触发 RAVEL-K4。local 相对 random-center 的 utility AUROC 两端均高约 +0.046，说明 candidate-centered pixels 有信息；但相对 VUS，Mind2Web AUROC −0.043，ScreenSpot +0.015。unchanged nested VUS-SR 的最终差值为 Mind2Web −2.19 pp `[−2.98,−1.41]`、ScreenSpot −0.03 pp `[−0.24,+0.16]`。因此 relational/lower-bound/LoRA stages 均取消。该结果支持 evidence competition，而不支持 pixel-level early fusion。
+
+DELTA 随后按独立 result-free commit `de6a716` 测试 locked channels 的 decision-level late fusion。FULL 相对 VUS-SR 为 Mind2Web −0.41 pp `[−1.20,+0.40]`、ScreenSpot +0.11 pp `[−0.20,+0.41]`；DELTA-1/3/4/5 失败。FULL 无法超过同容量 VUS_ONLY 或 RANDOM_PLACEBO，并显著差于 VUS_GLOBAL。dropout 显示移除 fine/context 使 Mind2Web +0.83/+0.56 pp，说明当前 objective 仍让 local evidence 稀释 global/binding utility。结论为 `DELTA_NOT_SUPPORTED`，不运行 distillation 或 GUI-Odyssey confirmation。
 
 ## 3. 立即要做的事
 
@@ -123,12 +125,12 @@ RAVEL E0 已完成并触发 RAVEL-K4。local 相对 random-center 的 utility AU
 5. 在 limitation 中披露 post-leakage reconstruction、五个泄漏格子、C-K5 容差翻转，以及 VUS-SR 仍缺第三 benchmark。
 6. 使用 `MASTER_RESULTS.md` 冻结全部论文主表。
 
-### 3.2 唯一授权的下一实验
+### 3.2 实验停止边界
 
-- CARE routing 与 RAVEL early fusion 均已关闭，不再调参。
-- 新研究只能测试 independently locked global/binding/local evidence 的 late fusion；必须另立 prereg，不能称 RAVEL continuation。
-- 多调用 late-fusion 若显著胜 VUS-SR，只证明 evidence complementarity；还需单调用 distillation 和第三 benchmark 才能成为部署方法。
-- 该新研究已冻结为 `runs/delta/2026-08-11/`；当前 `DELTA_NOT_RUN`。
+- CARE routing、RAVEL early fusion 与 DELTA late fusion 均已关闭，不再调参。
+- DELTA 未通过 same-capacity/placebo controls；其单调用 distillation 与第三 benchmark confirmation 取消。
+- VUS_GLOBAL 是事后可见的 diagnostic control，不允许晋升为 selected method。
+- 新研究必须另立 result-free preregistration，且不能在当前两 benchmark 上调整 DELTA channel masks、loss、gate regularization 或 threshold 后再称确认。
 
 已泄漏的五个 ScreenSpot-Pro 格子不得作为优化目标：
 

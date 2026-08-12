@@ -15,3 +15,11 @@ RAVEL 并没有证明局部像素无用：local 相对 random-center 的 utility
 ## 部署边界
 
 DELTA 首先是四次独立视觉编码的 research oracle，不是部署方法。它通过后还必须蒸馏成一次 selector invocation，并在 GUI-Odyssey app-split 一次性确认。当前 GUI-Odyssey 数据未挂载，因此不能提前做最终确认。
+
+## 正式结果与停止决定
+
+DELTA 已按冻结协议完成五折。FULL 相对 VUS-SR 在 Mind2Web 为 -0.41 pp，99% CI `[-1.20,+0.40]`；ScreenSpot-Pro 为 +0.11 pp，`[-0.20,+0.41]`。DELTA-1/3/4/5 失败，DELTA-2/6 通过，结论为 `DELTA_NOT_SUPPORTED`。
+
+强制对照定位了失败机制：FULL 无法显著超过 VUS_ONLY 或 RANDOM_PLACEBO，并显著差于 VUS_GLOBAL；冻结模型中移除 fine/context 会使 Mind2Web 分别上升 +0.83/+0.56 pp。当前 shared simplex gate 没有学会保留 global/binding utility 并拒绝有害 local evidence。
+
+因此不运行 distillation、GUI-Odyssey confirmation 或任何 post-result mask/loss/threshold 调整。VUS_GLOBAL 仅是诊断 control，不事后晋升为方法。
