@@ -1,0 +1,56 @@
+{
+  "aggregate_success_statistics_computed": false,
+  "blind_lock_commit": "8b2cc5c549a78cfb54918e5bdd271ebf52387f4f",
+  "candidate_count": 3,
+  "dependencies": {
+    "blind_manifest": "0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764",
+    "folds": "0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec",
+    "public_manifest": "c8531b2456155005baaf825f9ba36382ec44398ede9ed858cbe3df890a949e10",
+    "public_records": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
+    "scoring": "4ee0d12ca4762cd2378befb3b2ce7db8f1535da29cade53e1c8c6df6911374b3",
+    "selector_predictions": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d"
+  },
+  "folds": {
+    "0": {
+      "bytes": 86188,
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-0.jsonl",
+      "rows": 792,
+      "sha256": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a"
+    },
+    "1": {
+      "bytes": 81962,
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-1.jsonl",
+      "rows": 754,
+      "sha256": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+    },
+    "2": {
+      "bytes": 89823,
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-2.jsonl",
+      "rows": 826,
+      "sha256": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+    },
+    "3": {
+      "bytes": 94675,
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-3.jsonl",
+      "rows": 870,
+      "sha256": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+    },
+    "4": {
+      "bytes": 82368,
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-4.jsonl",
+      "rows": 758,
+      "sha256": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+    }
+  },
+  "oracle_metric_computed": false,
+  "records": 4000,
+  "schema": [
+    "schema_version",
+    "sample_key",
+    "candidate_success"
+  ],
+  "schema_version": 1,
+  "selector_metric_computed": false,
+  "status": "PASS_TRIVUS_FOLD_SEALED_PRIVATE_LABELS",
+  "training_started": false
+}

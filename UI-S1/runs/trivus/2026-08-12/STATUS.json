@@ -42,7 +42,9 @@
   "selector_blind_manifest": "runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json",
   "selector_predictions_sha256": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d",
   "selector_records": 4000,
-  "trivus_private_labels_created": false,
+  "trivus_private_labels_created": true,
+  "private_label_manifest": "runs/trivus/2026-08-12/data/PRIVATE_LABEL_MANIFEST.json",
+  "private_label_records": 4000,
   "private_label_protocol_frozen": true,
   "private_label_builder_implemented": true,
   "invalid_public_attempt_001": {
@@ -67,7 +69,7 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "PUBLISH_BLIND_LOCK_THEN_BUILD_FOLD_SEALED_PRIVATE_LABELS",
+  "next_action": "PUBLISH_PRIVATE_LABEL_SEAL_THEN_FREEZE_REPRESENTATION_GATE",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
