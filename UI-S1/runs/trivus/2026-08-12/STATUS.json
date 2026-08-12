@@ -136,8 +136,8 @@
   "training_data_primitives_tests": 11,
   "training_data_dimension": 115,
   "training_data_validator_implemented": true,
-  "training_data_adapter_implemented": false,
-  "training_real_data_smoke_run": false,
+  "training_data_adapter_implemented": true,
+  "training_real_data_smoke_run": true,
   "fold_scoped_assembly_protocol_frozen": true,
   "fold_scoped_assembly_implemented": true,
   "fold_scoped_assembly_synthetic_tests": 7,
@@ -145,8 +145,13 @@
   "real_data_smoke_protocol_frozen": true,
   "real_data_smoke_implemented": true,
   "real_data_smoke_tests": 6,
-  "real_data_smoke_authorized": false,
-  "real_data_smoke_run": false,
+  "real_data_smoke_authorized": true,
+  "real_data_smoke_run": true,
+  "real_data_smoke_result": "runs/trivus/2026-08-12/REAL_DATA_SMOKE.json",
+  "real_data_smoke_sha256": "b9f7685d55874f2617230e1c6630d082d8acd5233a7c40a05e923912b5f70ec0",
+  "real_data_smoke_outcome": "PASS_TRIVUS_NO_OPTIMIZER_REAL_DATA_SMOKE",
+  "real_data_smoke_public_rows": [7428, 3838, 3666],
+  "real_data_smoke_opened_private_files": 8,
   "real_data_smoke_optimizer_constructed": false,
   "real_data_smoke_backward_called": false,
   "invalid_real_data_smoke_attempt_001": {
@@ -174,14 +179,14 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "PUBLISH_METRIC_FREE_SMOKE_RUNNER_THEN_AUTHORIZE_ONCE",
+  "next_action": "IMPLEMENT_COMPLETE_NESTED_RUNNER_THRESHOLDS_PRETEST_AND_FINALIZER_RESULT_FREE",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
     "manifest": "/scratch/workspaceblobstore/trivus/2026-08-12/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
     "verified": true,
-    "artifact_count": 110,
-    "total_bytes": 137487220
+    "artifact_count": 129,
+    "total_bytes": 137606792
   }
 }

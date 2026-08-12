@@ -1,0 +1,80 @@
+{
+  "authorization_commit": "98810bd3b308b316f2799e161dc02de2402607fd",
+  "authorization_nonce": "de3242865d4a423523b15786dcde5d579dd6ac29ec8dd63ecf2cc83912f24d95",
+  "authorization_receipt": "runs/trivus/2026-08-12/real_data_smoke_authorization_receipts/de3242865d4a423523b15786dcde5d579dd6ac29ec8dd63ecf2cc83912f24d95.json",
+  "authorization_receipt_sha256": "6eeeb2ba5601145347ab0cb2085197c77bd5856f382f102d2965be97f45fb2e3",
+  "authorization_sha256": "629fd3be8d506b72857659cb7623a22df42b8427132905b9f3b863fc122fcdfd",
+  "backward_called": false,
+  "checks": {
+    "checkpoint_transform_finite": true,
+    "forward_finite": true,
+    "full_context_bank_and_phase_valid": true,
+    "loss_finite": true,
+    "oof_transform_finite": true,
+    "physical_fold_scoping_valid": true,
+    "public_and_blind_inputs_valid": true,
+    "standardizer_finite": true,
+    "targets_valid": true,
+    "weights_valid": true
+  },
+  "implementation_commit": "58a0f9069fcb1ba8bb96cdd6b8c917cf33b7cb5f",
+  "opened_private_files": [
+    {
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-1.jsonl",
+      "sha256": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+    },
+    {
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-2.jsonl",
+      "sha256": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+    },
+    {
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-3.jsonl",
+      "sha256": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+    },
+    {
+      "path": "runs/trivus/2026-08-12/data/private_labels_fold-4.jsonl",
+      "sha256": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+    },
+    {
+      "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-1.jsonl",
+      "sha256": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+    },
+    {
+      "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-2.jsonl",
+      "sha256": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+    },
+    {
+      "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-3.jsonl",
+      "sha256": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+    },
+    {
+      "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-4.jsonl",
+      "sha256": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+    }
+  ],
+  "optimizer_constructed": false,
+  "performance_metric_computed": false,
+  "phase": {
+    "checkpoint_fold": 2,
+    "expected_rows": {
+      "checkpoint": 3838,
+      "model_training": 7428,
+      "oof": 3666
+    },
+    "holdout_fold": 1,
+    "model_training_folds": [
+      3,
+      4
+    ],
+    "outer_fold": 0,
+    "role": "inner"
+  },
+  "public_row_counts": {
+    "checkpoint": 3838,
+    "model_training": 7428,
+    "oof": 3666
+  },
+  "schema_version": 1,
+  "status": "PASS_TRIVUS_NO_OPTIMIZER_REAL_DATA_SMOKE",
+  "training_started": false
+}

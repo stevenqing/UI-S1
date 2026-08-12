@@ -1,0 +1,8 @@
+{
+  "authorization_nonce": "de3242865d4a423523b15786dcde5d579dd6ac29ec8dd63ecf2cc83912f24d95",
+  "authorization_sha256": "629fd3be8d506b72857659cb7623a22df42b8427132905b9f3b863fc122fcdfd",
+  "implementation_commit": "58a0f9069fcb1ba8bb96cdd6b8c917cf33b7cb5f",
+  "prereg_sha256": "bca94b29636f0d3bacf30137bb1d66ddc2277adb056d6f9ec89372c9b532eb09",
+  "schema_version": 1,
+  "status": "CONSUMED_TRIVUS_REAL_DATA_SMOKE_AUTHORIZATION"
+}
