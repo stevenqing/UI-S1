@@ -87,8 +87,14 @@
   "fallback_context_protocol_frozen": true,
   "fallback_context_implementation_complete": true,
   "fallback_context_implementation_tests": 14,
-  "private_scale_seal_created": false,
-  "private_scale_seal_authorized": false,
+  "private_scale_seal_created": true,
+  "private_scale_seal_authorized": true,
+  "private_scale_manifest": "runs/trivus/2026-08-12/data/private_scales/PRIVATE_SCALE_MANIFEST.json",
+  "private_scale_manifest_sha256": "4de7d94c3494a60645696d3188a344147094e14c3c8367541e18d1b58bc5de27",
+  "private_scale_records": 2080,
+  "private_scale_fold_rows": [416, 417, 416, 416, 415],
+  "private_scale_candidate_success_opened": false,
+  "private_scale_performance_metric_computed": false,
   "invalid_private_scale_attempt_001": {
     "reason": "authorization_blob_path_was_workspace_relative_in_nested_git_repository",
     "failed_before_private_scale_construction": true,
@@ -113,12 +119,14 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "PUBLISH_RESULT_FREE_CONTEXT_IMPLEMENTATION_THEN_AUTHORIZE_PRIVATE_SCALE_SEAL",
+  "next_action": "COMMIT_PRIVATE_SCALE_SEAL_THEN_AUTHORIZE_EXACT_FALLBACK_CONTEXT_GENERATION",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
     "manifest": "/scratch/workspaceblobstore/trivus/2026-08-12/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
-    "verified": true
+    "verified": true,
+    "artifact_count": 104,
+    "total_bytes": 23803629
   }
 }

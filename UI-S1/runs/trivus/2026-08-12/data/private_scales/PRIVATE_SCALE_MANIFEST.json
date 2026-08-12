@@ -1,0 +1,67 @@
+{
+  "aggregate_target_statistics_computed": false,
+  "authorization_commit": "03f8f69b5b0a4f9b078ba980bae29ccd44b395db",
+  "authorization_nonce": "54b6eac193adcf6d3e0bf886a6fa86068e109cd5208d179dd246a3c068966950",
+  "authorization_receipt": "runs/trivus/2026-08-12/private_scale_authorization_receipts/54b6eac193adcf6d3e0bf886a6fa86068e109cd5208d179dd246a3c068966950.json",
+  "authorization_receipt_sha256": "85cf5f243b6d1e46d0598ff99c3a5e4f655d13aebb63061f58263cba88abbefe",
+  "authorization_sha256": "ea6c414991310f6d43a3904d9b7fe980e666cc1ef59944a95daf8f780bba3e51",
+  "candidate_success_opened": false,
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.12.13",
+    "pyyaml": "6.0.3",
+    "scikit_learn": "1.9.0",
+    "torch": "2.13.0+cu132"
+  },
+  "folds": {
+    "0": {
+      "bytes": 76502,
+      "path": "runs/trivus/2026-08-12/data/private_scales/private_scales_fold-0.jsonl",
+      "row_ids_sha256": "e0332a55d8a830177ef9da7282e2cf238b329540c6caafcc55cd8f0ae6e05684",
+      "rows": 416,
+      "sha256": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c"
+    },
+    "1": {
+      "bytes": 76774,
+      "path": "runs/trivus/2026-08-12/data/private_scales/private_scales_fold-1.jsonl",
+      "row_ids_sha256": "e724345cfe2dab8f632671cb0f4ca50a97ee753629f46b7ec3bd526c8ecc09c1",
+      "rows": 417,
+      "sha256": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce"
+    },
+    "2": {
+      "bytes": 76935,
+      "path": "runs/trivus/2026-08-12/data/private_scales/private_scales_fold-2.jsonl",
+      "row_ids_sha256": "7fe6afb0bf981bf15fe384258305f0ffd66ff94c9113a661619efbd02d7521ac",
+      "rows": 416,
+      "sha256": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b"
+    },
+    "3": {
+      "bytes": 76747,
+      "path": "runs/trivus/2026-08-12/data/private_scales/private_scales_fold-3.jsonl",
+      "row_ids_sha256": "0e81580ede2c8df34fb3591448697497547474493d452f7ab94a08f105df2f71",
+      "rows": 416,
+      "sha256": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+    },
+    "4": {
+      "bytes": 76244,
+      "path": "runs/trivus/2026-08-12/data/private_scales/private_scales_fold-4.jsonl",
+      "row_ids_sha256": "3743219581e8a3c1816f641a210f98bcdd9e8b9eaa987541e51b60ee5cd48e68",
+      "rows": 415,
+      "sha256": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+    }
+  },
+  "implementation_commit": "9be120227a3e962b493bf9acdbe1a001619d056b",
+  "prereg_sha256": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+  "records": 2080,
+  "schema": [
+    "schema_version",
+    "row_id",
+    "normalized_width",
+    "normalized_height"
+  ],
+  "schema_version": 1,
+  "source_public_sha256": "d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb",
+  "source_targets_sha256": "407d05fd7c5514d61bf415129892e5a7ffe9bf56646bea4c3b5f38aacd015352",
+  "status": "PASS_TRIVUS_PHYSICALLY_SEALED_PRIVATE_SCALES",
+  "training_started": false
+}
