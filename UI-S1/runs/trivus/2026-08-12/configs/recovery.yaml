@@ -7,6 +7,12 @@ roster:
   path: runs/xfer/2026-08-07/configs/xfer_roster.yaml
   sha256: 747c4d303ce478c0de26e37d713121ebbefdf8c2bea7c26fa71b1ac98bba316d
 python: .venv-ac-vllm/bin/python
+protected_process:
+  pid: 2274
+  start_ticks: 111845856
+  comm: python
+  cmdline_sha256: be2930b0047e353a955176e078f89501247cdb69dce9e802b3fd9c15fa851baf
+  executable: /opt/conda/envs/ptca/bin/python3.10
 expected_rows_per_lane: 2000
 execution:
   num_shards: 1
@@ -66,6 +72,39 @@ lanes:
     destination: runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/high/shard-0.jsonl
     model_revision: 91c3e5f213ab3f42931e6398174f470c8500167f
     model_index_sha256: eafcf7eb80f0e63f73ef902b792726372d9a5ac90f7c724898006882705360da
+complete_lanes:
+  ui_agile_low:
+    model_id: UI-AGILE-7B
+    setting: low
+    model_revision: de01366937b3c921f49ae1abe3b2c4a39b40ce8d
+    model_index_sha256: 3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6
+    shards:
+      - path: runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-0.jsonl
+        sha256: de7518dcc2c6288524a6289ccf680a114d84ed598a523a6fea0ea70023ac2b8f
+        bytes: 1143987
+        rows: 1000
+        shard_index: 0
+      - path: runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/low/shard-1.jsonl
+        sha256: 63aab88e7fcf602d7e15e9c4508b4b15f22785fe25e1a38388ede96ea3d3c266
+        bytes: 1143810
+        rows: 1000
+        shard_index: 1
+  ui_agile_high:
+    model_id: UI-AGILE-7B
+    setting: high
+    model_revision: de01366937b3c921f49ae1abe3b2c4a39b40ce8d
+    model_index_sha256: 3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6
+    shards:
+      - path: runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-0.jsonl
+        sha256: a4f2298f9e856b96f3ed78512b86b820f2c94a0e5606be6f857fa689444a4d5f
+        bytes: 1153161
+        rows: 1000
+        shard_index: 0
+      - path: runs/xfer/2026-08-07/raw/ac-stage1/ui-agile/high/shard-1.jsonl
+        sha256: b239a8345d3563fd90df964b917c63847f79466e6b5c4c27c8cd5f43418dc104
+        bytes: 1152622
+        rows: 1000
+        shard_index: 1
 references:
   low:
     path: runs/xfer/2026-08-07/data/androidcontrol/low_sample.jsonl
