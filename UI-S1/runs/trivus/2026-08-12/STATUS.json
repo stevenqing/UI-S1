@@ -38,7 +38,10 @@
   "selector_public_manifest": "runs/trivus/2026-08-12/data/PUBLIC_MANIFEST.json",
   "selector_public_sha256": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
   "selector_inference_started": true,
-  "selector_blind_manifest_exists": false,
+  "selector_blind_manifest_exists": true,
+  "selector_blind_manifest": "runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json",
+  "selector_predictions_sha256": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d",
+  "selector_records": 4000,
   "trivus_private_labels_created": false,
   "invalid_public_attempt_001": {
     "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",
@@ -62,7 +65,7 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "RUN_AND_BLIND_LOCK_ANDROID_SELECTOR_LOGITS",
+  "next_action": "PUBLISH_BLIND_LOCK_THEN_BUILD_FOLD_SEALED_PRIVATE_LABELS",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",

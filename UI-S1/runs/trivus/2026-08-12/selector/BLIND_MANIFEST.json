@@ -1,0 +1,77 @@
+{
+  "gpu_mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7
+  },
+  "ground_truth_fields_used": false,
+  "label_metrics_computed": false,
+  "model_index_sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+  "predictions_sha256": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d",
+  "private_labels_created": false,
+  "public_sha256": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
+  "python": "/home/aiscuser/UI-S1/UI-S1/.venv-scaleup/bin/python",
+  "records": 4000,
+  "schema_version": 1,
+  "scorer_or_evaluator_imported": false,
+  "settings": {
+    "high": 2000,
+    "low": 2000
+  },
+  "shards": {
+    "0": {
+      "bytes": 374643,
+      "path": "selector/shards/shard-0.jsonl",
+      "rows": 500,
+      "sha256": "42de80a6b8ae755d4b5d82d2d64d073995f85b1d1cf873f87e68bc6a5309add2"
+    },
+    "1": {
+      "bytes": 374619,
+      "path": "selector/shards/shard-1.jsonl",
+      "rows": 500,
+      "sha256": "bd7628ab9d0ffb9232a20cb9d3a61238f79a30c1f8f327541b3ed2238629f639"
+    },
+    "2": {
+      "bytes": 374555,
+      "path": "selector/shards/shard-2.jsonl",
+      "rows": 500,
+      "sha256": "a4bb7ac28b894f56a2b2a0b1f704608abad69bca9d0ea19f2c60e7df48104f8e"
+    },
+    "3": {
+      "bytes": 374540,
+      "path": "selector/shards/shard-3.jsonl",
+      "rows": 500,
+      "sha256": "9bf1a9481792d2a91e79da4f79859a0f9bea7aa65b2f2ffcea06c634aa02749b"
+    },
+    "4": {
+      "bytes": 374635,
+      "path": "selector/shards/shard-4.jsonl",
+      "rows": 500,
+      "sha256": "12d6f61526f65114de82ab074886055ea26abc6e7b7851dde3f2fb3f30ffb089"
+    },
+    "5": {
+      "bytes": 374668,
+      "path": "selector/shards/shard-5.jsonl",
+      "rows": 500,
+      "sha256": "ebaffb0bdf202a4e56e92b4b6de2bf658f53eaa8c1d2f922c6e3885678917ecd"
+    },
+    "6": {
+      "bytes": 374590,
+      "path": "selector/shards/shard-6.jsonl",
+      "rows": 500,
+      "sha256": "6ed3e76296690546a080468cc1232d6cdaaa9313a207d0e3b10c6f6e98bb14ed"
+    },
+    "7": {
+      "bytes": 374503,
+      "path": "selector/shards/shard-7.jsonl",
+      "rows": 500,
+      "sha256": "8d0b03de2e771a93e249ec9be8a2fdd0189b7322cc1607e719b030424c3036a7"
+    }
+  },
+  "status": "PASS_TRIVUS_SELECTOR_BLIND_LOCK"
+}
