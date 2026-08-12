@@ -112,7 +112,17 @@
     "performance_metric_computed": false,
     "training_started": false
   },
-  "fallback_contexts_created": false,
+  "fallback_contexts_created": true,
+  "fallback_context_manifest": "runs/trivus/2026-08-12/data/fallback_contexts/FALLBACK_CONTEXT_MANIFEST.json",
+  "fallback_context_manifest_sha256": "8b391a5a381714e4dec777a93c59871359bb195368c9c3d66198d8cc3b51562a",
+  "fallback_context_sha256": "470b41f623bca5bcf740ce4a599258d27432a4e2946751559a525e3c4082ef7b",
+  "fallback_context_records": 391524,
+  "fallback_context_public_records": 18644,
+  "fallback_context_final_anchor_records": 14644,
+  "fallback_context_final_anchor_mismatches": 0,
+  "fallback_context_candidate_success_emitted": false,
+  "fallback_context_source_identity_emitted": false,
+  "fallback_context_performance_metric_computed": false,
   "invalid_fallback_context_attempt_001": {
     "reason": "screenspot_normalized_pixel_roundtrip_changed_hard_threshold_complete_link",
     "failed_at_final_index_anchor": "outer2/screenspot_pro/C_self/powerpoint_windows_24",
@@ -128,14 +138,14 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "COMMIT_PRIVATE_SCALE_SEAL_THEN_AUTHORIZE_EXACT_FALLBACK_CONTEXT_GENERATION",
+  "next_action": "COMMIT_EXACT_CONTEXT_MANIFEST_THEN_IMPLEMENT_UNIFIED_DATA_ADAPTER_RESULT_FREE",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
     "manifest": "/scratch/workspaceblobstore/trivus/2026-08-12/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
     "verified": true,
-    "artifact_count": 104,
-    "total_bytes": 23803629
+    "artifact_count": 110,
+    "total_bytes": 137487220
   }
 }

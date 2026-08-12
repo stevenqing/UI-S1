@@ -1,0 +1,883 @@
+{
+  "aggregate_performance_computed": false,
+  "authorization_commit": "9be9b8315877df80df16793d30022f860bbdb1f5",
+  "authorization_nonce": "2b0230a4d620187d697bf2c510abd836a5e42794f3a2626467f12882bbc997e1",
+  "authorization_receipt": "runs/trivus/2026-08-12/authorization_receipts/2b0230a4d620187d697bf2c510abd836a5e42794f3a2626467f12882bbc997e1.json",
+  "authorization_receipt_sha256": "1ab9a819589969b0c2597faab12647d5d7de69fc601bcd66f39fef308c8d9116",
+  "authorization_sha256": "b52700504619957371b59b44a87afebe8bac5668a777199ba8ee461e6183f934",
+  "bytes": 113649503,
+  "candidate_success_emitted": false,
+  "configuration_score_emitted": false,
+  "contexts_per_public_record": 21,
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.12.13",
+    "pyyaml": "6.0.3",
+    "scikit_learn": "1.9.0",
+    "torch": "2.13.0+cu132"
+  },
+  "final_index_anchor_mismatches": 0,
+  "final_index_anchor_records": 14644,
+  "implementation_commit": "79d4585a8b79e37b0ebcbb672a21e2a53b2a9265",
+  "opened_private_files": [
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_labels_fold-0.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_labels_fold-1.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_labels_fold-2.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_labels_fold-3.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_labels_fold-4.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_scales/private_scales_fold-0.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_scales/private_scales_fold-1.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_scales/private_scales_fold-2.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_scales/private_scales_fold-3.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/trivus/2026-08-12/data/private_scales/private_scales_fold-4.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/visual-utility-selector/2026-08-11/data/private_labels_fold-0.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/visual-utility-selector/2026-08-11/data/private_labels_fold-1.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/visual-utility-selector/2026-08-11/data/private_labels_fold-2.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/visual-utility-selector/2026-08-11/data/private_labels_fold-3.jsonl",
+    "/home/aiscuser/UI-S1/UI-S1/runs/visual-utility-selector/2026-08-11/data/private_labels_fold-4.jsonl"
+  ],
+  "per_sample_final_contexts": 5,
+  "per_sample_inner_contexts": 16,
+  "prereg_sha256": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+  "private_scale_commit": "07130de20e81989946359989d6911fb78d682e13",
+  "public_records": 18644,
+  "record_schema": [
+    "schema_version",
+    "context_key",
+    "sample_key",
+    "outer_fold",
+    "role",
+    "holdout_fold",
+    "fit_folds",
+    "fallback_index"
+  ],
+  "records": 391524,
+  "reliability_emitted": false,
+  "schema_version": 1,
+  "sha256": "470b41f623bca5bcf740ce4a599258d27432a4e2946751559a525e3c4082ef7b",
+  "source_identity_emitted": false,
+  "splits": [
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": null,
+      "contexts": 18644,
+      "fit_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "holdout_fold": null,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 0,
+      "role": "final"
+    },
+    {
+      "applied_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 2,
+      "contexts": 14932,
+      "fit_folds": [
+        3,
+        4
+      ],
+      "holdout_fold": 1,
+      "opened_fold_hashes": {
+        "android_private": {
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 0,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 3,
+      "contexts": 14932,
+      "fit_folds": [
+        1,
+        4
+      ],
+      "holdout_fold": 2,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 0,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 4,
+      "contexts": 14932,
+      "fit_folds": [
+        1,
+        2
+      ],
+      "holdout_fold": 3,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+        }
+      },
+      "outer_fold": 0,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 1,
+      "contexts": 14932,
+      "fit_folds": [
+        2,
+        3
+      ],
+      "holdout_fold": 4,
+      "opened_fold_hashes": {
+        "android_private": {
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 0,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": null,
+      "contexts": 18644,
+      "fit_folds": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "holdout_fold": null,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 1,
+      "role": "final"
+    },
+    {
+      "applied_folds": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 2,
+      "contexts": 14978,
+      "fit_folds": [
+        3,
+        4
+      ],
+      "holdout_fold": 0,
+      "opened_fold_hashes": {
+        "android_private": {
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 1,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 3,
+      "contexts": 14978,
+      "fit_folds": [
+        0,
+        4
+      ],
+      "holdout_fold": 2,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 1,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 4,
+      "contexts": 14978,
+      "fit_folds": [
+        0,
+        2
+      ],
+      "holdout_fold": 3,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+        }
+      },
+      "outer_fold": 1,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": 0,
+      "contexts": 14978,
+      "fit_folds": [
+        2,
+        3
+      ],
+      "holdout_fold": 4,
+      "opened_fold_hashes": {
+        "android_private": {
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 1,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": null,
+      "contexts": 18644,
+      "fit_folds": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "holdout_fold": null,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 2,
+      "role": "final"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "checkpoint_fold": 1,
+      "contexts": 14806,
+      "fit_folds": [
+        3,
+        4
+      ],
+      "holdout_fold": 0,
+      "opened_fold_hashes": {
+        "android_private": {
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 2,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "checkpoint_fold": 3,
+      "contexts": 14806,
+      "fit_folds": [
+        0,
+        4
+      ],
+      "holdout_fold": 1,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 2,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "checkpoint_fold": 4,
+      "contexts": 14806,
+      "fit_folds": [
+        0,
+        1
+      ],
+      "holdout_fold": 3,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+        }
+      },
+      "outer_fold": 2,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "checkpoint_fold": 0,
+      "contexts": 14806,
+      "fit_folds": [
+        1,
+        3
+      ],
+      "holdout_fold": 4,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 2,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": null,
+      "contexts": 18644,
+      "fit_folds": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "holdout_fold": null,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 3,
+      "role": "final"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "checkpoint_fold": 1,
+      "contexts": 14886,
+      "fit_folds": [
+        2,
+        4
+      ],
+      "holdout_fold": 0,
+      "opened_fold_hashes": {
+        "android_private": {
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 3,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "checkpoint_fold": 2,
+      "contexts": 14886,
+      "fit_folds": [
+        0,
+        4
+      ],
+      "holdout_fold": 1,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "4": "1a40fc99be41e3c0044ac138e115da3effff44230c81a0f5e4337b0259dc9b9d"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+        }
+      },
+      "outer_fold": 3,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "checkpoint_fold": 4,
+      "contexts": 14886,
+      "fit_folds": [
+        0,
+        1
+      ],
+      "holdout_fold": 2,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+        }
+      },
+      "outer_fold": 3,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "checkpoint_fold": 0,
+      "contexts": 14886,
+      "fit_folds": [
+        1,
+        2
+      ],
+      "holdout_fold": 4,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+        }
+      },
+      "outer_fold": 3,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "checkpoint_fold": null,
+      "contexts": 18644,
+      "fit_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "holdout_fold": null,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 4,
+      "role": "final"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "checkpoint_fold": 1,
+      "contexts": 14974,
+      "fit_folds": [
+        2,
+        3
+      ],
+      "holdout_fold": 0,
+      "opened_fold_hashes": {
+        "android_private": {
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 4,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "checkpoint_fold": 2,
+      "contexts": 14974,
+      "fit_folds": [
+        0,
+        3
+      ],
+      "holdout_fold": 1,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "3": "6d4c2809ef7b2b6b9f4e056576c1f57d391203c37e18e9442bd9e23fa7b8e1f5"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+        }
+      },
+      "outer_fold": 4,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "checkpoint_fold": 3,
+      "contexts": 14974,
+      "fit_folds": [
+        0,
+        1
+      ],
+      "holdout_fold": 2,
+      "opened_fold_hashes": {
+        "android_private": {
+          "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+        },
+        "mind_private_scale": {
+          "0": "f7e15d02ff24d834b3d8725067b494d3513621918a977d81677758eb1058da2c",
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce"
+        },
+        "vus_private": {
+          "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+        }
+      },
+      "outer_fold": 4,
+      "role": "inner"
+    },
+    {
+      "applied_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "checkpoint_fold": 0,
+      "contexts": 14974,
+      "fit_folds": [
+        1,
+        2
+      ],
+      "holdout_fold": 3,
+      "opened_fold_hashes": {
+        "android_private": {
+          "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+          "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+        },
+        "mind_private_scale": {
+          "1": "4bb168be636951d2bbcc18b5d1cf056d7114e326830818b32c14ce83eb7854ce",
+          "2": "d649801ff4aadc380bcae718371525f11eee3c76b185cc6d0d8558ff89d50a0b"
+        },
+        "vus_private": {
+          "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+          "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+        }
+      },
+      "outer_fold": 4,
+      "role": "inner"
+    }
+  ],
+  "status": "PASS_TRIVUS_EXACT_FALLBACK_CONTEXTS",
+  "training_started": false
+}
