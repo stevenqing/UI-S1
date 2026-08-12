@@ -14,6 +14,15 @@
   "protected_pid_touched": false,
   "formal_fit_started": false,
   "outer_labels_opened": false,
+  "invalid_runtime_001": {
+    "reason": "resolved_virtualenv_symlink_selected_system_python_without_numpy",
+    "workers": 5,
+    "data_import_reached": false,
+    "private_labels_opened": false,
+    "pretest_records_written": false,
+    "outer_results_written": false,
+    "log_sha256": "b56ddc008eb67f0e3a066c5617e46c010ba9e5cfe666b4fa8e9a661c3132de28"
+  },
   "next_action": "RUN_FIVE_SEALED_OUTER_FOLDS",
   "retention": {
     "format": "per_file_sha256_manifest",

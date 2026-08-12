@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 RUN_DIR = Path(__file__).resolve().parent
-PYTHON = Path(sys.executable).resolve()
+PYTHON = Path(sys.executable)
 
 
 def main():

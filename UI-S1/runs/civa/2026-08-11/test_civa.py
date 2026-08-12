@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from civa_data import CHANNELS, EXPERTS, attach_labels, audit_public_record, build_base_data, text_features, validate_config
 from civa_model import fit_uplift_model
 from civa_train import CONFIG_PATH, load_test_after_pretest, matched_random, select_cell_threshold
+from launch_civa import PYTHON
 
 
 def prediction(sample_key, candidate_index):
@@ -31,6 +32,9 @@ def prediction(sample_key, candidate_index):
 
 
 class CivaDataTest(unittest.TestCase):
+    def test_launcher_preserves_active_python_environment(self):
+        self.assertEqual(str(PYTHON), sys.executable)
+
     def test_frozen_config_matches_code_contract(self):
         validate_config(yaml.safe_load(CONFIG_PATH.read_text()))
 
