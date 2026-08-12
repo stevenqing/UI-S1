@@ -1,0 +1,8 @@
+{
+  "authorization_nonce": "c99b9b2ee7a54274b8932e468dcc27628ff6eed082940efab39591eba680ad8d",
+  "authorization_sha256": "3e23896d8e166b668f4555f2b67bd3d95a98c43b6a6d7ff9239efcc6797a0226",
+  "implementation_commit": "d10a93bc17902342e114227551a561bc2d81e248",
+  "prereg_sha256": "fd835ca71b2df8e93c3087eb5ce3e465bbbe6cd74f0f77f4e9a0e00076c04a54",
+  "schema_version": 1,
+  "status": "CONSUMED_TRIVUS_PRIVATE_SCALE_AUTHORIZATION"
+}

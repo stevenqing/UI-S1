@@ -105,7 +105,7 @@ def build_private_scales(config):
             width, height = image.size
         bbox = target["step"]["bbox"]
         values = (float(bbox["width"]) / width, float(bbox["height"]) / height)
-        if not all(math.isfinite(value) and value > 0 for value in values):
+        if not all(math.isfinite(value) and value >= 0 for value in values):
             raise ValueError(f"TriVUS invalid private scale: {row_id}")
         output[int(public["fold"])].append({
             "schema_version": 1,

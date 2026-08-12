@@ -86,7 +86,7 @@
   "training_protocol_frozen": true,
   "fallback_context_protocol_frozen": true,
   "fallback_context_implementation_complete": true,
-  "fallback_context_implementation_tests": 13,
+  "fallback_context_implementation_tests": 14,
   "private_scale_seal_created": false,
   "private_scale_seal_authorized": false,
   "invalid_private_scale_attempt_001": {
@@ -95,6 +95,15 @@
     "authorization_receipt_created": false,
     "private_scale_artifact_written": false,
     "fallback_context_written": false,
+    "training_started": false
+  },
+  "invalid_private_scale_attempt_002": {
+    "reason": "strict_positive_scale_check_rejected_frozen_zero_height_target_box",
+    "failed_after_authorized_private_target_access": true,
+    "authorization_receipt_created": true,
+    "private_scale_artifact_written": false,
+    "fallback_context_written": false,
+    "performance_metric_computed": false,
     "training_started": false
   },
   "fallback_contexts_created": false,

@@ -420,7 +420,7 @@ def inject_vus_labels(banks, public, labels, fit_folds):
 
 def set_private_scales(scales):
     if not scales or any(
-        not all(math.isfinite(float(value)) and float(value) > 0 for value in pair)
+        not all(math.isfinite(float(value)) and float(value) >= 0 for value in pair)
         for pair in scales.values()
     ):
         raise ValueError("TriVUS invalid private Mind2Web scales")

@@ -15,7 +15,8 @@ from context_common import (
     committed_file, fit_final_vus_policies, fit_inner_vus_policies,
     git_blob_sha256, load_prereg,
     load_sealed_rows, mind_layout, publish_directory, safe_child_path,
-    require_commit_order, screen_layout, sha256_file, staging_directory,
+    require_commit_order, screen_layout, set_private_scales, sha256_file,
+    staging_directory,
 )
 from prepare_fallback_contexts import validate_context_coverage, write_authorization_receipt
 from representation_gate import majority_public_index
@@ -261,6 +262,15 @@ class FallbackContextTest(unittest.TestCase):
         self.assertEqual(emitted, [{
             "schema_version", "row_id", "normalized_width", "normalized_height",
         }])
+
+    def test_zero_target_dimension_matches_frozen_cev_scale_semantics(self):
+        import behavior_policy
+
+        set_private_scales({"row": (0.18046875, 0.0)})
+        self.assertEqual(behavior_policy.MIND_SCALES["row"], (0.18046875, 0.0))
+        behavior_policy.MIND_SCALES = None
+        with self.assertRaises(ValueError):
+            set_private_scales({"row": (0.1, -0.1)})
 
 
 if __name__ == "__main__":
