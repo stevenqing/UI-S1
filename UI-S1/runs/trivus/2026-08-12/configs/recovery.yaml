@@ -1,0 +1,81 @@
+schema_version: 1
+status: FROZEN_BEFORE_RECOVERY
+source_script:
+  path: runs/xfer/2026-08-07/infer/ac_stage1_vllm.py
+  sha256: e71732952d9afc76f94ddcf856696767078c461f94a8251685959017d6ef0ae0
+roster:
+  path: runs/xfer/2026-08-07/configs/xfer_roster.yaml
+  sha256: 747c4d303ce478c0de26e37d713121ebbefdf8c2bea7c26fa71b1ac98bba316d
+python: .venv-ac-vllm/bin/python
+expected_rows_per_lane: 2000
+execution:
+  num_shards: 1
+  shard_index: 0
+  batch_size: 8
+  resume: true
+  sampling_temperature: 0.0
+  max_tokens: 256
+  dtype: bfloat16
+  kv_cache_bytes: 2147483648
+lanes:
+  gui_r1_low:
+    model_id: GUI-R1-7B
+    setting: low
+    gpu: 1
+    seed_path: runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/low/shard-0.jsonl
+    seed_sha256: 28409dca2116dfcb757d967122cc5663a936f17a439c95168a0add09ec240279
+    seed_bytes: 1447831
+    seed_rows: 1096
+    missing_rows: 904
+    destination: runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/low/shard-0.jsonl
+    model_revision: e74baccc4cfa77074e2d53e99a8244ab9fc2ca10
+    model_index_sha256: da86c43e03377ab65945bfa77595964d906f057840eb38b78c983a5ec13d0e19
+  gui_r1_high:
+    model_id: GUI-R1-7B
+    setting: high
+    gpu: 3
+    seed_path: runs/xfer/2026-08-07/raw/ac-stage1/gui-r1/high/shard-0.jsonl
+    seed_sha256: 313a134dbfa7c00a95af9508a8c7b7ba6dbc55e9a9bae0629686deeb51bfaab3
+    seed_bytes: 1404312
+    seed_rows: 1056
+    missing_rows: 944
+    destination: runs/trivus/2026-08-12/recovery/ac-stage1/gui-r1/high/shard-0.jsonl
+    model_revision: e74baccc4cfa77074e2d53e99a8244ab9fc2ca10
+    model_index_sha256: da86c43e03377ab65945bfa77595964d906f057840eb38b78c983a5ec13d0e19
+  ui_r1_e_low:
+    model_id: UI-R1-E-3B
+    setting: low
+    gpu: 5
+    seed_path: runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/low/shard-0.jsonl
+    seed_sha256: 5768959b6b2e87c8b5e3134dfc7fb3a631325cb657214e8553c3522c909704a5
+    seed_bytes: 1806323
+    seed_rows: 1824
+    missing_rows: 176
+    destination: runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/low/shard-0.jsonl
+    model_revision: 91c3e5f213ab3f42931e6398174f470c8500167f
+    model_index_sha256: eafcf7eb80f0e63f73ef902b792726372d9a5ac90f7c724898006882705360da
+  ui_r1_e_high:
+    model_id: UI-R1-E-3B
+    setting: high
+    gpu: 7
+    seed_path: runs/xfer/2026-08-07/raw/ac-stage1/ui-r1-e/high/shard-0.jsonl
+    seed_sha256: 3ed11a3adb99294b5a42aeba48a23bd29dd58d49c13915f6a147a31ca9da5b35
+    seed_bytes: 1780012
+    seed_rows: 1792
+    missing_rows: 208
+    destination: runs/trivus/2026-08-12/recovery/ac-stage1/ui-r1-e/high/shard-0.jsonl
+    model_revision: 91c3e5f213ab3f42931e6398174f470c8500167f
+    model_index_sha256: eafcf7eb80f0e63f73ef902b792726372d9a5ac90f7c724898006882705360da
+references:
+  low:
+    path: runs/xfer/2026-08-07/data/androidcontrol/low_sample.jsonl
+    sha256: b54da7f9a7b18128a055652e48cb18ce8ff24f97dfd2416344cedff431529ce3
+  high:
+    path: runs/xfer/2026-08-07/data/androidcontrol/high_sample.jsonl
+    sha256: 91a7318c354aed2a55aeaacef7ce2d3c614036ede350fdbafa1026b4cf3d59ed
+prohibitions:
+  - no_scoring
+  - no_evaluator_import
+  - no_private_label_join
+  - no_accuracy_or_oracle_computation
+  - no_historical_file_mutation

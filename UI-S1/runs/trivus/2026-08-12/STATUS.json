@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-12",
+  "status": "PREREGISTERED_NO_RECOVERY",
+  "outcome": "TRIVUS_NOT_RUN",
+  "phase": "R0_ANDROIDCONTROL_RESULT_BLIND_RECOVERY",
+  "known_upstream": {
+    "VUS_SR": "VUS_SET_RANKER_METHOD_CANDIDATE",
+    "CARE_A1": "CLOSE_ROUTING",
+    "RAVEL_E0": "STOPPED_BY_RAVEL_K4",
+    "DELTA": "DELTA_NOT_SUPPORTED",
+    "CIVA_A0": "CIVA_ADMISSION_NOT_SUPPORTED"
+  },
+  "protected_pid": 2274,
+  "protected_pid_touched": false,
+  "recovery_started": false,
+  "new_accuracy_computed": false,
+  "private_labels_opened": false,
+  "next_action": "IMPLEMENT_AND_PUBLISH_RESULT_BLIND_RECOVERY"
+}
