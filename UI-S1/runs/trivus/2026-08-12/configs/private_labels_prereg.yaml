@@ -1,0 +1,37 @@
+schema_version: 1
+status: FROZEN_AFTER_COMMITTED_BLIND_LOCK_BEFORE_PRIVATE_LABELS
+blind_lock_commit: 8b2cc5c549a78cfb54918e5bdd271ebf52387f4f
+expected_records: 4000
+folds: 5
+expected_fold_rows: {0: 792, 1: 754, 2: 826, 3: 870, 4: 758}
+candidate_count: 3
+coordinate_radius: 0.14
+text_f1_threshold: 0.5
+dependencies:
+  blind_manifest:
+    path: runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json
+    sha256: 0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764
+  public_manifest:
+    path: runs/trivus/2026-08-12/data/PUBLIC_MANIFEST.json
+    sha256: c8531b2456155005baaf825f9ba36382ec44398ede9ed858cbe3df890a949e10
+  public_records:
+    path: runs/trivus/2026-08-12/data/public_records.jsonl
+    sha256: 4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd
+  selector_predictions:
+    path: runs/trivus/2026-08-12/selector/predictions.jsonl
+    sha256: b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d
+  scoring:
+    path: runs/complementarity/2026-07-30/scoring.py
+    sha256: 4ee0d12ca4762cd2378befb3b2ce7db8f1535da29cade53e1c8c6df6911374b3
+  folds:
+    path: runs/complementarity/2026-07-30/folds.json
+    sha256: 0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec
+private_schema: [schema_version, sample_key, candidate_success]
+prohibitions:
+  - no_success_rate
+  - no_model_score
+  - no_selector_accuracy
+  - no_oracle
+  - no_majority_comparison
+  - no_auroc
+  - no_training

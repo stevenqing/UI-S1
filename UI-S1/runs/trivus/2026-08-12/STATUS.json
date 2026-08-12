@@ -43,6 +43,8 @@
   "selector_predictions_sha256": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d",
   "selector_records": 4000,
   "trivus_private_labels_created": false,
+  "private_label_protocol_frozen": true,
+  "private_label_builder_implemented": true,
   "invalid_public_attempt_001": {
     "reason": "source_compressed_byte_hash_was_compared_to_reencoded_png_bytes",
     "failed_on_first_row": true,
