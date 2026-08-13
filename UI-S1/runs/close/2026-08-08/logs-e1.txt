@@ -1,0 +1,240 @@
+{
+  "E_K1": true,
+  "decision": "CANCEL_E2_AND_ANDROIDCONTROL",
+  "gates": {
+    "mind2web": {
+      "primary_pass": false,
+      "rand_control_pass": false,
+      "self_control_pass": false
+    },
+    "screenspot_pro": {
+      "primary_pass": false,
+      "rand_control_pass": false,
+      "self_control_pass": false
+    }
+  },
+  "mind2web": {
+    "accuracy": {
+      "C_cond": {
+        "A0": 0.31875,
+        "A1": 0.25625,
+        "A2": 0.2745192307692308,
+        "A3": 0.2745192307692308,
+        "A4": 0.1346153846153846,
+        "majority": 0.3230769230769231,
+        "ours": 0.3158653846153846
+      },
+      "C_rand": {
+        "A0": 0.31875,
+        "A1": 0.2153846153846154,
+        "A2": 0.18221153846153845,
+        "A3": 0.18221153846153845,
+        "A4": 0.04951923076923077,
+        "majority": 0.3177884615384615,
+        "ours": 0.2831730769230769
+      },
+      "C_self": {
+        "A0": 0.31826923076923075,
+        "A1": 0.2567307692307692,
+        "A2": 0.27115384615384613,
+        "A3": 0.27115384615384613,
+        "A4": 0.14807692307692308,
+        "majority": 0.3211538461538462,
+        "ours": 0.29278846153846155
+      },
+      "C_uni": {
+        "A0": 0.31875,
+        "A1": 0.23221153846153847,
+        "A2": 0.24182692307692308,
+        "A3": 0.24134615384615385,
+        "A4": 0.13317307692307692,
+        "majority": 0.32019230769230766,
+        "ours": 0.2668269230769231
+      }
+    },
+    "comparisons": {
+      "C_rand": {
+        "ci_99": [
+          -0.005138910431195643,
+          0.015873056531355706
+        ],
+        "p_delta_le_zero_plus_one": 0.101989801019898,
+        "point_delta": 0.005288461538461539,
+        "resamples": 10000,
+        "seed": 20260808,
+        "unit": "episode_stratified_by_website_fold"
+      },
+      "C_self": {
+        "ci_99": [
+          -0.005389567859854813,
+          0.009164992794394875
+        ],
+        "p_delta_le_zero_plus_one": 0.2736726327367263,
+        "point_delta": 0.0019230769230769232,
+        "resamples": 10000,
+        "seed": 20260808,
+        "unit": "episode_stratified_by_website_fold"
+      },
+      "C_uni": {
+        "ci_99": [
+          -0.006980847520204805,
+          0.01264069277422252
+        ],
+        "p_delta_le_zero_plus_one": 0.24117588241175883,
+        "point_delta": 0.0028846153846153848,
+        "resamples": 10000,
+        "seed": 20260808,
+        "unit": "episode_stratified_by_website_fold"
+      }
+    },
+    "summary": {
+      "column_best_arm": {
+        "A0": "C_uni",
+        "A1": "C_self",
+        "A2": "C_cond",
+        "A3": "C_cond",
+        "A4": "C_self",
+        "majority": "C_cond",
+        "ours": "C_cond"
+      },
+      "global_best": {
+        "accuracy": 0.3230769230769231,
+        "aggregator": "majority",
+        "arm": "C_cond"
+      },
+      "global_best_ties": [
+        {
+          "accuracy": 0.3230769230769231,
+          "aggregator": "majority",
+          "arm": "C_cond"
+        }
+      ],
+      "interaction": {
+        "best_aggregator_by_column_max": "majority",
+        "best_arm_by_row_max": "C_cond",
+        "column_best_varies": true,
+        "row_best_varies": true,
+        "their_combination_is_global_best": true
+      },
+      "row_best_aggregator": {
+        "C_cond": "majority",
+        "C_rand": "A0",
+        "C_self": "majority",
+        "C_uni": "majority"
+      }
+    }
+  },
+  "screenspot_pro": {
+    "accuracy": {
+      "C_cond": {
+        "A0": 0.6110056925996205,
+        "A1": 0.6154332700822265,
+        "A2": 0.6647691334598356,
+        "A3": 0.6647691334598356,
+        "A4": 0.6628716002530044,
+        "majority": 0.6110056925996205,
+        "ours": 0.6590765338393422
+      },
+      "C_rand": {
+        "A0": 0.5983554712207464,
+        "A1": 0.3396584440227704,
+        "A2": 0.5951929158760279,
+        "A3": 0.5951929158760279,
+        "A4": 0.5977229601518027,
+        "majority": 0.5983554712207464,
+        "ours": 0.6053130929791272
+      },
+      "C_self": {
+        "A0": 0.6065781151170145,
+        "A1": 0.603415559772296,
+        "A2": 0.6483238456672992,
+        "A3": 0.6483238456672992,
+        "A4": 0.6502213788741303,
+        "majority": 0.6065781151170145,
+        "ours": 0.6457938013915243
+      },
+      "C_uni": {
+        "A0": 0.5983554712207464,
+        "A1": 0.603415559772296,
+        "A2": 0.6388361796331435,
+        "A3": 0.6388361796331435,
+        "A4": 0.6394686907020873,
+        "majority": 0.5983554712207464,
+        "ours": 0.6369386464263125
+      }
+    },
+    "comparisons": {
+      "C_rand": {
+        "ci_99": [
+          -0.0013568613208660256,
+          0.02675586324878822
+        ],
+        "p_delta_le_zero_plus_one": 0.0124987501249875,
+        "point_delta": 0.01265022137887413,
+        "resamples": 10000,
+        "seed": 20260808
+      },
+      "C_self": {
+        "ci_99": [
+          -0.011708600044859296,
+          0.02285047313376541
+        ],
+        "p_delta_le_zero_plus_one": 0.2893710628937106,
+        "point_delta": 0.004427577482605946,
+        "resamples": 10000,
+        "seed": 20260808
+      },
+      "C_uni": {
+        "ci_99": [
+          -0.0013568613208660256,
+          0.02675586324878822
+        ],
+        "p_delta_le_zero_plus_one": 0.0124987501249875,
+        "point_delta": 0.01265022137887413,
+        "resamples": 10000,
+        "seed": 20260808
+      }
+    },
+    "summary": {
+      "column_best_arm": {
+        "A0": "C_cond",
+        "A1": "C_cond",
+        "A2": "C_cond",
+        "A3": "C_cond",
+        "A4": "C_cond",
+        "majority": "C_cond",
+        "ours": "C_cond"
+      },
+      "global_best": {
+        "accuracy": 0.6647691334598356,
+        "aggregator": "A3",
+        "arm": "C_cond"
+      },
+      "global_best_ties": [
+        {
+          "accuracy": 0.6647691334598356,
+          "aggregator": "A2",
+          "arm": "C_cond"
+        },
+        {
+          "accuracy": 0.6647691334598356,
+          "aggregator": "A3",
+          "arm": "C_cond"
+        }
+      ],
+      "interaction": {
+        "best_aggregator_by_column_max": "A2",
+        "best_arm_by_row_max": "C_cond",
+        "column_best_varies": false,
+        "row_best_varies": true,
+        "their_combination_is_global_best": true
+      },
+      "row_best_aggregator": {
+        "C_cond": "A3",
+        "C_rand": "ours",
+        "C_self": "A4",
+        "C_uni": "A4"
+      }
+    }
+  }
+}

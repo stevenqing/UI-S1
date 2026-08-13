@@ -1,0 +1,322 @@
+{
+  "S_K2": true,
+  "best_two_lineage_pool_by_B3": "leave_out_UI_TARS",
+  "budget": 12,
+  "claim": "LINEAGE_DIVERSITY_WITH_THIRD_LINEAGE_SATURATION",
+  "comparisons": {
+    "full_minus_leave_out_GTA1": {
+      "B3_mvp": {
+        "ci_99": [
+          0.0237465700855461,
+          0.06645606518379601
+        ],
+        "full_accuracy": 0.6369386464263125,
+        "leave_one_accuracy": 0.592662871600253,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.044275774826059454,
+        "resamples": 10000,
+        "seed": 20260806
+      },
+      "M1_ccm": {
+        "ci_99": [
+          0.015174439727108111,
+          0.054557610617030225
+        ],
+        "full_accuracy": 0.6382036685641999,
+        "leave_one_accuracy": 0.6040480708412397,
+        "p_delta_le_zero_plus_one": 9.999000099990002e-05,
+        "point_delta": 0.03415559772296015,
+        "resamples": 10000,
+        "seed": 20260806
+      }
+    },
+    "full_minus_leave_out_Qwen3": {
+      "B3_mvp": {
+        "ci_99": [
+          0.0007022130065165414,
+          0.030968012714857503
+        ],
+        "full_accuracy": 0.6369386464263125,
+        "leave_one_accuracy": 0.6204933586337761,
+        "p_delta_le_zero_plus_one": 0.0040995900409959,
+        "point_delta": 0.01644528779253637,
+        "resamples": 10000,
+        "seed": 20260806
+      },
+      "M1_ccm": {
+        "ci_99": [
+          0.0026332081894092207,
+          0.03359173901653778
+        ],
+        "full_accuracy": 0.6382036685641999,
+        "leave_one_accuracy": 0.6204933586337761,
+        "p_delta_le_zero_plus_one": 0.0017998200179982,
+        "point_delta": 0.017710309930423784,
+        "resamples": 10000,
+        "seed": 20260806
+      }
+    },
+    "full_minus_leave_out_UI_TARS": {
+      "B3_mvp": {
+        "ci_99": [
+          -0.01141420143643747,
+          0.010437387283680542
+        ],
+        "full_accuracy": 0.6369386464263125,
+        "leave_one_accuracy": 0.6375711574952562,
+        "p_delta_le_zero_plus_one": 0.5924407559244076,
+        "point_delta": -0.0006325110689437065,
+        "resamples": 10000,
+        "seed": 20260806
+      },
+      "M1_ccm": {
+        "ci_99": [
+          -0.011074918566775244,
+          0.010062988194171972
+        ],
+        "full_accuracy": 0.6382036685641999,
+        "leave_one_accuracy": 0.6388361796331435,
+        "p_delta_le_zero_plus_one": 0.5921407859214078,
+        "point_delta": -0.0006325110689437065,
+        "resamples": 10000,
+        "seed": 20260806
+      }
+    }
+  },
+  "lineages_with_significantly_positive_marginal_B3": [
+    "Qwen3",
+    "GTA1"
+  ],
+  "pools": {
+    "full_three_lineages_4x3": {
+      "accuracy": {
+        "B3_mvp": 0.6369386464263125,
+        "M1_ccm": 0.6382036685641999,
+        "pass_at_n": 0.7919038583175205
+      },
+      "actions": [
+        [
+          "GTA1-7B",
+          0
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          0
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          0
+        ],
+        [
+          "GTA1-7B",
+          1
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          1
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          1
+        ],
+        [
+          "GTA1-7B",
+          2
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          2
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          2
+        ],
+        [
+          "GTA1-7B",
+          3
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          3
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          3
+        ]
+      ]
+    },
+    "leave_out_GTA1": {
+      "accuracy": {
+        "B3_mvp": 0.592662871600253,
+        "M1_ccm": 0.6040480708412397,
+        "pass_at_n": 0.767235926628716
+      },
+      "actions": [
+        [
+          "Qwen3-VL-8B-Instruct",
+          0
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          0
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          1
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          1
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          2
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          2
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          3
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          3
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          4
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          4
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          5
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          5
+        ]
+      ]
+    },
+    "leave_out_Qwen3": {
+      "accuracy": {
+        "B3_mvp": 0.6204933586337761,
+        "M1_ccm": 0.6204933586337761,
+        "pass_at_n": 0.756483238456673
+      },
+      "actions": [
+        [
+          "GTA1-7B",
+          0
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          0
+        ],
+        [
+          "GTA1-7B",
+          1
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          1
+        ],
+        [
+          "GTA1-7B",
+          2
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          2
+        ],
+        [
+          "GTA1-7B",
+          3
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          3
+        ],
+        [
+          "GTA1-7B",
+          4
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          4
+        ],
+        [
+          "GTA1-7B",
+          5
+        ],
+        [
+          "UI-TARS-7B-SFT",
+          5
+        ]
+      ]
+    },
+    "leave_out_UI_TARS": {
+      "accuracy": {
+        "B3_mvp": 0.6375711574952562,
+        "M1_ccm": 0.6388361796331435,
+        "pass_at_n": 0.7855787476280834
+      },
+      "actions": [
+        [
+          "GTA1-7B",
+          0
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          0
+        ],
+        [
+          "GTA1-7B",
+          1
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          1
+        ],
+        [
+          "GTA1-7B",
+          2
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          2
+        ],
+        [
+          "GTA1-7B",
+          3
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          3
+        ],
+        [
+          "GTA1-7B",
+          4
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          4
+        ],
+        [
+          "GTA1-7B",
+          5
+        ],
+        [
+          "Qwen3-VL-8B-Instruct",
+          5
+        ]
+      ]
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

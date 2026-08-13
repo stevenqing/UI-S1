@@ -1,0 +1,157 @@
+{
+  "D_K3": "NOT_ADJUDICATED_MISSING_MIND2WEB_TRANSFER_OUTPUT",
+  "androidcontrol_confound": {
+    "exact_quality_matched_same_family_pool_available": false,
+    "manifest_step_micro_agile_internal_quality_gap_pp": 1.5308770108977687,
+    "manifest_step_micro_cross_internal_quality_gap_pp": 19.343539180072653,
+    "manifest_step_micro_gui_internal_quality_gap_pp": 1.3233004670472281,
+    "reporting": "show_both_same_family_brackets_and_do_not_attribute_delta_to_correlation_alone",
+    "status": "EXPLICIT_UNRESOLVED_MEMBER_QUALITY_VARIANCE",
+    "supplied_plan_cross_internal_quality_gap_pp": 19.4
+  },
+  "execution": "NOT_RUN",
+  "mind2web_control": {
+    "cross_minus_same_mean_quality_pp": -5.737179487179489,
+    "mixed_metrics_available": false,
+    "strongest_member_fixed": "tongui-7b"
+  },
+  "paper_action": "NO_CROSS_BENCHMARK_TRANSFER_CLAIM; keep allocation claims ScreenSpot-Pro-specific",
+  "pool_table": {
+    "T1_mind2web": {
+      "M_cross_3": {
+        "dominance_gap": 0.027884615384615397,
+        "mean_member_accuracy": 0.45576923076923076,
+        "mean_pairwise_failure_kappa": null,
+        "member_accuracy_unfiltered_manifest": {
+          "cogagent-18b": 0.5014423076923077,
+          "tongui-7b": 0.5293269230769231,
+          "ui-tars-7b": 0.33653846153846156
+        },
+        "models": [
+          "tongui-7b",
+          "cogagent-18b",
+          "ui-tars-7b"
+        ],
+        "pass_at_n": null,
+        "second_member_accuracy": 0.5014423076923077,
+        "stage_ab": null,
+        "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+        "strongest_member_accuracy": 0.5293269230769231,
+        "weighted_full": null
+      },
+      "M_same_3": {
+        "dominance_gap": 0.009134615384615352,
+        "mean_member_accuracy": 0.5131410256410257,
+        "mean_pairwise_failure_kappa": null,
+        "member_accuracy_unfiltered_manifest": {
+          "tongui-32b": 0.5201923076923077,
+          "tongui-3b": 0.48990384615384613,
+          "tongui-7b": 0.5293269230769231
+        },
+        "models": [
+          "tongui-3b",
+          "tongui-7b",
+          "tongui-32b"
+        ],
+        "pass_at_n": null,
+        "second_member_accuracy": 0.5201923076923077,
+        "stage_ab": null,
+        "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+        "strongest_member_accuracy": 0.5293269230769231,
+        "weighted_full": null
+      }
+    },
+    "T2_androidcontrol": {
+      "A_cross_2": {
+        "dominance_gap": 0.19343539180072655,
+        "mean_member_accuracy": 0.6788401660612351,
+        "mean_pairwise_failure_kappa": null,
+        "member_accuracy_unfiltered_manifest": {
+          "gui-r1-7b": 0.5821224701608718,
+          "ui-agile-7b": 0.7755578619615984
+        },
+        "models": [
+          "ui-agile-7b",
+          "gui-r1-7b"
+        ],
+        "pass_at_n": null,
+        "second_member_accuracy": 0.5821224701608718,
+        "stage_ab": null,
+        "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+        "strongest_member_accuracy": 0.7755578619615984,
+        "weighted_full": null
+      },
+      "A_same_2_agile": {
+        "dominance_gap": 0.015308770108977687,
+        "mean_member_accuracy": 0.7832122470160872,
+        "mean_pairwise_failure_kappa": null,
+        "member_accuracy_unfiltered_manifest": {
+          "ui-agile-3b": 0.7908666320705761,
+          "ui-agile-7b": 0.7755578619615984
+        },
+        "models": [
+          "ui-agile-3b",
+          "ui-agile-7b"
+        ],
+        "pass_at_n": null,
+        "second_member_accuracy": 0.7755578619615984,
+        "stage_ab": null,
+        "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+        "strongest_member_accuracy": 0.7908666320705761,
+        "weighted_full": null
+      },
+      "A_same_2_gui": {
+        "dominance_gap": 0.013233004670472281,
+        "mean_member_accuracy": 0.5755059678256357,
+        "mean_pairwise_failure_kappa": null,
+        "member_accuracy_unfiltered_manifest": {
+          "gui-r1-3b": 0.5688894654903995,
+          "gui-r1-7b": 0.5821224701608718
+        },
+        "models": [
+          "gui-r1-3b",
+          "gui-r1-7b"
+        ],
+        "pass_at_n": null,
+        "second_member_accuracy": 0.5688894654903995,
+        "stage_ab": null,
+        "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+        "strongest_member_accuracy": 0.5821224701608718,
+        "weighted_full": null
+      }
+    }
+  },
+  "prediction_file_counts": {
+    "AndroidControl": 0,
+    "Mind2Web": 0
+  },
+  "quality_matched_control": "UNAVAILABLE_DECLARED_CONFOUND",
+  "rebuild_attempt": {
+    "first_missing_path": "runs/androidcontrol-rft/2026-07-29/artifacts/ui-agile-3b/low/predictions.jsonl",
+    "note": "score.json and audit.json do not contain row-level joint correctness or coordinates and cannot replace predictions.jsonl",
+    "status": "FAILED_MISSING_SOURCE_PREDICTIONS"
+  },
+  "rows_parquet": {
+    "actual_sha256": null,
+    "expected_rows": 102054,
+    "expected_sha256": "f3effb37b6979ceb8073bf7b47c80448ec9084da8991f3f93205b79f4f77c77e",
+    "path": "runs/complementarity/2026-07-30/rows.parquet",
+    "present": false
+  },
+  "schema_version": 1,
+  "sources": {
+    "config": {
+      "path": "runs/final/2026-08-04/configs/t1_t2_pools.yaml",
+      "sha256": "69e143744f5d62f91ab4f7edf76fcff2191e7484e98b87a70b00260c767d0d68"
+    },
+    "manifest": {
+      "path": "runs/complementarity/2026-07-30/rows_manifest.json",
+      "sha256": "354a141b84e5f0b46455c50c7434b2befb416303fcdf40dca0db18137463233b"
+    },
+    "runner": {
+      "path": "runs/final/2026-08-04/t1_t2_transfer.py",
+      "sha256": "2a2a57fd1a6872a371ad05812a8071945cc22106c2e3eb1142d00d69fa41a777"
+    }
+  },
+  "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES"
+}

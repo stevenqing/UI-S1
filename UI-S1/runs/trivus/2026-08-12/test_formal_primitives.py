@@ -194,6 +194,22 @@ class FormalPrimitiveTest(unittest.TestCase):
             output[row["context_key"]] == row["fallback_success"] for row in rows
         ))
 
+    def test_joint2_thresholds_cover_exactly_two_families(self):
+        rows = [
+            row for row in threshold_rows()
+            if row["family"] in {"mind2web", "screenspot_pro"}
+        ]
+        selected = select_thresholds(
+            rows,
+            {"mind2web": 0.006106589385659482, "screenspot_pro": 0.007},
+            included_families=("mind2web", "screenspot_pro"),
+        )
+        output, reports = apply_selected_thresholds(
+            rows, selected, included_families=("mind2web", "screenspot_pro")
+        )
+        self.assertEqual(len(output), len(rows))
+        self.assertEqual(set(reports), {"mind2web", "screenspot_pro"})
+
     def test_target_only_composition(self):
         values = {}
         for family, spec in (

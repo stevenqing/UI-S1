@@ -1,7 +1,8 @@
 import argparse
+import itertools
 import json
 import math
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -78,6 +79,74 @@ def balance_pool(context, rows, splitter):
     return {"original_candidate_count":len(rows[0]["actions"]),"balanced_candidate_count":len(balanced[0]["actions"]),"original_accuracy":sum(value["correct"] for value in before.values())/len(rows),"balanced_accuracy":sum(value["correct"] for value in after.values())/len(rows),"delta":sum(after[row_id]["correct"]-before[row_id]["correct"] for row_id in before)/len(rows),"balanced_incorrect_source_bias":test_distribution(balanced,after,"B3_mvp","incorrect")}
 
 
+def distribution_summary(values):
+    array = np.asarray(values, dtype=np.float64)
+    return {
+        "mean": float(np.mean(array)),
+        "std": float(np.std(array)),
+        "min": float(np.min(array)),
+        "median": float(np.median(array)),
+        "max": float(np.max(array)),
+        "interval_99": [float(np.quantile(array, 0.005)), float(np.quantile(array, 0.995))],
+    }
+
+
+def rows_for_action_subset(rows, retained):
+    retained = tuple(retained)
+    output = []
+    for row in rows:
+        by_action = {action: candidate for action, candidate in zip(row["actions"], row["candidates"])}
+        output.append({**row, "actions": retained, "candidates": [by_action[action] for action in retained]})
+    return output
+
+
+def random_balance_pool(rows, draws=10000):
+    actions = tuple(rows[0]["actions"])
+    if any(tuple(row["actions"]) != actions for row in rows):
+        raise ValueError("B4 random balancing requires a fixed global action pool")
+    by_model = defaultdict(list)
+    model_order = []
+    for action in actions:
+        if action[0] not in by_model:
+            model_order.append(action[0])
+        by_model[action[0]].append(action)
+    counts = {model: len(values) for model, values in by_model.items()}
+    target = min(counts.values())
+    if max(counts.values()) - target != 1:
+        raise ValueError(f"B4 random balancing requires one-slot imbalance: {counts}")
+    choices = [tuple(itertools.combinations(by_model[model], target)) for model in model_order]
+    unique_subsets = []
+    for selected_by_model in itertools.product(*choices):
+        selected = {action for values in selected_by_model for action in values}
+        retained = tuple(action for action in actions if action in selected)
+        balanced_rows = rows_for_action_subset(rows, retained)
+        outputs = b3_outputs(balanced_rows)
+        bias = test_distribution(balanced_rows, outputs, "B3_mvp", "incorrect")
+        gta = model_order[0]
+        incorrect_rows = bias["rows"]
+        unique_subsets.append({
+            "actions": [f"{action[0]}/{action[1]}" for action in retained],
+            "accuracy": sum(value["correct"] for value in outputs.values()) / len(outputs),
+            "incorrect_GTA_winner_share": bias["observed_winners"][gta] / incorrect_rows if incorrect_rows else 0.0,
+            "incorrect_GTA_standardized_residual": bias["standardized_residuals"][gta],
+            "incorrect_cramers_V": bias["cramers_V"],
+        })
+    rng = np.random.default_rng(SEED)
+    sampled = rng.integers(0, len(unique_subsets), size=draws)
+    return {
+        "draws": draws,
+        "seed": SEED,
+        "sampling_unit": "global_action_subset",
+        "lineage_counts_before": counts,
+        "lineage_count_after": target,
+        "unique_subsets": unique_subsets,
+        "accuracy_distribution": distribution_summary([unique_subsets[index]["accuracy"] for index in sampled]),
+        "incorrect_GTA_winner_share_distribution": distribution_summary([unique_subsets[index]["incorrect_GTA_winner_share"] for index in sampled]),
+        "incorrect_GTA_standardized_residual_distribution": distribution_summary([unique_subsets[index]["incorrect_GTA_standardized_residual"] for index in sampled]),
+        "incorrect_cramers_V_distribution": distribution_summary([unique_subsets[index]["incorrect_cramers_V"] for index in sampled]),
+    }
+
+
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("--output",type=Path,required=True); args=parser.parse_args()
     contexts,pools=load_pools(); context7,context72=contexts["7B"],contexts["72B"]
@@ -87,19 +156,21 @@ def main():
         "72B":{"view0":view_pool_report(context72,tuple((model,0) for model in model72),split_72),"views1_3":view_pool_report(context72,tuple((model,view) for view in range(1,4) for model in model72),split_72)},
     }
     distances={"7B":distance_report(context7,tuple((model,view) for view in range(4) for model in model7),split_ids),"72B":distance_report(context72,tuple((model,view) for view in range(4) for model in model72),split_72)}
-    balanced={}
+    balanced={}; random_balanced={}
     for name,rows in pools.items():
         if "Uniform_Mixed" not in name: continue
         context=context7 if name.startswith("7B") else context72; splitter=split_ids if name.startswith("7B") else split_72
         counts=defaultdict(int)
         for action in rows[0]["actions"]: counts[action[0]]+=1
-        if max(counts.values())-min(counts.values())<=1: balanced[name]=balance_pool(context,rows,splitter)
+        difference=max(counts.values())-min(counts.values())
+        if difference<=1: balanced[name]=balance_pool(context,rows,splitter)
+        if difference==1: random_balanced[name]=random_balance_pool(rows)
     overrepresentation={}
     for scale,gta in (("7B","GTA1-7B"),("72B","GTA1-72B")):
         view0=view_reports[scale]["view0"]["incorrect"]["standardized_residuals"][gta]; crops=view_reports[scale]["views1_3"]["incorrect"]["standardized_residuals"][gta]
         overrepresentation[scale]={"view0_GTA_standardized_residual":view0,"views1_3_GTA_standardized_residual":crops,"weaker_on_view0":view0<crops}
     attribution_supported=all(overrepresentation[scale]["weaker_on_view0"] and distances[scale]["GTA_lower_than_both_99CI"] for scale in ("7B","72B"))
-    result={"schema_version":1,"status":"PASS","view_source_bias":view_reports,"within_lineage_geometry":distances,"count_balancing":balanced,"proposal_source_attribution":{"by_scale":overrepresentation,"supported_at_both_scales":attribution_supported,"interpretation":"proposal_source_attribution" if attribution_supported else "heterogeneous_pool_aggregation_effect"}}
+    result={"schema_version":1,"status":"PASS","view_source_bias":view_reports,"within_lineage_geometry":distances,"count_balancing":balanced,"random_count_balancing":random_balanced,"proposal_source_attribution":{"by_scale":overrepresentation,"supported_at_both_scales":attribution_supported,"interpretation":"proposal_source_attribution" if attribution_supported else "heterogeneous_pool_aggregation_effect"}}
     args.output.parent.mkdir(parents=True,exist_ok=True); args.output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n"); print(json.dumps({"proposal_source_attribution":result["proposal_source_attribution"],"geometry":distances,"count_balancing":{name:{key:value[key] for key in ("original_candidate_count","balanced_candidate_count","original_accuracy","balanced_accuracy","delta")} for name,value in balanced.items()}},indent=2,sort_keys=True))
 
 

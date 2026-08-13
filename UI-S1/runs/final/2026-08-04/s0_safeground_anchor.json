@@ -1,0 +1,69 @@
+{
+  "claim_boundaries": [
+    "Deterministic N12 candidates are not K=10 stochastic samples.",
+    "No local Clopper-Pearson calibration or FDR guarantee is inherited.",
+    "The 5.38 percentage-point cascade gain is paper-only and non-comparable."
+  ],
+  "local_anchor_attempt": {
+    "delta_from_official": -0.0066005366772122764,
+    "interpretation": "The existing local trace cannot validate the official numerical row: it differs in K, temperature, patch size, and thresholding. The local implementation remains an algorithm-level geometry transfer.",
+    "protocol": {
+      "activation_threshold": 0.0,
+      "patch_size": 28,
+      "primary_prediction": "GUI_RC",
+      "samples": 4,
+      "temperature": 0.7
+    },
+    "protocol_match": false,
+    "rounded_four_decimals": 0.6278,
+    "value": 0.6277994633227877,
+    "within_table_precision_band": false
+  },
+  "official_anchor": {
+    "acceptance_half_band": 5e-05,
+    "metric": "U_COM_AUROC",
+    "model": "GTA1-7B",
+    "paper": "arXiv:2602.02419v2",
+    "protocol": {
+      "activation_ratio_beta": 0.3,
+      "patch_size": 14,
+      "samples": 10,
+      "temperature": 1.0,
+      "weights": {
+        "concentration": 0.6,
+        "entropy": 0.2,
+        "margin": 0.2
+      }
+    },
+    "table_decimals": 4,
+    "value": 0.6344
+  },
+  "official_asset_audit": {
+    "available_assets": "source_code_and_figures_only",
+    "commit_tree_contains_precomputed_GTA1_K10_outputs": false,
+    "zero_GPU_exact_anchor_reproduction_from_official_repo": false
+  },
+  "r4_repositioning": {
+    "auroc_delta": 0.08550613333911572,
+    "claim": "Cross-lineage candidate pools strengthen a transferred dispersion signal.",
+    "matched_coverage": 0.8,
+    "mixed_correctness_auroc": 0.8296650079355729,
+    "mixed_minus_v_only_B3": 0.07120253164556956,
+    "mixed_retained_B3": 0.7460443037974683,
+    "prohibited_claim": "Disagreement itself is a novel selective-prediction method.",
+    "v_only_correctness_auroc": 0.7441588745964571,
+    "v_only_retained_B3": 0.6748417721518988
+  },
+  "related_work_coordinates": {
+    "Argus": "post-hoc GUI grounding UQ benchmark spanning internal and frontier interfaces",
+    "HyperClick": "truncated-Gaussian spatial confidence head with calibration",
+    "SafeGround": "black-box spatial dispersion plus LTT/Clopper-Pearson FDR control"
+  },
+  "schema_version": 1,
+  "sources": {
+    "R4_sha256": "d279058d55e58e452c5f507ab1434faf5c2d2bb2c42c171ec1f7876cd346a81a",
+    "SafeGround_commit": "5e8fca7ef091bc6751cad9703ca430e775aa4433",
+    "X7_sha256": "9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7"
+  },
+  "status": "NUMERICAL_ANCHOR_NOT_PASSED_ALGORITHM_LEVEL_PORT"
+}

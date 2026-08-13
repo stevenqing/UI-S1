@@ -41,12 +41,14 @@ def command(model, shard):
 def environment(model, gpu):
     env = os.environ.copy()
     paths = [str(RUN_DIR), str(H3_DIR)]
-    if model == "uitars":
+    if model == "qwen3":
+        env.pop("PYTHONPATH", None)
+    else:
         paths.extend([
             str(ROOT / "runs/collision-law/2026-07-30/w3_assets/MVP"),
             str(ROOT / "runs/collision-law/2026-07-30/w3_assets/mvp-overlay"),
         ])
-    env["PYTHONPATH"] = os.pathsep.join(paths)
+        env["PYTHONPATH"] = os.pathsep.join(paths)
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)
     return env
 

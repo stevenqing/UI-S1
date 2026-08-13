@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 
-from sourcebias_common import load_pools, official_groups, point_in_bbox, rule_outputs, split_ids, split_72
+from sourcebias_common import b3_select_index, load_pools, official_groups, point_in_bbox, rule_outputs, split_ids, split_72
 
 
 RUN_DIR = Path(__file__).resolve().parent
@@ -52,7 +52,7 @@ def centroid(points, indices, weights=None):
     values=np.asarray([points[index] for index in indices],dtype=np.float64)
     if weights is None: return values.mean(axis=0).tolist()
     weights=np.asarray(weights,dtype=np.float64)
-    return (values*weights[:,None]).sum(axis=0).tolist() if weights.sum()>0 else values.mean(axis=0).tolist()
+    return ((values*weights[:,None]).sum(axis=0)/weights.sum()).tolist() if weights.sum()>0 else values.mean(axis=0).tolist()
 
 
 def geometric_median(points):
@@ -99,7 +99,31 @@ def decide(representatives, models, decision, stats):
     raise ValueError(decision)
 
 
+def predict_r0(row, variant, stats):
+    candidates = row["candidates"]
+    points = [candidate["point"] for candidate in candidates]
+    _, group = b3_select_index(candidates)
+    if variant == "R0a":
+        return centroid(points, group)
+    by_model = defaultdict(list)
+    models = []
+    for index in group:
+        model = candidates[index]["model"]
+        if model not in by_model:
+            models.append(model)
+        by_model[model].append(index)
+    lineage_centroids = [centroid(points, by_model[model]) for model in models]
+    if variant == "R0b":
+        return centroid(lineage_centroids, range(len(lineage_centroids)))
+    if variant == "R0c":
+        weights = [stats["model_reliability"][model] for model in models]
+        return centroid(lineage_centroids, range(len(lineage_centroids)), weights)
+    raise ValueError(variant)
+
+
 def predict(row, variant, stats):
+    if variant.startswith("R0"):
+        return predict_r0(row, variant, stats)
     reduction,decision=variant.split("_"); by_model=defaultdict(list); models=[]
     for candidate in row["candidates"]:
         if candidate["model"] not in by_model: models.append(candidate["model"])
@@ -145,22 +169,58 @@ def run_scale(scale, context, rows, splitter, variants, best_model, reported_bes
     grid_accuracy={variant:sum(values.values())/len(rows) for variant,values in grid.items()}
     comparisons={name:bootstrap(rows,nested,values) for name,values in (("vs_B3",baseline_outputs["B3_mvp"]),("vs_M1",baseline_outputs["M1_ccm"]),("vs_best_single_matched_bank_view0",best_single))}
     comparisons["vs_best_single_reported"]={"nested_accuracy":accuracy["nested_LN"],"reported_best_single_accuracy":reported_best_single,"point_delta":accuracy["nested_LN"]-reported_best_single,"paired_inference_available":math.isclose(matched_best_accuracy,reported_best_single,abs_tol=1e-15)}
-    return {"accuracy":accuracy,"outer_selections":selections,"descriptive_crossfit_grid":grid_accuracy,"descriptive_best_variant":max(variants,key=lambda variant:(grid_accuracy[variant],-variants.index(variant))),"comparisons":comparisons,"outputs":{"nested_LN":nested,"B3_mvp":baseline_outputs["B3_mvp"],"M1_ccm":baseline_outputs["M1_ccm"],"best_single":best_single}}
+    grid_values = np.asarray(list(grid_accuracy.values()), dtype=np.float64)
+    return {"accuracy":accuracy,"outer_selections":selections,"selection_frequency":dict(Counter(item["selected_variant"] for item in selections.values())),"descriptive_crossfit_grid":grid_accuracy,"descriptive_best_variant":max(variants,key=lambda variant:(grid_accuracy[variant],-variants.index(variant))),"descriptive_summary":{"min":float(np.min(grid_values)),"median":float(np.median(grid_values)),"max":float(np.max(grid_values)),"nested_percentile_leq":float(np.mean(grid_values<=accuracy["nested_LN"]))},"comparisons":comparisons,"outputs":{"nested_LN":nested,"B3_mvp":baseline_outputs["B3_mvp"],"M1_ccm":baseline_outputs["M1_ccm"],"best_single":best_single}}
+
+
+def validate_frozen_baselines(reports, config, allow_recovered_baseline_drift=False):
+    expected = {
+        scale: {key: config["baselines"][scale][key] for key in ("B3", "M1")}
+        for scale in ("7B", "72B")
+    }
+    actual = {
+        scale: {"B3": reports[scale]["accuracy"]["B3_mvp"], "M1": reports[scale]["accuracy"]["M1_ccm"]}
+        for scale in ("7B", "72B")
+    }
+    matches = all(
+        math.isclose(actual[scale][key], expected[scale][key], abs_tol=1e-15)
+        for scale in expected for key in expected[scale]
+    )
+    if not matches and not allow_recovered_baseline_drift:
+        raise ValueError(f"B2 frozen baseline mismatch: {actual}")
+    return {
+        "matches": matches,
+        "mode": "FROZEN" if matches else "RECOVERY_DRIFT_ACCEPTED",
+        "expected": expected,
+        "actual": actual,
+        "delta": {
+            scale: {key: actual[scale][key] - expected[scale][key] for key in expected[scale]}
+            for scale in expected
+        },
+    }
 
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument("--output",type=Path,required=True); args=parser.parse_args()
-    config=yaml.safe_load((RUN_DIR/"configs/b2_variants.yaml").read_text()); variants=config["variant_order"]; contexts,pools=load_pools()
+    parser=argparse.ArgumentParser(); parser.add_argument("--output",type=Path,required=True); parser.add_argument("--allow-recovered-baseline-drift",action="store_true"); args=parser.parse_args()
+    config=yaml.safe_load((RUN_DIR/"configs/b2_variants.yaml").read_text()); variants=config["combined_method_order"]; r0_variants=config["r0_only_method_order"]; contexts,pools=load_pools()
+    if len(variants)!=24 or len(set(variants))!=24 or variants[:3]!=r0_variants:
+        raise ValueError("B2 frozen combined method order mismatch")
     reports={
         "7B":run_scale("7B",contexts["7B"],pools["7B_Uniform_Mixed_N12"],split_ids,variants,"Qwen3-VL-8B-Instruct",config["baselines"]["7B"]["best_single"]["accuracy"]),
         "72B":run_scale("72B",contexts["72B"],pools["72B_Uniform_Mixed_N8"],split_72,variants,"Qwen3.5-122B-A10B",config["baselines"]["72B"]["best_single"]["accuracy"]),
     }
-    for scale,expected in (("7B",config["baselines"]["7B"]),("72B",config["baselines"]["72B"])):
-        actual=reports[scale]["accuracy"]
-        for key in ("B3","M1"): assert math.isclose(actual[{"B3":"B3_mvp","M1":"M1_ccm"}[key]],expected[key],abs_tol=1e-15)
-        assert math.isclose(actual["best_single_reported"],expected["best_single"]["accuracy"],abs_tol=1e-15)
+    r0_only_reports={
+        "7B":run_scale("7B",contexts["7B"],pools["7B_Uniform_Mixed_N12"],split_ids,r0_variants,"Qwen3-VL-8B-Instruct",config["baselines"]["7B"]["best_single"]["accuracy"]),
+        "72B":run_scale("72B",contexts["72B"],pools["72B_Uniform_Mixed_N8"],split_72,r0_variants,"Qwen3.5-122B-A10B",config["baselines"]["72B"]["best_single"]["accuracy"]),
+    }
+    baseline_validation = validate_frozen_baselines(reports, config, args.allow_recovered_baseline_drift)
+    for scale in ("7B", "72B"):
+        if not math.isclose(reports[scale]["accuracy"]["best_single_reported"], config["baselines"][scale]["best_single"]["accuracy"], abs_tol=1e-15):
+            raise ValueError(f"B2 reported best-single mismatch: {scale}")
     success={scale:reports[scale]["comparisons"]["vs_B3"]["point_delta"]>config["MDE"] and reports[scale]["comparisons"]["vs_B3"]["ci_99"][0]>0 for scale in reports}
-    result={"schema_version":1,"status":"PASS","reports":reports,"primary_success_by_scale":success,"B2_primary_success":all(success.values()),"B_K4":reports["72B"]["accuracy"]["nested_LN"]<reports["72B"]["accuracy"]["best_single_reported"],"B3x_action":"RUN" if all(success.values()) else "CANCEL","variant_count":len(variants)}
+    r0_success={scale:r0_only_reports[scale]["comparisons"]["vs_B3"]["point_delta"]>config["MDE"] and r0_only_reports[scale]["comparisons"]["vs_B3"]["ci_99"][0]>0 for scale in r0_only_reports}
+    combined_success=all(success.values())
+    result={"schema_version":1,"status":"PASS","frozen_baseline_validation":baseline_validation,"reports":reports,"r0_only_reports":r0_only_reports,"primary_success_by_scale":success,"r0_only_success_by_scale":r0_success,"B2_primary_success":combined_success,"R0_only_primary_success":all(r0_success.values()),"B_K4":reports["72B"]["accuracy"]["nested_LN"]<reports["72B"]["accuracy"]["best_single_reported"],"B_K5":combined_success and not all(r0_success.values()),"B3x_action":"RUN" if combined_success else "CANCEL","variant_count":len(variants),"r0_only_variant_count":len(r0_variants)}
     args.output.parent.mkdir(parents=True,exist_ok=True); args.output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
     print(json.dumps({scale:{"accuracy":value["accuracy"],"selections":Counter(item["selected_variant"] for item in value["outer_selections"].values()),"comparisons":value["comparisons"]} for scale,value in reports.items()}|{"decision":{"primary_success":result["B2_primary_success"],"B_K4":result["B_K4"],"B3x":result["B3x_action"]}},indent=2,sort_keys=True,default=dict))
 

@@ -1,0 +1,49 @@
+schema_version: 1
+frozen_at: 2026-08-06
+status: result_blind_design_freeze
+rows: 1581
+forward_budget: 12
+stage_1:
+  actions:
+    - GTA1-7B/view0
+    - Qwen3-VL-8B-Instruct/view0
+    - UI-TARS-7B-SFT/view0
+    - GTA1-7B/view1
+    - Qwen3-VL-8B-Instruct/view1
+    - UI-TARS-7B-SFT/view1
+  forwards: 6
+stage_2:
+  forwards: 6
+  crops: 2
+  models: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  crop_geometry:
+    width: 1288
+    height: 728
+    boundary_policy: clamp_preserve_size
+  consensus:
+    grouping: official_complete_link_axis_aligned_14px
+    ordering: descending_size_then_lower_first_candidate_index
+    center: arithmetic_mean_of_group_points
+    second_group_fallback: farthest_stage1_point_from_largest_group_center
+arms:
+  C_uni:
+    description: frozen Uniform_Mixed actions 6-11
+  C_cond:
+    description: largest and second-largest cross-lineage consensus cluster RoIs
+  C_rand:
+    description: seeded random-location crops, shared across lineages
+    seed: 20260806
+    sampling: independent_uniform_valid_crop_origin_per_row_and_crop
+  C_self:
+    description: GTA1-only disagreement-derived RoIs, shared across lineages
+    centers: GTA1_view0_and_GTA1_view1_points
+primary:
+  metric: B3_mvp
+  comparison: C_cond_minus_C_uni
+  mde: 0.007043345177520599
+  success: point_delta_gt_mde_and_ci99_lower_gt_zero
+mandatory_controls: [C_rand, C_self]
+prohibitions:
+  - no_pass_at_n_gate
+  - no_arm_omission
+  - no_target_fields_in_roi_generation

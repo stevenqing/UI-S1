@@ -1,0 +1,97 @@
+{
+  "groups": {
+    "B1_B2_72B": {
+      "assets": [
+        {
+          "exists": false,
+          "path": "runs/scaleup/2026-08-02/raw/g2-regions.jsonl"
+        },
+        {
+          "exists": false,
+          "path": "runs/scaleup/2026-08-02/raw/g2-score-gta1.jsonl"
+        },
+        {
+          "exists": false,
+          "path": "runs/scaleup/2026-08-02/raw/g2-score-venus.jsonl"
+        },
+        {
+          "exists": false,
+          "path": "runs/scaleup/2026-08-02/raw/g2-score-qwen35.jsonl"
+        },
+        {
+          "exists": false,
+          "path": "runs/ccm-h2h/2026-07-31/h3/raw/shared_regions_n4.jsonl"
+        }
+      ],
+      "status": "BLOCKED_MISSING_ASSETS"
+    },
+    "M0_B1_B2_7B": {
+      "assets": [
+        {
+          "exists": false,
+          "path": "runs/allocation-law/2026-08-01/raw/shared_regions_n12.jsonl"
+        },
+        {
+          "exists": false,
+          "path": "runs/ccm-h2h/2026-07-31/h1/shards/top18"
+        },
+        {
+          "exists": false,
+          "path": "runs/ccm-h2h/2026-07-31/h3/shards/qwen3_views"
+        },
+        {
+          "exists": false,
+          "path": "runs/ccm-h2h/2026-07-31/h3/shards/uitars_views"
+        },
+        {
+          "exists": false,
+          "path": "runs/allocation-law/2026-08-01/shards"
+        }
+      ],
+      "status": "BLOCKED_MISSING_ASSETS"
+    },
+    "S0": {
+      "assets": [
+        {
+          "bytes": 6186,
+          "exists": true,
+          "kind": "file",
+          "path": "runs/diversity-axis/2026-08-02/x7_confidence.json",
+          "sha256": "9c0a4d36ad274d87c92b5ad389848953ff22bc51c940a22edef74b40945c63a7"
+        },
+        {
+          "bytes": 5414,
+          "exists": true,
+          "kind": "file",
+          "path": "runs/reallocation/2026-08-03/r4_risk_coverage.json",
+          "sha256": "d279058d55e58e452c5f507ab1434faf5c2d2bb2c42c171ec1f7876cd346a81a"
+        }
+      ],
+      "status": "READY"
+    },
+    "T1_T2": {
+      "assets": [
+        {
+          "exists": false,
+          "path": "runs/complementarity/2026-07-30/rows.parquet"
+        }
+      ],
+      "status": "BLOCKED_MISSING_ASSETS"
+    },
+    "X1": {
+      "assets": [
+        {
+          "bytes": 4629,
+          "exists": true,
+          "kind": "file",
+          "path": "runs/scaleup/2026-08-02/z5_sampling_axis.json",
+          "sha256": "e315041a2a15ef544fda72c7578cc92ea4ef0827cf048a774eb479943973483c"
+        }
+      ],
+      "status": "READY"
+    }
+  },
+  "restore_policy": "copy exact Git-ignored frozen artifacts from the source machine; do not regenerate from aggregate summaries",
+  "schema_version": 1,
+  "status": "PARTIAL"
+}

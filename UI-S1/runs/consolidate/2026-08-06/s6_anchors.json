@@ -1,0 +1,76 @@
+{
+  "D1_positioning": {
+    "boundary": "Correlation explains rank association, not causal variance decomposition.",
+    "direction_robust_B3": true,
+    "direction_robust_M1": true,
+    "main_text": "MECHANISM_EVIDENCE_NOT_LAW",
+    "variance_explained_proxy_M1_partial_rho_squared": 0.24918634252197494
+  },
+  "action_cluster_bootstrap": {
+    "B3_minus_best": {
+      "actions": 36,
+      "cluster_unit": "action",
+      "partial_rho_distribution": {
+        "ci_99": [
+          -0.6186138415650609,
+          -0.10472543002039343
+        ],
+        "mean": -0.3645677440107904,
+        "median": -0.36472808552735664,
+        "negative_share": 0.9997
+      },
+      "raw_rho_distribution": {
+        "ci_99": [
+          -0.6590939010184155,
+          -0.12431089391688425
+        ],
+        "mean": -0.39208331746928343,
+        "median": -0.3893679484565785,
+        "negative_share": 0.9998
+      },
+      "resamples": 10000,
+      "seed": 20260806,
+      "weighting": "product of sampled action multiplicities for each pool"
+    },
+    "M1_minus_best": {
+      "actions": 36,
+      "cluster_unit": "action",
+      "partial_rho_distribution": {
+        "ci_99": [
+          -0.6024238157346279,
+          -0.31649796097216293
+        ],
+        "mean": -0.4785162234452191,
+        "median": -0.48150076456601504,
+        "negative_share": 1.0
+      },
+      "raw_rho_distribution": {
+        "ci_99": [
+          -0.6080707120232169,
+          -0.31365482895488156
+        ],
+        "mean": -0.47144812165662003,
+        "median": -0.47281803008096757,
+        "negative_share": 1.0
+      },
+      "resamples": 10000,
+      "seed": 20260806,
+      "weighting": "product of sampled action multiplicities for each pool"
+    }
+  },
+  "safeground_anchor": {
+    "delta": -0.0066005366772122764,
+    "interpretation": "The existing local trace cannot validate the official numerical row: it differs in K, temperature, patch size, and thresholding. The local implementation remains an algorithm-level geometry transfer.",
+    "local_value": 0.6277994633227877,
+    "official_value": 0.6344,
+    "protocol_match": false,
+    "status": "NUMERICAL_ANCHOR_NOT_PASSED_ALGORITHM_LEVEL_PORT",
+    "writing": "ALGORITHM_LEVEL_PORT_ONLY"
+  },
+  "schema_version": 1,
+  "sources": {
+    "D1": "runs/dominance/2026-08-06/d1_dominance_law.json",
+    "SafeGround": "runs/final/2026-08-04/s0_safeground_anchor.json"
+  },
+  "status": "PASS"
+}

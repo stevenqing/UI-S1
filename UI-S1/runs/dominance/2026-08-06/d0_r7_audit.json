@@ -1,0 +1,187 @@
+{
+  "D_K1_triggered": false,
+  "analytic_probe": {
+    "expected_fixed_output": [
+      3.3333333333333335,
+      0.0
+    ],
+    "fixed_output": [
+      3.3333333333333335,
+      0.0
+    ],
+    "legacy_output": [
+      10.0,
+      0.0
+    ],
+    "points": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        10.0,
+        0.0
+      ]
+    ],
+    "weights": [
+      2.0,
+      1.0
+    ]
+  },
+  "audit": "D0_R7_IMPLEMENTATION",
+  "decision": "REPORT_FAULT_AND_BOTH_RESULTS;_B2_GATE_UNCHANGED",
+  "finding": "IMPLEMENTATION_FAULT_CONFIRMED",
+  "fixed_18_method_without_r7": {
+    "72B": {
+      "accuracy": {
+        "B3_mvp": 0.41239721695129666,
+        "M1_ccm": 0.5319418089816572,
+        "best_single_matched_bank_view0": 0.7128399746995573,
+        "best_single_reported": 0.7141049968374447,
+        "nested_LN": 0.7052498418722327
+      },
+      "r7_grid": {},
+      "selected_variants": [
+        "R5_D2",
+        "R5_D2",
+        "R5_D2",
+        "R5_D3",
+        "R5_D3"
+      ],
+      "selection_frequency": {
+        "R5_D2": 3,
+        "R5_D3": 2
+      }
+    },
+    "7B": {
+      "accuracy": {
+        "B3_mvp": 0.6369386464263125,
+        "M1_ccm": 0.6382036685641999,
+        "best_single_matched_bank_view0": 0.545224541429475,
+        "best_single_reported": 0.5464895635673624,
+        "nested_LN": 0.6198608475648324
+      },
+      "r7_grid": {},
+      "selected_variants": [
+        "R1_D2",
+        "R4_D1",
+        "R1_D1",
+        "R3_D1",
+        "R3_D1"
+      ],
+      "selection_frequency": {
+        "R1_D1": 1,
+        "R1_D2": 1,
+        "R3_D1": 2,
+        "R4_D1": 1
+      }
+    }
+  },
+  "fixed_21_method_rerun": {
+    "72B": {
+      "accuracy": {
+        "B3_mvp": 0.41239721695129666,
+        "M1_ccm": 0.5319418089816572,
+        "best_single_matched_bank_view0": 0.7128399746995573,
+        "best_single_reported": 0.7141049968374447,
+        "nested_LN": 0.7052498418722327
+      },
+      "r7_grid": {
+        "R7_D1": 0.5161290322580645,
+        "R7_D2": 0.6464263124604681,
+        "R7_D3": 0.6483238456672992
+      },
+      "selected_variants": [
+        "R5_D2",
+        "R5_D2",
+        "R5_D2",
+        "R5_D3",
+        "R5_D3"
+      ],
+      "selection_frequency": {
+        "R5_D2": 3,
+        "R5_D3": 2
+      }
+    },
+    "7B": {
+      "accuracy": {
+        "B3_mvp": 0.6369386464263125,
+        "M1_ccm": 0.6382036685641999,
+        "best_single_matched_bank_view0": 0.545224541429475,
+        "best_single_reported": 0.5464895635673624,
+        "nested_LN": 0.6198608475648324
+      },
+      "r7_grid": {
+        "R7_D1": 0.6261859582542695,
+        "R7_D2": 0.6198608475648324,
+        "R7_D3": 0.6179633143580012
+      },
+      "selected_variants": [
+        "R1_D2",
+        "R4_D1",
+        "R1_D1",
+        "R3_D1",
+        "R3_D1"
+      ],
+      "selection_frequency": {
+        "R1_D1": 1,
+        "R1_D2": 1,
+        "R3_D1": 2,
+        "R4_D1": 1
+      }
+    }
+  },
+  "headline_changed_by_r7_fix": {
+    "72B": false,
+    "7B": false
+  },
+  "historical_broken_r7_grid": {
+    "72B": {
+      "R7_D1": 0.026565464895635674,
+      "R7_D2": 0.02403542061986085,
+      "R7_D3": 0.02340290955091714
+    },
+    "7B": {
+      "R7_D1": 0.022770398481973434,
+      "R7_D2": 0.021505376344086023,
+      "R7_D3": 0.022137887413029727
+    }
+  },
+  "notes": [
+    "The historical broken and recovery combined-24 headline results are not treated as a controlled pair because the method set and recovered bank differ.",
+    "The controlled fixed-21 versus fixed-18 comparison isolates whether repaired R7 changes nested selection on the recovered bank."
+  ],
+  "recovery_fixed_r7_grid": {
+    "72B": {
+      "R7_D1": 0.5161290322580645,
+      "R7_D2": 0.6464263124604681,
+      "R7_D3": 0.6483238456672992
+    },
+    "7B": {
+      "R7_D1": 0.6261859582542695,
+      "R7_D2": 0.6198608475648324,
+      "R7_D3": 0.6179633143580012
+    }
+  },
+  "root_cause": "weighted centroid returned sum(w_i*x_i) without division by sum(w_i)",
+  "schema_version": 1,
+  "sources": {
+    "config": {
+      "path": "runs/sourcebias/2026-08-03/configs/b2_variants.yaml",
+      "sha256": "2ae7c86ca451ce98ddbca59da364420b646b29607790ac69dd253bff71ee44cc"
+    },
+    "frozen_b2": {
+      "path": "runs/sourcebias/2026-08-03/results/b2_lineage_normalized.json",
+      "sha256": "8dfab1283d39480950f779d6c3f10b5150e51c4039a05470292ffe71153973ed"
+    },
+    "implementation": {
+      "path": "runs/sourcebias/2026-08-03/b2_lineage_normalized.py",
+      "sha256": "ace3b01899576cb6a883b4207e26afd18daf69be705fc7c3c945ee0b96309903"
+    },
+    "recovery_b2": {
+      "path": "runs/sourcebias/2026-08-03/results/recovery_b2_lineage_normalized.json",
+      "sha256": "2c62003a9bbaaae51a7b9345873455889d5c745ad336759fc9639fcced60148c"
+    }
+  },
+  "status": "PASS"
+}

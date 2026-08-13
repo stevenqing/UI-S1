@@ -1,0 +1,29 @@
+schema_version: 1
+frozen_at: 2026-08-06
+status: result_blind_variant_freeze
+name: E1_patch28_element_mode
+family: element_space_aggregation
+candidate_pool: 7B_Uniform_Mixed_N12
+proxy:
+  type: patch_grid
+  patch_size: 28
+  assignment: floor_point_to_patch_cell
+decision:
+  primary: largest_cell_vote
+  tie_breaks:
+    - higher_lineage_count
+    - higher_development_lineage_reliability
+    - lower_original_candidate_index
+  output: development_reliability_best_real_candidate_in_winning_cell
+nested_selection:
+  append_after_original_24: true
+  outer_folds: 5
+  inner_validation_fold: outer_plus_1_mod_5
+  refit_on_full_outer_dev: true
+reporting:
+  preserve_original_24_result: true
+  compare_new_25_method_nested_side_by_side: true
+prohibitions:
+  - no_target_bbox_in_feature_or_decision
+  - no_post_result_metric_change
+  - no_replacement_of_original_24_result

@@ -1,0 +1,67 @@
+schema_version: 1
+frozen_at_utc: "2026-08-04"
+result_blind: true
+source_contract: runs/complementarity/2026-07-30/rows.parquet
+fold_contract: runs/complementarity/2026-07-30/folds.json
+
+T1_mind2web:
+  benchmark: mind2web
+  setting: visual
+  budget: 3
+  pools:
+    M_cross_3:
+      models: [tongui-7b, cogagent-18b, ui-tars-7b]
+      families: [TongUI, CogAgent, UI-TARS]
+    M_same_3:
+      models: [tongui-3b, tongui-7b, tongui-32b]
+      families: [TongUI, TongUI, TongUI]
+  fixed_fact:
+    strongest_member_both_pools: tongui-7b
+    strongest_member_step_micro: 0.5293269230769231
+    supplied_plan_cross_minus_same_mean_member_quality_pp: -5.73
+    manifest_step_micro_cross_minus_same_mean_member_quality_pp: -5.737179487179489
+
+T2_androidcontrol:
+  benchmark: androidcontrol
+  setting: low
+  budget: 2
+  pools:
+    A_cross_2:
+      models: [ui-agile-7b, gui-r1-7b]
+      families: [UI-AGILE, GUI-R1]
+    A_same_2_agile:
+      models: [ui-agile-3b, ui-agile-7b]
+      families: [UI-AGILE, UI-AGILE]
+    A_same_2_gui:
+      models: [gui-r1-3b, gui-r1-7b]
+      families: [GUI-R1, GUI-R1]
+  confound:
+    status: EXPLICIT_UNRESOLVED_MEMBER_QUALITY_VARIANCE
+    supplied_plan_cross_internal_quality_gap_pp: 19.4
+    manifest_step_micro_cross_internal_quality_gap_pp: 19.343539180072653
+    manifest_step_micro_agile_internal_quality_gap_pp: 1.5308770108977687
+    manifest_step_micro_gui_internal_quality_gap_pp: 1.3233004670472281
+    exact_quality_matched_same_family_pool_available: false
+    reporting: show_both_same_family_brackets_and_do_not_attribute_delta_to_correlation_alone
+
+evaluation:
+  quarantine: exclude
+  folds: five_shared_group_folds
+  candidate_metrics:
+    - mean_member_step_micro
+    - strongest_member_step_micro
+    - pass_at_n
+    - mean_pairwise_failure_kappa
+  aggregation_metrics:
+    - stage_ab_step_micro
+    - weighted_full_step_micro
+  statistics:
+    resamples: 10000
+    interval: 0.99
+    paired_unit: frozen_group_within_fold
+    seed: 20260804
+
+prohibitions:
+  - no_pool_change_after_row_restore
+  - no_cross_family_gain_attributed_to_correlation_when_quality_confounded
+  - no_change_to_historical_L3_or_X8_status

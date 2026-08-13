@@ -1,0 +1,84 @@
+{
+  "Q1_primary_success": true,
+  "Q2a_claim": "ELEMENT_SPACE_NOT_SUPPORTED",
+  "Q2b_primary_success": false,
+  "Q_K1": false,
+  "Q_K2": false,
+  "Q_K3": false,
+  "S2_success": false,
+  "S_K1": true,
+  "S_K2": true,
+  "S_K3": true,
+  "artifacts": {
+    "CONSOLIDATED_SUMMARY_ZH.md": {
+      "path": "CONSOLIDATED_SUMMARY_ZH.md",
+      "sha256": "0de84bc76ab18f41bfddff0fb520a70a8a612a27db43dbb6207fa6af15792acf"
+    },
+    "MAIN_TABLE.md": {
+      "path": "MAIN_TABLE.md",
+      "sha256": "4d0d16b322b1103addce10fee4ed444e5c25305bb9fb635c5233584f6acbacab"
+    },
+    "REPORT.md": {
+      "path": "REPORT.md",
+      "sha256": "77a12d39a0359186821044744e09962e7985ca0e05b2cd88408ac7ea2c83b95d"
+    },
+    "SPEC.md": {
+      "path": "SPEC.md",
+      "sha256": "ba3af17f62c805f28a2584f5eaaa89d16ac8cf164f71f5ccb4b3869fa9c099e2"
+    },
+    "configs/q1_arms.yaml": {
+      "path": "configs/q1_arms.yaml",
+      "sha256": "c677a6a5b97f7186a3316514932377007b451df1c924be8d2791227c028bfa7f"
+    },
+    "configs/q2a_variant.yaml": {
+      "path": "configs/q2a_variant.yaml",
+      "sha256": "637150e146e577a42646aa0f46aee36a2df4aab8d578c5887f620bfc887c61b3"
+    },
+    "configs/q2b_verification.yaml": {
+      "path": "configs/q2b_verification.yaml",
+      "sha256": "ddfb7de7088fefb6263159e74fd3f89964f0fdc1cae52a3d95bfedfb94d74e88"
+    },
+    "fig_pool_distribution.pdf": {
+      "path": "fig_pool_distribution.pdf",
+      "sha256": "64ff171cb21cf6fcd7d66cd591e94914b7d1fdbb5c1bdd83ecd8fc5661704b10"
+    },
+    "q1_sequential": {
+      "path": "q1_sequential.json",
+      "sha256": "193668da87c3711826a56a93f517488c47c09ac555aad7482d6d010ffae18bb4"
+    },
+    "q2a_element_space": {
+      "path": "q2a_element_space.json",
+      "sha256": "6f2ec52bcb60cbd737327ae90ef828181626004cdb067fe92942a0030a548865"
+    },
+    "q2b_verification": {
+      "path": "q2b_verification.json",
+      "sha256": "1a25c30c1557687c936c61a86f657b03eb29adfe699a0db1cb2eed03f9b6e7e7"
+    },
+    "s1_pool_distribution": {
+      "path": "s1_pool_distribution.json",
+      "sha256": "5c3059e3bc607ee535d6e7e3314e0b803a45bff255f40e6b87c5579fbdb6a460"
+    },
+    "s2_pool_selector": {
+      "path": "s2_pool_selector.json",
+      "sha256": "908114160fa5ebd8800d0b037b740bd96a4c7795187a6285fd6aed47a8c7e38a"
+    },
+    "s3_leave_one_lineage": {
+      "path": "s3_leave_one_lineage.json",
+      "sha256": "2f30747a63045687f94d691ec0b0c9fc7c76c8dada71f52514cf792136372243"
+    },
+    "s4_slope_hardening": {
+      "path": "s4_slope_hardening.json",
+      "sha256": "2e6b426901aa448e885798c38725e0dc30087c2d8c708a22ae373b4e6313fc1a"
+    },
+    "s5_decline_attribution": {
+      "path": "s5_decline_attribution.json",
+      "sha256": "c7f8caf3176852857349f00a87a85b510762cba5c8abbc8864ee3709309b7eec"
+    },
+    "s6_anchors": {
+      "path": "s6_anchors.json",
+      "sha256": "a64b6eba0c730de9cf765800a61d508ed35a624b4b79a93953d02c933991197a"
+    }
+  },
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

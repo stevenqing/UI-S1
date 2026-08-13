@@ -133,10 +133,18 @@ def select_family_threshold(rows_by_cell, mde):
     return selected[3], {"equal_cell_delta": selected[0], "cells": selected[4]}
 
 
-def select_thresholds(rows, mde, minimum_opportunities=200):
+def select_thresholds(rows, mde, minimum_opportunities=200, included_families=None):
     validate_threshold_rows(rows)
+    included = tuple(FAMILY_CELLS) if included_families is None else tuple(included_families)
+    if not included or len(set(included)) != len(included) or any(
+        family not in FAMILY_CELLS for family in included
+    ):
+        raise ValueError("TriVUS threshold included-family mismatch")
+    if set(row["family"] for row in rows) != set(included):
+        raise ValueError("TriVUS threshold row family coverage mismatch")
     report = {"families": {}}
-    for family, cells in FAMILY_CELLS.items():
+    for family in included:
+        cells = FAMILY_CELLS[family]
         rows_by_cell = {
             cell: [
                 row for row in rows
@@ -171,10 +179,17 @@ def select_thresholds(rows, mde, minimum_opportunities=200):
     return report
 
 
-def apply_selected_thresholds(rows, selected):
+def apply_selected_thresholds(rows, selected, included_families=None):
+    validate_threshold_rows(rows)
+    included = tuple(selected["families"]) if included_families is None else tuple(included_families)
+    if set(included) != set(selected["families"]):
+        raise ValueError("TriVUS selected threshold family mismatch")
+    if set(row["family"] for row in rows) != set(included):
+        raise ValueError("TriVUS threshold application family coverage mismatch")
     output = {}
     reports = {}
-    for family, cells in FAMILY_CELLS.items():
+    for family in included:
+        cells = FAMILY_CELLS[family]
         reports[family] = {}
         for cell in cells:
             cell_rows = [

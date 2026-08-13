@@ -216,10 +216,12 @@ def half_up_median(epochs):
 
 def predict_data(model, data, standardizer, spec_id, batch_size, device):
     spec = model_spec(spec_id)
-    if any(family not in spec["families"] for family in data.families):
-        raise ValueError(f"TriVUS prediction data outside spec families: {spec_id}")
-    weighted = with_model_weights(data, spec["variant"], spec["target_family"])
-    transformed = standardizer.transform(weighted)
+    selected = data.subset(np.asarray([
+        family in spec["families"] for family in data.families
+    ], dtype=np.bool_))
+    if set(selected.families) != set(spec["families"]):
+        raise ValueError(f"TriVUS prediction family coverage mismatch: {spec_id}")
+    transformed = standardizer.transform(selected)
     model.eval()
     output = []
     with torch.no_grad():

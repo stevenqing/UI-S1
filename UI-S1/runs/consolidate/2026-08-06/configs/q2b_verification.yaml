@@ -1,0 +1,49 @@
+schema_version: 1
+frozen_at: 2026-08-06
+status: result_blind_design_freeze
+rows: 1581
+forward_budget: 12
+stage_1:
+  generation_actions:
+    - GTA1-7B/view0
+    - Qwen3-VL-8B-Instruct/view0
+    - UI-TARS-7B-SFT/view0
+    - GTA1-7B/view1
+    - Qwen3-VL-8B-Instruct/view1
+    - UI-TARS-7B-SFT/view1
+  forwards: 6
+stage_2:
+  verification_forwards: 6
+  crop_geometry: {width: 448, height: 448, boundary_policy: clamp_preserve_size}
+  mapping:
+    GTA1-7B/view0: Qwen3-VL-8B-Instruct
+    GTA1-7B/view1: UI-TARS-7B-SFT
+    Qwen3-VL-8B-Instruct/view0: UI-TARS-7B-SFT
+    Qwen3-VL-8B-Instruct/view1: GTA1-7B
+    UI-TARS-7B-SFT/view0: GTA1-7B
+    UI-TARS-7B-SFT/view1: Qwen3-VL-8B-Instruct
+  prompt_template: "Instruction: {instruction}\nIs the UI element described by the instruction visible inside this crop? Answer only YES or NO."
+  message_contract: single_user_message_with_image_and_prompt_template
+decision:
+  positive_candidates_first: true
+  fallback: frozen_B3_on_stage1_candidates
+  positive_selection: frozen_B3_restricted_to_verified_positive_candidates
+evaluation:
+  verification_label: target_bbox_center_inside_crop
+  parse_failure_decision: false
+  random_reference_seed: 20260806
+primary:
+  metric: B3_mvp
+  baseline: Uniform_Mixed_N12
+  mde: 0.007043345177520599
+  success: point_delta_gt_mde_and_ci99_lower_gt_zero
+mandatory:
+  - verification_accuracy
+  - yes_precision
+  - yes_recall
+  - random_50_percent_reference
+prohibitions:
+  - no_target_fields_in_prompt_or_crop_generation
+  - no_verifier_self_check
+  - no_budget_change
+  - no_additional_system_prompt

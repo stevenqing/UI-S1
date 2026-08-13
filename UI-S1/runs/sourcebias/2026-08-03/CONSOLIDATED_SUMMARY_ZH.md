@@ -1,8 +1,344 @@
-# Source Bias 与 Lineage-Normalized Aggregation 完整总结
+# 多模型 GUI Grounding、72B Scale-Up 与来源偏置完整总结
 
-日期：2026-08-03
+更新日期：2026-08-06
+最终状态：`COMPLETE_WITH_RECOVERY_DRIFT`
+数据集：ScreenSpot-Pro，共 1,581 条样本
 
-## 一、研究问题
+## 阅读说明
+
+本文件是本轮工作的单一 Markdown 总入口，整合研究 idea、恢复环境、三模型推理、Scale-Up、M0、B1、B4、B2、可复现性边界、最终 gate 和交付物路径。
+
+正文使用 2026-08-06 恢复 bank 重新计算的 combined-24 结果。文末保留 2026-08-03 的 frozen 21-method 历史总结作为附录，用于解释协议演进；两套数字属于不同方法集合，不能当作同一次运行的重复结果。
+
+## 一、研究目标
+
+本轮不是简单比较三个大模型，而是在验证：
+
+> 多个 GUI grounding 模型能否提供互补候选，以及一个消除同源重复票、尽量与候选来源解耦的聚合器，能否把候选池的高 oracle coverage 转化为稳定优于单模型的最终点击准确率。
+
+系统分为两个阶段：
+
+1. **候选生成**：GTA1、UI-Venus、Qwen3.5 等模型从全图和 crop 提出点击候选；
+2. **聚合选择**：B3、M1 或 lineage-normalized router 根据候选几何、来源和开发集可靠性输出最终点击点。
+
+需要区分四个问题：
+
+| 层次 | 研究问题 | 主要证据 |
+|---|---|---|
+| 互补性 | 多模型是否覆盖更多正确区域 | `pass@N`、proposal sensitivity |
+| 可选择性 | 聚合器能否识别正确候选 | B3、M1、nested LN |
+| 机制 | 失败是否来自来源偏置、计数不平衡或重复票 | M0、B1、B4 |
+| 可扩展性 | 修复是否同时适用于 7B 与 72B/122B | B2 双尺度 gate |
+
+## 二、一页结论
+
+1. 三个强模型具有明显候选互补性。72B mixed N12 的 `pass@N` 为 **84.63%**。
+2. 原始聚合没有兑现候选覆盖。mixed N12 的 M1 为 **49.15%**，B3 为 **32.45%**。
+3. B3 存在极强的模型来源偏置。72B N8 的 929 个错误样本中，GTA1 成为赢家 **871 次**，期望只有 **348.38 次**。
+4. Combined-24 lineage normalization 在 72B 上达到 **70.52%**，比 B3 高 **29.29 pp**，比恢复 M1 高 **17.33 pp**。
+5. 72B nested LN 仍比 reported Qwen3.5 best-single 低 **0.89 pp**，没有超过最强单模型。
+6. 7B nested LN 为 **63.69%**，与 B3 相同，因此双尺度主标准失败。
+7. B4 不支持“共享 GTA proposer 单独导致偏置”的强解释；正式解释是 `heterogeneous_pool_aggregation_effect`。
+8. 恢复 bank 结构完整且内部哈希一致，但不与 historical frozen bank 字节一致，因此状态是 `COMPLETE_WITH_RECOVERY_DRIFT`，不是 exact reproduction。
+
+## 三、模型、环境与安全约束
+
+### 3.1 模型
+
+| 模型 | revision | 角色 |
+|---|---|---|
+| GTA1-72B | `674ce162e90c5b335ad5d1abc08ca7bfc3f42558` | attention proposer 与 scorer |
+| UI-Venus-Ground-72B | `e9d2aa95593df7dc029d7717d59a2abebbea987a` | scorer |
+| Qwen3.5-122B-A10B | `dc4d348443bc740c68e2d77492492c11606384d5` | scorer / best-single 对照 |
+
+7B 对照池由 GTA1-7B、Qwen3-VL-8B-Instruct 和 UI-TARS-7B-SFT 构成。
+
+### 3.2 运行环境
+
+- `uv 0.11.28`；
+- `.venv-scaleup`：Python 3.12、Torch 2.13.0+cu132、Transformers 5.14.1、vLLM 0.26.1 开发版；
+- 三个大模型均使用 TP=8，严格顺序运行；
+- `gpu_memory_utilization=0.58`；
+- 外部 AzureML 进程 PID `2274` 全程受保护，没有被 signal、kill、pause 或 reprioritize。
+
+### 3.3 恢复 bank
+
+| Score bank | 行数 | SHA-256 |
+|---|---:|---|
+| GTA1-72B | 1,581 | `59bf61d6446cf8169411e05bf6b9c72de0aef944d4a1a3087a372a1113ac64ae` |
+| UI-Venus-Ground-72B | 1,581 | `2cc070d49dc6ae17d9700e9bea23aeb15cf670e6cde5d343e47faa20fc89b018` |
+| Qwen3.5-122B-A10B | 1,581 | `4bcaf70ab385c20d2d91c1251f69c6641fc23fa19570cfddd5096cc8c2dcb553` |
+
+每个 bank 均通过模型 revision、1,581 个 ID、region manifest hash、prediction hash、region coverage 和候选顺序检查。
+
+## 四、恢复执行过程
+
+### 4.1 P1 N8 fallback
+
+P1 原计划使用 12 个 GTA1 forward，但 `stata_windows_27` 只能产生 7 个唯一 crop。因此在任何 G2 scoring accuracy 产生前启用全局 fallback：
+
+- P1：GTA1 full image + 7 个唯一 crop，共 8 forwards；
+- P2：三个模型各使用 full image + 3 个共享 crop，共 12 forwards；
+- P2 与 P1 只能作 unequal-budget context，不能表述为 equal-budget allocation；
+- 73.1% 绝对门槛不变。
+
+GTA1 crop 在 smart resize 前放大 2 倍并映射回原坐标；Venus 与 Qwen3.5 使用原 crop。
+
+### 4.2 三模型评分
+
+1. GTA1-72B smoke 通过，随后完成 `1581/1581`；
+2. UI-Venus-Ground-72B smoke 通过，随后完成 `1581/1581`；
+3. Qwen3.5 在 `batch-size=4` 时触发 vLLM scheduler `KeyError`；
+4. `batch-size=2` smoke 通过，但全量首行触发 `Encoder cache miss`；
+5. `batch-size=1` 稳定完成 `1581/1581` 并输出 `PASS`。
+
+Qwen3.5 的故障来自开发版 vLLM 多模态 batch queue / encoder cache，不是 OOM、权重缺失或数据损坏。任务结束后的 NCCL abort、TCPStore closed 和 resource-tracker 警告发生在正常 teardown 阶段，不影响已经逐行 flush 和 fsync 的结果。
+
+### 4.3 分析顺序
+
+最终顺序为：重建 mixed 72B -> B1 -> B4 -> combined-24 与 R0-only B2 -> 根据 gate 决定 B3x。
+
+## 五、Scale-Up 结果
+
+| Pool | Budget | pass@N | M1 | B3 |
+|---|---:|---:|---:|---:|
+| P1 GTA1-72B fallback | 8 | 69.39% | 25.62% | 23.59% |
+| P2 mixed 72B | 12 | 84.63% | 49.15% | 32.45% |
+
+P2 相对 P1 的 M1 提升是 **23.53 pp**，但预算不同。Proposal-sensitivity MDE 为 **1.83 pp**。
+
+| Gate | 结果 |
+|---|---|
+| P2 高于 P1 unequal-budget context | PASS |
+| 73.1% effective threshold | FAIL |
+| 73.1% system-SOTA gate | FAIL |
+| outcome | `BELOW_PAPER_MODEL_REFERENCE` |
+
+`pass@N=84.63%` 表明候选池经常已经包含正确答案；M1/B3 与该上限之间的巨大差距说明主要瓶颈是候选选择，而不是候选生成。
+
+P2 mixed N12 与后续 Source-Bias N8 是不同候选池，因此 P2 B3 `32.45%` 与 N8 B3 `41.24%` 不能视为同一指标。
+
+## 六、M0：净 +1 背后的五个翻转
+
+M0 对齐 H3 model-major 与 L1 view-major 的 B3 语义。Aggregate 只显示净 `+1`，但逐样本有：
+
+- 3 个 rescue；
+- 2 个 regression；
+- 合计 5 个 correctness flip；
+- 净结果 `+1`。
+
+这说明候选顺序、MVP group 顺序和 tie-break 可以产生相反方向的个体变化。Headline parity 与 ordering sensitivity 必须分开报告。
+
+## 七、B1：来源偏置
+
+B1 比较实际赢家来源与按候选占比推导的期望分布，报告卡方检验、Cramer's V 和 standardized residual。Gate 要求 7B N12 与 72B N8 的错误行中 GTA residual 均显著为正且 $p<0.001$。
+
+| Pool | 错误行 | GTA 实际赢家 | GTA 期望赢家 | GTA residual | $p$ | Cramer's V |
+|---|---:|---:|---:|---:|---:|---:|
+| 7B Uniform Mixed N12 | 574 | 489 | 191.33 | +26.36 | $4.12\times10^{-152}$ | 0.779 |
+| 72B Uniform Mixed N8 recovery | 929 | 871 | 348.38 | +35.42 | $1.21\times10^{-273}$ | 0.822 |
+
+72B 错误行完整分布：
+
+| 来源 | 候选成员 | 期望赢家 | 实际赢家 | residual |
+|---|---:|---:|---:|---:|
+| GTA1-72B | 2,787 | 348.38 | 871 | +35.42 |
+| UI-Venus-Ground-72B | 2,787 | 348.38 | 53 | -20.02 |
+| Qwen3.5-122B-A10B | 1,858 | 232.25 | 5 | -17.22 |
+
+B1 在两个尺度上均通过。错误赢家严重集中于 GTA，远超 nominal candidate share 能解释的程度。
+
+## 八、B4：机制归因与候选计数
+
+### 8.1 Proposer 强归因
+
+| 尺度 | GTA view-0 residual | GTA crop residual | view-0 更弱 | GTA 几何显著低于两者 |
+|---|---:|---:|---|---|
+| 7B | +37.16 | +24.68 | 否 | 是 |
+| 72B | +31.56 | +40.32 | 是 | 否 |
+
+两个尺度没有同时满足强归因条件，因此不能声称共享 GTA proposer 单独造成偏置。正式结论是：
+
+> `heterogeneous_pool_aggregation_effect`
+
+### 8.2 Count balancing
+
+72B N8 的 lineage slot 为 `3/3/2`。按最早 view 确定性平衡到 `2/2/2` 后：
+
+- B3：41.24% -> 49.72%；
+- delta：**+8.48 pp**；
+- 候选数：8 -> 6。
+
+但平衡后的 795 个错误样本中 GTA 仍成为赢家 744 次，residual 为 `+36.04`。计数不平衡是问题的一部分，但不是全部机制。
+
+10,000 次随机全局 action-subset 平衡得到：
+
+| 指标 | 数值 |
+|---|---:|
+| mean accuracy | 41.03% |
+| median | 37.51% |
+| standard deviation | 11.36 pp |
+| 99% interval | [23.34%, 55.22%] |
+| min / max | 23.34% / 55.22% |
+
+不同被保留 view 会造成巨大差异，因此确定性 `+8.48 pp` 不能解释为“平衡数量必然提升”；更准确的机制是 candidate count 与 view composition 共同作用。
+
+## 九、B2：Combined-24 Lineage Normalization
+
+最终 amendment 冻结 24 个方法：R0a/R0b/R0c 加 R1--R7 与 D1--D3 的 21 个组合。每个模型谱系先压缩为一个代表，再由三个谱系代表进行决策。
+
+采用严格五折 nested selection：inner validation 只选方法，outer development 重拟合，outer test 每行只产生一个 claim-bearing prediction。完整 grid 最大值只能作描述性分析。
+
+### 9.1 Recovery 主结果
+
+| 比较 | Nested LN | Reference | Delta | 99% CI | 单边 $p$ |
+|---|---:|---:|---:|---:|---:|
+| 7B LN vs B3 | 63.69% | 63.69% | 0.00 pp | [-0.54, +0.65] | 0.5626 |
+| 7B LN vs M1 | 63.69% | 63.82% | -0.13 pp | [-1.01, +0.76] | 0.6731 |
+| 72B LN vs B3 | 70.52% | 41.24% | +29.29 pp | [+21.21, +35.88] | $1/10001$ |
+| 72B LN vs recovered M1 | 70.52% | 53.19% | +17.33 pp | [+11.96, +21.99] | $1/10001$ |
+| 72B LN vs matched Qwen3.5 view-0 | 70.52% | 71.28% | -0.76 pp | [-2.92, +1.73] | 0.8081 |
+| 72B LN vs reported best-single | 70.52% | 71.41% | -0.89 pp | 独立口径 | n/a |
+
+72B 五折选择为 R5_D2 三次、R5_D3 两次，说明有效修复依赖“每个谱系选择开发集最强 view，再按谱系可靠性处理支持或完全分歧”，而不是简单平均。
+
+### 9.2 Gate
+
+- Combined-24：72B 成功，7B 失败；
+- R0-only：两个尺度均失败；
+- 双尺度 primary success：`false`；
+- B-K4：`true`，72B LN 仍低于 best-single；
+- B-K5：`false`；
+- B3x：`CANCEL`。
+
+Lineage normalization 是 72B 聚合污染的强修复，但不是已验证的跨尺度通用方法。
+
+## 十、Frozen 与 Recovery 边界
+
+恢复 bank 的 ID、行数、模型 revision、region manifest 与内部 prediction hash 均一致，但 raw SHA 与 historical frozen bank 不同。小量输出变化传播到 tie-break 和 fold-local reliability。
+
+### 10.1 B1 anchor drift
+
+| Anchor | Frozen GTA/Venus/Qwen3.5 | Recovery GTA/Venus/Qwen3.5 |
+|---|---|---|
+| winning-set members | 1374 / 1000 / 370 | 1370 / 1003 / 369 |
+| final winners | 872 / 52 / 5 | 871 / 53 / 5 |
+
+### 10.2 B2 baseline drift
+
+| Baseline | Frozen | Recovery | Delta |
+|---|---:|---:|---:|
+| 7B B3 | 63.69% | 63.69% | 0.00 pp |
+| 7B M1 | 63.82% | 63.82% | 0.00 pp |
+| 72B B3 | 41.24% | 41.24% | 0.00 pp |
+| 72B M1 | 52.12% | 53.19% | +1.08 pp |
+
+默认 frozen runner 仍会在 anchor 或 baseline 不一致时失败。只有显式 recovery 参数才允许继续，并在独立 JSON 中记录 expected、actual、delta 和 `RECOVERY_DRIFT_ACCEPTED`。历史 B1/B2/B4 结果没有被覆盖。
+
+原始 21-method frozen study 得到 7B 61.99%、72B 70.59%。后续 amendment 冻结 R0a/R0b/R0c 并形成 combined-24。本报告正文使用最终 combined-24 recovery 数字：7B 63.69%、72B 70.52%。
+
+## 十一、最终 Gate 总表
+
+| Gate | 结果 | 含义 |
+|---|---|---|
+| 三模型 score bank | PASS | 各 1,581 行，hash/coverage/order 一致 |
+| Mixed Scale-Up structure | PASS | source SHA 与 bank 匹配 |
+| 73.1% threshold | FAIL | P2 M1 为 49.15% |
+| B1 source bias | PASS BOTH SCALES | GTA 错误赢家显著过度代表 |
+| B4 proposer-specific attribution | NOT SUPPORTED | 条件未跨尺度同时满足 |
+| B2 72B correction | PASS | LN 显著高于 B3/M1 |
+| B2 7B correction | FAIL | LN 与 B3 相同 |
+| B2 cross-scale primary | FAIL | 要求两个尺度同时成功 |
+| B-K4 | TRIGGERED | 72B LN 仍低于 best-single |
+| B3x | CANCELLED | B2 双尺度 gate 失败 |
+| Exact frozen reproduction | FAIL | raw SHA 不同 |
+| Recovery analysis | COMPLETE | `COMPLETE_WITH_RECOVERY_DRIFT` |
+
+## 十二、Claim 边界
+
+### 支持
+
+1. 多模型候选具有显著互补性；
+2. B3 在两个尺度上都存在强模型来源偏置；
+3. 同源重复票与候选 composition 会严重影响聚合结果；
+4. Lineage normalization 能在 72B 污染场景恢复大部分 latent best-single headroom；
+5. 候选覆盖、相关性与聚合可兑现性必须分开分析。
+
+### 不支持
+
+1. 偏置已被证明由共享 GTA proposer 单独造成；
+2. Lineage normalization 在所有尺度都优于 B3/M1；
+3. 72B nested LN 超过最强单模型；
+4. 描述性 grid 最大值可以作为部署 headline；
+5. B3x 已验证统一修复；
+6. Recovery 是 frozen raw bank 的字节级精确复现。
+
+推荐总表述：
+
+> 多模型 GUI grounding 的价值主要来自候选互补性，但 flat aggregation 会因来源敏感的重复投票而丢失大量可兑现性能。谱系归一化在 72B/122B 异质候选池中能恢复大部分 best-single headroom，但该收益没有跨尺度泛化，也未超过最强单模型。因此当前证据支持“72B 聚合偏置修复”，而不是“通用多模型聚合方法”。
+
+## 十三、验证与安全
+
+- Source-bias contracts：`7/7 PASS`；
+- 7 个核心 recovery artifact 路径与 SHA-256 全部重新验证；
+- Python、JSON、Markdown 无 VS Code diagnostics；
+- `git diff --check` 通过；
+- 无残留评分进程；
+- 外部 PID `2274` 在最终检查时正常存活，且从未被操作。
+
+Scale-Up venv 未安装 pytest，因此没有通过 pytest runner 执行 `test_scaleup.py`；但重建脚本自身的 1,581 行 identity、source hash、prediction hash、coverage 和 target-leak 门禁全部通过。Source-bias tests 使用 `.venv-scaleup` 的标准库 `unittest` 执行。
+
+## 十四、交付物索引
+
+### 总状态
+
+- 机器可读状态：[RECOVERY_STATUS.json](RECOVERY_STATUS.json)；
+- 精简 recovery 报告：[RECOVERY_REPORT.md](RECOVERY_REPORT.md)。
+
+### Scale-Up
+
+- Mixed 72B：[g2_mixed_72b.json](../../scaleup/2026-08-02/g2_mixed_72b.json)；
+- GTA1 bank：[g2-score-gta1.jsonl](../../scaleup/2026-08-02/raw/g2-score-gta1.jsonl)；
+- Venus bank：[g2-score-venus.jsonl](../../scaleup/2026-08-02/raw/g2-score-venus.jsonl)；
+- Qwen3.5 bank：[g2-score-qwen35.jsonl](../../scaleup/2026-08-02/raw/g2-score-qwen35.jsonl)；
+- Regions：[g2-regions.jsonl](../../scaleup/2026-08-02/raw/g2-regions.jsonl)；
+- P1 fallback：[AMENDMENT_001_G2_P1_N8_FALLBACK.md](../../scaleup/2026-08-02/AMENDMENT_001_G2_P1_N8_FALLBACK.md)。
+
+### B1 / B4 / B2
+
+- Recovery B1：[recovery_b1_source_bias.json](results/recovery_b1_source_bias.json)；
+- Recovery B1 figure：[recovery_b1_source_bias.pdf](figures/recovery_b1_source_bias.pdf)；
+- Recovery B4：[recovery_b4_attribution.json](results/recovery_b4_attribution.json)；
+- Recovery B2：[recovery_b2_lineage_normalized.json](results/recovery_b2_lineage_normalized.json)；
+- 预注册协议：[SPEC.md](SPEC.md)；
+- Full-spec amendment：[AMENDMENT_001_FULL_SPEC_EXTENSION.md](AMENDMENT_001_FULL_SPEC_EXTENSION.md)；
+- B1 config：[b1_pools.yaml](configs/b1_pools.yaml)；
+- B2 combined-24 config：[b2_variants.yaml](configs/b2_variants.yaml)。
+
+### 历史与诊断
+
+- M0：[m0_manifest_diff.json](../../final/2026-08-04/m0_manifest_diff.json)；
+- Frozen B1：[b1_source_bias.json](results/b1_source_bias.json)；
+- Frozen B4：[b4_attribution.json](results/b4_attribution.json)；
+- Frozen B2：[b2_lineage_normalized.json](results/b2_lineage_normalized.json)。
+
+## 十五、最终定位
+
+1. **有没有正确候选？** 有，mixed N12 oracle coverage 为 84.63%；
+2. **原始聚合能否选出来？** 不能稳定做到，M1/B3 与 oracle coverage 差距很大；
+3. **能否修复？** 72B 修复到 70.52%，7B 没有改善，且仍未超过 Qwen3.5 best-single。
+
+最稳健结论是：
+
+> 来源偏置和同源重复投票是强模型异质候选池中的关键聚合失败机制。Lineage normalization 能显著修复 72B 的聚合崩溃，但修复具有尺度依赖性；下一步不应只是继续堆候选，而应设计保留谱系内有效几何、同时控制谱系间重复票的自适应 router。
+
+---
+
+## 附录 A：2026-08-03 Frozen 21-Method 历史总结
+
+以下内容保留原始 frozen study 的方法、数字与表格，不代表 2026-08-06 combined-24 recovery headline。
+
+### A.1 研究问题
 
 此前的实验已经表明：候选池的oracle headroom、有效样本量和最终聚合准确率并不是同一个量。尤其在72B候选池中，单个Qwen3.5候选本身达到`71.41%`，但B3聚合后仅有`41.24%`。本实验研究两个问题：
 
@@ -11,7 +347,7 @@
 
 整个实验不进行任何新模型推理，只复用已有候选trace。协议在结果产生前提交，固定了候选池、来源归因、21个lineage-normalized变体、五折嵌套选择和成功标准。
 
-## 二、实验协议
+### A.2 实验协议
 
 ### 2.1 B1来源偏置检验
 
@@ -75,7 +411,7 @@ Lineage normalization分两步：
 
 因此headline结果由1,581条完全held-out预测组成。完整21-grid仅作描述性敏感性分析，不使用其最大值作为主结果。
 
-## 三、B1：来源偏置在两个尺度上均成立
+### A.3 B1：来源偏置在两个尺度上均成立
 
 | Pool/stratum | 错误行 | GTA观测赢家 | 按候选比例期望 | GTA标准残差 | 卡方$p$ | Cramer's V |
 |---|---:|---:|---:|---:|---:|---:|
@@ -90,7 +426,7 @@ B1在两个尺度上均通过。偏置不仅统计显著，而且效应量极大
 
 这说明B3的错误并非来源中性。某一谱系可以依靠候选数量和组内投票结构形成占优势的错误簇，从而压制更强的单候选来源。
 
-## 四、B4：不支持共享proposer强归因
+### A.4 B4：不支持共享proposer强归因
 
 ### 4.1 View-0与crop来源偏置
 
@@ -131,7 +467,7 @@ B1在两个尺度上均通过。偏置不仅统计显著，而且效应量极大
 
 > 观测到的是异质候选池中的聚合投票偏置，而不是已经被证明由共享proposer单独造成的偏置。
 
-## 五、B2：72B强修复，7B失败
+### A.5 B2：72B强修复，7B失败
 
 ### 5.1 主结果
 
@@ -176,7 +512,7 @@ R5直接使用每个谱系在开发集上最强的view，D2/D3再利用谱系可
 
 72B Qwen3.5 bare trace与当前bank一致，均为`71.41%`，因此可以进行paired bootstrap。
 
-## 六、门控判定
+### A.6 门控判定
 
 | Gate | 结果 | 原因 |
 |---|---|---|
@@ -187,7 +523,7 @@ R5直接使用每个谱系在开发集上最强的view，D2/D3再利用谱系可
 | B3x | NOT RUN | B2要求两个尺度同时成功 |
 | 共享proposer强归因 | NOT SUPPORTED | B4条件未在两个尺度同时满足 |
 
-## 七、完整21变体敏感性结果
+### A.7 完整21变体敏感性结果
 
 下表是cross-fitted描述性敏感性分析，不是headline nested结果。
 
@@ -217,7 +553,7 @@ R5直接使用每个谱系在开发集上最强的view，D2/D3再利用谱系可
 
 7B描述性最佳为R4_D1，准确率`62.87%`，仍低于原始B3。72B描述性最佳为R5_D3，准确率`70.59%`。这些结果只能用于解释敏感性，不能替代嵌套选择结果。
 
-## 八、论文贡献与正确表述
+### A.8 论文贡献与正确表述
 
 本实验支持三项结论：
 
@@ -237,7 +573,7 @@ R5直接使用每个谱系在开发集上最强的view，D2/D3再利用谱系可
 - 21-grid中的事后最大值是可部署headline结果；
 - B3x已经验证统一修复CALA-S、NOA和高分歧预算轴。
 
-## 九、最终定位
+### A.9 最终定位
 
 最稳健的总判断是：
 
@@ -245,7 +581,7 @@ R5直接使用每个谱系在开发集上最强的view，D2/D3再利用谱系可
 
 这与此前Effective-Sample-Size结果一致：候选覆盖、相关性和聚合可兑现性必须分开讨论。即使候选池中存在高质量候选，重复来源形成的错误簇仍可能使最终规则远离best-single上限。
 
-## 十、交付物索引
+### A.10 交付物索引
 
 - `SPEC.md`：结果盲预注册协议；
 - `configs/b1_pools.yaml`：B1候选池、规则、分层和来源归因；

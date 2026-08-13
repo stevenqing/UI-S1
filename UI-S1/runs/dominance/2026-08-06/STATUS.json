@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_PATH_B_WITH_D2_BLOCKED",
+  "gpu_inference_launched": false,
+  "new_method_added": false,
+  "D0": {
+    "status": "PASS",
+    "finding": "IMPLEMENTATION_FAULT_CONFIRMED",
+    "D_K1": false,
+    "headline_changed": false,
+    "artifact": "d0_r7_audit.json"
+  },
+  "D1": {
+    "status": "INCONCLUSIVE_BLOCKED_CROSS_BENCHMARK_ROWS",
+    "screen_pool_count": 2160,
+    "B3_raw_rho": -0.3882051699666822,
+    "B3_partial_rho": -0.3667807863777522,
+    "M1_raw_rho": -0.48221310583217114,
+    "M1_partial_rho": -0.49918567940394176,
+    "law_pass": false,
+    "paper_action": "DO_NOT_CLAIM_DOMINANCE_LAW",
+    "artifacts": [
+      "d1_dominance_law.json",
+      "fig_dominance.pdf"
+    ]
+  },
+  "D2": {
+    "status": "BLOCKED_MISSING_ROW_LEVEL_TRACES",
+    "D_K3": "NOT_ADJUDICATED",
+    "paper_action": "SCREENSPOT_PRO_SPECIFIC_CLAIMS_ONLY",
+    "artifact": "d2_cross_benchmark_status.json"
+  },
+  "paper": {
+    "shape": "PATH_B_DIAGNOSTIC",
+    "writing_authority": "FREEZE.md",
+    "B2_cross_scale": "FAIL",
+    "B3x": "CANCELLED",
+    "reproducibility": "COMPLETE_WITH_RECOVERY_DRIFT"
+  }
+}

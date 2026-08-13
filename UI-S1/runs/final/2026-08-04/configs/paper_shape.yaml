@@ -1,0 +1,33 @@
+schema_version: 1
+frozen_at_utc: "2026-08-04"
+result_blind: true
+decision_time: immediately_after_combined_B2_nested_evaluation
+
+inputs:
+  seven_b_nested_accuracy: combined_24_method_nested_7B
+  seventy_two_b_nested_accuracy: combined_24_method_nested_72B
+  seven_b_b3_baseline: 0.6369386464263125
+  seventy_two_b_b3_baseline: 0.41239721695129666
+  mde: 0.007043345177520599
+  interval_level: 0.99
+
+path_A_method_paper:
+  require_all:
+    - seven_b_point_delta_strictly_above_mde
+    - seven_b_paired_ci_99_lower_strictly_positive
+    - seventy_two_b_point_delta_strictly_above_mde
+    - seventy_two_b_paired_ci_99_lower_strictly_positive
+    - seven_b_nested_accuracy_at_least_0_67
+  framing: allocation_plus_realizable_aggregation
+  negative_results_role: reasoning_chain_to_method
+
+path_B_scaling_diagnostic_paper:
+  trigger: any_path_A_requirement_fails
+  framing: scaling_law_plus_aggregation_diagnosis
+  negative_results_role: main_text_evidence
+  b2_role: honest_failed_or_limited_intervention
+
+prohibitions:
+  - no_threshold_change_after_B2
+  - no_full_grid_maximum_as_headline
+  - no_paper_prose_before_B2_adjudication

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_WITH_RECOVERY_DRIFT",
+  "historical_results_preserved": true,
+  "score_banks": {
+    "GTA1-72B": {
+      "path": "../../scaleup/2026-08-02/raw/g2-score-gta1.jsonl",
+      "rows": 1581,
+      "sha256": "59bf61d6446cf8169411e05bf6b9c72de0aef944d4a1a3087a372a1113ac64ae"
+    },
+    "UI-Venus-Ground-72B": {
+      "path": "../../scaleup/2026-08-02/raw/g2-score-venus.jsonl",
+      "rows": 1581,
+      "sha256": "2cc070d49dc6ae17d9700e9bea23aeb15cf670e6cde5d343e47faa20fc89b018"
+    },
+    "Qwen3.5-122B-A10B": {
+      "path": "../../scaleup/2026-08-02/raw/g2-score-qwen35.jsonl",
+      "rows": 1581,
+      "sha256": "4bcaf70ab385c20d2d91c1251f69c6641fc23fa19570cfddd5096cc8c2dcb553"
+    }
+  },
+  "mixed_72b": {
+    "path": "../../scaleup/2026-08-02/g2_mixed_72b.json",
+    "sha256": "d1f52bee9e83819121430eee2258a294213bff8d27bd3d865bd269b0920233af",
+    "pass_at_n": 0.8462998102466793,
+    "M1_ccm": 0.49146110056925996,
+    "B3_mvp": 0.32447817836812143,
+    "effective_threshold_pass": false
+  },
+  "B1": {
+    "path": "results/recovery_b1_source_bias.json",
+    "sha256": "d0bd444207f8a4afaa779b3c3a88db29e171359bbfba19ca29ee3ca5bdbb1420",
+    "gate": "PASS_BOTH_SCALES",
+    "frozen_anchor_matches": false
+  },
+  "B4": {
+    "path": "results/recovery_b4_attribution.json",
+    "sha256": "001a046aaed080862c76bcfe4346c892a1315992e2aa1e271b629b13e9f5b411",
+    "interpretation": "heterogeneous_pool_aggregation_effect",
+    "supported_at_both_scales": false
+  },
+  "B2": {
+    "path": "results/recovery_b2_lineage_normalized.json",
+    "sha256": "2c62003a9bbaaae51a7b9345873455889d5c745ad336759fc9639fcced60148c",
+    "nested_7B": 0.6369386464263125,
+    "nested_72B": 0.7052498418722327,
+    "primary_success": false,
+    "frozen_baselines_match": false,
+    "B_K4": true
+  },
+  "B3x": "CANCELLED_BY_B2_GATE",
+  "tests": {
+    "sourcebias_contracts": "7/7 PASS"
+  }
+}

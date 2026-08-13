@@ -30,9 +30,9 @@
   },
   "P1_GTA1_72B": {
     "accuracy": {
-      "B3_mvp": 0.23845667299177736,
-      "M1_ccm": 0.25743200506008856,
-      "pass_at_n": 0.6932321315623023
+      "B3_mvp": 0.23592662871600253,
+      "M1_ccm": 0.25616698292220114,
+      "pass_at_n": 0.693864642631246
     },
     "budget": 8,
     "fold_rows": [
@@ -46,9 +46,9 @@
   },
   "P2_mixed_72B": {
     "accuracy": {
-      "B3_mvp": 0.32827324478178366,
+      "B3_mvp": 0.32447817836812143,
       "M1_ccm": 0.49146110056925996,
-      "pass_at_n": 0.845034788108792
+      "pass_at_n": 0.8462998102466793
     },
     "budget": 12,
     "fold_rows": [
@@ -63,7 +63,7 @@
   "comparisons": {
     "P2_M1_minus_70_4": -0.21253889943074,
     "P2_M1_minus_73_1": -0.23953889943074003,
-    "P2_M1_minus_P1_M1_unequal_budget_context": 0.2340290955091714
+    "P2_M1_minus_P1_M1_unequal_budget_context": 0.23529411764705882
   },
   "compute": {
     "primary_P2_scoring_forwards": 18972,
@@ -101,17 +101,17 @@
   },
   "proposal_sensitivity": {
     "M1_accuracies": [
-      0.49778621125869704,
+      0.49082858950031627,
       0.5003162555344719,
-      0.47881087919038584
+      0.4819734345351044
     ],
-    "MDE": 0.023508091696843973,
+    "MDE": 0.01834645576032648,
     "evaluations": {
       "20260802": {
         "accuracy": {
-          "B3_mvp": 0.3592662871600253,
-          "M1_ccm": 0.49778621125869704,
-          "pass_at_n": 0.8437697659709045
+          "B3_mvp": 0.3573687539531942,
+          "M1_ccm": 0.49082858950031627,
+          "pass_at_n": 0.8431372549019608
         },
         "fold_rows": [
           314,
@@ -124,9 +124,9 @@
       },
       "20260803": {
         "accuracy": {
-          "B3_mvp": 0.36369386464263126,
+          "B3_mvp": 0.3611638203668564,
           "M1_ccm": 0.5003162555344719,
-          "pass_at_n": 0.845034788108792
+          "pass_at_n": 0.8437697659709045
         },
         "fold_rows": [
           314,
@@ -139,9 +139,9 @@
       },
       "20260804": {
         "accuracy": {
-          "B3_mvp": 0.34724857685009486,
-          "M1_ccm": 0.47881087919038584,
-          "pass_at_n": 0.8444022770398482
+          "B3_mvp": 0.3510436432637571,
+          "M1_ccm": 0.4819734345351044,
+          "pass_at_n": 0.8456672991777356
         },
         "fold_rows": [
           314,
@@ -153,7 +153,7 @@
         "rows": 1581
       }
     },
-    "sample_sd": 0.011754045848421987,
+    "sample_sd": 0.00917322788016324,
     "seeds": [
       20260802,
       20260803,
@@ -164,23 +164,23 @@
   "schema_version": 1,
   "sources": {
     "G1": {
-      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/g1_lineage_gate.json",
+      "path": "runs/scaleup/2026-08-02/g1_lineage_gate.json",
       "sha256": "a5c310b33d49a5dfa7af461f4b1b09d731a99e9e456b2a13121e48d6d22f2a60"
     },
     "GTA1-72B": {
-      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-gta1.jsonl",
-      "sha256": "8dd735e6431c0f8316985802d054429fa1db2208e00a90aaf51f295cb242607f"
+      "path": "runs/scaleup/2026-08-02/raw/g2-score-gta1.jsonl",
+      "sha256": "59bf61d6446cf8169411e05bf6b9c72de0aef944d4a1a3087a372a1113ac64ae"
     },
     "Qwen3.5-122B-A10B": {
-      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-qwen35.jsonl",
-      "sha256": "fa59553ca4b536790ee8a9513dec440cb1d4c0e7c0304957a0a91c8b3f59bf8f"
+      "path": "runs/scaleup/2026-08-02/raw/g2-score-qwen35.jsonl",
+      "sha256": "4bcaf70ab385c20d2d91c1251f69c6641fc23fa19570cfddd5096cc8c2dcb553"
     },
     "UI-Venus-Ground-72B": {
-      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-score-venus.jsonl",
-      "sha256": "f7db0405fefece1747733a597bce948661f8f1eb770d975b09dd5123a0cbc3ba"
+      "path": "runs/scaleup/2026-08-02/raw/g2-score-venus.jsonl",
+      "sha256": "2cc070d49dc6ae17d9700e9bea23aeb15cf670e6cde5d343e47faa20fc89b018"
     },
     "regions": {
-      "path": "/home/aiscuser/UI-S1/UI-S1/runs/scaleup/2026-08-02/raw/g2-regions.jsonl",
+      "path": "runs/scaleup/2026-08-02/raw/g2-regions.jsonl",
       "sha256": "b85272f7bc8715b2ca0673e07e3ec21e1164cace6d4995d8e886564f16e3fe64"
     }
   },

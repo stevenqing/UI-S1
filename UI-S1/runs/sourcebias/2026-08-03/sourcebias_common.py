@@ -13,7 +13,7 @@ sys.path.insert(0, str(CALA))
 sys.path.insert(0, str(H1))
 sys.path.insert(0, str(H3))
 from cala_common import UNIFORM_SEQUENCE, load_bank, split_ids
-from cala_transfer_72b import GTA_N8, UNIFORM_N8, load_context as load_72, split_ids as split_72
+from cala_transfer_72b import GTA_N8, MIXED_ACTIONS, UNIFORM_N8, load_context as load_72, split_ids as split_72
 from aggregators_coord import official_groups
 from h3_eval import ccm_select, fit_ccm, point_in_bbox
 
@@ -67,7 +67,9 @@ def load_pools():
         pools[f"7B_{method}_N12"] = policy_rows(context7, fold_actions, split_ids)
     context72 = load_72()
     transfer = json.loads((CALA / "cala_transfer_72b_results.json").read_text())
-    pools["72B_Uniform_Mixed_N8"] = fixed_rows(context72, UNIFORM_N8, split_72)
+    for budget in (8, 9, 12):
+        actions = UNIFORM_N8 if budget == 8 else MIXED_ACTIONS[:budget]
+        pools[f"72B_Uniform_Mixed_N{budget}"] = fixed_rows(context72, actions, split_72)
     fold_actions72 = {fold: tuple(parse_region_action(name) for name in transfer["folds"][str(fold)]["CALA_S"]) for fold in range(5)}
     pools["72B_CALA_S_N8"] = policy_rows(context72, fold_actions72, split_72)
     contexts = {"7B": context7, "72B": context72}
