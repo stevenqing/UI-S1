@@ -10,7 +10,7 @@ RUN_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(RUN_DIR))
 
 from sequential_fit import (
-    fit_with_checkpoint, require_real_data_optimizer_authorization,
+    fit_with_checkpoint, require_real_data_optimizer_authorization, train_epoch,
 )
 from sequential_model import (
     SequentialCandidateVerifier, augment_verifier_features, cheap_oof_features,
@@ -58,6 +58,19 @@ class SequentialModelTest(unittest.TestCase):
         config = yaml.safe_load((RUN_DIR / "configs/sequential_training_prereg.yaml").read_text())
         with self.assertRaisesRegex(PermissionError, "not authorized"):
             require_real_data_optimizer_authorization(config)
+
+    def test_zero_weight_rows_never_form_empty_weight_batch(self):
+        features, mask, labels, weights, _ = self.batch(rows=8)
+        weights[:] = 0
+        weights[[1, 6]] = 1
+        model = SequentialCandidateVerifier(115, dropout=0.0)
+        optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
+        value = train_epoch(
+            model, features, mask, labels, weights, optimizer,
+            batch_size=1, pairwise_weight=0.5,
+            gradient_clip_norm=1.0, seed=19,
+        )
+        self.assertTrue(torch.isfinite(torch.tensor(value)))
 
 
 if __name__ == "__main__":

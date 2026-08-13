@@ -1,0 +1,27 @@
+{
+  "authorization_commit": "e01ed215853972af2f4f825dd51aa423bd0ab8e6",
+  "authorization_nonce": "8f68c38f765c39bf55b2e7344b4f0e5331e8031c18713e58048a283f74d53ece",
+  "authorization_sha256": "6fc6ec385365644977ffc1b9fa524a731f787e05065e662562c0a38eb5a63f79",
+  "confirmatory": false,
+  "families": [
+    "mind2web",
+    "screenspot_pro",
+    "androidcontrol"
+  ],
+  "implementation_commit": "e743d524e4fe3e7ba9aa1f434d24bbba7ceffd90",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "phases": [
+    "cheap",
+    "verifier"
+  ],
+  "promotion_allowed": false,
+  "schema_version": 1,
+  "status": "CONSUMED_EXPLORATORY_SEQUENTIAL_OPTIMIZER",
+  "training_authorized": true
+}

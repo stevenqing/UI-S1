@@ -31,6 +31,11 @@ class LaunchSequentialTest(unittest.TestCase):
             with self.assertRaises(FileNotFoundError):
                 artifact_manifest(Path(directory))
 
+    def test_launcher_stops_children_after_first_failure(self):
+        source = (RUN_DIR / "launch_sequential.py").read_text()
+        self.assertIn("other.terminate()", source)
+        self.assertIn("active.clear()", source)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -33,10 +33,15 @@ def train_epoch(
     if len(features) != len(row_weights) or not bool(row_weights.sum() > 0):
         raise ValueError("Sequential training rows/weights mismatch")
     model.train()
+    active = torch.nonzero(row_weights > 0, as_tuple=True)[0]
     generator = torch.Generator(device="cpu")
     generator.manual_seed(int(seed))
-    order = torch.randperm(len(features), generator=generator).to(features.device)
-    normalization = row_weights.sum().clamp_min(torch.finfo(row_weights.dtype).eps)
+    order = active[
+        torch.randperm(len(active), generator=generator).to(active.device)
+    ]
+    normalization = row_weights[active].sum().clamp_min(
+        torch.finfo(row_weights.dtype).eps
+    )
     optimizer.zero_grad(set_to_none=True)
     total = 0.0
     for start in range(0, len(order), batch_size):
@@ -63,10 +68,15 @@ def evaluate_loss(
 ):
     model.eval()
     total = 0.0
-    normalization = row_weights.sum().clamp_min(torch.finfo(row_weights.dtype).eps)
+    active = torch.nonzero(row_weights > 0, as_tuple=True)[0]
+    if not len(active):
+        raise ValueError("Sequential evaluation has no positive-weight rows")
+    normalization = row_weights[active].sum().clamp_min(
+        torch.finfo(row_weights.dtype).eps
+    )
     with torch.no_grad():
-        for start in range(0, len(features), batch_size):
-            selected = slice(start, min(start + batch_size, len(features)))
+        for start in range(0, len(active), batch_size):
+            selected = active[start:start + batch_size]
             logits, _ = model(features[selected], candidate_mask[selected])
             loss, _ = candidate_success_loss(
                 logits,

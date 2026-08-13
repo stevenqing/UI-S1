@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "FAILED_EXPLORATORY_SEQUENTIAL_ATTEMPT_RETAINED",
+  "authorization_nonce": "8f68c38f765c39bf55b2e7344b4f0e5331e8031c18713e58048a283f74d53ece",
+  "phase": "cheap",
+  "failed_job": {
+    "outer_fold": 0,
+    "holdout_fold": 3,
+    "family": "mind2web"
+  },
+  "reason": "zero_weight_only_random_batch_rejected_by_candidate_success_loss",
+  "receipt_created": true,
+  "attempt_created": true,
+  "cheap_artifacts_before_stop": 24,
+  "cheap_worker_logs": 17,
+  "cheap_pass_logs": 12,
+  "cheap_traceback_logs": 1,
+  "verifier_artifacts": 0,
+  "published": false,
+  "confirmatory": false,
+  "promotion_allowed": false
+}

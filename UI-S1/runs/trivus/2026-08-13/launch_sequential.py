@@ -75,6 +75,14 @@ def run_phase(python, phase, receipt, attempt, gpu_count):
         handle.close()
         if returncode:
             failures.append({"job": job, "returncode": returncode})
+            for _, other, _, other_handle in active:
+                if other.poll() is None:
+                    other.terminate()
+            for _, other, _, other_handle in active:
+                other.wait()
+                other_handle.close()
+            active.clear()
+            break
     if failures:
         raise RuntimeError(f"Sequential {phase} worker failures: {failures}")
 
