@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-13",
+  "status": "BENCHMARK_ADAPTIVE_PRIMITIVES_IMPLEMENTED",
+  "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
+  "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
+  "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
+  "diagnostic": "runs/trivus/2026-08-13/BENCHMARK_ADAPTIVE_DIAGNOSTIC.json",
+  "diagnostic_sha256": "a4f23c7662a0a76a188fc010e3e15f36bb9ae2535b3b74f03fac41d375c7c24f",
+  "benchmark_ready": {
+    "mind2web": false,
+    "screenspot_pro": false,
+    "androidcontrol": false
+  },
+  "oracle_headroom_point_delta": {
+    "mind2web": 0.035576923076923075,
+    "screenspot_pro": 0.002530044275774826,
+    "androidcontrol": 0.014499999999999999
+  },
+  "incremental_utility_primitives_implemented": true,
+  "incremental_utility_synthetic_tests": 4,
+  "real_data_incremental_training_started": false,
+  "confirmatory": false,
+  "promotion_allowed": false,
+  "next_action": "FREEZE_CROSS_FITTED_OVERRIDE_TRAINING_PROTOCOL_BEFORE_REAL_DATA_OPTIMIZER_STEP"
+}

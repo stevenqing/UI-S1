@@ -1,0 +1,828 @@
+{
+  "bootstrap": {
+    "comparison_offsets": {
+      "direct_strongest": 700,
+      "joint3": 600,
+      "oracle_strongest": 800,
+      "primary": 400,
+      "strongest": 500
+    },
+    "confidence": 0.99,
+    "equal_cell_composition": true,
+    "resamples": 10000,
+    "seed_base": 20260900
+  },
+  "claim_boundary": {
+    "confirmatory": false,
+    "next_confirmation_requires_untouched_labels": true,
+    "promotion_allowed": false,
+    "reason": "outer_labels_opened_before_amendment_015"
+  },
+  "diagnostics": {
+    "androidcontrol": {
+      "comparisons": {
+        "direct_minus_strongest": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                -0.01548166133766928,
+                0.0040891264794230085
+              ],
+              "groups": 1039,
+              "point_delta": -0.0055,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261621
+            },
+            "low": {
+              "ci_99": [
+                -0.007485198775381567,
+                0.012000180541624847
+              ],
+              "groups": 1039,
+              "point_delta": 0.0025,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261620
+            }
+          },
+          "comparison": "direct_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.008568033140731231,
+              0.005346863437290716
+            ],
+            "point_delta": -0.0014999999999999998
+          },
+          "family": "androidcontrol"
+        },
+        "oracle_direct_or_strongest_minus_strongest": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                0.006958250497017893,
+                0.0197769527968501
+              ],
+              "groups": 1039,
+              "point_delta": 0.013,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                0.009336033414909255,
+                0.023397821489494423
+              ],
+              "groups": 1039,
+              "point_delta": 0.016,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.009888802762320358,
+              0.019402316615615606
+            ],
+            "point_delta": 0.014499999999999999
+          },
+          "family": "androidcontrol"
+        },
+        "primary": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                0.010395631115174386,
+                0.03846163213308853
+              ],
+              "groups": 1039,
+              "point_delta": 0.024,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261321
+            },
+            "low": {
+              "ci_99": [
+                0.005399848665447967,
+                0.021352410448341963
+              ],
+              "groups": 1039,
+              "point_delta": 0.013,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261320
+            }
+          },
+          "comparison": "primary",
+          "equal_cell_family": {
+            "ci_99": [
+              0.010827132558006661,
+              0.026528331528653398
+            ],
+            "point_delta": 0.0185
+          },
+          "family": "androidcontrol"
+        },
+        "strongest": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                -0.017632663281699358,
+                0.0010347076393158786
+              ],
+              "groups": 1039,
+              "point_delta": -0.008,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261421
+            },
+            "low": {
+              "ci_99": [
+                0.0019870250777354603,
+                0.016427386781596182
+              ],
+              "groups": 1039,
+              "point_delta": 0.009,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261420
+            }
+          },
+          "comparison": "strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.00553618148278022,
+              0.006450197873892529
+            ],
+            "point_delta": 0.0004999999999999996
+          },
+          "family": "androidcontrol"
+        },
+        "target_minus_joint3": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                -0.005464494454040783,
+                0.011386261862700774
+              ],
+              "groups": 1039,
+              "point_delta": 0.003,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261521
+            },
+            "low": {
+              "ci_99": [
+                0.0009935395105597133,
+                0.012671284878927542
+              ],
+              "groups": 1039,
+              "point_delta": 0.0065,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261520
+            }
+          },
+          "comparison": "joint3",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0002439274911299784,
+              0.009944441201305866
+            ],
+            "point_delta": 0.00475
+          },
+          "family": "androidcontrol"
+        }
+      },
+      "gates": {
+        "benchmark_ready_diagnostic": false,
+        "primary_cell_safety": true,
+        "primary_family_improvement": true,
+        "strongest_cell_safety": false
+      },
+      "incremental_utility_headroom": {
+        "ci_99": [
+          0.009888802762320358,
+          0.019402316615615606
+        ],
+        "point_delta": 0.014499999999999999
+      },
+      "mde": 0.01
+    },
+    "mind2web": {
+      "comparisons": {
+        "direct_minus_strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.01713479154351075,
+                0.011611058579222377
+              ],
+              "groups": 252,
+              "point_delta": -0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261601
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.025948363273453092,
+                0.005842313808134874
+              ],
+              "groups": 252,
+              "point_delta": -0.010096153846153847,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261602
+            },
+            "C_self": {
+              "ci_99": [
+                -0.018839156779498347,
+                0.011547344110854504
+              ],
+              "groups": 252,
+              "point_delta": -0.0033653846153846156,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261603
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.026616161792663833,
+                0.00811084240004677
+              ],
+              "groups": 252,
+              "point_delta": -0.009134615384615385,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261600
+            }
+          },
+          "comparison": "direct_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.014239690241165148,
+              0.0014674912928737912
+            ],
+            "point_delta": -0.00625
+          },
+          "family": "mind2web"
+        },
+        "oracle_direct_or_strongest_minus_strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.025193693228341637,
+                0.045993394973921284
+              ],
+              "groups": 252,
+              "point_delta": 0.035096153846153846,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                0.02301783677341114,
+                0.04360468845084539
+              ],
+              "groups": 252,
+              "point_delta": 0.03317307692307692,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                0.027846497044035582,
+                0.04923116370808672
+              ],
+              "groups": 252,
+              "point_delta": 0.03798076923076923,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                0.026014206526384094,
+                0.046605941273439956
+              ],
+              "groups": 252,
+              "point_delta": 0.036057692307692304,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.030414726692178887,
+              0.04083585130950299
+            ],
+            "point_delta": 0.035576923076923075
+          },
+          "family": "mind2web"
+        },
+        "primary": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.015363166375382625,
+                0.010648383343236246
+              ],
+              "groups": 252,
+              "point_delta": -0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261301
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.02338075818398643,
+                0.006678639750838263
+              ],
+              "groups": 252,
+              "point_delta": -0.007692307692307693,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261302
+            },
+            "C_self": {
+              "ci_99": [
+                -0.021095278309453274,
+                0.008245742465004535
+              ],
+              "groups": 252,
+              "point_delta": -0.00625,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261303
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.02773872837391463,
+                0.007831198677795892
+              ],
+              "groups": 252,
+              "point_delta": -0.009615384615384616,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261300
+            }
+          },
+          "comparison": "primary",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.014188524036863739,
+              0.0012569350883278139
+            ],
+            "point_delta": -0.006490384615384615
+          },
+          "family": "mind2web"
+        },
+        "strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.01568829882642341,
+                0.0109628217349857
+              ],
+              "groups": 252,
+              "point_delta": -0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261401
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.0227706904101591,
+                0.0068873694691165156
+              ],
+              "groups": 252,
+              "point_delta": -0.007692307692307693,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261402
+            },
+            "C_self": {
+              "ci_99": [
+                -0.021150219290751057,
+                0.008240526665620876
+              ],
+              "groups": 252,
+              "point_delta": -0.00625,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261403
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.026899728429839377,
+                0.008148687374134485
+              ],
+              "groups": 252,
+              "point_delta": -0.009615384615384616,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261400
+            }
+          },
+          "comparison": "strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0143716798093953,
+              0.0010575449160089676
+            ],
+            "point_delta": -0.006490384615384615
+          },
+          "family": "mind2web"
+        },
+        "target_minus_joint3": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.008072193912653137,
+                0.010870162446249308
+              ],
+              "groups": 252,
+              "point_delta": 0.0014423076923076924,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261501
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.006867671278448921,
+                0.012779725922998286
+              ],
+              "groups": 252,
+              "point_delta": 0.0033653846153846156,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261502
+            },
+            "C_self": {
+              "ci_99": [
+                -0.005685011437690525,
+                0.01418810197017915
+              ],
+              "groups": 252,
+              "point_delta": 0.004326923076923077,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261503
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.00690000180015637,
+                0.01221380712690422
+              ],
+              "groups": 252,
+              "point_delta": 0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261500
+            }
+          },
+          "comparison": "joint3",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0020944559121700225,
+              0.007750336771593762
+            ],
+            "point_delta": 0.0028846153846153848
+          },
+          "family": "mind2web"
+        }
+      },
+      "gates": {
+        "benchmark_ready_diagnostic": false,
+        "primary_cell_safety": false,
+        "primary_family_improvement": false,
+        "strongest_cell_safety": false
+      },
+      "incremental_utility_headroom": {
+        "ci_99": [
+          0.030414726692178887,
+          0.04083585130950299
+        ],
+        "point_delta": 0.035576923076923075
+      },
+      "mde": 0.006106589385659482
+    },
+    "screenspot_pro": {
+      "comparisons": {
+        "direct_minus_strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.006761553247109701,
+                0.00891160657452031
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261611
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.00560224961715695,
+                0.002734107997265892
+              ],
+              "groups": 26,
+              "point_delta": -0.001265022137887413,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261612
+            },
+            "C_self": {
+              "ci_99": [
+                -0.00827588403250604,
+                0.0025252605014133745
+              ],
+              "groups": 26,
+              "point_delta": -0.002530044275774826,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261613
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.007189695854274321,
+                0.0020892097418807776
+              ],
+              "groups": 26,
+              "point_delta": -0.002530044275774826,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261610
+            }
+          },
+          "comparison": "direct_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.004230856605238609,
+              0.0015333989566299077
+            ],
+            "point_delta": -0.0014231499051233396
+          },
+          "family": "screenspot_pro"
+        },
+        "oracle_direct_or_strongest_minus_strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.0,
+                0.011371307267107934
+              ],
+              "groups": 26,
+              "point_delta": 0.004427577482605946,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                0.0,
+                0.003901195749349801
+              ],
+              "groups": 26,
+              "point_delta": 0.001265022137887413,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                0.0,
+                0.006188127323736499
+              ],
+              "groups": 26,
+              "point_delta": 0.002530044275774826,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                0.0,
+                0.004629675649804867
+              ],
+              "groups": 26,
+              "point_delta": 0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.0009455064998228368,
+              0.004628850973848603
+            ],
+            "point_delta": 0.002530044275774826
+          },
+          "family": "screenspot_pro"
+        },
+        "primary": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.006180469715698393,
+                0.00819677737660065
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261311
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.005931250964744789,
+                0.0013736452940998367
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261312
+            },
+            "C_self": {
+              "ci_99": [
+                -0.004851662775450393,
+                0.004920201429737045
+              ],
+              "groups": 26,
+              "point_delta": 0.0,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261313
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.006215040397762586,
+                0.0026213884186044646
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261310
+            }
+          },
+          "comparison": "primary",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.00327755953813648,
+              0.0019215102728370567
+            ],
+            "point_delta": -0.0007906388361796331
+          },
+          "family": "screenspot_pro"
+        },
+        "strongest": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.006343721274714723,
+                0.00862119991406158
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261411
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.005992080629231095,
+                0.0013422999448995969
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261412
+            },
+            "C_self": {
+              "ci_99": [
+                -0.00491714668277329,
+                0.004905413135374575
+              ],
+              "groups": 26,
+              "point_delta": 0.0,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261413
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.006042332626022813,
+                0.0027816411682892906
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261410
+            }
+          },
+          "comparison": "strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0034138029040196895,
+              0.0019961849408599514
+            ],
+            "point_delta": -0.0007906388361796331
+          },
+          "family": "screenspot_pro"
+        },
+        "target_minus_joint3": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.0,
+                0.00240385338128498
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261511
+            },
+            "C_rand": {
+              "ci_99": [
+                0.0,
+                0.0
+              ],
+              "groups": 26,
+              "point_delta": 0.0,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261512
+            },
+            "C_self": {
+              "ci_99": [
+                -0.0024860238892547826,
+                0.0
+              ],
+              "groups": 26,
+              "point_delta": -0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261513
+            },
+            "C_uni": {
+              "ci_99": [
+                0.0,
+                0.002552664683538882
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261510
+            }
+          },
+          "comparison": "joint3",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.00046700020949476845,
+              0.0008156083801083153
+            ],
+            "point_delta": 0.00015812776723592663
+          },
+          "family": "screenspot_pro"
+        }
+      },
+      "gates": {
+        "benchmark_ready_diagnostic": false,
+        "primary_cell_safety": true,
+        "primary_family_improvement": false,
+        "strongest_cell_safety": true
+      },
+      "incremental_utility_headroom": {
+        "ci_99": [
+          0.0009455064998228368,
+          0.004628850973848603
+        ],
+        "point_delta": 0.002530044275774826
+      },
+      "mde": 0.007
+    }
+  },
+  "method": "TARGET_ONLY_BENCHMARK_SPECIFIC_TRAINING_AND_CALIBRATION",
+  "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
+  "prior_adjudication_sha256": "bb8bc8b999ed73f3c007c79f93f845307fb6c6dec3f4c2895a45d79246bbed8b",
+  "prior_outcome": "TRIVUS_NOT_PROMOTED",
+  "schema_version": 1,
+  "status": "PASS_POSTHOC_BENCHMARK_ADAPTIVE_DIAGNOSTIC"
+}
