@@ -1,12 +1,14 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "BENCHMARK_ADAPTIVE_PRIMITIVES_IMPLEMENTED",
+  "status": "FULL_CANDIDATE_REALIZATION_PRIMITIVES_IMPLEMENTED",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
   "diagnostic": "runs/trivus/2026-08-13/BENCHMARK_ADAPTIVE_DIAGNOSTIC.json",
   "diagnostic_sha256": "a4f23c7662a0a76a188fc010e3e15f36bb9ae2535b3b74f03fac41d375c7c24f",
+  "headroom_atlas": "runs/trivus/2026-08-13/HEADROOM_ATLAS.json",
+  "headroom_atlas_sha256": "3f85a25916dc836f2bc5a6ad6fe52b4b38ce7637ae794f453f2bcbd2d29c2a2a",
   "benchmark_ready": {
     "mind2web": false,
     "screenspot_pro": false,
@@ -17,10 +19,22 @@
     "screenspot_pro": 0.002530044275774826,
     "androidcontrol": 0.014499999999999999
   },
+  "full_candidate_headroom_point_delta": {
+    "mind2web": 0.24290865384615387,
+    "screenspot_pro": 0.15306767868437698,
+    "androidcontrol": 0.06875
+  },
+  "unrecovered_candidate_ranking_gap": {
+    "mind2web": 0.21117788461538464,
+    "screenspot_pro": 0.1514864010120177,
+    "androidcontrol": 0.054
+  },
+  "candidate_success_primitives_implemented": true,
+  "candidate_success_synthetic_tests": 4,
   "incremental_utility_primitives_implemented": true,
   "incremental_utility_synthetic_tests": 4,
   "real_data_incremental_training_started": false,
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "FREEZE_CROSS_FITTED_OVERRIDE_TRAINING_PROTOCOL_BEFORE_REAL_DATA_OPTIMIZER_STEP"
+  "next_action": "FREEZE_CONTEXTUAL_CANDIDATE_VERIFIER_AND_OVERRIDE_CROSS_FITTING_BEFORE_REAL_DATA_OPTIMIZER_STEP"
 }

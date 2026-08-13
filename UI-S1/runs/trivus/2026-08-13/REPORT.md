@@ -20,9 +20,21 @@ AndroidControl improved over its primary majority fallback by 1.85 percentage po
 
 Independent training is therefore necessary for the method definition but insufficient for promotion.
 
+## Full candidate headroom
+
+The earlier direct-or-strongest diagnostic materially understated the available space because it considered only the candidate already selected by the existing ranker. The sealed candidate labels show substantially larger headroom over the strongest fallback.
+
+| Benchmark | Full candidate oracle | Existing policy-direct union | Unrecovered ranking gap |
+| --- | ---: | ---: | ---: |
+| Mind2Web | +24.29 pp | +3.17 pp | **+21.12 pp** |
+| ScreenSpot-Pro | +15.31 pp | +0.16 pp | **+15.15 pp** |
+| AndroidControl | +6.88 pp | +1.48 pp | **+5.40 pp** |
+
+The atlas validates all ten sealed private-label fold hashes and covers all 18,644 public rows. Policy unions and full candidate oracle are label-dependent upper bounds, not deployable methods.
+
 ## Incremental utility headroom
 
-The direct TARGET_ONLY choice and strongest fallback have complementary successes in every benchmark.
+The direct TARGET_ONLY choice and strongest fallback have complementary successes in every benchmark, but this is only the final safety-layer space.
 
 | Benchmark | Oracle direct-or-strongest headroom | 99% CI |
 | --- | ---: | --- |
@@ -34,10 +46,12 @@ The direct policy alone is not better than the strongest fallback. The remaining
 
 ## Method decision
 
-The next model is a benchmark-specific, cross-fitted incremental-utility gate over the existing TARGET_ONLY set ranker. It predicts `win`, `loss`, and `tie` relative to the strongest fallback and overrides only when predicted net utility is sufficiently positive and loss risk is sufficiently low.
+The main model is now a benchmark-specific contextual candidate-success verifier. It trains on every valid candidate label rather than using KEEP whenever fallback is correct. The available supervision contains 175,728 VUS candidate labels and 12,000 AndroidControl candidate labels. The existing blind VLM score has candidate AUROC 0.595 and top-1 accuracy 36.85% on the 14,644 VUS rows versus a 68.00% candidate oracle, so frozen visual logits alone are not an adequate semantic verifier.
+
+The incremental-utility gate remains a second, cross-fitted deployment layer. It predicts `win`, `loss`, and `tie` relative to the strongest fallback and overrides only when predicted net utility is sufficiently positive and loss risk is sufficiently low.
 
 The base ranker, override head, standardizer, thresholds, and fallback are fitted independently per benchmark. The representation schema, nested OOF protocol, incremental-utility loss, safety calibration, artifact sealing, and held-out evaluation remain unified.
 
 ## Next boundary
 
-The new primitive is implemented and synthetic-tested only. Before any real-data optimizer step, the cross-fitting phases, strongest-baseline label source, threshold grid, seeds, artifacts, and untouched confirmation dataset must be frozen. Existing formal outer labels may be used for exploratory development but not confirmation or promotion.
+The candidate-success and incremental-utility primitives are implemented and synthetic-tested only. Before any real-data optimizer step, the cross-fitting phases, semantic features, strongest-baseline label source, threshold grid, seeds, artifacts, and untouched confirmation dataset must be frozen. Existing formal outer labels may be used for exploratory development but not confirmation or promotion.

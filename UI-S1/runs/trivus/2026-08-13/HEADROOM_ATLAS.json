@@ -1,0 +1,980 @@
+{
+  "atlas": {
+    "androidcontrol": {
+      "layers_vs_strongest": {
+        "full_candidate_oracle": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                0.0752631897272082,
+                0.10847631145795393
+              ],
+              "groups": 1039,
+              "point_delta": 0.0915,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                0.03472187843784379,
+                0.05847398855592286
+              ],
+              "groups": 1039,
+              "point_delta": 0.046,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.058799252086524395,
+              0.07888082796321391
+            ],
+            "point_delta": 0.06875
+          },
+          "family": "androidcontrol"
+        },
+        "policy_direct_union_oracle": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                0.00503775802159883,
+                0.026633201776023675
+              ],
+              "groups": 1039,
+              "point_delta": 0.0155,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                0.00464618182799157,
+                0.0235001176176176
+              ],
+              "groups": 1039,
+              "point_delta": 0.014,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.007778319770597983,
+              0.022091359242392566
+            ],
+            "point_delta": 0.01475
+          },
+          "family": "androidcontrol"
+        },
+        "policy_safe_union_oracle": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                0.0,
+                0.018172469881178824
+              ],
+              "groups": 1039,
+              "point_delta": 0.009,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                0.007017508719219179,
+                0.020512945896808958
+              ],
+              "groups": 1039,
+              "point_delta": 0.0135,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.005699934012177081,
+              0.017106978997376565
+            ],
+            "point_delta": 0.01125
+          },
+          "family": "androidcontrol"
+        },
+        "target_only_direct": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                -0.015424323454504276,
+                0.004079655799625223
+              ],
+              "groups": 1039,
+              "point_delta": -0.0055,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                -0.007121112400362972,
+                0.011979032121900386
+              ],
+              "groups": 1039,
+              "point_delta": 0.0025,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.008336512496513904,
+              0.0054575101364181325
+            ],
+            "point_delta": -0.0014999999999999998
+          },
+          "family": "androidcontrol"
+        },
+        "target_only_safe": {
+          "cells": {
+            "high": {
+              "ci_99": [
+                -0.017775565730200216,
+                0.0010204316990763465
+              ],
+              "groups": 1039,
+              "point_delta": -0.008,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261721
+            },
+            "low": {
+              "ci_99": [
+                0.0020019770144582925,
+                0.016288527487907413
+              ],
+              "groups": 1039,
+              "point_delta": 0.009,
+              "resamples": 10000,
+              "rows": 2000,
+              "seed": 20261720
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0054331546797283786,
+              0.006298995463307067
+            ],
+            "point_delta": 0.0004999999999999996
+          },
+          "family": "androidcontrol"
+        }
+      },
+      "successful_policy_contributor_counts": {
+        "direct": {
+          "JOINT2_NO_ANDROID": 0,
+          "JOINT3": 2777,
+          "NO_VISUAL": 2763,
+          "RANDOM_ID_PLACEBO": 2786,
+          "TARGET_ONLY": 2828
+        },
+        "safe": {
+          "JOINT2_NO_ANDROID": 0,
+          "JOINT3": 2817,
+          "NO_VISUAL": 2825,
+          "RANDOM_ID_PLACEBO": 2827,
+          "TARGET_ONLY": 2836
+        }
+      },
+      "unrecovered_candidate_ranking_gap": {
+        "cells": {
+          "high": {
+            "ci_99": [
+              0.06168455517992645,
+              0.09132456915598756
+            ],
+            "groups": 1039,
+            "point_delta": 0.076,
+            "resamples": 10000,
+            "rows": 2000,
+            "seed": 20261721
+          },
+          "low": {
+            "ci_99": [
+              0.02205878582202112,
+              0.04245540198507876
+            ],
+            "groups": 1039,
+            "point_delta": 0.032,
+            "resamples": 10000,
+            "rows": 2000,
+            "seed": 20261720
+          }
+        },
+        "comparison": "oracle_strongest",
+        "equal_cell_family": {
+          "ci_99": [
+            0.044911147618339246,
+            0.0631615899769685
+          ],
+          "point_delta": 0.054
+        },
+        "family": "androidcontrol"
+      }
+    },
+    "mind2web": {
+      "layers_vs_strongest": {
+        "full_candidate_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.2363251044748453,
+                0.29616780540324067
+              ],
+              "groups": 252,
+              "point_delta": 0.2658653846153846,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                0.21428553508709053,
+                0.2611191222730666
+              ],
+              "groups": 252,
+              "point_delta": 0.2375,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                0.21952363142107234,
+                0.271421495789995
+              ],
+              "groups": 252,
+              "point_delta": 0.24471153846153845,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                0.19682828389682328,
+                0.2509785612929885
+              ],
+              "groups": 252,
+              "point_delta": 0.22355769230769232,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.22961872161026733,
+              0.25628909465905436
+            ],
+            "point_delta": 0.24290865384615387
+          },
+          "family": "mind2web"
+        },
+        "policy_direct_union_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.016508221107253297,
+                0.04914016744477969
+              ],
+              "groups": 252,
+              "point_delta": 0.03221153846153846,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                0.02039775687320223,
+                0.051776695068890495
+              ],
+              "groups": 252,
+              "point_delta": 0.036057692307692304,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                0.017552072467759364,
+                0.05024405176704826
+              ],
+              "groups": 252,
+              "point_delta": 0.03317307692307692,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                0.008284594783220259,
+                0.04201256804998632
+              ],
+              "groups": 252,
+              "point_delta": 0.02548076923076923,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.023772043928709904,
+              0.03984483438429003
+            ],
+            "point_delta": 0.03173076923076923
+          },
+          "family": "mind2web"
+        },
+        "policy_safe_union_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.007076376603272889,
+                0.03735069419578072
+              ],
+              "groups": 252,
+              "point_delta": 0.021634615384615384,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                0.015664317789155453,
+                0.04666356078495895
+              ],
+              "groups": 252,
+              "point_delta": 0.03125,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                0.010713751894200303,
+                0.04376792750514709
+              ],
+              "groups": 252,
+              "point_delta": 0.026923076923076925,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                0.00277641570125811,
+                0.03687073051838899
+              ],
+              "groups": 252,
+              "point_delta": 0.01971153846153846,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.017128319170677975,
+              0.03288046332688096
+            ],
+            "point_delta": 0.02487980769230769
+          },
+          "family": "mind2web"
+        },
+        "target_only_direct": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.01636012423264969,
+                0.01241933647106833
+              ],
+              "groups": 252,
+              "point_delta": -0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.026571282575370465,
+                0.004856896576133831
+              ],
+              "groups": 252,
+              "point_delta": -0.010096153846153847,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                -0.01883148237566393,
+                0.012328205398380823
+              ],
+              "groups": 252,
+              "point_delta": -0.0033653846153846156,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.026601504377588438,
+                0.007797635313621482
+              ],
+              "groups": 252,
+              "point_delta": -0.009134615384615385,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.014227315744381606,
+              0.0014743080962239766
+            ],
+            "point_delta": -0.00625
+          },
+          "family": "mind2web"
+        },
+        "target_only_safe": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.015327735896244954,
+                0.011053121081975006
+              ],
+              "groups": 252,
+              "point_delta": -0.002403846153846154,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261701
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.022272878159185213,
+                0.006481769076409385
+              ],
+              "groups": 252,
+              "point_delta": -0.007692307692307693,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261702
+            },
+            "C_self": {
+              "ci_99": [
+                -0.02087356303090605,
+                0.009152263241001355
+              ],
+              "groups": 252,
+              "point_delta": -0.00625,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261703
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.02740409179343788,
+                0.00790714293472945
+              ],
+              "groups": 252,
+              "point_delta": -0.009615384615384616,
+              "resamples": 10000,
+              "rows": 2080,
+              "seed": 20261700
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.014111091372968303,
+              0.001052425614756228
+            ],
+            "point_delta": -0.006490384615384615
+          },
+          "family": "mind2web"
+        }
+      },
+      "successful_policy_contributor_counts": {
+        "direct": {
+          "JOINT2_NO_ANDROID": 2838,
+          "JOINT3": 2837,
+          "NO_VISUAL": 2621,
+          "RANDOM_ID_PLACEBO": 2819,
+          "TARGET_ONLY": 2853
+        },
+        "safe": {
+          "JOINT2_NO_ANDROID": 2821,
+          "JOINT3": 2827,
+          "NO_VISUAL": 2664,
+          "RANDOM_ID_PLACEBO": 2814,
+          "TARGET_ONLY": 2851
+        }
+      },
+      "unrecovered_candidate_ranking_gap": {
+        "cells": {
+          "C_cond": {
+            "ci_99": [
+              0.2063017055057521,
+              0.2621658550187483
+            ],
+            "groups": 252,
+            "point_delta": 0.23365384615384616,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261701
+          },
+          "C_rand": {
+            "ci_99": [
+              0.17980897183392683,
+              0.22525291572900927
+            ],
+            "groups": 252,
+            "point_delta": 0.2014423076923077,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261702
+          },
+          "C_self": {
+            "ci_99": [
+              0.18730801613582995,
+              0.23693748701852857
+            ],
+            "groups": 252,
+            "point_delta": 0.21153846153846154,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261703
+          },
+          "C_uni": {
+            "ci_99": [
+              0.1733463193668443,
+              0.2233628107788514
+            ],
+            "groups": 252,
+            "point_delta": 0.19807692307692307,
+            "resamples": 10000,
+            "rows": 2080,
+            "seed": 20261700
+          }
+        },
+        "comparison": "oracle_strongest",
+        "equal_cell_family": {
+          "ci_99": [
+            0.1990593089060876,
+            0.22360458747539522
+          ],
+          "point_delta": 0.21117788461538464
+        },
+        "family": "mind2web"
+      }
+    },
+    "screenspot_pro": {
+      "layers_vs_strongest": {
+        "full_candidate_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                0.12062755493827071,
+                0.17142865501964388
+              ],
+              "groups": 26,
+              "point_delta": 0.1467425679949399,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                0.14275500588928153,
+                0.2061266215213435
+              ],
+              "groups": 26,
+              "point_delta": 0.1739405439595193,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                0.11439099670252022,
+                0.17149759977094262
+              ],
+              "groups": 26,
+              "point_delta": 0.14104996837444655,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                0.12222161588600879,
+                0.17659033763192625
+              ],
+              "groups": 26,
+              "point_delta": 0.15053763440860216,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              0.13880073943617094,
+              0.16705987484635051
+            ],
+            "point_delta": 0.15306767868437698
+          },
+          "family": "screenspot_pro"
+        },
+        "policy_direct_union_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.005597172439864467,
+                0.009339942887222934
+              ],
+              "groups": 26,
+              "point_delta": 0.001265022137887413,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.003526307020272644,
+                0.00554016620498615
+              ],
+              "groups": 26,
+              "point_delta": 0.001265022137887413,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                -0.0019802505798025057,
+                0.008333333333333333
+              ],
+              "groups": 26,
+              "point_delta": 0.0031625553447185324,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.004025348298816936,
+                0.005686059934502727
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.001141063337408648,
+              0.00445499345596191
+            ],
+            "point_delta": 0.0015812776723592662
+          },
+          "family": "screenspot_pro"
+        },
+        "policy_safe_union_oracle": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.0059920986761241414,
+                0.008526230891446603
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.004896111570023696,
+                0.0030413764179137623
+              ],
+              "groups": 26,
+              "point_delta": -0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                -0.004364130663347876,
+                0.00561459598778604
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.004711805841913498,
+                0.0038660795363495383
+              ],
+              "groups": 26,
+              "point_delta": -0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.002602837651198819,
+              0.002644424111253837
+            ],
+            "point_delta": 0.0
+          },
+          "family": "screenspot_pro"
+        },
+        "target_only_direct": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.0064977815456897774,
+                0.008832891320733635
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.005728889940763065,
+                0.002849035390440297
+              ],
+              "groups": 26,
+              "point_delta": -0.001265022137887413,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                -0.008468625527792066,
+                0.0026543330767765
+              ],
+              "groups": 26,
+              "point_delta": -0.002530044275774826,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.007241609987511942,
+                0.0025559927267497277
+              ],
+              "groups": 26,
+              "point_delta": -0.002530044275774826,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.004267947748966869,
+              0.0015081345222592837
+            ],
+            "point_delta": -0.0014231499051233396
+          },
+          "family": "screenspot_pro"
+        },
+        "target_only_safe": {
+          "cells": {
+            "C_cond": {
+              "ci_99": [
+                -0.0059920986761241414,
+                0.008526230891446603
+              ],
+              "groups": 26,
+              "point_delta": 0.0006325110689437065,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261711
+            },
+            "C_rand": {
+              "ci_99": [
+                -0.006020228828216899,
+                0.0013986111927288382
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261712
+            },
+            "C_self": {
+              "ci_99": [
+                -0.004891461046902709,
+                0.004881159767477529
+              ],
+              "groups": 26,
+              "point_delta": 0.0,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261713
+            },
+            "C_uni": {
+              "ci_99": [
+                -0.006127454394013873,
+                0.002875828158109263
+              ],
+              "groups": 26,
+              "point_delta": -0.0018975332068311196,
+              "resamples": 10000,
+              "rows": 1581,
+              "seed": 20261710
+            }
+          },
+          "comparison": "oracle_strongest",
+          "equal_cell_family": {
+            "ci_99": [
+              -0.0033917283075101034,
+              0.0018857879686120951
+            ],
+            "point_delta": -0.0007906388361796331
+          },
+          "family": "screenspot_pro"
+        }
+      },
+      "successful_policy_contributor_counts": {
+        "direct": {
+          "JOINT2_NO_ANDROID": 4062,
+          "JOINT3": 4061,
+          "NO_VISUAL": 4057,
+          "RANDOM_ID_PLACEBO": 4059,
+          "TARGET_ONLY": 4055
+        },
+        "safe": {
+          "JOINT2_NO_ANDROID": 4058,
+          "JOINT3": 4058,
+          "NO_VISUAL": 4057,
+          "RANDOM_ID_PLACEBO": 4061,
+          "TARGET_ONLY": 4059
+        }
+      },
+      "unrecovered_candidate_ranking_gap": {
+        "cells": {
+          "C_cond": {
+            "ci_99": [
+              0.11756569363907286,
+              0.17214121948611
+            ],
+            "groups": 26,
+            "point_delta": 0.1454775458570525,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261711
+          },
+          "C_rand": {
+            "ci_99": [
+              0.14246738557973876,
+              0.2031854256684365
+            ],
+            "groups": 26,
+            "point_delta": 0.17267552182163187,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261712
+          },
+          "C_self": {
+            "ci_99": [
+              0.1104647597099404,
+              0.16753023468295153
+            ],
+            "groups": 26,
+            "point_delta": 0.137887413029728,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261713
+          },
+          "C_uni": {
+            "ci_99": [
+              0.12127227575314661,
+              0.1758448389434161
+            ],
+            "groups": 26,
+            "point_delta": 0.14990512333965844,
+            "resamples": 10000,
+            "rows": 1581,
+            "seed": 20261710
+          }
+        },
+        "comparison": "oracle_strongest",
+        "equal_cell_family": {
+          "ci_99": [
+            0.1370588943435021,
+            0.16557371058029333
+          ],
+          "point_delta": 0.1514864010120177
+        },
+        "family": "screenspot_pro"
+      }
+    }
+  },
+  "interpretation": {
+    "confirmatory": false,
+    "full_candidate_oracle_is_label_dependent": true,
+    "policy_unions_are_label_dependent_oracles": true,
+    "promotion_allowed": false,
+    "ranking_gap_identifies_unrecovered_candidate_space": true
+  },
+  "layers": [
+    "target_only_safe",
+    "target_only_direct",
+    "policy_safe_union_oracle",
+    "policy_direct_union_oracle",
+    "full_candidate_oracle"
+  ],
+  "manifests": {
+    "android_manifest_sha256": "efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972",
+    "vus_manifest_sha256": "b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43"
+  },
+  "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
+  "rows": 18644,
+  "schema_version": 1,
+  "status": "PASS_POSTHOC_HEADROOM_ATLAS"
+}

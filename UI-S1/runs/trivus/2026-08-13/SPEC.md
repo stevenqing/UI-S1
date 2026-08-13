@@ -6,10 +6,11 @@ Use one method across GUI benchmarks without sharing fitted model parameters acr
 
 ## Model
 
-The method has two benchmark-specific stages.
+The method has three benchmark-specific stages.
 
-1. A TARGET_ONLY variable-set ranker selects a direct candidate.
-2. An incremental-utility head predicts whether overriding the strongest fallback is beneficial.
+1. A contextual candidate-success verifier is trained on every valid candidate label using row-normalized BCE and within-row positive-versus-negative ranking loss.
+2. The highest-scoring candidate becomes the direct candidate.
+3. An incremental-utility head predicts whether overriding the strongest fallback is beneficial.
 
 For a direct candidate outcome `d` and strongest fallback outcome `b`, the override target is:
 
@@ -18,6 +19,8 @@ For a direct candidate outcome `d` and strongest fallback outcome `b`, the overr
 - `tie`: `d = b`.
 
 The predicted incremental utility is `P(win) - P(loss)`. The method overrides only when this value exceeds a benchmark-calibrated minimum and `P(loss)` is below a benchmark-calibrated maximum. Otherwise it returns the strongest fallback.
+
+The old KEEP-centric target is retained only as a control. It is not the primary candidate-learning objective because fallback-correct rows otherwise provide no direct supervision for alternative candidate correctness.
 
 ## Leakage control
 
