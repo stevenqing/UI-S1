@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED_TRIVUS_FORMAL_EXECUTION_ONCE",
+  "implementation_commit": "85e2f8151f6f792ec773458a09cd5d1d4c479286",
+  "authorization_nonce": "284d3bfabc186397e8b1021e78bb1d2bde7be0fbe0a11f690cef752872a035d6",
+  "result_must_not_exist": true,
+  "outer_folds": [0, 1, 2, 3, 4],
+  "training_authorized": true,
+  "files": {
+    "AMENDMENT_014_PHYSICAL_OUTER_RUNNER.md": "53cb3e8ae77594c806534c3fa2a4d970e32bf5dad51e067710624b2b24d20ee3",
+    "configs/formal_runner_prereg.yaml": "33cc013d44f99efe94bc01d341a74041d8a7dd5b193b59d3224176f9b0d9b622",
+    "trivus_fit.py": "e80796ec75fac870d3b7dd8a4d77786c71b36fe8d4237bc448591ae573d31c0f",
+    "trivus_thresholds.py": "743fe38c33a2e9fe9d0674f8710d7ac2e6d132ec4e8d5ac6f39183d63671d429",
+    "trivus_outer.py": "5879008dc05b0fe9ae314fa71693fb07fcc2ce2cd50048840637b706827a3587",
+    "formal_authorization.py": "04e9deb4e75e6657a7660a7f0845a86b5b9e734a3ff50618a68a0f7ffe05df85",
+    "launch_trivus.py": "224361b7668f5e3100ef10cc92fba3c77a546b78d6a861e15f1e7bbaa4649036",
+    "finalize_trivus.py": "a21773801a9c2f636c14213646155437d4826208a6b9b4ced7db946bbba719da",
+    "test_formal_primitives.py": "5e71e2af9d4514d81a827665883e0afc614eee0c8168ff3d46b304f8912b3466",
+    "test_trivus_outer.py": "8e027d58e875370e940b8e9e172dca0fe0ef3c594522d3fe8d52baed90b53d9f",
+    "test_formal_authorization.py": "75117ca992f2da8cbe1a260adc497d8e37d4ce1bbea99fdea40b0a8c94183512",
+    "test_launch_trivus.py": "8d3091660ed94e73e3cbaf98e8553cab28c14ab73c338c9cc046f51c28db9b90",
+    "test_finalize_trivus.py": "1f21c75ee4c4307fd2e54e8fc80135fa03fd351aa66a805b70755879efc4a296",
+    "context_common.py": "a1086387b0560f0dd0b11a5655307dc464d085ce6347d3332b6de767033ae085",
+    "recovery_common.py": "8a92844929fc03bad3577be84360cf74e16b2d5ce05165f339e56f444585e69c",
+    "configs/recovery.yaml": "67237ee1efefb83fbc637b860573050ae172b110ebf57926b10e31fc0ebf4281"
+  }
+}
