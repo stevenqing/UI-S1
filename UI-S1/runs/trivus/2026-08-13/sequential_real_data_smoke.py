@@ -25,7 +25,7 @@ from trivus_data import validate_trivus_data
 def load_config():
     config = yaml.safe_load(CONFIG_PATH.read_text())
     if (
-        config.get("status") != "FROZEN_BEFORE_SEQUENTIAL_REAL_DATA_OPTIMIZER"
+        config.get("status") != "FROZEN_AFTER_VERIFIER_CHECKPOINT_CORRECTION_BEFORE_REAL_DATA_OPTIMIZER"
         or config["execution"] != {
             "real_data_optimizer_authorized": False,
             "confirmation_authorized": False,
@@ -35,6 +35,8 @@ def load_config():
         or config["features"]["verifier_dimensions"] != 120
         or config["cross_fitting"]["verifier_inputs_must_be_cheap_oof"] is not True
         or config["cross_fitting"]["calibration_inputs_must_be_verifier_oof"] is not True
+        or config["cross_fitting"]["verifier_fit_folds_per_holdout"] != 2
+        or config["cross_fitting"]["verifier_checkpoint_folds_per_holdout"] != 1
     ):
         raise PermissionError("Sequential training prereg mismatch")
     if Path(sys.executable).absolute() != (ROOT / config["python"]).absolute():

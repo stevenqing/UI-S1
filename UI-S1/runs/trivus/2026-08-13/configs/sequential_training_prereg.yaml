@@ -1,5 +1,5 @@
 schema_version: 1
-status: FROZEN_BEFORE_SEQUENTIAL_REAL_DATA_OPTIMIZER
+status: FROZEN_AFTER_VERIFIER_CHECKPOINT_CORRECTION_BEFORE_REAL_DATA_OPTIMIZER
 implementation_commit_floor: ddaf7d1c792e2d353c771194ec2ff79d75bb0997
 python: .venv-scaleup/bin/python
 seed: 20260813
@@ -45,7 +45,8 @@ cross_fitting:
   cheap_fit_folds_per_inner: 2
   cheap_checkpoint_folds_per_inner: 1
   verifier_holdouts_per_outer: 4
-  verifier_train_folds_per_holdout: 3
+  verifier_fit_folds_per_holdout: 2
+  verifier_checkpoint_folds_per_holdout: 1
   verifier_inputs_must_be_cheap_oof: true
   calibration_inputs_must_be_verifier_oof: true
   final_epoch: half_up_median_inner_epochs
@@ -74,6 +75,7 @@ execution:
   confirmation_authorized: false
   promotion_allowed: false
 dependencies:
+  correction_001: {path: runs/trivus/2026-08-13/CORRECTION_001_VERIFIER_CHECKPOINT_SPLIT.md, sha256: a476728772a76a8517345260034dc37da0029a7289cb8df92f2c16692dbb1797}
   amendment_016: {path: runs/trivus/2026-08-13/AMENDMENT_016_FULL_CANDIDATE_REALIZATION.md, sha256: 96e0acea06b0f5e2c8a822cb894d5e52fd9e2058a407584a846ccb708d6fc1ce}
   amendment_017: {path: runs/trivus/2026-08-13/AMENDMENT_017_SEQUENTIAL_VERIFIER_CASCADE.md, sha256: ad89dae9c668dd4c3044453d5ffa583563e196f974394ee35fe5a0137f5d612b}
   candidate_success: {path: runs/trivus/2026-08-13/candidate_success.py, sha256: 7432cdb048715f00746b7956d12eb28c7f46f07af3969cf1a0cfe7e6095b729e}

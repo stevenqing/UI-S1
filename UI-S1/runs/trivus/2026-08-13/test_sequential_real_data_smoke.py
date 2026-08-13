@@ -16,6 +16,8 @@ class SequentialRealDataSmokeTest(unittest.TestCase):
         config = yaml.safe_load(CONFIG_PATH.read_text())
         self.assertTrue(config["cross_fitting"]["verifier_inputs_must_be_cheap_oof"])
         self.assertTrue(config["cross_fitting"]["calibration_inputs_must_be_verifier_oof"])
+        self.assertEqual(config["cross_fitting"]["verifier_fit_folds_per_holdout"], 2)
+        self.assertEqual(config["cross_fitting"]["verifier_checkpoint_folds_per_holdout"], 1)
         self.assertEqual(config["sequential_policy"]["budget_grid"]["androidcontrol"], [1, 2, 3])
         self.assertEqual(config["sequential_policy"]["budget_grid"]["mind2web"], [1, 2, 3, 4, 5, 6])
         self.assertFalse(config["execution"]["real_data_optimizer_authorized"])
@@ -28,7 +30,7 @@ class SequentialRealDataSmokeTest(unittest.TestCase):
     def test_config_loads_with_bound_dependencies(self):
         self.assertEqual(
             load_config()["status"],
-            "FROZEN_BEFORE_SEQUENTIAL_REAL_DATA_OPTIMIZER",
+            "FROZEN_AFTER_VERIFIER_CHECKPOINT_CORRECTION_BEFORE_REAL_DATA_OPTIMIZER",
         )
 
 
