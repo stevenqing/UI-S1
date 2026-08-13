@@ -1,0 +1,24 @@
+{
+  "differences": {
+    "mind2web_C_uni_sequential": 0.0,
+    "screenspot_C_uni_A2": 0.0,
+    "screenspot_C_uni_B3": 0.0
+  },
+  "expected": {
+    "mind2web_C_uni_sequential": 0.2668269230769231,
+    "screenspot_C_uni_A2": 0.6388361796331435,
+    "screenspot_C_uni_B3": 0.6369386464263125
+  },
+  "margin_stratification_started": false,
+  "observed": {
+    "mind2web_C_uni_sequential": 0.2668269230769231,
+    "screenspot_C_uni_A2": 0.6388361796331435,
+    "screenspot_C_uni_B3": 0.6369386464263125
+  },
+  "p_hat_computed": false,
+  "schema_version": 1,
+  "screenspot_A2_anchor_use": "aggregate_digitwise_implementation_anchor_only",
+  "status": "PASS_GRAN_IMPLEMENTATION_ANCHORS",
+  "tau_sweep_started": false,
+  "zero_gpu": true
+}
