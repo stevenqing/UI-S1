@@ -1,0 +1,31 @@
+{
+  "action_counts": {
+    "CLICK": 1774,
+    "SELECT": 79,
+    "TYPE": 227
+  },
+  "candidate_success_accessed": false,
+  "click_row_ids_sha256": "b329919b1469df7c387aa728361d478a4bf2f0caf18aaffad8fdd5778d4736ac",
+  "click_rows": 1774,
+  "default_strata": 4,
+  "input_manifest_sha256": "c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205",
+  "margin_computed": false,
+  "minimum_rows_per_stratum": 400,
+  "p_hat_accessed": false,
+  "projected_stratum_rows_before_ties": [
+    444,
+    444,
+    443,
+    443
+  ],
+  "schema_version": 1,
+  "selected_quantiles": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "selected_strata": 4,
+  "status": "CLICK_SCOPE_LOCKED_BEFORE_P_HAT_OR_MARGIN_ACCESS",
+  "task_rows": 2080,
+  "tau_sweep_started": false
+}
