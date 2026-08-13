@@ -131,7 +131,7 @@ def augment_data(data, cheap_rows, device):
 
 
 def load_fold_data(
-    outer_fold, fold, family, assembly, public, predictions, manifest,
+    outer_fold, fold, family, assembly, public, predictions, manifest, cheap_root,
 ):
     context_path = ROOT / assembly["dependencies"]["contexts"]["path"]
     counts = assembly["expected"]["context_records_by_public_fold"]
@@ -143,7 +143,7 @@ def load_fold_data(
         assembly, public, predictions, phase, (fold,)
     )
     selected = select_family_raw(raw, family)
-    cheap_path = CHEAP_ROOT / f"outer-{outer_fold}" / f"holdout-{fold}" / f"{family}.jsonl"
+    cheap_path = Path(cheap_root) / f"outer-{outer_fold}" / f"holdout-{fold}" / f"{family}.jsonl"
     return selected, load_cheap_rows(cheap_path, fold, family)
 
 
@@ -180,16 +180,21 @@ def predict_augmented(model, data, augmented, batch_size):
     return sorted(output, key=lambda row: row["context_key"])
 
 
-def run_one(outer_fold, holdout_fold, family, device):
+def run_one(outer_fold, holdout_fold, family, device, receipt=None, output_root=None):
     config = load_config()
-    require_real_data_optimizer_authorization(config)
+    require_real_data_optimizer_authorization(
+        config, receipt, outer_fold, holdout_fold, family, "verifier"
+    )
     split = verifier_split(outer_fold, holdout_fold)
     assembly = load_assembly_config()
     public, predictions = load_locked_public_inputs(assembly)
     manifest = load_context_manifest(assembly)
+    root = OUTPUT_ROOT if output_root is None else Path(output_root)
+    cheap_root = CHEAP_ROOT if output_root is None else root.parent / "cheap"
     loaded = {
         fold: load_fold_data(
-            outer_fold, fold, family, assembly, public, predictions, manifest
+            outer_fold, fold, family, assembly, public, predictions, manifest,
+            cheap_root,
         )
         for fold in (*split["fit_folds"], split["checkpoint_fold"], holdout_fold)
     }
@@ -217,7 +222,7 @@ def run_one(outer_fold, holdout_fold, family, device):
         model, holdout, holdout_augmented,
         config["optimizer"]["evaluation_batch_size"],
     )
-    directory = OUTPUT_ROOT / f"outer-{outer_fold}" / f"holdout-{holdout_fold}"
+    directory = root / f"outer-{outer_fold}" / f"holdout-{holdout_fold}"
     model_path = directory / f"{family}.pt"
     prediction_path = directory / f"{family}.jsonl"
     model_sha256 = save_model(model_path, model, standardizer, {
@@ -250,10 +255,12 @@ def main():
     parser.add_argument("--holdout-fold", type=int, required=True)
     parser.add_argument("--family", choices=FAMILIES, required=True)
     parser.add_argument("--device", default="cuda:0")
+    parser.add_argument("--authorization-receipt", required=True)
+    parser.add_argument("--output-root", required=True)
     args = parser.parse_args()
     print(json.dumps(run_one(
         args.outer_fold, args.holdout_fold, args.family,
-        torch.device(args.device),
+        torch.device(args.device), args.authorization_receipt, args.output_root,
     ), indent=2, sort_keys=True))
 
 

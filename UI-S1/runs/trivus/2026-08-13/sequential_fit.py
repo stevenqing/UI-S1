@@ -129,7 +129,15 @@ def fit_with_checkpoint(
     }
 
 
-def require_real_data_optimizer_authorization(config):
-    if config["execution"].get("real_data_optimizer_authorized") is not True:
+def require_real_data_optimizer_authorization(
+    config, receipt=None, outer_fold=None, holdout_fold=None, family=None, phase=None,
+):
+    if config["execution"].get("real_data_optimizer_authorized") is not False:
+        raise PermissionError("Sequential prereg authorization boundary mismatch")
+    if receipt is None:
         raise PermissionError("Sequential real-data optimizer is not authorized")
+    from sequential_authorization import validate_worker_receipt
+    validate_worker_receipt(
+        receipt, outer_fold, holdout_fold, family, phase
+    )
     return True

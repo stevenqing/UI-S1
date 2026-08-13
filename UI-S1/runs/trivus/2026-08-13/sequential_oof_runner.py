@@ -124,9 +124,11 @@ def save_model(path, model, standardizer, metadata):
     return sha256_file(path)
 
 
-def run_one(outer_fold, holdout_fold, family, device):
+def run_one(outer_fold, holdout_fold, family, device, receipt=None, output_root=None):
     config = load_config()
-    require_real_data_optimizer_authorization(config)
+    require_real_data_optimizer_authorization(
+        config, receipt, outer_fold, holdout_fold, family, "cheap"
+    )
     assembly = load_assembly_config()
     public, predictions = load_locked_public_inputs(assembly)
     manifest = load_context_manifest(assembly)
@@ -156,7 +158,8 @@ def run_one(outer_fold, holdout_fold, family, device):
     rows = predict_rows(
         model, holdout, config["optimizer"]["evaluation_batch_size"], device
     )
-    directory = OUTPUT_ROOT / f"outer-{outer_fold}" / f"holdout-{holdout_fold}"
+    root = OUTPUT_ROOT if output_root is None else Path(output_root)
+    directory = root / f"outer-{outer_fold}" / f"holdout-{holdout_fold}"
     model_path = directory / f"{family}.pt"
     prediction_path = directory / f"{family}.jsonl"
     model_sha256 = save_model(model_path, model, standardizer, {
@@ -186,12 +189,14 @@ def main():
     parser.add_argument("--holdout-fold", type=int, required=True)
     parser.add_argument("--family", choices=FAMILIES, required=True)
     parser.add_argument("--device", default="cuda:0")
+    parser.add_argument("--authorization-receipt", required=True)
+    parser.add_argument("--output-root", required=True)
     args = parser.parse_args()
     if args.outer_fold not in range(5) or args.holdout_fold not in range(5):
         raise ValueError("Sequential OOF fold out of range")
     print(json.dumps(run_one(
         args.outer_fold, args.holdout_fold, args.family,
-        torch.device(args.device),
+        torch.device(args.device), args.authorization_receipt, args.output_root,
     ), indent=2, sort_keys=True))
 
 
