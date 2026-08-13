@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-12",
-  "status": "R1_COMPLETE_SELECTOR_INFERENCE_AUTHORIZED",
+  "status": "FORMAL_RUNNER_IMPLEMENTED_AWAITING_AUTHORIZATION",
   "outcome": "TRIVUS_NOT_RUN",
   "phase": "R0_ANDROIDCONTROL_RESULT_BLIND_RECOVERY",
   "known_upstream": {
@@ -174,8 +174,12 @@
     "performance_metric_computed": false,
     "training_started": false
   },
-  "nested_training_runner_implemented": false,
-  "final_adjudicator_implemented": false,
+  "nested_training_runner_implemented": true,
+  "final_adjudicator_implemented": true,
+  "formal_runner_implementation_commit": "85e2f8151f6f792ec773458a09cd5d1d4c479286",
+  "formal_runner_tests_passed": 31,
+  "formal_execution_authorized": false,
+  "formal_execution_started": false,
   "formal_runner_primitives_protocol_frozen": true,
   "formal_runner_primitives_implemented": true,
   "formal_runner_primitives_tests": 11,
@@ -183,7 +187,7 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "PUBLISH_FORMAL_PRIMITIVES_THEN_IMPLEMENT_PHYSICAL_OUTER_RUNNER_PRETEST_AND_FINALIZER",
+  "next_action": "COMMIT_STATUS_THEN_CREATE_AND_COMMIT_ONE_TIME_FORMAL_AUTHORIZATION",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
