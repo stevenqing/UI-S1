@@ -4,6 +4,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
+from sklearn.metrics import roc_auc_score
 
 
 RUN_DIR = Path(__file__).resolve().parent
@@ -15,11 +16,11 @@ sys.path.insert(0, str(PRIOR_DIR))
 
 from context_common import atomic_json_file, sha256_file
 from headroom_atlas import load_candidate_labels
-from finalize_trivus import load_public
+from finalize_trivus import frozen_baselines, load_configs, load_public
 from sequential_oof_runner import FAMILIES, OOF_FIELDS
 
 
-def ranking_metrics(rows, labels):
+def ranking_metrics(rows, labels, strongest=None):
     if not rows:
         raise ValueError("Sequential OOF diagnostic has no rows")
     maximum = max(len(row["candidate_order"]) for row in rows)
@@ -27,6 +28,9 @@ def ranking_metrics(rows, labels):
     reciprocal = []
     top1 = []
     oracle = []
+    candidate_labels = []
+    candidate_probabilities = []
+    fallback = []
     for row in rows:
         values = labels[row["sample_key"]]
         order = row["candidate_order"]
@@ -36,11 +40,16 @@ def ranking_metrics(rows, labels):
         positions = [index + 1 for index, success in enumerate(ranked) if success]
         top1.append(ranked[0])
         oracle.append(bool(positions))
+        if "candidate_probabilities" in row:
+            candidate_labels.extend(bool(value) for value in values)
+            candidate_probabilities.extend(float(value) for value in row["candidate_probabilities"])
+        if strongest is not None:
+            fallback.append(bool(strongest[row["sample_key"]]))
         reciprocal.append(1.0 / positions[0] if positions else 0.0)
         for budget in range(1, maximum + 1):
             hits[budget].append(any(ranked[:budget]))
     oracle_rate = float(np.mean(oracle))
-    return {
+    result = {
         "contexts": len(rows),
         "top1": float(np.mean(top1)),
         "mrr": float(np.mean(reciprocal)),
@@ -54,6 +63,15 @@ def ranking_metrics(rows, labels):
             for budget, values in sorted(hits.items())
         },
     }
+    if candidate_probabilities:
+        probabilities = np.asarray(candidate_probabilities, dtype=np.float64)
+        targets = np.asarray(candidate_labels, dtype=np.bool_)
+        result["candidate_auroc"] = float(roc_auc_score(targets, probabilities))
+        result["candidate_brier"] = float(np.mean((probabilities - targets) ** 2))
+    if fallback:
+        result["strongest"] = float(np.mean(fallback))
+        result["top1_minus_strongest"] = result["top1"] - result["strongest"]
+    return result
 
 
 def load_phase(phase, public):
@@ -98,13 +116,15 @@ def main():
         raise PermissionError("Sequential OOF publication manifest mismatch")
     public = load_public()
     labels, label_manifests = load_candidate_labels(public)
+    _, training_config = load_configs()
+    _, strongest = frozen_baselines(public, training_config)
     phases = {
         phase: load_phase(phase, public)
         for phase in ("cheap", "verifier")
     }
     metrics = {
         phase: {
-            family: ranking_metrics(rows, labels)
+            family: ranking_metrics(rows, labels, strongest)
             for family, rows in values.items()
         }
         for phase, values in phases.items()
@@ -122,6 +142,11 @@ def main():
                 for metric in ("top1", "mrr")
             }
             for family in FAMILIES
+        },
+        "cheap_minus_frozen_blind_top1": {
+            "mind2web": metrics["cheap"]["mind2web"]["top1"] - 0.3049278846153846,
+            "screenspot_pro": metrics["cheap"]["screenspot_pro"]["top1"] - 0.45208728652751423,
+            "androidcontrol": metrics["cheap"]["androidcontrol"]["top1"] - 0.6565,
         },
         "claim_boundary": {
             "confirmatory": False,

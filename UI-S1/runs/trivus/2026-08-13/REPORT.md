@@ -85,3 +85,17 @@ A one-time exploratory optimizer authorization and two-phase 8-GPU launcher are 
 The first exploratory nonce failed during cheap OOF training because random batching admitted an all-zero-weight inactive batch. Twelve jobs had completed before the failure was observed; no verifier job ran and nothing was published. The nonce, receipt, logs, and partial artifacts are retained. Correction 002 filters loss batching to positive-weight rows and makes the launcher stop its own remaining workers on the first failure. A replacement authorization is required.
 
 The second nonce completed all 60 cheap jobs and produced 120 cheap artifacts. Its first eight verifier workers failed before optimizer construction because two independently normalized fold-local weight vectors were concatenated before fit-scope standardization. Correction 003 concatenates unweighted family rows first and assigns weights once over the combined two-fold fit scope. The attempt is retained and unpublished; a new authorization must rerun both phases.
+
+## Complete OOF result
+
+The third nonce completed all 120 jobs and atomically published 240 model/prediction artifacts with a full SHA-256 manifest. All worker logs passed without traceback.
+
+| Benchmark | Cheap candidate AUROC | Cheap top-1 | Top-1 vs blind | Top-1 vs strongest |
+| --- | ---: | ---: | ---: | ---: |
+| Mind2Web | 0.831 | 35.31% | +4.82 pp | +0.40 pp |
+| ScreenSpot-Pro | 0.844 | 64.27% | +19.06 pp | +0.01 pp |
+| AndroidControl | 0.813 | 70.21% | +4.56 pp | -0.64 pp |
+
+The second verifier changes top-1 by +0.012 pp, -0.174 pp, and -0.006 pp respectively and does not consistently improve MRR or calibration. It is not supported as a stronger stage.
+
+Cross-fitted safety calibration gives the cheap ranker +0.565 pp equal-cell gain over strongest on Mind2Web and approximately zero on ScreenSpot-Pro and AndroidControl. Every selected non-fallback cheap configuration has budget one. The method therefore collapses to one contextual ranker plus accept/fallback. A future sequential stage must add new candidate-specific semantic evidence.

@@ -12,9 +12,9 @@ from sequential_oof_diagnostic import ranking_metrics
 class SequentialOOFDiagnosticTest(unittest.TestCase):
     def test_ranking_metrics_compute_topk_and_mrr(self):
         rows = [
-            {"sample_key": "a", "candidate_order": [1, 0, 2]},
-            {"sample_key": "b", "candidate_order": [0, 1, 2]},
-            {"sample_key": "c", "candidate_order": [2, 1, 0]},
+            {"sample_key": "a", "candidate_order": [1, 0, 2], "candidate_probabilities": [0.8, 0.2, 0.1]},
+            {"sample_key": "b", "candidate_order": [0, 1, 2], "candidate_probabilities": [0.4, 0.3, 0.9]},
+            {"sample_key": "c", "candidate_order": [2, 1, 0], "candidate_probabilities": [0.1, 0.2, 0.3]},
         ]
         labels = {
             "a": [True, False, False],
@@ -26,6 +26,7 @@ class SequentialOOFDiagnosticTest(unittest.TestCase):
         self.assertAlmostEqual(result["hit_at_k"]["2"], 1 / 3)
         self.assertAlmostEqual(result["oracle"], 2 / 3)
         self.assertAlmostEqual(result["mrr"], (0.5 + 1 / 3) / 3)
+        self.assertIn("candidate_auroc", result)
 
     def test_ranking_metrics_reject_non_permutation(self):
         with self.assertRaisesRegex(ValueError, "order"):

@@ -6,11 +6,10 @@ Use one method across GUI benchmarks without sharing fitted model parameters acr
 
 ## Model
 
-The method has three benchmark-specific stages.
+The compact supported method has two benchmark-specific stages.
 
-1. A cheap contextual candidate-success scorer is trained on every valid candidate label using row-normalized BCE and within-row positive-versus-negative ranking loss, then orders the candidate set.
-2. A stronger candidate verifier inspects candidates sequentially in that order and emits calibrated success probabilities.
-3. A sequential utility policy accepts, continues, or returns the strongest fallback.
+1. A contextual candidate-success scorer is trained on every valid candidate label using row-normalized BCE and within-row positive-versus-negative ranking loss, then selects the highest-scoring candidate.
+2. A cross-fitted safety gate accepts that candidate or returns the strongest fallback.
 
 For a direct candidate outcome `d` and strongest fallback outcome `b`, the override target is:
 
@@ -18,11 +17,13 @@ For a direct candidate outcome `d` and strongest fallback outcome `b`, the overr
 - `loss`: `d = 0, b = 1`;
 - `tie`: `d = b`.
 
-For candidate probability `p` and fallback probability `b`, the sequential policy accepts only when `p - b` exceeds a benchmark-calibrated minimum and `b * (1 - p)` is below a benchmark-calibrated maximum loss risk. Otherwise it continues until the benchmark-specific budget is exhausted, then returns fallback.
+For candidate probability `p` and fallback reliability `b`, the safety policy accepts only when `p - b` exceeds a benchmark-calibrated minimum and `b * (1 - p)` is below a benchmark-calibrated maximum loss risk. Otherwise it returns fallback.
 
 The old KEEP-centric target is retained only as a control. It is not the primary candidate-learning objective because fallback-correct rows otherwise provide no direct supervision for alternative candidate correctness.
 
 Runtime success is not observable. First-success rank, hit@k, and oracle recovery are evaluation metrics, never stopping inputs.
+
+The same-information 120-dimensional second verifier is retained only as an ablation. A future sequential verifier must introduce candidate-specific semantic evidence not already contained in the scorer input.
 
 ## Leakage control
 

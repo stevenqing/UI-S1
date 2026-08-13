@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "SEQUENTIAL_SECOND_ATTEMPT_FAILED_CORRECTION_003_IMPLEMENTED",
+  "status": "EXPLORATORY_OOF_COMPLETE_ONE_STAGE_METHOD_SELECTED",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
@@ -61,7 +61,6 @@
   "sequential_authorization_and_launcher_tests": 5,
   "sequential_optimizer_authorization_created": true,
   "sequential_optimizer_attempted": true,
-  "sequential_optimizer_attempt_complete": false,
   "failed_attempt_001": "runs/trivus/2026-08-13/FAILED_ATTEMPT_001.json",
   "failed_attempt_001_nonce": "8f68c38f765c39bf55b2e7344b4f0e5331e8031c18713e58048a283f74d53ece",
   "failed_attempt_001_published": false,
@@ -72,7 +71,37 @@
   "failed_attempt_002_verifier_artifacts": 0,
   "failed_attempt_002_published": false,
   "correction_003_global_fit_scope_weighting": "runs/trivus/2026-08-13/CORRECTION_003_GLOBAL_FIT_SCOPE_WEIGHTING.md",
+  "successful_attempt_nonce": "d6e8ddc1db043e8c4141e3e9cc76f2e2b012d382e836933dbb5696784fda2790",
+  "sequential_optimizer_attempt_complete": true,
+  "sequential_publication": "runs/trivus/2026-08-13/sequential_exploratory/MANIFEST.json",
+  "sequential_publication_sha256": "0ea61ad134895b3b889479c513881104532dee1b0ad6ab01e0126c1c12f2094a",
+  "sequential_publication_artifacts": 240,
+  "sequential_oof_diagnostic": "runs/trivus/2026-08-13/SEQUENTIAL_OOF_DIAGNOSTIC.json",
+  "sequential_oof_diagnostic_sha256": "33d3475f2cace787ea0188897a66bbb585cc8e12601c3dd7dfe661ef0c88056a",
+  "sequential_stopping_diagnostic": "runs/trivus/2026-08-13/SEQUENTIAL_STOPPING_DIAGNOSTIC.json",
+  "sequential_stopping_diagnostic_sha256": "cc18c42864959959f2bf78e55d98c8347c7fee27189b7ce141ba05ec3ba9fb6b",
+  "cheap_candidate_auroc": {
+    "mind2web": 0.8308783610373864,
+    "screenspot_pro": 0.8444655790911733,
+    "androidcontrol": 0.8126270494918355
+  },
+  "cheap_cross_fitted_safe_delta": {
+    "mind2web": 0.005649038461538469,
+    "screenspot_pro": 0.00011859582542692038,
+    "androidcontrol": 0.00006249999999996536
+  },
+  "second_verifier_supported": false,
+  "selected_method": "ONE_CONTEXTUAL_CANDIDATE_RANKER_PLUS_STRONGEST_SAFE_GATE",
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "COMMIT_CORRECTION_003_THEN_REPLACE_AUTHORIZATION_WITH_NEW_NONCE"
+  "retention": {
+    "format": "per_file_sha256_manifest",
+    "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-13",
+    "manifest": "/scratch/workspaceblobstore/trivus/2026-08-13/BACKUP_MANIFEST.json",
+    "manifest_authoritative": true,
+    "verified": true,
+    "artifact_count": 643,
+    "total_bytes": 265831924
+  },
+  "next_action": "DESIGN_NEW_CANDIDATE_SPECIFIC_VLM_VERIFIER_CHANNEL"
 }

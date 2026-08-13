@@ -1,0 +1,970 @@
+{
+  "artifact_count": 240,
+  "artifacts": {
+    "cheap/outer-0/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289582,
+      "sha256": "83b8f265ed5452c4bc966242317e6c929373dfefd84d8e49ce81f4ad7c0527b2"
+    },
+    "cheap/outer-0/holdout-1/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "3e0c2c9bcf911721ce5a09fbb38232aa76235c1b85bf0e9c4c4abb3070a0c323"
+    },
+    "cheap/outer-0/holdout-1/mind2web.jsonl": {
+      "bytes": 1518518,
+      "sha256": "59ef362c1178ba5e136d8059f061ebe0766b056b0708381c281ffdaad972fa69"
+    },
+    "cheap/outer-0/holdout-1/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "052cbb0fbacf15366fb956473587bf7a713ed6e9fc08acc58cd024c8603859bf"
+    },
+    "cheap/outer-0/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 997420,
+      "sha256": "d9fbe077c46de278b22d64180aa14944b80b21cf1f8aaa757a7904f9e90fa169"
+    },
+    "cheap/outer-0/holdout-1/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "016400b60031656b21dd8064cd87bff037208e2eaa39049543d229173397f09f"
+    },
+    "cheap/outer-0/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317279,
+      "sha256": "229d0c14339e24e54eea2c1f98de00cc417e71dc4d9b9f0542e3f1e612f05dae"
+    },
+    "cheap/outer-0/holdout-2/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "443cedb8565868f78fae7c2874cac5fc06fe044cf15c588fca50fb79beabda6e"
+    },
+    "cheap/outer-0/holdout-2/mind2web.jsonl": {
+      "bytes": 1512292,
+      "sha256": "bbdaf1401cb87aa00af9393a86fa00b510e2a96adab2bec1a089e88a62d7db28"
+    },
+    "cheap/outer-0/holdout-2/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "51c3aa154671d4d50c818c32df89ce0f63b26d847242dbc0c583b5d9dfa1c3a0"
+    },
+    "cheap/outer-0/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1093542,
+      "sha256": "4a488560c3b36a9b8bf8d3b204d4e8e95feb51336567d96cb7ba0511fae15296"
+    },
+    "cheap/outer-0/holdout-2/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "572f9e7ce65876a53f673b860a6514795baa27aa4e4efa97cead3f5f11691770"
+    },
+    "cheap/outer-0/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334618,
+      "sha256": "4088657bb5f96ea8c3c626ea7126be6a9edcf2cf004df4ece9d3820851092b6a"
+    },
+    "cheap/outer-0/holdout-3/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "993f7d052545714f9ed6b49b3df48d9af5e493f72e3151819bcea1970fd620ee"
+    },
+    "cheap/outer-0/holdout-3/mind2web.jsonl": {
+      "bytes": 1514693,
+      "sha256": "f379ff105ca65e6ceabed19d5e59d5baaf283ca54982b02481c7fbbaaf0ad03e"
+    },
+    "cheap/outer-0/holdout-3/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "a1685ab12977ee53f1221423cb55aee0001f05801392f4d470b6b63881805e7c"
+    },
+    "cheap/outer-0/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 995137,
+      "sha256": "48a02c98237a22c86dd5edfa7f219c36ebf1e9cc441a1a42e1dc95bddb4332d8"
+    },
+    "cheap/outer-0/holdout-3/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "7c60d3192d88d610d43c6c43ff81d8151500e3c2fb3f242874002d50e87d827b"
+    },
+    "cheap/outer-0/holdout-4/androidcontrol.jsonl": {
+      "bytes": 290998,
+      "sha256": "5c0e574459bb1d68b108116aeab069de3efcd57a846e80952e43f613f6f4b2a4"
+    },
+    "cheap/outer-0/holdout-4/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "ca9ee99859edfe424fdfa796a57d1ca07b9a32d9a766bf2b1c559619778139db"
+    },
+    "cheap/outer-0/holdout-4/mind2web.jsonl": {
+      "bytes": 1511518,
+      "sha256": "1adbf3b3bd835536863a138f969982ecae19aade6ff41e78b83dbb467cabb5aa"
+    },
+    "cheap/outer-0/holdout-4/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "bc23db0113445e2a13f9e2ba1769bb666644b3cce93a125784730d36fd90674b"
+    },
+    "cheap/outer-0/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1012990,
+      "sha256": "b8673ccc88cf76a868e78059e1c4340b2dbecbbda16841678016b959980b1698"
+    },
+    "cheap/outer-0/holdout-4/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "46a224ff9ac58cc06dd9517152233ced9abd16455b23d165b4967959093aad6d"
+    },
+    "cheap/outer-1/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304355,
+      "sha256": "5617fa2ccd64a14e6d22fa3667f457b573f03f576c67a0463316ed998f04ea11"
+    },
+    "cheap/outer-1/holdout-0/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "f283634a0830358a7080b73bb70e28cabeaac18c1f699c769e53ac67fb3ace90"
+    },
+    "cheap/outer-1/holdout-0/mind2web.jsonl": {
+      "bytes": 1513796,
+      "sha256": "5b1fcbf92b978edcf971c42e8425fbf84bbb17612b767412ee02ff69cce8d36b"
+    },
+    "cheap/outer-1/holdout-0/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "7249f6bf40168ae6278c13459a85bfa96778e53b3af5413ce0d87695a020c9ae"
+    },
+    "cheap/outer-1/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1013735,
+      "sha256": "7691ab1aa0cbd1abcb124cc3b9e6106b5c87459b0a9334d4671048ed7ada6e17"
+    },
+    "cheap/outer-1/holdout-0/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "0dbe4e729e70314ccf2f91d3c1282470a1d34dbb1826064b2044dbcc37d4374d"
+    },
+    "cheap/outer-1/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317302,
+      "sha256": "5baef79ad855d9a1b2f7b9d14c4c44c8ef40e346238ef64e97d641349b6a6be9"
+    },
+    "cheap/outer-1/holdout-2/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "68dcad209a05bc20b9cac0373e39a241e92266e71cacbd6bd33b05144a6e6656"
+    },
+    "cheap/outer-1/holdout-2/mind2web.jsonl": {
+      "bytes": 1512911,
+      "sha256": "68d50de890c735538e51b6e21d6140bfedcb2a35e92aaed2257643cee4346ddf"
+    },
+    "cheap/outer-1/holdout-2/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "86ae2323d0604272029dc47348ba45d9681dbc17db03dd636cf26e690ddd5dce"
+    },
+    "cheap/outer-1/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1094258,
+      "sha256": "016175730a4740b0e4f102f173b020a9d6a12b9b05c860495aff927694be0249"
+    },
+    "cheap/outer-1/holdout-2/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "7ea1eed8d3301c61aa37b483eca3e05e74f256adfc97c5c1963aba2691718202"
+    },
+    "cheap/outer-1/holdout-3/androidcontrol.jsonl": {
+      "bytes": 335160,
+      "sha256": "d7fd910a75c7a94304c27e7f82d05853b663c64da7fd76e557ad915ca1d3cb13"
+    },
+    "cheap/outer-1/holdout-3/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "7a8e2e049b1ec868a2369758c602a2636e830f38462b06c53200b521853cad08"
+    },
+    "cheap/outer-1/holdout-3/mind2web.jsonl": {
+      "bytes": 1515947,
+      "sha256": "90943bbecd94fa0652c6d34262a7c66a0e6b88c200f8ef47ec2da4f26ba591b8"
+    },
+    "cheap/outer-1/holdout-3/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "bf4ad2e3463ad7ed45e93104c53ddadd039af4ed0314c75f7a8f6446e203edb7"
+    },
+    "cheap/outer-1/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 996442,
+      "sha256": "f7f26d3a4a09966e4e7ac8936e0b9ec0005b35b0df0f45e67a2f3786cbf38b51"
+    },
+    "cheap/outer-1/holdout-3/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "265b979ab2abd1a82078716a8a498dc1a80bfb9d19779b3201c4239ee2535d08"
+    },
+    "cheap/outer-1/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291130,
+      "sha256": "d145bae90c39dce63779d53230079da2484dd3d3dd93c6723a2146b27fe9d079"
+    },
+    "cheap/outer-1/holdout-4/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "108cb73207cb20315749ca9b16e94a28b205bc02ce1696003ee19d368753df9a"
+    },
+    "cheap/outer-1/holdout-4/mind2web.jsonl": {
+      "bytes": 1511813,
+      "sha256": "a3334606abf08cf90836a73d36dac69159b3975ab32b6bb1e35ef1ae14c85def"
+    },
+    "cheap/outer-1/holdout-4/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "972909120eba09534f53276b0629fb37cde328d6b9849f58f2876f06d0b0a6c6"
+    },
+    "cheap/outer-1/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1013245,
+      "sha256": "4110516adf7bf94e03d27a7e3ff48d5007737b6a62479744d3ac177a02fa8efb"
+    },
+    "cheap/outer-1/holdout-4/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "4025f53e10e0950297c27445c74d2e63b3b154e4720ec00d1fb016e73dd9a642"
+    },
+    "cheap/outer-2/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304297,
+      "sha256": "c063bbff820a349ac9a9e46074a1f0c487b3f58590f03180752254875e43c5b7"
+    },
+    "cheap/outer-2/holdout-0/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "9b0158b86c2fbee48c6c55939dc662a68756008d180d6813fd0ce77f4cd870d8"
+    },
+    "cheap/outer-2/holdout-0/mind2web.jsonl": {
+      "bytes": 1514005,
+      "sha256": "3d2a28cbd05ed24b95b8cdca1701ba5a483edd3ee8c69b7a37b667fb6ca584eb"
+    },
+    "cheap/outer-2/holdout-0/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "d55c7bb713b559890c5605a334240a9ace1243a84f053164ea3aebbe8369e145"
+    },
+    "cheap/outer-2/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1013323,
+      "sha256": "6a9586fa3bffef91f905e36dea01b54e5af6ed2deaafed6fdb1985fc32c33ea2"
+    },
+    "cheap/outer-2/holdout-0/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "d55224aa03ebc3dbf8141375a7992fcb2be0738334923d254b0d625445876e8c"
+    },
+    "cheap/outer-2/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289887,
+      "sha256": "9806d056041eb8d985781f292d41dde051352c84cdbe00aea4a8c7acfb2f4499"
+    },
+    "cheap/outer-2/holdout-1/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "184b77cabd971bb9e8a10417af3916c81533f361d35b5056e790013f460547b0"
+    },
+    "cheap/outer-2/holdout-1/mind2web.jsonl": {
+      "bytes": 1518407,
+      "sha256": "8e493e3e391fd158dca7f12d9b5fcccaf3be9cc76094776e6bd811004c6d18b9"
+    },
+    "cheap/outer-2/holdout-1/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "179d5fdef579eefa54756a7b6f85ae175920232896dd295ac805ddfacf678865"
+    },
+    "cheap/outer-2/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 997708,
+      "sha256": "312ab082281e59de9eca769703832c9631c7db4b53cab48bfe0f418a86d799d3"
+    },
+    "cheap/outer-2/holdout-1/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "394a5de17a5cfd9961573d0f8f125ab496b15d0648d1d66bdf8a42160df40e9a"
+    },
+    "cheap/outer-2/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334354,
+      "sha256": "c7dcbce5f6603d0bf2d50c7ae1350df71793be9b45ad2c89c0753c41845aece0"
+    },
+    "cheap/outer-2/holdout-3/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "8434bed3fa08f5289937882865ac61d8d6b7abae06b28654f3ed6ecf11639383"
+    },
+    "cheap/outer-2/holdout-3/mind2web.jsonl": {
+      "bytes": 1514906,
+      "sha256": "d120de00def2e3463bb925ad4a0d050901616daf8584002f071e2cb9f3151f83"
+    },
+    "cheap/outer-2/holdout-3/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "02f4d2dea5e9fb7578c5363be467380ef7a8c2f3276e4aeefe329c03c3d6c4a4"
+    },
+    "cheap/outer-2/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 996143,
+      "sha256": "d1950f33340318b840a35b6145fbfd6a93c249c87c687c1ce6b2c32026bd6381"
+    },
+    "cheap/outer-2/holdout-3/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "db18c3d10ee781250d05b2cc7b91baee6ad7b79e9f2dc8ea8eea37726840fdee"
+    },
+    "cheap/outer-2/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291035,
+      "sha256": "3639ad27e9c9ccd01cb48d4603717d2e323889a877f92b62852def4ed6dd1793"
+    },
+    "cheap/outer-2/holdout-4/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "8ec0c71fb513869c62cc05c14820ee86f714648c7cabd321e82286201314739d"
+    },
+    "cheap/outer-2/holdout-4/mind2web.jsonl": {
+      "bytes": 1511483,
+      "sha256": "b188ec9589381f0b72d7a97e1704589a3df03660f347cbb94649c14a5f08c3a6"
+    },
+    "cheap/outer-2/holdout-4/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "cce585731ac66b0a6c6583273801ff9113e0cb6a0ca4f568d20064f302ae9551"
+    },
+    "cheap/outer-2/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1014372,
+      "sha256": "ec600f7fa647cfc230cfa026e88b8c0190de72662b011001f122aef423e9921e"
+    },
+    "cheap/outer-2/holdout-4/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "8ff4c39181d61ea4dfc966e02161ba13c3e10a82982e9b97c5b203704d6e3905"
+    },
+    "cheap/outer-3/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304537,
+      "sha256": "cad61d9477143ae646783edf01fd05f28c5442576ce79e9cbf93ac12cd8ebe89"
+    },
+    "cheap/outer-3/holdout-0/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "a5f81669d8a8d63d38ca0a1827fc9ae9273d1d12eb6ff03779c5c7a6b2523d48"
+    },
+    "cheap/outer-3/holdout-0/mind2web.jsonl": {
+      "bytes": 1513834,
+      "sha256": "d9fdac375994f08016516e1c1ed7c3cf966d8b60799915b8f8440a710ac7af36"
+    },
+    "cheap/outer-3/holdout-0/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "4c2b9bb9f40be72f6b3aab93b5715cf6cf9bfc25c28278969e3fbd0a7b1c2196"
+    },
+    "cheap/outer-3/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1013019,
+      "sha256": "1a24536a8074b9dce585dcca6ddb1b9b7851eb4efbdb2e923d08a359c717be89"
+    },
+    "cheap/outer-3/holdout-0/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "22094ef2c154c907fe079280e4a3e10b7ccdcb6092fb8e5fcc8e84f4486cfabf"
+    },
+    "cheap/outer-3/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289515,
+      "sha256": "28ac998cc0e31b2f5518ad678d0adf2eb476de18c93723e3230c6c093eba92ba"
+    },
+    "cheap/outer-3/holdout-1/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "24adfcd934081289d6d97548aec450c54fe86d53abb84087f627b395defd9fca"
+    },
+    "cheap/outer-3/holdout-1/mind2web.jsonl": {
+      "bytes": 1518497,
+      "sha256": "8b7a6db8b160b6731f0e58c8187a6a820dcd3a08ad74e547eb0835bc79fca607"
+    },
+    "cheap/outer-3/holdout-1/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "aede890f66fbe1172534c7ed8c1092f158cd5d487a3accab061827d5cccdac5f"
+    },
+    "cheap/outer-3/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 997309,
+      "sha256": "93fffd10fe120608133676593c65ddc16a0480a598735a8885c5fc59f1292089"
+    },
+    "cheap/outer-3/holdout-1/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "1f00084947bfc6b387fc118122ff34a418e9c968e6702875348285c03aeeaaf5"
+    },
+    "cheap/outer-3/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317349,
+      "sha256": "121720cf4526f22e68a2e4af539865e60b871dda28e6e7126dba058b7cf6037a"
+    },
+    "cheap/outer-3/holdout-2/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "66275f3b9ff117c0025609d2d6c587a05f7e268093aa369a1740c1d2bdb2b517"
+    },
+    "cheap/outer-3/holdout-2/mind2web.jsonl": {
+      "bytes": 1513395,
+      "sha256": "f7b9f2b6f53a558e1567b18897ce66f13e372d98799c94b35bed7d064b94c6ff"
+    },
+    "cheap/outer-3/holdout-2/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "81f946e555e17e33bc80abbffb6a1ca71d8fb4c5e6461a40963963dd4685994a"
+    },
+    "cheap/outer-3/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1092351,
+      "sha256": "0d546b95253a6d7f8a6a7b65be59000bd344935bc65bc28adb89c84dd99ff507"
+    },
+    "cheap/outer-3/holdout-2/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "8a3fa56ce98146737451e506939e7b4c4115b085257ab970adb214ac0df304c2"
+    },
+    "cheap/outer-3/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291346,
+      "sha256": "b9d9ce95ae6a695737b8ebbc7b73eb7e793f838f48da3126fa3b539602eeeb90"
+    },
+    "cheap/outer-3/holdout-4/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "27443bcf76e785bcb016d53751219953cf7a6996707d0a5b4eeaef1b2f43fc44"
+    },
+    "cheap/outer-3/holdout-4/mind2web.jsonl": {
+      "bytes": 1512426,
+      "sha256": "6c0d9ad7fa8570699fc34720182eea3dc32bbcf9f76cae28ec84f4648dde8e84"
+    },
+    "cheap/outer-3/holdout-4/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "a50a775ffef2d3cd510903278ddd24f874994ec030c28451b91be6015afab654"
+    },
+    "cheap/outer-3/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1012914,
+      "sha256": "471d67da9728942c76ae4ccdd5521c1aeb1b7abfbc5c9ef312a486939954941a"
+    },
+    "cheap/outer-3/holdout-4/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "56bc43c8e4d73bb1f13c303db2d7294cfed1a70a7c09dbe29387acc78ab8eaa4"
+    },
+    "cheap/outer-4/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304340,
+      "sha256": "7449faa3becc1191ec3e8c86d7f2b5361768b97800586977a24444981304d2c3"
+    },
+    "cheap/outer-4/holdout-0/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "05ebc5b115f40f234ead347e4068d2ea359d323807b84fe213aaf228a262234a"
+    },
+    "cheap/outer-4/holdout-0/mind2web.jsonl": {
+      "bytes": 1514123,
+      "sha256": "bf5d36552461274260e24ceffb3d50973bea8617e1ed4570e370b5b158ad24f2"
+    },
+    "cheap/outer-4/holdout-0/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "d346200c8f5870e04c22201f838f25ea910343beb5fadd3780f59af882acbb06"
+    },
+    "cheap/outer-4/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1010557,
+      "sha256": "c27033d4c872ede1f66eb3dbf0dec3452bc22b23980ed17c99100554d18969e1"
+    },
+    "cheap/outer-4/holdout-0/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "b2df6454063145774ffb39290114f6759c70290b31558669e29d2e3108941efd"
+    },
+    "cheap/outer-4/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289650,
+      "sha256": "1f6fcdbb8a3a6947467dc9c9ecde484de106cf29cfb2dbf4d061ff83efe2e94f"
+    },
+    "cheap/outer-4/holdout-1/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "72844e09bd3d9e7d77e74b91895b4b9ac3d133cf44caa1fd3442c4f5b1aead59"
+    },
+    "cheap/outer-4/holdout-1/mind2web.jsonl": {
+      "bytes": 1518942,
+      "sha256": "45bc7dd53d4ac1d2337c56a9467f12d47dee7868e8563e55abc5caf6071913f3"
+    },
+    "cheap/outer-4/holdout-1/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "c63b751355e7281d8b9eaf06bb06d0367ce7295d5404c91db006cf18719c9ce4"
+    },
+    "cheap/outer-4/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 996307,
+      "sha256": "e0908b83d693632c02c30533f82be006c0abe165bc5816cbf656b95bbd6dbe41"
+    },
+    "cheap/outer-4/holdout-1/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "ab9f5b60ee91f66ea8d0c5c76542bc745a8d7f7573953834921eeda32224256a"
+    },
+    "cheap/outer-4/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317436,
+      "sha256": "2c4f89574f7a98ee0da11ee5d6f0e24852746c264a7e934c5b40034d19cf1d52"
+    },
+    "cheap/outer-4/holdout-2/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "b844c46361d2ef8a825136a4227a5a90281e44eb83520c852da7d87ae1d2538c"
+    },
+    "cheap/outer-4/holdout-2/mind2web.jsonl": {
+      "bytes": 1513068,
+      "sha256": "ce607658d922eb435e276e4136b32fb72c299baa9cfa44fb9a77546253d0de33"
+    },
+    "cheap/outer-4/holdout-2/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "1aafd0ae03db6525fddfddebcfa05fa7328e6b975a9cbe8899445b2dbaaf109c"
+    },
+    "cheap/outer-4/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1092382,
+      "sha256": "c64a8edfb6815057576e8794023d4cac5e9acf3c7381515f89feb1cf203a847e"
+    },
+    "cheap/outer-4/holdout-2/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "0a1ec755a92ddc688c77aef0c77cfd8802853cf6a43659d17e1eb2686f6baa07"
+    },
+    "cheap/outer-4/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334713,
+      "sha256": "31457a216850bc7afb495ecc91679f0e84e98218c4c3c7b1d7ea1a3e9295da01"
+    },
+    "cheap/outer-4/holdout-3/androidcontrol.pt": {
+      "bytes": 442865,
+      "sha256": "c5cf640995e1605ad89e1f160ee8b14d3e6b98fce35b5643a7a0d98cc6599505"
+    },
+    "cheap/outer-4/holdout-3/mind2web.jsonl": {
+      "bytes": 1514866,
+      "sha256": "245b410f5a32b5f0710b6d085a855a73a46dcdb755569b619f9d79ae39c9338f"
+    },
+    "cheap/outer-4/holdout-3/mind2web.pt": {
+      "bytes": 442649,
+      "sha256": "55875183be27e1d592ab78b6aa3641ec254fa667283f7251c18a8aedd6f7a989"
+    },
+    "cheap/outer-4/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 995060,
+      "sha256": "4a740df569ea91814f24e578fc79cdf4c57647a5c4ed01d44b16e235aff12b98"
+    },
+    "cheap/outer-4/holdout-3/screenspot_pro.pt": {
+      "bytes": 442865,
+      "sha256": "4623785d32be5ba5d276c097cf5ed0bb08347b3f2e2ac9e243bcd40e46f34056"
+    },
+    "verifier/outer-0/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289696,
+      "sha256": "2fbfe0280ec28094a184830457e441546385a7913d714fd753768eaee6c882b6"
+    },
+    "verifier/outer-0/holdout-1/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "d949be1f84a614cb06e5f9ba703933d3d5d658d81ef9a484b23900f1fcc8d434"
+    },
+    "verifier/outer-0/holdout-1/mind2web.jsonl": {
+      "bytes": 1518018,
+      "sha256": "261464f0a9cb40c55ae94587b70974ac0f0f567b12730b3e769f4670c4209f33"
+    },
+    "verifier/outer-0/holdout-1/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "37062577feeda89a7f26b1283f0363891515910fde48ce1667f30147ed91744c"
+    },
+    "verifier/outer-0/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 996809,
+      "sha256": "a34b53c558c4169d2e26acc63d39bf82a5d11927312045c0f98e63db228307bf"
+    },
+    "verifier/outer-0/holdout-1/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "41b4f75f2a0f10d8504a0954c50a8398426a4b20011b41aa110479e3f894ed93"
+    },
+    "verifier/outer-0/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317395,
+      "sha256": "9b714894465a053520583d9e24a045bd9f1a8e77dacf67db6594b6155ac0be2f"
+    },
+    "verifier/outer-0/holdout-2/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "bad4e4100938b24819c89e6920d7df875901df67d246de73f84e49e7425cc14c"
+    },
+    "verifier/outer-0/holdout-2/mind2web.jsonl": {
+      "bytes": 1511500,
+      "sha256": "708edd78e483b8115a52b9d5003d07226aea6780a7f87597f6222389b1a147a3"
+    },
+    "verifier/outer-0/holdout-2/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "f3afc659804c2f476d3f306d13da064028cf39becabf2da27f19cc858f81ca59"
+    },
+    "verifier/outer-0/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1094310,
+      "sha256": "2dd1af63c436801498dfe81d5ab39f19c10aed156e6baba2e33c55293cce3cb6"
+    },
+    "verifier/outer-0/holdout-2/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "7ae4afa67bf0ce1744327440f22f5d0581451b1ed61d995ce9e6d0add45ccfa1"
+    },
+    "verifier/outer-0/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334473,
+      "sha256": "84c98243728952798e6bab886803874c0f6ceb8ac74c0c7356de88fcd5f1501b"
+    },
+    "verifier/outer-0/holdout-3/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "ed2213753c596d26393ee810b6a1c87d66ff1e73c3e7a4b85c050a52762874c2"
+    },
+    "verifier/outer-0/holdout-3/mind2web.jsonl": {
+      "bytes": 1515032,
+      "sha256": "6bcd2dfb18c8c50980e8f09d244fc592aac46d610e5a7937ce0ce9325c3f9d13"
+    },
+    "verifier/outer-0/holdout-3/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "74ddf422ce589d831cc0f3b55fd7c07b7b8046039fe18ed8c61984bf70e160aa"
+    },
+    "verifier/outer-0/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 997029,
+      "sha256": "54071e361f685553318f6ecb014604a4d1591d55686afe7e5faabf6ed01c2960"
+    },
+    "verifier/outer-0/holdout-3/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "d711da93d87745712494d6e059efdcc312f4f69e18cda0f20dbbf87ec0f4e15d"
+    },
+    "verifier/outer-0/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291500,
+      "sha256": "1184804192d079af568af85063d469b957b259c285513897c3143754908af434"
+    },
+    "verifier/outer-0/holdout-4/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "d4cf33f63ddbe267461b8e37aefc1e5012ea6b54bc88197425aa8339c03e259b"
+    },
+    "verifier/outer-0/holdout-4/mind2web.jsonl": {
+      "bytes": 1511214,
+      "sha256": "520d11fdec86e6de9b535d60a45747083bbdecca28d6d543545fe6c8e4e2d31e"
+    },
+    "verifier/outer-0/holdout-4/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "beceb83f01fd51e93522ad5b8f46e4ce7fc3ee65a6562d816f5e341d52f597f0"
+    },
+    "verifier/outer-0/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1012878,
+      "sha256": "29d1f5eac42c44ea2fb3c2994e2bee78cb6a23f68adeed166634346f7dce05af"
+    },
+    "verifier/outer-0/holdout-4/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "1c58de68dd21685156e220568701c1e3e7da8d499b45828ff64ce5b01d7aa4e0"
+    },
+    "verifier/outer-1/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304306,
+      "sha256": "2f3e45f2f100fac5a8d280d8221d88257395ea8b6729b2a72d6236558c359064"
+    },
+    "verifier/outer-1/holdout-0/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "cc35ed9b9a1f391da1b1ee813353482cffca0055312bd650bd3c580d9a36f7fc"
+    },
+    "verifier/outer-1/holdout-0/mind2web.jsonl": {
+      "bytes": 1514063,
+      "sha256": "2ce2b806360864f3dcbda439574873a993cba1b20ddffc5304e2a9e94d0dac8a"
+    },
+    "verifier/outer-1/holdout-0/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "bf659473501b66e33def450fd406b9982658e6b62eb806f872d6093739967de8"
+    },
+    "verifier/outer-1/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1014041,
+      "sha256": "1f075fb795f4b5ca79e271ac22f3e8c6a1f101b0db82d8a183820b20575c1975"
+    },
+    "verifier/outer-1/holdout-0/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "c805d0fabb1c74e4049a012574eee79e633b23932d56d4fa9b49c32f59cf0422"
+    },
+    "verifier/outer-1/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317279,
+      "sha256": "59de02af9318b7ee510e4948c1388a570ba92345e89bfd2e9730dbd9b3419a00"
+    },
+    "verifier/outer-1/holdout-2/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "aac917c8aa04cd991c9c6e2197a2fbcbb6993aca5c6d2c14fdb83c8005d1d467"
+    },
+    "verifier/outer-1/holdout-2/mind2web.jsonl": {
+      "bytes": 1512850,
+      "sha256": "e59738251396f554d0f4085e68290af41e9691c9292a42aaa687c270e52d17be"
+    },
+    "verifier/outer-1/holdout-2/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "8bd5da7e5bb658225bd83e62657bf9b3ce1b2b01ffb00449244ce26900cc70e0"
+    },
+    "verifier/outer-1/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1093988,
+      "sha256": "ec59f0a92aa68b867a2d8d58acbd0825ab23b2c292ac2f39ebfe3a0d79c23fee"
+    },
+    "verifier/outer-1/holdout-2/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "195061fc76d622728ea7adc8e9ef433b7ede46f2a68ed5857709c9fff4594e1b"
+    },
+    "verifier/outer-1/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334754,
+      "sha256": "b90293a085d9546e3781eefd7d0ed0d463b1099527f73ba8fc79cd4301045e35"
+    },
+    "verifier/outer-1/holdout-3/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "b124ed7474200b7b7c9a4c6a268a481657b620554a8ffb28f91c121637e0a496"
+    },
+    "verifier/outer-1/holdout-3/mind2web.jsonl": {
+      "bytes": 1514738,
+      "sha256": "d088bc9585466a2730065401e6a14ad26d15148876c4314abb8f4d65d9b9752e"
+    },
+    "verifier/outer-1/holdout-3/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "254cba8d7ee88a7b2fac5f8ea2c717e2a259518bb9b40b39c0f6983e496fe89f"
+    },
+    "verifier/outer-1/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 995992,
+      "sha256": "c8c0eafd9af1baf8057da4e18c26b9041947617e85827b8311eb17aca4d5577b"
+    },
+    "verifier/outer-1/holdout-3/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "168acd539f9053bfd6cd1ff18e8e3f41cd6b28ff04e220a0212ab44036675b2c"
+    },
+    "verifier/outer-1/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291119,
+      "sha256": "9ea6f5eae86da9659f7baa517e6661ee2028290c1cc725745a57bb1142d57009"
+    },
+    "verifier/outer-1/holdout-4/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "3f0d7aae0ef405ba18bbead4569c09f90f41ca58c3ef1deccdccf9acd9e03fd0"
+    },
+    "verifier/outer-1/holdout-4/mind2web.jsonl": {
+      "bytes": 1511566,
+      "sha256": "1a1e7254078c63ce12793f1dad69d5856e6a5e5da9a7f5532892142d51f6c474"
+    },
+    "verifier/outer-1/holdout-4/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "87068780fee1cb9417e8303c17500161c88f33e116ac21011b31eedab43e2c85"
+    },
+    "verifier/outer-1/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1012637,
+      "sha256": "13d56f33255eef7419862bedca9bbf4bfb9cd0808fc21345726387deb1f6276c"
+    },
+    "verifier/outer-1/holdout-4/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "a6e07be0694767b5c2c30ef75f3ad1da1d93b219014aed4502de41cc5c2e56cb"
+    },
+    "verifier/outer-2/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304482,
+      "sha256": "ecbf02800039f958cf006488ad5dd5cce25763dbc97039af810b7858e390dea9"
+    },
+    "verifier/outer-2/holdout-0/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "2ff82ae6b404157239cde4933b8a00a0cd6e030bcb4b0f85f5f0ef7cd67707d3"
+    },
+    "verifier/outer-2/holdout-0/mind2web.jsonl": {
+      "bytes": 1513562,
+      "sha256": "c0ea8b87e71bc93171fb9a78c6f11e695eb5fb21ca5c6e743c7538c5e6814433"
+    },
+    "verifier/outer-2/holdout-0/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "4bdeadeea08bde9bbacdeec97dfa489abc4f92a111561a907a3156fcdca8e209"
+    },
+    "verifier/outer-2/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1013906,
+      "sha256": "06b2a36ac93cf93db7736716cf413ff1fe9ca4b53cae3027d90c85e0b5edbfca"
+    },
+    "verifier/outer-2/holdout-0/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "54df58783536548d383dfd4757a82cbddaff86e9ec962090c34a0bab2e389999"
+    },
+    "verifier/outer-2/holdout-1/androidcontrol.jsonl": {
+      "bytes": 290016,
+      "sha256": "912fd99bdf5e754cef372e225723c670afb5ace8fd20fa3855b2ab5840954e1e"
+    },
+    "verifier/outer-2/holdout-1/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "0bbccc7e81f94cd1c91365ca3ca62a2f8cfff8771718084d9fd63e3107acf477"
+    },
+    "verifier/outer-2/holdout-1/mind2web.jsonl": {
+      "bytes": 1518164,
+      "sha256": "1d95e09113febde6b788447138941b0311d057cd0288672424ea49898e843c91"
+    },
+    "verifier/outer-2/holdout-1/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "663d1343d9d441aaaf8758b8c77b364e731a0b47024f51e085b138fc0e98bf08"
+    },
+    "verifier/outer-2/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 998315,
+      "sha256": "99f622eb7a74838ad5ccbedf6f6d2764df3f0781fbff9020a3aae4c7d3949425"
+    },
+    "verifier/outer-2/holdout-1/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "0a015a3301a9109d3658bd9df4e39ba76a9812686ce007589f9631621b0556fe"
+    },
+    "verifier/outer-2/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334406,
+      "sha256": "b1cd3f7ed1b0e6328541f56ee14a489bd03ab60c04ae6bdd4ba9141cf7bcf62f"
+    },
+    "verifier/outer-2/holdout-3/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "cb4615a6aca4ecb5a97b3844c3ae88b424b179f4c02c62723d48683cb5341044"
+    },
+    "verifier/outer-2/holdout-3/mind2web.jsonl": {
+      "bytes": 1515438,
+      "sha256": "8af8533deab491b5de0f9fd32d0b6fcf3598b712f094094a6103ed74a473f91d"
+    },
+    "verifier/outer-2/holdout-3/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "eec019b23fca7701f8d8c429ee211dba0586beea6fbed407b5509462c29b729b"
+    },
+    "verifier/outer-2/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 996900,
+      "sha256": "ff6dd5ed95911d33fba7b276e865618d937ea197d1b8f4248758b74ee095f6d4"
+    },
+    "verifier/outer-2/holdout-3/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "81a4c7b80dbf9dc86376877596bd74f3485771c577c906aaadde3829aa574c26"
+    },
+    "verifier/outer-2/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291087,
+      "sha256": "b403b62781bfc0b7aca8d64fbc6d441d9e837f8a5f2bcd7bc767786ca47f17fb"
+    },
+    "verifier/outer-2/holdout-4/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "fdf8fa86498a09e82e43b921334a569e6406c26af4a09f19696179703ae05591"
+    },
+    "verifier/outer-2/holdout-4/mind2web.jsonl": {
+      "bytes": 1511655,
+      "sha256": "97486b16327efe0f12c1e5418d114db83e51bb64fb3ca779a845b77dcdb87a08"
+    },
+    "verifier/outer-2/holdout-4/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "ec1d492ac4ecd61e15e7f839fad04f53286082ecac9cc255408f2bcada31d696"
+    },
+    "verifier/outer-2/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1014202,
+      "sha256": "f2d0891bb39026986a582461e134247377b12fef51ecc89594739f5aab697f3e"
+    },
+    "verifier/outer-2/holdout-4/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "75091f62e14208192546fa36d05358e8e959adeae4d29c5520fb3ea73e9b4d7a"
+    },
+    "verifier/outer-3/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304267,
+      "sha256": "d80ae8c21e087460fa5873f41dfb306fd16fa95e2618a939dabdb675121c94ca"
+    },
+    "verifier/outer-3/holdout-0/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "6c7d50f7094b628a89a3f366a3466eb0f9772aa2bdbf33b268668c7996d1b87f"
+    },
+    "verifier/outer-3/holdout-0/mind2web.jsonl": {
+      "bytes": 1513346,
+      "sha256": "ff1f1dfa0d0b72683100f1341cdefa587e5f1b34582a914de22774d6c37bc5e6"
+    },
+    "verifier/outer-3/holdout-0/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "1d91258d99bff7b0ffa714286777297ef628a258271349e1cbdbabb4b5803900"
+    },
+    "verifier/outer-3/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1012490,
+      "sha256": "7c52d0fe44e6b1c51be137dc9293ca8238613c49ad67eb4ff362c9f1f48c1209"
+    },
+    "verifier/outer-3/holdout-0/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "21e0d11d461d16b25f5ef776be327e22b3629c29e59fc260eeb388380567a60c"
+    },
+    "verifier/outer-3/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289798,
+      "sha256": "a6b3efa5f3f092069870e29709f38a4d5d6a480a32a3e5848d9aab29d6d2e72e"
+    },
+    "verifier/outer-3/holdout-1/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "e273f410df6e051abe8767a34297f56c684c3399947fa4a814ca8a6d65ebf3e9"
+    },
+    "verifier/outer-3/holdout-1/mind2web.jsonl": {
+      "bytes": 1518704,
+      "sha256": "083d5a571fbc034982f5331c5b2a64c1905923b7798a6915d5e252f575c66bf3"
+    },
+    "verifier/outer-3/holdout-1/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "44ae1b64432ff4bf55ca42524b1e5125f5aabc665678b49d519a97a0953bc678"
+    },
+    "verifier/outer-3/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 997814,
+      "sha256": "4a016eccd9b014962b1c8d3f470c2967f6de7425f23e8c77728f5d9e8ab01007"
+    },
+    "verifier/outer-3/holdout-1/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "8aea4ffc8f749dda54c1eb8e6a033d656cea57828d652db5a2b9486f4b8a39cd"
+    },
+    "verifier/outer-3/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317305,
+      "sha256": "a7e3204d20e78307209c29cab7f60f50db621fc166d244d90559e35392190c06"
+    },
+    "verifier/outer-3/holdout-2/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "ed38292a25ecce9b04b98f3b66465967e3cef6b215b99708518239be274230da"
+    },
+    "verifier/outer-3/holdout-2/mind2web.jsonl": {
+      "bytes": 1512954,
+      "sha256": "af29e1945215edcce72e956fde635252b662dfac3a3200d8bc82d83d74500bca"
+    },
+    "verifier/outer-3/holdout-2/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "a2fe4f28509c5dafd36f09466113f996c0e1b1e412bd945ce619ea85844153c7"
+    },
+    "verifier/outer-3/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1091901,
+      "sha256": "eb0b1c2d1ba1748c5a43cb421e3cf2825a2c962d7918dda141616c25c7177d0e"
+    },
+    "verifier/outer-3/holdout-2/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "1ffef563d1e9d62376f1066597a96fab7b6945c9c26f3fdb2d823a41241548e9"
+    },
+    "verifier/outer-3/holdout-4/androidcontrol.jsonl": {
+      "bytes": 291358,
+      "sha256": "43a311223ecdff18faed49dcb61173a908989cf1e2f5e02b5d8158d177e10a23"
+    },
+    "verifier/outer-3/holdout-4/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "92f163b1f78c0d21aeaba5c0727618dde3bd7814b00020df0b25b0214d99779b"
+    },
+    "verifier/outer-3/holdout-4/mind2web.jsonl": {
+      "bytes": 1511978,
+      "sha256": "f49002442d47c851c713356a751bc5d8571a5a99055eaa2c7c350e7b9cff4124"
+    },
+    "verifier/outer-3/holdout-4/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "15e30eb5bb221437dd6ba582952b48bc4dd4e5e5c91f8fbe00c9740a0e52ccbd"
+    },
+    "verifier/outer-3/holdout-4/screenspot_pro.jsonl": {
+      "bytes": 1013231,
+      "sha256": "49d85bed0e5660ce27bb9c731c0e04c54de437f3ba1149af1f9c2297bc8cda87"
+    },
+    "verifier/outer-3/holdout-4/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "a3d90b233eef0db73ef6aa8736f39b34578ab07862c2fd30dba83278858cf169"
+    },
+    "verifier/outer-4/holdout-0/androidcontrol.jsonl": {
+      "bytes": 304558,
+      "sha256": "e734f788c7cb586001798cc5178b25a6d69d945e8742c47ecef512457f1d93e8"
+    },
+    "verifier/outer-4/holdout-0/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "b6b43973bf27858c13471e65920732cd731ac4b8b037ebee3a8d76c7e2b2202d"
+    },
+    "verifier/outer-4/holdout-0/mind2web.jsonl": {
+      "bytes": 1514637,
+      "sha256": "457ac1e7cdf501896991f41f134cd73497edbb9484039e3db97262742b1181da"
+    },
+    "verifier/outer-4/holdout-0/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "43688feffe1185d4a4a9bf3b4f119d6757eb15090f465b2c92f5954f851b6eb0"
+    },
+    "verifier/outer-4/holdout-0/screenspot_pro.jsonl": {
+      "bytes": 1010947,
+      "sha256": "0d577bcb89a1e759bb8cda2c0589e680c20bc190db153f7d45866b168cac3632"
+    },
+    "verifier/outer-4/holdout-0/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "dc4bce65234df7d095f358f9d8d5aebff68f9c6c9da1aa3dbee5e110b4574fb2"
+    },
+    "verifier/outer-4/holdout-1/androidcontrol.jsonl": {
+      "bytes": 289562,
+      "sha256": "eedfc6f46d2f294e595753d29f893072e628e93d08f212d1bc488613f528a02f"
+    },
+    "verifier/outer-4/holdout-1/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "66cec25f450c4f8e176cce9843c10e2e30d614a29ab8a47d67ef2ca0db0df913"
+    },
+    "verifier/outer-4/holdout-1/mind2web.jsonl": {
+      "bytes": 1518210,
+      "sha256": "223b894b3e3c3bc80be27a67384cb6d05bbf6f3241f57da7b7fe2564a59c8cf1"
+    },
+    "verifier/outer-4/holdout-1/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "82bff0a030dd2eb3d7d1b38c8828142530183e9c8d8d82e5988b2e9a3a428905"
+    },
+    "verifier/outer-4/holdout-1/screenspot_pro.jsonl": {
+      "bytes": 997117,
+      "sha256": "7edddee3dd6b69dbfe3950c56a8076921c54ede9b7b317c82c1a662b953e704f"
+    },
+    "verifier/outer-4/holdout-1/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "b720720ab74bfcdb3a2fc43bb006a6d16fe6205d600ec20e677d48095efeae22"
+    },
+    "verifier/outer-4/holdout-2/androidcontrol.jsonl": {
+      "bytes": 317382,
+      "sha256": "03f0a96c9afe985cd149620fb33350900e07ec885b651f7e39da74f338bcf7b9"
+    },
+    "verifier/outer-4/holdout-2/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "934c7d74f010cbf61ca882533f67c0cfdbec73b9b641f30b576f6e3cd62fbae9"
+    },
+    "verifier/outer-4/holdout-2/mind2web.jsonl": {
+      "bytes": 1513669,
+      "sha256": "fc2d0624b5f4a217b7abd5b937db941c9dd8883147de72d873d52e076462dba2"
+    },
+    "verifier/outer-4/holdout-2/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "00debaa9890ec8585dd2b16d2807694e128fc36cbdd07aabb016f527fc1f5352"
+    },
+    "verifier/outer-4/holdout-2/screenspot_pro.jsonl": {
+      "bytes": 1092423,
+      "sha256": "79351ab703ae97815c79bafaa7778f576f022cb3e70420c92af4a1fb981ed349"
+    },
+    "verifier/outer-4/holdout-2/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "1084c354e1f89b9efdbe269c9372050aeb01b6f50e5c7da27d6cfb5002a3e0c0"
+    },
+    "verifier/outer-4/holdout-3/androidcontrol.jsonl": {
+      "bytes": 334484,
+      "sha256": "b284b7c9d9bf914b0828ebf86153bf40813594bb078d5436ab99f2a4a267c8d1"
+    },
+    "verifier/outer-4/holdout-3/androidcontrol.pt": {
+      "bytes": 444145,
+      "sha256": "6565c9c39af4137c6ddfc45d432a9e33f7e4a42764b9736848b88fec54359136"
+    },
+    "verifier/outer-4/holdout-3/mind2web.jsonl": {
+      "bytes": 1514890,
+      "sha256": "0fd03fc338928994b7aa22deb6a27bf0b190231bc1ee3e591fd84ed96cf5afe3"
+    },
+    "verifier/outer-4/holdout-3/mind2web.pt": {
+      "bytes": 443929,
+      "sha256": "8474a889192b6bfcdbe6708a71d962e484b62a68159cafeb6f78551d261aa39a"
+    },
+    "verifier/outer-4/holdout-3/screenspot_pro.jsonl": {
+      "bytes": 995199,
+      "sha256": "caedec794a16bb4236f9430079cc0ae25afdef7ba1a47251826553d94dfd7fb1"
+    },
+    "verifier/outer-4/holdout-3/screenspot_pro.pt": {
+      "bytes": 444145,
+      "sha256": "f52bf28e189705f6d5c8051c9be3427e3bc0450c634127f65d13d75775ef8ec7"
+    }
+  },
+  "confirmatory": false,
+  "promotion_allowed": false,
+  "receipt_sha256": "e9b5fab18fa1692633fb015b130d4ad5613553fdc5197fed40af0889176388ce",
+  "schema_version": 1,
+  "status": "PASS_EXPLORATORY_SEQUENTIAL_OOF_COMPLETE"
+}

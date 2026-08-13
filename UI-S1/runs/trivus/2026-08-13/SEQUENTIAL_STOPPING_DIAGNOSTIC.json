@@ -1,0 +1,1382 @@
+{
+  "claim_boundary": {
+    "confirmatory": false,
+    "promotion_allowed": false,
+    "repeated_sample_contexts": 4
+  },
+  "config_sha256": "1638d40c7d2308063001ff7f360fd3b6998eaea0afa660ae71ae7155d830c0aa",
+  "label_manifests": {
+    "android_manifest_sha256": "efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972",
+    "vus_manifest_sha256": "b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43"
+  },
+  "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
+  "results": {
+    "cheap": {
+      "androidcontrol": {
+        "cells": {
+          "high": {
+            "accuracy": 0.631,
+            "delta": 0.0,
+            "losses": 7,
+            "override_rate": 0.38975,
+            "rows": 8000,
+            "strongest": 0.631,
+            "wins": 7
+          },
+          "low": {
+            "accuracy": 0.786125,
+            "delta": 0.00012499999999993072,
+            "losses": 1,
+            "override_rate": 0.187625,
+            "rows": 8000,
+            "strongest": 0.786,
+            "wins": 2
+          }
+        },
+        "equal_cell_delta": 6.249999999996536e-05,
+        "parameter_counts": {
+          "[1, 0.1, 0.05]": 4,
+          "[1, 0.1, 0.1]": 11,
+          "null": 5
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.0008149959250203787,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004198152812762146,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008554319931565191,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008163265306121992,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012224938875305957,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008264462809917106,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004019292604501845,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008396305625524847,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004132231404958553,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008680555555555802,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008278145695364558,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008554319931565746,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004208754208753773,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008680555555555802,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004215851602023535,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": null
+          }
+        ]
+      },
+      "mind2web": {
+        "cells": {
+          "C_cond": {
+            "accuracy": 0.34591346153846153,
+            "delta": -0.00024038461538461453,
+            "losses": 341,
+            "override_rate": 0.6993990384615385,
+            "rows": 8320,
+            "strongest": 0.34615384615384615,
+            "wins": 339
+          },
+          "C_rand": {
+            "accuracy": 0.35865384615384616,
+            "delta": 0.0038461538461538325,
+            "losses": 180,
+            "override_rate": 0.7128605769230769,
+            "rows": 8320,
+            "strongest": 0.3548076923076923,
+            "wins": 212
+          },
+          "C_self": {
+            "accuracy": 0.3540865384615385,
+            "delta": 0.006490384615384648,
+            "losses": 263,
+            "override_rate": 0.6723557692307692,
+            "rows": 8320,
+            "strongest": 0.34759615384615383,
+            "wins": 317
+          },
+          "C_uni": {
+            "accuracy": 0.3605769230769231,
+            "delta": 0.012500000000000011,
+            "losses": 166,
+            "override_rate": 0.6867788461538461,
+            "rows": 8320,
+            "strongest": 0.34807692307692306,
+            "wins": 270
+          }
+        },
+        "equal_cell_delta": 0.005649038461538469,
+        "parameter_counts": {
+          "[1, 0.05, 0.2]": 6,
+          "[1, 0.1, 0.1]": 5,
+          "[1, 0.1, 0.2]": 9
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.002004811547714508,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.005608974358974353,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.004006410256410256,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.009807846277021623,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.001002405773857254,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0034081796311146856,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.007818765036086611,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.005608974358974353,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0034054487179487197,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.004811547714514849,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.00721153846153845,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.01501200960768613,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.007211538461538464,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.008420208500400983,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0090144230769231,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.015212169735788636,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.009207365892714175,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.008213141025641024,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.012209767814251399,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.012209767814251399,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          }
+        ]
+      },
+      "screenspot_pro": {
+        "cells": {
+          "C_cond": {
+            "accuracy": 0.6639784946236559,
+            "delta": -0.0007906388361796912,
+            "losses": 14,
+            "override_rate": 0.37729285262492096,
+            "rows": 6324,
+            "strongest": 0.6647691334598356,
+            "wins": 9
+          },
+          "C_rand": {
+            "accuracy": 0.6144845034788109,
+            "delta": 0.0015812776723592714,
+            "losses": 14,
+            "override_rate": 0.38851992409867175,
+            "rows": 6324,
+            "strongest": 0.6129032258064516,
+            "wins": 24
+          },
+          "C_self": {
+            "accuracy": 0.6521189120809614,
+            "delta": 0.0006325110689436864,
+            "losses": 5,
+            "override_rate": 0.4033839342188488,
+            "rows": 6324,
+            "strongest": 0.6514864010120177,
+            "wins": 9
+          },
+          "C_uni": {
+            "accuracy": 0.6404174573055028,
+            "delta": -0.000948766603415585,
+            "losses": 8,
+            "override_rate": 0.3872549019607843,
+            "rows": 6324,
+            "strongest": 0.6413662239089184,
+            "wins": 2
+          }
+        },
+        "equal_cell_delta": 0.00011859582542692038,
+        "parameter_counts": {
+          "[1, 0.02, 0.2]": 1,
+          "[1, 0.05, 0.2]": 4,
+          "[1, 0.1, 0.05]": 3,
+          "[1, 0.1, 0.2]": 5,
+          "null": 7
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.0013075313807531241,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0002688172043010806,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0002601456815816694,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.00026205450733754465,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0021482277121374904,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0005202913631633388,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0005186721991701226,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0002665245202558564,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0020790020790020514,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0007861635220126062,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.001828631138975939,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0018796992481203145,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.002338877338877332,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.02,
+              0.2
+            ]
+          }
+        ]
+      }
+    },
+    "verifier": {
+      "androidcontrol": {
+        "cells": {
+          "high": {
+            "accuracy": 0.630375,
+            "delta": -0.0006249999999999867,
+            "losses": 12,
+            "override_rate": 0.3305,
+            "rows": 8000,
+            "strongest": 0.631,
+            "wins": 7
+          },
+          "low": {
+            "accuracy": 0.786125,
+            "delta": 0.00012499999999993072,
+            "losses": 1,
+            "override_rate": 0.163125,
+            "rows": 8000,
+            "strongest": 0.786,
+            "wins": 2
+          }
+        },
+        "equal_cell_delta": -0.000250000000000028,
+        "parameter_counts": {
+          "[1, 0.05, 0.1]": 2,
+          "[1, 0.05, 0.2]": 1,
+          "[1, 0.1, 0.05]": 3,
+          "[1, 0.1, 0.1]": 3,
+          "[1, 0.1, 0.2]": 2,
+          "null": 9
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.0008149959250203787,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012831479897348341,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012244897959183265,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 5.551115123125783e-17,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.00042771599657825954,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008680555555555802,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0004215851602023535,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0016326530612244539,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0008038585209003135,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012417218543047115,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012647554806070604,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.1
+            ]
+          }
+        ]
+      },
+      "mind2web": {
+        "cells": {
+          "C_cond": {
+            "accuracy": 0.3456730769230769,
+            "delta": -0.00048076923076922906,
+            "losses": 327,
+            "override_rate": 0.6790865384615384,
+            "rows": 8320,
+            "strongest": 0.34615384615384615,
+            "wins": 323
+          },
+          "C_rand": {
+            "accuracy": 0.35673076923076924,
+            "delta": 0.0019230769230769162,
+            "losses": 171,
+            "override_rate": 0.675,
+            "rows": 8320,
+            "strongest": 0.3548076923076923,
+            "wins": 187
+          },
+          "C_self": {
+            "accuracy": 0.35204326923076923,
+            "delta": 0.004447115384615397,
+            "losses": 269,
+            "override_rate": 0.6508413461538461,
+            "rows": 8320,
+            "strongest": 0.34759615384615383,
+            "wins": 306
+          },
+          "C_uni": {
+            "accuracy": 0.35757211538461536,
+            "delta": 0.009495192307692302,
+            "losses": 156,
+            "override_rate": 0.6397836538461539,
+            "rows": 8320,
+            "strongest": 0.34807692307692306,
+            "wins": 235
+          }
+        },
+        "equal_cell_delta": 0.0038461538461538464,
+        "parameter_counts": {
+          "[1, 0.05, 0.2]": 3,
+          "[1, 0.1, 0.1]": 3,
+          "[1, 0.1, 0.2]": 7,
+          "[2, 0.1, 0.1]": 1,
+          "[2, 0.1, 0.2]": 2,
+          "[4, 0.05, 0.2]": 3,
+          "null": 1
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.0006014434643143579,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0032051282051281937,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012019230769230727,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": [
+              2,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.008006405124099295,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.005012028869286311,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.007217321571772267,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.004006410256410242,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.004006410256410256,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0050120288692862836,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": [
+              2,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.011017628205128221,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": [
+              2,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.012610088070456368,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0068108974358974395,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": [
+              4,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.005813953488372103,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": [
+              4,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.01021634615384616,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              4,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.012810248198558846,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.008206565252201772,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.005608974358974353,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.011008807045636504,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.009807846277021623,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.05,
+              0.2
+            ]
+          }
+        ]
+      },
+      "screenspot_pro": {
+        "cells": {
+          "C_cond": {
+            "accuracy": 0.6641366223908919,
+            "delta": -0.0006325110689436864,
+            "losses": 14,
+            "override_rate": 0.3788741302972802,
+            "rows": 6324,
+            "strongest": 0.6647691334598356,
+            "wins": 10
+          },
+          "C_rand": {
+            "accuracy": 0.614326375711575,
+            "delta": 0.0014231499051233776,
+            "losses": 12,
+            "override_rate": 0.35309930423782415,
+            "rows": 6324,
+            "strongest": 0.6129032258064516,
+            "wins": 21
+          },
+          "C_self": {
+            "accuracy": 0.6519607843137255,
+            "delta": 0.0004743833017077925,
+            "losses": 2,
+            "override_rate": 0.3872549019607843,
+            "rows": 6324,
+            "strongest": 0.6514864010120177,
+            "wins": 5
+          },
+          "C_uni": {
+            "accuracy": 0.6405755850727388,
+            "delta": -0.0007906388361795802,
+            "losses": 6,
+            "override_rate": 0.3766603415559772,
+            "rows": 6324,
+            "strongest": 0.6413662239089184,
+            "wins": 1
+          }
+        },
+        "equal_cell_delta": 0.00011859582542697589,
+        "parameter_counts": {
+          "[1, 0.02, 0.2]": 1,
+          "[1, 0.1, 0.05]": 3,
+          "[1, 0.1, 0.1]": 3,
+          "[1, 0.1, 0.2]": 2,
+          "[2, 0.05, 0.2]": 1,
+          "[2, 0.1, 0.2]": 2,
+          "[3, 0.05, 0.2]": 1,
+          "[3, 0.1, 0.2]": 1,
+          "null": 6
+        },
+        "repeated_sample_contexts": 4,
+        "selections": [
+          {
+            "calibration_equal_cell_delta": 0.0007845188284518745,
+            "holdout_fold": 1,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 2.7755575615628914e-17,
+            "holdout_fold": 2,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 0,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.00026205450733754465,
+            "holdout_fold": 4,
+            "outer_fold": 0,
+            "parameters": [
+              1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 2,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 3,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 4,
+            "outer_fold": 1,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0002688172043010806,
+            "holdout_fold": 0,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0005359056806002183,
+            "holdout_fold": 1,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0005330490405117128,
+            "holdout_fold": 3,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.1,
+              0.05
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.00268528464017187,
+            "holdout_fold": 4,
+            "outer_fold": 2,
+            "parameters": [
+              1,
+              0.02,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0,
+            "holdout_fold": 0,
+            "outer_fold": 3,
+            "parameters": null
+          },
+          {
+            "calibration_equal_cell_delta": 0.0015560165975103957,
+            "holdout_fold": 1,
+            "outer_fold": 3,
+            "parameters": [
+              2,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0007995735607676246,
+            "holdout_fold": 2,
+            "outer_fold": 3,
+            "parameters": [
+              2,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0012993762993762925,
+            "holdout_fold": 4,
+            "outer_fold": 3,
+            "parameters": [
+              2,
+              0.05,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.00131027253668764,
+            "holdout_fold": 0,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.00235109717868337,
+            "holdout_fold": 1,
+            "outer_fold": 4,
+            "parameters": [
+              1,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.0024167561761546663,
+            "holdout_fold": 2,
+            "outer_fold": 4,
+            "parameters": [
+              3,
+              0.1,
+              0.2
+            ]
+          },
+          {
+            "calibration_equal_cell_delta": 0.002338877338877332,
+            "holdout_fold": 3,
+            "outer_fold": 4,
+            "parameters": [
+              3,
+              0.05,
+              0.2
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_EXPLORATORY_CROSS_FITTED_STOPPING_DIAGNOSTIC"
+}
