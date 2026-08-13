@@ -8,6 +8,8 @@ canonical_spec:
 amendments:
   - path: runs/gran/2026-08-14/AMENDMENT_001_STRATUM_FEASIBILITY.md
     sha256: e7f53f8e619e0b2d4353faa2dc28fe2974df2b2a7431391d428fe8ede45348bd
+  - path: runs/gran/2026-08-14/AMENDMENT_002_SWEEP_SEMANTICS.md
+    sha256: 6647a9cf4f90241b2c1ee95ae2d4825aa585ffa268ed94ff8f4515999622e1ea
 purpose:
   type: explanatory_result_not_method
   sole_question: identify_the_self_variable_of_F1
@@ -31,6 +33,7 @@ benchmarks:
     grouping: application_group
     coordinate_space: image_diagonal_normalized
     mde: 0.007
+    candidate_scope: complete_3_lineages_x_12_views
   mind2web:
     rows: 2080
     bank: unified_prompt_four_arm
@@ -40,6 +43,8 @@ benchmarks:
     grouping: episode_within_website_fold
     tau_scope: CLICK_only
     mde: 0.006106589385659482
+    primary_arm: C_uni
+    secondary_arms: [C_cond, C_rand, C_self]
   androidcontrol:
     included: false
     reason: three_candidates_per_row_insufficient_for_tau_sweep_and_no_method_claim
@@ -93,6 +98,8 @@ tau:
       - 0.33113112148259144
       - 0.5011872336272722
   endpoints: [exact_coincidence_tau_zero, single_block_tau_infinity]
+  selection_metric: inner_validation_micro_accuracy
+  tie_order: [exact_coincidence, finite_ascending, single_block]
   report_in_sigma_c_units: true
   sigma_c_estimation: source_conditioned_candidate_dispersion_label_free
   boundary_selection_triggers_G_K6: true
@@ -104,6 +111,17 @@ nested_selection:
   select_on_inner_development: tau_only
   heldout_outputs_per_cell: 1
   outer_access_during_selection: prohibited
+coordinate_normalization:
+  common: image_diagonal
+  screenspot_pro: pixel_coordinate_divided_by_diagonal
+  mind2web: normalized_position_to_pixels_then_divided_by_diagonal
+prior:
+  fit_scope: inner_training_then_outer_development_refit
+  score: source_correctness
+  tie_break: lexical_source_identity
+  density_block_within_rule: highest_prior_source_then_earliest_candidate_order
+margin:
+  definition: paired_density_correct_minus_prior_correct
 stratification:
   variable: p_hat
   default_bins: 4
