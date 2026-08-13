@@ -69,3 +69,11 @@ The base ranker, override head, standardizer, thresholds, and fallback are fitte
 ## Next boundary
 
 The candidate-success, incremental-utility, and sequential stopping primitives are implemented and synthetic-tested only. Before any real-data optimizer step, the cross-fitting phases, semantic verifier, strongest-baseline label source, budget and threshold grids, seeds, artifacts, and untouched confirmation dataset must be frozen. Existing formal outer labels may be used for exploratory development but not confirmation or promotion.
+
+The sequential training protocol is now frozen. A no-optimizer real-data smoke assembled outer fold 0 / inner holdout 1 with exact physical label isolation:
+
+- fit folds 3 and 4: 7,428 rows and 74,484 valid candidate labels;
+- checkpoint fold 2: 3,838 rows and 38,622 labels;
+- holdout fold 1: 3,666 rows and 37,206 labels.
+
+Only the corresponding VUS and Android fold files were opened. Outer fold 0 remained unopened by the smoke. No model parameters, optimizer, or backward pass were created. Real-data optimizer execution and confirmation remain unauthorized.

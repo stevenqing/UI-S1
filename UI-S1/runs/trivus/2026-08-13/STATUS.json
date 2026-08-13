@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "SEQUENTIAL_CANDIDATE_VERIFIER_PRIMITIVES_IMPLEMENTED",
+  "status": "SEQUENTIAL_TRAINING_PREREG_AND_NO_OPTIMIZER_SMOKE_COMPLETE",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
@@ -11,6 +11,13 @@
   "headroom_atlas_sha256": "3f85a25916dc836f2bc5a6ad6fe52b4b38ce7637ae794f453f2bcbd2d29c2a2a",
   "sequential_atlas": "runs/trivus/2026-08-13/SEQUENTIAL_ATLAS.json",
   "sequential_atlas_sha256": "fa5b0c5b0dd850a111be675bb4b8f5eae283df9b812645f4602dfed6e06108d6",
+  "sequential_training_prereg": "runs/trivus/2026-08-13/configs/sequential_training_prereg.yaml",
+  "sequential_training_prereg_sha256": "7cb08f658975230975fdec430f1d2498a4aad6f56d2579e9bcb3e04b3857444a",
+  "sequential_real_data_smoke": "runs/trivus/2026-08-13/SEQUENTIAL_REAL_DATA_SMOKE.json",
+  "sequential_real_data_smoke_sha256": "e6c21f0360b082a5c6012722d0c58775398e7a104db6fede807b26280df0e958",
+  "sequential_real_data_smoke_outcome": "PASS_SEQUENTIAL_NO_OPTIMIZER_REAL_DATA_SMOKE",
+  "sequential_real_data_smoke_optimizer_constructed": false,
+  "sequential_real_data_smoke_backward_called": false,
   "benchmark_ready": {
     "mind2web": false,
     "screenspot_pro": false,
@@ -43,7 +50,8 @@
   "incremental_utility_primitives_implemented": true,
   "incremental_utility_synthetic_tests": 4,
   "real_data_incremental_training_started": false,
+  "real_data_sequential_training_started": false,
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "FREEZE_CHEAP_RANKER_SEQUENTIAL_VERIFIER_AND_STOPPING_CALIBRATION_BEFORE_REAL_DATA_OPTIMIZER_STEP"
+  "next_action": "IMPLEMENT_SEQUENTIAL_OOF_RUNNER_WITHOUT_EXECUTING_REAL_DATA_OPTIMIZER"
 }

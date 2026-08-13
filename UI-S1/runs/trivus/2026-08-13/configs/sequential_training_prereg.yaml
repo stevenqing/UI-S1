@@ -1,0 +1,84 @@
+schema_version: 1
+status: FROZEN_BEFORE_SEQUENTIAL_REAL_DATA_OPTIMIZER
+implementation_commit_floor: ddaf7d1c792e2d353c771194ec2ff79d75bb0997
+python: .venv-scaleup/bin/python
+seed: 20260813
+families:
+  mind2web: [C_uni, C_cond, C_rand, C_self]
+  screenspot_pro: [C_uni, C_cond, C_rand, C_self]
+  androidcontrol: [low, high]
+features:
+  public_candidate_dimensions: 115
+  cheap_oof_dimensions: 5
+  verifier_dimensions: 120
+  cheap_oof_fields: [success_probability, normalized_rank, row_entropy, top_two_margin, fallback_probability]
+  source_identity_allowed: false
+  private_label_feature_allowed: false
+cheap_ranker:
+  benchmark_specific: true
+  width: 64
+  layers: 2
+  heads: 4
+  dropout: 0.1
+  loss: row_normalized_candidate_bce_plus_pairwise
+  pairwise_weight: 0.5
+strong_verifier:
+  benchmark_specific: true
+  hidden_width: 64
+  hidden_layers: 2
+  dropout: 0.1
+  loss: row_normalized_candidate_bce_plus_pairwise
+  pairwise_weight: 0.5
+optimizer:
+  name: AdamW
+  learning_rate: 0.0003
+  weight_decay: 0.001
+  batch_size: 256
+  evaluation_batch_size: 1024
+  maximum_epochs: 30
+  patience: 5
+  minimum_improvement: 0.00001
+  gradient_clip_norm: 1.0
+cross_fitting:
+  outer_folds: [0, 1, 2, 3, 4]
+  cheap_inner_holdouts_per_outer: 4
+  cheap_fit_folds_per_inner: 2
+  cheap_checkpoint_folds_per_inner: 1
+  verifier_holdouts_per_outer: 4
+  verifier_train_folds_per_holdout: 3
+  verifier_inputs_must_be_cheap_oof: true
+  calibration_inputs_must_be_verifier_oof: true
+  final_epoch: half_up_median_inner_epochs
+sequential_policy:
+  budget_grid:
+    mind2web: [1, 2, 3, 4, 5, 6]
+    screenspot_pro: [1, 2, 3, 4, 5, 6]
+    androidcontrol: [1, 2, 3]
+  minimum_delta_grid: [0.0, 0.01, 0.02, 0.05, 0.1]
+  maximum_loss_risk_grid: [0.0, 0.01, 0.02, 0.05, 0.1, 0.2]
+  fallback: strongest_frozen_per_benchmark
+  runtime_success_observed: false
+  selection_order: cheap_success_probability_descending
+safety:
+  confidence: 0.99
+  resamples: 10000
+  mde:
+    mind2web: 0.006106589385659482
+    screenspot_pro: 0.007
+    androidcontrol: 0.01
+  require_every_cell_noninferior_to_strongest: true
+  require_equal_cell_family_ci_lower_positive: true
+  cross_benchmark_rescue_allowed: false
+execution:
+  real_data_optimizer_authorized: false
+  confirmation_authorized: false
+  promotion_allowed: false
+dependencies:
+  amendment_016: {path: runs/trivus/2026-08-13/AMENDMENT_016_FULL_CANDIDATE_REALIZATION.md, sha256: 96e0acea06b0f5e2c8a822cb894d5e52fd9e2058a407584a846ccb708d6fc1ce}
+  amendment_017: {path: runs/trivus/2026-08-13/AMENDMENT_017_SEQUENTIAL_VERIFIER_CASCADE.md, sha256: ad89dae9c668dd4c3044453d5ffa583563e196f974394ee35fe5a0137f5d612b}
+  candidate_success: {path: runs/trivus/2026-08-13/candidate_success.py, sha256: 7432cdb048715f00746b7956d12eb28c7f46f07af3969cf1a0cfe7e6095b729e}
+  incremental_utility: {path: runs/trivus/2026-08-13/incremental_utility.py, sha256: ec20c7ee16177acc9c9bf78f4a5cfbdb9f00a44c36731b40123bb5414054eb32}
+  sequential_policy: {path: runs/trivus/2026-08-13/sequential_policy.py, sha256: a2dbb528ccc2f9c796cc6a69885a2d8c28c0d8d4c6d607d325cc7e78fd92dd4f}
+  assembly_code: {path: runs/trivus/2026-08-12/trivus_assembly.py, sha256: d6273358785eef3392c13d20d543bc373062d205499a774bc58318a2c6ff3a01}
+  data_code: {path: runs/trivus/2026-08-12/trivus_data.py, sha256: 752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de}
+  assembly_config: {path: runs/trivus/2026-08-12/configs/assembly_prereg.yaml, sha256: e2d00304e3b824169e664a60f96bb3c2e6aea9ba2f9c209dd65ebf2c7f3a93a2}

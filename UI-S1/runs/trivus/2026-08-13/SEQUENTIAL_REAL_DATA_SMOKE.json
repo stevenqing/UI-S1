@@ -1,0 +1,100 @@
+{
+  "backward_called": false,
+  "checkpoint": {
+    "candidate_counts": {
+      "12": 3012,
+      "3": 826
+    },
+    "candidate_labels": 38622,
+    "family_rows": {
+      "androidcontrol": 826,
+      "mind2web": 1664,
+      "screenspot_pro": 1348
+    },
+    "feature_shape": [
+      3838,
+      12,
+      115
+    ],
+    "folds": [
+      2
+    ],
+    "positive_candidate_labels": 12970,
+    "rows": 3838
+  },
+  "checkpoint_fold": 2,
+  "config_sha256": "7cb08f658975230975fdec430f1d2498a4aad6f56d2579e9bcb3e04b3857444a",
+  "confirmation_authorized": false,
+  "fit_folds": [
+    3,
+    4
+  ],
+  "holdout": {
+    "candidate_counts": {
+      "12": 2912,
+      "3": 754
+    },
+    "candidate_labels": 37206,
+    "family_rows": {
+      "androidcontrol": 754,
+      "mind2web": 1668,
+      "screenspot_pro": 1244
+    },
+    "feature_shape": [
+      3666,
+      12,
+      115
+    ],
+    "folds": [
+      1
+    ],
+    "positive_candidate_labels": 14456,
+    "rows": 3666
+  },
+  "holdout_fold": 1,
+  "model_parameters_created": false,
+  "opened_private_files": {
+    "checkpoint": [
+      "runs/trivus/2026-08-12/data/private_labels_fold-2.jsonl",
+      "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-2.jsonl"
+    ],
+    "holdout": [
+      "runs/trivus/2026-08-12/data/private_labels_fold-1.jsonl",
+      "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-1.jsonl"
+    ],
+    "train": [
+      "runs/trivus/2026-08-12/data/private_labels_fold-3.jsonl",
+      "runs/trivus/2026-08-12/data/private_labels_fold-4.jsonl",
+      "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-3.jsonl",
+      "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-4.jsonl"
+    ]
+  },
+  "optimizer_constructed": false,
+  "outer_fold": 0,
+  "real_data_optimizer_authorized": false,
+  "schema_version": 1,
+  "status": "PASS_SEQUENTIAL_NO_OPTIMIZER_REAL_DATA_SMOKE",
+  "train": {
+    "candidate_counts": {
+      "12": 5800,
+      "3": 1628
+    },
+    "candidate_labels": 74484,
+    "family_rows": {
+      "androidcontrol": 1628,
+      "mind2web": 3324,
+      "screenspot_pro": 2476
+    },
+    "feature_shape": [
+      7428,
+      12,
+      115
+    ],
+    "folds": [
+      3,
+      4
+    ],
+    "positive_candidate_labels": 22229,
+    "rows": 7428
+  }
+}
