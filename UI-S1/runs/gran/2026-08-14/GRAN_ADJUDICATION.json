@@ -1,0 +1,217 @@
+{
+  "claim_boundary": {
+    "changes_trivus_or_vus_sr": false,
+    "explanatory_only": true,
+    "gt_free_selector_claim_allowed": false,
+    "method_claim_allowed": false
+  },
+  "kill_conditions": {
+    "G_K1": false,
+    "G_K2": false,
+    "G_K3": true,
+    "G_K4": null,
+    "G_K5": false,
+    "G_K6": true
+  },
+  "mind2web_click_strata": [
+    {
+      "count": 444,
+      "index": 0,
+      "margin": 0.0,
+      "p_max": 0.0,
+      "p_mean": 0.0,
+      "p_min": 0.0,
+      "q_max_mean": 0.8520531895531895
+    },
+    {
+      "count": 444,
+      "index": 1,
+      "margin": -0.02027027027027027,
+      "p_max": 0.09090909090909091,
+      "p_mean": 0.040608790608790614,
+      "p_min": 0.0,
+      "q_max_mean": 0.7499915499915499
+    },
+    {
+      "count": 443,
+      "index": 2,
+      "margin": 0.006772009029345372,
+      "p_max": 0.36363636363636365,
+      "p_mean": 0.21126697481099288,
+      "p_min": 0.09090909090909091,
+      "q_max_mean": 0.7677236733670142
+    },
+    {
+      "count": 443,
+      "index": 3,
+      "margin": 0.11738148984198646,
+      "p_max": 1.0,
+      "p_mean": 0.693509750846094,
+      "p_min": 0.36363636363636365,
+      "q_max_mean": 0.7308771364076105
+    }
+  ],
+  "outcome": "GRAN_PRIMARY_SUPPORTED_BUT_UNIFICATION_FAILED_G_K3_AND_GRID_FAILED_G_K6",
+  "predictions": {
+    "G_P1": {
+      "ci_99": [
+        0.0307194472512691,
+        0.098444630402281
+      ],
+      "pass": true,
+      "point": 0.06610092034149717,
+      "resamples": 10000,
+      "seed": 20260815
+    },
+    "G_P2": {
+      "ci_99": [
+        0.0729399067115833,
+        0.16513801356202626
+      ],
+      "p_range": [
+        0.36363636363636365,
+        1.0
+      ],
+      "pass": true,
+      "point": 0.11738148984198646,
+      "resamples": 10000,
+      "rows": 443,
+      "seed": 20260816
+    },
+    "G_P3": {
+      "pass": false,
+      "strata": [
+        {
+          "ci_99": [
+            -0.02680993157536713,
+            0.0
+          ],
+          "pass": true,
+          "point": -0.007575757575757576,
+          "stratum": 0
+        },
+        {
+          "ci_99": [
+            -0.10298837246858437,
+            0.0783120030404992
+          ],
+          "pass": true,
+          "point": -0.010109476565172765,
+          "stratum": 1
+        },
+        {
+          "ci_99": [
+            0.01595110565434356,
+            0.16309417623662723
+          ],
+          "pass": false,
+          "point": 0.08943052261622425,
+          "stratum": 2
+        },
+        {
+          "ci_99": [
+            -0.1628367771865671,
+            -0.06481183544379192
+          ],
+          "pass": false,
+          "point": -0.11231819870274595,
+          "stratum": 3
+        }
+      ]
+    },
+    "G_P4": {
+      "reason": "zero_point_interpolation_and_observed_crossing_rule_not_frozen_before_sweep",
+      "status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED"
+    },
+    "G_P5": {
+      "reason": "second_difference_plateau_tolerance_not_frozen_before_sweep",
+      "status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED"
+    },
+    "G_P6": {
+      "benchmarks": {
+        "mind2web": {
+          "ci_99": [
+            -0.05244129085162305,
+            -0.025115247991069286
+          ],
+          "exact_accuracy": 0.3337091319052988,
+          "mde": 0.006106589385659482,
+          "pass": false,
+          "point": -0.037767756482525366,
+          "resamples": 10000,
+          "seed": 20260875,
+          "single_accuracy": 0.3714768883878241
+        },
+        "screenspot_pro": {
+          "ci_99": [
+            -0.02754304411964398,
+            0.021605071800271613
+          ],
+          "exact_accuracy": 0.5945604048070842,
+          "mde": 0.007,
+          "pass": false,
+          "point": -0.003795066413662239,
+          "resamples": 10000,
+          "seed": 20260874,
+          "single_accuracy": 0.5983554712207464
+        }
+      },
+      "pass": false
+    },
+    "G_P7": {
+      "reason": "common_36_action_A1_A2_B3_output_scope_not_frozen",
+      "status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED"
+    },
+    "G_P8": {
+      "reason": "margin_z_numerator_standard_error_and_dependence_formula_not_frozen",
+      "status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED"
+    }
+  },
+  "primary_test": "G_P2",
+  "schema_version": 1,
+  "screen_strata": [
+    {
+      "count": 396,
+      "index": 0,
+      "margin": -0.007575757575757576,
+      "p_max": 0.05555555555555555,
+      "p_mean": 0.011714365881032548,
+      "p_min": 0.0,
+      "q_max_mean": 0.3406931122617397
+    },
+    {
+      "count": 395,
+      "index": 1,
+      "margin": -0.030379746835443037,
+      "p_max": 0.5,
+      "p_mean": 0.2638537271448664,
+      "p_min": 0.05555555555555555,
+      "q_max_mean": 0.32847920191667
+    },
+    {
+      "count": 395,
+      "index": 2,
+      "margin": 0.09620253164556962,
+      "p_max": 0.9444444444444444,
+      "p_mean": 0.7557665260196907,
+      "p_min": 0.5,
+      "q_max_mean": 0.45882732494608897
+    },
+    {
+      "count": 395,
+      "index": 3,
+      "margin": 0.005063291139240506,
+      "p_max": 1.0,
+      "p_mean": 0.9872714486638536,
+      "p_min": 0.9444444444444444,
+      "q_max_mean": 0.3569620253164557
+    }
+  ],
+  "status": "PASS_GRAN_ADJUDICATION_COMPLETE",
+  "underdefined_secondary_tests": [
+    "G_P4",
+    "G_P5",
+    "G_P7",
+    "G_P8"
+  ]
+}
