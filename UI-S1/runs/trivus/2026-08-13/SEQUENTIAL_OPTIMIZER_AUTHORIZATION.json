@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "AUTHORIZED_EXPLORATORY_SEQUENTIAL_OPTIMIZER_ONCE",
-  "implementation_commit": "0f7a12697387360ee5287dd7a10ef9e625fe7809",
-  "authorization_nonce": "ef9d71ffcf57cc12dc81db8e302196a99003d151424e57d42357437c1b3d3d27",
+  "implementation_commit": "a1fd9b88394e7e0ed97693fc8b57a2a398b4bcce",
+  "authorization_nonce": "d6e8ddc1db043e8c4141e3e9cc76f2e2b012d382e836933dbb5696784fda2790",
   "result_must_not_exist": true,
   "outer_folds": [0, 1, 2, 3, 4],
   "families": ["mind2web", "screenspot_pro", "androidcontrol"],
@@ -13,12 +13,13 @@
   "files": {
     "CORRECTION_001_VERIFIER_CHECKPOINT_SPLIT.md": "a476728772a76a8517345260034dc37da0029a7289cb8df92f2c16692dbb1797",
     "CORRECTION_002_POSITIVE_WEIGHT_BATCHING.md": "1b1590d44861c52787a42184205ae78060b9b60f1d0774201d8a282a8260df49",
+    "CORRECTION_003_GLOBAL_FIT_SCOPE_WEIGHTING.md": "482a22d68fe4a51f201f37827c59617436a428be9de8ddfde90a097c26d7a320",
     "configs/sequential_training_prereg.yaml": "1638d40c7d2308063001ff7f360fd3b6998eaea0afa660ae71ae7155d830c0aa",
     "sequential_model.py": "58099faa93ae835468ef4f44afee7a6e243f9188314b01a69e695c14d3ca948e",
     "sequential_fit.py": "2da1d290d132c032e148f31c93f739ed9509af32f14efc297a4994eed6b621ce",
     "sequential_oof_runner.py": "0aa8659a3cdd49cf525d6103e459a6b41996ce02a150ddc9ed73b3b5e832649b",
-    "sequential_verifier_oof_runner.py": "b174cc85fed2fc70cb25688ccc8c92f06f328bfeee2f5a602b0ba7841a48bb6f",
-    "sequential_authorization.py": "12e74cbeaf710ab12e73314e608c186b44386e5bcd0b4deeb6f2a49b927876aa",
+    "sequential_verifier_oof_runner.py": "a627afc2f74ab207ee237497a42a7fcabd3b6ad3fc0c35f44ada4a7a41ced640",
+    "sequential_authorization.py": "1170d3b2142886c6299c141d617d2232652dba69d787f2b8ed1c878c851d649b",
     "launch_sequential.py": "597ea5fbf542e88c2bef057d79970bfc71b12e7cf13fbc0b28588c686bf60c7f",
     "test_sequential_authorization.py": "b4770592bf0feb3a4089b834aee6909c87acc550e6cdd40b7ed45b4e0dd2e4d2",
     "test_launch_sequential.py": "8f49aeb68f1dc3d1301090e220fe3e36dec0baa5da8d23c4ef343e7615c264df"
