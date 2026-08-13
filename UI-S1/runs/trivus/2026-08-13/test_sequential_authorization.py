@@ -10,6 +10,10 @@ import sequential_authorization
 
 
 class SequentialAuthorizationTest(unittest.TestCase):
+    def test_helpers_import_when_authorization_path_exists(self):
+        helpers = sequential_authorization._helpers()
+        self.assertEqual(len(helpers), 4)
+
     def test_missing_authorization_fails_closed(self):
         original = sequential_authorization.AUTHORIZATION_PATH
         sequential_authorization.AUTHORIZATION_PATH = RUN_DIR / "missing-auth.json"

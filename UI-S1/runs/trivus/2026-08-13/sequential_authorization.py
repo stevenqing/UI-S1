@@ -1,9 +1,12 @@
 import json
+import sys
 from pathlib import Path
 
 
 RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[2]
+PRIOR_DIR = RUN_DIR.parent / "2026-08-12"
+sys.path.insert(0, str(PRIOR_DIR))
 AUTHORIZATION_PATH = RUN_DIR / "SEQUENTIAL_OPTIMIZER_AUTHORIZATION.json"
 RECEIPT_ROOT = RUN_DIR / "sequential_authorization_receipts"
 OUTPUT_ROOT = RUN_DIR / "sequential_exploratory"
