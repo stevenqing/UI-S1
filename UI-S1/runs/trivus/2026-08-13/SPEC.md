@@ -8,9 +8,9 @@ Use one method across GUI benchmarks without sharing fitted model parameters acr
 
 The method has three benchmark-specific stages.
 
-1. A contextual candidate-success verifier is trained on every valid candidate label using row-normalized BCE and within-row positive-versus-negative ranking loss.
-2. The highest-scoring candidate becomes the direct candidate.
-3. An incremental-utility head predicts whether overriding the strongest fallback is beneficial.
+1. A cheap contextual candidate-success scorer is trained on every valid candidate label using row-normalized BCE and within-row positive-versus-negative ranking loss, then orders the candidate set.
+2. A stronger candidate verifier inspects candidates sequentially in that order and emits calibrated success probabilities.
+3. A sequential utility policy accepts, continues, or returns the strongest fallback.
 
 For a direct candidate outcome `d` and strongest fallback outcome `b`, the override target is:
 
@@ -18,9 +18,11 @@ For a direct candidate outcome `d` and strongest fallback outcome `b`, the overr
 - `loss`: `d = 0, b = 1`;
 - `tie`: `d = b`.
 
-The predicted incremental utility is `P(win) - P(loss)`. The method overrides only when this value exceeds a benchmark-calibrated minimum and `P(loss)` is below a benchmark-calibrated maximum. Otherwise it returns the strongest fallback.
+For candidate probability `p` and fallback probability `b`, the sequential policy accepts only when `p - b` exceeds a benchmark-calibrated minimum and `b * (1 - p)` is below a benchmark-calibrated maximum loss risk. Otherwise it continues until the benchmark-specific budget is exhausted, then returns fallback.
 
 The old KEEP-centric target is retained only as a control. It is not the primary candidate-learning objective because fallback-correct rows otherwise provide no direct supervision for alternative candidate correctness.
+
+Runtime success is not observable. First-success rank, hit@k, and oracle recovery are evaluation metrics, never stopping inputs.
 
 ## Leakage control
 

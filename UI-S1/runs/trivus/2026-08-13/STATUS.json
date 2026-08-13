@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "FULL_CANDIDATE_REALIZATION_PRIMITIVES_IMPLEMENTED",
+  "status": "SEQUENTIAL_CANDIDATE_VERIFIER_PRIMITIVES_IMPLEMENTED",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
@@ -9,6 +9,8 @@
   "diagnostic_sha256": "a4f23c7662a0a76a188fc010e3e15f36bb9ae2535b3b74f03fac41d375c7c24f",
   "headroom_atlas": "runs/trivus/2026-08-13/HEADROOM_ATLAS.json",
   "headroom_atlas_sha256": "3f85a25916dc836f2bc5a6ad6fe52b4b38ce7637ae794f453f2bcbd2d29c2a2a",
+  "sequential_atlas": "runs/trivus/2026-08-13/SEQUENTIAL_ATLAS.json",
+  "sequential_atlas_sha256": "fa5b0c5b0dd850a111be675bb4b8f5eae283df9b812645f4602dfed6e06108d6",
   "benchmark_ready": {
     "mind2web": false,
     "screenspot_pro": false,
@@ -31,10 +33,17 @@
   },
   "candidate_success_primitives_implemented": true,
   "candidate_success_synthetic_tests": 4,
+  "sequential_policy_primitives_implemented": true,
+  "sequential_policy_synthetic_tests": 7,
+  "diagnostic_budget_for_90_percent_oracle_recovery": {
+    "mind2web": {"C_uni": 6, "C_cond": 6, "C_rand": 6, "C_self": 6},
+    "screenspot_pro": {"C_uni": 4, "C_cond": 5, "C_rand": 6, "C_self": 4},
+    "androidcontrol": {"low": 2, "high": 2}
+  },
   "incremental_utility_primitives_implemented": true,
   "incremental_utility_synthetic_tests": 4,
   "real_data_incremental_training_started": false,
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "FREEZE_CONTEXTUAL_CANDIDATE_VERIFIER_AND_OVERRIDE_CROSS_FITTING_BEFORE_REAL_DATA_OPTIMIZER_STEP"
+  "next_action": "FREEZE_CHEAP_RANKER_SEQUENTIAL_VERIFIER_AND_STOPPING_CALIBRATION_BEFORE_REAL_DATA_OPTIMIZER_STEP"
 }

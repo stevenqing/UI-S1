@@ -50,8 +50,22 @@ The main model is now a benchmark-specific contextual candidate-success verifier
 
 The incremental-utility gate remains a second, cross-fitted deployment layer. It predicts `win`, `loss`, and `tie` relative to the strongest fallback and overrides only when predicted net utility is sufficiently positive and loss risk is sufficiently low.
 
+## Sequential realization
+
+A frozen blind visual ordering already concentrates correct candidates near the front of the list. Equal-cell hit@k is:
+
+| Benchmark | Hit@1 | Hit@2 | Hit@4 | Hit@6 | Full oracle |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Mind2Web | 30.49% | 41.08% | 49.72% | **54.19%** | 59.21% |
+| ScreenSpot-Pro | 45.21% | 59.65% | **70.40%** | 75.21% | 79.57% |
+| AndroidControl | 65.65% | **74.33%** | n/a | n/a | 77.73% |
+
+The minimum budget recovering at least 90% of the cell oracle is 2 for both AndroidControl cells, 6 for all Mind2Web cells, and 4--6 for ScreenSpot-Pro. The deployable method is therefore a cheap ranker followed by a sequential stronger verifier with benchmark-calibrated budget and strongest fallback. It does not evaluate every candidate with the expensive verifier.
+
+`Hit@k` and first-success ranks are label-dependent evaluation quantities. Runtime stopping uses calibrated candidate and fallback probabilities only.
+
 The base ranker, override head, standardizer, thresholds, and fallback are fitted independently per benchmark. The representation schema, nested OOF protocol, incremental-utility loss, safety calibration, artifact sealing, and held-out evaluation remain unified.
 
 ## Next boundary
 
-The candidate-success and incremental-utility primitives are implemented and synthetic-tested only. Before any real-data optimizer step, the cross-fitting phases, semantic features, strongest-baseline label source, threshold grid, seeds, artifacts, and untouched confirmation dataset must be frozen. Existing formal outer labels may be used for exploratory development but not confirmation or promotion.
+The candidate-success, incremental-utility, and sequential stopping primitives are implemented and synthetic-tested only. Before any real-data optimizer step, the cross-fitting phases, semantic verifier, strongest-baseline label source, budget and threshold grids, seeds, artifacts, and untouched confirmation dataset must be frozen. Existing formal outer labels may be used for exploratory development but not confirmation or promotion.
