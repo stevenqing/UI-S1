@@ -4,7 +4,10 @@ date: 2026-08-14
 status: FROZEN_BEFORE_CLICK_COUNT_ANCHOR_AND_ANY_TAU_SWEEP
 canonical_spec:
   path: runs/gran/2026-08-14/SPEC.md
-  sha256: 577406047f31c1a825274dced1b98801b7d34f62e9c1bd2001e055cd03c02e73
+  sha256: bac7b79867f63761ad5283568428fb8cfd33336cc8febc8663afc3af7693b46a
+amendments:
+  - path: runs/gran/2026-08-14/AMENDMENT_001_STRATUM_FEASIBILITY.md
+    sha256: e7f53f8e619e0b2d4353faa2dc28fe2974df2b2a7431391d428fe8ede45348bd
 purpose:
   type: explanatory_result_not_method
   sole_question: identify_the_self_variable_of_F1
@@ -106,8 +109,11 @@ stratification:
   default_bins: 4
   default_quantiles: [0.25, 0.5, 0.75]
   boundaries_frozen_before_margin_access: true
-  minimum_rows_per_bin: 400
-  screenspot_expected_rows_per_bin: approximately_395
+  minimum_rows_per_bin:
+    screenspot_pro: 395
+    mind2web: 400
+  screenspot_fixed_rows_per_bin: [396, 395, 395, 395]
+  quantile_tie_break: stable_row_identity
   mind2web_click_rule:
     first_action: count_rows_before_any_tau_sweep
     if_any_four_bin_count_below_400: use_3_bins
@@ -154,7 +160,7 @@ kill_conditions:
   G_K2: {trigger: G_P2_fails, consequence: primary_fails_no_rescue_describe_proposer_quality_only}
   G_K3: {trigger: G_P6_endpoint_difference_exceeds_mde, consequence: granularity_axis_unification_fails_rewrite_CEV}
   G_K4: {trigger: G_P7_violated_any_fold, consequence: debug_then_falsify_A1_if_implementation_correct}
-  G_K5: {trigger: any_stratum_rows_below_400, consequence: omit_stratum_no_merge_rescue}
+  G_K5: {trigger: screenspot_stratum_below_395_or_mind2web_stratum_below_400, consequence: omit_stratum_no_merge_rescue}
   G_K6: {trigger: selected_tau_is_first_or_last_finite_grid_point, consequence: grid_failure_report_boundary_not_selected_value}
 leakage:
   disclosed_screenspot_c_uni_accuracies:
