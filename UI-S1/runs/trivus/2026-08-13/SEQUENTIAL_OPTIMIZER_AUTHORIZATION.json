@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORIZED_EXPLORATORY_SEQUENTIAL_OPTIMIZER_ONCE",
+  "implementation_commit": "e743d524e4fe3e7ba9aa1f434d24bbba7ceffd90",
+  "authorization_nonce": "8f68c38f765c39bf55b2e7344b4f0e5331e8031c18713e58048a283f74d53ece",
+  "result_must_not_exist": true,
+  "outer_folds": [0, 1, 2, 3, 4],
+  "families": ["mind2web", "screenspot_pro", "androidcontrol"],
+  "phases": ["cheap", "verifier"],
+  "training_authorized": true,
+  "confirmatory": false,
+  "promotion_allowed": false,
+  "files": {
+    "CORRECTION_001_VERIFIER_CHECKPOINT_SPLIT.md": "a476728772a76a8517345260034dc37da0029a7289cb8df92f2c16692dbb1797",
+    "configs/sequential_training_prereg.yaml": "1638d40c7d2308063001ff7f360fd3b6998eaea0afa660ae71ae7155d830c0aa",
+    "sequential_model.py": "58099faa93ae835468ef4f44afee7a6e243f9188314b01a69e695c14d3ca948e",
+    "sequential_fit.py": "fb8773bbd72b12a69ca7e58b70342ed9a1b98be728fb00be30568b4f35d9461e",
+    "sequential_oof_runner.py": "0aa8659a3cdd49cf525d6103e459a6b41996ce02a150ddc9ed73b3b5e832649b",
+    "sequential_verifier_oof_runner.py": "b174cc85fed2fc70cb25688ccc8c92f06f328bfeee2f5a602b0ba7841a48bb6f",
+    "sequential_authorization.py": "902bd8f1e90cccdcbd9ea254455aaa8b8ff2023e07ac5fb0943ad16ab471fc9d",
+    "launch_sequential.py": "6b7856fa1073a8427738b9050e75f2171a04755644e9214cfa963ffa9ffe3668",
+    "test_sequential_authorization.py": "b4770592bf0feb3a4089b834aee6909c87acc550e6cdd40b7ed45b4e0dd2e4d2",
+    "test_launch_sequential.py": "0e4ba63088352fd83133e29049fe9e3b3bf385b103c455f5b9c6b280234a0754"
+  }
+}
