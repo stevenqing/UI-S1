@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "SEQUENTIAL_FIRST_OPTIMIZER_ATTEMPT_FAILED_CORRECTION_002_IMPLEMENTED",
+  "status": "SEQUENTIAL_SECOND_ATTEMPT_FAILED_CORRECTION_003_IMPLEMENTED",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
@@ -66,7 +66,13 @@
   "failed_attempt_001_nonce": "8f68c38f765c39bf55b2e7344b4f0e5331e8031c18713e58048a283f74d53ece",
   "failed_attempt_001_published": false,
   "correction_002_positive_weight_batching": "runs/trivus/2026-08-13/CORRECTION_002_POSITIVE_WEIGHT_BATCHING.md",
+  "failed_attempt_002": "runs/trivus/2026-08-13/FAILED_ATTEMPT_002.json",
+  "failed_attempt_002_nonce": "ef9d71ffcf57cc12dc81db8e302196a99003d151424e57d42357437c1b3d3d27",
+  "failed_attempt_002_cheap_jobs_complete": 60,
+  "failed_attempt_002_verifier_artifacts": 0,
+  "failed_attempt_002_published": false,
+  "correction_003_global_fit_scope_weighting": "runs/trivus/2026-08-13/CORRECTION_003_GLOBAL_FIT_SCOPE_WEIGHTING.md",
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "COMMIT_CORRECTION_002_THEN_REPLACE_AUTHORIZATION_WITH_NEW_NONCE"
+  "next_action": "COMMIT_CORRECTION_003_THEN_REPLACE_AUTHORIZATION_WITH_NEW_NONCE"
 }

@@ -14,6 +14,7 @@ OUTPUT_ROOT = RUN_DIR / "sequential_exploratory"
 EXPECTED_IMPLEMENTATION_FILES = {
     "CORRECTION_001_VERIFIER_CHECKPOINT_SPLIT.md",
     "CORRECTION_002_POSITIVE_WEIGHT_BATCHING.md",
+    "CORRECTION_003_GLOBAL_FIT_SCOPE_WEIGHTING.md",
     "configs/sequential_training_prereg.yaml",
     "sequential_model.py",
     "sequential_fit.py",

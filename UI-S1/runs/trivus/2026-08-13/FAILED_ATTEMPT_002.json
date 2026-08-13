@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "FAILED_EXPLORATORY_SEQUENTIAL_ATTEMPT_RETAINED",
+  "authorization_nonce": "ef9d71ffcf57cc12dc81db8e302196a99003d151424e57d42357437c1b3d3d27",
+  "phase": "verifier",
+  "reason": "fold_local_weights_concatenated_before_combined_fit_scope_standardization",
+  "receipt_created": true,
+  "attempt_created": true,
+  "cheap_jobs_complete": 60,
+  "cheap_artifacts": 120,
+  "verifier_workers_started": 8,
+  "verifier_traceback_logs": 8,
+  "verifier_artifacts": 0,
+  "remaining_verifier_jobs_not_started": 52,
+  "published": false,
+  "confirmatory": false,
+  "promotion_allowed": false
+}

@@ -14,7 +14,8 @@ sys.path.insert(0, str(RUN_DIR))
 sys.path.insert(0, str(RUN_DIR.parent / "2026-08-12"))
 
 from sequential_verifier_oof_runner import (
-    augment_data, load_cheap_rows, run_one, verifier_split,
+    augment_data, concatenate_data, load_cheap_rows, run_one, select_family_raw,
+    verifier_split,
 )
 from sequential_oof_runner import family_data
 from test_trivus_data import make_data
@@ -60,6 +61,17 @@ class SequentialVerifierOOFRunnerTest(unittest.TestCase):
             with self.assertRaisesRegex(PermissionError, "not authorized"):
                 run_one(0, 1, "mind2web", torch.device("cpu"))
         loader.assert_not_called()
+
+    def test_fit_scope_weights_are_assigned_after_fold_concatenation(self):
+        source = make_data()
+        pieces = [
+            select_family_raw(source.subset(indices), "mind2web")
+            for indices in ([0, 1], [2, 3])
+        ]
+        combined = concatenate_data(pieces)
+        weighted, standardizer = family_data(combined, "mind2web")
+        self.assertAlmostEqual(float(weighted.weights.sum()), 1.0)
+        self.assertEqual(standardizer.variant, "TARGET_ONLY")
 
 
 if __name__ == "__main__":

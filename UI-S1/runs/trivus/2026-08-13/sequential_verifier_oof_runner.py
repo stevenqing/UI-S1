@@ -65,9 +65,8 @@ def load_cheap_rows(path, expected_fold, family):
 
 
 def select_family_raw(data, family):
-    weighted = with_model_weights(data, "TARGET_ONLY", family)
-    selected = weighted.subset(np.asarray([
-        value == family for value in weighted.families
+    selected = data.subset(np.asarray([
+        value == family for value in data.families
     ], dtype=np.bool_))
     if not len(selected) or set(selected.families) != {family}:
         raise ValueError(f"Sequential verifier family missing: {family}")
@@ -199,17 +198,13 @@ def run_one(outer_fold, holdout_fold, family, device, receipt=None, output_root=
         for fold in (*split["fit_folds"], split["checkpoint_fold"], holdout_fold)
     }
     train_raw = concatenate_data([loaded[fold][0] for fold in split["fit_folds"]])
-    standardizer = fit_standardizer(
-        train_raw, "TARGET_ONLY", included_families=(family,)
-    )
-    transformed = {
-        fold: standardizer.transform(value[0]) for fold, value in loaded.items()
-    }
-    train = concatenate_data([transformed[fold] for fold in split["fit_folds"]])
+    train, standardizer = family_data(train_raw, family)
     train_cheap = [row for fold in split["fit_folds"] for row in loaded[fold][1]]
-    checkpoint = transformed[split["checkpoint_fold"]]
+    checkpoint, _ = family_data(
+        loaded[split["checkpoint_fold"]][0], family, standardizer
+    )
     checkpoint_cheap = loaded[split["checkpoint_fold"]][1]
-    holdout = transformed[holdout_fold]
+    holdout, _ = family_data(loaded[holdout_fold][0], family, standardizer)
     holdout_cheap = loaded[holdout_fold][1]
     seed = int(config["seed"] + 2000 * outer_fold + 20 * holdout_fold + FAMILIES.index(family))
     model, report = fit_with_checkpoint(
