@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-08-13",
-  "status": "SEQUENTIAL_TRAINING_PREREG_AND_NO_OPTIMIZER_SMOKE_COMPLETE",
+  "status": "SEQUENTIAL_TWO_LAYER_OOF_RUNNER_IMPLEMENTED_AWAITING_AUTHORIZATION",
   "outcome": "EXPLORATORY_ONLY_NO_PROMOTION",
   "prior_formal_outcome": "TRIVUS_NOT_PROMOTED",
   "method": "TARGET_ONLY_PLUS_STRONGEST_BASELINE_INCREMENTAL_UTILITY_GATE",
@@ -53,7 +53,10 @@
   "incremental_utility_synthetic_tests": 4,
   "real_data_incremental_training_started": false,
   "real_data_sequential_training_started": false,
+  "cheap_oof_runner_implemented": true,
+  "verifier_oof_runner_implemented": true,
+  "sequential_model_and_oof_tests": 9,
   "confirmatory": false,
   "promotion_allowed": false,
-  "next_action": "IMPLEMENT_SEQUENTIAL_OOF_RUNNER_WITHOUT_EXECUTING_REAL_DATA_OPTIMIZER"
+  "next_action": "COMMIT_OOF_IMPLEMENTATION_THEN_CREATE_SEPARATE_EXPLORATORY_OPTIMIZER_AUTHORIZATION"
 }

@@ -77,3 +77,5 @@ The sequential training protocol is now frozen. A no-optimizer real-data smoke a
 - holdout fold 1: 3,666 rows and 37,206 labels.
 
 Only the corresponding VUS and Android fold files were opened. Outer fold 0 remained unopened by the smoke. No model parameters, optimizer, or backward pass were created. Real-data optimizer execution and confirmation remain unauthorized.
+
+The two-layer OOF implementation is complete but unexecuted. The cheap ranker writes label-free candidate logits, probabilities, and ordering for each benchmark/outer/holdout scope. The stronger verifier reloads only matching cheap OOF contexts, uses two fit folds plus one independent checkpoint fold, fits its standardizer on verifier-training rows only, and emits a second label-free OOF artifact. Both real-data entry points reject authorization before loading public inputs, cheap artifacts, or private labels.
