@@ -1,0 +1,16 @@
+{
+  "authorization_commit": "42f846dc2b6f3ea4a43da84aa85c59521e8f6973",
+  "authorization_nonce": "284d3bfabc186397e8b1021e78bb1d2bde7be0fbe0a11f690cef752872a035d6",
+  "authorization_sha256": "ada9b22e2c170196a1c7e65cc984c21e91b62dbd6885953bf843c9833f3d6da8",
+  "implementation_commit": "85e2f8151f6f792ec773458a09cd5d1d4c479286",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "schema_version": 1,
+  "status": "CONSUMED_TRIVUS_FORMAL_AUTHORIZATION",
+  "training_authorized": true
+}

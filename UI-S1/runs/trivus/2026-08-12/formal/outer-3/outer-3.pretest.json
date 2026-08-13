@@ -1,0 +1,4856 @@
+{
+  "code_and_data_sha256": {
+    "assembly/amendment_010": "981bf20deec8a585972e688557c1ba0aec545df1bca6ce4b9e2bb87bac7fcf52",
+    "assembly/amendment_011": "bc021611d069a5ec5c844e52b71179fb82bf3c690d15cdc1f46008bc51044bba",
+    "assembly/android_prediction_manifest": "0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764",
+    "assembly/android_predictions": "b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d",
+    "assembly/android_private_manifest": "efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972",
+    "assembly/android_public": "4e2de8d33ab45a0cd7acb33dad8db26dfbca35d8e71851cb8c3b8b7c99aaf7dd",
+    "assembly/context_common": "a1086387b0560f0dd0b11a5655307dc464d085ce6347d3332b6de767033ae085",
+    "assembly/context_manifest": "8b391a5a381714e4dec777a93c59871359bb195368c9c3d66198d8cc3b51562a",
+    "assembly/contexts": "470b41f623bca5bcf740ce4a599258d27432a4e2946751559a525e3c4082ef7b",
+    "assembly/correction_006": "8bb8608da1493f6debe1a58b04800081df78634a036d27525a80dd04a82559a2",
+    "assembly/correction_007": "66b5e1dc5c88f5a1036873f093ce32e74298168452ffd8c30972862e978f1c62",
+    "assembly/data_primitives": "752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de",
+    "assembly/data_tests": "d96361d9a1a6f6a276352ab8ac8174d583a75f505bab54fa2ff2cc97c4da9b99",
+    "assembly/training_prereg": "5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364",
+    "assembly/vus_prediction_manifest": "e8a0be90697ad401d003f094c1fb69132397ea3912a6bafe46564fd1458b201a",
+    "assembly/vus_predictions": "b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40",
+    "assembly/vus_private_manifest": "b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43",
+    "assembly/vus_public": "d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb",
+    "formal/amendment_013": "d9647db3798d4c126925b3fc073e9f012d78e44d8b1cd49a87ef4885131448a5",
+    "formal/amendment_014": "53cb3e8ae77594c806534c3fa2a4d970e32bf5dad51e067710624b2b24d20ee3",
+    "formal/assembly_code": "d6273358785eef3392c13d20d543bc373062d205499a774bc58318a2c6ff3a01",
+    "formal/assembly_config": "e2d00304e3b824169e664a60f96bb3c2e6aea9ba2f9c209dd65ebf2c7f3a93a2",
+    "formal/authorization_code": "04e9deb4e75e6657a7660a7f0845a86b5b9e734a3ff50618a68a0f7ffe05df85",
+    "formal/authorization_tests": "75117ca992f2da8cbe1a260adc497d8e37d4ce1bbea99fdea40b0a8c94183512",
+    "formal/context_common": "a1086387b0560f0dd0b11a5655307dc464d085ce6347d3332b6de767033ae085",
+    "formal/data_code": "752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de",
+    "formal/finalizer_code": "a21773801a9c2f636c14213646155437d4826208a6b9b4ced7db946bbba719da",
+    "formal/finalizer_tests": "1f21c75ee4c4307fd2e54e8fc80135fa03fd351aa66a805b70755879efc4a296",
+    "formal/fit_code": "e80796ec75fac870d3b7dd8a4d77786c71b36fe8d4237bc448591ae573d31c0f",
+    "formal/formal_primitive_tests": "5e71e2af9d4514d81a827665883e0afc614eee0c8168ff3d46b304f8912b3466",
+    "formal/launcher_code": "224361b7668f5e3100ef10cc92fba3c77a546b78d6a861e15f1e7bbaa4649036",
+    "formal/launcher_tests": "8d3091660ed94e73e3cbaf98e8553cab28c14ab73c338c9cc046f51c28db9b90",
+    "formal/model_code": "ce76a2c7e493e317a35b35b8b844c51953c34cd8c396d991cf1b00b81b4e311e",
+    "formal/outer_code": "5879008dc05b0fe9ae314fa71693fb07fcc2ce2cd50048840637b706827a3587",
+    "formal/outer_tests": "8e027d58e875370e940b8e9e172dca0fe0ef3c594522d3fe8d52baed90b53d9f",
+    "formal/prior_runner": "b59d49b8a27690a9612b9afc681b35b92e618b0892b4992a952078487fe57dd4",
+    "formal/prior_thresholds": "948d4643ff183c30ae9364f73852fac6addfad2a5ff5c47a09df9c2959d94b16",
+    "formal/real_data_smoke": "b9f7685d55874f2617230e1c6630d082d8acd5233a7c40a05e923912b5f70ec0",
+    "formal/recovery_common": "8a92844929fc03bad3577be84360cf74e16b2d5ce05165f339e56f444585e69c",
+    "formal/recovery_config": "67237ee1efefb83fbc637b860573050ae172b110ebf57926b10e31fc0ebf4281",
+    "formal/threshold_code": "743fe38c33a2e9fe9d0674f8710d7ac2e6d132ec4e8d5ac6f39183d63671d429",
+    "formal/training_prereg": "5aad65809d4459f51ac6579ecef2506c3368181ea89244b8194d1667c0d32364",
+    "formal_config": "33cc013d44f99efe94bc01d341a74041d8a7dd5b193b59d3224176f9b0d9b622"
+  },
+  "data_sha256": {
+    "0": {
+      "checkpoint": "de4e77758acaf209e3f988f0ecadd30743556bc6b34e88a8766cff9d53241a6a",
+      "model_training": "717519dd064e3917ddaa4e0cb68e86c5ce68edcbb848b633551101269f1c5b4e",
+      "oof": "58a6cf8f3b554e33fc410d8feebf99e054a3e5c3433f0f09c5aee5367242370d"
+    },
+    "1": {
+      "checkpoint": "6c51fca2136e31861c2bfb13b386baed23d22bfe262f05277811a026dfd0a384",
+      "model_training": "292fb08b83ef167348e1cfda65fa1482d6a479fb17662f5248528fb9c2bc7276",
+      "oof": "497b00befe156359cd919fbd72b1dc8d1d029dbfb97ba776790e2d0ae3f457ad"
+    },
+    "2": {
+      "checkpoint": "0b628b824c3edb01b14d55d7b033b69e0c08248646faa4205bf07d259927fd00",
+      "model_training": "1951ea6a880fda9e3125acbf28743ef79493d29ea08328774eabc5d3e42316c6",
+      "oof": "01a68674db760ff69966fbede7a1c2703d1bc269da9afb9e24cf815093f732aa"
+    },
+    "4": {
+      "checkpoint": "6a305f32d64262db4ce99c53f4200b5b84e3e7176d70fbf8ab0e91595aa360dd",
+      "model_training": "0f159b15b8ebf3f1307754a85099718305769c5c75d45bed53ac9e50fed794e6",
+      "oof": "3e96c026a94fb02dd20489423c61d437005f9a91e17accf42ec3852cf576cf05"
+    },
+    "final_training": "104fe6599eb6628469175963588f787cef37c96d5618fc96e842622da168e1d8"
+  },
+  "development_folds": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "final_artifacts": {
+    "JOINT2_NO_ANDROID": {
+      "relative_path": "JOINT2_NO_ANDROID.pt",
+      "sha256": "18a674f8d19f1b83eb6dbaf9d38456d27f45f2ec2abf224fee705f57678b08bf"
+    },
+    "JOINT3": {
+      "relative_path": "JOINT3.pt",
+      "sha256": "5063266ba70ab242e6e8be3ff8f698b0f91fd67845c63422c448db8848aff9c4"
+    },
+    "NO_VISUAL": {
+      "relative_path": "NO_VISUAL.pt",
+      "sha256": "c5fb511808e9ee666af0a45aaf44550ab9f8a7e63db1bc8dbd43cee658319ba6"
+    },
+    "RANDOM_ID_PLACEBO": {
+      "relative_path": "RANDOM_ID_PLACEBO.pt",
+      "sha256": "3885c5de09074bf458a5d10d62479a7c0fca79b5697c069e5d208bb0c00e2ca8"
+    },
+    "TARGET_ONLY_ANDROIDCONTROL": {
+      "relative_path": "TARGET_ONLY_ANDROIDCONTROL.pt",
+      "sha256": "de0101329cb0abaa885b4d88072f4ac8f7f8ccf4b44a1cac5768499869218ebd"
+    },
+    "TARGET_ONLY_MIND2WEB": {
+      "relative_path": "TARGET_ONLY_MIND2WEB.pt",
+      "sha256": "1b77ac8cb788883f3039dea373fbb78fad2eba04b2af651074e2e5ba324fcd56"
+    },
+    "TARGET_ONLY_SCREENSPOT_PRO": {
+      "relative_path": "TARGET_ONLY_SCREENSPOT_PRO.pt",
+      "sha256": "f5fb4da88b244176dec3b245c151e906c44b3395b3271cd10f4751527e609a77"
+    }
+  },
+  "final_epochs": {
+    "JOINT2_NO_ANDROID": 30,
+    "JOINT3": 30,
+    "NO_VISUAL": 30,
+    "RANDOM_ID_PLACEBO": 30,
+    "TARGET_ONLY_ANDROIDCONTROL": 30,
+    "TARGET_ONLY_MIND2WEB": 30,
+    "TARGET_ONLY_SCREENSPOT_PRO": 20
+  },
+  "final_seed": 20264811,
+  "inner_checkpoints": {
+    "JOINT2_NO_ANDROID": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.8960870504379272,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.792401075363159,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.696100354194641,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.606937289237976,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.5248459577560425,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.4498915672302246,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.3822548389434814,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.3222402334213257,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.270167350769043,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.2262935638427734,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.190739095211029,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.1632818579673767,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.1431082487106323,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.128559172153473,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.117152690887451,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.1066537499427795,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.0958192944526672,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.0844103693962097,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.072775721549988,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.061444640159607,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.0508880615234375,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.0414435267448425,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.033327877521515,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.026620328426361,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.021275818347931,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.0171307921409607,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.0138860940933228,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.0111186504364014,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.0083813667297363,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.005275249481201,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 2.005275249481201,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 3.240756034851074,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 3.1243655681610107,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 3.0146303176879883,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.911008834838867,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.8129574060440063,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.7200719118118286,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.6320477724075317,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.5488524436950684,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.4707014560699463,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.3980718851089478,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.3317160606384277,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.272618293762207,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.221904754638672,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.1806841492652893,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.149804651737213,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.1291926503181458,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.117303490638733,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.1104041934013367,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.104399085044861,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.0970999002456665,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.088126838207245,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.0780205130577087,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.0677261352539062,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.058342218399048,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.0506353974342346,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.0447131395339966,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.04023814201355,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.036697506904602,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.0335073471069336,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.03020703792572,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 2.03020703792572,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.9404176473617554,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.846463680267334,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.7579617500305176,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.674762487411499,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.596892833709717,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.5245816707611084,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.4583427906036377,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.3989086747169495,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.347225844860077,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.304376006126404,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.2714226841926575,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.2491273880004883,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.2374805212020874,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.2348936200141907,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.237473249435425,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.2404454946517944,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.240697205066681,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.237616181373596,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.2316360473632812,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.2237470149993896,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.2150813341140747,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.2062931656837463,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.197598457336426,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.1890363097190857,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.180852770805359,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.1733131408691406,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.1666886806488037,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.1612554788589478,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.156956970691681,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.153656005859375,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 2.153656005859375,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.8429126739501953,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.7517001628875732,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.667925477027893,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.590860605239868,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.519782543182373,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.454169511795044,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.3937286138534546,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.338496208190918,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.28872549533844,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.244898200035095,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.2076144218444824,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.1775091886520386,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.155065894126892,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.1403446793556213,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.132696270942688,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.130112648010254,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.1297013759613037,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.128860831260681,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.126060724258423,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.121023654937744,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.114165425300598,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.1063385605812073,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.0984286069869995,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.0910459756851196,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.0845125317573547,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.0788780450820923,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.0740950107574463,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.0699867010116577,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.0663647651672363,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.0630422830581665,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 2.0630422830581665,
+        "selected_epoch": 30
+      }
+    ],
+    "JOINT3": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.536887049674988,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.4572012424468994,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.3826839923858643,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.3131669759750366,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2485194206237793,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.188706159591675,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.1337441205978394,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.083700656890869,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.038699746131897,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.9989182353019714,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.9644666910171509,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9354601502418518,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9118114113807678,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.8932451605796814,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.8788150548934937,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.8671815991401672,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8569349646568298,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8470584750175476,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8370349407196045,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8268305659294128,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8166645765304565,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.806886613368988,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.7977641224861145,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.7895021438598633,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.7821833491325378,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.7758192420005798,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.7703615427017212,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.765659213066101,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.7615378499031067,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.757785439491272,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 1.757785439491272,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.7745390832424164,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.685075670480728,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.600976824760437,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.521835505962372,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.4472940415143967,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.376987650990486,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.3106173872947693,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.2479660511016846,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.1888995319604874,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.1334370225667953,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.0817260295152664,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.0340803414583206,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.990963950753212,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9529688954353333,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9207051545381546,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.8946904093027115,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8751642853021622,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8616514205932617,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8525183647871017,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.845461055636406,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8384701013565063,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8304888159036636,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8213419616222382,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8115612715482712,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8018487244844437,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.7928638458251953,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.7849790453910828,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.778294250369072,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.7726058512926102,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.7676775306463242,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 1.7676775306463242,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.581867218017578,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.5012588500976562,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.4261462688446045,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.3562995195388794,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2914955615997314,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.2315561771392822,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.176340937614441,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.125850200653076,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.080252170562744,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0398778319358826,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.0051631331443787,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.976600706577301,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9545835852622986,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9392517805099487,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9302024841308594,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9259780049324036,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.924363136291504,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9231501817703247,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.920855164527893,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.9168784022331238,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.9113929867744446,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.9047876596450806,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8974735140800476,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8897581100463867,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8817684054374695,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8737362623214722,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8658921122550964,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.858460783958435,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8516813516616821,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.8457447290420532,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 1.8457447290420532,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.495909333229065,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.4232955425977707,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.356409788131714,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.2947347909212112,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2377452105283737,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.1849334090948105,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.1359414011240005,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.0905628949403763,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.0487465262413025,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0106178671121597,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.976425126194954,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9464710503816605,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9211068898439407,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9005986899137497,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.8851289600133896,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.8744152337312698,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8675269186496735,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8630724996328354,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.859606221318245,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8559559434652328,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.851426050066948,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8458698093891144,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8395450562238693,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8327930718660355,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8260145038366318,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8195753246545792,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8136500120162964,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.8083153516054153,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8035287261009216,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.799263060092926,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 1.799263060092926,
+        "selected_epoch": 30
+      }
+    ],
+    "NO_VISUAL": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.4552273750305176,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.3848854303359985,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.3195595741271973,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.2591787576675415,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2038358449935913,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.1537619829177856,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.1092624068260193,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.070681631565094,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.038335621356964,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0123823285102844,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.9925457835197449,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9779351949691772,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9667418003082275,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9567471742630005,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.946195125579834,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9343911409378052,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.9215611815452576,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9084721207618713,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8960829973220825,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.885169506072998,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8761462569236755,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8690051436424255,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8633537292480469,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8586357831954956,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8542221188545227,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8497052192687988,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8448899388313293,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.839750349521637,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8344389200210571,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.8291573524475098,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 1.8291573524475098,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.8031396567821503,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.711033195257187,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.624346360564232,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.5426743030548096,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.4656283855438232,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.3928557485342026,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.324074447154999,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.259122744202614,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.197968766093254,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.14078189432621,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.0878758877515793,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.039747938513756,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9970314651727676,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.960435077548027,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.930593192577362,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9078420847654343,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.891949251294136,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8813289552927017,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.873447299003601,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8658698350191116,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8572016805410385,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8472393602132797,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8365425020456314,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.826083555817604,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8167133778333664,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.809079110622406,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8034039735794067,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.7995697855949402,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.7971180528402328,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.7954875379800797,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 1.7954875379800797,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 19,
+        "history": [
+          {
+            "checkpoint_loss": 2.6274482011795044,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.542231798171997,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.462836980819702,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.389059901237488,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.3207653760910034,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.257870674133301,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.2004016637802124,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.148552179336548,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.1027402877807617,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0635653138160706,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.031723201274872,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.007936477661133,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9927138686180115,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9859451651573181,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9860530495643616,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.989604890346527,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.9927670359611511,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9928684830665588,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.9890807271003723,
+            "epoch": 19
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 1.9859451651573181,
+        "selected_epoch": 14
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.526618182659149,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.4517421275377274,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.382782503962517,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.319132849574089,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2603115290403366,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.2058998346328735,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.155642256140709,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.109468564391136,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.0674477219581604,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0298115462064743,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.9969120025634766,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9691191911697388,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9467667937278748,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.930028259754181,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9186527281999588,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9115797728300095,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.90715391933918,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9036704748868942,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8998478800058365,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8949850648641586,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8889596611261368,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8820790797472,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8748466819524765,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8677249103784561,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8611088544130325,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8552909642457962,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8503525853157043,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.8462447673082352,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8428152054548264,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.8398876935243607,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 1.8398876935243607,
+        "selected_epoch": 30
+      }
+    ],
+    "RANDOM_ID_PLACEBO": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.609436869621277,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.5344443321228027,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.4641237258911133,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.398160934448242,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.336273670196533,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.278221368789673,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.223793387413025,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.17284095287323,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.1252872943878174,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.081191301345825,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.040609657764435,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.003722131252289,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9707508087158203,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9419425129890442,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9174944162368774,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.897624671459198,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.882068157196045,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8701111674308777,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.860656201839447,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.852565348148346,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8449392318725586,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8372876644134521,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8294992446899414,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.821665346622467,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8140135407447815,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8067358136177063,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.799943208694458,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.793637454509735,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.787821888923645,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.782481610774994,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 1.782481610774994,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.7777360677719116,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.69749316573143,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.6222234070301056,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.5515103191137314,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.4849863499403,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.422293111681938,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.3630993366241455,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.3070968985557556,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.2540261149406433,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.2037110179662704,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.1560431718826294,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.1109995990991592,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.0686632245779037,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.029227986931801,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9929747730493546,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9602822810411453,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.9315856248140335,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9073089212179184,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8878769427537918,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8732048124074936,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8625560998916626,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8546405285596848,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8479648232460022,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8413788676261902,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.8342062830924988,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8263811618089676,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8182016462087631,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.8101112991571426,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8024193048477173,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.7953636646270752,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 1.7953636646270752,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.62369167804718,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.546455502510071,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.4750078916549683,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.408957362174988,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.347908139228821,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.2914717197418213,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.2392431497573853,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.1908864974975586,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.1461976766586304,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.105076789855957,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.0675337314605713,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.033701717853546,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.0038002133369446,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9781110882759094,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9569369554519653,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.9404664039611816,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.9287941455841064,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.9215651750564575,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.9178342819213867,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.916236937046051,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.9153995513916016,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.9143174290657043,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.9124260544776917,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.909561574459076,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.905710756778717,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.9010427594184875,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8957712650299072,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.8900246620178223,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8840296864509583,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.8779807686805725,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 1.8779807686805725,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.5194685012102127,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.4533765465021133,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.3921546190977097,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.3353607654571533,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.2826023548841476,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.233450710773468,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.1875279992818832,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.14453162252903,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.1042399555444717,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.066568896174431,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.031532570719719,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9992181658744812,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9698161631822586,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9435707330703735,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.9207617044448853,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.901643455028534,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8864646255970001,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8751809149980545,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.867361232638359,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8621752113103867,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8585706800222397,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.8555311113595963,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.8523024171590805,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.8484034091234207,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.843717411160469,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.8384661376476288,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.8328847736120224,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.8272856026887894,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.8218798637390137,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.8168413788080215,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 1.8168413788080215,
+        "selected_epoch": 30
+      }
+    ],
+    "TARGET_ONLY_ANDROIDCONTROL": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 1.8139245510101318,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 1.74452543258667,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 1.683980107307434,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 1.6309034824371338,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 1.5839142799377441,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 1.5418990850448608,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 1.5040433406829834,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 1.4696897268295288,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 1.4384238719940186,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.4099764823913574,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.3841438293457031,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.360663890838623,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.3392932415008545,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.3198332786560059,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.3020906448364258,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.285895586013794,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.2711931467056274,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.2578272819519043,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.2457945346832275,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.2350683212280273,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.225528359413147,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.2169618606567383,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.2092710733413696,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.202361822128296,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.1960488557815552,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.190194845199585,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.1846343278884888,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.1793508529663086,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.1743316650390625,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.1696743965148926,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 1.1696743965148926,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 1.8112870454788208,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 1.7322072982788086,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 1.6660842895507812,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 1.6101953983306885,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 1.5622119903564453,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 1.520393967628479,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 1.4834933280944824,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 1.450500726699829,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 1.420806884765625,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.3939083814620972,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.3695144653320312,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.3473429679870605,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.3272185325622559,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.308975338935852,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.2924046516418457,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.2773725986480713,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.2637288570404053,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.2513738870620728,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.2402243614196777,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.230224609375,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.221339464187622,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.2135602235794067,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.206710696220398,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.2006607055664062,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.1952900886535645,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.190497636795044,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.1860977411270142,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.181955099105835,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.1779115200042725,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.1738678216934204,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 1.1738678216934204,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 1.7621190547943115,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 1.6820716857910156,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 1.6129755973815918,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 1.5534240007400513,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 1.5021498203277588,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 1.4577429294586182,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 1.4190888404846191,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 1.3852159976959229,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 1.355406641960144,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.3290526866912842,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.3057681322097778,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.2852544784545898,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.2672011852264404,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.2513513565063477,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.2375820875167847,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.2257013320922852,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.2155183553695679,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.2069406509399414,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.1997957229614258,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.1938591003417969,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.188926339149475,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.1848118305206299,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.1812727451324463,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.17803955078125,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.174996018409729,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.1721570491790771,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.1693339347839355,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.1666114330291748,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.163954734802246,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.1612284183502197,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 1.1612284183502197,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 1.7336759567260742,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 1.6653579473495483,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 1.6059317588806152,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 1.5544230937957764,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 1.509847640991211,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 1.4712715148925781,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 1.4379327297210693,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 1.4091640710830688,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 1.3843677043914795,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.3630332946777344,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.3447554111480713,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.329167127609253,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.3158460855484009,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.3044672012329102,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.2946932315826416,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.2862578630447388,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.2789483070373535,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.2725379467010498,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.2668821811676025,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.261817216873169,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.25725257396698,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.2530490159988403,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.249131202697754,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.245447039604187,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.2419636249542236,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.238661527633667,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.2354599237442017,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.2323932647705078,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.229441523551941,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.2265300750732422,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 1.2265300750732422,
+        "selected_epoch": 30
+      }
+    ],
+    "TARGET_ONLY_MIND2WEB": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.957051992416382,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.853876829147339,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.759828567504883,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.675069808959961,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.599808931350708,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.534320116043091,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.4788033962249756,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.4333906173706055,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.3980324268341064,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.372466564178467,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.3558056354522705,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.3462729454040527,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.3411169052124023,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.3371903896331787,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.332139492034912,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.3250527381896973,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.3160910606384277,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.305943727493286,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.295588254928589,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.2857916355133057,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.2771687507629395,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.270005226135254,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.2643136978149414,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.2598233222961426,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.256134271621704,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.252749443054199,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.2491893768310547,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.245124578475952,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.240487813949585,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.235380172729492,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 2.235380172729492,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 3.1406917572021484,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 3.040658950805664,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.9470722675323486,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.8595077991485596,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.7777369022369385,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.7017197608947754,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.6316511631011963,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.567965507507324,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.511312484741211,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.46250581741333,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.422463893890381,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.3920164108276367,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.3713760375976562,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.3595709800720215,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.35368013381958,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.3494210243225098,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.3434338569641113,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.33469557762146,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.3234002590179443,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.3104615211486816,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.29728364944458,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.284938097000122,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.2738699913024902,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.2640116214752197,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.2551395893096924,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.247020721435547,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.2395427227020264,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.2327206134796143,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.2267990112304688,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.2219865322113037,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 2.2219865322113037,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.8921680450439453,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.7989492416381836,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.71272611618042,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.6335649490356445,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.5616455078125,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.4973158836364746,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.440985679626465,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.3931825160980225,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.354451894760132,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.3251025676727295,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.3047728538513184,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.2917585372924805,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.283067464828491,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.2758212089538574,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.2686426639556885,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.2613348960876465,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.2541942596435547,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.2476627826690674,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.241858959197998,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.236572742462158,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.2315008640289307,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.2265024185180664,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.2215261459350586,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.216639518737793,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.211925745010376,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.20737361907959,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.2028582096099854,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.1982827186584473,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.1936371326446533,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.1889986991882324,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 2.1889986991882324,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.7822746336460114,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.7128571420907974,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.6499655544757843,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.5935381203889847,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.543513223528862,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.499942108988762,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.462898910045624,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.432471215724945,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.4086463004350662,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.3911840319633484,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.379224054515362,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.371276631951332,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.3652689531445503,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.35931508988142,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.352236144244671,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.34387743473053,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.334659829735756,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.3253521993756294,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 2.3167456313967705,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 2.3093335181474686,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 2.303266018629074,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 2.2983727157115936,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 2.294255092740059,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 2.290472060441971,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 2.286641925573349,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 2.2825214862823486,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 2.278090000152588,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 2.2734578624367714,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 2.268871210515499,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 2.26447381824255,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 2.26447381824255,
+        "selected_epoch": 30
+      }
+    ],
+    "TARGET_ONLY_SCREENSPOT_PRO": [
+      {
+        "epochs_run": 30,
+        "history": [
+          {
+            "checkpoint_loss": 2.877105236053467,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.734191656112671,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.5999903678894043,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.4746451377868652,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.3586230278015137,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.252547264099121,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.157165050506592,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.0733203887939453,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.001807689666748,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 1.9432928562164307,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.8981291055679321,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.866058588027954,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.845649003982544,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.8336060047149658,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.8249067068099976,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.816285490989685,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8066720962524414,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.7961493730545044,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.7854368686676025,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.7752916812896729,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.7663609981536865,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.758932113647461,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.7530014514923096,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.7483843564987183,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.744861125946045,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.7421191930770874,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.7397844791412354,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.7374508380889893,
+            "epoch": 28
+          },
+          {
+            "checkpoint_loss": 1.7347172498703003,
+            "epoch": 29
+          },
+          {
+            "checkpoint_loss": 1.731216549873352,
+            "epoch": 30
+          }
+        ],
+        "holdout_fold": 0,
+        "selected_checkpoint_loss": 1.731216549873352,
+        "selected_epoch": 30
+      },
+      {
+        "epochs_run": 28,
+        "history": [
+          {
+            "checkpoint_loss": 3.474400520324707,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 3.3129453659057617,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 3.1588706970214844,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 3.0114731788635254,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.87020206451416,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.734729051589966,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.604989767074585,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.4812815189361572,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.3641586303710938,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.254490852355957,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.1534907817840576,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.0626115798950195,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.9833776950836182,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.9173048734664917,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.8655741214752197,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.8287158012390137,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8058834075927734,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.7932642698287964,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.7859914302825928,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.7810479402542114,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.7772669792175293,
+            "epoch": 21
+          },
+          {
+            "checkpoint_loss": 1.7744410037994385,
+            "epoch": 22
+          },
+          {
+            "checkpoint_loss": 1.772864580154419,
+            "epoch": 23
+          },
+          {
+            "checkpoint_loss": 1.7731571197509766,
+            "epoch": 24
+          },
+          {
+            "checkpoint_loss": 1.7756106853485107,
+            "epoch": 25
+          },
+          {
+            "checkpoint_loss": 1.7799904346466064,
+            "epoch": 26
+          },
+          {
+            "checkpoint_loss": 1.7855592966079712,
+            "epoch": 27
+          },
+          {
+            "checkpoint_loss": 1.7913612127304077,
+            "epoch": 28
+          }
+        ],
+        "holdout_fold": 1,
+        "selected_checkpoint_loss": 1.772864580154419,
+        "selected_epoch": 23
+      },
+      {
+        "epochs_run": 18,
+        "history": [
+          {
+            "checkpoint_loss": 3.030758857727051,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.901620864868164,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.7814974784851074,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.6703479290008545,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.5682058334350586,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.4754676818847656,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.392810821533203,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.3211636543273926,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.2616262435913086,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.2153382301330566,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 2.1832709312438965,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 2.165769100189209,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 2.1622912883758545,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 2.169785261154175,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 2.1818976402282715,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 2.1913936138153076,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 2.1944775581359863,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 2.190202474594116,
+            "epoch": 18
+          }
+        ],
+        "holdout_fold": 2,
+        "selected_checkpoint_loss": 2.1622912883758545,
+        "selected_epoch": 13
+      },
+      {
+        "epochs_run": 21,
+        "history": [
+          {
+            "checkpoint_loss": 2.946092128753662,
+            "epoch": 1
+          },
+          {
+            "checkpoint_loss": 2.808046817779541,
+            "epoch": 2
+          },
+          {
+            "checkpoint_loss": 2.679382801055908,
+            "epoch": 3
+          },
+          {
+            "checkpoint_loss": 2.5598299503326416,
+            "epoch": 4
+          },
+          {
+            "checkpoint_loss": 2.4491820335388184,
+            "epoch": 5
+          },
+          {
+            "checkpoint_loss": 2.347339630126953,
+            "epoch": 6
+          },
+          {
+            "checkpoint_loss": 2.2543437480926514,
+            "epoch": 7
+          },
+          {
+            "checkpoint_loss": 2.1703717708587646,
+            "epoch": 8
+          },
+          {
+            "checkpoint_loss": 2.0957489013671875,
+            "epoch": 9
+          },
+          {
+            "checkpoint_loss": 2.0308542251586914,
+            "epoch": 10
+          },
+          {
+            "checkpoint_loss": 1.9761698246002197,
+            "epoch": 11
+          },
+          {
+            "checkpoint_loss": 1.9321790933609009,
+            "epoch": 12
+          },
+          {
+            "checkpoint_loss": 1.8992855548858643,
+            "epoch": 13
+          },
+          {
+            "checkpoint_loss": 1.877709984779358,
+            "epoch": 14
+          },
+          {
+            "checkpoint_loss": 1.867210865020752,
+            "epoch": 15
+          },
+          {
+            "checkpoint_loss": 1.8665271997451782,
+            "epoch": 16
+          },
+          {
+            "checkpoint_loss": 1.8723112344741821,
+            "epoch": 17
+          },
+          {
+            "checkpoint_loss": 1.8800253868103027,
+            "epoch": 18
+          },
+          {
+            "checkpoint_loss": 1.8860442638397217,
+            "epoch": 19
+          },
+          {
+            "checkpoint_loss": 1.8888689279556274,
+            "epoch": 20
+          },
+          {
+            "checkpoint_loss": 1.8881874084472656,
+            "epoch": 21
+          }
+        ],
+        "holdout_fold": 4,
+        "selected_checkpoint_loss": 1.8665271997451782,
+        "selected_epoch": 16
+      }
+    ]
+  },
+  "inner_epochs": {
+    "JOINT2_NO_ANDROID": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "JOINT3": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "NO_VISUAL": [
+      30,
+      30,
+      14,
+      30
+    ],
+    "RANDOM_ID_PLACEBO": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "TARGET_ONLY_ANDROIDCONTROL": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "TARGET_ONLY_MIND2WEB": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "TARGET_ONLY_SCREENSPOT_PRO": [
+      30,
+      23,
+      13,
+      16
+    ]
+  },
+  "oof_artifacts": {
+    "JOINT2_NO_ANDROID": {
+      "relative_path": "oof/JOINT2_NO_ANDROID.jsonl",
+      "sha256": "254939eceddd9e515b76b2e4541545affb20b970eae353ed74a76674da537a34"
+    },
+    "JOINT3": {
+      "relative_path": "oof/JOINT3.jsonl",
+      "sha256": "ee7cae37df97655ce2df2b51dde02628f1622684441293098550e096183119e0"
+    },
+    "NO_VISUAL": {
+      "relative_path": "oof/NO_VISUAL.jsonl",
+      "sha256": "6c15333bc866d21a37b4821ba154a92efc24acedfbd6edd7da2b8b7fd91bb1ab"
+    },
+    "RANDOM_ID_PLACEBO": {
+      "relative_path": "oof/RANDOM_ID_PLACEBO.jsonl",
+      "sha256": "4fec38c6ba7450995d5ac4bf0d14121a7065bf2234d3d15cc8f184cdb7a3731d"
+    },
+    "TARGET_ONLY_ANDROIDCONTROL": {
+      "relative_path": "oof/TARGET_ONLY_ANDROIDCONTROL.jsonl",
+      "sha256": "9f41491f4983866d3bdc7e783f1b12151ddcda52a86d97307fe079017a9ff088"
+    },
+    "TARGET_ONLY_MIND2WEB": {
+      "relative_path": "oof/TARGET_ONLY_MIND2WEB.jsonl",
+      "sha256": "866c51446a652ef744174cf83699e5b1504141c4ca2f0965d4c66074cb74c915"
+    },
+    "TARGET_ONLY_SCREENSPOT_PRO": {
+      "relative_path": "oof/TARGET_ONLY_SCREENSPOT_PRO.jsonl",
+      "sha256": "028509ee13c4c33832fbfec4f79b3012ad50a7998c160ca56928059d75cbbdd1"
+    }
+  },
+  "oof_prediction_sha256": {
+    "JOINT2_NO_ANDROID": "965b75734fbe9da2469da437b0958097574ad1a34426f3ca81ae271b9894bd8e",
+    "JOINT3": "b0d45c7f87cd8b726d236209c59a6f7511bd4d0b91a028a549f9eedd2a53ceba",
+    "NO_VISUAL": "d605a4033f0e2d4b7b202ffd8990ec361edd46a195e87248d8973c0fd45cbc54",
+    "RANDOM_ID_PLACEBO": "f47345bd5c30e3bb70dbc41cee1b777cf7fcf65b918ef5e8b27465339dacfffd",
+    "TARGET_ONLY_ANDROIDCONTROL": "5b51debcc369c9c95c4faa744cb697aa843d31c8f373e28a67c20b18881db5d7",
+    "TARGET_ONLY_MIND2WEB": "cb8234d3ee079d018f8b82b6439dad511841b7c6464b6231c6ed2f6f621de737",
+    "TARGET_ONLY_SCREENSPOT_PRO": "b9b9a38af18eec150d4bddfd7d8660d65f4c419b6bde6b6fc098e75974e0a7fa"
+  },
+  "opened_development_label_sha256": {
+    "android": {
+      "0": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a",
+      "1": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d",
+      "2": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a",
+      "4": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+    },
+    "vus": {
+      "0": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630",
+      "1": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a",
+      "2": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6",
+      "4": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+    }
+  },
+  "optimizer_steps_per_epoch": 1,
+  "outer_fold": 3,
+  "outer_labels_opened": false,
+  "schema_version": 1,
+  "sealed_outer_fold": 3,
+  "sealed_outer_label_sha256": {
+    "android": {
+      "3": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+    },
+    "vus": {
+      "3": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+    }
+  },
+  "status": "PASS_TRIVUS_PRETEST_FROZEN_BEFORE_OUTER_LABEL_ACCESS",
+  "thresholds": {
+    "JOINT2_NO_ANDROID": {
+      "families": {
+        "mind2web": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 230,
+              "selection": {
+                "losses": 19,
+                "overrides": 194,
+                "point_delta": 0.015625,
+                "wins": 45
+              },
+              "threshold": [
+                0.001689910888671875,
+                0.4721082180738449
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 415,
+              "selection": {
+                "losses": 27,
+                "overrides": 293,
+                "point_delta": 0.022235576923076924,
+                "wins": 64
+              },
+              "threshold": [
+                0.15661866664886478,
+                0.49310668706893923
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 358,
+              "selection": {
+                "losses": 37,
+                "overrides": 342,
+                "point_delta": 0.026442307692307692,
+                "wins": 81
+              },
+              "threshold": [
+                0.006867527961730957,
+                0.1852140873670578
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 272,
+              "selection": {
+                "losses": 24,
+                "overrides": 254,
+                "point_delta": 0.02403846153846154,
+                "wins": 64
+              },
+              "threshold": [
+                9.012222290039062e-05,
+                0.20323044061660767
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 24,
+                "overrides": 213,
+                "point_delta": 0.014423076923076924,
+                "wins": 48
+              },
+              "C_rand": {
+                "losses": 50,
+                "overrides": 394,
+                "point_delta": 0.020432692307692308,
+                "wins": 84
+              },
+              "C_self": {
+                "losses": 37,
+                "overrides": 342,
+                "point_delta": 0.026442307692307692,
+                "wins": 81
+              },
+              "C_uni": {
+                "losses": 24,
+                "overrides": 254,
+                "point_delta": 0.02403846153846154,
+                "wins": 64
+              }
+            },
+            "equal_cell_delta": 0.021334134615384616
+          },
+          "family_threshold": [
+            9.417533874511719e-06,
+            0.16918687522411346
+          ]
+        },
+        "screenspot_pro": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 3,
+              "selection": {
+                "losses": 0,
+                "overrides": 1,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                0.09290716052055359,
+                0.3937316983938217
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 13,
+              "selection": {
+                "losses": 0,
+                "overrides": 10,
+                "point_delta": 0.001568627450980392,
+                "wins": 2
+              },
+              "threshold": [
+                0.09290716052055359,
+                0.3937316983938217
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 6,
+              "selection": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                0.09290716052055359,
+                0.3937316983938217
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 2,
+              "selection": {
+                "losses": 0,
+                "overrides": 1,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                0.09290716052055359,
+                0.3937316983938217
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 0,
+                "overrides": 1,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 10,
+                "point_delta": 0.001568627450980392,
+                "wins": 2
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 1,
+                "point_delta": 0.0,
+                "wins": 0
+              }
+            },
+            "equal_cell_delta": 0.000392156862745098
+          },
+          "family_threshold": [
+            0.09290716052055359,
+            0.3937316983938217
+          ]
+        }
+      }
+    },
+    "JOINT3": {
+      "families": {
+        "androidcontrol": {
+          "cells": {
+            "high": {
+              "changed_opportunities": 287,
+              "selection": {
+                "losses": 32,
+                "overrides": 209,
+                "point_delta": 0.033226837060702875,
+                "wins": 84
+              },
+              "threshold": [
+                0.05483393669128418,
+                0.11575438529253006
+              ],
+              "threshold_source": "cell"
+            },
+            "low": {
+              "changed_opportunities": 136,
+              "selection": {
+                "losses": 4,
+                "overrides": 30,
+                "point_delta": 0.010223642172523962,
+                "wins": 20
+              },
+              "threshold": [
+                0.3099609315395355,
+                0.2544801950454712
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "high": {
+                "losses": 15,
+                "overrides": 114,
+                "point_delta": 0.027476038338658148,
+                "wins": 58
+              },
+              "low": {
+                "losses": 4,
+                "overrides": 30,
+                "point_delta": 0.010223642172523962,
+                "wins": 20
+              }
+            },
+            "equal_cell_delta": 0.018849840255591055
+          },
+          "family_threshold": [
+            0.3099609315395355,
+            0.2544801950454712
+          ]
+        },
+        "mind2web": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 231,
+              "selection": {
+                "losses": 17,
+                "overrides": 195,
+                "point_delta": 0.021634615384615384,
+                "wins": 53
+              },
+              "threshold": [
+                0.00020039081573486328,
+                0.4132203459739685
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 432,
+              "selection": {
+                "losses": 41,
+                "overrides": 369,
+                "point_delta": 0.02283653846153846,
+                "wins": 79
+              },
+              "threshold": [
+                0.001354217529296875,
+                0.4741478323936462
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 364,
+              "selection": {
+                "losses": 38,
+                "overrides": 343,
+                "point_delta": 0.028245192307692308,
+                "wins": 85
+              },
+              "threshold": [
+                0.00024306774139404297,
+                0.029723897576332092
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 272,
+              "selection": {
+                "losses": 17,
+                "overrides": 221,
+                "point_delta": 0.024639423076923076,
+                "wins": 58
+              },
+              "threshold": [
+                0.04708421230316162,
+                0.09895120561122894
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 22,
+                "overrides": 213,
+                "point_delta": 0.019831730769230768,
+                "wins": 55
+              },
+              "C_rand": {
+                "losses": 48,
+                "overrides": 407,
+                "point_delta": 0.02283653846153846,
+                "wins": 86
+              },
+              "C_self": {
+                "losses": 38,
+                "overrides": 343,
+                "point_delta": 0.028245192307692308,
+                "wins": 85
+              },
+              "C_uni": {
+                "losses": 21,
+                "overrides": 246,
+                "point_delta": 0.02403846153846154,
+                "wins": 61
+              }
+            },
+            "equal_cell_delta": 0.023737980769230768
+          },
+          "family_threshold": [
+            0.00020039081573486328,
+            0.029723897576332092
+          ]
+        },
+        "screenspot_pro": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 4,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 14,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 10,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 4,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              }
+            },
+            "equal_cell_delta": 0.0
+          },
+          "family_threshold": [
+            Infinity,
+            Infinity
+          ]
+        }
+      }
+    },
+    "NO_VISUAL": {
+      "families": {
+        "androidcontrol": {
+          "cells": {
+            "high": {
+              "changed_opportunities": 190,
+              "selection": {
+                "losses": 14,
+                "overrides": 87,
+                "point_delta": 0.017252396166134186,
+                "wins": 41
+              },
+              "threshold": [
+                0.20090290307998665,
+                0.3089170902967453
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "low": {
+              "changed_opportunities": 82,
+              "selection": {
+                "losses": 4,
+                "overrides": 21,
+                "point_delta": 0.005111821086261981,
+                "wins": 12
+              },
+              "threshold": [
+                0.20090290307998665,
+                0.3089170902967453
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "high": {
+                "losses": 14,
+                "overrides": 87,
+                "point_delta": 0.017252396166134186,
+                "wins": 41
+              },
+              "low": {
+                "losses": 4,
+                "overrides": 21,
+                "point_delta": 0.005111821086261981,
+                "wins": 12
+              }
+            },
+            "equal_cell_delta": 0.011182108626198083
+          },
+          "family_threshold": [
+            0.20090290307998665,
+            0.3089170902967453
+          ]
+        },
+        "mind2web": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 42,
+              "selection": {
+                "losses": 1,
+                "overrides": 5,
+                "point_delta": 0.001201923076923077,
+                "wins": 3
+              },
+              "threshold": [
+                0.11775403022766114,
+                0.6841618418693542
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 87,
+              "selection": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0006009615384615385,
+                "wins": 1
+              },
+              "threshold": [
+                0.11775403022766114,
+                0.6841618418693542
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 102,
+              "selection": {
+                "losses": 0,
+                "overrides": 8,
+                "point_delta": 0.0006009615384615385,
+                "wins": 1
+              },
+              "threshold": [
+                0.11775403022766114,
+                0.6841618418693542
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 50,
+              "selection": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.001201923076923077,
+                "wins": 2
+              },
+              "threshold": [
+                0.11775403022766114,
+                0.6841618418693542
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 1,
+                "overrides": 5,
+                "point_delta": 0.001201923076923077,
+                "wins": 3
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0006009615384615385,
+                "wins": 1
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 8,
+                "point_delta": 0.0006009615384615385,
+                "wins": 1
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.001201923076923077,
+                "wins": 2
+              }
+            },
+            "equal_cell_delta": 0.0009014423076923077
+          },
+          "family_threshold": [
+            0.11775403022766114,
+            0.6841618418693542
+          ]
+        },
+        "screenspot_pro": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 0,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 0,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 3,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 0,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              }
+            },
+            "equal_cell_delta": 0.0
+          },
+          "family_threshold": [
+            Infinity,
+            Infinity
+          ]
+        }
+      }
+    },
+    "RANDOM_ID_PLACEBO": {
+      "families": {
+        "androidcontrol": {
+          "cells": {
+            "high": {
+              "changed_opportunities": 313,
+              "selection": {
+                "losses": 29,
+                "overrides": 187,
+                "point_delta": 0.031309904153354634,
+                "wins": 78
+              },
+              "threshold": [
+                0.17380452752113343,
+                0.1122400090098381
+              ],
+              "threshold_source": "cell"
+            },
+            "low": {
+              "changed_opportunities": 195,
+              "selection": {
+                "losses": 19,
+                "overrides": 82,
+                "point_delta": 0.003194888178913738,
+                "wins": 24
+              },
+              "threshold": [
+                0.21457825601100922,
+                0.10811411887407303
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "high": {
+                "losses": 25,
+                "overrides": 174,
+                "point_delta": 0.03194888178913738,
+                "wins": 75
+              },
+              "low": {
+                "losses": 19,
+                "overrides": 82,
+                "point_delta": 0.003194888178913738,
+                "wins": 24
+              }
+            },
+            "equal_cell_delta": 0.01757188498402556
+          },
+          "family_threshold": [
+            0.21457825601100922,
+            0.10811411887407303
+          ]
+        },
+        "mind2web": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 228,
+              "selection": {
+                "losses": 13,
+                "overrides": 151,
+                "point_delta": 0.014423076923076924,
+                "wins": 37
+              },
+              "threshold": [
+                0.07118969559669495,
+                0.48608428239822393
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 383,
+              "selection": {
+                "losses": 31,
+                "overrides": 287,
+                "point_delta": 0.022235576923076924,
+                "wins": 68
+              },
+              "threshold": [
+                0.001955389976501465,
+                0.5013733386993409
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 333,
+              "selection": {
+                "losses": 28,
+                "overrides": 246,
+                "point_delta": 0.024639423076923076,
+                "wins": 69
+              },
+              "threshold": [
+                0.004082441329956055,
+                0.4930091738700867
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 224,
+              "selection": {
+                "losses": 22,
+                "overrides": 190,
+                "point_delta": 0.015625,
+                "wins": 48
+              },
+              "threshold": [
+                0.043826937675476074,
+                0.09774264693260193
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 23,
+                "overrides": 188,
+                "point_delta": 0.01141826923076923,
+                "wins": 42
+              },
+              "C_rand": {
+                "losses": 42,
+                "overrides": 331,
+                "point_delta": 0.021634615384615384,
+                "wins": 78
+              },
+              "C_self": {
+                "losses": 34,
+                "overrides": 270,
+                "point_delta": 0.02283653846153846,
+                "wins": 72
+              },
+              "C_uni": {
+                "losses": 21,
+                "overrides": 190,
+                "point_delta": 0.014423076923076924,
+                "wins": 45
+              }
+            },
+            "equal_cell_delta": 0.017578125
+          },
+          "family_threshold": [
+            0.0007634162902832031,
+            0.42121959030628203
+          ]
+        },
+        "screenspot_pro": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 3,
+              "selection": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                0.11842782497406008,
+                0.2739428371191025
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 16,
+              "selection": {
+                "losses": 0,
+                "overrides": 12,
+                "point_delta": 0.000784313725490196,
+                "wins": 1
+              },
+              "threshold": [
+                0.11842782497406008,
+                0.2739428371191025
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 11,
+              "selection": {
+                "losses": 0,
+                "overrides": 6,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                0.11842782497406008,
+                0.2739428371191025
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 4,
+              "selection": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.000784313725490196,
+                "wins": 1
+              },
+              "threshold": [
+                0.11842782497406008,
+                0.2739428371191025
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 12,
+                "point_delta": 0.000784313725490196,
+                "wins": 1
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 6,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 3,
+                "point_delta": 0.000784313725490196,
+                "wins": 1
+              }
+            },
+            "equal_cell_delta": 0.000392156862745098
+          },
+          "family_threshold": [
+            0.11842782497406008,
+            0.2739428371191025
+          ]
+        }
+      }
+    },
+    "TARGET_ONLY": {
+      "families": {
+        "androidcontrol": {
+          "cells": {
+            "high": {
+              "changed_opportunities": 255,
+              "selection": {
+                "losses": 22,
+                "overrides": 137,
+                "point_delta": 0.028115015974440896,
+                "wins": 66
+              },
+              "threshold": [
+                0.33950838148593904,
+                0.19010117650032063
+              ],
+              "threshold_source": "cell"
+            },
+            "low": {
+              "changed_opportunities": 99,
+              "selection": {
+                "losses": 5,
+                "overrides": 35,
+                "point_delta": 0.009584664536741214,
+                "wins": 20
+              },
+              "threshold": [
+                0.41525838375091556,
+                0.10898303687572485
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "high": {
+                "losses": 24,
+                "overrides": 144,
+                "point_delta": 0.02875399361022364,
+                "wins": 69
+              },
+              "low": {
+                "losses": 5,
+                "overrides": 35,
+                "point_delta": 0.009584664536741214,
+                "wins": 20
+              }
+            },
+            "equal_cell_delta": 0.019169329073482427
+          },
+          "family_threshold": [
+            0.41525838375091556,
+            0.10898303687572485
+          ]
+        },
+        "mind2web": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 286,
+              "selection": {
+                "losses": 19,
+                "overrides": 193,
+                "point_delta": 0.016826923076923076,
+                "wins": 47
+              },
+              "threshold": [
+                0.0014823675155639648,
+                0.6680727303028107
+              ],
+              "threshold_source": "cell"
+            },
+            "C_rand": {
+              "changed_opportunities": 442,
+              "selection": {
+                "losses": 37,
+                "overrides": 333,
+                "point_delta": 0.02403846153846154,
+                "wins": 77
+              },
+              "threshold": [
+                0.2009050488471985,
+                0.2575264871120453
+              ],
+              "threshold_source": "cell"
+            },
+            "C_self": {
+              "changed_opportunities": 396,
+              "selection": {
+                "losses": 39,
+                "overrides": 376,
+                "point_delta": 0.025841346153846152,
+                "wins": 82
+              },
+              "threshold": [
+                0.0048618316650390625,
+                0.1535547971725464
+              ],
+              "threshold_source": "cell"
+            },
+            "C_uni": {
+              "changed_opportunities": 284,
+              "selection": {
+                "losses": 26,
+                "overrides": 272,
+                "point_delta": 0.0234375,
+                "wins": 65
+              },
+              "threshold": [
+                0.00043696165084838867,
+                0.20431186258792877
+              ],
+              "threshold_source": "cell"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 34,
+                "overrides": 269,
+                "point_delta": 0.015024038461538462,
+                "wins": 59
+              },
+              "C_rand": {
+                "losses": 51,
+                "overrides": 417,
+                "point_delta": 0.021634615384615384,
+                "wins": 87
+              },
+              "C_self": {
+                "losses": 39,
+                "overrides": 376,
+                "point_delta": 0.025841346153846152,
+                "wins": 82
+              },
+              "C_uni": {
+                "losses": 26,
+                "overrides": 272,
+                "point_delta": 0.0234375,
+                "wins": 65
+              }
+            },
+            "equal_cell_delta": 0.021484375
+          },
+          "family_threshold": [
+            0.00043696165084838867,
+            0.14777477085590363
+          ]
+        },
+        "screenspot_pro": {
+          "cells": {
+            "C_cond": {
+              "changed_opportunities": 0,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_rand": {
+              "changed_opportunities": 2,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_self": {
+              "changed_opportunities": 3,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            },
+            "C_uni": {
+              "changed_opportunities": 3,
+              "selection": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "threshold": [
+                Infinity,
+                Infinity
+              ],
+              "threshold_source": "family_backoff"
+            }
+          },
+          "family_selection": {
+            "cells": {
+              "C_cond": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_rand": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_self": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              },
+              "C_uni": {
+                "losses": 0,
+                "overrides": 0,
+                "point_delta": 0.0,
+                "wins": 0
+              }
+            },
+            "equal_cell_delta": 0.0
+          },
+          "family_threshold": [
+            Infinity,
+            Infinity
+          ]
+        }
+      }
+    }
+  },
+  "training_complete": true
+}

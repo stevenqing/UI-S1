@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "date": "2026-08-12",
-  "status": "FORMAL_RUNNER_IMPLEMENTED_AWAITING_AUTHORIZATION",
-  "outcome": "TRIVUS_NOT_RUN",
+  "status": "FORMAL_EXECUTION_COMPLETE",
+  "outcome": "TRIVUS_NOT_PROMOTED",
   "phase": "R0_ANDROIDCONTROL_RESULT_BLIND_RECOVERY",
   "known_upstream": {
     "VUS_SR": "VUS_SET_RANKER_METHOD_CANDIDATE",
@@ -178,8 +178,23 @@
   "final_adjudicator_implemented": true,
   "formal_runner_implementation_commit": "85e2f8151f6f792ec773458a09cd5d1d4c479286",
   "formal_runner_tests_passed": 31,
-  "formal_execution_authorized": false,
-  "formal_execution_started": false,
+  "formal_execution_authorized": true,
+  "formal_execution_started": true,
+  "formal_execution_complete": true,
+  "formal_outer_folds_complete": [0, 1, 2, 3, 4],
+  "formal_artifact_files": 95,
+  "formal_artifact_bytes": 215933028,
+  "formal_adjudication": "runs/trivus/2026-08-12/TRIVUS_ADJUDICATION.json",
+  "formal_adjudication_sha256": "bb8bc8b999ed73f3c007c79f93f845307fb6c6dec3f4c2895a45d79246bbed8b",
+  "formal_gates": {
+    "G1_vus_sr_cell_noninferiority": false,
+    "G2_android_majority_noninferiority": true,
+    "G3_one_family_positive": true,
+    "G4_three_family_primary_positive": false,
+    "G5_joint_minus_target_only_positive": false,
+    "G6_joint_minus_no_visual_positive": true,
+    "G7_strongest_baseline_safety": false
+  },
   "formal_runner_primitives_protocol_frozen": true,
   "formal_runner_primitives_implemented": true,
   "formal_runner_primitives_tests": 11,
@@ -187,14 +202,14 @@
   "new_accuracy_computed": true,
   "reference_rows_contain_gt_fields": true,
   "ground_truth_fields_used_for_recovery": false,
-  "next_action": "COMMIT_STATUS_THEN_CREATE_AND_COMMIT_ONE_TIME_FORMAL_AUTHORIZATION",
+  "next_action": "ARCHIVE_FORMAL_RESULTS_AND_ANALYZE_NON_PROMOTION_WITHOUT_POST_HOC_PROMOTION",
   "retention": {
     "format": "per_file_sha256_manifest",
     "backup_root": "/scratch/workspaceblobstore/trivus/2026-08-12",
     "manifest": "/scratch/workspaceblobstore/trivus/2026-08-12/BACKUP_MANIFEST.json",
     "manifest_authoritative": true,
     "verified": true,
-    "artifact_count": 129,
-    "total_bytes": 137606792
+    "artifact_count": 242,
+    "total_bytes": 374856701
   }
 }
