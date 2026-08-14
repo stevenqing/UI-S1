@@ -1,0 +1,96 @@
+{
+  "balanced_subset_created": false,
+  "claim_boundary": {
+    "changes_F1": false,
+    "changes_Q1": false,
+    "changes_TRIVUS_NOT_PROMOTED": false,
+    "changes_VUS_SR": false,
+    "confirmation_claim_allowed": false,
+    "deployable_method_claim_allowed": false,
+    "falsification_crop_channel_supported": false
+  },
+  "endpoints": {
+    "Z_P1": {
+      "reason": "Z_K6_geometry_failure_rate_exceeded_15_percent",
+      "status": "NOT_RUN_PRE_GPU_STOP"
+    },
+    "Z_P2": {
+      "reason": "Z_K6_geometry_failure_rate_exceeded_15_percent",
+      "status": "NOT_RUN_PRE_GPU_STOP"
+    },
+    "Z_P3": {
+      "reason": "Z_K6_geometry_failure_rate_exceeded_15_percent",
+      "status": "NOT_RUN_PRE_GPU_STOP"
+    },
+    "Z_P4": {
+      "reason": "Z_K6_geometry_failure_rate_exceeded_15_percent",
+      "status": "NOT_RUN_PRE_GPU_STOP"
+    },
+    "Z_P5": {
+      "reason": "Z_K6_geometry_failure_rate_exceeded_15_percent",
+      "status": "NOT_RUN_PRE_GPU_STOP"
+    }
+  },
+  "exploratory_only": true,
+  "geometry": {
+    "gate_rows": 1187,
+    "geometry_failed_rows": 318,
+    "geometry_failure_rate": 0.2679022746419545,
+    "maximum_failure_rate": 0.15,
+    "negative_rows_after_geometry": 161,
+    "negative_rows_before_geometry": 223,
+    "positive_rows_after_geometry": 76,
+    "positive_rows_before_geometry": 102,
+    "valid_rows": 869
+  },
+  "geometry_failure_combinations": {
+    "W1_excludes_M2": 163,
+    "W2_excludes_M1": 155
+  },
+  "geometry_failure_predicates": {
+    "W1_excludes_M2": 163,
+    "W2_excludes_M1": 155
+  },
+  "gpu_authorization_created": false,
+  "input_hashes": {
+    "GEOMETRY_AUDIT.json": "047c10594c05326c1aecdae145bb002dbaa89649b6dcb095cd2da7637e4b1eca",
+    "ZERO_GPU_GATE.json": "1f6199dca12807335c7ca20fbb457052bb76856b007dce02df558840a473f5b6"
+  },
+  "kill_conditions": {
+    "Z_K1": false,
+    "Z_K2": null,
+    "Z_K3": null,
+    "Z_K4": null,
+    "Z_K5": null,
+    "Z_K6": true,
+    "Z_K7": true
+  },
+  "model_forward_count": 0,
+  "models": {
+    "GTA1-7B": "NOT_RUN",
+    "Qwen2.5-VL-7B-Instruct": "DEFERRED_CHECKPOINT_MISSING",
+    "Qwen3-VL-8B-Instruct": "NOT_RUN"
+  },
+  "next_action": "CLOSE_SPLIT_NO_GPU_DO_NOT_RESCUE_GEOMETRY_POST_HOC",
+  "outcome": "SPLIT_STOPPED_PRE_GPU_Z_K6_GEOMETRY_AND_Z_K7_LOW_N",
+  "schema_version": 1,
+  "status": "COMPLETE_PRE_GPU_STOP",
+  "zero_gpu_gate": {
+    "Delta2": 0.06451612903225806,
+    "Z_G1_pass": true,
+    "conditional_positive_rate": 0.08593091828138164,
+    "gate_prevalence": 0.7507906388361796,
+    "gate_rows": 1187,
+    "insufficient_mode_rows": 33,
+    "negative_rows": 223,
+    "positive_rows": 102,
+    "rows": 1581,
+    "selected_g_by_fold": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  }
+}

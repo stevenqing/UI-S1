@@ -1,6 +1,6 @@
 # GUI Test-Time Scaling — Master Results
 
-更新日期：2026-08-11
+更新日期：2026-08-14
 
 本文只汇总冻结口径。完整方法、逐折选择、污染边界和限制以各 run 的 `REPORT.md` 为准。
 
@@ -15,6 +15,8 @@
 | Post-VUS negative | CARE A1 router | corrected structural routing fails：M2W pass@12 −1.01 pp；SSPro safe −1.27 pp；`CLOSE_ROUTING` |
 | Post-VUS negative | DELTA late fusion | M2W −0.41 pp `[−1.20,+0.40]`；SSPro +0.11 pp `[−0.20,+0.41]`；same-capacity/placebo gates fail；`DELTA_NOT_SUPPORTED` |
 | Post-VUS partial negative | CIVA-A0 admission | raw-direct M2W +1.57 pp `[+0.79,+2.39]`、SSPro +5.41 pp `[+4.12,+6.81]`；matched-random/placebo pass，text attribution/cell safety fail；`CIVA_ADMISSION_NOT_SUPPORTED` |
+| Mechanism follow-up | GRAN | M2W CLICK high-$\hat p$ margin +11.74 pp `[+7.29,+16.51]`；跨 benchmark 曲线与两端点统一失败 |
+| Pre-GPU falsification | SPLIT | $\Delta_2$ 6.45 pp，但 geometry failure 26.79% 触发 Z-K6；有效正例 76 触发 Z-K7；未执行模型 forward |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -96,6 +98,8 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/ravel/2026-08-11/` | STOPPED | local evidence early fusion fails；Mind2Web −2.19 pp [−2.98,−1.41]；RAVEL-K4 |
 | `runs/delta/2026-08-11/` | COMPLETE | only DELTA-2/6 pass；local channels dilute M2W global/binding evidence；`DELTA_NOT_SUPPORTED` |
 | `runs/civa/2026-08-11/` | COMPLETE | raw-direct admission signal positive；instruction attribution and all-cell safety fail；`CIVA_ADMISSION_NOT_SUPPORTED` |
+| `runs/gran/2026-08-14/` | COMPLETE | within-M2W $\hat p$ explanation supported；cross-benchmark/endpoint unification failed |
+| `runs/split/2026-08-14/` | STOPPED PRE-GPU | Z-G1 pass；Z-K6 geometry 与 Z-K7 low-$n$；all GPU endpoints not run |
 
 ## 8. Reproducibility boundaries
 
@@ -111,3 +115,5 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - DELTA is a multi-call research oracle protocol over already locked channels; even a positive result requires one-call distillation and untouched GUI-Odyssey confirmation.
 - DELTA was negative: FULL did not beat VUS_ONLY or RANDOM_PLACEBO, so no distillation or GUI-Odyssey confirmation was run. VUS_GLOBAL remains a diagnostic control, not a post-hoc selected method.
 - CIVA-A0 improved only the raw direct evidence policy, not VUS-SR safe Step-SR. NO_TEXT is a post-result diagnostic control and cannot be promoted; no policy-level follow-up was run.
+- GRAN supports $\hat p$ only as a label-dependent within-Mind2Web CLICK explanatory variable. It does not provide a runtime selector or a common Mind2Web/ScreenSpot-Pro coordinate, and the CEV two-endpoint unification is invalid.
+- SPLIT found 6.45 pp two-mode candidate headroom, but the frozen matched-window geometry failed on 26.79% of gated rows and left 76 positives. No probe forward was run, so there is no evidence that falsification-crop confidence supplies an orthogonal channel.
