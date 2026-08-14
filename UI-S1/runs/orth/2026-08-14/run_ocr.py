@@ -94,7 +94,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
-    expected_shards = 48 if args.engine == "easyocr" else 12
+    expected_shards = 96 if args.engine == "easyocr" else 12
     if args.num_shards != expected_shards or not 0 <= args.shard_index < args.num_shards:
         raise ValueError(f"ORTH OCR requires {expected_shards} shards for {args.engine}")
     if args.output.exists() or args.output.with_suffix(".manifest.json").exists():

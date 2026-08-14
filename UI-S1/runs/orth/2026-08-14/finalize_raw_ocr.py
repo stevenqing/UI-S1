@@ -19,7 +19,7 @@ def main():
     all_ids = {}
     for engine in ("easyocr", "rapidocr"):
         root = RAW_ROOT / engine
-        expected_shards = 48 if engine == "easyocr" else 12
+        expected_shards = 96 if engine == "easyocr" else 12
         artifacts = {}
         row_ids = []
         boxes = 0
