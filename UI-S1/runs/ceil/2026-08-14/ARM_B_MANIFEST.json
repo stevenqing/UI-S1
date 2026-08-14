@@ -1,0 +1,24 @@
+{
+  "artifacts": {
+    "result": {
+      "bytes": 6424,
+      "path": "runs/ceil/2026-08-14/ARM_B.json",
+      "sha256": "418bb071114b9b0312272a6c3903c3623961633d7f7b1dce61af76487bc94cca"
+    },
+    "rows": {
+      "bytes": 8538105,
+      "path": "runs/ceil/2026-08-14/ARM_B_ROWS.jsonl",
+      "sha256": "f2a60318b097ff131cefc7f4540825261bce77ceba35ae7a34864af604e65b5b"
+    }
+  },
+  "gpu_used": false,
+  "implementation_commit": "930be45",
+  "input_manifest": {
+    "bytes": 1665,
+    "path": "runs/ceil/2026-08-14/PREFLIGHT.json",
+    "sha256": "049c4862a849a0d3be04e8f19b8501e600e88645495de1581b4cde2bf70fb268"
+  },
+  "row_jsonl_fsync_contract": true,
+  "schema_version": 1,
+  "status": "LOCKED_CEIL_ARM_B_OUTPUTS"
+}

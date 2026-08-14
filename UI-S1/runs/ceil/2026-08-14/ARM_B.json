@@ -1,0 +1,245 @@
+{
+  "claim_boundary": {
+    "current_round_reweighting_allowed": false,
+    "evaluation_side_only": true,
+    "runtime_rule_allowed": false
+  },
+  "label_manifests": {
+    "android_manifest_sha256": "efcc0e7341613d42373d5b0f0328329719ad381bb370c9aa9e2101d65ddfc972",
+    "vus_manifest_sha256": "b92b0ff6f9a396b418d33809b14d106018915a5ddf9213fb9dc01536bdfb6e43"
+  },
+  "overall_branch": "OPEN_NEW_SPEC_C_D2",
+  "reports": {
+    "androidcontrol": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.32729516689836174,
+          0.43241427759371687
+        ],
+        "point": 0.3795902819890843,
+        "resamples": 10000,
+        "seed": 20261214
+      },
+      "decision": "DESCRIPTIVE_LOW_N",
+      "decision_eligible": false,
+      "evaluation_oracle_forced_override_minus_strongest": {
+        "ci_99": [
+          0.011329305135951661,
+          0.022137492985247868
+        ],
+        "point": 0.0165,
+        "resamples": 10000,
+        "seed": 20261234
+      },
+      "family": "androidcontrol",
+      "family_samples": 4000,
+      "negative_candidate_contexts": 1940,
+      "positive_candidate_contexts": 1360,
+      "random_AUROC": 0.5,
+      "recoverable_samples": 275,
+      "repeated_contexts_per_sample": 4,
+      "top1": {
+        "cheap": {
+          "ci_99": [
+            0.17689530685920576,
+            0.3092787213528146
+          ],
+          "point": 0.24,
+          "resamples": 10000,
+          "seed": 20261224
+        },
+        "verifier": {
+          "ci_99": [
+            0.16858216023074607,
+            0.29850939031778345
+          ],
+          "point": 0.23272727272727273,
+          "resamples": 10000,
+          "seed": 20261226
+        },
+        "visual": {
+          "ci_99": [
+            0.5931543997827268,
+            0.7359162128907272
+          ],
+          "point": 0.6654545454545454,
+          "resamples": 10000,
+          "seed": 20261225
+        }
+      },
+      "verifier_candidate_AUROC": {
+        "ci_99": [
+          0.3185089326327111,
+          0.4198623840104143
+        ],
+        "point": 0.3691525166767738,
+        "resamples": 10000,
+        "seed": 20261216
+      },
+      "visual_candidate_AUROC": {
+        "ci_99": [
+          0.6694834993961353,
+          0.7846704970487117
+        ],
+        "point": 0.7288568829593693,
+        "resamples": 10000,
+        "seed": 20261215
+      }
+    },
+    "mind2web": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.6649297546957486,
+          0.7092641376782823
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20261114
+      },
+      "decision": "C_D2",
+      "decision_eligible": true,
+      "evaluation_oracle_forced_override_minus_strongest": {
+        "ci_99": [
+          0.04571671222525722,
+          0.061996012655701045
+        ],
+        "point": 0.05348557692307692,
+        "resamples": 10000,
+        "seed": 20261134
+      },
+      "family": "mind2web",
+      "family_samples": 8320,
+      "negative_candidate_contexts": 76964,
+      "positive_candidate_contexts": 20044,
+      "random_AUROC": 0.5,
+      "recoverable_samples": 2021,
+      "repeated_contexts_per_sample": 4,
+      "top1": {
+        "cheap": {
+          "ci_99": [
+            0.19075054643699885,
+            0.2503849448355549
+          ],
+          "point": 0.22018802572983673,
+          "resamples": 10000,
+          "seed": 20261124
+        },
+        "verifier": {
+          "ci_99": [
+            0.19308224670978483,
+            0.25227153694661614
+          ],
+          "point": 0.22216724393864423,
+          "resamples": 10000,
+          "seed": 20261126
+        },
+        "visual": {
+          "ci_99": [
+            0.2418620728023326,
+            0.30659371084941117
+          ],
+          "point": 0.27461652647204354,
+          "resamples": 10000,
+          "seed": 20261125
+        }
+      },
+      "verifier_candidate_AUROC": {
+        "ci_99": [
+          0.6624717950039132,
+          0.7069595271798684
+        ],
+        "point": 0.685314992622488,
+        "resamples": 10000,
+        "seed": 20261116
+      },
+      "visual_candidate_AUROC": {
+        "ci_99": [
+          0.5654609723900887,
+          0.6051831943013355
+        ],
+        "point": 0.5849938979938227,
+        "resamples": 10000,
+        "seed": 20261115
+      }
+    },
+    "screenspot_pro": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.5011238075414088,
+          0.583007950528583
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20261014
+      },
+      "decision": "C_D1",
+      "decision_eligible": true,
+      "evaluation_oracle_forced_override_minus_strongest": {
+        "ci_99": [
+          0.0048282651097765385,
+          0.01326394238017571
+        ],
+        "point": 0.009013282732447819,
+        "resamples": 10000,
+        "seed": 20261034
+      },
+      "family": "screenspot_pro",
+      "family_samples": 6324,
+      "negative_candidate_contexts": 38080,
+      "positive_candidate_contexts": 8384,
+      "random_AUROC": 0.5,
+      "recoverable_samples": 968,
+      "repeated_contexts_per_sample": 4,
+      "top1": {
+        "cheap": {
+          "ci_99": [
+            0.03307594483364619,
+            0.08552676640230707
+          ],
+          "point": 0.058884297520661155,
+          "resamples": 10000,
+          "seed": 20261024
+        },
+        "verifier": {
+          "ci_99": [
+            0.04930955667748995,
+            0.09145231211907744
+          ],
+          "point": 0.06921487603305786,
+          "resamples": 10000,
+          "seed": 20261026
+        },
+        "visual": {
+          "ci_99": [
+            0.17945511488171717,
+            0.29779440487132347
+          ],
+          "point": 0.24173553719008264,
+          "resamples": 10000,
+          "seed": 20261025
+        }
+      },
+      "verifier_candidate_AUROC": {
+        "ci_99": [
+          0.4972980451405947,
+          0.578402153802612
+        ],
+        "point": 0.5355624593438282,
+        "resamples": 10000,
+        "seed": 20261016
+      },
+      "visual_candidate_AUROC": {
+        "ci_99": [
+          0.5168555236191004,
+          0.6119266820725933
+        ],
+        "point": 0.5666968946452626,
+        "resamples": 10000,
+        "seed": 20261015
+      }
+    }
+  },
+  "rows_jsonl": "runs/ceil/2026-08-14/ARM_B_ROWS.jsonl",
+  "schema_version": 1,
+  "status": "PASS_CEIL_ARM_B_COMPLETE"
+}
