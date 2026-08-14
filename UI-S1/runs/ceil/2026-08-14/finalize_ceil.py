@@ -139,6 +139,8 @@ Arm A enumerates all 4,095 nonempty subsets in five independent panels. It stric
 
 These values remain post-hoc and benchmark/arm-specific. They do not restore a universal one-dimensional effective-sample-size law. Isotonic extrapolation is limited to the finite ideal-three-vote target and is not interpreted as an infinite ceiling.
 
+The Mind2Web parametric asymptotes are weakly identified: their $\Delta_\infty$ values range from roughly +22 to +73 pp and extrapolate far beyond observed support, with several fits approaching the bounded accuracy ceiling. They are sensitivity outputs, not precise recoverable headroom. By contrast, the finite ideal-three-vote isotonic gains range from about -0.13 to +3.32 pp across Mind2Web panels. ScreenSpot-Pro parametric $\Delta_\infty$ remains near zero with intervals crossing zero.
+
 ## Conclusion
 
 > Conditional candidate-ranking signal survives on Mind2Web but not ScreenSpot-Pro. The current consensus-geometry sequence closes for ScreenSpot-Pro; Mind2Web alone meets the preregistered threshold for a separately preregistered full-candidate reweighting study.

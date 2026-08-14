@@ -1,0 +1,213 @@
+{
+  "arm_A_evidence_status": "POST_HOC_DESCRIPTIVE",
+  "arm_A_primary": {
+    "mind2web/C_cond": {
+      "density": {
+        "Delta_infinity": 0.6841346153846021,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.6510028621283491,
+            0.7137857693910208
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.4539457477907423,
+        "support_maximum": 2.554680865802302
+      },
+      "majority": {
+        "Delta_infinity": 0.6769230769230719,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.6193853793576917,
+            0.7065166935099996
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.4539457477907423,
+        "support_maximum": 2.554680865802302
+      }
+    },
+    "mind2web/C_rand": {
+      "density": {
+        "Delta_infinity": 0.2165421185651376,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.027260769633530857,
+            0.737560686546564
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 3.7014105449525054,
+        "support_maximum": 3.778426274754393
+      },
+      "majority": {
+        "Delta_infinity": 0.6822115384614347,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.22277044235391133,
+            0.7100453902866927
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 3.7014105449525054,
+        "support_maximum": 3.778426274754393
+      }
+    },
+    "mind2web/C_self": {
+      "density": {
+        "Delta_infinity": 0.707211538461485,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.6734770414706545,
+            0.7375237544462316
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.3098491226586004,
+        "support_maximum": 2.472583817528698
+      },
+      "majority": {
+        "Delta_infinity": 0.6788461538461483,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.5553012578450727,
+            0.7069978916521409
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.3098491226586004,
+        "support_maximum": 2.472583817528698
+      }
+    },
+    "mind2web/C_uni": {
+      "density": {
+        "Delta_infinity": 0.7331730769230693,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.3872021443614951,
+            0.7622243723684827
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.206664721052396,
+        "support_maximum": 2.435848129166842
+      },
+      "majority": {
+        "Delta_infinity": 0.6091554382384536,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            0.44987243426258955,
+            0.7037038789854532
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 2.206664721052396,
+        "support_maximum": 2.435848129166842
+      }
+    },
+    "screenspot_pro/C_uni": {
+      "density": {
+        "Delta_infinity": -0.002551218138767908,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            -0.01698305535370773,
+            0.02505708470587033
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 1.5936767669403407,
+        "support_maximum": 1.7073149168564605
+      },
+      "majority": {
+        "Delta_infinity": -0.005861847401790965,
+        "Delta_infinity_CI": {
+          "ci_99": [
+            -0.013103421321297092,
+            0.00031633219875596433
+          ],
+          "failures": 0,
+          "replicates": 10000,
+          "status": "PASS"
+        },
+        "full_neff": 1.5936767669403407,
+        "support_maximum": 1.7073149168564605
+      }
+    }
+  },
+  "arm_B_decisions": {
+    "androidcontrol": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.32729516689836174,
+          0.43241427759371687
+        ],
+        "point": 0.3795902819890843,
+        "resamples": 10000,
+        "seed": 20261214
+      },
+      "decision": "DESCRIPTIVE_LOW_N",
+      "decision_eligible": false,
+      "recoverable_samples": 275
+    },
+    "mind2web": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.6649297546957486,
+          0.7092641376782823
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20261114
+      },
+      "decision": "C_D2",
+      "decision_eligible": true,
+      "recoverable_samples": 2021
+    },
+    "screenspot_pro": {
+      "cheap_candidate_AUROC": {
+        "ci_99": [
+          0.5011238075414088,
+          0.583007950528583
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20261014
+      },
+      "decision": "C_D1",
+      "decision_eligible": true,
+      "recoverable_samples": 968
+    }
+  },
+  "arm_B_overall_branch": "OPEN_NEW_SPEC_C_D2",
+  "changes_existing_statuses": false,
+  "current_round_reweighting_authorized": false,
+  "input_hashes": {
+    "ARM_A.json": "4266173edf032578b8a9eb7fb295e4613a368d741fd91eaaf3573f2329f294c2",
+    "ARM_B.json": "418bb071114b9b0312272a6c3903c3623961633d7f7b1dce61af76487bc94cca"
+  },
+  "method_authorized": false,
+  "new_spec_authorized": true,
+  "next_action": "WRITE_NEW_PREREG_FOR_MIND2WEB_FULL_CANDIDATE_REWEIGHTING",
+  "outcome": "CEIL_COMPLETE_OPEN_NEW_SPEC_C_D2",
+  "runtime_rule_authorized": false,
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
