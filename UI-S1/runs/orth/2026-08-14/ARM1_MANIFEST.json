@@ -1,0 +1,24 @@
+{
+  "artifacts": {
+    "result": {
+      "bytes": 117829,
+      "path": "runs/orth/2026-08-14/ARM1.json",
+      "sha256": "5f7c3bc23bad3c1763c7b36d47ee3b85c1dfaf92f43f842d51cdcceac40419e7"
+    },
+    "rows": {
+      "bytes": 39638213,
+      "path": "runs/orth/2026-08-14/ARM1_ROWS.jsonl",
+      "sha256": "91b3f46a5c97222e3372dcd4bab841ec7148499acbb319908b51e0871f939542"
+    }
+  },
+  "best_setting_selection_prohibited": true,
+  "implementation_commit": "a973a39",
+  "raw_manifest": {
+    "bytes": 36643,
+    "path": "runs/orth/2026-08-14/OCR_RAW_MANIFEST.json",
+    "sha256": "29a0629e5b09ac1e92ceaae0ef0fc2ed5feeaa0a15e2f2571310bc4a9138bb9a"
+  },
+  "schema_version": 1,
+  "settings_per_engine": 35,
+  "status": "LOCKED_ORTH_ARM1_OUTPUTS"
+}

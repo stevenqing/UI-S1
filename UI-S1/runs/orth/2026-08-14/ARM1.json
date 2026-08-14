@@ -1,0 +1,3699 @@
+{
+  "claim_boundary": {
+    "best_setting_selection_prohibited": true,
+    "exploratory_scoping_only": true,
+    "label_dependent_metrics_evaluation_side_only": true
+  },
+  "engine_overlap": {
+    "edit/min1/threshold0.5": {
+      "intersection_match_rate": 0.7444655281467426,
+      "intersection_matched": 1177,
+      "union_by_class": {
+        "recoverable": 208,
+        "selected_correct": 919,
+        "zero_coverage": 272
+      },
+      "union_match_rate": 0.8848829854522454,
+      "union_matched": 1399
+    },
+    "edit/min1/threshold0.6": {
+      "intersection_match_rate": 0.6274509803921569,
+      "intersection_matched": 992,
+      "union_by_class": {
+        "recoverable": 179,
+        "selected_correct": 852,
+        "zero_coverage": 218
+      },
+      "union_match_rate": 0.7900063251106895,
+      "union_matched": 1249
+    },
+    "edit/min1/threshold0.7": {
+      "intersection_match_rate": 0.5578747628083491,
+      "intersection_matched": 882,
+      "union_by_class": {
+        "recoverable": 167,
+        "selected_correct": 811,
+        "zero_coverage": 197
+      },
+      "union_match_rate": 0.7432005060088551,
+      "union_matched": 1175
+    },
+    "edit/min1/threshold0.8": {
+      "intersection_match_rate": 0.5091714104996837,
+      "intersection_matched": 805,
+      "union_by_class": {
+        "recoverable": 164,
+        "selected_correct": 792,
+        "zero_coverage": 189
+      },
+      "union_match_rate": 0.724225173940544,
+      "union_matched": 1145
+    },
+    "edit/min1/threshold0.9": {
+      "intersection_match_rate": 0.4370651486401012,
+      "intersection_matched": 691,
+      "union_by_class": {
+        "recoverable": 156,
+        "selected_correct": 751,
+        "zero_coverage": 178
+      },
+      "union_match_rate": 0.6862745098039216,
+      "union_matched": 1085
+    },
+    "edit/min2/threshold0.5": {
+      "intersection_match_rate": 0.7324478178368121,
+      "intersection_matched": 1158,
+      "union_by_class": {
+        "recoverable": 207,
+        "selected_correct": 916,
+        "zero_coverage": 269
+      },
+      "union_match_rate": 0.8804554079696395,
+      "union_matched": 1392
+    },
+    "edit/min2/threshold0.6": {
+      "intersection_match_rate": 0.618595825426945,
+      "intersection_matched": 978,
+      "union_by_class": {
+        "recoverable": 174,
+        "selected_correct": 840,
+        "zero_coverage": 213
+      },
+      "union_match_rate": 0.7760910815939279,
+      "union_matched": 1227
+    },
+    "edit/min2/threshold0.7": {
+      "intersection_match_rate": 0.5477545857052498,
+      "intersection_matched": 866,
+      "union_by_class": {
+        "recoverable": 161,
+        "selected_correct": 796,
+        "zero_coverage": 191
+      },
+      "union_match_rate": 0.726122707147375,
+      "union_matched": 1148
+    },
+    "edit/min2/threshold0.8": {
+      "intersection_match_rate": 0.4990512333965844,
+      "intersection_matched": 789,
+      "union_by_class": {
+        "recoverable": 157,
+        "selected_correct": 776,
+        "zero_coverage": 183
+      },
+      "union_match_rate": 0.7058823529411765,
+      "union_matched": 1116
+    },
+    "edit/min2/threshold0.9": {
+      "intersection_match_rate": 0.4244149272612271,
+      "intersection_matched": 671,
+      "union_by_class": {
+        "recoverable": 149,
+        "selected_correct": 732,
+        "zero_coverage": 170
+      },
+      "union_match_rate": 0.6647691334598356,
+      "union_matched": 1051
+    },
+    "edit/min3/threshold0.5": {
+      "intersection_match_rate": 0.7071473750790639,
+      "intersection_matched": 1118,
+      "union_by_class": {
+        "recoverable": 203,
+        "selected_correct": 899,
+        "zero_coverage": 262
+      },
+      "union_match_rate": 0.8627450980392157,
+      "union_matched": 1364
+    },
+    "edit/min3/threshold0.6": {
+      "intersection_match_rate": 0.6129032258064516,
+      "intersection_matched": 969,
+      "union_by_class": {
+        "recoverable": 172,
+        "selected_correct": 832,
+        "zero_coverage": 210
+      },
+      "union_match_rate": 0.7678684376976597,
+      "union_matched": 1214
+    },
+    "edit/min3/threshold0.7": {
+      "intersection_match_rate": 0.5445920303605313,
+      "intersection_matched": 861,
+      "union_by_class": {
+        "recoverable": 160,
+        "selected_correct": 792,
+        "zero_coverage": 188
+      },
+      "union_match_rate": 0.7210626185958254,
+      "union_matched": 1140
+    },
+    "edit/min3/threshold0.8": {
+      "intersection_match_rate": 0.4952561669829222,
+      "intersection_matched": 783,
+      "union_by_class": {
+        "recoverable": 156,
+        "selected_correct": 772,
+        "zero_coverage": 180
+      },
+      "union_match_rate": 0.7008222643896268,
+      "union_matched": 1108
+    },
+    "edit/min3/threshold0.9": {
+      "intersection_match_rate": 0.4174573055028463,
+      "intersection_matched": 660,
+      "union_by_class": {
+        "recoverable": 148,
+        "selected_correct": 725,
+        "zero_coverage": 167
+      },
+      "union_match_rate": 0.6578115117014548,
+      "union_matched": 1040
+    },
+    "edit/min4/threshold0.5": {
+      "intersection_match_rate": 0.6963946869070209,
+      "intersection_matched": 1101,
+      "union_by_class": {
+        "recoverable": 197,
+        "selected_correct": 886,
+        "zero_coverage": 248
+      },
+      "union_match_rate": 0.8418722327640734,
+      "union_matched": 1331
+    },
+    "edit/min4/threshold0.6": {
+      "intersection_match_rate": 0.5989879822896901,
+      "intersection_matched": 947,
+      "union_by_class": {
+        "recoverable": 168,
+        "selected_correct": 809,
+        "zero_coverage": 202
+      },
+      "union_match_rate": 0.74573055028463,
+      "union_matched": 1179
+    },
+    "edit/min4/threshold0.7": {
+      "intersection_match_rate": 0.5351043643263758,
+      "intersection_matched": 846,
+      "union_by_class": {
+        "recoverable": 158,
+        "selected_correct": 775,
+        "zero_coverage": 182
+      },
+      "union_match_rate": 0.7052498418722327,
+      "union_matched": 1115
+    },
+    "edit/min4/threshold0.8": {
+      "intersection_match_rate": 0.4857685009487666,
+      "intersection_matched": 768,
+      "union_by_class": {
+        "recoverable": 150,
+        "selected_correct": 752,
+        "zero_coverage": 172
+      },
+      "union_match_rate": 0.6793168880455408,
+      "union_matched": 1074
+    },
+    "edit/min4/threshold0.9": {
+      "intersection_match_rate": 0.4035420619860848,
+      "intersection_matched": 638,
+      "union_by_class": {
+        "recoverable": 139,
+        "selected_correct": 702,
+        "zero_coverage": 156
+      },
+      "union_match_rate": 0.6306135357368754,
+      "union_matched": 997
+    },
+    "edit/min5/threshold0.5": {
+      "intersection_match_rate": 0.6590765338393422,
+      "intersection_matched": 1042,
+      "union_by_class": {
+        "recoverable": 184,
+        "selected_correct": 847,
+        "zero_coverage": 219
+      },
+      "union_match_rate": 0.7906388361796332,
+      "union_matched": 1250
+    },
+    "edit/min5/threshold0.6": {
+      "intersection_match_rate": 0.5534471853257432,
+      "intersection_matched": 875,
+      "union_by_class": {
+        "recoverable": 165,
+        "selected_correct": 771,
+        "zero_coverage": 181
+      },
+      "union_match_rate": 0.7065148640101202,
+      "union_matched": 1117
+    },
+    "edit/min5/threshold0.7": {
+      "intersection_match_rate": 0.4845034788108792,
+      "intersection_matched": 766,
+      "union_by_class": {
+        "recoverable": 153,
+        "selected_correct": 711,
+        "zero_coverage": 161
+      },
+      "union_match_rate": 0.6483238456672992,
+      "union_matched": 1025
+    },
+    "edit/min5/threshold0.8": {
+      "intersection_match_rate": 0.44086021505376344,
+      "intersection_matched": 697,
+      "union_by_class": {
+        "recoverable": 144,
+        "selected_correct": 684,
+        "zero_coverage": 153
+      },
+      "union_match_rate": 0.6204933586337761,
+      "union_matched": 981
+    },
+    "edit/min5/threshold0.9": {
+      "intersection_match_rate": 0.349146110056926,
+      "intersection_matched": 552,
+      "union_by_class": {
+        "recoverable": 127,
+        "selected_correct": 624,
+        "zero_coverage": 133
+      },
+      "union_match_rate": 0.5591397849462365,
+      "union_matched": 884
+    },
+    "exact/min1": {
+      "intersection_match_rate": 0.2232764073371284,
+      "intersection_matched": 353,
+      "union_by_class": {
+        "recoverable": 147,
+        "selected_correct": 630,
+        "zero_coverage": 181
+      },
+      "union_match_rate": 0.6059456040480709,
+      "union_matched": 958
+    },
+    "exact/min2": {
+      "intersection_match_rate": 0.11448450347881088,
+      "intersection_matched": 181,
+      "union_by_class": {
+        "recoverable": 92,
+        "selected_correct": 439,
+        "zero_coverage": 103
+      },
+      "union_match_rate": 0.4010120177103099,
+      "union_matched": 634
+    },
+    "exact/min3": {
+      "intersection_match_rate": 0.08096141682479444,
+      "intersection_matched": 128,
+      "union_by_class": {
+        "recoverable": 80,
+        "selected_correct": 349,
+        "zero_coverage": 83
+      },
+      "union_match_rate": 0.32384566729917774,
+      "union_matched": 512
+    },
+    "exact/min4": {
+      "intersection_match_rate": 0.06388361796331436,
+      "intersection_matched": 101,
+      "union_by_class": {
+        "recoverable": 67,
+        "selected_correct": 294,
+        "zero_coverage": 69
+      },
+      "union_match_rate": 0.2719797596457938,
+      "union_matched": 430
+    },
+    "exact/min5": {
+      "intersection_match_rate": 0.05186590765338393,
+      "intersection_matched": 82,
+      "union_by_class": {
+        "recoverable": 58,
+        "selected_correct": 235,
+        "zero_coverage": 58
+      },
+      "union_match_rate": 0.222011385199241,
+      "union_matched": 351
+    },
+    "normalized/min1": {
+      "intersection_match_rate": 0.7741935483870968,
+      "intersection_matched": 1224,
+      "union_by_class": {
+        "recoverable": 238,
+        "selected_correct": 975,
+        "zero_coverage": 316
+      },
+      "union_match_rate": 0.9671094244149273,
+      "union_matched": 1529
+    },
+    "normalized/min2": {
+      "intersection_match_rate": 0.4648956356736243,
+      "intersection_matched": 735,
+      "union_by_class": {
+        "recoverable": 168,
+        "selected_correct": 803,
+        "zero_coverage": 215
+      },
+      "union_match_rate": 0.7501581277672359,
+      "union_matched": 1186
+    },
+    "normalized/min3": {
+      "intersection_match_rate": 0.4282099936748893,
+      "intersection_matched": 677,
+      "union_by_class": {
+        "recoverable": 154,
+        "selected_correct": 745,
+        "zero_coverage": 176
+      },
+      "union_match_rate": 0.6799493991144845,
+      "union_matched": 1075
+    },
+    "normalized/min4": {
+      "intersection_match_rate": 0.4054395951929159,
+      "intersection_matched": 641,
+      "union_by_class": {
+        "recoverable": 142,
+        "selected_correct": 710,
+        "zero_coverage": 165
+      },
+      "union_match_rate": 0.6432637571157496,
+      "union_matched": 1017
+    },
+    "normalized/min5": {
+      "intersection_match_rate": 0.34092346616065783,
+      "intersection_matched": 539,
+      "union_by_class": {
+        "recoverable": 129,
+        "selected_correct": 627,
+        "zero_coverage": 138
+      },
+      "union_match_rate": 0.5654648956356736,
+      "union_matched": 894
+    }
+  },
+  "engines": {
+    "easyocr": {
+      "edit/min1/threshold0.5": {
+        "all_row_accuracy": 0.1941808981657179,
+        "candidate_box_distribution": {
+          "maximum": 447,
+          "mean": 10.275774826059456,
+          "median": 5.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 205,
+            "unmatched": 40
+          },
+          "selected_correct": {
+            "matched": 911,
+            "unmatched": 96
+          },
+          "zero_coverage": {
+            "matched": 271,
+            "unmatched": 58
+          }
+        },
+        "error_kappa": {
+          "all": 0.19602970525023017,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.877292852624921,
+        "matched_only_accuracy": 0.2213410237923576,
+        "matched_rows": 1387,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5306767868437697,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.8526490066225165,
+            "matched_only_accuracy": 0.011650485436893204,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.30808597748208805,
+            "match_rate": 0.8925281473899693,
+            "matched_only_accuracy": 0.3451834862385321,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.6": {
+        "all_row_accuracy": 0.1941808981657179,
+        "candidate_box_distribution": {
+          "maximum": 348,
+          "mean": 5.0164452877925365,
+          "median": 3.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 174,
+            "unmatched": 71
+          },
+          "selected_correct": {
+            "matched": 841,
+            "unmatched": 166
+          },
+          "zero_coverage": {
+            "matched": 217,
+            "unmatched": 112
+          }
+        },
+        "error_kappa": {
+          "all": 0.19602970525023017,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7792536369386465,
+        "matched_only_accuracy": 0.24918831168831168,
+        "matched_rows": 1232,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5306767868437697,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.7086092715231788,
+            "matched_only_accuracy": 0.014018691588785047,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.30808597748208805,
+            "match_rate": 0.8229273285568065,
+            "matched_only_accuracy": 0.3743781094527363,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.7": {
+        "all_row_accuracy": 0.19101834282099936,
+        "candidate_box_distribution": {
+          "maximum": 41,
+          "mean": 3.55977229601518,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 161,
+            "unmatched": 84
+          },
+          "selected_correct": {
+            "matched": 796,
+            "unmatched": 211
+          },
+          "zero_coverage": {
+            "matched": 193,
+            "unmatched": 136
+          }
+        },
+        "error_kappa": {
+          "all": 0.193975094795665,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7273877292852625,
+        "matched_only_accuracy": 0.26260869565217393,
+        "matched_rows": 1150,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5287792536369387,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6456953642384106,
+            "matched_only_accuracy": 0.015384615384615385,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.3029682702149437,
+            "match_rate": 0.7778915046059366,
+            "matched_only_accuracy": 0.3894736842105263,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.8": {
+        "all_row_accuracy": 0.18848829854522453,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.976597090449083,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 158,
+            "unmatched": 87
+          },
+          "selected_correct": {
+            "matched": 777,
+            "unmatched": 230
+          },
+          "zero_coverage": {
+            "matched": 185,
+            "unmatched": 144
+          }
+        },
+        "error_kappa": {
+          "all": 0.19276803735800893,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7084123972169513,
+        "matched_only_accuracy": 0.26607142857142857,
+        "matched_rows": 1120,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5275142314990512,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6192052980132451,
+            "matched_only_accuracy": 0.016042780748663103,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.29887410440122825,
+            "match_rate": 0.7635619242579325,
+            "matched_only_accuracy": 0.3914209115281501,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.9": {
+        "all_row_accuracy": 0.18089816571790007,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.5249841872232763,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 148,
+            "unmatched": 97
+          },
+          "selected_correct": {
+            "matched": 735,
+            "unmatched": 272
+          },
+          "zero_coverage": {
+            "matched": 173,
+            "unmatched": 156
+          }
+        },
+        "error_kappa": {
+          "all": 0.184856721941877,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6679316888045541,
+        "matched_only_accuracy": 0.2708333333333333,
+        "matched_rows": 1056,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5211891208096142,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.5695364238410596,
+            "matched_only_accuracy": 0.01744186046511628,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2865916069600819,
+            "match_rate": 0.7287615148413511,
+            "matched_only_accuracy": 0.39325842696629215,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.5": {
+        "all_row_accuracy": 0.1935483870967742,
+        "candidate_box_distribution": {
+          "maximum": 447,
+          "mean": 10.103731815306768,
+          "median": 5.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 205,
+            "unmatched": 40
+          },
+          "selected_correct": {
+            "matched": 908,
+            "unmatched": 99
+          },
+          "zero_coverage": {
+            "matched": 268,
+            "unmatched": 61
+          }
+        },
+        "error_kappa": {
+          "all": 0.19518501694678358,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.8734977862112587,
+        "matched_only_accuracy": 0.22157856625633598,
+        "matched_rows": 1381,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.530044275774826,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.8460264900662252,
+            "matched_only_accuracy": 0.011741682974559686,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.3070624360286592,
+            "match_rate": 0.8904810644831116,
+            "matched_only_accuracy": 0.3448275862068966,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.6": {
+        "all_row_accuracy": 0.1935483870967742,
+        "candidate_box_distribution": {
+          "maximum": 348,
+          "mean": 4.963314358001265,
+          "median": 3.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 173,
+            "unmatched": 72
+          },
+          "selected_correct": {
+            "matched": 833,
+            "unmatched": 174
+          },
+          "zero_coverage": {
+            "matched": 212,
+            "unmatched": 117
+          }
+        },
+        "error_kappa": {
+          "all": 0.19518501694678358,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7703984819734345,
+        "matched_only_accuracy": 0.2512315270935961,
+        "matched_rows": 1218,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.530044275774826,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.7003311258278145,
+            "matched_only_accuracy": 0.014184397163120567,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.3070624360286592,
+            "match_rate": 0.8137154554759468,
+            "matched_only_accuracy": 0.37735849056603776,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.7": {
+        "all_row_accuracy": 0.19038583175205567,
+        "candidate_box_distribution": {
+          "maximum": 41,
+          "mean": 3.506641366223909,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 160,
+            "unmatched": 85
+          },
+          "selected_correct": {
+            "matched": 787,
+            "unmatched": 220
+          },
+          "zero_coverage": {
+            "matched": 188,
+            "unmatched": 141
+          }
+        },
+        "error_kappa": {
+          "all": 0.19313226619891183,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7179000632511069,
+        "matched_only_accuracy": 0.26519823788546254,
+        "matched_rows": 1135,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.528146742567995,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6357615894039735,
+            "matched_only_accuracy": 0.015625,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.30194472876151485,
+            "match_rate": 0.7686796315250768,
+            "matched_only_accuracy": 0.39280958721704395,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.8": {
+        "all_row_accuracy": 0.18785578747628084,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.9234661606578114,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 156,
+            "unmatched": 89
+          },
+          "selected_correct": {
+            "matched": 767,
+            "unmatched": 240
+          },
+          "zero_coverage": {
+            "matched": 180,
+            "unmatched": 149
+          }
+        },
+        "error_kappa": {
+          "all": 0.19192656337762545,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6976597090449083,
+        "matched_only_accuracy": 0.2692656391659112,
+        "matched_rows": 1103,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5268817204301075,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6059602649006622,
+            "matched_only_accuracy": 0.01639344262295082,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2978505629477994,
+            "match_rate": 0.7543500511770727,
+            "matched_only_accuracy": 0.3948439620081411,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.9": {
+        "all_row_accuracy": 0.18026565464895636,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.471853257432005,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 146,
+            "unmatched": 99
+          },
+          "selected_correct": {
+            "matched": 724,
+            "unmatched": 283
+          },
+          "zero_coverage": {
+            "matched": 166,
+            "unmatched": 163
+          }
+        },
+        "error_kappa": {
+          "all": 0.18402055748701876,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6552814674256799,
+        "matched_only_accuracy": 0.2750965250965251,
+        "matched_rows": 1036,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5205566097406704,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.5529801324503312,
+            "matched_only_accuracy": 0.017964071856287425,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.28556806550665303,
+            "match_rate": 0.7185261003070624,
+            "matched_only_accuracy": 0.3974358974358974,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.5": {
+        "all_row_accuracy": 0.19291587602783047,
+        "candidate_box_distribution": {
+          "maximum": 447,
+          "mean": 9.254901960784315,
+          "median": 5.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 201,
+            "unmatched": 44
+          },
+          "selected_correct": {
+            "matched": 890,
+            "unmatched": 117
+          },
+          "zero_coverage": {
+            "matched": 261,
+            "unmatched": 68
+          }
+        },
+        "error_kappa": {
+          "all": 0.1943408296700964,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.8551549652118912,
+        "matched_only_accuracy": 0.22559171597633135,
+        "matched_rows": 1352,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5294117647058824,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.8294701986754967,
+            "matched_only_accuracy": 0.011976047904191617,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.3060388945752303,
+            "match_rate": 0.8710337768679631,
+            "matched_only_accuracy": 0.35135135135135137,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.6": {
+        "all_row_accuracy": 0.19291587602783047,
+        "candidate_box_distribution": {
+          "maximum": 348,
+          "mean": 4.752688172043011,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 172,
+            "unmatched": 73
+          },
+          "selected_correct": {
+            "matched": 826,
+            "unmatched": 181
+          },
+          "zero_coverage": {
+            "matched": 210,
+            "unmatched": 119
+          }
+        },
+        "error_kappa": {
+          "all": 0.1943408296700964,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7640733712839974,
+        "matched_only_accuracy": 0.25248344370860926,
+        "matched_rows": 1208,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5294117647058824,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.695364238410596,
+            "matched_only_accuracy": 0.014285714285714285,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.3060388945752303,
+            "match_rate": 0.8065506653019447,
+            "matched_only_accuracy": 0.37944162436548223,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.7": {
+        "all_row_accuracy": 0.18975332068311196,
+        "candidate_box_distribution": {
+          "maximum": 41,
+          "mean": 3.347248576850095,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 160,
+            "unmatched": 85
+          },
+          "selected_correct": {
+            "matched": 783,
+            "unmatched": 224
+          },
+          "zero_coverage": {
+            "matched": 186,
+            "unmatched": 143
+          }
+        },
+        "error_kappa": {
+          "all": 0.19228993678560657,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7141049968374447,
+        "matched_only_accuracy": 0.2657218777679362,
+        "matched_rows": 1129,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5275142314990512,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6324503311258278,
+            "matched_only_accuracy": 0.015706806282722512,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.300921187308086,
+            "match_rate": 0.7645854657113613,
+            "matched_only_accuracy": 0.39357429718875503,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.8": {
+        "all_row_accuracy": 0.18722327640733713,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.7640733712839975,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 156,
+            "unmatched": 89
+          },
+          "selected_correct": {
+            "matched": 762,
+            "unmatched": 245
+          },
+          "zero_coverage": {
+            "matched": 178,
+            "unmatched": 151
+          }
+        },
+        "error_kappa": {
+          "all": 0.19108558718873372,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6932321315623023,
+        "matched_only_accuracy": 0.27007299270072993,
+        "matched_rows": 1096,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5262492093611638,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6026490066225165,
+            "matched_only_accuracy": 0.016483516483516484,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2968270214943705,
+            "match_rate": 0.7492323439099283,
+            "matched_only_accuracy": 0.39617486338797814,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.9": {
+        "all_row_accuracy": 0.17900063251106893,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.312460468058191,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 146,
+            "unmatched": 99
+          },
+          "selected_correct": {
+            "matched": 716,
+            "unmatched": 291
+          },
+          "zero_coverage": {
+            "matched": 164,
+            "unmatched": 165
+          }
+        },
+        "error_kappa": {
+          "all": 0.18234970684464682,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6489563567362429,
+        "matched_only_accuracy": 0.27582846003898637,
+        "matched_rows": 1026,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.519291587602783,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.5480132450331126,
+            "matched_only_accuracy": 0.01812688821752266,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2835209825997953,
+            "match_rate": 0.7113613101330604,
+            "matched_only_accuracy": 0.3985611510791367,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.5": {
+        "all_row_accuracy": 0.18912080961416824,
+        "candidate_box_distribution": {
+          "maximum": 442,
+          "mean": 8.39405439595193,
+          "median": 4.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 195,
+            "unmatched": 50
+          },
+          "selected_correct": {
+            "matched": 877,
+            "unmatched": 130
+          },
+          "zero_coverage": {
+            "matched": 247,
+            "unmatched": 82
+          }
+        },
+        "error_kappa": {
+          "all": 0.19144810611240248,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.8342820999367488,
+        "matched_only_accuracy": 0.2266868840030326,
+        "matched_rows": 1319,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5268817204301075,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.804635761589404,
+            "matched_only_accuracy": 0.012345679012345678,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2998976458546571,
+            "match_rate": 0.8526100307062436,
+            "matched_only_accuracy": 0.3517406962785114,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.6": {
+        "all_row_accuracy": 0.18848829854522453,
+        "candidate_box_distribution": {
+          "maximum": 343,
+          "mean": 4.130297280202403,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 168,
+            "unmatched": 77
+          },
+          "selected_correct": {
+            "matched": 802,
+            "unmatched": 205
+          },
+          "zero_coverage": {
+            "matched": 201,
+            "unmatched": 128
+          }
+        },
+        "error_kappa": {
+          "all": 0.19060677373647758,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7406704617330804,
+        "matched_only_accuracy": 0.25448334756618274,
+        "matched_rows": 1171,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5262492093611638,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.6639072847682119,
+            "matched_only_accuracy": 0.014962593516209476,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.29887410440122825,
+            "match_rate": 0.7881269191402251,
+            "matched_only_accuracy": 0.37922077922077924,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.7": {
+        "all_row_accuracy": 0.1846932321315623,
+        "candidate_box_distribution": {
+          "maximum": 40,
+          "mean": 2.913978494623656,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 158,
+            "unmatched": 87
+          },
+          "selected_correct": {
+            "matched": 765,
+            "unmatched": 242
+          },
+          "zero_coverage": {
+            "matched": 181,
+            "unmatched": 148
+          }
+        },
+        "error_kappa": {
+          "all": 0.18772665152415582,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.698292220113852,
+        "matched_only_accuracy": 0.2644927536231884,
+        "matched_rows": 1104,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.523719165085389,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.609271523178808,
+            "matched_only_accuracy": 0.016304347826086956,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.29273285568065505,
+            "match_rate": 0.7533265097236438,
+            "matched_only_accuracy": 0.38858695652173914,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.8": {
+        "all_row_accuracy": 0.1827956989247312,
+        "candidate_box_distribution": {
+          "maximum": 38,
+          "mean": 2.347248576850095,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 150,
+            "unmatched": 95
+          },
+          "selected_correct": {
+            "matched": 742,
+            "unmatched": 265
+          },
+          "zero_coverage": {
+            "matched": 171,
+            "unmatched": 158
+          }
+        },
+        "error_kappa": {
+          "all": 0.1873681770772975,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.67235926628716,
+        "matched_only_accuracy": 0.2718720602069614,
+        "matched_rows": 1063,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5230866540164453,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.5728476821192053,
+            "matched_only_accuracy": 0.017341040462427744,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2896622313203685,
+            "match_rate": 0.7338792221084954,
+            "matched_only_accuracy": 0.3947001394700139,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.9": {
+        "all_row_accuracy": 0.1739405439595193,
+        "candidate_box_distribution": {
+          "maximum": 37,
+          "mean": 1.8956356736242885,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 137,
+            "unmatched": 108
+          },
+          "selected_correct": {
+            "matched": 693,
+            "unmatched": 314
+          },
+          "zero_coverage": {
+            "matched": 154,
+            "unmatched": 175
+          }
+        },
+        "error_kappa": {
+          "all": 0.17783260194216935,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6223908918406073,
+        "matched_only_accuracy": 0.27947154471544716,
+        "matched_rows": 984,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5154965211891208,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.009933774834437087,
+            "match_rate": 0.5099337748344371,
+            "matched_only_accuracy": 0.01948051948051948,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.27533265097236437,
+            "match_rate": 0.691914022517912,
+            "matched_only_accuracy": 0.3979289940828402,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.5": {
+        "all_row_accuracy": 0.17583807716635041,
+        "candidate_box_distribution": {
+          "maximum": 389,
+          "mean": 6.142947501581277,
+          "median": 3.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 182,
+            "unmatched": 63
+          },
+          "selected_correct": {
+            "matched": 833,
+            "unmatched": 174
+          },
+          "zero_coverage": {
+            "matched": 218,
+            "unmatched": 111
+          }
+        },
+        "error_kappa": {
+          "all": 0.17388409131524024,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7798861480075902,
+        "matched_only_accuracy": 0.22546634225466342,
+        "matched_rows": 1233,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5135989879822896,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.7251655629139073,
+            "matched_only_accuracy": 0.0091324200913242,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2804503582395087,
+            "match_rate": 0.8137154554759468,
+            "matched_only_accuracy": 0.34465408805031444,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.6": {
+        "all_row_accuracy": 0.1752055660974067,
+        "candidate_box_distribution": {
+          "maximum": 343,
+          "mean": 3.4965211891208097,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 163,
+            "unmatched": 82
+          },
+          "selected_correct": {
+            "matched": 759,
+            "unmatched": 248
+          },
+          "zero_coverage": {
+            "matched": 180,
+            "unmatched": 149
+          }
+        },
+        "error_kappa": {
+          "all": 0.17305312181158405,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6970271979759646,
+        "matched_only_accuracy": 0.2513611615245009,
+        "matched_rows": 1102,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.512966476913346,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.6142384105960265,
+            "matched_only_accuracy": 0.01078167115902965,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.27942681678607983,
+            "match_rate": 0.7482088024564995,
+            "matched_only_accuracy": 0.3734610123119015,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.7": {
+        "all_row_accuracy": 0.17077798861480076,
+        "candidate_box_distribution": {
+          "maximum": 39,
+          "mean": 2.3953194180898167,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 151,
+            "unmatched": 94
+          },
+          "selected_correct": {
+            "matched": 699,
+            "unmatched": 308
+          },
+          "zero_coverage": {
+            "matched": 160,
+            "unmatched": 169
+          }
+        },
+        "error_kappa": {
+          "all": 0.16939349506527093,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6388361796331435,
+        "matched_only_accuracy": 0.26732673267326734,
+        "matched_rows": 1010,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5098039215686274,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.5463576158940397,
+            "matched_only_accuracy": 0.012121212121212121,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.27226202661207777,
+            "match_rate": 0.6960081883316275,
+            "matched_only_accuracy": 0.3911764705882353,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.8": {
+        "all_row_accuracy": 0.16888045540796964,
+        "candidate_box_distribution": {
+          "maximum": 37,
+          "mean": 1.9475015812776724,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 144,
+            "unmatched": 101
+          },
+          "selected_correct": {
+            "matched": 674,
+            "unmatched": 333
+          },
+          "zero_coverage": {
+            "matched": 153,
+            "unmatched": 176
+          }
+        },
+        "error_kappa": {
+          "all": 0.1690534631577237,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.614168247944339,
+        "matched_only_accuracy": 0.2749742533470649,
+        "matched_rows": 971,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5091714104996837,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.5132450331125827,
+            "matched_only_accuracy": 0.012903225806451613,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2691914022517912,
+            "match_rate": 0.676560900716479,
+            "matched_only_accuracy": 0.3978819969742814,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.9": {
+        "all_row_accuracy": 0.15876027830487033,
+        "candidate_box_distribution": {
+          "maximum": 36,
+          "mean": 1.526249209361164,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 125,
+            "unmatched": 120
+          },
+          "selected_correct": {
+            "matched": 615,
+            "unmatched": 392
+          },
+          "zero_coverage": {
+            "matched": 132,
+            "unmatched": 197
+          }
+        },
+        "error_kappa": {
+          "all": 0.15801302966730127,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.551549652118912,
+        "matched_only_accuracy": 0.28784403669724773,
+        "matched_rows": 872,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5003162555344719,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.4470198675496689,
+            "matched_only_accuracy": 0.014814814814814815,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.25281473899692936,
+            "match_rate": 0.6161719549641761,
+            "matched_only_accuracy": 0.41029900332225916,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min1": {
+        "all_row_accuracy": 0.029728020240354206,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 2.0265654648956355,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 119,
+            "unmatched": 126
+          },
+          "selected_correct": {
+            "matched": 530,
+            "unmatched": 477
+          },
+          "zero_coverage": {
+            "matched": 142,
+            "unmatched": 187
+          }
+        },
+        "error_kappa": {
+          "all": 0.032317543372975745,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5003162555344719,
+        "matched_only_accuracy": 0.05941845764854614,
+        "matched_rows": 791,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.39152435167615435,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.45695364238410596,
+            "matched_only_accuracy": 0.007246376811594203,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.04605936540429888,
+            "match_rate": 0.5271238485158649,
+            "matched_only_accuracy": 0.08737864077669903,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min2": {
+        "all_row_accuracy": 0.029728020240354206,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 1.607843137254902,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 86,
+            "unmatched": 159
+          },
+          "selected_correct": {
+            "matched": 420,
+            "unmatched": 587
+          },
+          "zero_coverage": {
+            "matched": 93,
+            "unmatched": 236
+          }
+        },
+        "error_kappa": {
+          "all": 0.032317543372975745,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.3788741302972802,
+        "matched_only_accuracy": 0.07846410684474124,
+        "matched_rows": 599,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.39152435167615435,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.3394039735099338,
+            "matched_only_accuracy": 0.00975609756097561,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.04605936540429888,
+            "match_rate": 0.4032753326509724,
+            "matched_only_accuracy": 0.11421319796954314,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min3": {
+        "all_row_accuracy": 0.028462998102466792,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 1.241619228336496,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 78,
+            "unmatched": 167
+          },
+          "selected_correct": {
+            "matched": 340,
+            "unmatched": 667
+          },
+          "zero_coverage": {
+            "matched": 77,
+            "unmatched": 252
+          }
+        },
+        "error_kappa": {
+          "all": 0.03083972727654268,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.31309297912713474,
+        "matched_only_accuracy": 0.09090909090909091,
+        "matched_rows": 495,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.3902593295382669,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.26986754966887416,
+            "matched_only_accuracy": 0.012269938650306749,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.044012282497441144,
+            "match_rate": 0.3398157625383828,
+            "matched_only_accuracy": 0.12951807228915663,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min4": {
+        "all_row_accuracy": 0.025932953826691967,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 0.8545224541429475,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 65,
+            "unmatched": 180
+          },
+          "selected_correct": {
+            "matched": 283,
+            "unmatched": 724
+          },
+          "zero_coverage": {
+            "matched": 64,
+            "unmatched": 265
+          }
+        },
+        "error_kappa": {
+          "all": 0.027888972593777414,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.2605945604048071,
+        "matched_only_accuracy": 0.09951456310679611,
+        "matched_rows": 412,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.3877292852624921,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0016556291390728477,
+            "match_rate": 0.2119205298013245,
+            "matched_only_accuracy": 0.0078125,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.04094165813715456,
+            "match_rate": 0.2906857727737973,
+            "matched_only_accuracy": 0.14084507042253522,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min5": {
+        "all_row_accuracy": 0.020872865275142316,
+        "candidate_box_distribution": {
+          "maximum": 202,
+          "mean": 0.6995572422517394,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 55,
+            "unmatched": 190
+          },
+          "selected_correct": {
+            "matched": 223,
+            "unmatched": 784
+          },
+          "zero_coverage": {
+            "matched": 55,
+            "unmatched": 274
+          }
+        },
+        "error_kappa": {
+          "all": 0.022006898308887607,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.21062618595825428,
+        "matched_only_accuracy": 0.0990990990990991,
+        "matched_rows": 333,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.38266919671094246,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0016556291390728477,
+            "match_rate": 0.17880794701986755,
+            "matched_only_accuracy": 0.009259259259259259,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.032753326509723645,
+            "match_rate": 0.23029682702149437,
+            "matched_only_accuracy": 0.14222222222222222,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min1": {
+        "all_row_accuracy": 0.17836812144212524,
+        "candidate_box_distribution": {
+          "maximum": 245,
+          "mean": 5.560404807084124,
+          "median": 4.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 225,
+            "unmatched": 20
+          },
+          "selected_correct": {
+            "matched": 939,
+            "unmatched": 68
+          },
+          "zero_coverage": {
+            "matched": 301,
+            "unmatched": 28
+          }
+        },
+        "error_kappa": {
+          "all": 0.1793639423086734,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.92662871600253,
+        "matched_only_accuracy": 0.1924914675767918,
+        "matched_rows": 1465,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5173940543959519,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.013245033112582781,
+            "match_rate": 0.8857615894039735,
+            "matched_only_accuracy": 0.014953271028037384,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2804503582395087,
+            "match_rate": 0.9518935516888434,
+            "matched_only_accuracy": 0.2946236559139785,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min2": {
+        "all_row_accuracy": 0.17647058823529413,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 3.4560404807084124,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 160,
+            "unmatched": 85
+          },
+          "selected_correct": {
+            "matched": 792,
+            "unmatched": 215
+          },
+          "zero_coverage": {
+            "matched": 206,
+            "unmatched": 123
+          }
+        },
+        "error_kappa": {
+          "all": 0.18116308470290773,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7324478178368121,
+        "matched_only_accuracy": 0.24093264248704663,
+        "matched_rows": 1158,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5180265654648957,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.011589403973509934,
+            "match_rate": 0.6490066225165563,
+            "matched_only_accuracy": 0.017857142857142856,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.27840327533265097,
+            "match_rate": 0.7840327533265097,
+            "matched_only_accuracy": 0.35509138381201044,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min3": {
+        "all_row_accuracy": 0.174573055028463,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 2.838709677419355,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 152,
+            "unmatched": 93
+          },
+          "selected_correct": {
+            "matched": 740,
+            "unmatched": 267
+          },
+          "zero_coverage": {
+            "matched": 172,
+            "unmatched": 157
+          }
+        },
+        "error_kappa": {
+          "all": 0.17866448814614563,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6729917773561037,
+        "matched_only_accuracy": 0.2593984962406015,
+        "matched_rows": 1064,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5161290322580645,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.011589403973509934,
+            "match_rate": 0.5761589403973509,
+            "matched_only_accuracy": 0.020114942528735632,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.27533265097236437,
+            "match_rate": 0.7328556806550666,
+            "matched_only_accuracy": 0.3756983240223464,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min4": {
+        "all_row_accuracy": 0.16951296647691336,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 2.2656546489563567,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 140,
+            "unmatched": 105
+          },
+          "selected_correct": {
+            "matched": 703,
+            "unmatched": 304
+          },
+          "zero_coverage": {
+            "matched": 162,
+            "unmatched": 167
+          }
+        },
+        "error_kappa": {
+          "all": 0.17416530772216968,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.635673624288425,
+        "matched_only_accuracy": 0.26666666666666666,
+        "matched_rows": 1005,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5123339658444023,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.011589403973509934,
+            "match_rate": 0.5231788079470199,
+            "matched_only_accuracy": 0.022151898734177215,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2671443193449335,
+            "match_rate": 0.7052200614124872,
+            "matched_only_accuracy": 0.3788098693759071,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min5": {
+        "all_row_accuracy": 0.15243516761543327,
+        "candidate_box_distribution": {
+          "maximum": 202,
+          "mean": 1.7552182163187855,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 126,
+            "unmatched": 119
+          },
+          "selected_correct": {
+            "matched": 620,
+            "unmatched": 387
+          },
+          "zero_coverage": {
+            "matched": 136,
+            "unmatched": 193
+          }
+        },
+        "error_kappa": {
+          "all": 0.15196200344958774,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5578747628083491,
+        "matched_only_accuracy": 0.2732426303854875,
+        "matched_rows": 882,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4952561669829222,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.44867549668874174,
+            "matched_only_accuracy": 0.014760147601476014,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.24257932446264074,
+            "match_rate": 0.6253838280450358,
+            "matched_only_accuracy": 0.3878887070376432,
+            "rows": 977
+          }
+        }
+      }
+    },
+    "rapidocr": {
+      "edit/min1/threshold0.5": {
+        "all_row_accuracy": 0.16698292220113853,
+        "candidate_box_distribution": {
+          "maximum": 258,
+          "mean": 4.160025300442758,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 170,
+            "unmatched": 75
+          },
+          "selected_correct": {
+            "matched": 815,
+            "unmatched": 192
+          },
+          "zero_coverage": {
+            "matched": 204,
+            "unmatched": 125
+          }
+        },
+        "error_kappa": {
+          "all": 0.1580153679060467,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7520556609740671,
+        "matched_only_accuracy": 0.2220353238015139,
+        "matched_rows": 1189,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.502213788741303,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.008278145695364239,
+            "match_rate": 0.6605960264900662,
+            "matched_only_accuracy": 0.012531328320802004,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.26509723643807576,
+            "match_rate": 0.8085977482088025,
+            "matched_only_accuracy": 0.3278481012658228,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.6": {
+        "all_row_accuracy": 0.16255534471853259,
+        "candidate_box_distribution": {
+          "maximum": 204,
+          "mean": 2.127767235926629,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 138,
+            "unmatched": 107
+          },
+          "selected_correct": {
+            "matched": 719,
+            "unmatched": 288
+          },
+          "zero_coverage": {
+            "matched": 152,
+            "unmatched": 177
+          }
+        },
+        "error_kappa": {
+          "all": 0.15226508084220142,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6382036685641999,
+        "matched_only_accuracy": 0.2547076313181368,
+        "matched_rows": 1009,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.49778621125869704,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.5115894039735099,
+            "matched_only_accuracy": 0.012944983818770227,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.25895598771750256,
+            "match_rate": 0.7164790174002047,
+            "matched_only_accuracy": 0.36142857142857143,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.7": {
+        "all_row_accuracy": 0.15370018975332067,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.4509803921568627,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 123,
+            "unmatched": 122
+          },
+          "selected_correct": {
+            "matched": 652,
+            "unmatched": 355
+          },
+          "zero_coverage": {
+            "matched": 132,
+            "unmatched": 197
+          }
+        },
+        "error_kappa": {
+          "all": 0.14508813274793395,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5736875395319418,
+        "matched_only_accuracy": 0.2679162072767365,
+        "matched_rows": 907,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.49146110056925996,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.4552980132450331,
+            "matched_only_accuracy": 0.014545454545454545,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.24462640736949848,
+            "match_rate": 0.646878198567042,
+            "matched_only_accuracy": 0.37816455696202533,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.8": {
+        "all_row_accuracy": 0.1467425679949399,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.2182163187855788,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 107,
+            "unmatched": 138
+          },
+          "selected_correct": {
+            "matched": 606,
+            "unmatched": 401
+          },
+          "zero_coverage": {
+            "matched": 117,
+            "unmatched": 212
+          }
+        },
+        "error_kappa": {
+          "all": 0.14039853554311418,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5249841872232764,
+        "matched_only_accuracy": 0.27951807228915665,
+        "matched_rows": 830,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.48703352308665404,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.37748344370860926,
+            "matched_only_accuracy": 0.017543859649122806,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.23336745138178097,
+            "match_rate": 0.6161719549641761,
+            "matched_only_accuracy": 0.3787375415282392,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min1/threshold0.9": {
+        "all_row_accuracy": 0.1359898798228969,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 0.9063883617963314,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 89,
+            "unmatched": 156
+          },
+          "selected_correct": {
+            "matched": 530,
+            "unmatched": 477
+          },
+          "zero_coverage": {
+            "matched": 101,
+            "unmatched": 228
+          }
+        },
+        "error_kappa": {
+          "all": 0.13090838254483747,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.45540796963946867,
+        "matched_only_accuracy": 0.2986111111111111,
+        "matched_rows": 720,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.47881087919038584,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.30132450331125826,
+            "matched_only_accuracy": 0.02197802197802198,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.21596724667349027,
+            "match_rate": 0.5506653019447287,
+            "matched_only_accuracy": 0.39219330855018586,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.5": {
+        "all_row_accuracy": 0.16951296647691336,
+        "candidate_box_distribution": {
+          "maximum": 257,
+          "mean": 3.9437065148640102,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 168,
+            "unmatched": 77
+          },
+          "selected_correct": {
+            "matched": 802,
+            "unmatched": 205
+          },
+          "zero_coverage": {
+            "matched": 199,
+            "unmatched": 130
+          }
+        },
+        "error_kappa": {
+          "all": 0.16131184947660038,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7394054395951929,
+        "matched_only_accuracy": 0.2292557741659538,
+        "matched_rows": 1169,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5047438330170778,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.008278145695364239,
+            "match_rate": 0.6473509933774835,
+            "matched_only_accuracy": 0.01278772378516624,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2691914022517912,
+            "match_rate": 0.7963152507676561,
+            "matched_only_accuracy": 0.3380462724935733,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.6": {
+        "all_row_accuracy": 0.1650853889943074,
+        "candidate_box_distribution": {
+          "maximum": 203,
+          "mean": 2.0607210626185957,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 133,
+            "unmatched": 112
+          },
+          "selected_correct": {
+            "matched": 705,
+            "unmatched": 302
+          },
+          "zero_coverage": {
+            "matched": 149,
+            "unmatched": 180
+          }
+        },
+        "error_kappa": {
+          "all": 0.15554807329549844,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6242884250474383,
+        "matched_only_accuracy": 0.26443768996960487,
+        "matched_rows": 987,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5003162555344719,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.49503311258278143,
+            "matched_only_accuracy": 0.013377926421404682,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.263050153531218,
+            "match_rate": 0.7041965199590583,
+            "matched_only_accuracy": 0.373546511627907,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.7": {
+        "all_row_accuracy": 0.1562302340290955,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.38393421884883,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 116,
+            "unmatched": 129
+          },
+          "selected_correct": {
+            "matched": 634,
+            "unmatched": 373
+          },
+          "zero_coverage": {
+            "matched": 129,
+            "unmatched": 200
+          }
+        },
+        "error_kappa": {
+          "all": 0.14834935452853526,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5559772296015181,
+        "matched_only_accuracy": 0.28100113765642776,
+        "matched_rows": 879,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4939911448450348,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.43543046357615894,
+            "matched_only_accuracy": 0.015209125475285171,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.24872057318321392,
+            "match_rate": 0.6305015353121801,
+            "matched_only_accuracy": 0.3944805194805195,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.8": {
+        "all_row_accuracy": 0.14927261227071473,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.1511701454775458,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 100,
+            "unmatched": 145
+          },
+          "selected_correct": {
+            "matched": 588,
+            "unmatched": 419
+          },
+          "zero_coverage": {
+            "matched": 114,
+            "unmatched": 215
+          }
+        },
+        "error_kappa": {
+          "all": 0.14364387980500434,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5072738772928527,
+        "matched_only_accuracy": 0.2942643391521197,
+        "matched_rows": 802,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.48956356736242884,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.3576158940397351,
+            "matched_only_accuracy": 0.018518518518518517,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2374616171954964,
+            "match_rate": 0.5997952917093142,
+            "matched_only_accuracy": 0.39590443686006827,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min2/threshold0.9": {
+        "all_row_accuracy": 0.1366223908918406,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 0.8393421884882986,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 81,
+            "unmatched": 164
+          },
+          "selected_correct": {
+            "matched": 509,
+            "unmatched": 498
+          },
+          "zero_coverage": {
+            "matched": 96,
+            "unmatched": 233
+          }
+        },
+        "error_kappa": {
+          "all": 0.1317122877682863,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.43390259329538267,
+        "matched_only_accuracy": 0.31486880466472306,
+        "matched_rows": 686,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4794433902593295,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.2781456953642384,
+            "matched_only_accuracy": 0.023809523809523808,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.21699078812691913,
+            "match_rate": 0.5301944728761515,
+            "matched_only_accuracy": 0.4092664092664093,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.5": {
+        "all_row_accuracy": 0.16824794433902593,
+        "candidate_box_distribution": {
+          "maximum": 257,
+          "mean": 3.724857685009488,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 161,
+            "unmatched": 84
+          },
+          "selected_correct": {
+            "matched": 784,
+            "unmatched": 223
+          },
+          "zero_coverage": {
+            "matched": 185,
+            "unmatched": 144
+          }
+        },
+        "error_kappa": {
+          "all": 0.15966264221617185,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7147375079063883,
+        "matched_only_accuracy": 0.23539823008849559,
+        "matched_rows": 1130,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5034788108791903,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.008278145695364239,
+            "match_rate": 0.6208609271523179,
+            "matched_only_accuracy": 0.013333333333333334,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2671443193449335,
+            "match_rate": 0.7727737973387923,
+            "matched_only_accuracy": 0.3456953642384106,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.6": {
+        "all_row_accuracy": 0.1644528779253637,
+        "candidate_box_distribution": {
+          "maximum": 203,
+          "mean": 2.0360531309297913,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 132,
+            "unmatched": 113
+          },
+          "selected_correct": {
+            "matched": 696,
+            "unmatched": 311
+          },
+          "zero_coverage": {
+            "matched": 147,
+            "unmatched": 182
+          }
+        },
+        "error_kappa": {
+          "all": 0.15472660455955348,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6166982922201139,
+        "matched_only_accuracy": 0.26666666666666666,
+        "matched_rows": 975,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.49968374446552816,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.4900662251655629,
+            "matched_only_accuracy": 0.013513513513513514,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.26202661207778916,
+            "match_rate": 0.6949846468781986,
+            "matched_only_accuracy": 0.37702503681885124,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.7": {
+        "all_row_accuracy": 0.1562302340290955,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.3681214421252372,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 115,
+            "unmatched": 130
+          },
+          "selected_correct": {
+            "matched": 630,
+            "unmatched": 377
+          },
+          "zero_coverage": {
+            "matched": 127,
+            "unmatched": 202
+          }
+        },
+        "error_kappa": {
+          "all": 0.14834935452853526,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.551549652118912,
+        "matched_only_accuracy": 0.28325688073394495,
+        "matched_rows": 872,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4939911448450348,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.43211920529801323,
+            "matched_only_accuracy": 0.01532567049808429,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.24872057318321392,
+            "match_rate": 0.6253838280450358,
+            "matched_only_accuracy": 0.397708674304419,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.8": {
+        "all_row_accuracy": 0.14927261227071473,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.135357368753953,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 99,
+            "unmatched": 146
+          },
+          "selected_correct": {
+            "matched": 584,
+            "unmatched": 423
+          },
+          "zero_coverage": {
+            "matched": 112,
+            "unmatched": 217
+          }
+        },
+        "error_kappa": {
+          "all": 0.14364387980500434,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5028462998102466,
+        "matched_only_accuracy": 0.2968553459119497,
+        "matched_rows": 795,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.48956356736242884,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.3543046357615894,
+            "matched_only_accuracy": 0.018691588785046728,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2374616171954964,
+            "match_rate": 0.5946775844421699,
+            "matched_only_accuracy": 0.3993115318416523,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min3/threshold0.9": {
+        "all_row_accuracy": 0.13535736875395318,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 0.8235294117647058,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 79,
+            "unmatched": 166
+          },
+          "selected_correct": {
+            "matched": 502,
+            "unmatched": 505
+          },
+          "zero_coverage": {
+            "matched": 93,
+            "unmatched": 236
+          }
+        },
+        "error_kappa": {
+          "all": 0.13010494162684522,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4263124604680582,
+        "matched_only_accuracy": 0.31750741839762614,
+        "matched_rows": 674,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4781783681214421,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.2731788079470199,
+            "matched_only_accuracy": 0.024242424242424242,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.21494370522006143,
+            "match_rate": 0.5209825997952917,
+            "matched_only_accuracy": 0.412573673870334,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.5": {
+        "all_row_accuracy": 0.1644528779253637,
+        "candidate_box_distribution": {
+          "maximum": 257,
+          "mean": 3.544592030360531,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 160,
+            "unmatched": 85
+          },
+          "selected_correct": {
+            "matched": 772,
+            "unmatched": 235
+          },
+          "zero_coverage": {
+            "matched": 181,
+            "unmatched": 148
+          }
+        },
+        "error_kappa": {
+          "all": 0.156863831855231,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.7039848197343453,
+        "matched_only_accuracy": 0.23360287511230907,
+        "matched_rows": 1113,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.5009487666034156,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.008278145695364239,
+            "match_rate": 0.6043046357615894,
+            "matched_only_accuracy": 0.0136986301369863,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2610030706243603,
+            "match_rate": 0.7656090071647902,
+            "matched_only_accuracy": 0.3409090909090909,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.6": {
+        "all_row_accuracy": 0.16065781151170144,
+        "candidate_box_distribution": {
+          "maximum": 203,
+          "mean": 1.9089184060721063,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 130,
+            "unmatched": 115
+          },
+          "selected_correct": {
+            "matched": 682,
+            "unmatched": 325
+          },
+          "zero_coverage": {
+            "matched": 143,
+            "unmatched": 186
+          }
+        },
+        "error_kappa": {
+          "all": 0.15194135289136582,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6040480708412397,
+        "matched_only_accuracy": 0.26596858638743454,
+        "matched_rows": 955,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4971537001897533,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.478476821192053,
+            "matched_only_accuracy": 0.01384083044982699,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.25588536335721596,
+            "match_rate": 0.6816786079836233,
+            "matched_only_accuracy": 0.37537537537537535,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.7": {
+        "all_row_accuracy": 0.15306767868437698,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.306135357368754,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 114,
+            "unmatched": 131
+          },
+          "selected_correct": {
+            "matched": 618,
+            "unmatched": 389
+          },
+          "zero_coverage": {
+            "matched": 125,
+            "unmatched": 204
+          }
+        },
+        "error_kappa": {
+          "all": 0.14640004141786245,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5420619860847565,
+        "matched_only_accuracy": 0.2823803967327888,
+        "matched_rows": 857,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.49209361163820364,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.423841059602649,
+            "matched_only_accuracy": 0.015625,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2436028659160696,
+            "match_rate": 0.6151484135107472,
+            "matched_only_accuracy": 0.39600665557404324,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.8": {
+        "all_row_accuracy": 0.1461100569259962,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 1.077798861480076,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 97,
+            "unmatched": 148
+          },
+          "selected_correct": {
+            "matched": 572,
+            "unmatched": 435
+          },
+          "zero_coverage": {
+            "matched": 110,
+            "unmatched": 219
+          }
+        },
+        "error_kappa": {
+          "all": 0.14170761720163758,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4927261227071474,
+        "matched_only_accuracy": 0.29653401797175866,
+        "matched_rows": 779,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4876660341555977,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.3443708609271523,
+            "matched_only_accuracy": 0.019230769230769232,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2323439099283521,
+            "match_rate": 0.5844421699078812,
+            "matched_only_accuracy": 0.3975481611208406,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min4/threshold0.9": {
+        "all_row_accuracy": 0.13092979127134724,
+        "candidate_box_distribution": {
+          "maximum": 24,
+          "mean": 0.7659709044908286,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 77,
+            "unmatched": 168
+          },
+          "selected_correct": {
+            "matched": 485,
+            "unmatched": 522
+          },
+          "zero_coverage": {
+            "matched": 89,
+            "unmatched": 240
+          }
+        },
+        "error_kappa": {
+          "all": 0.12659840419159293,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4117647058823529,
+        "matched_only_accuracy": 0.31797235023041476,
+        "matched_rows": 651,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4750158127767236,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.2599337748344371,
+            "matched_only_accuracy": 0.025477707006369428,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.20777891504605936,
+            "match_rate": 0.5056294779938587,
+            "matched_only_accuracy": 0.4109311740890688,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.5": {
+        "all_row_accuracy": 0.1555977229601518,
+        "candidate_box_distribution": {
+          "maximum": 204,
+          "mean": 2.786211258697027,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 153,
+            "unmatched": 92
+          },
+          "selected_correct": {
+            "matched": 743,
+            "unmatched": 264
+          },
+          "zero_coverage": {
+            "matched": 163,
+            "unmatched": 166
+          }
+        },
+        "error_kappa": {
+          "all": 0.14966184218763565,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.6698292220113852,
+        "matched_only_accuracy": 0.23229461756373937,
+        "matched_rows": 1059,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4946236559139785,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.004966887417218543,
+            "match_rate": 0.5711920529801324,
+            "matched_only_accuracy": 0.008695652173913044,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.24872057318321392,
+            "match_rate": 0.7308085977482088,
+            "matched_only_accuracy": 0.3403361344537815,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.6": {
+        "all_row_accuracy": 0.15180265654648956,
+        "candidate_box_distribution": {
+          "maximum": 203,
+          "mean": 1.6603415559772297,
+          "median": 1.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 122,
+            "unmatched": 123
+          },
+          "selected_correct": {
+            "matched": 641,
+            "unmatched": 366
+          },
+          "zero_coverage": {
+            "matched": 127,
+            "unmatched": 202
+          }
+        },
+        "error_kappa": {
+          "all": 0.14477198825116072,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.5629348513598988,
+        "matched_only_accuracy": 0.2696629213483146,
+        "matched_rows": 890,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.49082858950031627,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.43874172185430466,
+            "matched_only_accuracy": 0.007547169811320755,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2436028659160696,
+            "match_rate": 0.6397134083930399,
+            "matched_only_accuracy": 0.3808,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.7": {
+        "all_row_accuracy": 0.14358001265022138,
+        "candidate_box_distribution": {
+          "maximum": 17,
+          "mean": 1.0936116382036685,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 106,
+            "unmatched": 139
+          },
+          "selected_correct": {
+            "matched": 567,
+            "unmatched": 440
+          },
+          "zero_coverage": {
+            "matched": 108,
+            "unmatched": 221
+          }
+        },
+        "error_kappa": {
+          "all": 0.13846922162359018,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4939911448450348,
+        "matched_only_accuracy": 0.2906530089628681,
+        "matched_rows": 781,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.48513598987982287,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.3758278145695364,
+            "matched_only_accuracy": 0.00881057268722467,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.23029682702149437,
+            "match_rate": 0.5670419651995906,
+            "matched_only_accuracy": 0.40613718411552346,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.8": {
+        "all_row_accuracy": 0.1366223908918406,
+        "candidate_box_distribution": {
+          "maximum": 17,
+          "mean": 0.9070208728652751,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 90,
+            "unmatched": 155
+          },
+          "selected_correct": {
+            "matched": 521,
+            "unmatched": 486
+          },
+          "zero_coverage": {
+            "matched": 96,
+            "unmatched": 233
+          }
+        },
+        "error_kappa": {
+          "all": 0.13382234296204507,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4471853257432005,
+        "matched_only_accuracy": 0.3055162659123055,
+        "matched_rows": 707,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.48070841239721696,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.3079470198675497,
+            "matched_only_accuracy": 0.010752688172043012,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.21903787103377687,
+            "match_rate": 0.5332650972364381,
+            "matched_only_accuracy": 0.4107485604606526,
+            "rows": 977
+          }
+        }
+      },
+      "edit/min5/threshold0.9": {
+        "all_row_accuracy": 0.11954459203036052,
+        "candidate_box_distribution": {
+          "maximum": 17,
+          "mean": 0.6002530044275775,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 68,
+            "unmatched": 177
+          },
+          "selected_correct": {
+            "matched": 420,
+            "unmatched": 587
+          },
+          "zero_coverage": {
+            "matched": 76,
+            "unmatched": 253
+          }
+        },
+        "error_kappa": {
+          "all": 0.1164498122802487,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.3567362428842505,
+        "matched_only_accuracy": 0.3351063829787234,
+        "matched_rows": 564,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4661606578115117,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.21688741721854304,
+            "matched_only_accuracy": 0.015267175572519083,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.19140225179119755,
+            "match_rate": 0.44319344933469806,
+            "matched_only_accuracy": 0.43187066974595845,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min1": {
+        "all_row_accuracy": 0.017710309930423784,
+        "candidate_box_distribution": {
+          "maximum": 248,
+          "mean": 0.7577482605945604,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 73,
+            "unmatched": 172
+          },
+          "selected_correct": {
+            "matched": 338,
+            "unmatched": 669
+          },
+          "zero_coverage": {
+            "matched": 109,
+            "unmatched": 220
+          }
+        },
+        "error_kappa": {
+          "all": 0.014341023695158644,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.3289057558507274,
+        "matched_only_accuracy": 0.05384615384615385,
+        "matched_rows": 520,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.37697659709044906,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0016556291390728477,
+            "match_rate": 0.26158940397350994,
+            "matched_only_accuracy": 0.006329113924050633,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.027635619242579325,
+            "match_rate": 0.3705220061412487,
+            "matched_only_accuracy": 0.07458563535911603,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min2": {
+        "all_row_accuracy": 0.017077798861480076,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 0.3712839974699557,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 30,
+            "unmatched": 215
+          },
+          "selected_correct": {
+            "matched": 143,
+            "unmatched": 864
+          },
+          "zero_coverage": {
+            "matched": 43,
+            "unmatched": 286
+          }
+        },
+        "error_kappa": {
+          "all": 0.013610685052164897,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.1366223908918406,
+        "matched_only_accuracy": 0.125,
+        "matched_rows": 216,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.3763440860215054,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0016556291390728477,
+            "match_rate": 0.10430463576158941,
+            "matched_only_accuracy": 0.015873015873015872,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.02661207778915046,
+            "match_rate": 0.15660184237461616,
+            "matched_only_accuracy": 0.16993464052287582,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min3": {
+        "all_row_accuracy": 0.01454775458570525,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 0.3118279569892473,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 18,
+            "unmatched": 227
+          },
+          "selected_correct": {
+            "matched": 105,
+            "unmatched": 902
+          },
+          "zero_coverage": {
+            "matched": 22,
+            "unmatched": 307
+          }
+        },
+        "error_kappa": {
+          "all": 0.01069332814194746,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.09171410499683745,
+        "matched_only_accuracy": 0.15862068965517243,
+        "matched_rows": 145,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.3738140417457306,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0016556291390728477,
+            "match_rate": 0.052980132450331126,
+            "matched_only_accuracy": 0.03125,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.022517911975435005,
+            "match_rate": 0.11566018423746162,
+            "matched_only_accuracy": 0.19469026548672566,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min4": {
+        "all_row_accuracy": 0.01265022137887413,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 0.28589500316255534,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 17,
+            "unmatched": 228
+          },
+          "selected_correct": {
+            "matched": 85,
+            "unmatched": 922
+          },
+          "zero_coverage": {
+            "matched": 17,
+            "unmatched": 312
+          }
+        },
+        "error_kappa": {
+          "all": 0.010506458541613148,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.07526881720430108,
+        "matched_only_accuracy": 0.16806722689075632,
+        "matched_rows": 119,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.37318153067678683,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0,
+            "match_rate": 0.03642384105960265,
+            "matched_only_accuracy": 0.0,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.02047082906857728,
+            "match_rate": 0.0992835209825998,
+            "matched_only_accuracy": 0.20618556701030927,
+            "rows": 977
+          }
+        }
+      },
+      "exact/min5": {
+        "all_row_accuracy": 0.010120177103099304,
+        "candidate_box_distribution": {
+          "maximum": 202,
+          "mean": 0.22580645161290322,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 14,
+            "unmatched": 231
+          },
+          "selected_correct": {
+            "matched": 75,
+            "unmatched": 932
+          },
+          "zero_coverage": {
+            "matched": 11,
+            "unmatched": 318
+          }
+        },
+        "error_kappa": {
+          "all": 0.007598071841018426,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.06325110689437065,
+        "matched_only_accuracy": 0.16,
+        "matched_rows": 100,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.37065148640101203,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0,
+            "match_rate": 0.03145695364238411,
+            "matched_only_accuracy": 0.0,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.016376663254861822,
+            "match_rate": 0.08290685772773797,
+            "matched_only_accuracy": 0.19753086419753085,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min1": {
+        "all_row_accuracy": 0.13092979127134724,
+        "candidate_box_distribution": {
+          "maximum": 252,
+          "mean": 3.3611638203668566,
+          "median": 2.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 201,
+            "unmatched": 44
+          },
+          "selected_correct": {
+            "matched": 847,
+            "unmatched": 160
+          },
+          "zero_coverage": {
+            "matched": 240,
+            "unmatched": 89
+          }
+        },
+        "error_kappa": {
+          "all": 0.12238923987444394,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.814674256799494,
+        "matched_only_accuracy": 0.16071428571428573,
+        "matched_rows": 1288,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.47248576850094876,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.008278145695364239,
+            "match_rate": 0.7218543046357616,
+            "matched_only_accuracy": 0.011467889908256881,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2067553735926305,
+            "match_rate": 0.872057318321392,
+            "matched_only_accuracy": 0.23708920187793428,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min2": {
+        "all_row_accuracy": 0.12903225806451613,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 1.1581277672359267,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 101,
+            "unmatched": 144
+          },
+          "selected_correct": {
+            "matched": 542,
+            "unmatched": 465
+          },
+          "zero_coverage": {
+            "matched": 120,
+            "unmatched": 209
+          }
+        },
+        "error_kappa": {
+          "all": 0.11999321688994405,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.48260594560404807,
+        "matched_only_accuracy": 0.2673656618610747,
+        "matched_rows": 763,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.47058823529411764,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.3543046357615894,
+            "matched_only_accuracy": 0.018691588785046728,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.2047082906857728,
+            "match_rate": 0.5619242579324463,
+            "matched_only_accuracy": 0.36429872495446264,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min3": {
+        "all_row_accuracy": 0.12776723592662872,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 1.0569259962049335,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 85,
+            "unmatched": 160
+          },
+          "selected_correct": {
+            "matched": 500,
+            "unmatched": 507
+          },
+          "zero_coverage": {
+            "matched": 103,
+            "unmatched": 226
+          }
+        },
+        "error_kappa": {
+          "all": 0.11839816669003932,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.4351676154332701,
+        "matched_only_accuracy": 0.2936046511627907,
+        "matched_rows": 688,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4693232131562302,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.30132450331125826,
+            "matched_only_accuracy": 0.02197802197802198,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.20266120777891505,
+            "match_rate": 0.5179119754350051,
+            "matched_only_accuracy": 0.391304347826087,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min4": {
+        "all_row_accuracy": 0.12207463630613535,
+        "candidate_box_distribution": {
+          "maximum": 244,
+          "mean": 0.9500316255534472,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 79,
+            "unmatched": 166
+          },
+          "selected_correct": {
+            "matched": 478,
+            "unmatched": 529
+          },
+          "zero_coverage": {
+            "matched": 96,
+            "unmatched": 233
+          }
+        },
+        "error_kappa": {
+          "all": 0.11543535357686918,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.41302972802024035,
+        "matched_only_accuracy": 0.29555895865237364,
+        "matched_rows": 653,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.4661606578115117,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.006622516556291391,
+            "match_rate": 0.2731788079470199,
+            "matched_only_accuracy": 0.024242424242424242,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.19344933469805528,
+            "match_rate": 0.49948822927328557,
+            "matched_only_accuracy": 0.38729508196721313,
+            "rows": 977
+          }
+        }
+      },
+      "normalized/min5": {
+        "all_row_accuracy": 0.10815939278937381,
+        "candidate_box_distribution": {
+          "maximum": 202,
+          "mean": 0.7311827956989247,
+          "median": 0.0
+        },
+        "class_match_table": {
+          "recoverable": {
+            "matched": 69,
+            "unmatched": 176
+          },
+          "selected_correct": {
+            "matched": 405,
+            "unmatched": 602
+          },
+          "zero_coverage": {
+            "matched": 77,
+            "unmatched": 252
+          }
+        },
+        "error_kappa": {
+          "all": 0.10223949028473861,
+          "recoverable": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "selected_correct": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT",
+          "zero_coverage": "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        },
+        "match_rate": 0.3485135989879823,
+        "matched_only_accuracy": 0.3103448275862069,
+        "matched_rows": 551,
+        "rows": 1581,
+        "same_error_outcome_as_pool": 0.454775458570525,
+        "ui_type": {
+          "icon": {
+            "all_row_accuracy": 0.0033112582781456954,
+            "match_rate": 0.21688741721854304,
+            "matched_only_accuracy": 0.015267175572519083,
+            "rows": 604
+          },
+          "text": {
+            "all_row_accuracy": 0.172978505629478,
+            "match_rate": 0.42988741044012285,
+            "matched_only_accuracy": 0.4023809523809524,
+            "rows": 977
+          }
+        }
+      }
+    }
+  },
+  "row_class_counts": {
+    "recoverable": 245,
+    "selected_correct": 1007,
+    "zero_coverage": 329
+  },
+  "rows_jsonl": "runs/orth/2026-08-14/ARM1_ROWS.jsonl",
+  "schema_version": 1,
+  "settings_per_engine": 35,
+  "status": "PASS_ORTH_ARM1_SCOPING_COMPLETE"
+}
