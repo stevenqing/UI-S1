@@ -1,0 +1,109 @@
+{
+  "confirmatory_claim_allowed": false,
+  "engines": {
+    "assets": {
+      "easyocr_craft": {
+        "bytes": 83152330,
+        "path": "/home/aiscuser/.EasyOCR/model/craft_mlt_25k.pth",
+        "sha256": "4a5efbfb48b4081100544e75e1e2b57f8de3d84f213004b14b85fd4b3748db17"
+      },
+      "easyocr_english": {
+        "bytes": 15143997,
+        "path": "/home/aiscuser/.EasyOCR/model/english_g2.pth",
+        "sha256": "e2272681d9d67a04e2dff396b6e95077bc19001f8f6d3593c307b9852e1c29e8"
+      },
+      "rapidocr_cls": {
+        "bytes": 585532,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+        "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+      },
+      "rapidocr_config": {
+        "bytes": 1221,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/config.yaml",
+        "sha256": "bf94a1da4cba828e67b1d61e27cee14d9e7da27c9f272e04048a17e41ae97332"
+      },
+      "rapidocr_det": {
+        "bytes": 4745517,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_PP-OCRv4_det_infer.onnx",
+        "sha256": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+      },
+      "rapidocr_rec": {
+        "bytes": 10857958,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_PP-OCRv4_rec_infer.onnx",
+        "sha256": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+      }
+    },
+    "easyocr_version": "1.7.2",
+    "opencv_version": "4.11.0.86",
+    "primary": "easyocr",
+    "rapidocr_version": "1.4.4",
+    "raw_must_be_regenerated": true,
+    "replication": "rapidocr_onnxruntime"
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "python": "3.12.13",
+    "python_executable": "/home/aiscuser/UI-S1/UI-S1/.venv-scaleup/bin/python",
+    "pyyaml": "6.0.3"
+  },
+  "evidence_status": "POST_SELECTION_VALIDATION",
+  "gpu_used": false,
+  "images": {
+    "all_reverified": true,
+    "rows": 1581,
+    "source_manifest": {
+      "bytes": 798053,
+      "path": "runs/split/2026-08-14/PREFLIGHT.json",
+      "sha256": "9188e6e9b886cacbbff52cb43e8223c08a9108750e139ef42d39cede91da2a6b"
+    },
+    "total_bytes": 3357315715
+  },
+  "ocr_forward_started": false,
+  "retention_extension": {
+    "dataset_snapshot_manifest_required": true,
+    "external_inputs_required": true,
+    "raw_OCR_required": true
+  },
+  "schema_version": 1,
+  "stage0_label_statistics_computed": false,
+  "stage1_heldout_opened": false,
+  "status": "PASS_OTEXT_PREFLIGHT_POST_SELECTION_VALIDATION",
+  "upstream": {
+    "cev_main": {
+      "bytes": 25657,
+      "path": "runs/cev/2026-08-09/cev_main.py",
+      "sha256": "6a71ea88f65795449882eb6fbc2db8a8b052e9dbfe1ec2b7cb3d11abd7a1e13e"
+    },
+    "e1_aggregator": {
+      "bytes": 19410,
+      "path": "runs/close/2026-08-08/e1_arm_aggregator_matrix.py",
+      "sha256": "bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148"
+    },
+    "orth_adjudication": {
+      "bytes": 9759,
+      "path": "runs/orth/2026-08-14/ORTH_ADJUDICATION.json",
+      "sha256": "c618744fc733098371a5f1499a9dd2563edc9ad1f8c73f4dda70431158610d1c"
+    },
+    "orth_decision": {
+      "bytes": 1727,
+      "path": "runs/orth/2026-08-14/SCOPING_DECISION.json",
+      "sha256": "425c547ce337a69ff9a682f6165e20ed24b51a816a6aa350d446be3de4441b61"
+    },
+    "sourcebias_common": {
+      "bytes": 6607,
+      "path": "runs/sourcebias/2026-08-03/sourcebias_common.py",
+      "sha256": "1bb7aa5b093974c85513ff9671608bfaa508d303e90b40d09cfaaba91147fda2"
+    },
+    "spec": {
+      "bytes": 9551,
+      "path": "runs/otext/2026-08-14/SPEC.md",
+      "sha256": "d6cb245c800179c52b0312744b2eb6756358ed6b25b790950b1dd178e5d7f650"
+    },
+    "split_preflight": {
+      "bytes": 798053,
+      "path": "runs/split/2026-08-14/PREFLIGHT.json",
+      "sha256": "9188e6e9b886cacbbff52cb43e8223c08a9108750e139ef42d39cede91da2a6b"
+    }
+  }
+}
