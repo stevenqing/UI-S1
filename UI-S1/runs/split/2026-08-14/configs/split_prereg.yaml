@@ -127,6 +127,8 @@ mode_extraction:
   tie_order: [candidate_vote_count, summed_source_reliability, maximum_source_reliability, earliest_frozen_candidate_order]
   source_reliability_fit: nested_inner_training_or_outer_development_only
   top_modes: 2
+  fewer_than_two_modes: retain_in_Delta2_denominator_with_gate_false
+  fewer_than_two_modes_amendment: runs/split/2026-08-14/AMENDMENT_001_SINGLE_MODE_ROWS.md
 trigger_gate:
   statistic: w2_over_w1
   grid: [0.25, 0.4, 0.55, 0.7, 0.85]
