@@ -39,6 +39,7 @@ upstream:
   consolidate_common: {path: runs/consolidate/2026-08-06/common.py, bytes: 5981, sha256: 5073814e39dc49a114f977e3f4f20bf852c93110fc9fbe716ed762ece6c92b90}
 arm_A:
   evidence_status: post_hoc
+  execution_amendment: runs/ceil/2026-08-14/AMENDMENT_001_ARM_A_BOOTSTRAP_EXECUTION.md
   panels:
     - screenspot_pro/C_uni
     - mind2web/C_uni
@@ -101,6 +102,12 @@ arm_A:
     interval: percentile
     grouping: fold_then_application_for_SSPro_episode_for_M2W
     refit_neff_isotonic_and_parametric_each_replicate: true
+    cross_fitted_aggregator_functions_fixed: true
+    parametric_fit_failure_policy:
+      maximum_failure_fraction_for_successful_replicate_percentiles: 0.01
+      above_threshold: NA_BOOTSTRAP_FIT_FAILURE
+      alternate_fit: prohibited
+    CI_metrics: [Delta_infinity, full_pool_neff, observed_support_maximum, finite_x_isotonic_upper_bound_gain, finite_x_parametric_gain]
     panel_order: [screenspot_pro_C_uni, mind2web_C_uni, mind2web_C_cond, mind2web_C_rand, mind2web_C_self]
     aggregator_order: [density, majority]
     seed_rule: 20260814_plus_panel_index_times_100_plus_aggregator_index
