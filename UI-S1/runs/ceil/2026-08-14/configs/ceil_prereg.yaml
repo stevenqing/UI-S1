@@ -1,0 +1,173 @@
+schema_version: 1
+round: ceil
+date: 2026-08-14
+status: FROZEN_BEFORE_ANY_CEIL_RESULT
+canonical_spec:
+  path: runs/ceil/2026-08-14/SPEC.md
+  bytes: 10482
+  sha256: 090261dd1844d7b9977db7ae560c40c2216a13da454d328eebe11b8d4d46ad1c
+scope:
+  type: paper_closure_diagnostic
+  gpu: false
+  method: false
+  changes_existing_statuses: false
+  arms_independent: true
+  arm_A: post_hoc_descriptive
+  arm_B: evaluation_side_decision_diagnostic
+model_role_audit:
+  Qwen2.5-VL-7B-Instruct: SPLIT_deferred_missing_checkpoint
+  UI-TARS-7B-SFT: ScreenSpot_candidate_bank_lineage
+  naming_conflict: false
+  model_forward: false
+upstream:
+  mask_stage1: {path: runs/mask/2026-08-14/STAGE1.json, bytes: 3673209, sha256: b287667a3f47393df7a709cd5c19c26e1f8967adf9f68239f27c215db97c604f}
+  mask_report: {path: runs/mask/2026-08-14/REPORT.md, bytes: 2637, sha256: fa8e80fc3d859ee6224b178d443ff072e66311f4c0f24f6b2a87e8b8be178d0d}
+  mask_adjudication: {path: runs/mask/2026-08-14/MASK_ADJUDICATION.json, bytes: 3085, sha256: e2c26990f79586e65f57b533355835039340b38b2cdf4d277f66ee24a195b475}
+  sequential_manifest: {path: runs/trivus/2026-08-13/sequential_exploratory/MANIFEST.json, bytes: 39935, sha256: 0ea61ad134895b3b889479c513881104532dee1b0ad6ab01e0126c1c12f2094a}
+  sequential_diagnostic: {path: runs/trivus/2026-08-13/SEQUENTIAL_OOF_DIAGNOSTIC.json, bytes: 7263, sha256: 33d3475f2cace787ea0188897a66bbb585cc8e12601c3dd7dfe661ef0c88056a}
+  sequential_diagnostic_code: {path: runs/trivus/2026-08-13/sequential_oof_diagnostic.py, bytes: 6568, sha256: 6a2f002a0ffe2cdbd333eed5e5d4979bf068e47a66618a1b3e575d883a200f60}
+  assembly_prereg: {path: runs/trivus/2026-08-12/configs/assembly_prereg.yaml, bytes: 4736, sha256: e2d00304e3b824169e664a60f96bb3c2e6aea9ba2f9c209dd65ebf2c7f3a93a2}
+  trivus_data: {path: runs/trivus/2026-08-12/trivus_data.py, bytes: 21898, sha256: 752260ef8d3babe7ec04d48b0a8e81ef3d25e867050a9843fc729a79581902de}
+  finalize_trivus: {path: runs/trivus/2026-08-12/finalize_trivus.py, bytes: 12871, sha256: a21773801a9c2f636c14213646155437d4826208a6b9b4ced7db946bbba719da}
+  vus_blind_predictions: {path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.jsonl, bytes: 15069541, sha256: b9b12b9cfc75ba7d797f7711bd56accdfb34d3dd81c9792069de2f6d8459ef40}
+  vus_blind_manifest: {path: runs/visual-utility-selector/2026-08-11/zero_shot/predictions.manifest.json, bytes: 419, sha256: e8a0be90697ad401d003f094c1fb69132397ea3912a6bafe46564fd1458b201a}
+  android_blind_predictions: {path: runs/trivus/2026-08-12/selector/predictions.jsonl, bytes: 2996753, sha256: b3907c5350b9b981eec15445e2caa8ea82dd2ea40474242334b2a035b20e178d}
+  android_blind_manifest: {path: runs/trivus/2026-08-12/selector/BLIND_MANIFEST.json, bytes: 2290, sha256: 0b0620bbb438c446c93c02b38789621e1330166ef67c1bc591eb1cfcc4d9c764}
+  e1_aggregator: {path: runs/close/2026-08-08/e1_arm_aggregator_matrix.py, bytes: 19410, sha256: bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148}
+  m2w_tasks: {path: runs/xfer/2026-08-07/data/mind2web/mind2web_test_task.jsonl, bytes: 15265044, sha256: 407d05fd7c5514d61bf415129892e5a7ffe9bf56646bea4c3b5f38aacd015352}
+  benchmark_folds: {path: runs/complementarity/2026-07-30/folds.json, bytes: 123788, sha256: 0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec}
+  consolidate_common: {path: runs/consolidate/2026-08-06/common.py, bytes: 5981, sha256: 5073814e39dc49a114f977e3f4f20bf852c93110fc9fbe716ed762ece6c92b90}
+arm_A:
+  evidence_status: post_hoc
+  panels:
+    - screenspot_pro/C_uni
+    - mind2web/C_uni
+    - mind2web/C_cond
+    - mind2web/C_rand
+    - mind2web/C_self
+  slots_per_panel: 12
+  subsets_per_panel: 4095
+  androidcontrol: excluded_existing_appendix_decision
+  cross_panel_pooling: prohibited
+  estimand:
+    type: MASK_generalized_neff
+    pair_statistic: failure_cohen_kappa
+    undefined_pair: set_zero_and_count
+    fold_value: K_squared_divided_by_one_transpose_R_one
+    fold_fit_scope: outer_development
+    cross_fitted_value: outer_heldout_row_count_weighted_fold_mean
+    nonpositive_denominator: invalid_subset_fold
+  anchors:
+    screenspot_full_neff: 1.5936767669403409
+    screenspot_observed_max_neff: 1.7073149168564605
+    full_is_not_support_maximum: true
+  aggregators:
+    screenspot_pro: [sourcebias_B3, outer_development_source_priority]
+    mind2web: [E1_ours_sequential, action_plurality_then_outer_development_source_priority]
+  curve_input:
+    duplicate_x: mean_accuracy
+    unique_x_weight: equal
+  isotonic:
+    implementation: sklearn_IsotonicRegression
+    increasing: true
+    out_of_bounds: clip_within_support_only
+    support_maximum: observed_maximum_neff_over_4095_subsets
+    plot_full_pool_boundary: true
+    plot_support_boundary: true
+  finite_extrapolation:
+    target_increment: 1.3636363636363635
+    slope: secant_of_last_two_distinct_isotonic_thresholds
+    insufficient_thresholds: slope_zero_and_flag
+    clip_prediction: [0.0, 1.0]
+    interpretation: optimistic_upper_bound_under_saturation
+    extrapolate_to_infinity: prohibited
+  parametric:
+    family: a_minus_b_exp_minus_cx
+    bounds: {a: [0.0, 1.0], b: [0.0, 1.0], c: [1.0e-8, 100.0]}
+    solver: scipy_optimize_least_squares
+    tolerances: {xtol: 1.0e-12, ftol: 1.0e-12, gtol: 1.0e-12, max_nfev: 100000}
+    starts: {a: [max_y, max_y_plus_0_05_clipped, 1.0], b: [0.01, 0.1, 0.5], c: [0.01, 0.1, 1.0, 10.0]}
+    selection: minimum_SSE_then_lexicographic_a_b_c_within_1e_minus_12
+    all_fit_failure: NA_no_alternate_family
+  primary:
+    Delta_infinity: fitted_a_minus_observed_full_pool_accuracy
+    isotonic_Delta_infinity: undefined
+  secondary: [full_neff, observed_support, finite_x_isotonic_upper_bound, finite_x_parametric_prediction, finite_x_fit_difference]
+  raw_nonmonotonicity: [adjacent_unique_x_mean_decrease_fraction, maximum_adjacent_decrease, spearman_rho]
+  cancellation_on_raw_nonmonotonicity: false
+  bootstrap:
+    resamples: 10000
+    confidence: 0.99
+    interval: percentile
+    grouping: fold_then_application_for_SSPro_episode_for_M2W
+    refit_neff_isotonic_and_parametric_each_replicate: true
+    panel_order: [screenspot_pro_C_uni, mind2web_C_uni, mind2web_C_cond, mind2web_C_rand, mind2web_C_self]
+    aggregator_order: [density, majority]
+    seed_rule: 20260814_plus_panel_index_times_100_plus_aggregator_index
+  kill_condition: none
+arm_B:
+  run_first: true
+  publication_root: runs/trivus/2026-08-13/sequential_exploratory
+  manifest_status: PASS_EXPLORATORY_SEQUENTIAL_OOF_COMPLETE
+  artifact_count: 240
+  verify_all_artifact_hashes_and_bytes: true
+  phases: [cheap, verifier]
+  families: [mind2web, screenspot_pro, androidcontrol]
+  labels: locked_private_label_manifests
+  strongest: finalize_trivus_frozen_baselines
+  blind_visual:
+    source: locked_blind_prediction_label_probabilities
+    mapping: display_to_candidate_via_restore_visual_values
+    derive_from_feature_column: prohibited
+  recoverable_subset:
+    strongest_wrong: true
+    any_candidate_correct: true
+    label_dependent_evaluation_only: true
+  repeated_contexts:
+    required_per_unique_sample: 4
+    main_AUROC: retain_all_four_contexts
+    bootstrap_block: unique_sample_with_all_contexts_and_candidates
+    top1: arithmetic_mean_candidate_probability_across_four_contexts
+    top1_tie: lower_candidate_index
+  metrics:
+    primary: cheap_candidate_AUROC_on_recoverable
+    controls: [blind_visual_candidate_AUROC, random_0_5, verifier_candidate_AUROC]
+    secondary: [cheap_top1, visual_top1, verifier_top1, evaluation_oracle_forced_override_full_accuracy_change]
+  bootstrap:
+    resamples: 10000
+    confidence: 0.99
+    interval: percentile
+    grouping: fold_then_public_group
+    seeds: {screenspot_pro: 20261014, mind2web: 20261114, androidcontrol: 20261214}
+  eligibility:
+    minimum_unique_recoverable_samples: 100
+    decision_benchmarks: [screenspot_pro, mind2web]
+    descriptive_only: [androidcontrol]
+  decisions:
+    C_D1: AUROC_CI_99_upper_lt_0_60
+    C_D2: AUROC_CI_99_lower_gt_0_65
+    C_D3: otherwise
+    overall_C_D2: any_eligible_benchmark_C_D2
+    overall_C_D1: all_eligible_benchmarks_C_D1_and_none_C_D2
+    overall_C_D3: otherwise_or_no_eligible_benchmark
+  runtime_rule_allowed: false
+  current_round_reweighting_allowed: false
+statistics:
+  gpu: false
+  deterministic_recomputation: true
+  leaked_SSPro_cells_as_targets: prohibited
+retention:
+  row_jsonl_write_flush_fsync: true
+  output_manifest_sha256: true
+  backup_root: /scratch/workspaceblobstore/ceil/2026-08-14
+  status_required: true
+  recursive_delete_raw_or_predictions_jsonl: prohibited
+execution_order:
+  - commit_SPEC_and_ceil_prereg
+  - lock_all_inputs_and_model_roles
+  - implement_and_commit_Arm_B
+  - execute_and_adjudicate_Arm_B
+  - implement_and_commit_Arm_A
+  - execute_Arm_A
+  - merge_report_and_follow_Arm_B_branch
+  - retain_status_push
