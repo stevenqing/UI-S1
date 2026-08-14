@@ -44,9 +44,9 @@ def target_window(target, other, side, width, height):
     axis = 0 if delta_x >= delta_y else 1
     origin = [math.floor(target[0] - side / 2), math.floor(target[1] - side / 2)]
     if target[axis] < other[axis]:
-        origin[axis] = math.floor(target[axis] - 1)
-    else:
         origin[axis] = math.ceil(target[axis] - side + 1)
+    else:
+        origin[axis] = math.floor(target[axis] - 1)
     origin[0] = clamp_origin(origin[0], side, width)
     origin[1] = clamp_origin(origin[1], side, height)
     window = [origin[0], origin[1], origin[0] + side, origin[1] + side]
