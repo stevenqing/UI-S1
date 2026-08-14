@@ -1,0 +1,119 @@
+{
+  "M_G1": {
+    "maximum_ideal_predicted_gain": 0.005378513477053426,
+    "mde": 0.007,
+    "pass": false,
+    "predicted_gain_by_aggregator": {
+      "F1_majority": 0.002189364083102441,
+      "density_B3": 0.005378513477053426
+    }
+  },
+  "base_rates": {
+    "M2_correct_rate_within_pool_wrong": 0.13588850174216027,
+    "M2_correct_within_pool_wrong_rows": 78,
+    "density_B3_accuracy": 0.6369386464263125,
+    "density_B3_error_rate": 0.3630613535736875,
+    "empty_mask_infeasible_rate": 0.0031625553447185324,
+    "empty_mask_infeasible_rows": 5,
+    "pool_correct_rows": 1007,
+    "pool_wrong_rows": 574,
+    "rows": 1581,
+    "single_mode_rows": 55
+  },
+  "claim_boundary": {
+    "changes_F1_Q1_TRIVUS_or_VUS_SR": false,
+    "deployable_method_claim_allowed": false,
+    "occlusion_proposer_supported": false,
+    "universal_neff_law_supported": false
+  },
+  "endpoints": {
+    "M_P1": {
+      "status": "NOT_RUN_M_K1_PRE_GPU_STOP"
+    },
+    "M_P2": {
+      "status": "NOT_RUN_M_K1_PRE_GPU_STOP"
+    },
+    "M_P3": {
+      "status": "NOT_RUN_M_K1_PRE_GPU_STOP"
+    },
+    "M_P4": {
+      "status": "NOT_RUN_M_K1_PRE_GPU_STOP"
+    },
+    "M_P5": {
+      "status": "NOT_RUN_M_K1_PRE_GPU_STOP"
+    }
+  },
+  "exploratory_only": true,
+  "gpu_authorization_created": false,
+  "input_hashes": {
+    "STAGE1.json": "b287667a3f47393df7a709cd5c19c26e1f8967adf9f68239f27c215db97c604f",
+    "VERIFIER_CONTOURS.pdf": "2cc387163fa16dd4147280a95e4a6561c35fe15f890679b34b1d5892d89616d9"
+  },
+  "kill_conditions": {
+    "M_K1": true,
+    "M_K2": null,
+    "M_K3": null,
+    "M_K4": null,
+    "M_K5": null,
+    "M_K6": null,
+    "M_K7": null,
+    "M_K8": false
+  },
+  "model_forward_count": 0,
+  "neff_calibration": {
+    "F1_majority_predicted_gain": 0.002189364083102441,
+    "density_B3_predicted_gain": 0.005378513477053426,
+    "full_pool_cross_fitted_neff": 1.5936767669403409,
+    "ideal_neff_increment": 1.3636363636363635,
+    "subsets": 4095,
+    "valid_subsets": 4095
+  },
+  "next_action": "CLOSE_MASK_NO_GPU_DO_NOT_RESCUE_WITH_ALTERNATE_MASK_OR_GATE",
+  "outcome": "MASK_STOPPED_M_K1_IDEAL_NEFF_GAIN_BELOW_MDE",
+  "schema_version": 1,
+  "status": "COMPLETE_PRE_GPU_STOP",
+  "subset_manifest_created": false,
+  "verifier_curve": {
+    "g_0_25_net_gain_by_AUROC": {
+      "0.5": -3.8679343733357065e-16,
+      "0.55": -2.596004157905731e-16,
+      "0.6": 2.2308268457975576e-13,
+      "0.65": 1.6723470137118728e-07,
+      "0.7": 2.8442218848075844e-05,
+      "0.75": 0.0003909440974018287,
+      "0.8": 0.001919464485157107,
+      "0.85": 0.005705283401025132,
+      "0.88": 0.009556678397425173,
+      "0.9": 0.012986830217264064,
+      "0.95": 0.025967649556174623
+    },
+    "g_grid": [
+      0.25,
+      0.4,
+      0.55,
+      0.7,
+      0.85
+    ],
+    "gate_rows": [
+      1187,
+      962,
+      705,
+      482,
+      214
+    ],
+    "positive_rates": [
+      0.08593091828138164,
+      0.09251559251559252,
+      0.10212765957446808,
+      0.10995850622406639,
+      0.102803738317757
+    ],
+    "positives": [
+      102,
+      89,
+      72,
+      53,
+      22
+    ]
+  }
+}

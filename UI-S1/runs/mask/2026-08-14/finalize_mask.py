@@ -96,7 +96,7 @@ def main():
     selected_auc = {
         row["AUROC"]: row["net_gain"] for row in g025["hypothetical_discrimination"]
     }
-    report = f"""# MASK Consensus-Occlusion Proposer Report
+    report = rf"""# MASK Consensus-Occlusion Proposer Report
 
 Date: 2026-08-14
 
