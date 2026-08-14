@@ -148,6 +148,9 @@ window_geometry:
   mode_center: candidate_coordinate_mean
   mode_scale: candidate_coordinate_RMS_distance
   shared_side_pixels: min_image_side_capped_max_512_or_2_5_times_max_mode_RMS
+  integer_side: ceil_continuous_side_capped_at_min_image_side
+  containment: left_top_inclusive_right_bottom_exclusive
+  integerization_amendment: runs/split/2026-08-14/AMENDMENT_002_WINDOW_INTEGERIZATION.md
   target_window:
     separation_axis: largest_absolute_center_difference_then_x
     target_center_position: far_edge_inset_1_pixel_away_from_other_mode
