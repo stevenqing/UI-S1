@@ -1,0 +1,49 @@
+{
+  "arm_A_statistics_computed": false,
+  "arm_B_AUROC_computed": false,
+  "arm_B_recoverable_subset_computed": false,
+  "blind_visual_source": {
+    "feature_column_inference": false,
+    "field": "label_probabilities",
+    "mapping": "display_to_candidate_via_restore_visual_values"
+  },
+  "environment": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.3.5",
+    "python": "3.12.13",
+    "python_executable": "/home/aiscuser/UI-S1/UI-S1/.venv-scaleup/bin/python",
+    "pyyaml": "6.0.3",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.18.0"
+  },
+  "gpu_used": false,
+  "model_roles": {
+    "Qwen2.5-VL-7B-Instruct": "SPLIT_DEFERRED_MISSING_CHECKPOINT_NOT_USED",
+    "UI-TARS-7B-SFT": "SCREENSPOT_BANK_LINEAGE_NO_FORWARD",
+    "conflict": false
+  },
+  "schema_version": 1,
+  "sequential_publication": {
+    "all_artifacts_reverified": true,
+    "artifact_count": 240,
+    "manifest_path": "runs/trivus/2026-08-13/sequential_exploratory/MANIFEST.json",
+    "manifest_sha256": "0ea61ad134895b3b889479c513881104532dee1b0ad6ab01e0126c1c12f2094a",
+    "total_bytes": 166986041
+  },
+  "status": "PASS_CEIL_INPUT_PREFLIGHT",
+  "trivus_dependencies": {
+    "all_dependencies_reverified": true,
+    "android_private_rows": 4000,
+    "assembly_path": "runs/trivus/2026-08-12/configs/assembly_prereg.yaml",
+    "dependency_count": 18,
+    "private_shards": 10,
+    "vus_private_rows": 14644
+  },
+  "xfer_publication": {
+    "all_artifacts_reverified": true,
+    "artifact_count": 47,
+    "manifest_path": "runs/xfer/2026-08-07/PUBLICATION_MANIFEST.json",
+    "manifest_sha256": "2dd39c26f27a02528fc9731989b604cb2afe063789965d32dd685e3a4e4a4759",
+    "total_bytes": 70512043
+  }
+}
