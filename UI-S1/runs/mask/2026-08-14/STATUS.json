@@ -1,0 +1,56 @@
+{
+  "M_G1": {
+    "maximum_ideal_predicted_gain": 0.005378513477053426,
+    "mde": 0.007,
+    "pass": false,
+    "predicted_gain_by_aggregator": {
+      "F1_majority": 0.002189364083102441,
+      "density_B3": 0.005378513477053426
+    }
+  },
+  "adjudication": "runs/mask/2026-08-14/MASK_ADJUDICATION.json",
+  "adjudication_sha256": "e2c26990f79586e65f57b533355835039340b38b2cdf4d277f66ee24a195b475",
+  "base_rates": {
+    "M2_correct_rate_within_pool_wrong": 0.13588850174216027,
+    "M2_correct_within_pool_wrong_rows": 78,
+    "density_B3_accuracy": 0.6369386464263125,
+    "density_B3_error_rate": 0.3630613535736875,
+    "empty_mask_infeasible_rate": 0.0031625553447185324,
+    "empty_mask_infeasible_rows": 5,
+    "pool_correct_rows": 1007,
+    "pool_wrong_rows": 574,
+    "rows": 1581,
+    "single_mode_rows": 55
+  },
+  "date": "2026-08-14",
+  "gpu_authorization_created": false,
+  "kill_conditions": {
+    "M_K1": true,
+    "M_K2": null,
+    "M_K3": null,
+    "M_K4": null,
+    "M_K5": null,
+    "M_K6": null,
+    "M_K7": null,
+    "M_K8": false
+  },
+  "model_forward_count": 0,
+  "next_action": "CLOSE_MASK_NO_GPU_DO_NOT_RESCUE_WITH_ALTERNATE_MASK_OR_GATE",
+  "outcome": "MASK_STOPPED_M_K1_IDEAL_NEFF_GAIN_BELOW_MDE",
+  "report": "runs/mask/2026-08-14/REPORT.md",
+  "report_sha256": "fa8e80fc3d859ee6224b178d443ff072e66311f4c0f24f6b2a87e8b8be178d0d",
+  "retention": {
+    "artifact_count": 15,
+    "backup_root": "/scratch/workspaceblobstore/mask/2026-08-14",
+    "manifest": "/scratch/workspaceblobstore/mask/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "1247680564894c1a4f6603f85f6eb83aee9a95ee5e63761867df90e633091b22",
+    "model_weights_copied": false,
+    "total_bytes": 3791621,
+    "upstream_inputs_copied": false,
+    "verified": true
+  },
+  "round": "mask",
+  "schema_version": 1,
+  "status": "COMPLETE_PRE_GPU_STOP",
+  "subset_manifest_created": false
+}
