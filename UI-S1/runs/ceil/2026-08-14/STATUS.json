@@ -1,0 +1,28 @@
+{
+  "adjudication": "runs/ceil/2026-08-14/CEIL_ADJUDICATION.json",
+  "adjudication_sha256": "f5a0e7d7779a09359e2b2a3793870d8d3a7e549e377e01ea627b17335a22b2e9",
+  "arm_B_overall_branch": "OPEN_NEW_SPEC_C_D2",
+  "changes_existing_statuses": false,
+  "date": "2026-08-14",
+  "gpu_used": false,
+  "main_table": "runs/ceil/2026-08-14/MAIN_TABLE.md",
+  "main_table_sha256": "8e38141c1c143006a79b731d8f2369c84f7eacb8de00f123ea42274700041f01",
+  "new_spec_authorized": true,
+  "next_action": "WRITE_NEW_PREREG_FOR_MIND2WEB_FULL_CANDIDATE_REWEIGHTING",
+  "outcome": "CEIL_COMPLETE_OPEN_NEW_SPEC_C_D2",
+  "report": "runs/ceil/2026-08-14/REPORT.md",
+  "report_sha256": "cae0f03df880d05b798d2a2fddfc930e7c9ba40e696da5922eb00a2ac21e296b",
+  "retention": {
+    "artifact_count": 21,
+    "backup_root": "/scratch/workspaceblobstore/ceil/2026-08-14",
+    "manifest": "/scratch/workspaceblobstore/ceil/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "eed6123660e794585004c6c86c69fdc060fb0b030778f47237defecf0c59ffb5",
+    "model_weights_copied": false,
+    "total_bytes": 10024411,
+    "upstream_inputs_copied": false,
+    "verified": true
+  },
+  "round": "ceil",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

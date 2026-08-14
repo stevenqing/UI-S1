@@ -72,6 +72,7 @@ runs/**/*.tfrecord
 runs/**/*.tar
 runs/**/*.tar.gz
 runs/**/*.zip
+runs/ceil/**/ARM_A_PANEL_CACHE.npz
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
