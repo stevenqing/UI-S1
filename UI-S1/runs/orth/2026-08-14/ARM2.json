@@ -1,0 +1,24 @@
+{
+  "current_xfer_lane": {
+    "full_tree_field": false,
+    "positive_snippet_rows": 1975,
+    "positive_snippets_are_label_selected": true,
+    "rows": 2080
+  },
+  "historical_evidence": {
+    "actions": 2094,
+    "complete_audit": true,
+    "dataset_revision": "17ece8eb89862368edc0cc806acee6fca5163474",
+    "episodes": 252
+  },
+  "missing_paths": [
+    "/home/aiscuser/UI-S1/UI-S1/runs/mindact/2026-07-29/data/Mind2Web",
+    "/home/aiscuser/UI-S1/UI-S1/runs/mindact/2026-07-29/data/source/scores_all_data.pkl"
+  ],
+  "next_design_requirement": "restore_and_hash_the_official_dataset_before_any_DOM_predictor_scoping;_never_use_pos_candidates_as_predictor_input",
+  "prediction_metrics_computed": false,
+  "reason": "complete_2094_action_HTML_lane_was_historically_audited_but_local_dataset_and_scores_are_absent;_2080_XFER_lane_only_retains_GT_positive_snippets",
+  "schema_version": 1,
+  "setting_boundary": "DOM_or_AX_would_change_the_pure_screenshot_setting_and_require_a_separate_confirmatory_protocol",
+  "status": "FULL_DOM_AX_UNAVAILABLE_HISTORICAL_DATA_CURRENTLY_MISSING"
+}
