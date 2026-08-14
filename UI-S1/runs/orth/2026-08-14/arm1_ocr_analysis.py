@@ -5,7 +5,7 @@ import os
 import re
 import sys
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -181,6 +181,40 @@ def summarize(setting_rows):
         }
         for class_name in ("selected_correct", "recoverable", "zero_coverage")
     }
+    by_type = {}
+    for ui_type in ("text", "icon"):
+        selected = [row for row in setting_rows if row["ui_type"] == ui_type]
+        selected_matched = [row for row in selected if row["matched"]]
+        by_type[ui_type] = {
+            "rows": len(selected),
+            "match_rate": float(np.mean([row["matched"] for row in selected])),
+            "all_row_accuracy": float(np.mean([row["correct"] for row in selected])),
+            "matched_only_accuracy": float(np.mean([row["correct"] for row in selected_matched])) if selected_matched else None,
+        }
+    kappas = {}
+    for class_name in ("all", "selected_correct", "recoverable", "zero_coverage"):
+        selected = setting_rows if class_name == "all" else [row for row in setting_rows if row["row_class"] == class_name]
+        if class_name != "all":
+            kappas[class_name] = "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        else:
+            value = cohen_kappa([not row["correct"] for row in selected], [row["pool_error"] for row in selected])
+            kappas[class_name] = value if value is not None else "UNDEFINED_DEGENERATE"
+    return {
+        "rows": total,
+        "matched_rows": len(matched),
+        "match_rate": len(matched) / total,
+        "candidate_box_distribution": {
+            "mean": float(np.mean([row["matching_boxes"] for row in setting_rows])),
+            "median": float(np.median([row["matching_boxes"] for row in setting_rows])),
+            "maximum": max(row["matching_boxes"] for row in setting_rows),
+        },
+        "class_match_table": table,
+        "ui_type": by_type,
+        "all_row_accuracy": float(np.mean([row["correct"] for row in setting_rows])),
+        "matched_only_accuracy": float(np.mean([row["correct"] for row in matched])) if matched else None,
+        "error_kappa": kappas,
+        "same_error_outcome_as_pool": float(np.mean([(not row["correct"]) == row["pool_error"] for row in setting_rows])),
+    }
 
 
 def analyze_row(row_id):
@@ -218,40 +252,6 @@ def analyze_row(row_id):
             "pool_error": _WORKER["classes"][row_id] != "selected_correct",
         })
     return output
-    by_type = {}
-    for ui_type in ("text", "icon"):
-        selected = [row for row in setting_rows if row["ui_type"] == ui_type]
-        selected_matched = [row for row in selected if row["matched"]]
-        by_type[ui_type] = {
-            "rows": len(selected),
-            "match_rate": float(np.mean([row["matched"] for row in selected])),
-            "all_row_accuracy": float(np.mean([row["correct"] for row in selected])),
-            "matched_only_accuracy": float(np.mean([row["correct"] for row in selected_matched])) if selected_matched else None,
-        }
-    kappas = {}
-    for class_name in ("all", "selected_correct", "recoverable", "zero_coverage"):
-        selected = setting_rows if class_name == "all" else [row for row in setting_rows if row["row_class"] == class_name]
-        if class_name != "all":
-            kappas[class_name] = "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
-        else:
-            value = cohen_kappa([not row["correct"] for row in selected], [row["pool_error"] for row in selected])
-            kappas[class_name] = value if value is not None else "UNDEFINED_DEGENERATE"
-    return {
-        "rows": total,
-        "matched_rows": len(matched),
-        "match_rate": len(matched) / total,
-        "candidate_box_distribution": {
-            "mean": float(np.mean([row["matching_boxes"] for row in setting_rows])),
-            "median": float(np.median([row["matching_boxes"] for row in setting_rows])),
-            "maximum": max(row["matching_boxes"] for row in setting_rows),
-        },
-        "class_match_table": table,
-        "ui_type": by_type,
-        "all_row_accuracy": float(np.mean([row["correct"] for row in setting_rows])),
-        "matched_only_accuracy": float(np.mean([row["correct"] for row in matched])) if matched else None,
-        "error_kappa": kappas,
-        "same_error_outcome_as_pool": float(np.mean([(not row["correct"]) == row["pool_error"] for row in setting_rows])),
-    }
 
 
 def main():

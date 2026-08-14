@@ -1,0 +1,17 @@
+{
+  "artifacts": {
+    "ARM1.json": {
+      "bytes": 14301,
+      "sha256": "d14ac3c9b2ee4445047ac6af64cffcbcc43ad33a42ffcacbfee620f688acfea0"
+    },
+    "ARM1_ROWS.jsonl": {
+      "bytes": 39638213,
+      "sha256": "91b3f46a5c97222e3372dcd4bab841ec7148499acbb319908b51e0871f939542"
+    }
+  },
+  "metrics_eligible": false,
+  "raw_ocr_affected": false,
+  "reason": "summarize_control_flow_returned_null_compact_summaries",
+  "schema_version": 1,
+  "status": "FAILED_DERIVED_ATTEMPT"
+}
