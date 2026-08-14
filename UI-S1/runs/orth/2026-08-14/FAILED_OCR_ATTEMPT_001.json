@@ -1,0 +1,70 @@
+{
+  "artifacts": {
+    "shard-0.jsonl.tmp": {
+      "bytes": 3417238,
+      "rows": 68,
+      "sha256": "aa6e5e209136889cfe9d3e241e577fa9162d7ef7e1c5d91fcc27754a4b811b4a"
+    },
+    "shard-1.jsonl.tmp": {
+      "bytes": 3882292,
+      "rows": 65,
+      "sha256": "f80d7a8608370bfd6b500d4a3b3482afcaa77b40fc38e940f9f8d1d406adb96c"
+    },
+    "shard-10.jsonl.tmp": {
+      "bytes": 3106420,
+      "rows": 70,
+      "sha256": "f61c39e2b3257716cf0c3fc733819b0e128c7d90a839c27d69d9d23d4a510718"
+    },
+    "shard-11.jsonl.tmp": {
+      "bytes": 3245748,
+      "rows": 69,
+      "sha256": "c46b1cacaff8ce8d7a3ea935dba34f8f31fb7f00afd8069ed878abd770daef8f"
+    },
+    "shard-2.jsonl.tmp": {
+      "bytes": 3625321,
+      "rows": 66,
+      "sha256": "97f250cabbaac7d8ea74b73c43b2b131c124472778258987ead2ddbf6f7019a9"
+    },
+    "shard-3.jsonl.tmp": {
+      "bytes": 3858772,
+      "rows": 65,
+      "sha256": "31a7cc02c941fdcd83e9cd9230ee24a8fb567b42c58624b9d395208d49b06823"
+    },
+    "shard-4.jsonl.tmp": {
+      "bytes": 3295255,
+      "rows": 69,
+      "sha256": "a2a0eeedff39b7c9308498838d342eeecb2fdab2ae0391b338d4442e3f9189e3"
+    },
+    "shard-5.jsonl.tmp": {
+      "bytes": 4221505,
+      "rows": 61,
+      "sha256": "c58911267e9e792c5545fa47144a2b979928e6c38584956591ea10d3e202f8a9"
+    },
+    "shard-6.jsonl.tmp": {
+      "bytes": 3658364,
+      "rows": 66,
+      "sha256": "41b64232d9c15a9a5e9c9de1b45e85317d847ee0d9b1d1ec2b2d0c66ced0c8d2"
+    },
+    "shard-7.jsonl.tmp": {
+      "bytes": 3656167,
+      "rows": 66,
+      "sha256": "03c4b941c9f7044a158de3d3f952b462050b38b2f37f70a9f13fdc867b19b987"
+    },
+    "shard-8.jsonl.tmp": {
+      "bytes": 3130752,
+      "rows": 70,
+      "sha256": "5aa82fe78b71ed0465df65175c5dd3afdfb5e87aa3ed7e3030672e45a61a66e3"
+    },
+    "shard-9.jsonl.tmp": {
+      "bytes": 3903076,
+      "rows": 64,
+      "sha256": "7d500fa93d036c931523c642eac227969939fe23955ce61bd0585004917cd66d"
+    }
+  },
+  "formal_jsonl_written": false,
+  "formal_manifests_written": false,
+  "partial_rows": 799,
+  "reason": "12_shards_throughput_insufficient",
+  "schema_version": 1,
+  "status": "FAILED_ATTEMPT_NO_FORMAL_LANE_OUTPUT"
+}

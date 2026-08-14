@@ -89,13 +89,14 @@ def write_record(handle, row):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--engine", choices=("easyocr", "rapidocr"), required=True)
-    parser.add_argument("--num-shards", type=int, default=12)
+    parser.add_argument("--num-shards", type=int, required=True)
     parser.add_argument("--shard-index", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
-    if args.num_shards != 12 or not 0 <= args.shard_index < args.num_shards:
-        raise ValueError("ORTH OCR requires 12 shards")
+    expected_shards = 48 if args.engine == "easyocr" else 12
+    if args.num_shards != expected_shards or not 0 <= args.shard_index < args.num_shards:
+        raise ValueError(f"ORTH OCR requires {expected_shards} shards for {args.engine}")
     if args.output.exists() or args.output.with_suffix(".manifest.json").exists():
         raise FileExistsError(args.output)
     preflight = json.loads(PREFLIGHT_PATH.read_text())

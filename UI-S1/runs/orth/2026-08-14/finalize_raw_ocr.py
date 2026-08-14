@@ -19,11 +19,12 @@ def main():
     all_ids = {}
     for engine in ("easyocr", "rapidocr"):
         root = RAW_ROOT / engine
+        expected_shards = 48 if engine == "easyocr" else 12
         artifacts = {}
         row_ids = []
         boxes = 0
         errors = 0
-        for shard in range(12):
+        for shard in range(expected_shards):
             path = root / f"shard-{shard}.jsonl"
             manifest_path = path.with_suffix(".manifest.json")
             manifest = json.loads(manifest_path.read_text())
