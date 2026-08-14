@@ -93,6 +93,16 @@ def gains(output, baselines, row_ids):
     }
 
 
+def dual_origin_gains(row_ids, baselines, ocr_values, theta, rows):
+    result = {}
+    for name, values in baselines.items():
+        output = output_with_ocr(row_ids, values, ocr_values, theta, rows)
+        result[name] = float(np.mean([
+            int(output[row_id]) - int(values[row_id]) for row_id in row_ids
+        ]))
+    return result
+
+
 def conditional_report(row_ids, baseline, ocr_values, rows):
     values = {True: [], False: []}
     for row_id in row_ids:
@@ -168,8 +178,7 @@ def main():
                     values = {row_id: ocr[row_id][engine][key] for row_id in row_ids}
                     grid = theta_grid([values[row_id]["score"] for row_id in inner_train])
                     for theta_index, theta in enumerate(grid):
-                        output = output_with_ocr(inner_validation, majority, values, theta, rows)
-                        gain = gains(output, baselines, inner_validation)
+                        gain = dual_origin_gains(inner_validation, baselines, values, theta, rows)
                         candidates.append({
                             "extractor": extractor, "matcher": matcher,
                             "theta_index": theta_index, "theta": theta,
@@ -187,8 +196,7 @@ def main():
                 gain = gains(output, baselines, inner_validation)
                 weight_scores.append({"weight": weight, "gains": gain, "objective": min(gain.values())})
             selected_weight = max(weight_scores, key=lambda value: (value["objective"], -WEIGHTS.index(value["weight"])))
-            selected_output = output_with_ocr(inner_validation, majority, values, selected["theta"], rows)
-            selected_gains = gains(selected_output, baselines, inner_validation)
+            selected_gains = dual_origin_gains(inner_validation, baselines, values, selected["theta"], rows)
             curve = [value for value in candidates if value["extractor"] == selected["extractor"] and value["matcher"] == selected["matcher"]]
             fold_report = {
                 "outer_fold": outer_fold, "inner_validation_fold": inner_validation_fold,
