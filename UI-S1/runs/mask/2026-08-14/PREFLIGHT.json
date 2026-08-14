@@ -1,0 +1,79 @@
+{
+  "environment": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "python": "3.12.13",
+    "python_executable": "/home/aiscuser/UI-S1/UI-S1/.venv-scaleup/bin/python",
+    "pyyaml": "6.0.3",
+    "scikit_learn": "1.9.0",
+    "torch": "2.13.0+cu132",
+    "transformers": "5.14.1"
+  },
+  "gpu_authorization_created": false,
+  "gpu_used": false,
+  "gran_manifest": {
+    "all_files_reverified": true,
+    "file_count": 2173,
+    "path": "runs/gran/2026-08-14/INPUT_MANIFEST.json",
+    "role_counts": {
+      "mind2web_image_for_dimensions": 2080,
+      "mind2web_stage1_cogagent": 4,
+      "mind2web_stage1_tongui": 2,
+      "mind2web_stage1_uitars": 2,
+      "mind2web_stage1_view1_cogagent": 4,
+      "mind2web_stage1_view1_tongui": 2,
+      "mind2web_stage1_view1_uitars": 2,
+      "mind2web_stage2_cogagent": 8,
+      "mind2web_stage2_tongui": 8,
+      "mind2web_stage2_uitars": 8,
+      "mind2web_task_rows": 1,
+      "mind2web_website_fold_map": 1,
+      "screenspot_four_arm_q1-gta1": 8,
+      "screenspot_four_arm_q1-qwen3": 8,
+      "screenspot_four_arm_q1-uitars": 8,
+      "screenspot_four_arm_regions": 1,
+      "screenspot_gta1_views_0_15": 8,
+      "screenspot_pool_units": 1,
+      "screenspot_qwen3_views_0_3": 4,
+      "screenspot_qwen3_views_4_11": 4,
+      "screenspot_region_manifest": 1,
+      "screenspot_uitars_views_0_3": 4,
+      "screenspot_uitars_views_4_11": 4
+    },
+    "sha256": "c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205",
+    "total_bytes": 258827167
+  },
+  "images": {
+    "all_files_reverified": true,
+    "rows": 1581,
+    "source_manifest": "runs/split/2026-08-14/PREFLIGHT.json",
+    "total_bytes": 3357315715
+  },
+  "mask_constructed": false,
+  "mask_statistics_computed": false,
+  "model_forward_started": false,
+  "model_roles": {
+    "GTA1-7B": {
+      "index_sha256": "3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6",
+      "path": "runs/collision-law/2026-07-30/w3_assets/GTA1-7B",
+      "revision": "701bedc80b447863bd60e3318ae44f6cbbfafd78",
+      "role": "ONLY_MASK_FORWARD_MODEL",
+      "status": "READY",
+      "weight_bytes": 16584414544,
+      "weight_shards": 4
+    },
+    "Qwen2.5-VL-7B-Instruct": {
+      "MASK_forward_allowed": false,
+      "role": "SPLIT_DEFERRED_CHECKPOINT_NOT_IN_MASK",
+      "status": "DEFERRED_CHECKPOINT_MISSING"
+    },
+    "UI-TARS-7B-SFT": {
+      "MASK_forward_allowed": false,
+      "role": "CANDIDATE_BANK_LINEAGE_ONLY",
+      "status": "LOCKED_BY_GRAN_INPUT_MANIFEST"
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_MASK_PREFLIGHT_GTA1_READY_MODEL_ROLES_RESOLVED",
+  "subset_manifest_created": false
+}
