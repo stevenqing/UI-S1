@@ -61,7 +61,6 @@ def main():
         "verified_at_utc": datetime.now(timezone.utc).isoformat(),
         "artifacts": artifacts,
     }
-    BACKUP_ROOT.mkdir(parents=True, exist_ok=False)
     manifest_path = BACKUP_ROOT / "BACKUP_MANIFEST.json"
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     if json.loads(manifest_path.read_text()) != manifest:
