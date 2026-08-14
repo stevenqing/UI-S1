@@ -1,0 +1,118 @@
+{
+  "O_G1": {
+    "easyocr": {
+      "gains": {
+        "dev_selection": 0.0006386124618917165,
+        "majority": 0.0006386124618917165
+      },
+      "objective": 0.0006386124618917165,
+      "pass_O_G1": false
+    },
+    "rapidocr": {
+      "gains": {
+        "dev_selection": 0.0,
+        "majority": 0.0
+      },
+      "objective": 0.0,
+      "pass_O_G1": false
+    }
+  },
+  "engines": {
+    "easyocr": [
+      {
+        "extractor": "full_normalized",
+        "matcher": "edit",
+        "outer_fold": 0,
+        "selected_method": "ours",
+        "theta": 0.9999209846716033,
+        "theta_index": 10,
+        "weight": 1.5936767669403409
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 1,
+        "selected_method": "ours",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 2,
+        "selected_method": "A4",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 3,
+        "selected_method": "A2",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 4,
+        "selected_method": "ours",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      }
+    ],
+    "rapidocr": [
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 0,
+        "selected_method": "ours",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 1,
+        "selected_method": "ours",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 2,
+        "selected_method": "A4",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 3,
+        "selected_method": "A2",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      },
+      {
+        "extractor": "quoted",
+        "matcher": "exact",
+        "outer_fold": 4,
+        "selected_method": "ours",
+        "theta": Infinity,
+        "theta_index": 11,
+        "weight": 0.0
+      }
+    ]
+  },
+  "schema_version": 1,
+  "status": "STOP_OTEXT_O_K1"
+}
