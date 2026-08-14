@@ -1,0 +1,4 @@
+easyocr==1.7.2
+rapidocr-onnxruntime==1.4.4
+opencv-python-headless==4.11.0.86
+numpy==2.3.5

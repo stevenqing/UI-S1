@@ -1,0 +1,193 @@
+{
+  "environment": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "python": "3.12.13",
+    "python_executable": "/home/aiscuser/UI-S1/UI-S1/.venv-scaleup/bin/python"
+  },
+  "gpu_used": false,
+  "inputs": {
+    "ceil_arm_b": {
+      "bytes": 6424,
+      "path": "runs/ceil/2026-08-14/ARM_B.json",
+      "sha256": "418bb071114b9b0312272a6c3903c3623961633d7f7b1dce61af76487bc94cca"
+    },
+    "ceil_arm_b_manifest": {
+      "bytes": 720,
+      "path": "runs/ceil/2026-08-14/ARM_B_MANIFEST.json",
+      "sha256": "d9c72ac01c76eb13e173bcb635629f84930903bbedd5df9f694545e725b80b7b"
+    },
+    "ceil_arm_b_rows": {
+      "bytes": 8538105,
+      "path": "runs/ceil/2026-08-14/ARM_B_ROWS.jsonl",
+      "sha256": "f2a60318b097ff131cefc7f4540825261bce77ceba35ae7a34864af604e65b5b"
+    },
+    "m2w_tasks": {
+      "bytes": 15265044,
+      "path": "runs/xfer/2026-08-07/data/mind2web/mind2web_test_task.jsonl",
+      "sha256": "407d05fd7c5514d61bf415129892e5a7ffe9bf56646bea4c3b5f38aacd015352"
+    },
+    "mask_preflight": {
+      "bytes": 2631,
+      "path": "runs/mask/2026-08-14/PREFLIGHT.json",
+      "sha256": "e9d847dc7ba1b58cbc915733b742009116420773c6099a97df9a93637c4bd0ac"
+    },
+    "mask_stage1": {
+      "bytes": 3673209,
+      "path": "runs/mask/2026-08-14/STAGE1.json",
+      "sha256": "b287667a3f47393df7a709cd5c19c26e1f8967adf9f68239f27c215db97c604f"
+    },
+    "mindact_audit": {
+      "bytes": 834,
+      "path": "runs/mindact/2026-07-29/artifacts/full/audit.json",
+      "sha256": "cf87514a30da761bccd3b6eb3a6d17b08a27cd79185c018ee9e8f6535b93b5b9"
+    },
+    "mindact_manifest": {
+      "bytes": 1161,
+      "path": "runs/mindact/2026-07-29/artifact_manifest.json",
+      "sha256": "30dcdb07872c6e25eb255283b806c330c8031de76fc202a5f5238a5f1a91bdc1"
+    },
+    "spec": {
+      "bytes": 9492,
+      "path": "runs/orth/2026-08-14/SPEC.md",
+      "sha256": "8e6e7ce602ccaf5d5dd8220ef8f8d3329014a6d8e5a8e454b7bff1d046464959"
+    },
+    "split_preflight": {
+      "bytes": 798053,
+      "path": "runs/split/2026-08-14/PREFLIGHT.json",
+      "sha256": "9188e6e9b886cacbbff52cb43e8223c08a9108750e139ef42d39cede91da2a6b"
+    },
+    "sspro_h1_manifest": {
+      "bytes": 662900,
+      "path": "runs/gran/2026-08-14/INPUT_MANIFEST.json",
+      "sha256": "c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205"
+    }
+  },
+  "mind2web_dom_ax": {
+    "current_expected_paths": [
+      "/home/aiscuser/UI-S1/UI-S1/runs/mindact/2026-07-29/data/Mind2Web",
+      "/home/aiscuser/UI-S1/UI-S1/runs/mindact/2026-07-29/data/source/scores_all_data.pkl"
+    ],
+    "current_expected_paths_exist": [
+      false,
+      false
+    ],
+    "historical_actions": 2094,
+    "historical_complete_audit": true,
+    "historical_dataset_revision": "17ece8eb89862368edc0cc806acee6fca5163474",
+    "historical_episodes": 252,
+    "positive_snippets_are_label_selected_and_not_predictor_input": true,
+    "status": "HISTORICALLY_AVAILABLE_CURRENTLY_MISSING",
+    "xfer_has_full_tree_field": false,
+    "xfer_positive_snippet_rows": 1975,
+    "xfer_rows": 2080,
+    "xfer_step_schema": [
+      "action_uid",
+      "bbox",
+      "img_url",
+      "operation",
+      "pos_candidates"
+    ],
+    "xfer_top_schema": [
+      "action_uid",
+      "annot_id",
+      "episode_id",
+      "id",
+      "image",
+      "image_sha256",
+      "stable_index",
+      "step",
+      "step_history",
+      "step_repr",
+      "task",
+      "website"
+    ]
+  },
+  "ocr_engines": {
+    "easyocr": {
+      "call": {
+        "batch_size": 1,
+        "beamWidth": 5,
+        "canvas_size": 2560,
+        "decoder": "greedy",
+        "detail": 1,
+        "link_threshold": 0.4,
+        "low_text": 0.4,
+        "mag_ratio": 1.0,
+        "min_size": 10,
+        "paragraph": false,
+        "rotation_info": null,
+        "text_threshold": 0.7,
+        "workers": 0
+      },
+      "device": "cpu",
+      "languages": [
+        "en"
+      ],
+      "model_files": [
+        "easyocr_craft",
+        "easyocr_english_g2"
+      ],
+      "version": "1.7.2"
+    },
+    "model_assets": {
+      "easyocr_craft": {
+        "bytes": 83152330,
+        "path": "/home/aiscuser/.EasyOCR/model/craft_mlt_25k.pth",
+        "sha256": "4a5efbfb48b4081100544e75e1e2b57f8de3d84f213004b14b85fd4b3748db17"
+      },
+      "easyocr_english_g2": {
+        "bytes": 15143997,
+        "path": "/home/aiscuser/.EasyOCR/model/english_g2.pth",
+        "sha256": "e2272681d9d67a04e2dff396b6e95077bc19001f8f6d3593c307b9852e1c29e8"
+      },
+      "rapidocr_cls": {
+        "bytes": 585532,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+        "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+      },
+      "rapidocr_config": {
+        "bytes": 1221,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/config.yaml",
+        "sha256": "bf94a1da4cba828e67b1d61e27cee14d9e7da27c9f272e04048a17e41ae97332"
+      },
+      "rapidocr_det": {
+        "bytes": 4745517,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_PP-OCRv4_det_infer.onnx",
+        "sha256": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+      },
+      "rapidocr_rec": {
+        "bytes": 10857958,
+        "path": ".venv-scaleup/lib/python3.12/site-packages/rapidocr_onnxruntime/models/ch_PP-OCRv4_rec_infer.onnx",
+        "sha256": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+      }
+    },
+    "opencv_python_headless": "4.11.0.86",
+    "rapidocr_onnxruntime": {
+      "call": {
+        "use_cls": true,
+        "use_det": true,
+        "use_rec": true
+      },
+      "device": "cpu",
+      "model_files": [
+        "rapidocr_config",
+        "rapidocr_det",
+        "rapidocr_rec",
+        "rapidocr_cls"
+      ],
+      "version": "1.4.4"
+    }
+  },
+  "ocr_forward_started": false,
+  "orth_statistics_computed": false,
+  "schema_version": 1,
+  "screenspot": {
+    "icon_rows": 604,
+    "image_bytes": 3357315715,
+    "images_all_reverified": true,
+    "rows": 1581,
+    "text_rows": 977
+  },
+  "status": "PASS_ORTH_PREFLIGHT_CPU_OCR_READY"
+}
