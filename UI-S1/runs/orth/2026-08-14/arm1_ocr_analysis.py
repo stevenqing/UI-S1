@@ -231,8 +231,11 @@ def analyze_row(row_id):
     kappas = {}
     for class_name in ("all", "selected_correct", "recoverable", "zero_coverage"):
         selected = setting_rows if class_name == "all" else [row for row in setting_rows if row["row_class"] == class_name]
-        value = cohen_kappa([not row["correct"] for row in selected], [row["pool_error"] for row in selected])
-        kappas[class_name] = value if value is not None else "UNDEFINED_DEGENERATE"
+        if class_name != "all":
+            kappas[class_name] = "UNDEFINED_STRATIFIED_POOL_ERROR_CONSTANT"
+        else:
+            value = cohen_kappa([not row["correct"] for row in selected], [row["pool_error"] for row in selected])
+            kappas[class_name] = value if value is not None else "UNDEFINED_DEGENERATE"
     return {
         "rows": total,
         "matched_rows": len(matched),
