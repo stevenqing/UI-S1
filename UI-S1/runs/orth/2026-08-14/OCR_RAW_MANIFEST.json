@@ -1,0 +1,888 @@
+{
+  "common_rows": 1581,
+  "engines": {
+    "easyocr": {
+      "artifacts": {
+        "raw/easyocr/shard-0.jsonl": {
+          "bytes": 846596,
+          "sha256": "709b63731f5c3cff562f04c5f66946429212432339167ceace8daab36cd1e1d9"
+        },
+        "raw/easyocr/shard-0.manifest.json": {
+          "bytes": 430,
+          "sha256": "9e75be6e19533db4972a7b8cd6e0ed27beba45ba67b9c9b89900b7a50a928a13"
+        },
+        "raw/easyocr/shard-1.jsonl": {
+          "bytes": 884692,
+          "sha256": "b42a1354fed7c0f5285982d3fef58dbdaa84bbd0661664f4b8866c721cc9e033"
+        },
+        "raw/easyocr/shard-1.manifest.json": {
+          "bytes": 430,
+          "sha256": "c52759771cd1c663fdec2b6e05187833172bd199e6403eefb5d42abf19371318"
+        },
+        "raw/easyocr/shard-10.jsonl": {
+          "bytes": 678741,
+          "sha256": "55efc72487640e9b0108116e83de891c83c77fff2f8704d05260efc5a8f6f19c"
+        },
+        "raw/easyocr/shard-10.manifest.json": {
+          "bytes": 432,
+          "sha256": "c3fc93aa82227db8e915bbdc57b9e54f9ef024f382327a91c639e25cc0a1b1e0"
+        },
+        "raw/easyocr/shard-11.jsonl": {
+          "bytes": 664799,
+          "sha256": "3d64b778b04ae339511547ea16374c2fc510dab76d97126e1c70826e0efa76b8"
+        },
+        "raw/easyocr/shard-11.manifest.json": {
+          "bytes": 432,
+          "sha256": "affa80d3e8d2eb0614c85885437888c8b8e485b31b4431df39570e8260d5b731"
+        },
+        "raw/easyocr/shard-12.jsonl": {
+          "bytes": 753688,
+          "sha256": "39c5a6517f50bf3592a04862035c7e53d500700f32e2ec93942156c41368bf52"
+        },
+        "raw/easyocr/shard-12.manifest.json": {
+          "bytes": 432,
+          "sha256": "1eb82b3d82581b2a206bc128c3945fa3ed299f79f1d4d199b0a1f93bb6c80eb5"
+        },
+        "raw/easyocr/shard-13.jsonl": {
+          "bytes": 751267,
+          "sha256": "0237865a87ef5ee6a923a50e1d5564352cf198830419f45305100e10df66871d"
+        },
+        "raw/easyocr/shard-13.manifest.json": {
+          "bytes": 432,
+          "sha256": "fcba086acbb20541cae2e34cb1c6176f8a47b6b21c9fe49aa0c48d66e07f2a93"
+        },
+        "raw/easyocr/shard-14.jsonl": {
+          "bytes": 843199,
+          "sha256": "86a5c75c35a4035c754c402d4a970b8d5c20acfce0e0b72891f1e2385cc388a5"
+        },
+        "raw/easyocr/shard-14.manifest.json": {
+          "bytes": 432,
+          "sha256": "5404c1155680de6564b3039a318722dcce62754f5b910313d78aca3cd9cda2b3"
+        },
+        "raw/easyocr/shard-15.jsonl": {
+          "bytes": 1216196,
+          "sha256": "fb7a0740e0d19004d0af2ef7ee42907ebf30cc06bf42402c0a28aa073881938b"
+        },
+        "raw/easyocr/shard-15.manifest.json": {
+          "bytes": 433,
+          "sha256": "e6c9290758f84e689310f2eb99cdc65e97d7f4ecf3b9c990ae5d7b37fcd10369"
+        },
+        "raw/easyocr/shard-16.jsonl": {
+          "bytes": 728172,
+          "sha256": "90d7f72ec99eb958710a668e04cdf65180dc8402cd9fbec73fba74e2e21c63ef"
+        },
+        "raw/easyocr/shard-16.manifest.json": {
+          "bytes": 432,
+          "sha256": "021ec15b5086e51f1d5d78d9ca7c8439be17d41ac2e8fb0500da859a17c9af28"
+        },
+        "raw/easyocr/shard-17.jsonl": {
+          "bytes": 1071018,
+          "sha256": "faa416a2db861a1b136645b4572c35054eab6c18d8285e4adca9731efaf18bab"
+        },
+        "raw/easyocr/shard-17.manifest.json": {
+          "bytes": 433,
+          "sha256": "ba6e1ba7811a4cf1034e69ed7ddbf722bdbceb0ecb6888bd07af489ce2129701"
+        },
+        "raw/easyocr/shard-18.jsonl": {
+          "bytes": 750384,
+          "sha256": "e90e079ee939e98a7e44357861f00e3d3be051fadc9ee43f7967b8c8921f0569"
+        },
+        "raw/easyocr/shard-18.manifest.json": {
+          "bytes": 432,
+          "sha256": "0795f5f85223cdcf8dc9a0ee81b112f18ad167e79ce8b2d6b84b171ff8e8faf2"
+        },
+        "raw/easyocr/shard-19.jsonl": {
+          "bytes": 1147034,
+          "sha256": "dcb0564879f520a4763e64b374c1bb316c125bdcb2f67a5003523dce9c60cecd"
+        },
+        "raw/easyocr/shard-19.manifest.json": {
+          "bytes": 433,
+          "sha256": "f6b5f73a24265cba753476a5be60c0749b04c520531d57882246160c50143e33"
+        },
+        "raw/easyocr/shard-2.jsonl": {
+          "bytes": 800681,
+          "sha256": "993e6adae55ae498c6c2387295fafec140a3c810a2b1c0f78ec167ad75e0a415"
+        },
+        "raw/easyocr/shard-2.manifest.json": {
+          "bytes": 430,
+          "sha256": "88720854d34e1b8239b20f3140ae6c4aecd0e383d0c0853d0efc22f9f848ffec"
+        },
+        "raw/easyocr/shard-20.jsonl": {
+          "bytes": 870453,
+          "sha256": "12269fed3160545de640550f3fa93dbeaefbfb364f0240fb687e81b76a44fce7"
+        },
+        "raw/easyocr/shard-20.manifest.json": {
+          "bytes": 432,
+          "sha256": "5fcd864aadab2a96505a8cc91fe7084cfa570c4d6d56021dce826cf7047df309"
+        },
+        "raw/easyocr/shard-21.jsonl": {
+          "bytes": 761802,
+          "sha256": "2663189d91fbda7ea4ca3c24af2591cbc00e6ede3b7b5b7d5751760bc4838c7f"
+        },
+        "raw/easyocr/shard-21.manifest.json": {
+          "bytes": 432,
+          "sha256": "1b44c326bc57152e1b287ed0181d7183b63941eb19e30ec5d352b654860cb78b"
+        },
+        "raw/easyocr/shard-22.jsonl": {
+          "bytes": 872881,
+          "sha256": "4d4ae6506b11a37f157f8d739187b9b6134163b875a13bd4308b30a49531443e"
+        },
+        "raw/easyocr/shard-22.manifest.json": {
+          "bytes": 432,
+          "sha256": "8c987937dca6ce704485dd07bfe5fd50c60b972d3713b3d21d742d5412d58e6e"
+        },
+        "raw/easyocr/shard-23.jsonl": {
+          "bytes": 1051583,
+          "sha256": "5ef136bd8f50f4c466f978f72b95a5b5f5115848eefb01d26e2fdbcb67e9a20e"
+        },
+        "raw/easyocr/shard-23.manifest.json": {
+          "bytes": 433,
+          "sha256": "4c7800d6a26e78ad26b02422c35c101e35903c953f77758bb0c78e1d07fc9da7"
+        },
+        "raw/easyocr/shard-24.jsonl": {
+          "bytes": 868420,
+          "sha256": "0994731596ba890d2cc9418ac237c96eb9326b78faa176a52a211adda168b1aa"
+        },
+        "raw/easyocr/shard-24.manifest.json": {
+          "bytes": 432,
+          "sha256": "fcd3d68aba8d6fb7ddc1f9cdaf9b92f29b3aa4396a3b4ddfa6e892723d603131"
+        },
+        "raw/easyocr/shard-25.jsonl": {
+          "bytes": 1136919,
+          "sha256": "056f19afbbe4f930fc6169f228116c1e89f4981b541be7e55eaee7b79118b2a1"
+        },
+        "raw/easyocr/shard-25.manifest.json": {
+          "bytes": 433,
+          "sha256": "b3123b2d4dd80ffcb4b1f4742fbff65e83b43a034c30cc9cccb72786f55351f6"
+        },
+        "raw/easyocr/shard-26.jsonl": {
+          "bytes": 800718,
+          "sha256": "402c4aead3a987aa43805d16ecf01960864630a10242139bbd68ed656e524b31"
+        },
+        "raw/easyocr/shard-26.manifest.json": {
+          "bytes": 432,
+          "sha256": "93526e2193466c50c93d8d55409159d3579521c1910ec829b816ca0d2f2ea40e"
+        },
+        "raw/easyocr/shard-27.jsonl": {
+          "bytes": 1231224,
+          "sha256": "fcb154eee26b95edf77cb52b97be6a6a3bd2ff6e106e316dad5b3ca4a79e163f"
+        },
+        "raw/easyocr/shard-27.manifest.json": {
+          "bytes": 433,
+          "sha256": "5ddab8d35b9b5183e1bbf3db0ebb0239d6ae593655063c8b816379a44c2c0afb"
+        },
+        "raw/easyocr/shard-28.jsonl": {
+          "bytes": 932719,
+          "sha256": "367301313abac7c178fd9798f0f3d4f99d42df118d554b68a03583983cd4a0b8"
+        },
+        "raw/easyocr/shard-28.manifest.json": {
+          "bytes": 432,
+          "sha256": "89fb77310cbafd26bc10f50a7c2bc2ddfc93245fe40adf0fd98c41eac457a64d"
+        },
+        "raw/easyocr/shard-29.jsonl": {
+          "bytes": 1156000,
+          "sha256": "48c58a60aae5a684c5950125aea7e429588e5a4024797848f10fe6d09a908a46"
+        },
+        "raw/easyocr/shard-29.manifest.json": {
+          "bytes": 433,
+          "sha256": "bdf86f429c28f33b4268ce02ec9c794823c1bfa894feb83e437cba1150c978c1"
+        },
+        "raw/easyocr/shard-3.jsonl": {
+          "bytes": 761787,
+          "sha256": "fcfc930547fcf974840c82dc01794af8c0292b3cdc3e8aacd55fd968401bbfdd"
+        },
+        "raw/easyocr/shard-3.manifest.json": {
+          "bytes": 430,
+          "sha256": "b16302182f23319109125a791c2b59cf3b6eda52e3f28c88fa1b077522712e33"
+        },
+        "raw/easyocr/shard-30.jsonl": {
+          "bytes": 876199,
+          "sha256": "9b27d9f5b5bcd5b345646fa88c54530018b1daa80c3523de0d4867c2a031d083"
+        },
+        "raw/easyocr/shard-30.manifest.json": {
+          "bytes": 432,
+          "sha256": "519b5c54f7c3239cc5d78da202879402824061f97e9e4f389b20f6c8c56c62a8"
+        },
+        "raw/easyocr/shard-31.jsonl": {
+          "bytes": 850578,
+          "sha256": "a8d1211ef6dee475014a7c24781092b008300ffaa809485efcbd6c52d24be04e"
+        },
+        "raw/easyocr/shard-31.manifest.json": {
+          "bytes": 432,
+          "sha256": "8b0a47dad91571c689d31b39eee44c64caef56239c95a7cebf6b6798d77fadac"
+        },
+        "raw/easyocr/shard-32.jsonl": {
+          "bytes": 889096,
+          "sha256": "7cdba8a1c7cb53e184280fc86cac6390f58d61b8ebaec62411fc04d5275c75e9"
+        },
+        "raw/easyocr/shard-32.manifest.json": {
+          "bytes": 432,
+          "sha256": "a6a54fb7b7b268a423b66a1203ce61f336588c5e3baf8df7866701b90db7e342"
+        },
+        "raw/easyocr/shard-33.jsonl": {
+          "bytes": 1053458,
+          "sha256": "8716c43e52f3e11e777a4c8f8aa2e59333dc8272ea18d2bd0d11f848631b3fc7"
+        },
+        "raw/easyocr/shard-33.manifest.json": {
+          "bytes": 433,
+          "sha256": "e2986ac9f482aaf17353e68d9d3160e741b6a7c2755532d9826dd5b46f3e9e3a"
+        },
+        "raw/easyocr/shard-34.jsonl": {
+          "bytes": 906304,
+          "sha256": "c9b61f10c0f1755ba4bc8e43a88d854e716940b1517590e17fd504a7645af7ee"
+        },
+        "raw/easyocr/shard-34.manifest.json": {
+          "bytes": 432,
+          "sha256": "0ad3cd4bf25f122a9c92613d3f4125bef7573bbc416872550a1e5e2adaf7ad79"
+        },
+        "raw/easyocr/shard-35.jsonl": {
+          "bytes": 862954,
+          "sha256": "a3f2c6f14b57ee6503bf400e0589d7713fcf47c1e9ea502ae9de35767ca5cc3a"
+        },
+        "raw/easyocr/shard-35.manifest.json": {
+          "bytes": 432,
+          "sha256": "cfd3c4df636e27c34494aa781f4013e349caad4dda63176c50fd4b9a68597b03"
+        },
+        "raw/easyocr/shard-36.jsonl": {
+          "bytes": 767457,
+          "sha256": "2137063a78173f88ac21ce490630bf474be6c03612bfd065fd86e39f7fa6da73"
+        },
+        "raw/easyocr/shard-36.manifest.json": {
+          "bytes": 432,
+          "sha256": "4e97d8c69a190a880288d80020a3037f73f92435c07e31f420edf79d224ff5d2"
+        },
+        "raw/easyocr/shard-37.jsonl": {
+          "bytes": 1028590,
+          "sha256": "fd085c379d9a2c473581e1d771358ee3a05270ff106f9d30e555178d81d183d4"
+        },
+        "raw/easyocr/shard-37.manifest.json": {
+          "bytes": 433,
+          "sha256": "ec6f580739c7d9e910cdba8f033303fcf6dbf1ee30ec7781499c3c26095f891f"
+        },
+        "raw/easyocr/shard-38.jsonl": {
+          "bytes": 1241613,
+          "sha256": "8fb2c00c23f15d1b64b273cd9dff7f358f3cb588ea50e04d2265f96d0716989a"
+        },
+        "raw/easyocr/shard-38.manifest.json": {
+          "bytes": 433,
+          "sha256": "41d4243e84556958bf057444683fc85a0bb9ef4e4b89980cfa30822735df1f12"
+        },
+        "raw/easyocr/shard-39.jsonl": {
+          "bytes": 713594,
+          "sha256": "cfe81377f9b2eb83c5efffc22ee91d369f9288eead411d9644d5c34d7a4ef335"
+        },
+        "raw/easyocr/shard-39.manifest.json": {
+          "bytes": 432,
+          "sha256": "ae6489019e037031330dd1af85fca03cfea06248b6dc363b9a01ee98d4fd685d"
+        },
+        "raw/easyocr/shard-4.jsonl": {
+          "bytes": 675337,
+          "sha256": "ee73b48b3bf92502366184e076098d4e7217dcffa9feb9084a19928d9491dc71"
+        },
+        "raw/easyocr/shard-4.manifest.json": {
+          "bytes": 430,
+          "sha256": "b37ca1e1a405827f2e6d27a7cf88eee2a949d613ee63b87f5cb17cd1f8467607"
+        },
+        "raw/easyocr/shard-40.jsonl": {
+          "bytes": 542265,
+          "sha256": "a452b24abf50b51158b8b1f149a210441a793e9bf3297fa32207b71b8a60baf7"
+        },
+        "raw/easyocr/shard-40.manifest.json": {
+          "bytes": 432,
+          "sha256": "d9f5dc4c331dac923c96641d6eca1c7c15034fedc37da92b0c90e112cd711baf"
+        },
+        "raw/easyocr/shard-41.jsonl": {
+          "bytes": 742595,
+          "sha256": "b630869755f48080144c81f5f9088cee9bc6450405f69d9f3d491b158e03d00c"
+        },
+        "raw/easyocr/shard-41.manifest.json": {
+          "bytes": 432,
+          "sha256": "6d6d8a722ded360a98f56b36bb5b3c9878033418152eee1bf3783ef68e5d547e"
+        },
+        "raw/easyocr/shard-42.jsonl": {
+          "bytes": 841944,
+          "sha256": "867da12f3884567933dbc92e643e8e518aa638fec3694be00fb0cb950117b972"
+        },
+        "raw/easyocr/shard-42.manifest.json": {
+          "bytes": 432,
+          "sha256": "711e46e18c0813c4325605b8636a8b5513edf3fa64e140091546ae73dd3261dd"
+        },
+        "raw/easyocr/shard-43.jsonl": {
+          "bytes": 1053390,
+          "sha256": "013ef84160b91b9cdcbc4c6538c20cabd1a558ee57e8bf058bc1f8427ec62186"
+        },
+        "raw/easyocr/shard-43.manifest.json": {
+          "bytes": 433,
+          "sha256": "db349237985362ed54c707016ec82e4efbc35156ce8f85bfe272cc876d080080"
+        },
+        "raw/easyocr/shard-44.jsonl": {
+          "bytes": 860091,
+          "sha256": "8d51819da1aa10da2c7bc7ce2fba26ad76566cb2ad790f260ff4538046efc237"
+        },
+        "raw/easyocr/shard-44.manifest.json": {
+          "bytes": 432,
+          "sha256": "4929128e26f8d9828d0f6348f1d8bb3656d06e15572a849823a5fcaae220c66f"
+        },
+        "raw/easyocr/shard-45.jsonl": {
+          "bytes": 730892,
+          "sha256": "beb5fe5dd0ba92c419eac29b90768e9534feaa65734e63e11c7d5fd9356101c4"
+        },
+        "raw/easyocr/shard-45.manifest.json": {
+          "bytes": 432,
+          "sha256": "2ceb2d186ad5016571d99552aec610d257208f1a0a170924c0f5bbd5d9a34820"
+        },
+        "raw/easyocr/shard-46.jsonl": {
+          "bytes": 827908,
+          "sha256": "95af0dd164b8974f8d4f916bbbe43507cafdf04adc9294a2f64df2539f84d825"
+        },
+        "raw/easyocr/shard-46.manifest.json": {
+          "bytes": 432,
+          "sha256": "f60dce51b68110cc3d646bcd0d655538c55f9a96aee62e565a366fefb0568c2a"
+        },
+        "raw/easyocr/shard-47.jsonl": {
+          "bytes": 623716,
+          "sha256": "a59df9f863d427a7980e21f0e6b231d2aa3b9378cf6ecb5680fde5f8502df6cd"
+        },
+        "raw/easyocr/shard-47.manifest.json": {
+          "bytes": 432,
+          "sha256": "c1fff363df59ecd6cb8ef6b66a3f71977fd634503d3da8cc3fb714613d256596"
+        },
+        "raw/easyocr/shard-48.jsonl": {
+          "bytes": 998804,
+          "sha256": "80c37f83265508f5759e65b8a58f54fe0db7c7e059e3d1de8b5afbdb58ade228"
+        },
+        "raw/easyocr/shard-48.manifest.json": {
+          "bytes": 432,
+          "sha256": "4be9dccd7b3c6e5ae0ebf5df8d89060f6259019bc802db31587ab03ebd2e30ef"
+        },
+        "raw/easyocr/shard-49.jsonl": {
+          "bytes": 1084405,
+          "sha256": "6faf4355cd07fad04a9635f5e0f3e201f150f30538cc3a95a1a24af97f199dea"
+        },
+        "raw/easyocr/shard-49.manifest.json": {
+          "bytes": 433,
+          "sha256": "1acc612bbd92cbaad47983e38a70d8ab707360f1490f080dfa0a27b1120b683b"
+        },
+        "raw/easyocr/shard-5.jsonl": {
+          "bytes": 791626,
+          "sha256": "d7891b51a3dcd30857e08e785828b8983f383d516552a3818e0cb170ebf4a1c1"
+        },
+        "raw/easyocr/shard-5.manifest.json": {
+          "bytes": 430,
+          "sha256": "437e58d4bef92d8f71e53260408c776cc23d7544fad9197785284ae982d614a1"
+        },
+        "raw/easyocr/shard-50.jsonl": {
+          "bytes": 942462,
+          "sha256": "72942f79a58101046d8892dd4f3776451e4f498933df266251743a3ae31a0b50"
+        },
+        "raw/easyocr/shard-50.manifest.json": {
+          "bytes": 432,
+          "sha256": "e98379188d48f35903e37804ae42392790c527befc1fd7690ec5251522daa047"
+        },
+        "raw/easyocr/shard-51.jsonl": {
+          "bytes": 728826,
+          "sha256": "4e858744e76f0c11c8cf30903b7a01993cb5dde50dcc42d16dc8aa708306d79e"
+        },
+        "raw/easyocr/shard-51.manifest.json": {
+          "bytes": 432,
+          "sha256": "6cab4e0959c9f844ef91bd6bccbbc62402cf0903affd1862c06dfd0ba4e5ccdc"
+        },
+        "raw/easyocr/shard-52.jsonl": {
+          "bytes": 625916,
+          "sha256": "049b691aefbf200f888d9f528dc10a002f944717447f49a0dc79f803c31b855e"
+        },
+        "raw/easyocr/shard-52.manifest.json": {
+          "bytes": 432,
+          "sha256": "dd08a3bf142163ad07a208241c4965cfb5260592a2cbbe893f6b373513cce922"
+        },
+        "raw/easyocr/shard-53.jsonl": {
+          "bytes": 1093545,
+          "sha256": "0ceffef5f605bdfc592805d2303578d9f2896972a7b96b5440a0541fdc8586a5"
+        },
+        "raw/easyocr/shard-53.manifest.json": {
+          "bytes": 433,
+          "sha256": "50ea81fe5df8c5f93518dca65d07f4c5dc7c991fde354e99deccfd7a75cd4ed6"
+        },
+        "raw/easyocr/shard-54.jsonl": {
+          "bytes": 1045791,
+          "sha256": "ab9063c0b9af7e2be5a46dfc58559e22519918e67b8362bd95472d6ff06a439f"
+        },
+        "raw/easyocr/shard-54.manifest.json": {
+          "bytes": 433,
+          "sha256": "988ece4ea1a58d74d2f6cdc16d065e9d62914dbe183c3e6118a8d4700e6a778e"
+        },
+        "raw/easyocr/shard-55.jsonl": {
+          "bytes": 781593,
+          "sha256": "2c431e52dc58eb2bd8fbf97fbe6fb86f79ee23c5eba4906a7b9855f09553ff54"
+        },
+        "raw/easyocr/shard-55.manifest.json": {
+          "bytes": 432,
+          "sha256": "3fd19ac7b24fc4d40101c1f006d6a9982a60a822bd368b606b357d6e4b390605"
+        },
+        "raw/easyocr/shard-56.jsonl": {
+          "bytes": 719780,
+          "sha256": "4d5e045493be86095afecef5b74ab789bc2fbfce934127adaae3ebbe7a63857f"
+        },
+        "raw/easyocr/shard-56.manifest.json": {
+          "bytes": 432,
+          "sha256": "ce0e0e871144576b104688b8ea3b30d8e92a1586628f986f47614fc6d4d2d515"
+        },
+        "raw/easyocr/shard-57.jsonl": {
+          "bytes": 829264,
+          "sha256": "c9baceb5ed40ac7a7251f521c020dfec6e2bd57f1a2b9c80aa3c48f54392b3e1"
+        },
+        "raw/easyocr/shard-57.manifest.json": {
+          "bytes": 432,
+          "sha256": "1213da81b3e41e6d12d3c974c04f951a84b6f5c1686da5bdc18ae7902fe34d83"
+        },
+        "raw/easyocr/shard-58.jsonl": {
+          "bytes": 796628,
+          "sha256": "1e3923614f2a8a903be3212e89257ee74fdb6fb51d41bf258932c9d000fbcc3d"
+        },
+        "raw/easyocr/shard-58.manifest.json": {
+          "bytes": 432,
+          "sha256": "1563ed626bbd200b2884214f3fca69355014ed044158c833ddeaa640b4ce217b"
+        },
+        "raw/easyocr/shard-59.jsonl": {
+          "bytes": 735681,
+          "sha256": "5bf76f2022e18d35df275896dcb915fd94007ea430ef183dc2ef26666b433acb"
+        },
+        "raw/easyocr/shard-59.manifest.json": {
+          "bytes": 432,
+          "sha256": "e57451ad09d06ddbc71d3f36b4fea1a74b5ab259cd1fae05243d9c4e2e39fb8d"
+        },
+        "raw/easyocr/shard-6.jsonl": {
+          "bytes": 1133569,
+          "sha256": "ec7990f211a59868b300bde5e7e456afb8882327ea8c462bb7f14202c413d461"
+        },
+        "raw/easyocr/shard-6.manifest.json": {
+          "bytes": 431,
+          "sha256": "3684d5c5f6051a6aa08c15062f47fa33749d5fd0de1b6494d46794691e9b560b"
+        },
+        "raw/easyocr/shard-60.jsonl": {
+          "bytes": 729087,
+          "sha256": "b0a78654184f1ccfee08f0e617c826bf61e9a552ce4412205b65ad5255a7ce61"
+        },
+        "raw/easyocr/shard-60.manifest.json": {
+          "bytes": 432,
+          "sha256": "796880663ce0b35441277ad808f08bd711718a98f0b7cabaca4240b98e701a91"
+        },
+        "raw/easyocr/shard-61.jsonl": {
+          "bytes": 802925,
+          "sha256": "574cc9cb51dff1582987ab3fa26388a2c8f78cc3ef12a30f00a960d0c3152bba"
+        },
+        "raw/easyocr/shard-61.manifest.json": {
+          "bytes": 432,
+          "sha256": "39179535af61e084df581349d46baf48b833ebc2a254ddb6cf07a015de23eda0"
+        },
+        "raw/easyocr/shard-62.jsonl": {
+          "bytes": 748961,
+          "sha256": "a2cd47cc2a2a9c3f8ab01dcaef7a0aa9fb0935ef685fe0d75b4dfe14603c9ede"
+        },
+        "raw/easyocr/shard-62.manifest.json": {
+          "bytes": 432,
+          "sha256": "88e4e27e672ea4c686ae536fdf2bbcfbfa0b1f499e27954bb6ec82d30cc6c215"
+        },
+        "raw/easyocr/shard-63.jsonl": {
+          "bytes": 894286,
+          "sha256": "9f0e7d2437c90d8ccd99be1bef2d3941267d7b120783c58504e861ef37f1b738"
+        },
+        "raw/easyocr/shard-63.manifest.json": {
+          "bytes": 432,
+          "sha256": "f520f4597310872c5774850f81f1037336a50c94fe1f93fd110f3918ab260fe6"
+        },
+        "raw/easyocr/shard-64.jsonl": {
+          "bytes": 866102,
+          "sha256": "eba4c2485e6e5a9234db594077a2cbd8510a4445df73b49df4662a1c10301c29"
+        },
+        "raw/easyocr/shard-64.manifest.json": {
+          "bytes": 432,
+          "sha256": "ea01174690b31f1f94e51f0d257174054055b4928e411c370158e5b5e0e00c46"
+        },
+        "raw/easyocr/shard-65.jsonl": {
+          "bytes": 765149,
+          "sha256": "90521fd74106f75ca78de880251a0ac83a76da577fdaa54ccc65ba92ed7a80e8"
+        },
+        "raw/easyocr/shard-65.manifest.json": {
+          "bytes": 432,
+          "sha256": "081180b45e174e3fcc54e99eb4058eefc7f8d910195fb9bb7b4fdf77370cdeb7"
+        },
+        "raw/easyocr/shard-66.jsonl": {
+          "bytes": 760885,
+          "sha256": "1c9b7b29db263e87564157653d79f148e5c1de90dc103ad0e40b875db431f61a"
+        },
+        "raw/easyocr/shard-66.manifest.json": {
+          "bytes": 432,
+          "sha256": "ffcc9278919d8da713867313f3c5d3086c48d77f9a716dde844af337a2ccb0c1"
+        },
+        "raw/easyocr/shard-67.jsonl": {
+          "bytes": 645343,
+          "sha256": "1bc3bda82fc6165578c1ffab2c18de5b7c183aac0c7f060470fcbac90bb1b8e3"
+        },
+        "raw/easyocr/shard-67.manifest.json": {
+          "bytes": 432,
+          "sha256": "4946fc63247036786ea4d3d8be1036f767574a600f977ca6aaf0754228f98a4c"
+        },
+        "raw/easyocr/shard-68.jsonl": {
+          "bytes": 801880,
+          "sha256": "21a229deb83024026cf4de5483590c5344e839c6650d10113ec0b919e83847e0"
+        },
+        "raw/easyocr/shard-68.manifest.json": {
+          "bytes": 432,
+          "sha256": "255970df9bd5eaf80802653a2500a006c4b4969a042fb35f6fb6c4b85ec4c26e"
+        },
+        "raw/easyocr/shard-69.jsonl": {
+          "bytes": 835766,
+          "sha256": "011fec1fb56f2c6afe68a5fb919889d4c40db87d27bb40297b63ea88e6dfddd9"
+        },
+        "raw/easyocr/shard-69.manifest.json": {
+          "bytes": 432,
+          "sha256": "57026a33e5cdeaeffe7925e2d6eb6313f70c3259cf8da8fe1221376212f73522"
+        },
+        "raw/easyocr/shard-7.jsonl": {
+          "bytes": 815872,
+          "sha256": "a494f1db9c2befccbe4bc53c62f94ccd2fd1522526578e07e011c146b91d5383"
+        },
+        "raw/easyocr/shard-7.manifest.json": {
+          "bytes": 430,
+          "sha256": "4b423daeb2084ef7b0f33cab584de9925217d1e9643d8654d0643f8d710a67bf"
+        },
+        "raw/easyocr/shard-70.jsonl": {
+          "bytes": 633166,
+          "sha256": "772d3360126970bf98ce8217bbda59b519533de5ca6fe9cd75f77050adb94996"
+        },
+        "raw/easyocr/shard-70.manifest.json": {
+          "bytes": 432,
+          "sha256": "40a3ac5f765117286d2f4466765d9b8c5954e7909661ded0caea80ff00bb7444"
+        },
+        "raw/easyocr/shard-71.jsonl": {
+          "bytes": 724077,
+          "sha256": "c91728418042e87aa255d7f3b42c647d2a4d9dc6302c6ef2861c522b38250e43"
+        },
+        "raw/easyocr/shard-71.manifest.json": {
+          "bytes": 432,
+          "sha256": "9bdf257965d90fe8809a3bf378c284804d86b92bb96cb4e433e7fa496312120b"
+        },
+        "raw/easyocr/shard-72.jsonl": {
+          "bytes": 684182,
+          "sha256": "12382341ac99a86f4df8bc37a2dd1dc13f61fd7e55749623f4a44276688ecf3b"
+        },
+        "raw/easyocr/shard-72.manifest.json": {
+          "bytes": 432,
+          "sha256": "b1588705876fb688882ea682c2e7757a31bcfc4d182e58893a1a5b1eb3f556f0"
+        },
+        "raw/easyocr/shard-73.jsonl": {
+          "bytes": 629696,
+          "sha256": "94ec37a75730fc4081a14d5a2436f0b392114feb3e91a8143fcce892cd599d67"
+        },
+        "raw/easyocr/shard-73.manifest.json": {
+          "bytes": 432,
+          "sha256": "e85ef579becddbab27fa3168afb482cea202d470de839abb5615118e274945ac"
+        },
+        "raw/easyocr/shard-74.jsonl": {
+          "bytes": 546766,
+          "sha256": "7a809c06744c58c59b4acb3c9c33570fe98a3ce669e12120ef5abe3ed2e370c0"
+        },
+        "raw/easyocr/shard-74.manifest.json": {
+          "bytes": 432,
+          "sha256": "c269508483cc816003ebcf7c53f7328149dd57321cbdaea7e726da7081c01d8a"
+        },
+        "raw/easyocr/shard-75.jsonl": {
+          "bytes": 761815,
+          "sha256": "529b1d7981d18bdac33ca53832b9e833624a6293148dd0b24fcf37945629cdb0"
+        },
+        "raw/easyocr/shard-75.manifest.json": {
+          "bytes": 432,
+          "sha256": "c57eb281073a4192f7b57922ed11026a3463fe54eb5c3d83599cd853ed226132"
+        },
+        "raw/easyocr/shard-76.jsonl": {
+          "bytes": 812317,
+          "sha256": "d9969496b3eb7cb2a7ed4e963160152f27e1cf08bc6b2d0a0831d989e67013a5"
+        },
+        "raw/easyocr/shard-76.manifest.json": {
+          "bytes": 432,
+          "sha256": "9b9f44fc2abf0e505778e27862ea263e1bdb4bd19d6f3f9e04e659e7a3603bbf"
+        },
+        "raw/easyocr/shard-77.jsonl": {
+          "bytes": 645900,
+          "sha256": "19e8b9312655cc2f41db85f6b4a68a50bfd784d9d0a6ee2f7245b37ca50e3698"
+        },
+        "raw/easyocr/shard-77.manifest.json": {
+          "bytes": 432,
+          "sha256": "ed9bf6f179b105b9c852a5e1f7e0872ecc15a91cd65ab4d74636e10e410683c8"
+        },
+        "raw/easyocr/shard-78.jsonl": {
+          "bytes": 652303,
+          "sha256": "a7d32c3b529fb5415560eeb6d981fdfc9c7a36d1ff7930df46f06b912198872f"
+        },
+        "raw/easyocr/shard-78.manifest.json": {
+          "bytes": 432,
+          "sha256": "4002924862a0db56e10ef297b54a97e8ac311eebe091e45f73a250e01c7c5748"
+        },
+        "raw/easyocr/shard-79.jsonl": {
+          "bytes": 673239,
+          "sha256": "653fec07a8f4566545bb38945d44a0c91529d90ac52f1fff9c5f41a6510d9bb6"
+        },
+        "raw/easyocr/shard-79.manifest.json": {
+          "bytes": 432,
+          "sha256": "24ec112b402caef8889d9ee12e33d2f22be3a3b46788283b1a2d2ddfdabbd51d"
+        },
+        "raw/easyocr/shard-8.jsonl": {
+          "bytes": 720784,
+          "sha256": "ab39fce76ef98a57d5fd6f4da94f9854eb20de47cf816c262d435a9237231f4f"
+        },
+        "raw/easyocr/shard-8.manifest.json": {
+          "bytes": 430,
+          "sha256": "ee1f6e5a06ec2b9892f13007ebd284ed3e34ad49941bbcca39c11d6ae57df573"
+        },
+        "raw/easyocr/shard-80.jsonl": {
+          "bytes": 561427,
+          "sha256": "16e4d19531915a2ddd56ed701283cde77f933318f42ea5d2916e7d3ccb39fa3b"
+        },
+        "raw/easyocr/shard-80.manifest.json": {
+          "bytes": 432,
+          "sha256": "7ba01d4cce3903445f334b3b51744dda11f4b02472bf2f9562ea36f8d12b16de"
+        },
+        "raw/easyocr/shard-81.jsonl": {
+          "bytes": 604236,
+          "sha256": "07a43af2c0310b16ed9d337da7387bdb7ce93a79ffec7a8c1ba831175f007ca2"
+        },
+        "raw/easyocr/shard-81.manifest.json": {
+          "bytes": 432,
+          "sha256": "428f76662682f334f86ed1eecd3088721dff862a5d651795a96337256f2e2ff7"
+        },
+        "raw/easyocr/shard-82.jsonl": {
+          "bytes": 653051,
+          "sha256": "f195af7e3356d459a643a54f1afca3c2dfca3d3fe16abdea742d8f27e45f2de9"
+        },
+        "raw/easyocr/shard-82.manifest.json": {
+          "bytes": 432,
+          "sha256": "d63005ff271699352a5abfeb32020798963a123cefc7010b43692f5184168013"
+        },
+        "raw/easyocr/shard-83.jsonl": {
+          "bytes": 507012,
+          "sha256": "d1bc87af53bf7d0248af140aced74cfddc7a1785e7c6b4aaababfee5e43852f8"
+        },
+        "raw/easyocr/shard-83.manifest.json": {
+          "bytes": 432,
+          "sha256": "80051b96266f55e3e5d251c8c085e02020c195ef519b2c5bc1a95cd15523bec1"
+        },
+        "raw/easyocr/shard-84.jsonl": {
+          "bytes": 569016,
+          "sha256": "8fff7f73e2e5f62611ec20b83ec2f22bb15d55b7c765af2956282616e4279f68"
+        },
+        "raw/easyocr/shard-84.manifest.json": {
+          "bytes": 432,
+          "sha256": "28532c96b87fb8da059732d0f046a166c4d1d6640dd655620d4e68b0abb87fbc"
+        },
+        "raw/easyocr/shard-85.jsonl": {
+          "bytes": 575021,
+          "sha256": "b0630cd8f09304d6cba717d2b1a03d11f61d4484ef4bbc0df10c9a24d5301e7b"
+        },
+        "raw/easyocr/shard-85.manifest.json": {
+          "bytes": 432,
+          "sha256": "b80b7988600442bd52c3efa9751c9f944f3541945d703b0b70ea9878d38ac65d"
+        },
+        "raw/easyocr/shard-86.jsonl": {
+          "bytes": 725289,
+          "sha256": "85ca6cd90c1c775ce085a9886e48e7f23ea9063bbc01b81f314528d4ed6c8362"
+        },
+        "raw/easyocr/shard-86.manifest.json": {
+          "bytes": 432,
+          "sha256": "2329018f4b3b600f5810ab524c2ae10201fbcb476df9d6f19850e62f58d98e3c"
+        },
+        "raw/easyocr/shard-87.jsonl": {
+          "bytes": 613209,
+          "sha256": "dd9f75c56722c44297bc075bcffb5cf7a6a2ac699bdfabcd5bdf9f68b0244c80"
+        },
+        "raw/easyocr/shard-87.manifest.json": {
+          "bytes": 432,
+          "sha256": "7ec5aad3bf89d51ddfb8b0bfa62676c46f866d6fb83fb25aefdbe3e64e09da1f"
+        },
+        "raw/easyocr/shard-88.jsonl": {
+          "bytes": 780217,
+          "sha256": "09dc661a36456e17e6f9844e9fdc1e5a35026dd4a6b6cba22f087e6b56527364"
+        },
+        "raw/easyocr/shard-88.manifest.json": {
+          "bytes": 432,
+          "sha256": "48bbdaf30c4356507c2a08c88a1fd9b68fd63544b9a4e9cc1be3bf8e0d34051d"
+        },
+        "raw/easyocr/shard-89.jsonl": {
+          "bytes": 954586,
+          "sha256": "bc11b550b9b48f8ce5f7432136c236b0ec1347f7ba77073646bfbe7a93b67bc2"
+        },
+        "raw/easyocr/shard-89.manifest.json": {
+          "bytes": 432,
+          "sha256": "68230e5973b269b3b309337042a73af124c68fdb486a77a33a8764ea03dc3507"
+        },
+        "raw/easyocr/shard-9.jsonl": {
+          "bytes": 1141681,
+          "sha256": "9ecf09425cf8a354e6abd15470b270372c2a322ce01bdcbd3d2f5d88ee716a5b"
+        },
+        "raw/easyocr/shard-9.manifest.json": {
+          "bytes": 431,
+          "sha256": "3c590c85d3038862db1686c762a051f799dfe30838809658b6fa9fa9e654cd7e"
+        },
+        "raw/easyocr/shard-90.jsonl": {
+          "bytes": 756216,
+          "sha256": "b0db193d652fabe01b3e52d03d6799addca8460f159d0dcda699fabc15501d8d"
+        },
+        "raw/easyocr/shard-90.manifest.json": {
+          "bytes": 432,
+          "sha256": "da30194058bbb5c7e0a3d9e463717c1fbe4e7d7f6dc89105d863405bdedf8072"
+        },
+        "raw/easyocr/shard-91.jsonl": {
+          "bytes": 753800,
+          "sha256": "e422caaabaa27c2317bcc659a57ca2ae4715c4d1ca470ab85a936b2d2d21ae4d"
+        },
+        "raw/easyocr/shard-91.manifest.json": {
+          "bytes": 432,
+          "sha256": "d9f4dbff18171a2c981e56f3a3a63d0bc5cbfbde5d49ac350cce68e9b76963b9"
+        },
+        "raw/easyocr/shard-92.jsonl": {
+          "bytes": 769324,
+          "sha256": "24508403f5042e068ed72f97154d3e4b98a331d00d2e299e7e62458bd0973b93"
+        },
+        "raw/easyocr/shard-92.manifest.json": {
+          "bytes": 432,
+          "sha256": "437b9119a53d30ce6269069cea7b0b3c6ed0547d964ec6abd1cba43b59fad4a4"
+        },
+        "raw/easyocr/shard-93.jsonl": {
+          "bytes": 1107134,
+          "sha256": "663c253d98570135cc056cb3723d2710fb770f4f02b122c3459969ee63e8d5cf"
+        },
+        "raw/easyocr/shard-93.manifest.json": {
+          "bytes": 433,
+          "sha256": "12d4ac745d406587fce159f07f354c1b09f1b8c43951b42d0648dae54e7487f7"
+        },
+        "raw/easyocr/shard-94.jsonl": {
+          "bytes": 722314,
+          "sha256": "0d1bc13242919447c0630bd5389bcf73324fd287612ccd6fdcae1ba790d44faf"
+        },
+        "raw/easyocr/shard-94.manifest.json": {
+          "bytes": 432,
+          "sha256": "8fde93f595074b50c4320aefa1b717239a248c0ec75f5d0ef0ec1f5e460c64b7"
+        },
+        "raw/easyocr/shard-95.jsonl": {
+          "bytes": 730923,
+          "sha256": "946f474dc50b043a064f5ee6bea16f01796208bcc7c9cc02e3886bb7a33e537d"
+        },
+        "raw/easyocr/shard-95.manifest.json": {
+          "bytes": 432,
+          "sha256": "0121ffda5146ae91d82ccce7451c6569fca9b4c6eb357a2eb46e89c6b60a1b96"
+        }
+      },
+      "boxes": 431236,
+      "errors": 0,
+      "rows": 1581,
+      "total_bytes": 78693270
+    },
+    "rapidocr": {
+      "artifacts": {
+        "raw/rapidocr/shard-0.jsonl": {
+          "bytes": 5598883,
+          "sha256": "52ae4a2c85916c8713a9153d125138a1db662037bc328ff1d66359325ed8afa7"
+        },
+        "raw/rapidocr/shard-0.manifest.json": {
+          "bytes": 434,
+          "sha256": "e835ef75c913159ecb9b5bf97b4c445e9dd846761b3d3183ffe95efd2486c11a"
+        },
+        "raw/rapidocr/shard-1.jsonl": {
+          "bytes": 5791533,
+          "sha256": "94e0b46c2a975535defc9ecc1b4741b1f4b4bc2cada8ec1eebc16414399c3ffd"
+        },
+        "raw/rapidocr/shard-1.manifest.json": {
+          "bytes": 434,
+          "sha256": "0c691155c947fb85e911d6fac4642a24aeb49341597c467f3e6bd99fd9b26097"
+        },
+        "raw/rapidocr/shard-10.jsonl": {
+          "bytes": 5779359,
+          "sha256": "eb40837825fda394230bd4dd9d43ecdcc977427989e1f5127cc5c7170d303c08"
+        },
+        "raw/rapidocr/shard-10.manifest.json": {
+          "bytes": 436,
+          "sha256": "4c9cdd34fc552b0622a681ff33c298ba1c102871600b68c1657257933309e19a"
+        },
+        "raw/rapidocr/shard-11.jsonl": {
+          "bytes": 5485142,
+          "sha256": "51c0b4e51a3d68bc7dbe17e12ae2e182fac0e9fc67abe9256d702342ce126d06"
+        },
+        "raw/rapidocr/shard-11.manifest.json": {
+          "bytes": 436,
+          "sha256": "9f592ccb3329d81844b7781487acdeaca03ed4adcaf7427f65297a5f9d1b7854"
+        },
+        "raw/rapidocr/shard-2.jsonl": {
+          "bytes": 5661684,
+          "sha256": "0466c8f868494a99ca1147c5ad6d7f069d78bb097c2d54b21e2def09d9182c7c"
+        },
+        "raw/rapidocr/shard-2.manifest.json": {
+          "bytes": 434,
+          "sha256": "678e0596a1aca87c6fdf2e6282f41941cbf875f9d4e0e5813bca54324d497a36"
+        },
+        "raw/rapidocr/shard-3.jsonl": {
+          "bytes": 5829768,
+          "sha256": "7ee9793b5f9cf62b4f3332ea2812e34a3a152501cbe551529e5371730cc699d5"
+        },
+        "raw/rapidocr/shard-3.manifest.json": {
+          "bytes": 434,
+          "sha256": "a28f258ecea90147a73958bbfac4a2705c5a108ae1342c2031b3e6d301313ea6"
+        },
+        "raw/rapidocr/shard-4.jsonl": {
+          "bytes": 5548457,
+          "sha256": "745112cadeffda95b325930aa90c441745f6ee870003cbcd25a05e257c879c12"
+        },
+        "raw/rapidocr/shard-4.manifest.json": {
+          "bytes": 434,
+          "sha256": "4cb174d5932ca212fce56bee17b570143a1e2375fee78950e60ad5816163eef8"
+        },
+        "raw/rapidocr/shard-5.jsonl": {
+          "bytes": 5591473,
+          "sha256": "765b141fef3a5013efd98f5a7c3395a728e7a7ebbd4e8cdfc5b933c2a7e2b696"
+        },
+        "raw/rapidocr/shard-5.manifest.json": {
+          "bytes": 434,
+          "sha256": "e5f550d6d83a77d610d823f41e776041673b2afcd932bc72af2f4990c009ff5b"
+        },
+        "raw/rapidocr/shard-6.jsonl": {
+          "bytes": 6172468,
+          "sha256": "35ae4853571f63bbd38b98dda02e94000797a83ce538c2f4707bc7c26d7f9173"
+        },
+        "raw/rapidocr/shard-6.manifest.json": {
+          "bytes": 434,
+          "sha256": "aa163f6507e025f0fdef60b88f2ebb4a3e822f07f986f005a10ac953328d9645"
+        },
+        "raw/rapidocr/shard-7.jsonl": {
+          "bytes": 5898873,
+          "sha256": "9d37aca9e0d95d5f4e18b6c78bb30189c7e4d551f04d38c654f08f6dceaaf265"
+        },
+        "raw/rapidocr/shard-7.manifest.json": {
+          "bytes": 434,
+          "sha256": "db4cbf6b6df9984bc2e7a831c31be2bde9e7299e1618d65e0a5cbcaff3fcd0cc"
+        },
+        "raw/rapidocr/shard-8.jsonl": {
+          "bytes": 5883688,
+          "sha256": "5f295c5f65ffddadd1fa657d29e103be9d156a735cdc643d6da97db56ca6b6de"
+        },
+        "raw/rapidocr/shard-8.manifest.json": {
+          "bytes": 434,
+          "sha256": "d61e83b1fb25d037601e960984256d3b05e5be3f16abce9b4d1e9e2e608b15fb"
+        },
+        "raw/rapidocr/shard-9.jsonl": {
+          "bytes": 5990259,
+          "sha256": "4fb935cb754df1fa0cf72dd738cdaad91d40458096749460c94cdd42cf5a9eed"
+        },
+        "raw/rapidocr/shard-9.manifest.json": {
+          "bytes": 434,
+          "sha256": "93ed25d4731f531ed2538b30eca25af548db120bb5361041b5595426be0f17e0"
+        }
+      },
+      "boxes": 259694,
+      "errors": 0,
+      "rows": 1581,
+      "total_bytes": 69236799
+    }
+  },
+  "raw_contains_labels_or_instruction": false,
+  "schema_version": 1,
+  "status": "LOCKED_ORTH_RAW_OCR_COMPLETE"
+}
