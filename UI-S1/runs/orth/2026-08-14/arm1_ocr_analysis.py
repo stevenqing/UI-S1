@@ -1,5 +1,6 @@
 import json
 import math
+import multiprocessing as mp
 import os
 import re
 import sys
@@ -23,6 +24,12 @@ from mask_common import b3_correct, load_rows
 ENGINES = ("easyocr", "rapidocr")
 MIN_LENGTHS = (1, 2, 3, 4, 5)
 EDIT_THRESHOLDS = (0.5, 0.6, 0.7, 0.8, 0.9)
+SETTINGS = (
+    [("exact", length, None) for length in MIN_LENGTHS]
+    + [("normalized", length, None) for length in MIN_LENGTHS]
+    + [("edit", length, threshold) for length in MIN_LENGTHS for threshold in EDIT_THRESHOLDS]
+)
+_WORKER = {}
 
 
 def normalize_text(value):
@@ -169,6 +176,43 @@ def summarize(setting_rows):
         }
         for class_name in ("selected_correct", "recoverable", "zero_coverage")
     }
+
+
+def analyze_row(row_id):
+    row = _WORKER["rows"][row_id]
+    source = _WORKER["raw"][row_id]
+    meta = _WORKER["metadata"][row_id]
+    instruction = meta["instruction"]
+    prepared = prepare_boxes(source["boxes"], instruction)
+    output = []
+    for matcher, minimum_length, threshold in SETTINGS:
+        matched_box = select_prepared(prepared, matcher, minimum_length, threshold)
+        matching_boxes = sum(
+            select_prepared([value], matcher, minimum_length, threshold) is not None
+            for value in prepared
+        )
+        correct = bool(
+            matched_box is not None
+            and point_in_bbox(box_center(matched_box["polygon"]), row["target_bbox"])
+        )
+        output.append({
+            "schema_version": 1,
+            "engine": _WORKER["engine"],
+            "row_id": row_id,
+            "matcher": matcher,
+            "minimum_length": minimum_length,
+            "edit_threshold": threshold,
+            "row_class": _WORKER["classes"][row_id],
+            "ui_type": meta["ui_type"],
+            "matched": matched_box is not None,
+            "matching_boxes": matching_boxes,
+            "selected_box_order": matched_box["engine_order"] if matched_box else None,
+            "selected_text": matched_box["text"] if matched_box else None,
+            "selected_center": list(box_center(matched_box["polygon"])) if matched_box else None,
+            "correct": correct,
+            "pool_error": _WORKER["classes"][row_id] != "selected_correct",
+        })
+    return output
     by_type = {}
     for ui_type in ("text", "icon"):
         selected = [row for row in setting_rows if row["ui_type"] == ui_type]
@@ -218,47 +262,48 @@ def main():
     summaries = {}
     for engine in ENGINES:
         raw = load_raw(engine)
-        prepared = {
-            row_id: prepare_boxes(raw[row_id]["boxes"], metadata[row_id]["instruction"])
-            for row_id in sorted(rows)
-        }
         engine_summaries = {}
-        settings = [("exact", length, None) for length in MIN_LENGTHS]
-        settings += [("normalized", length, None) for length in MIN_LENGTHS]
-        settings += [("edit", length, threshold) for length in MIN_LENGTHS for threshold in EDIT_THRESHOLDS]
-        for matcher, minimum_length, threshold in settings:
-            values = []
-            for row_id in sorted(rows):
-                source = raw[row_id]
-                instruction = metadata[row_id]["instruction"]
-                matched_box = select_prepared(prepared[row_id], matcher, minimum_length, threshold)
-                matching_boxes = sum(
-                    select_prepared([value], matcher, minimum_length, threshold) is not None
-                    for value in prepared[row_id]
-                )
-                correct = bool(matched_box is not None and point_in_bbox(box_center(matched_box["polygon"]), rows[row_id]["target_bbox"]))
-                value = {
-                    "schema_version": 1,
-                    "engine": engine,
-                    "row_id": row_id,
-                    "matcher": matcher,
-                    "minimum_length": minimum_length,
-                    "edit_threshold": threshold,
-                    "row_class": classes[row_id],
-                    "ui_type": metadata[row_id]["ui_type"],
-                    "matched": matched_box is not None,
-                    "matching_boxes": matching_boxes,
-                    "selected_box_order": matched_box["engine_order"] if matched_box else None,
-                    "selected_text": matched_box["text"] if matched_box else None,
-                    "selected_center": list(box_center(matched_box["polygon"])) if matched_box else None,
-                    "correct": correct,
-                    "pool_error": classes[row_id] != "selected_correct",
-                }
-                values.append(value)
+        _WORKER.clear()
+        _WORKER.update({
+            "engine": engine, "raw": raw, "rows": rows,
+            "metadata": metadata, "classes": classes,
+        })
+        with mp.get_context("fork").Pool(min(48, os.cpu_count() or 1)) as pool:
+            nested = pool.map(analyze_row, sorted(rows), chunksize=2)
+        engine_rows = [value for row_values in nested for value in row_values]
+        by_setting = defaultdict(list)
+        for value in engine_rows:
+            setting_id = f"{value['matcher']}/min{value['minimum_length']}" + (
+                f"/threshold{value['edit_threshold']:.1f}"
+                if value["edit_threshold"] is not None else ""
+            )
+            by_setting[setting_id].append(value)
+        for matcher, minimum_length, threshold in SETTINGS:
             setting_id = f"{matcher}/min{minimum_length}" + (f"/threshold{threshold:.1f}" if threshold is not None else "")
-            engine_summaries[setting_id] = summarize(values)
-            all_setting_rows.extend(values)
+            engine_summaries[setting_id] = summarize(by_setting[setting_id])
+        all_setting_rows.extend(engine_rows)
         summaries[engine] = engine_summaries
+    engine_overlap = {}
+    overlap_rows = defaultdict(dict)
+    for value in all_setting_rows:
+        setting_id = f"{value['matcher']}/min{value['minimum_length']}" + (
+            f"/threshold{value['edit_threshold']:.1f}"
+            if value["edit_threshold"] is not None else ""
+        )
+        overlap_rows[(setting_id, value["row_id"])][value["engine"]] = value["matched"]
+    for matcher, minimum_length, threshold in SETTINGS:
+        setting_id = f"{matcher}/min{minimum_length}" + (f"/threshold{threshold:.1f}" if threshold is not None else "")
+        values = [(row_id, overlap_rows[(setting_id, row_id)]) for row_id in sorted(rows)]
+        engine_overlap[setting_id] = {
+            "union_matched": sum(any(flags.values()) for _, flags in values),
+            "intersection_matched": sum(all(flags.get(engine, False) for engine in ENGINES) for _, flags in values),
+            "union_match_rate": sum(any(flags.values()) for _, flags in values) / len(values),
+            "intersection_match_rate": sum(all(flags.get(engine, False) for engine in ENGINES) for _, flags in values) / len(values),
+            "union_by_class": {
+                class_name: sum(any(flags.values()) for row_id, flags in values if classes[row_id] == class_name)
+                for class_name in ("selected_correct", "recoverable", "zero_coverage")
+            },
+        }
     temporary = ROWS_PATH.with_suffix(ROWS_PATH.suffix + ".tmp")
     with temporary.open("w", buffering=1) as handle:
         for row in all_setting_rows:
@@ -268,6 +313,7 @@ def main():
         "schema_version": 1,
         "status": "PASS_ORTH_ARM1_SCOPING_COMPLETE",
         "engines": summaries,
+        "engine_overlap": engine_overlap,
         "row_class_counts": dict(sorted(Counter(classes.values()).items())),
         "settings_per_engine": len(next(iter(summaries.values()))),
         "rows_jsonl": ROWS_PATH.relative_to(ROOT).as_posix(),
