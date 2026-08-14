@@ -19,7 +19,8 @@
 | Pre-GPU falsification | SPLIT | $\Delta_2$ 6.45 pp，但 geometry failure 26.79% 触发 Z-K6；有效正例 76 触发 Z-K7；未执行模型 forward |
 | Pre-GPU proposer | MASK | 理想三票 $N_{\mathrm{eff}}$ calibration 最大 +0.538 pp，低于 0.70 pp MDE；M-K1；未执行模型 forward |
 | Closure diagnostic | CEIL | recoverable subset：M2W cheap AUROC 0.688 `[0.665,0.709]`，C-D2；SSPro 0.540 `[0.501,0.583]`，C-D1；只授权另立 M2W spec |
-| Scoping only | ORTH | 两CPU OCR在SSPro recoverable/zero-coverage有覆盖且 error $\kappa$ 约0.10–0.20；信号限于text targets；不进论文，只建议另立text-only confirmatory spec |
+| Scoping only | ORTH | 两CPU OCR在SSPro recoverable/zero-coverage有覆盖且 error $\kappa$ 约0.10–0.20；信号限于text targets；全标签方向选择使后续同数据研究只能是 post-selection validation |
+| Post-selection negative | OTEXT | EasyOCR nested Stage-0 双基线最小增益 +0.064 pp，低于 0.70 pp O-G1；RapidOCR 0；O-K1，未授权 Stage 1 |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -105,7 +106,8 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/split/2026-08-14/` | STOPPED PRE-GPU | Z-G1 pass；Z-K6 geometry 与 Z-K7 low-$n$；all GPU endpoints not run |
 | `runs/mask/2026-08-14/` | STOPPED PRE-GPU | M-G1 fail；理想 density/F1 gains +0.538/+0.219 pp；M-K1；all GPU endpoints not run |
 | `runs/ceil/2026-08-14/` | COMPLETE | M2W C-D2、SSPro C-D1；overall `OPEN_NEW_SPEC_C_D2`；Arm A post-hoc且远端渐近弱识别 |
-| `runs/orth/2026-08-14/` | COMPLETE SCOPING | OCR text-only confirmatory design recommended；DOM historical data currently missing；all results non-paper exploratory |
+| `runs/orth/2026-08-14/` | COMPLETE SCOPING | OCR text-target follow-up scoped；DOM historical data currently missing；all results non-paper exploratory |
+| `runs/otext/2026-08-14/` | STOPPED STAGE 0 | `POST_SELECTION_VALIDATION`；EasyOCR O-G1 fail；`OTEXT_STOPPED_O_K1_STAGE0`；Stage 1 not run |
 
 ## 8. Reproducibility boundaries
 
@@ -125,4 +127,5 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - SPLIT found 6.45 pp two-mode candidate headroom, but the frozen matched-window geometry failed on 26.79% of gated rows and left 76 positives. No probe forward was run, so there is no evidence that falsification-crop confidence supplies an orthogonal channel.
 - MASK closed the proposer variant before GPU: all 4,095 C-uni source subsets predict at most +0.538 pp under ideal new-vote independence, below the 0.70 pp MDE. This benchmark-local monotone calibration does not restore the rejected universal $N_{\mathrm{eff}}$ law or support consensus occlusion as an orthogonal proposer.
 - CEIL finds benchmark-specific conditional ranking signal rather than a shared rule: Mind2Web passes C-D2 while ScreenSpot-Pro passes C-D1. This authorizes only a separately preregistered Mind2Web full-candidate reweighting study. Arm A's large Mind2Web parametric $\Delta_\infty$ values extrapolate far beyond support and are weakly identified sensitivity outputs; finite three-vote isotonic gains are much smaller.
-- ORTH is not a paper result. Its wide-grid CPU OCR scoping suggests a narrow ScreenSpot-Pro text-target confirmatory study: normalized/edit matching reaches recoverable and zero-coverage rows, error $\kappa$ is about 0.10–0.20, and icon accuracy is below 1.4%. Full Mind2Web DOM/AX evaluation remains blocked until the historically audited official dataset is restored and hashed.
+- ORTH is not a paper result. Its wide-grid CPU OCR scoping used all 1,581 ScreenSpot-Pro labels to choose the text-target direction, so OTEXT on the same rows is post-selection validation rather than confirmation. Full Mind2Web DOM/AX evaluation remains blocked until the historically audited official dataset is restored and hashed.
+- OTEXT independently regenerated EasyOCR and RapidOCR, then stopped at the preregistered Stage-0 gate: EasyOCR's nested minimum gain over both majority and dev-selection was +0.064 pp versus the 0.70 pp MDE, and RapidOCR's was 0. Stage 1 was not authorized; a confirmatory method claim requires new untouched data.

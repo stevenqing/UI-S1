@@ -1,0 +1,43 @@
+{
+  "changes_existing_statuses": false,
+  "confirmatory_claim_allowed": false,
+  "endpoints": {
+    "O_P1": "NOT_RUN_O_K1",
+    "O_P2": "NOT_RUN_O_K1",
+    "O_P3": "NOT_RUN_O_K1",
+    "O_P4": "NOT_RUN_O_K1",
+    "O_P5": "NOT_RUN_O_K1"
+  },
+  "evidence_status": "POST_SELECTION_VALIDATION",
+  "input_hashes": {
+    "STAGE0.json": "941d957f418e38649d9e98d611aaf0686f1ff8ca3f7c0ade614d0ff700857681"
+  },
+  "kill_conditions": {
+    "O_K1": true,
+    "O_K7": true
+  },
+  "next_action": "CLOSE_OR_REDESIGN_WITH_NEW_SPEC_NO_RETRY",
+  "outcome": "OTEXT_STOPPED_O_K1_STAGE0",
+  "paper_method_claim_allowed": false,
+  "schema_version": 1,
+  "stage0_O_G1": {
+    "easyocr": {
+      "gains": {
+        "dev_selection": 0.0006386124618917165,
+        "majority": 0.0006386124618917165
+      },
+      "objective": 0.0006386124618917165,
+      "pass_O_G1": false
+    },
+    "rapidocr": {
+      "gains": {
+        "dev_selection": 0.0,
+        "majority": 0.0
+      },
+      "objective": 0.0,
+      "pass_O_G1": false
+    }
+  },
+  "stage1_run": false,
+  "status": "COMPLETE"
+}

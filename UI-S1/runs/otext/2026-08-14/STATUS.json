@@ -1,0 +1,22 @@
+{
+  "adjudication_sha256": "8d5f3341033039e884b41e3f0e2fe0f59c8f98dcfd8d8073bd6ab64b1b7f2dd3",
+  "changes_existing_statuses": false,
+  "confirmatory_claim_allowed": false,
+  "date": "2026-08-14",
+  "evidence_status": "POST_SELECTION_VALIDATION",
+  "gpu_used": false,
+  "next_action": "CLOSE_OR_REDESIGN_WITH_NEW_SPEC_NO_RETRY",
+  "outcome": "OTEXT_STOPPED_O_K1_STAGE0",
+  "report": "runs/otext/2026-08-14/REPORT.md",
+  "report_sha256": "a315dcc22e693df3061f5e8801c3dc79f6d40ec95a9dad6e6499a4e604a7ffd7",
+  "retention": {
+    "artifact_count": 324,
+    "manifest": "/scratch/workspaceblobstore/otext/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "4d28bac63d5d8c766699f5b80dba141ac9769f53ab01c744aba3613307c93781",
+    "total_bytes": 172626007,
+    "verified": true
+  },
+  "round": "otext",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
