@@ -11,7 +11,7 @@ from scipy.stats import norm
 from sklearn.isotonic import IsotonicRegression
 
 from mask_common import (
-    b3_correct, empty_mask, failure_matrix, generalized_neff,
+    b3_correct, cohen_kappa, empty_mask, generalized_neff,
     informative_mask_pixels, load_rows, mode_center, ranked_modes,
     source_reliability,
 )
@@ -121,6 +121,23 @@ def subset_indices(mask):
     return tuple(index for index in range(12) if mask & (1 << index))
 
 
+def full_failure_cache(rows, row_ids):
+    failures = np.asarray([
+        [not candidate["correct"] for candidate in rows[row_id]["candidates"]]
+        for row_id in row_ids
+    ], dtype=np.bool_)
+    matrix = np.eye(12, dtype=np.float64)
+    undefined = np.zeros((12, 12), dtype=np.bool_)
+    for left in range(12):
+        for right in range(left + 1, 12):
+            value = cohen_kappa(failures[:, left], failures[:, right])
+            if value is None:
+                value = 0.0
+                undefined[left, right] = undefined[right, left] = True
+            matrix[left, right] = matrix[right, left] = value
+    return matrix, undefined
+
+
 def isotonic_report(x_values, y_values, baseline_x, target_x):
     grouped = defaultdict(list)
     for x_value, y_value in zip(x_values, y_values):
@@ -157,10 +174,15 @@ def neff_calibration(rows, config):
         test = [row_id for row_id in row_ids if rows[row_id]["fold"] == fold]
         fold_sizes[fold] = len(test)
         reliability = source_reliability(rows, development)
+        full_matrix, full_undefined = full_failure_cache(rows, development)
         source_order = [candidate.source for candidate in next(iter(rows.values()))["gran_candidates"]]
         for offset, mask in enumerate(masks):
             indices = subset_indices(mask)
-            matrix, undefined = failure_matrix(rows, development, indices)
+            index_array = np.asarray(indices, dtype=np.int64)
+            matrix = full_matrix[np.ix_(index_array, index_array)]
+            undefined = int(np.triu(
+                full_undefined[np.ix_(index_array, index_array)], k=1
+            ).sum())
             neff_by_fold[fold, offset] = generalized_neff(matrix)
             undefined_by_fold[fold, offset] = undefined
             selected_source = min(indices, key=lambda index: (-reliability[source_order[index]], index))
