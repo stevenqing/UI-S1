@@ -1,0 +1,40 @@
+{
+  "Delta2": 0.06451612903225806,
+  "Z_G1_pass": true,
+  "adjudication": "runs/split/2026-08-14/SPLIT_ADJUDICATION.json",
+  "adjudication_sha256": "0615be40d345e45d694cc98794fa83a5978ef04e58f90a7537c2d1918b5e4318",
+  "balanced_subset_created": false,
+  "date": "2026-08-14",
+  "exploratory_only": true,
+  "gate_prevalence": 0.7507906388361796,
+  "geometry_failure_rate": 0.2679022746419545,
+  "gpu_authorization_created": false,
+  "kill_conditions": {
+    "Z_K1": false,
+    "Z_K2": null,
+    "Z_K3": null,
+    "Z_K4": null,
+    "Z_K5": null,
+    "Z_K6": true,
+    "Z_K7": true
+  },
+  "model_forward_count": 0,
+  "next_action": "CLOSE_SPLIT_NO_GPU_DO_NOT_RESCUE_GEOMETRY_POST_HOC",
+  "outcome": "SPLIT_STOPPED_PRE_GPU_Z_K6_GEOMETRY_AND_Z_K7_LOW_N",
+  "positive_rows_after_geometry": 76,
+  "positive_rows_before_geometry": 102,
+  "retention": {
+    "artifact_count": 16,
+    "backup_root": "/scratch/workspaceblobstore/split/2026-08-14",
+    "manifest": "/scratch/workspaceblobstore/split/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_authoritative": true,
+    "manifest_sha256": "5bc619ae2626675f9926e37a6ce39b222bcc3cdbd0a0e874412b03dc3fe1d689",
+    "model_weights_copied": false,
+    "total_bytes": 5850378,
+    "upstream_inputs_copied": false,
+    "verified": true
+  },
+  "round": "split",
+  "schema_version": 1,
+  "status": "COMPLETE_PRE_GPU_STOP"
+}
