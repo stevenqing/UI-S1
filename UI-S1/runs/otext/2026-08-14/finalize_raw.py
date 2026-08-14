@@ -16,7 +16,7 @@ def main():
     if OUTPUT_PATH.exists():
         raise FileExistsError(OUTPUT_PATH)
     engines = {}; row_sets = {}
-    for engine, shards in (("easyocr", 96), ("rapidocr", 12)):
+    for engine, shards in (("easyocr", 96), ("rapidocr", 48)):
         artifacts = {}; row_ids = []; boxes = errors = 0
         for shard in range(shards):
             path = RAW_ROOT / engine / f"shard-{shard}.jsonl"

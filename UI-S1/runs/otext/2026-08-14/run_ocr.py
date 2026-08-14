@@ -41,7 +41,7 @@ def main():
     parser.add_argument("--shard-index", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    expected_shards = 96 if args.engine == "easyocr" else 12
+    expected_shards = 96 if args.engine == "easyocr" else 48
     if args.num_shards != expected_shards or not 0 <= args.shard_index < expected_shards:
         raise ValueError(f"OTEXT requires {expected_shards} shards for {args.engine}")
     manifest_path = args.output.with_suffix(".manifest.json")

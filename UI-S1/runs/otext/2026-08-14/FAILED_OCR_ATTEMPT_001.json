@@ -1,0 +1,69 @@
+{
+  "artifacts": {
+    "shard-0.jsonl.tmp": {
+      "bytes": 1755662,
+      "rows": 42,
+      "sha256": "2edc3143a23c7abfa1b727f37144f486ecde173174dfdccb72e3379366b19951"
+    },
+    "shard-1.jsonl.tmp": {
+      "bytes": 2044270,
+      "rows": 44,
+      "sha256": "42bc8e5ad68f2a5b09e2ef0bdc89a28f5fe6c4b11136dfa28dcd278b39632fd9"
+    },
+    "shard-10.jsonl.tmp": {
+      "bytes": 1877483,
+      "rows": 43,
+      "sha256": "b9585b847d7aa2bbe4d6c592aedb32281f7024f4bd7a1f0757d52a5bdf5ae3ba"
+    },
+    "shard-11.jsonl.tmp": {
+      "bytes": 1687814,
+      "rows": 41,
+      "sha256": "9bdc05836767ae54a23aa4d1ce5c31d40c1e950524575989d39c1d4c75a0e3f3"
+    },
+    "shard-2.jsonl.tmp": {
+      "bytes": 1716220,
+      "rows": 40,
+      "sha256": "7b197d4e12f6963bee4897961840118f9dbc3b0e0083478523a37135ab8c8e9d"
+    },
+    "shard-3.jsonl.tmp": {
+      "bytes": 2320482,
+      "rows": 45,
+      "sha256": "253c0173ad4e2161df78500e36ca37c6cb95920447ab55434e2cf8dc8fc2ddf5"
+    },
+    "shard-4.jsonl.tmp": {
+      "bytes": 2157865,
+      "rows": 45,
+      "sha256": "e84cc96081810ed0f0e80b5116afa7c924c84858cfd86108f7704d3eabb968fe"
+    },
+    "shard-5.jsonl.tmp": {
+      "bytes": 1873506,
+      "rows": 43,
+      "sha256": "27e0bb89d40d5892ed3f52fd063779f351306374c7ed2277623834db870a7011"
+    },
+    "shard-6.jsonl.tmp": {
+      "bytes": 2215428,
+      "rows": 44,
+      "sha256": "40d23c46002ff0464443795473b5f9865228e56b4ad2673f5e1a0af505ede93c"
+    },
+    "shard-7.jsonl.tmp": {
+      "bytes": 2245947,
+      "rows": 47,
+      "sha256": "346eeb8218a2851f3f9b86ce92e9dd4fd2b62803847afd056bdee2fad22d3a64"
+    },
+    "shard-8.jsonl.tmp": {
+      "bytes": 2212924,
+      "rows": 48,
+      "sha256": "e3e097d9c8f08e52ef4aca108eb218dc8f804799fb5dd9e710d461002d5d9b1d"
+    },
+    "shard-9.jsonl.tmp": {
+      "bytes": 1926614,
+      "rows": 42,
+      "sha256": "aff92ca88be6f128cda7434f2cc3d2296bbff860af2d20055171e55e888580b7"
+    }
+  },
+  "formal_manifests_written": false,
+  "partial_rows": 524,
+  "reason": "rapidocr_12_shards_throughput_insufficient",
+  "schema_version": 1,
+  "status": "FAILED_ATTEMPT_NO_FORMAL_LANE_OUTPUT"
+}
