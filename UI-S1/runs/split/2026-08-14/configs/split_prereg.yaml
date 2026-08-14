@@ -1,0 +1,277 @@
+schema_version: 1
+round: split
+date: 2026-08-14
+status: FROZEN_BEFORE_ZERO_GPU_GATE_AND_ANY_PROBE_FORWARD
+canonical_spec:
+  path: runs/split/2026-08-14/SPEC.md
+  sha256: c5942583241c5745ea724cd4fc7058cc1cc30dcddba14cd6dd9f6e2e723529c9
+scope:
+  type: exploratory_pilot
+  current_paper_main_table: prohibited
+  deployable_method: false
+  confirmation_claim: false
+  untouched_confirmation_set_defined: false
+  changes_F1: false
+  changes_Q1: false
+  changes_TRIVUS_NOT_PROMOTED: false
+  changes_VUS_SR: false
+  benchmark: screenspot_pro
+  mind2web_excluded: true
+  mind2web_exclusion_reason: GRAN_M2W_tau_grid_triggered_G_K6
+x2_relation:
+  X2_status: permanently_cancelled
+  X2_objective: maximize_containment_confirmatory_crop
+  SPLIT_objective: minimize_containment_falsification_crop
+  X2_revival_claim: prohibited
+literature_boundary:
+  prior_observation_uses:
+    - AutoFocus_token_perplexity_spatial_field
+    - UI_Zoomer_spatial_consensus_plus_token_confidence_gate
+  allowed_novelty: confidence_observed_under_falsification_crop
+  generic_confidence_novelty_claim: prohibited
+compute:
+  zero_gpu_gate_required_before_gpu: true
+  gpu_authorization_before_Z_G1: prohibited
+  gpu_authorization_type: one_time_nonce_bound_to_implementation_commit_and_subset_manifest
+  available_gpus_maximum: 8
+  protected_process_must_not_be_signaled_or_reprioritized: true
+upstream:
+  gran_tau_source:
+    path: runs/gran/2026-08-14/TAU_SWEEP.json
+    sha256: 1e409692652f981698530f41d578c76236f9021c9d23dc27956cca73c40adf6a
+    screenspot_selected_tau_by_outer_fold:
+      0: 0.0022908676527677724
+      1: 0.0015135612484362087
+      2: 0.012022644346174132
+      3: 0.0034673685045253167
+      4: 0.0034673685045253167
+    finite_boundary_triggered: false
+  gran_adjudication:
+    path: runs/gran/2026-08-14/GRAN_ADJUDICATION.json
+    sha256: ed5a695bd4e61641f5292a11f9a4ff8d99e79f79cefeef0a0293ebc287fe4cba
+  gran_input_manifest:
+    path: runs/gran/2026-08-14/INPUT_MANIFEST.json
+    sha256: c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205
+  gran_config:
+    path: runs/gran/2026-08-14/configs/gran_prereg.yaml
+    sha256: dffa3416feecb7459f146428989bd996ad1ccce1f7d184a4e41929df6b75be44
+  zoom_protocol:
+    path: runs/diversity-axis/2026-08-02/configs/zoom_method.yaml
+    sha256: ef0865b607a0c9c4d95e4d3198ec9c571d65717564dd45064a7186a279401472
+  zoom_anchor:
+    path: runs/closing/2026-08-02/f3_zoom_anchor.json
+    sha256: 8a934d8c9a4b0fce0a3ea04551a55832f0a560189dfcfd0a112d07692154d14e
+  zoom_logprob_reference:
+    path: runs/closing/2026-08-02/f3_zoom_anchor.py
+    sha256: 72ddef1bac4471132b107b6d682fa395b49948792157c5aa66f16fb176751700
+  heterogeneous_inference_reference:
+    path: runs/diversity-axis/2026-08-02/x2/generate_microchains.py
+    sha256: 13ad4c19af4a5992f9d275c2501d977f5c5cd9cfa53a6591fd38d740d1957ec3
+  crop_reference:
+    path: runs/diversity-axis/2026-08-02/x2/zoom_port.py
+    sha256: fd6e7a75de56e7ecdd9827fb809dad7b6db59abad6b31f1547a95c52c3f82828
+data:
+  rows: 1581
+  bank: screenspot_7B_36_action
+  lineages: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  views_per_lineage: 12
+  folds: 5
+  group: application
+  input_manifest: runs/gran/2026-08-14/INPUT_MANIFEST.json
+  leaked_cells_prohibited_as_targets: [0.6388361796331435, 0.6388361796331435, 0.6306135357368754, 0.6255534471853258, 0.6325110689437066]
+models:
+  primary:
+    id: Qwen3-VL-8B-Instruct
+    backend: transformers_Qwen3VLForConditionalGeneration
+    path: runs/ccm-h2h/2026-07-31/h3/models/Qwen3-VL-8B-Instruct
+    revision: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b
+    model_index_sha256: 520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070
+    prompt: normalized_point_prompt
+    output_coordinate_count: 2
+    determines_primary_endpoints: true
+  secondary:
+    - id: GTA1-7B
+      backend: transformers_Qwen2_5_VLForConditionalGeneration
+      path: runs/collision-law/2026-07-30/w3_assets/GTA1-7B
+      revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+      model_index_sha256: 3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6
+      prompt: pixel_point_prompt
+      output_coordinate_count: 2
+      determines_primary_endpoints: false
+    - id: Qwen2.5-VL-7B-Instruct
+      status: DEFERRED_CHECKPOINT_MISSING
+      backend: vllm_or_transformers_Qwen2_5_VLForConditionalGeneration
+      historical_path: runs/mind2web-tongui/2026-07-28/models/Qwen2.5-VL-7B-Instruct
+      historical_revision: cc594898137f460bfe9f0759e9844b3ce807cfb5
+      prompt: official_UI_Zoomer_box_prompt
+      output_coordinate_count: 4
+      execution_requires_preprobe_checkpoint_manifest_commit: true
+      missing_does_not_block_primary: true
+      determines_primary_endpoints: false
+  model_selection_after_results: prohibited
+  combined_model_endpoint: prohibited
+environment:
+  python: .venv-scaleup/bin/python
+  python_version: 3.12.13
+  torch: 2.13.0+cu132
+  transformers: 5.14.1
+  vllm: 0.26.1rc1.dev246+g060185079
+  pillow: 12.3.0
+  numpy: 2.3.5
+  scikit_learn: 1.9.0
+  pyyaml: 6.0.3
+mode_extraction:
+  linkage: deterministic_complete_link
+  tau_by_outer_fold: inherited_from_GRAN_screenspot
+  weight: candidate_votes
+  tie_order: [candidate_vote_count, summed_source_reliability, maximum_source_reliability, earliest_frozen_candidate_order]
+  source_reliability_fit: nested_inner_training_or_outer_development_only
+  top_modes: 2
+trigger_gate:
+  statistic: w2_over_w1
+  grid: [0.25, 0.4, 0.55, 0.7, 0.85]
+  select_on: inner_validation_Delta2
+  tie_break: larger_g
+  outer_test_access_during_selection: prohibited
+  label_free_at_runtime: true
+zero_gpu_gate:
+  headroom: Delta2_equals_P_gate_and_M2_correct_and_M1_wrong
+  threshold: 0.03
+  pass_rule: heldout_pooled_point_estimate_at_least_threshold
+  Z_G1_below_threshold: stop_before_gpu
+  record_gate_prevalence: true
+  record_conditional_positive_rate: true
+window_geometry:
+  shape: square
+  mode_center: candidate_coordinate_mean
+  mode_scale: candidate_coordinate_RMS_distance
+  shared_side_pixels: min_image_side_capped_max_512_or_2_5_times_max_mode_RMS
+  target_window:
+    separation_axis: largest_absolute_center_difference_then_x
+    target_center_position: far_edge_inset_1_pixel_away_from_other_mode
+    preserve_side_while_clamping_to_image: true
+    require_include_target_center: true
+    require_exclude_other_center: true
+  empty_window:
+    candidates: [top_left, top_right, bottom_left, bottom_right]
+    objective: maximize_minimum_center_distance_to_M1_and_M2
+    tie_order: [top_left, top_right, bottom_left, bottom_right]
+    require_exclude_both_mode_centers: true
+  area_ratio_tolerance: [0.9, 1.1]
+  aspect_ratio_difference_max: 0.05
+  resized_edge_match: exact
+  failed_row_policy: drop_entire_row_no_rescue
+  maximum_failure_rate: 0.15
+preprocessing:
+  crop_min_pixels: 1000000
+  crop_max_pixels: 4000000
+  patch_factor_from_processor: true
+  resize_method: bicubic
+sampling:
+  samples_per_window: 3
+  windows: [W1, W2, W0]
+  temperature: 0.9
+  top_p: 1.0
+  max_new_tokens: 32
+  seed_base: 20260814
+  seed_rule: sha256_row_id_model_id_window_sample_index_seed_base_first8_mod_2pow31_minus1
+  forwards_per_model_row: 9
+observation:
+  primary: mean_coordinate_numeric_token_logprob_across_three_samples
+  coordinate_match: first_parseable_coordinate_pair
+  token_assignment: decoded_token_character_span_intersects_coordinate_numeric_span
+  secondary: [coordinate_token_perplexity, crop_normalized_spatial_RMS_dispersion]
+  generated_coordinate_as_primary_feature: prohibited
+  raw_retention: [response, token_ids, decoded_tokens, token_logprobs, coordinate_token_mask, parsed_coordinate, resize_size, window_geometry]
+  any_sample_parse_or_coordinate_token_failure: drop_model_row
+  maximum_model_row_failure_rate: 0.15
+balanced_subset:
+  positive: gate_and_M2_correct_and_M1_wrong
+  negative: gate_and_M1_correct_and_M2_wrong
+  include_all_positives: true
+  negative_sampling: equal_count_stratified_by_outer_fold_and_application
+  seed: 20260814
+  target_positive_rows: approximately_175
+  minimum_positive_rows_for_decision: 120
+  manifest_must_be_committed_before_gpu: true
+  same_subset_all_models: true
+forward_budget:
+  formula: models_times_3_windows_times_2n_positive_rows_times_k3
+  primary_only_approximate: 3150
+  currently_available_two_models_approximate: 6300
+  all_three_models_approximate: 9450
+threshold_t:
+  candidates: [negative_infinity, inner_dev_quantile_0_10, inner_dev_quantile_0_25, inner_dev_quantile_0_50, inner_dev_quantile_0_75, inner_dev_quantile_0_90, positive_infinity]
+  select_on: inner_validation_accuracy
+  tie_order: [negative_infinity, finite_ascending, positive_infinity]
+endpoints:
+  order: [Z_P3, Z_P1, Z_P2, Z_P4, Z_P5]
+  Z_P1:
+    primary_model: Qwen3-VL-8B-Instruct
+    statistic: Lambda_equals_s_W1_minus_s_W2
+    positive_class: target_in_M1
+    metric: AUROC
+    bootstrap: application_group_stratified_by_outer_fold
+    pass: 99_percent_CI_lower_gt_0_60
+  Z_P2:
+    baseline_predictor: w2_over_w1
+    combined_predictor: l2_logistic_regression_on_standardized_[w2_over_w1,Lambda]
+    logistic_regression: {solver: lbfgs, C: 1.0, class_weight: null, max_iter: 1000}
+    fit_scope: inner_training
+    select_and_evaluate: nested_outer_heldout
+    metric: paired_AUROC_difference
+    pass: 99_percent_CI_lower_positive
+  Z_P3:
+    comparison: wrong_mode_score_vs_W0_score
+    positive_class: wrong_mode
+    desired: indistinguishable
+    pass:
+      - AUROC_99_CI_contains_0_5
+      - absolute_AUROC_minus_0_5_99_upper_lte_0_10
+    failure_triggers_Z_K2: true
+  Z_P4:
+    statistic: cohen_kappa_probe_error_vs_pool_default_M1_error
+    pass: point_kappa_lt_0_398
+  Z_P5:
+    scope: balanced_pilot_subset_only
+    statistic: probe_accuracy_minus_default_M1_accuracy
+    decision_use: none
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  interval: percentile
+  grouping: application_stratified_by_outer_fold
+  models_reported_separately: true
+  cross_model_multiplicity_selection: prohibited
+kill_conditions:
+  Z_K1: {trigger: Delta2_lt_0_03, consequence: stop_before_GPU_write_limitation}
+  Z_K2: {trigger: Z_P3_outside_indistinguishability_bound, consequence: stop_no_observation_swap}
+  Z_K3: {trigger: Z_P1_AUROC_99_CI_upper_lt_0_60, consequence: falsified_failure_attempt}
+  Z_K4: {trigger: Z_P2_incremental_CI_contains_zero, consequence: redundant_channel_stop}
+  Z_K5: {trigger: Z_P4_kappa_gte_0_398, consequence: no_orthogonal_channel_claim}
+  Z_K6: {trigger: geometry_failure_rate_gt_0_15_or_model_row_failure_rate_gt_0_15, consequence: fix_implementation_before_adjudication}
+  Z_K7: {trigger: n_positive_lt_120, consequence: observational_only_no_decision}
+retention:
+  row_jsonl_fsync: true
+  lane_manifest_sha256: true
+  backup_root: /scratch/workspaceblobstore/split/2026-08-14
+  status_must_record_backup_manifest: true
+  recursive_delete_raw_or_predictions_jsonl: prohibited
+execution_order:
+  - commit_SPEC_and_split_prereg
+  - lock_input_and_model_preflight
+  - compute_zero_GPU_Delta2_and_g
+  - if_Z_G1_pass_freeze_balanced_subset_manifest_and_commit
+  - commit_probe_runner_and_one_time_GPU_authorization
+  - run_Qwen3_primary_and_GTA1_secondary
+  - run_Qwen2_5_secondary_only_if_checkpoint_preflight_committed
+  - adjudicate_Z_P3_then_Z_P1_then_Z_P2_then_Z_P4_then_Z_P5
+  - write_Delta2_and_primary_Z_P1_to_paper_limitation
+reporting:
+  exploratory_only: true
+  primary_model_must_be_named: true
+  secondary_models_cannot_rescue_primary: true
+  contribution_limited_to_falsification_crop_observation: true
+  deployable_method_claim: prohibited
+  confirmation_claim: prohibited
+  paper_main_table_entry: prohibited
