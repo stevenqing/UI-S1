@@ -1,0 +1,73 @@
+schema_version: 1
+round: otext
+date: 2026-08-14
+status: FROZEN_BEFORE_ANY_OTEXT_OCR_OR_LABEL_STATISTIC
+evidence_status: POST_SELECTION_VALIDATION
+confirmatory_claim_allowed: false
+reason: ORTH_used_all_1581_SSPro_labels_to_select_OCR_text_direction
+benchmark: screenspot_pro
+rows: 1581
+gpu: false
+engines:
+  primary: {id: easyocr, version: 1.7.2}
+  replication: {id: rapidocr_onnxruntime, version: 1.4.4}
+  regenerate_raw: true
+split:
+  folds: 5
+  group: application
+  inner_validation_fold: outer_plus_1_mod_5
+  inner_train: remaining_three_folds
+  outer_development: all_non_outer_folds_refit_only
+extractors:
+  order: [quoted, caps_camel, full_normalized]
+  minimum_normalized_characters: 3
+matchers:
+  order: [exact, normalized, edit]
+  score: lexical_similarity_times_OCR_confidence
+  range: [0, 1]
+theta_grid:
+  quantiles: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  final: positive_infinity
+  gate: score_gte_theta
+  boundary_indices: [0, 11]
+baselines:
+  required: [majority, nested_dev_selection]
+  dev_selection_methods: [majority, A0, ours, A1, A2, A3, A4]
+  O_P1_requires_both_CI_lower_positive: true
+  report_best_single: true
+selection:
+  gate_objective: maximize_minimum_gain_vs_majority_and_dev_selection
+  tie_order: [higher_theta_index, earlier_extractor, earlier_matcher]
+  O_G1_mde: 0.007
+arm_F:
+  visual_total_weight: 1.5936767669403409
+  visual_candidate_weight: 0.1328063972450284
+  weighted_complete_link_threshold_pixels: 14
+  ocr_weight_grid: [0, 0.125, 0.25, 0.5, 1, 1.5936767669403409, 2, 4]
+  weight_tie: lower
+  report: [weighted_density, availability_aware_majority]
+controls:
+  blind_match_theta_index: 0
+  random_gate:
+    row_seed: 20260814
+    candidate_seed: 20260814
+    count_matches_primary_gate: true
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  interval: percentile
+  grouping: outer_fold_then_application
+  seed_base: 20260814
+endpoints:
+  order: [O_P3, O_P1, O_P2, O_P4, O_P5]
+  O_P1: dual_positive_CI_vs_majority_and_dev_selection
+  O_P2: four_positive_CIs_for_density_and_majority_vs_two_baselines
+  O_P3: descriptive_conditional_correctness
+  O_P4: descriptive_gate_accuracy
+  O_P5: descriptive_text_icon_evaluation_side
+kill_conditions: [O_K1, O_K2, O_K3, O_K4, O_K5, O_K6, O_K7]
+retention:
+  backup_root: /scratch/workspaceblobstore/otext/2026-08-14
+  raw_OCR_fsync: true
+  dataset_images_rehash_all: true
+  raw_and_derived_recursive_delete: prohibited
