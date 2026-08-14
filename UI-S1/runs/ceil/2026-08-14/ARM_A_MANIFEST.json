@@ -1,0 +1,29 @@
+{
+  "artifacts": {
+    "cache": {
+      "bytes": 1279879,
+      "path": "runs/ceil/2026-08-14/ARM_A_PANEL_CACHE.npz",
+      "sha256": "50afa7b1be8e70b4d2d8e54f32b9b7c9de1493b1f8abf54f1df94903d0c5b7aa"
+    },
+    "figure": {
+      "bytes": 30124,
+      "path": "runs/ceil/2026-08-14/ARM_A_CURVES.pdf",
+      "sha256": "6c384916a5fb235c4224d631d1aa438846e297918e504cc1c8f2e29d6ac5c256"
+    },
+    "result": {
+      "bytes": 78640,
+      "path": "runs/ceil/2026-08-14/ARM_A.json",
+      "sha256": "4266173edf032578b8a9eb7fb295e4613a368d741fd91eaaf3573f2329f294c2"
+    }
+  },
+  "evidence_status": "POST_HOC_DESCRIPTIVE",
+  "gpu_used": false,
+  "implementation_commit": "08232b5",
+  "input_manifest": {
+    "bytes": 1665,
+    "path": "runs/ceil/2026-08-14/PREFLIGHT.json",
+    "sha256": "049c4862a849a0d3be04e8f19b8501e600e88645495de1581b4cde2bf70fb268"
+  },
+  "schema_version": 1,
+  "status": "LOCKED_CEIL_ARM_A_OUTPUTS"
+}
