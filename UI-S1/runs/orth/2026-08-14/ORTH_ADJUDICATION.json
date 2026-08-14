@@ -1,0 +1,349 @@
+{
+  "arm0": {
+    "mind2web": {
+      "group_clustered": {
+        "ci_99": [
+          0.6649297546957486,
+          0.7092641376782823
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20261114
+      },
+      "recoverable_base_row_union": 891,
+      "recoverable_sample_keys": 2021,
+      "row_clustered": {
+        "ci_99": [
+          0.6634406856781503,
+          0.7120016058040054
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20262114
+      },
+      "unclustered_context_candidate": {
+        "ci_99": [
+          0.6834589696220921,
+          0.6933091481768682
+        ],
+        "discarded_single_class_replicates": 0,
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20263114,
+        "unit": "context_candidate_pair_IID"
+      }
+    },
+    "screenspot_pro": {
+      "group_clustered": {
+        "ci_99": [
+          0.5011238075414088,
+          0.583007950528583
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20261014
+      },
+      "recoverable_base_row_union": 430,
+      "recoverable_sample_keys": 968,
+      "row_clustered": {
+        "ci_99": [
+          0.5020043720983142,
+          0.5775332425515403
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20262014
+      },
+      "unclustered_context_candidate": {
+        "ci_99": [
+          0.5315662059806856,
+          0.5478222995741892
+        ],
+        "discarded_single_class_replicates": 0,
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20263014,
+        "unit": "context_candidate_pair_IID"
+      }
+    }
+  },
+  "arm1_ranges": {
+    "easyocr": {
+      "edit": {
+        "all_error_kappa": [
+          0.15801302966730127,
+          0.19602970525023017
+        ],
+        "all_row_accuracy": [
+          0.15876027830487033,
+          0.1941808981657179
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.5102040816326531,
+            0.8367346938775511
+          ],
+          "selected_correct": [
+            0.6107249255213505,
+            0.9046673286991063
+          ],
+          "zero_coverage": [
+            0.4012158054711246,
+            0.8237082066869301
+          ]
+        },
+        "icon_accuracy": [
+          0.006622516556291391,
+          0.009933774834437087
+        ],
+        "match_rate": [
+          0.551549652118912,
+          0.877292852624921
+        ],
+        "matched_only_accuracy": [
+          0.2213410237923576,
+          0.28784403669724773
+        ],
+        "settings": 25,
+        "text_accuracy": [
+          0.25281473899692936,
+          0.30808597748208805
+        ]
+      },
+      "exact": {
+        "all_error_kappa": [
+          0.022006898308887607,
+          0.032317543372975745
+        ],
+        "all_row_accuracy": [
+          0.020872865275142316,
+          0.029728020240354206
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.22448979591836735,
+            0.4857142857142857
+          ],
+          "selected_correct": [
+            0.2214498510427011,
+            0.5263157894736842
+          ],
+          "zero_coverage": [
+            0.16717325227963525,
+            0.4316109422492401
+          ]
+        },
+        "icon_accuracy": [
+          0.0016556291390728477,
+          0.0033112582781456954
+        ],
+        "match_rate": [
+          0.21062618595825428,
+          0.5003162555344719
+        ],
+        "matched_only_accuracy": [
+          0.05941845764854614,
+          0.09951456310679611
+        ],
+        "settings": 5,
+        "text_accuracy": [
+          0.032753326509723645,
+          0.04605936540429888
+        ]
+      },
+      "normalized": {
+        "all_error_kappa": [
+          0.15196200344958774,
+          0.18116308470290773
+        ],
+        "all_row_accuracy": [
+          0.15243516761543327,
+          0.17836812144212524
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.5142857142857142,
+            0.9183673469387755
+          ],
+          "selected_correct": [
+            0.6156901688182721,
+            0.9324726911618669
+          ],
+          "zero_coverage": [
+            0.4133738601823708,
+            0.9148936170212766
+          ]
+        },
+        "icon_accuracy": [
+          0.006622516556291391,
+          0.013245033112582781
+        ],
+        "match_rate": [
+          0.5578747628083491,
+          0.92662871600253
+        ],
+        "matched_only_accuracy": [
+          0.1924914675767918,
+          0.2732426303854875
+        ],
+        "settings": 5,
+        "text_accuracy": [
+          0.24257932446264074,
+          0.2804503582395087
+        ]
+      }
+    },
+    "rapidocr": {
+      "edit": {
+        "all_error_kappa": [
+          0.1164498122802487,
+          0.16131184947660038
+        ],
+        "all_row_accuracy": [
+          0.11954459203036052,
+          0.16951296647691336
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.27755102040816326,
+            0.6938775510204082
+          ],
+          "selected_correct": [
+            0.4170804369414101,
+            0.8093346573982125
+          ],
+          "zero_coverage": [
+            0.23100303951367782,
+            0.6200607902735562
+          ]
+        },
+        "icon_accuracy": [
+          0.0033112582781456954,
+          0.008278145695364239
+        ],
+        "match_rate": [
+          0.3567362428842505,
+          0.7520556609740671
+        ],
+        "matched_only_accuracy": [
+          0.2220353238015139,
+          0.3351063829787234
+        ],
+        "settings": 25,
+        "text_accuracy": [
+          0.19140225179119755,
+          0.2691914022517912
+        ]
+      },
+      "exact": {
+        "all_error_kappa": [
+          0.007598071841018426,
+          0.014341023695158644
+        ],
+        "all_row_accuracy": [
+          0.010120177103099304,
+          0.017710309930423784
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.05714285714285714,
+            0.2979591836734694
+          ],
+          "selected_correct": [
+            0.07447864945382324,
+            0.3356504468718967
+          ],
+          "zero_coverage": [
+            0.03343465045592705,
+            0.331306990881459
+          ]
+        },
+        "icon_accuracy": [
+          0.0,
+          0.0016556291390728477
+        ],
+        "match_rate": [
+          0.06325110689437065,
+          0.3289057558507274
+        ],
+        "matched_only_accuracy": [
+          0.05384615384615385,
+          0.16806722689075632
+        ],
+        "settings": 5,
+        "text_accuracy": [
+          0.016376663254861822,
+          0.027635619242579325
+        ]
+      },
+      "normalized": {
+        "all_error_kappa": [
+          0.10223949028473861,
+          0.12238923987444394
+        ],
+        "all_row_accuracy": [
+          0.10815939278937381,
+          0.13092979127134724
+        ],
+        "class_match_rate": {
+          "recoverable": [
+            0.2816326530612245,
+            0.8204081632653061
+          ],
+          "selected_correct": [
+            0.40218470705064546,
+            0.8411122144985105
+          ],
+          "zero_coverage": [
+            0.23404255319148937,
+            0.729483282674772
+          ]
+        },
+        "icon_accuracy": [
+          0.0033112582781456954,
+          0.008278145695364239
+        ],
+        "match_rate": [
+          0.3485135989879823,
+          0.814674256799494
+        ],
+        "matched_only_accuracy": [
+          0.16071428571428573,
+          0.3103448275862069
+        ],
+        "settings": 5,
+        "text_accuracy": [
+          0.172978505629478,
+          0.2067553735926305
+        ]
+      }
+    }
+  },
+  "arm1_row_classes": {
+    "recoverable": 245,
+    "selected_correct": 1007,
+    "zero_coverage": 329
+  },
+  "arm2_status": "FULL_DOM_AX_UNAVAILABLE_HISTORICAL_DATA_CURRENTLY_MISSING",
+  "arm3_identifiability_boundary": {
+    "bayes_fused_grounding_accuracy_identified": false,
+    "reason": "accuracy_and_error_kappa_do_not_define_candidate_identity_or_row_level_likelihoods",
+    "reported_metrics": "joint_error_coupling_and_selector_upper_bounds_only"
+  },
+  "changes_existing_statuses": false,
+  "direction": "PREREGISTER_OCR_CONFIRMATORY",
+  "input_hashes": {
+    "ARM0": "ad0f9ab4b755dae9fa101032d87b16889c7fe110371bdd390aad3b212498819e",
+    "ARM1": "5f7c3bc23bad3c1763c7b36d47ee3b85c1dfaf92f43f842d51cdcceac40419e7",
+    "ARM2": "c77a56d93aab683c6ff89fe8b4ec9f20f8be8fcdac81c649b1155875158f9941",
+    "ARM3": "1db20ecabb9ac301fb3d5990ccebcca76b1ac252331ff9121852cdb709ec574f"
+  },
+  "method_claim_allowed": false,
+  "next_action": "PREREGISTER_OCR_CONFIRMATORY",
+  "outcome": "ORTH_COMPLETE_PREREGISTER_OCR_CONFIRMATORY",
+  "paper_result_allowed": false,
+  "rationale": "Across the full exploratory grid, both CPU OCR engines show substantial normalized/edit match coverage on recoverable and zero-coverage rows, and overall OCR-vs-pool error kappa remains roughly 0.10-0.20, below the 0.398 cross-family reference. The localization signal is concentrated on text targets (EasyOCR roughly 25-31% all-row accuracy; RapidOCR roughly 17-27%), while icon accuracy remains below 1.4%. This supports a narrowly scoped text-target confirmatory design, not a general OCR method. Full DOM/AX evaluation is deferred because the historically audited official dataset is currently missing locally, and Arm 3 shows that marginal accuracy/kappa alone do not identify a fusion policy without row-level calibrated evidence.",
+  "runtime_rule_allowed": false,
+  "schema_version": 1,
+  "status": "COMPLETE_SCOPING"
+}

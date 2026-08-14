@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "HUMAN_SCOPING_INTERPRETATION_RECORDED",
+  "direction": "PREREGISTER_OCR_CONFIRMATORY",
+  "ceil_design_interpretation": "MAINTAIN_MIND2WEB_C_D2_AS_DESIGN_SIGNAL_ONLY",
+  "ceil_reason": "Mind2Web base-row-clustered 99% CI lower bound remains above 0.65 (0.6634), while the candidate-pair IID interval is recognized as anti-conservative; no CEIL status changes.",
+  "target_scope": "ScreenSpot-Pro ui_type=text; apply OCR without a label-dependent runtime trigger and report recoverable/zero-coverage strata only as evaluation-side analyses.",
+  "confirmatory_requirements": [
+    "regenerate OCR outputs in the confirmatory round",
+    "freeze one engine and one matcher/min-length/threshold before confirmatory outputs",
+    "include majority plus dev-selection as a required control",
+    "retain icon targets as a preregistered structural negative control",
+    "do not use row class or ground-truth overlap as a runtime gate"
+  ],
+  "rationale": "Across the full exploratory grid, both CPU OCR engines show substantial normalized/edit match coverage on recoverable and zero-coverage rows, and overall OCR-vs-pool error kappa remains roughly 0.10-0.20, below the 0.398 cross-family reference. The localization signal is concentrated on text targets (EasyOCR roughly 25-31% all-row accuracy; RapidOCR roughly 17-27%), while icon accuracy remains below 1.4%. This supports a narrowly scoped text-target confirmatory design, not a general OCR method. Full DOM/AX evaluation is deferred because the historically audited official dataset is currently missing locally, and Arm 3 shows that marginal accuracy/kappa alone do not identify a fusion policy without row-level calibrated evidence."
+}
