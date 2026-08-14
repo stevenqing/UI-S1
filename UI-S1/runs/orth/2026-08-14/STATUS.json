@@ -1,0 +1,24 @@
+{
+  "adjudication": "runs/orth/2026-08-14/ORTH_ADJUDICATION.json",
+  "adjudication_sha256": "c618744fc733098371a5f1499a9dd2563edc9ad1f8c73f4dda70431158610d1c",
+  "changes_existing_statuses": false,
+  "date": "2026-08-14",
+  "exploratory_scoping_only": true,
+  "gpu_used": false,
+  "next_action": "PREREGISTER_OCR_CONFIRMATORY",
+  "outcome": "ORTH_COMPLETE_PREREGISTER_OCR_CONFIRMATORY",
+  "paper_result_allowed": false,
+  "report": "runs/orth/2026-08-14/REPORT.md",
+  "report_sha256": "d5886a176257e9b85ab63ecc5ca020dadf156edf5efd04eba34c4159de342fc5",
+  "retention": {
+    "artifact_count": 314,
+    "manifest": "/scratch/workspaceblobstore/orth/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "7e361e404de85e0af91e10c594b170d6c3fbc3b231c4dd1f7192b818247fdda1",
+    "total_bytes": 297304707,
+    "verified": true
+  },
+  "round": "orth",
+  "runtime_rule_allowed": false,
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
