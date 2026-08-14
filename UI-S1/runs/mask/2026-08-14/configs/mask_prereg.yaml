@@ -1,0 +1,295 @@
+schema_version: 1
+round: mask
+date: 2026-08-14
+status: FROZEN_BEFORE_ANY_MASK_RESULT_OR_FORWARD
+canonical_spec:
+  path: runs/mask/2026-08-14/SPEC.md
+  sha256: 8917b24129a42c5def7b8849553f2d53519f34a6d4106028395759c2e6e463a2
+scope:
+  type: exploratory_pilot
+  independent_from_split: true
+  current_paper_main_table: prohibited
+  deployable_method: false
+  confirmation_claim: false
+  untouched_confirmation_set_defined: false
+  changes_F1: false
+  changes_Q1: false
+  changes_TRIVUS_NOT_PROMOTED: false
+  changes_VUS_SR: false
+  benchmark: screenspot_pro
+  mind2web_excluded: true
+  androidcontrol_excluded: true
+split_boundary:
+  outcome_unchanged: SPLIT_STOPPED_PRE_GPU_Z_K6_GEOMETRY_AND_Z_K7_LOW_N
+  Delta2: 0.06451612903225806
+  conditional_positive_rate: 0.08593091828138164
+  geometry_failure_rate: 0.2679022746419545
+  observation: crop_confidence
+  use: verifier
+  MASK_observation: masked_coordinate_prediction
+  MASK_use: proposer
+  failure_rescue: false
+naming:
+  proposer:
+    id: GTA1-7B
+    role: only_MASK_forward_model
+  bank_lineage:
+    id: UI-TARS-7B-SFT
+    role: candidate_bank_only_no_MASK_forward
+  excluded_checkpoint:
+    id: Qwen2.5-VL-7B-Instruct
+    role: SPLIT_deferred_missing_not_in_MASK
+  role_substitution: prohibited
+compute:
+  first_stage_zero_gpu: true
+  zero_gpu_gate_required_before_gpu: true
+  subset_before_gate: prohibited
+  gpu_authorization_before_gate: prohibited
+  gpu_authorization_type: one_time_nonce_bound_to_runner_commit_and_subset_manifest
+  available_gpus_maximum: 8
+  protected_external_process_must_not_be_signaled_paused_or_reprioritized: true
+upstream:
+  gran_tau_sweep:
+    path: runs/gran/2026-08-14/TAU_SWEEP.json
+    bytes: 2013434
+    sha256: 1e409692652f981698530f41d578c76236f9021c9d23dc27956cca73c40adf6a
+  gran_input_manifest:
+    path: runs/gran/2026-08-14/INPUT_MANIFEST.json
+    bytes: 662900
+    sha256: c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205
+  gran_common:
+    path: runs/gran/2026-08-14/gran_common.py
+    bytes: 6287
+    sha256: 0904d75f5c4b96d61ab519e79dc8d6ca2ffd1e9e754a10f3f0c4f7117d82fc06
+  split_report:
+    path: runs/split/2026-08-14/REPORT.md
+    bytes: 2212
+    sha256: df22aa20f5627e9e08f93d66c14cfcdaaed654572e9856c6e65ef6010ff35c32
+  split_adjudication:
+    path: runs/split/2026-08-14/SPLIT_ADJUDICATION.json
+    bytes: 2714
+    sha256: 0615be40d345e45d694cc98794fa83a5978ef04e58f90a7537c2d1918b5e4318
+  split_preflight:
+    path: runs/split/2026-08-14/PREFLIGHT.json
+    bytes: 798053
+    sha256: 9188e6e9b886cacbbff52cb43e8223c08a9108750e139ef42d39cede91da2a6b
+  f1_aggregator:
+    path: runs/close/2026-08-08/e1_arm_aggregator_matrix.py
+    bytes: 19410
+    sha256: bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148
+  neff_implementation:
+    path: runs/neff/2026-08-03/neff.py
+    bytes: 4768
+    sha256: 4106434f5066fcebc8a482c2df32597285847bffb2a521d4b4ed2772612f7a46
+  neff_report:
+    path: runs/neff/2026-08-03/REPORT.md
+    bytes: 3399
+    sha256: 130f51d90bbf85c8f3997653aa657012c07d5940d02e0c504f2474e915f1cd9c
+data:
+  rows: 1581
+  full_bank_actions: 36
+  full_bank_lineages: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  views_per_lineage_full_bank: 12
+  original_pool: C_uni
+  original_pool_actions: 12
+  original_pool_definition: three_lineages_times_views_0_to_3
+  folds: 5
+  fold_group: application
+  leaked_cells_prohibited_as_targets: true
+tau:
+  selected_on: full_36_action_bank_by_GRAN
+  applied_to: C_uni_12_action_pool
+  unit: coordinate_distance_divided_by_image_diagonal
+  selected_by_outer_fold:
+    0: 0.0022908676527677724
+    1: 0.0015135612484362087
+    2: 0.012022644346174132
+    3: 0.0034673685045253167
+    4: 0.0034673685045253167
+mode_extraction:
+  linkage: deterministic_complete_link
+  top_modes: 2
+  tie_order: [candidate_vote_count, summed_source_reliability, maximum_source_reliability, earliest_frozen_candidate_order]
+  source_reliability_fit: outer_development_only
+  M1_representative: highest_outer_development_reliability_then_source_then_order
+  missing_M2: retain_row_and_set_M2_correct_false
+  mode_correct: any_member_hits_target_bbox
+informative_mask:
+  shape: circle
+  center: M1_pixel_coordinate_mean
+  radius_pixels: 2_times_tau_times_image_diagonal
+  pixel_membership: pixel_center_distance_lte_radius
+  image_boundary: naturally_clipped
+  fill: per_RGB_channel_global_image_mean
+  fill_quantization: round_half_to_even_uint8
+  image_size_change: false
+  image_aspect_change: false
+  processor_resize_change: false
+empty_mask:
+  area: exact_informative_mask_discrete_pixel_count
+  fill: same_as_informative_mask
+  search_angles_degrees: {start: 0, stop_inclusive: 359, step: 1}
+  radial_distance_from_image_center: match_M1_exactly
+  mask_pixels: A_nearest_pixel_centers_distance_tie_row_major
+  require_exclude_all_C_uni_mode_centroids: true
+  tie: first_angle
+  no_feasible_angle: mark_empty_mask_infeasible_no_replacement
+  maximum_infeasible_rate: 0.15
+model:
+  id: GTA1-7B
+  backend: transformers_Qwen2_5_VLForConditionalGeneration
+  path: runs/collision-law/2026-07-30/w3_assets/GTA1-7B
+  revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+  model_index_sha256: 3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6
+  model_index_bytes: 57619
+  total_weight_bytes: 16584414544
+  preflight_status: READY
+  only_forward_model: true
+sampling:
+  prompt: SPLIT_pixel_point_prompt
+  informative_samples: 3
+  empty_samples: 1
+  temperature: 0.9
+  top_p: 1.0
+  max_new_tokens: 32
+  seed_base: 20260814
+  seed_rule: sha256_row_id_model_id_mask_kind_sample_index_seed_base_first8_mod_2pow31_minus1
+  parse: first_parseable_coordinate_pair
+  map_to_original: processor_resize_coordinate_scaling
+  invalid_if_any_required_sample_unparseable: true
+  maximum_invalid_rate: 0.15
+  raw_retention: [response, token_ids, decoded_tokens, token_logprobs, parsed_coordinate, seed, mask_parameters, resize_size]
+row_proposer:
+  informative_composition: GRAN_complete_link_three_points_at_outer_fold_tau
+  selected_mode: maximum_vote_count_then_earliest_sample
+  representative: earliest_sample_in_selected_mode
+  empty_composition: single_sample
+aggregation:
+  augmented_pool_actions: 15
+  informative_samples_equal_weight: true
+  density_B3: sourcebias_common_b3_select_index
+  F1_majority: outer_development_source_reliability_priority
+  F1_majority_new_slots: [mask_sample_0, mask_sample_1, mask_sample_2]
+  F1_majority_tie_order: original_12_then_mask_0_1_2
+  empty_vote_enters_main_pool: false
+  runtime_gate: none
+stage1:
+  verifier_curve:
+    g_grid: [0.25, 0.4, 0.55, 0.7, 0.85]
+    metrics: [gate_rows, positives, negatives, positive_rate, negative_positive_ratio]
+    auc_grid: [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.88, 0.9, 0.95]
+    model: equal_variance_gaussian
+    d_prime: sqrt_2_times_normal_ppf_auc
+    threshold_grid: {start: -8.0, stop: 8.0, step: 0.001}
+    objective: P_times_TPR_minus_N_times_FPR_divided_by_1581
+    threshold_tie: higher_threshold
+    authorization_use: none
+  neff_calibration:
+    scope: same_benchmark_same_C_uni_pool_only
+    universal_law_claim: prohibited
+    subsets: all_4095_nonempty_subsets_of_12_slots
+    rho: outer_development_pairwise_failure_cohen_kappa
+    undefined_pair_kappa: zero_and_count
+    generalized_neff: K_squared_divided_by_one_transpose_R_one
+    nonpositive_denominator: invalid_subset
+    accuracy: outer_heldout_cross_fitted
+    aggregators: [density_B3, F1_majority]
+    regression: sklearn_isotonic_increasing_clip
+    duplicate_x: mean_accuracy_unique_x_equal_weight
+    baseline_x: full_12_pool_cross_fitted_neff
+    m_new: 3
+    ideal_kappa_new: 0.0
+    fixed_kappa_in: 0.6
+    ideal_x_increment: 1.3636363636363635
+    sensitivity: leave_one_fold_out_report_only
+    gate_gain: maximum_of_two_aggregator_predicted_gains
+  base_rates:
+    pool_error_definition: outer_heldout_density_B3_wrong
+    secondary: M2_correct_rate_within_pool_wrong
+    report_layers: [pool_wrong, pool_correct]
+    report_mask_feasibility: true
+  M_G1:
+    mde: 0.007
+    pass_rule: maximum_ideal_predicted_gain_gte_mde
+    below_threshold: stop_before_GPU
+stage2_subset:
+  pool_wrong_target: 300
+  pool_correct_target: 200
+  eligible: empty_mask_feasible
+  strata: [outer_fold, application]
+  selection: proportional_largest_remainder_then_row_sha256
+  row_hash: sha256_stratum_row_id_20260814
+  nonempty_cell_minimum: 1
+  insufficient_for_target: include_entire_layer
+  sampling_probability_recorded: true
+  inverse_probability_weight_recorded: true
+  minimum_rows_each_layer_for_decision: 150
+  manifest_commit_before_runner_and_GPU_authorization: true
+statistics:
+  resamples: 10000
+  confidence: 0.99
+  interval: percentile
+  grouping: application_stratified_by_outer_fold
+  seed_base: 20260814
+  full_distribution_weighting: frozen_inverse_probability
+endpoints:
+  order: [M_P2, M_P1, M_P3, M_P4, M_P5]
+  M_P1:
+    primary: true
+    layer: pool_wrong
+    row_difference: information_proposer_correct_minus_M2_correct
+    missing_M2_baseline: false
+    pass: 99_percent_CI_lower_gt_zero
+  M_P2:
+    layer: pool_correct
+    row_difference: empty_proposer_wrong_minus_information_proposer_wrong
+    pass: 99_percent_CI_lower_gt_zero
+    failure_stops_later_endpoints: true
+  M_P3:
+    layerwise_primary_pair: information_proposer_error_vs_M1_representative_error
+    pooled_descriptive_pair: information_proposer_error_vs_original_density_pool_error
+    original_pool_error_layerwise: mathematically_degenerate_report_undefined
+    pass: pool_wrong_M1_error_kappa_lt_0_398_and_defined
+  M_P4:
+    estimand: full_distribution_augmented_minus_original_accuracy
+    aggregators: [density_B3, F1_majority]
+    report_point_and_CI: true
+  M_P5:
+    estimand: measured_neff_increment_divided_by_formula_increment
+    kappa_new: mean_pairwise_failure_kappa_new_vs_original
+    kappa_in: mean_pairwise_failure_kappa_among_three_new
+    consistent_interval: [0.7, 1.4]
+kill_conditions:
+  M_K1: {trigger: M_G1_ideal_gain_lt_0_007, consequence: stop_before_GPU}
+  M_K2: {trigger: M_P2_CI_contains_zero_or_negative, consequence: stop_distribution_shift_not_separated}
+  M_K3: {trigger: M_P1_CI_contains_zero_or_negative, consequence: masked_proposer_no_increment}
+  M_K4: {trigger: pool_wrong_M1_error_kappa_gte_0_398_or_undefined, consequence: no_new_channel_claim}
+  M_K5: {trigger: density_positive_majority_indistinguishable, consequence: absorbed_report_both}
+  M_K6: {trigger: either_main_aggregator_full_distribution_CI_upper_lt_zero, consequence: stop_no_runtime_gate_rescue}
+  M_K7: {trigger: either_eligible_layer_rows_lt_150, consequence: observational_only}
+  M_K8: {trigger: empty_mask_infeasible_or_generation_invalid_rate_gt_0_15, consequence: implementation_or_control_stop}
+retention:
+  row_jsonl_write_flush_fsync: true
+  lane_manifest_sha256: true
+  masked_images_persisted: false
+  backup_root: /scratch/workspaceblobstore/mask/2026-08-14
+  status_must_record_backup_manifest: true
+  recursive_delete_raw_or_predictions_jsonl: prohibited
+execution_order:
+  - commit_SPEC_and_mask_prereg
+  - lock_inputs_GTA1_preflight_and_model_roles
+  - implement_and_commit_stage1
+  - execute_stage1_and_M_G1
+  - if_pass_commit_stratified_subset_manifest
+  - commit_GPU_runner
+  - separately_commit_one_time_nonce_authorization
+  - execute_GTA1_lanes
+  - adjudicate_M_P2_then_M_P1_then_M_P3_then_M_P4_then_M_P5
+  - write_stage1_and_final_conclusion_to_limitation_and_retain
+reporting:
+  proposer_not_verifier: true
+  generic_occlusion_novelty_claim: prohibited
+  cross_model_generalization_claim: prohibited
+  neff_universal_law_claim: prohibited
+  secondary_models_cannot_be_substituted: true
+  failed_setting_rescue: prohibited
