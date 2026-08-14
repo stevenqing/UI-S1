@@ -73,6 +73,8 @@ runs/**/*.tar
 runs/**/*.tar.gz
 runs/**/*.zip
 runs/ceil/**/ARM_A_PANEL_CACHE.npz
+runs/orth/**/raw/
+runs/orth/**/failed_attempts/
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
