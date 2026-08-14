@@ -57,6 +57,10 @@ def edit_distance(left, right):
 def edit_similarity(text, instruction):
     normalized_text = normalize_text(text)
     tokens = normalize_text(instruction).split()
+    return edit_similarity_prepared(normalized_text, tokens)
+
+
+def edit_similarity_prepared(normalized_text, tokens):
     if not normalized_text or not tokens:
         return 0.0
     target_length = len(normalized_text)
@@ -89,6 +93,7 @@ def match_box(boxes, instruction, matcher, minimum_length, threshold=None):
 
 def prepare_boxes(boxes, instruction):
     normalized_instruction = normalize_text(instruction)
+    instruction_tokens = normalized_instruction.split()
     output = []
     for box in boxes:
         raw = str(box["text"]).strip()
@@ -99,7 +104,7 @@ def prepare_boxes(boxes, instruction):
             "normalized": normalized,
             "exact_matched": bool(raw and raw in instruction),
             "normalized_matched": bool(normalized and normalized in normalized_instruction),
-            "edit_score": edit_similarity(raw, instruction),
+            "edit_score": edit_similarity_prepared(normalized, instruction_tokens),
         })
     return output
 

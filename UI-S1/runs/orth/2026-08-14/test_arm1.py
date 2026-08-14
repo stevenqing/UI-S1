@@ -1,7 +1,8 @@
 import unittest
 
 from arm1_ocr_analysis import (
-    edit_similarity, match_box, normalize_text, prepare_boxes, select_prepared,
+    edit_similarity, edit_similarity_prepared, match_box, normalize_text,
+    prepare_boxes, select_prepared,
 )
 
 
@@ -11,6 +12,10 @@ class OCRAnalysisTest(unittest.TestCase):
 
     def test_edit_similarity(self):
         self.assertGreater(edit_similarity("setings", "open settings menu"), 0.8)
+        self.assertEqual(
+            edit_similarity("setings", "open settings menu"),
+            edit_similarity_prepared("setings", ["open", "settings", "menu"]),
+        )
 
     def test_match_tie_prefers_confidence_after_score_and_length(self):
         boxes = [
