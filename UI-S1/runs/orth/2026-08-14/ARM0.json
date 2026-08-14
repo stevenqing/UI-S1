@@ -1,0 +1,127 @@
+{
+  "claim_boundary": {
+    "automatic_C_D2_change": false,
+    "descriptive_scoping_only": true
+  },
+  "fact_correction": {
+    "base_row_and_arm_expanded_sample_are_distinct_units": true,
+    "ceil_primary_CI_was_already_group_clustered": true,
+    "ceil_recoverable_is_unique_sample_key_not_candidate_count": true
+  },
+  "reports": {
+    "mind2web": {
+      "arm_expanded_family_samples": 8320,
+      "arm_expanded_recoverable_sample_keys": 2021,
+      "ceil_decision_unchanged_automatically": true,
+      "context_candidate_pairs": 97008,
+      "family": "mind2web",
+      "group_clustered": {
+        "ci_99": [
+          0.6649297546957486,
+          0.7092641376782823
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20261114
+      },
+      "lower_bound_margin_over_0_65": {
+        "group_clustered": 0.014929754695748532,
+        "row_clustered": 0.013440685678150266,
+        "unclustered_context_candidate": 0.03345896962209205
+      },
+      "negative_context_candidates": 76964,
+      "positive_context_candidates": 20044,
+      "recoverable_base_rows_by_arm": {
+        "C_cond": 553,
+        "C_rand": 494,
+        "C_self": 509,
+        "C_uni": 465
+      },
+      "recoverable_sample_keys_by_arm": {
+        "C_cond": 553,
+        "C_rand": 494,
+        "C_self": 509,
+        "C_uni": 465
+      },
+      "recoverable_unique_base_row_union": 891,
+      "row_clustered": {
+        "ci_99": [
+          0.6634406856781503,
+          0.7120016058040054
+        ],
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20262114
+      },
+      "unclustered_context_candidate": {
+        "ci_99": [
+          0.6834589696220921,
+          0.6933091481768682
+        ],
+        "discarded_single_class_replicates": 0,
+        "point": 0.6884382744610161,
+        "resamples": 10000,
+        "seed": 20263114,
+        "unit": "context_candidate_pair_IID"
+      }
+    },
+    "screenspot_pro": {
+      "arm_expanded_family_samples": 6324,
+      "arm_expanded_recoverable_sample_keys": 968,
+      "ceil_decision_unchanged_automatically": true,
+      "context_candidate_pairs": 46464,
+      "family": "screenspot_pro",
+      "group_clustered": {
+        "ci_99": [
+          0.5011238075414088,
+          0.583007950528583
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20261014
+      },
+      "lower_bound_margin_over_0_65": {
+        "group_clustered": -0.14887619245859118,
+        "row_clustered": -0.14799562790168586,
+        "unclustered_context_candidate": -0.11843379401931442
+      },
+      "negative_context_candidates": 38080,
+      "positive_context_candidates": 8384,
+      "recoverable_base_rows_by_arm": {
+        "C_cond": 232,
+        "C_rand": 275,
+        "C_self": 223,
+        "C_uni": 238
+      },
+      "recoverable_sample_keys_by_arm": {
+        "C_cond": 232,
+        "C_rand": 275,
+        "C_self": 223,
+        "C_uni": 238
+      },
+      "recoverable_unique_base_row_union": 430,
+      "row_clustered": {
+        "ci_99": [
+          0.5020043720983142,
+          0.5775332425515403
+        ],
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20262014
+      },
+      "unclustered_context_candidate": {
+        "ci_99": [
+          0.5315662059806856,
+          0.5478222995741892
+        ],
+        "discarded_single_class_replicates": 0,
+        "point": 0.5396922666072632,
+        "resamples": 10000,
+        "seed": 20263014,
+        "unit": "context_candidate_pair_IID"
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_ORTH_ARM0_COMPLETE"
+}
