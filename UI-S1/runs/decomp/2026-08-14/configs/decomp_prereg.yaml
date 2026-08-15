@@ -36,6 +36,8 @@ arm1:
     resample_subsets: false
   mandatory_comparators: [best_single, full_pool_majority, nested_dev_selection, exact_budget_v_only_when_available]
   leaked_sspro_cells_selection_prohibited: true
+  leaked_values_imported_by_implementation: false
+  dev_selection_methods: [majority, A0, ours, A1, A2, A3, A4]
   mind2web_status: BLOCKED_ALIGNED_POOL_UNAVAILABLE
 arm2:
   evidence_status: LABEL_FREE_PUBLIC_STRUCTURE
