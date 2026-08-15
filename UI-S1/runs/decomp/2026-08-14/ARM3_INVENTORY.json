@@ -1,0 +1,54 @@
+{
+  "auroc_computed": false,
+  "benchmarks": {
+    "mind2web": {
+      "bytes": 52131701,
+      "coordinate_token_span_files": 0,
+      "files": 44,
+      "generation_logprob_files": 0,
+      "rows_across_files": 20800,
+      "token_id_files": 0
+    },
+    "screenspot_pro": {
+      "bytes": 9080617,
+      "coordinate_token_span_files": 0,
+      "files": 16,
+      "generation_logprob_files": 0,
+      "rows_across_files": 4743,
+      "token_id_files": 0
+    }
+  },
+  "forward_retention_policy": {
+    "fields": [
+      "generated_token_ids",
+      "decoded_response",
+      "per_token_logprobs_or_unavailable_reason",
+      "coordinate_token_span",
+      "coordinate_logprob",
+      "raw_sequence_score",
+      "length_normalized_sequence_score",
+      "normalization_formula",
+      "sampling_parameters",
+      "model_revision_and_index_hash",
+      "prompt_and_image_hashes"
+    ],
+    "required": true
+  },
+  "generating_model_logprob_available": false,
+  "labels_opened": false,
+  "raw": {
+    "bytes": 105379,
+    "path": "runs/decomp/2026-08-14/raw/arm3_file_inventory.jsonl",
+    "rows": 61,
+    "sha256": "51fbb080dd25e3462363474ef984fd3cafd0ddbf11043c29fc7d17ec80828d24",
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "selector_control": {
+    "classification": "DOWNSTREAM_CANDIDATE_SELECTOR_NOT_GENERATING_MODEL_LOGPROB",
+    "files": 1,
+    "selector_logits_present": true
+  },
+  "selector_logits_substituted": false,
+  "status": "DECOMP_ARM3_STOP_LOGPROB_CHANNEL_NOT_RETAINED"
+}
