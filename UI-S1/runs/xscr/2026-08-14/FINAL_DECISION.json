@@ -1,0 +1,15 @@
+{
+  "decision": "AUTHORIZE_EXPLORATORY_METHOD_SPEC",
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "method_claim_allowed": false,
+  "new_method_result_authorized": false,
+  "reason": "The human decision is to specify an exploratory soft-assignment method despite the best Mind2Web signed structural proxy being below the 0.70 pp MDE and AndroidControl providing no positive net surface. The future protocol must preserve these negative priors and cannot claim confirmation.",
+  "required_boundaries": [
+    "use_prospective_internal_holdout_only_after_method_and_parameters_are_frozen",
+    "report_mind2web_and_androidcontrol_separately",
+    "do_not_promote_below_MDE_result",
+    "use_soft_not_hard_exclusion",
+    "state_transductive_evaluation_protocol_change"
+  ],
+  "schema_version": 1
+}
