@@ -30,13 +30,16 @@ class SealTest(unittest.TestCase):
         right = prepare_seal.assign_screens(list(reversed(rows)), "test", 7, 0.3)
         self.assertEqual(left, right)
 
-    def test_cross_stratum_screen_is_rejected(self):
+    def test_cross_fold_screen_uses_composite_stratum(self):
         rows = [
             {"image_sha256": "a", "fold": 0},
             {"image_sha256": "a", "fold": 1},
+            {"image_sha256": "b", "fold": 0},
         ]
-        with self.assertRaises(ValueError):
-            prepare_seal.assign_screens(rows, "test", 7, 0.3)
+        assignments, counts = prepare_seal.assign_screens(rows, "test", 7, 0.3)
+        by_screen = {row["image_sha256"]: row for row in assignments}
+        self.assertEqual(by_screen["a"]["stratum"], "0,1")
+        self.assertEqual(counts["0,1"]["screens"], 1)
 
 
 if __name__ == "__main__":

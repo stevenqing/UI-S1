@@ -15,6 +15,7 @@ ROOT = RUN_DIR.parents[2]
 CONFIG_PATH = RUN_DIR / "configs/xscr_prereg.yaml"
 SPEC_PATH = RUN_DIR / "SPEC.md"
 AMENDMENT_PATH = RUN_DIR / "AMENDMENT_001_SEAL_ROUNDING.md"
+AMENDMENT_002_PATH = RUN_DIR / "AMENDMENT_002_CROSS_FOLD_SCREENS.md"
 SEAL_PATH = RUN_DIR / "SCREEN_SEAL.json"
 MANIFEST_PATH = RUN_DIR / "INPUT_MANIFEST.json"
 
@@ -55,14 +56,13 @@ def assignment_score(seed, benchmark, stratum, screen):
 
 
 def assign_screens(rows, benchmark, seed, fraction):
-    strata = defaultdict(set)
-    seen_strata = {}
+    screen_folds = defaultdict(set)
     for row in rows:
         screen = row["image_sha256"]
-        stratum = str(row["fold"])
-        previous = seen_strata.setdefault(screen, stratum)
-        if previous != stratum:
-            raise ValueError(f"screen crosses strata in {benchmark}: {screen}")
+        screen_folds[screen].add(int(row["fold"]))
+    strata = defaultdict(set)
+    for screen, folds in screen_folds.items():
+        stratum = ",".join(str(fold) for fold in sorted(folds))
         strata[stratum].add(screen)
     assignments = []
     counts = {}
@@ -136,8 +136,12 @@ def main():
 
     mind_assignments, mind_counts = assign_screens(mind, "mind2web", seed, fraction)
     android_assignments, android_counts = assign_screens(android, "androidcontrol", seed, fraction)
-    low_map = {row["image_sha256"]: row["fold"] for row in low}
-    high_map = {row["image_sha256"]: row["fold"] for row in high}
+    low_map = defaultdict(set)
+    high_map = defaultdict(set)
+    for row in low:
+        low_map[row["image_sha256"]].add(int(row["fold"]))
+    for row in high:
+        high_map[row["image_sha256"]].add(int(row["fold"]))
     if low_map != high_map:
         raise ValueError("AndroidControl Low/High screen pairing mismatch")
 
@@ -170,6 +174,7 @@ def main():
             "spec": {"path": str(SPEC_PATH.relative_to(ROOT)), "sha256": sha256_file(SPEC_PATH)},
             "config": {"path": str(CONFIG_PATH.relative_to(ROOT)), "sha256": sha256_file(CONFIG_PATH)},
             "amendment": {"path": str(AMENDMENT_PATH.relative_to(ROOT)), "sha256": sha256_file(AMENDMENT_PATH)},
+            "amendment_002": {"path": str(AMENDMENT_002_PATH.relative_to(ROOT)), "sha256": sha256_file(AMENDMENT_002_PATH)},
             "mind2web_public": {"path": str(mind_path.relative_to(ROOT)), "sha256": sha256_file(mind_path), "selected_rows": len(mind)},
             "androidcontrol_public": {"path": str(android_path.relative_to(ROOT)), "sha256": sha256_file(android_path), "selected_rows": len(android)},
             "screen_seal": {"path": str(SEAL_PATH.relative_to(ROOT)), "sha256": sha256_file(SEAL_PATH)},
