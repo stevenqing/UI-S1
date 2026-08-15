@@ -1,0 +1,60 @@
+schema_version: 1
+status: POST_SELECTION_FEASIBILITY_PREREGISTERED_BEFORE_SCREEN_SEAL_AND_STATISTICS
+date: '2026-08-14'
+gpu: false
+evidence_status: POST_SELECTION_FEASIBILITY
+confirmatory_claim_allowed: false
+method_claim_allowed: false
+changes_existing_statuses: false
+prospective_internal_holdout:
+  fraction: 0.30
+  seed: 20260814
+  unit: image_sha256
+  confirmatory: false
+lanes:
+  mind2web:
+    pool: C_uni
+    expected_rows: 2080
+    expected_candidates: 12
+    public_records: runs/visual-utility-selector/2026-08-11/data/public_records.jsonl
+    private_label_glob: runs/visual-utility-selector/2026-08-11/data/private_labels_fold-*.jsonl
+    screen_key: image_sha256
+    split_stratum: fold
+    coordinate_space: image_diagonal
+    tolerances:
+      - 0.0011454338263838862
+      - 0.0022908676527677724
+      - 0.004581735305535545
+      - 0.2505936168136361
+      - 0.5011872336272722
+      - 1.0023744672545445
+  androidcontrol_low:
+    setting: low
+    expected_rows: 2000
+    expected_candidates: 3
+    public_records: runs/trivus/2026-08-12/data/public_records.jsonl
+    private_label_glob: runs/trivus/2026-08-12/data/private_labels_fold-*.jsonl
+    reference: runs/xfer/2026-08-07/data/androidcontrol/low_sample.jsonl
+    screen_key: image_sha256
+    split_stratum: fold
+    coordinate_space: normalized_xy
+    tolerances: [0.07, 0.14, 0.28]
+  androidcontrol_high:
+    setting: high
+    expected_rows: 2000
+    expected_candidates: 3
+    public_records: runs/trivus/2026-08-12/data/public_records.jsonl
+    private_label_glob: runs/trivus/2026-08-12/data/private_labels_fold-*.jsonl
+    reference: runs/xfer/2026-08-07/data/androidcontrol/high_sample.jsonl
+    screen_key: image_sha256
+    split_stratum: fold
+    coordinate_space: normalized_xy
+    tolerances: [0.07, 0.14, 0.28]
+mode:
+  linkage: complete
+  weight: unweighted_member_count
+  class_tie_break: earliest_candidate_index
+  representative: earliest_candidate_index
+  reliability_used: false
+mde_pp: 0.70
+sequential_decisions: [Q1, Q2, Q3_Q4]
