@@ -21,6 +21,7 @@
 | Closure diagnostic | CEIL | recoverable subset：M2W cheap AUROC 0.688 `[0.665,0.709]`，C-D2；SSPro 0.540 `[0.501,0.583]`，C-D1；只授权另立 M2W spec |
 | Scoping only | ORTH | 两CPU OCR在SSPro recoverable/zero-coverage有覆盖且 error $\kappa$ 约0.10–0.20；信号限于text targets；全标签方向选择使后续同数据研究只能是 post-selection validation |
 | Post-selection negative | OTEXT | EasyOCR nested Stage-0 双基线最小增益 +0.064 pp，低于 0.70 pp O-G1；RapidOCR 0；O-K1，未授权 Stage 1 |
+| Structural feasibility | XSCR | 同屏结构稀缺：singleton screens M2W 97.5%、AC 99.5%；M2W 最佳 repair−damage proxy +0.479 pp < 0.70 pp MDE，AC 0；仅授权探索性 spec |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -108,6 +109,7 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/ceil/2026-08-14/` | COMPLETE | M2W C-D2、SSPro C-D1；overall `OPEN_NEW_SPEC_C_D2`；Arm A post-hoc且远端渐近弱识别 |
 | `runs/orth/2026-08-14/` | COMPLETE SCOPING | OCR text-target follow-up scoped；DOM historical data currently missing；all results non-paper exploratory |
 | `runs/otext/2026-08-14/` | STOPPED STAGE 0 | `POST_SELECTION_VALIDATION`；EasyOCR O-G1 fail；`OTEXT_STOPPED_O_K1_STAGE0`；Stage 1 not run |
+| `runs/xscr/2026-08-14/` | COMPLETE FEASIBILITY | `POST_SELECTION_FEASIBILITY`；best M2W proxy +0.479 pp below MDE；AC 0；nominal holdout contaminated by all-fold label loading |
 
 ## 8. Reproducibility boundaries
 
@@ -129,3 +131,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - CEIL finds benchmark-specific conditional ranking signal rather than a shared rule: Mind2Web passes C-D2 while ScreenSpot-Pro passes C-D1. This authorizes only a separately preregistered Mind2Web full-candidate reweighting study. Arm A's large Mind2Web parametric $\Delta_\infty$ values extrapolate far beyond support and are weakly identified sensitivity outputs; finite three-vote isotonic gains are much smaller.
 - ORTH is not a paper result. Its wide-grid CPU OCR scoping used all 1,581 ScreenSpot-Pro labels to choose the text-target direction, so OTEXT on the same rows is post-selection validation rather than confirmation. Full Mind2Web DOM/AX evaluation remains blocked until the historically audited official dataset is restored and hashed.
 - OTEXT independently regenerated EasyOCR and RapidOCR, then stopped at the preregistered Stage-0 gate: EasyOCR's nested minimum gain over both majority and dev-selection was +0.064 pp versus the 0.70 pp MDE, and RapidOCR's was 0. Stage 1 was not authorized; a confirmatory method claim requires new untouched data.
+- XSCR finds very little same-screen multiplicity: 97.5% of exploratory Mind2Web screens and 99.5% of AndroidControl screens are singletons. The best optimistic Mind2Web repair-minus-damage proxy is +0.479 pp, below the 0.70 pp MDE; AndroidControl is non-positive. The nominal 30% holdout was excluded from all reported aggregates but all private-label files were parsed during input locking, so it is not an unread prospective holdout. Any current-data method follow-up is nested post-selection exploration; independent validation requires new data.

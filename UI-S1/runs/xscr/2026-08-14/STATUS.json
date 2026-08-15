@@ -1,0 +1,31 @@
+{
+  "adjudication_sha256": "69c5b760f4f01e6b47f550b33133a32caf99cd7177296de1e7e868ec982490bf",
+  "changes_existing_statuses": false,
+  "confirmatory_claim_allowed": false,
+  "date": "2026-08-14",
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "gpu_used": false,
+  "holdout_excluded_from_reported_statistics": true,
+  "holdout_labels_read": true,
+  "independent_validation_requires_new_data": true,
+  "method_claim_allowed": false,
+  "next_action": "WRITE_NESTED_EXPLORATORY_SOFT_ASSIGNMENT_SPEC_NO_HOLDOUT_OR_METHOD_CLAIM",
+  "outcome": "XSCR_COMPLETE_BELOW_MDE_HOLDOUT_CONTAMINATED_EXPLORATORY_SPEC_AUTHORIZED",
+  "prospective_internal_holdout_valid": false,
+  "report": "runs/xscr/2026-08-14/REPORT.md",
+  "report_sha256": "bdaf365bd3048bf7c5768155da8cff5f7a1e2d7b1cc3aab0653a0f7da77fcb70",
+  "retention": {
+    "artifact_count": 33,
+    "correction_manifest": "/scratch/workspaceblobstore/xscr/2026-08-14/correction-001/BACKUP_MANIFEST.json",
+    "correction_manifest_sha256": "96251a33d3d85b878935d346f7f09243684b603b88bf63b5dbcf1ee78341adb4",
+    "correction_verified": true,
+    "manifest": "/scratch/workspaceblobstore/xscr/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "9a5aab23c3b693a9281198af25a05a77e246091bec5570031156e213f30312a4",
+    "original_manifest_preserved": true,
+    "total_bytes": 20405992,
+    "verified": true
+  },
+  "round": "xscr",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

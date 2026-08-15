@@ -39,6 +39,10 @@ The Mind2Web shared-target diagnostic rises to 97.85% at tolerance 0.501187. Lar
 
 ## Decision
 
-The default evidence-based decision would be to close the method direction because the optimistic signed proxy is below MDE and AndroidControl supplies no positive net surface. The recorded human decision instead authorizes writing an **exploratory** soft-assignment specification. That future round remains post-selection, must evaluate only after freezing the method against the prospective internal holdout, cannot claim confirmation, and cannot enter the existing main table as a same-protocol improvement.
+The default evidence-based decision would be to close the method direction because the optimistic signed proxy is below MDE and AndroidControl supplies no positive net surface. The recorded human decision instead authorizes writing an **exploratory** soft-assignment specification. That future round remains post-selection and cannot claim confirmation or enter the existing main table as a same-protocol improvement. Correction 004 determined that all private-label files were parsed during input locking, so the nominal 30% subset is not an unread prospective holdout. Any current-data follow-up must use explicitly post-selection nested evaluation; independent validation requires new untouched data.
 
 Q3, Q4, and shared-target diagnostics are evaluation-side only. They do not define a runtime gate.
+
+## Protocol correction
+
+The seal excluded holdout screens from every reported aggregate, but the private-input locker and Q3/Q4 loader read all private-label and reference rows into memory. The holdout is therefore contaminated for future evaluation. See `CORRECTION_004_HOLDOUT_LABEL_ACCESS.md`.
