@@ -1,0 +1,63 @@
+schema_version: 1
+status: PREREGISTERED_EXPLORATORY_METHOD_BEFORE_IMPLEMENTATION_OR_RESULT
+date: '2026-08-14'
+gpu: false
+evidence_status: POST_SELECTION_EXPLORATORY_METHOD
+confirmatory_claim_allowed: false
+method_claim_allowed: false
+changes_existing_statuses: false
+untouched_holdout_available: false
+independent_validation_requires_new_data: true
+dependencies:
+  xscr_public_manifest: runs/xscr/2026-08-14/INPUT_MANIFEST.json
+  xscr_private_manifest: runs/xscr/2026-08-14/PRIVATE_INPUT_MANIFEST.json
+  xscr_q1: runs/xscr/2026-08-14/Q1.json
+  xscr_q2: runs/xscr/2026-08-14/Q2.json
+  xscr_q3_q4: runs/xscr/2026-08-14/Q3_Q4.json
+  xscr_correction: runs/xscr/2026-08-14/CORRECTION_004_HOLDOUT_LABEL_ACCESS.md
+negative_prior:
+  mde_pp: 0.70
+  best_mind2web_signed_proxy_pp: 0.4794520547945205
+  best_androidcontrol_signed_proxy_pp: 0.0
+folds:
+  count: 5
+  unit: image_sha256
+  seed: 20260814
+  assignment: greedy_smallest_row_count_after_hash_sort
+  inner_validation: next_fold_mod_5
+lanes:
+  mind2web:
+    pool: C_uni
+    candidate_count: 12
+    tolerances:
+      - 0.0011454338263838862
+      - 0.0022908676527677724
+      - 0.004581735305535545
+      - 0.2505936168136361
+      - 0.5011872336272722
+      - 1.0023744672545445
+  androidcontrol_low:
+    candidate_count: 3
+    tolerances: [0.07, 0.14, 0.28]
+  androidcontrol_high:
+    candidate_count: 3
+    tolerances: [0.07, 0.14, 0.28]
+lambda_grid: [0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 4]
+optimizer:
+  implementation: scipy.optimize.milp
+  occupancy_penalty: excess_occupancy
+  mode_score: normalized_class_count
+  tie_perturbation: 1.0e-6
+  deterministic_lexicographic_fixing: true
+mandatory_baselines: [majority, dev_selection]
+controls: [independent_mode, matched_random_reassignment, hard_exclusion]
+matched_random_seeds: 1000
+bootstrap:
+  unit: screen
+  resamples: 10000
+  confidence: 0.99
+selection:
+  primary: max_min_gain_over_majority_and_dev_selection
+  ties: [gain_over_dev_selection, lower_changed_row_fraction, lower_lambda, lower_tolerance_index]
+practical_threshold_pp: 0.70
+formal_promotion_allowed: false
