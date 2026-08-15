@@ -1,0 +1,44 @@
+{
+  "arm1": {
+    "benchmark": "screenspot_pro",
+    "evidence_status": "POST_HOC_DESCRIPTIVE_DECOMPOSITION",
+    "full_pool_density_B3": 0.6369386464263125,
+    "lineage_direction_positive_all_identifiable_B2_B8": true,
+    "mind2web_status": "BLOCKED_ALIGNED_POOL_UNAVAILABLE",
+    "status": "PASS_DECOMP_ARM1_COMPLETE",
+    "subsets": 4083
+  },
+  "arm2": {
+    "followup_execution_authorized": false,
+    "human_decision": "WRITE_PHYSICALLY_ISOLATED_LABEL_SPEC",
+    "labels_opened": false,
+    "maximum_collision_row_fraction": 0.002530044275774826,
+    "singleton_screen_fraction": 0.9851708575112831,
+    "status": "PASS_DECOMP_ARM2_LABEL_FREE_COMPLETE_AWAITING_HUMAN_DECISION"
+  },
+  "arm3": {
+    "auroc_computed": false,
+    "generating_model_logprob_available": false,
+    "labels_opened": false,
+    "status": "DECOMP_ARM3_STOP_LOGPROB_CHANNEL_NOT_RETAINED"
+  },
+  "changes_existing_statuses": false,
+  "forward_retention_policy": {
+    "path": "docs/generation_trace_retention_policy.md",
+    "sha256": "9e66947406eb567ae2ca858d1d4af5b647f893b207f5cd1d54cddb332cdf1cc0"
+  },
+  "gpu_used": false,
+  "isolated_label_spec": {
+    "execution_authorized": false,
+    "path": "runs/xscr-label-isolated/2026-08-15/SPEC.md",
+    "sha256": "ab71d332f159be9d00d11f1c782707755d1c1097eef1aaa024b5d8527bf680d7"
+  },
+  "main_tables_sha256": "71a851035df2598ad257dc9ed5437f42acd96c9296d43e3bb9633e4bb3c19556",
+  "method_claim_allowed": false,
+  "next_action": "CLOSE_DECOMP_RETAIN_RESULTS_NO_NEW_EXPERIMENT_AUTHORIZED",
+  "outcome": "DECOMP_COMPLETE_LINEAGE_AXIS_DOMINANT_LOW_SCREEN_STRUCTURE_NO_LOGPROB",
+  "report": "runs/decomp/2026-08-14/REPORT.md",
+  "report_sha256": "9d9b5e0e7473bca382730dce6afcd59f401c5395eb81b138877fb033755c3ade",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
