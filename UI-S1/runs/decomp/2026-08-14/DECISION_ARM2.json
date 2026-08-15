@@ -1,0 +1,17 @@
+{
+  "arm": 2,
+  "decision": "WRITE_PHYSICALLY_ISOLATED_LABEL_SPEC",
+  "labels_opened": false,
+  "negative_prior": {
+    "maximum_collision_row_fraction": 0.002530044275774826,
+    "screenspot_singleton_screen_fraction": 0.9851708575112831
+  },
+  "requirements": [
+    "do_not_open_current_monolithic_private_label_files_during_public_or_exploratory_stages",
+    "materialize_and_hash_screen_sharded_labels_before_selecting_holdout",
+    "holdout_loader_must_be_path_allowlisted_and_open_audited",
+    "freeze_method_and_parameters_before_opening_any_holdout_shard",
+    "retain_the_low_structure_base_rate_as_a_negative_prior"
+  ],
+  "schema_version": 1
+}
