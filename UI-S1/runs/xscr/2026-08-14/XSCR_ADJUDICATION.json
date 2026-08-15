@@ -1,0 +1,16 @@
+{
+  "best_androidcontrol_signed_proxy_pp": 0.0,
+  "best_mind2web_signed_proxy_pp": 0.4794520547945205,
+  "changes_existing_statuses": false,
+  "confirmatory_claim_allowed": false,
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "exploratory_method_spec_authorized": true,
+  "main_table_sha256": "e90be67842bb9e8aa4081f44a6c9c41269753af5626011388027081c034feef9",
+  "mde_pp": 0.7,
+  "method_claim_allowed": false,
+  "outcome": "XSCR_COMPLETE_BELOW_MDE_EXPLORATORY_SPEC_AUTHORIZED",
+  "report": "runs/xscr/2026-08-14/REPORT.md",
+  "report_sha256": "0979270c8946575d2d21a9f2d4d176f3c3fd0a2251efa84061ec3cd91595d2ac",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
