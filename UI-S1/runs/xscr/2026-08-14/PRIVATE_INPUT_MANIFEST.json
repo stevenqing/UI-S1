@@ -1,0 +1,113 @@
+{
+  "candidate_success_values_aggregated": false,
+  "dependencies": {
+    "config": {
+      "path": "runs/xscr/2026-08-14/configs/xscr_prereg.yaml",
+      "sha256": "f6c303b05cd0ddf8754203f151a7a4879f50cf7456683171b47079afd8322688"
+    },
+    "decision_q2": {
+      "path": "runs/xscr/2026-08-14/DECISION_Q2.json",
+      "sha256": "fb0e72ad4980990cc7071e155ac8ba44f9a37339ca90bc9a594fab4c42e17986"
+    },
+    "public_manifest": {
+      "path": "runs/xscr/2026-08-14/INPUT_MANIFEST.json",
+      "sha256": "748b0a3498b694c8013c99e1a619da2bb3927ab294fa4985187abc7d6b73a513"
+    },
+    "q2": {
+      "path": "runs/xscr/2026-08-14/Q2.json",
+      "sha256": "f411c7d019cbe12f1f34235d28c7a31c0f33f32efa1e49323e9fc37c49697601"
+    }
+  },
+  "private_labels": {
+    "androidcontrol": [
+      {
+        "bytes": 86188,
+        "path": "runs/trivus/2026-08-12/data/private_labels_fold-0.jsonl",
+        "rows": 792,
+        "sha256": "3c0a07f210ad7d7518c40f36b2ff2803fd0452017511614a47345c607d32066a"
+      },
+      {
+        "bytes": 81962,
+        "path": "runs/trivus/2026-08-12/data/private_labels_fold-1.jsonl",
+        "rows": 754,
+        "sha256": "d49bcd4f49a924db632a86482a4c0d09cc7b7982846f4a938225aea5e053ff2d"
+      },
+      {
+        "bytes": 89823,
+        "path": "runs/trivus/2026-08-12/data/private_labels_fold-2.jsonl",
+        "rows": 826,
+        "sha256": "0a3026f9630cb104fc8c08dc42521fd84c982ac2564e6bcae1f984173194666a"
+      },
+      {
+        "bytes": 94675,
+        "path": "runs/trivus/2026-08-12/data/private_labels_fold-3.jsonl",
+        "rows": 870,
+        "sha256": "6f26bc3049459f88ef8d1f06147baa587a2f739ecb8ed1985874c7368fcc8d0b"
+      },
+      {
+        "bytes": 82368,
+        "path": "runs/trivus/2026-08-12/data/private_labels_fold-4.jsonl",
+        "rows": 758,
+        "sha256": "22968dc5dda176a69244cd1a28781bca17c86a00cc043895b7d1cee700515d79"
+      }
+    ],
+    "mind2web": [
+      {
+        "bytes": 615945,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-0.jsonl",
+        "rows": 2920,
+        "sha256": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630"
+      },
+      {
+        "bytes": 612231,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-1.jsonl",
+        "rows": 2912,
+        "sha256": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+      },
+      {
+        "bytes": 634803,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-2.jsonl",
+        "rows": 3012,
+        "sha256": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+      },
+      {
+        "bytes": 615496,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-3.jsonl",
+        "rows": 2888,
+        "sha256": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+      },
+      {
+        "bytes": 618464,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-4.jsonl",
+        "rows": 2912,
+        "sha256": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+      }
+    ]
+  },
+  "q3_q4_computed": false,
+  "references": {
+    "androidcontrol_high": {
+      "bytes": 1596219,
+      "path": "runs/xfer/2026-08-07/data/androidcontrol/high_sample.jsonl",
+      "row_ids_sha256": "55e0c25e6235f53e8b8618f764a964b89f9d5b2e7a3493769f144ec3b32778fd",
+      "rows": 2000,
+      "sha256": "91a7318c354aed2a55aeaacef7ce2d3c614036ede350fdbafa1026b4cf3d59ed"
+    },
+    "androidcontrol_low": {
+      "bytes": 1183641,
+      "path": "runs/xfer/2026-08-07/data/androidcontrol/low_sample.jsonl",
+      "row_ids_sha256": "55e0c25e6235f53e8b8618f764a964b89f9d5b2e7a3493769f144ec3b32778fd",
+      "rows": 2000,
+      "sha256": "b54da7f9a7b18128a055652e48cb18ce8ff24f97dfd2416344cedff431529ce3"
+    },
+    "mind2web": {
+      "bytes": 15265044,
+      "path": "runs/xfer/2026-08-07/data/mind2web/mind2web_test_task.jsonl",
+      "row_ids_sha256": "4ffcd6ac70ad79bc7c2fdeb72bfb24de575ff885a4d844d104baa6be1c4d3534",
+      "rows": 2080,
+      "sha256": "407d05fd7c5514d61bf415129892e5a7ffe9bf56646bea4c3b5f38aacd015352"
+    }
+  },
+  "schema_version": 1,
+  "status": "LOCKED_XSCR_PRIVATE_INPUTS_BEFORE_Q3_Q4_STATISTICS"
+}
