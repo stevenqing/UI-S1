@@ -1,0 +1,51 @@
+{
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "lanes": {
+    "androidcontrol_high": {
+      "rows": 1400,
+      "rows_on_singleton_screen_fraction": 0.9892857142857143,
+      "rows_on_singleton_screens": 1385,
+      "rows_per_screen_median": 1.0,
+      "rows_per_screen_q1": 1.0,
+      "rows_per_screen_q3": 1.0,
+      "screens": 1392,
+      "singleton_screen_fraction": 0.9949712643678161,
+      "singleton_screens": 1385
+    },
+    "androidcontrol_low": {
+      "rows": 1400,
+      "rows_on_singleton_screen_fraction": 0.9892857142857143,
+      "rows_on_singleton_screens": 1385,
+      "rows_per_screen_median": 1.0,
+      "rows_per_screen_q1": 1.0,
+      "rows_per_screen_q3": 1.0,
+      "screens": 1392,
+      "singleton_screen_fraction": 0.9949712643678161,
+      "singleton_screens": 1385
+    },
+    "mind2web": {
+      "rows": 1460,
+      "rows_on_singleton_screen_fraction": 0.9363013698630137,
+      "rows_on_singleton_screens": 1367,
+      "rows_per_screen_median": 1.0,
+      "rows_per_screen_q1": 1.0,
+      "rows_per_screen_q3": 1.0,
+      "screens": 1402,
+      "singleton_screen_fraction": 0.9750356633380884,
+      "singleton_screens": 1367
+    }
+  },
+  "private_labels_opened": false,
+  "q2_computed": false,
+  "q3_q4_computed": false,
+  "raw": {
+    "bytes": 581810,
+    "path": "runs/xscr/2026-08-14/raw/q1_screen_multiplicity.jsonl",
+    "rows": 4186,
+    "sha256": "e5dbff58d4f5ec31aa73f04f9f5f7f923e5ea1587be58896fdddaabaecf60678",
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "screen_seal_sha256": "d1b6463074f7c13d562291ea6bbb650c3f3805f242777c9b14633dd45e18dab6",
+  "status": "PASS_XSCR_Q1_COMPLETE_AWAITING_HUMAN_DECISION"
+}
