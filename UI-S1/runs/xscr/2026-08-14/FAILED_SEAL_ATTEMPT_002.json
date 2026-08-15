@@ -1,0 +1,8 @@
+{
+  "artifact_written": false,
+  "private_labels_opened": false,
+  "q1_q4_computed": false,
+  "reason": "byte_identical_screen_has_multiple_retained_image_paths",
+  "schema_version": 1,
+  "status": "FAILED_PUBLIC_ONLY_SEAL_ATTEMPT_BEFORE_OUTPUT"
+}

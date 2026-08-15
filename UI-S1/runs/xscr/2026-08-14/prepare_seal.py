@@ -16,6 +16,7 @@ CONFIG_PATH = RUN_DIR / "configs/xscr_prereg.yaml"
 SPEC_PATH = RUN_DIR / "SPEC.md"
 AMENDMENT_PATH = RUN_DIR / "AMENDMENT_001_SEAL_ROUNDING.md"
 AMENDMENT_002_PATH = RUN_DIR / "AMENDMENT_002_CROSS_FOLD_SCREENS.md"
+AMENDMENT_003_PATH = RUN_DIR / "AMENDMENT_003_IMAGE_PATH_ALIASES.md"
 SEAL_PATH = RUN_DIR / "SCREEN_SEAL.json"
 MANIFEST_PATH = RUN_DIR / "INPUT_MANIFEST.json"
 
@@ -93,24 +94,35 @@ def resolve_image_path(value):
 
 def verify_public_images(rows):
     images = {}
+    checked_paths = set()
     for row in rows:
         screen = row["image_sha256"]
         path = resolve_image_path(row["image_path"])
-        if screen in images:
-            if images[screen]["path"] != str(path):
-                raise ValueError(f"one screen maps to multiple image paths: {screen}")
-            continue
-        if not path.is_file() or sha256_file(path) != screen:
-            raise ValueError(f"public image mismatch: {screen}")
+        if path not in checked_paths:
+            if not path.is_file() or sha256_file(path) != screen:
+                raise ValueError(f"public image mismatch: {screen}")
+            checked_paths.add(path)
         with Image.open(path) as image:
-            width, height = image.size
-        images[screen] = {
-            "path": str(path.relative_to(ROOT)),
+            dimensions = tuple(image.size)
+        record = images.setdefault(screen, {
+            "paths": set(),
             "bytes": path.stat().st_size,
-            "width": width,
-            "height": height,
+            "width": dimensions[0],
+            "height": dimensions[1],
+        })
+        if (record["width"], record["height"]) != dimensions:
+            raise ValueError(f"image aliases have different dimensions: {screen}")
+        record["paths"].add(str(path.relative_to(ROOT)))
+    return {
+        screen: {
+            "path": sorted(record["paths"])[0],
+            "source_path_count": len(record["paths"]),
+            "bytes": record["bytes"],
+            "width": record["width"],
+            "height": record["height"],
         }
-    return images
+        for screen, record in images.items()
+    }
 
 
 def main():
@@ -175,6 +187,7 @@ def main():
             "config": {"path": str(CONFIG_PATH.relative_to(ROOT)), "sha256": sha256_file(CONFIG_PATH)},
             "amendment": {"path": str(AMENDMENT_PATH.relative_to(ROOT)), "sha256": sha256_file(AMENDMENT_PATH)},
             "amendment_002": {"path": str(AMENDMENT_002_PATH.relative_to(ROOT)), "sha256": sha256_file(AMENDMENT_002_PATH)},
+            "amendment_003": {"path": str(AMENDMENT_003_PATH.relative_to(ROOT)), "sha256": sha256_file(AMENDMENT_003_PATH)},
             "mind2web_public": {"path": str(mind_path.relative_to(ROOT)), "sha256": sha256_file(mind_path), "selected_rows": len(mind)},
             "androidcontrol_public": {"path": str(android_path.relative_to(ROOT)), "sha256": sha256_file(android_path), "selected_rows": len(android)},
             "screen_seal": {"path": str(SEAL_PATH.relative_to(ROOT)), "sha256": sha256_file(SEAL_PATH)},
