@@ -77,6 +77,7 @@ runs/orth/**/raw/
 runs/orth/**/failed_attempts/
 runs/otext/**/raw/
 runs/otext/**/failed_attempts/
+runs/xscr/**/raw/
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
