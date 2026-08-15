@@ -1,0 +1,11 @@
+{
+  "authorized_next_stage": "Q2",
+  "decision": "PROCEED",
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "private_labels_opened": false,
+  "q1_commit": "3d435c8554d1596a776c10a31c5f02a824712c21",
+  "q2_authorized": true,
+  "q3_q4_authorized": false,
+  "reason": "Human decision to measure the label-free collision rate despite dominant singleton screens before closing the structural hypothesis.",
+  "schema_version": 1
+}
