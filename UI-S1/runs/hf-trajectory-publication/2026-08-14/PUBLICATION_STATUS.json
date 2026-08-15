@@ -1,0 +1,38 @@
+{
+  "authenticated_user": "Stevenshuqing",
+  "benchmark_images_uploaded": false,
+  "ground_truth_uploaded": false,
+  "private_labels_uploaded": false,
+  "published_at_utc": "2026-08-15T05:50:38.197707+00:00",
+  "releases": {
+    "androidcontrol": {
+      "artifact_count": 12,
+      "expected_file_count": 14,
+      "private": true,
+      "readme_sha256": "cebad02d642e3fab6f1cb325e8c8034ca39b352c392439084db862946661eb7b",
+      "release_manifest_sha256": "072aa2af0a35a71c4a41d50cd7b27ac2b3f8e61231865788ad269fa232683630",
+      "remote_file_count": 15,
+      "remote_verified": true,
+      "repo_id": "Stevenshuqing/UI-S1-AndroidControl-Trajectories",
+      "revision": "73eda7b083e92a96e0516e2e3aeb0d9a3b716891",
+      "total_bytes": 20295492,
+      "total_rows": 17768
+    },
+    "mind2web": {
+      "artifact_count": 44,
+      "expected_file_count": 46,
+      "private": true,
+      "readme_sha256": "ed2d88695849795566debd516b19d24cb4affc829529dd7f9e9fe3dc69c99e63",
+      "release_manifest_sha256": "c494439648843e4ad52fab6f12562808ad777045be07d8b702348b68e2f7e115",
+      "remote_file_count": 47,
+      "remote_verified": true,
+      "repo_id": "Stevenshuqing/UI-S1-Mind2Web-Trajectories",
+      "revision": "c96c54bb0d443ec899bb68b87d78ec3f6c7eeaf5",
+      "total_bytes": 52131701,
+      "total_rows": 20800
+    }
+  },
+  "schema_version": 1,
+  "status": "COMPLETE_HF_PRIVATE_TRAJECTORY_PUBLICATION",
+  "visibility": "private"
+}
