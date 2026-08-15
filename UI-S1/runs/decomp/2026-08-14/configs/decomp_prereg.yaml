@@ -1,0 +1,69 @@
+schema_version: 1
+status: PREREGISTERED_AFTER_P0_BEFORE_ANY_DECOMP_ARM
+date: '2026-08-15'
+gpu: false
+changes_existing_statuses: false
+p0:
+  reconciliation: runs/decomp/2026-08-14/LANE_RECONCILIATION.md
+  decisions:
+    arm1: AUTHORIZED_SSPRO_ONLY
+    arm2: AUTHORIZED_LABEL_FREE_SSPRO
+    arm3: AUTHORIZED_INVENTORY_ONLY_EXPECT_STOP
+arm1:
+  evidence_status: POST_HOC_DESCRIPTIVE_DECOMPOSITION
+  benchmark: screenspot_pro
+  rows: 1581
+  pool: C_uni
+  candidate_count: 12
+  lineages: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  views: [0, 1, 2, 3]
+  canonical_order: view_major_then_lineage
+  budgets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  subset_count_all_nonempty: 4095
+  representation: [lineage_count, view_count, lineage_count_population_variance]
+  aggregators: [density_B3, F1_majority]
+  density_threshold_pixels: 14.0
+  folds: 5
+  inner_validation: next_fold_mod_5
+  cell_estimand: unweighted_mean_accuracy_over_all_subsets_in_cell
+  cell_selection_ties: [lower_lineage_variance, larger_lineage_count, larger_view_count, lexicographic_cell]
+  variance_decomposition: type_II_main_effects_plus_interaction_increment
+  marginal_contrast_weighting: equal_adjacent_supported_cells
+  bootstrap:
+    unit: application_group_rows
+    resamples: 10000
+    confidence: 0.99
+    resample_subsets: false
+  mandatory_comparators: [best_single, full_pool_majority, nested_dev_selection, exact_budget_v_only_when_available]
+  leaked_sspro_cells_selection_prohibited: true
+  mind2web_status: BLOCKED_ALIGNED_POOL_UNAVAILABLE
+arm2:
+  evidence_status: LABEL_FREE_PUBLIC_STRUCTURE
+  benchmark: screenspot_pro
+  rows: 1581
+  pool: C_uni
+  screen_keys: [image_sha256, img_filename_when_available]
+  tolerances_pixels: [7.0, 14.0, 28.0]
+  tolerance_source: canonical_B3_MVP_THRESHOLD_PIXELS
+  labels_opened: false
+  target_bbox_opened: false
+  q1: screen_multiplicity
+  q2: top_mode_collision
+  mode_weight: member_count
+  mode_tie_break: [mean_public_coverage, earliest_canonical_index]
+  representative_tie_break: [highest_public_coverage, earliest_canonical_index]
+  terminal_human_decision: true
+arm3:
+  evidence_status: POST_SELECTION_MECHANISM_INVENTORY
+  benchmarks: [screenspot_pro, mind2web]
+  labels_opened: false
+  expected_outcome: LOGPROB_CHANNEL_NOT_RETAINED
+  selector_logits_are_generation_logprobs: false
+  substitution_prohibited: true
+  auroc_authorized: false
+  amendment_required_if_channel_found: true
+retention:
+  raw_write_flush_fsync: true
+  backup_root: /scratch/workspaceblobstore/decomp/2026-08-14
+  per_file_sha256: true
+  future_generation_logprob_policy_required: true
