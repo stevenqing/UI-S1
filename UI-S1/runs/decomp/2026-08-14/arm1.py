@@ -429,6 +429,7 @@ def main():
         for budget in config["arm1"]["budgets"]:
             for name in ("lineage", "view", "interaction"):
                 decomposition[aggregator][str(budget)][f"{name}_ci_99"] = percentile(bootstrap_decomp[aggregator][str(budget)][name]) if bootstrap_decomp[aggregator][str(budget)][name] else None
+            for name in ("lineage", "view"):
                 marginal[aggregator][str(budget)][f"{name}_ci_99"] = percentile(bootstrap_marginal[aggregator][str(budget)][name]) if bootstrap_marginal[aggregator][str(budget)][name] else None
 
     write_jsonl_fsynced(RAW_SUBSETS_PATH, subset_records)

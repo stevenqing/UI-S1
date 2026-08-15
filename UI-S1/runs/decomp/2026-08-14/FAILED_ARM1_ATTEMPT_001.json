@@ -1,0 +1,8 @@
+{
+  "failure": "final_assembly_iterated_interaction_key_over_marginal_contrast_table",
+  "output_written": false,
+  "raw_output_written": false,
+  "schema_version": 1,
+  "stage": "after_computation_before_any_result_write",
+  "status": "FAILED_ARM1_IMPLEMENTATION_ATTEMPT"
+}

@@ -44,6 +44,12 @@ class Arm1Test(unittest.TestCase):
         values = arm1.application_multiplicities(["a"], {"a": 0}, 2, 7)
         self.assertTrue((values == 1).all())
 
+    def test_decomposition_and_marginal_keys_are_distinct(self):
+        decomposition_names = ("lineage", "view", "interaction")
+        marginal_names = ("lineage", "view")
+        self.assertNotIn("interaction", marginal_names)
+        self.assertIn("interaction", decomposition_names)
+
 
 if __name__ == "__main__":
     unittest.main()
