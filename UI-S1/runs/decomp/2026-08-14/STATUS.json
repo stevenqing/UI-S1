@@ -1,0 +1,21 @@
+{
+  "adjudication_sha256": "db145e3e4dbfc3d1d3b30a2f9c8b25dc2a832e71a18a897d38ece36177c0cb5f",
+  "changes_existing_statuses": false,
+  "date": "2026-08-15",
+  "gpu_used": false,
+  "method_claim_allowed": false,
+  "next_action": "CLOSE_DECOMP_RETAIN_RESULTS_NO_NEW_EXPERIMENT_AUTHORIZED",
+  "outcome": "DECOMP_COMPLETE_LINEAGE_AXIS_DOMINANT_LOW_SCREEN_STRUCTURE_NO_LOGPROB",
+  "report": "runs/decomp/2026-08-14/REPORT.md",
+  "report_sha256": "9d9b5e0e7473bca382730dce6afcd59f401c5395eb81b138877fb033755c3ade",
+  "retention": {
+    "artifact_count": 29,
+    "manifest": "/scratch/workspaceblobstore/decomp/2026-08-14/BACKUP_MANIFEST.json",
+    "manifest_sha256": "835c9bcd10f0230ede9d5f339c2bc87f1c4531973bae824cbfb11191600c07a4",
+    "total_bytes": 4047591,
+    "verified": true
+  },
+  "round": "decomp",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

@@ -22,6 +22,7 @@
 | Scoping only | ORTH | 两CPU OCR在SSPro recoverable/zero-coverage有覆盖且 error $\kappa$ 约0.10–0.20；信号限于text targets；全标签方向选择使后续同数据研究只能是 post-selection validation |
 | Post-selection negative | OTEXT | EasyOCR nested Stage-0 双基线最小增益 +0.064 pp，低于 0.70 pp O-G1；RapidOCR 0；O-K1，未授权 Stage 1 |
 | Structural feasibility | XSCR | 同屏结构稀缺：singleton screens M2W 97.5%、AC 99.5%；M2W 最佳 repair−damage proxy +0.479 pp < 0.70 pp MDE，AC 0；仅授权探索性 spec |
+| Descriptive decomposition | DECOMP | SSPro B2–B8 可识别预算中谱系边际全为正、视角边际多数近零/负；Arm 2 singleton screens 98.52%、碰撞≤0.253%；生成模型 logprob 未留存 |
 | Secondary | Q1 consensus RoI | 密度聚合器下 ScreenSpot +2.21 pp、Mind2Web +4.90 pp；CEV-A 下 Mind2Web pool effect 被吸收 |
 | Mechanism | E3 high-start condition | rank decay 转为性能下降需要高起点提议器；两点定性 |
 | Selective prediction | R4 / SafeGround port | AUROC 0.744→0.830；80% coverage 下 +7.12 pp；无原论文 FDR 继承 |
@@ -110,6 +111,7 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 | `runs/orth/2026-08-14/` | COMPLETE SCOPING | OCR text-target follow-up scoped；DOM historical data currently missing；all results non-paper exploratory |
 | `runs/otext/2026-08-14/` | STOPPED STAGE 0 | `POST_SELECTION_VALIDATION`；EasyOCR O-G1 fail；`OTEXT_STOPPED_O_K1_STAGE0`；Stage 1 not run |
 | `runs/xscr/2026-08-14/` | COMPLETE FEASIBILITY | `POST_SELECTION_FEASIBILITY`；best M2W proxy +0.479 pp below MDE；AC 0；nominal holdout contaminated by all-fold label loading |
+| `runs/decomp/2026-08-14/` | COMPLETE DESCRIPTIVE | SSPro 4,083 subsets at B2–B12；lineage marginal positive through identifiable B8；Arm 2 low structure；Arm 3 `LOGPROB_CHANNEL_NOT_RETAINED` |
 
 ## 8. Reproducibility boundaries
 
@@ -132,3 +134,4 @@ Mind2Web difference-in-differences：−4.47 pp，99% CI [−7.34,−1.68]。该
 - ORTH is not a paper result. Its wide-grid CPU OCR scoping used all 1,581 ScreenSpot-Pro labels to choose the text-target direction, so OTEXT on the same rows is post-selection validation rather than confirmation. Full Mind2Web DOM/AX evaluation remains blocked until the historically audited official dataset is restored and hashed.
 - OTEXT independently regenerated EasyOCR and RapidOCR, then stopped at the preregistered Stage-0 gate: EasyOCR's nested minimum gain over both majority and dev-selection was +0.064 pp versus the 0.70 pp MDE, and RapidOCR's was 0. Stage 1 was not authorized; a confirmatory method claim requires new untouched data.
 - XSCR finds very little same-screen multiplicity: 97.5% of exploratory Mind2Web screens and 99.5% of AndroidControl screens are singletons. The best optimistic Mind2Web repair-minus-damage proxy is +0.479 pp, below the 0.70 pp MDE; AndroidControl is non-positive. The nominal 30% holdout was excluded from all reported aggregates but all private-label files were parsed during input locking, so it is not an unread prospective holdout. Any current-data method follow-up is nested post-selection exploration; independent validation requires new data.
+- DECOMP is a post-hoc decomposition of the existing ScreenSpot-Pro +3.605 pp mixed-pool result, not a new method. Across identifiable B2–B8 budgets, adding a lineage has a positive marginal effect for both density B3 and F1 majority, while view marginals are generally smaller and often negative; every selected budget cell touches a support boundary. Mind2Web has no compliant aligned 3-lineage × 4-view pool and is not evaluated. Label-free ScreenSpot-Pro same-screen collision is at most 0.253%, and no generating-model token logprob/sequence score was retained in either ScreenSpot-Pro or Mind2Web traces. Downstream selector logits are not generation logprobs.
