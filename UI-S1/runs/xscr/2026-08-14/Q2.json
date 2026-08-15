@@ -1,0 +1,109 @@
+{
+  "decision_q1_sha256": "d8760fe291abd070bab72446acf09926fe0c8819527efece3c0dc994d3425406",
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "lanes": {
+    "androidcontrol_high": [
+      {
+        "collision_row_fraction": 0.002857142857142857,
+        "collision_rows": 4,
+        "collision_screens": 2,
+        "rows": 1400,
+        "tolerance": 0.07
+      },
+      {
+        "collision_row_fraction": 0.004285714285714286,
+        "collision_rows": 6,
+        "collision_screens": 3,
+        "rows": 1400,
+        "tolerance": 0.14
+      },
+      {
+        "collision_row_fraction": 0.004285714285714286,
+        "collision_rows": 6,
+        "collision_screens": 3,
+        "rows": 1400,
+        "tolerance": 0.28
+      }
+    ],
+    "androidcontrol_low": [
+      {
+        "collision_row_fraction": 0.004285714285714286,
+        "collision_rows": 6,
+        "collision_screens": 3,
+        "rows": 1400,
+        "tolerance": 0.07
+      },
+      {
+        "collision_row_fraction": 0.004285714285714286,
+        "collision_rows": 6,
+        "collision_screens": 3,
+        "rows": 1400,
+        "tolerance": 0.14
+      },
+      {
+        "collision_row_fraction": 0.004285714285714286,
+        "collision_rows": 6,
+        "collision_screens": 3,
+        "rows": 1400,
+        "tolerance": 0.28
+      }
+    ],
+    "mind2web": [
+      {
+        "collision_row_fraction": 0.03972602739726028,
+        "collision_rows": 58,
+        "collision_screens": 20,
+        "rows": 1460,
+        "tolerance": 0.0011454338263838862
+      },
+      {
+        "collision_row_fraction": 0.03904109589041096,
+        "collision_rows": 57,
+        "collision_screens": 20,
+        "rows": 1460,
+        "tolerance": 0.0022908676527677724
+      },
+      {
+        "collision_row_fraction": 0.03767123287671233,
+        "collision_rows": 55,
+        "collision_screens": 19,
+        "rows": 1460,
+        "tolerance": 0.004581735305535545
+      },
+      {
+        "collision_row_fraction": 0.06232876712328767,
+        "collision_rows": 91,
+        "collision_screens": 34,
+        "rows": 1460,
+        "tolerance": 0.2505936168136361
+      },
+      {
+        "collision_row_fraction": 0.06232876712328767,
+        "collision_rows": 91,
+        "collision_screens": 34,
+        "rows": 1460,
+        "tolerance": 0.5011872336272722
+      },
+      {
+        "collision_row_fraction": 0.0636986301369863,
+        "collision_rows": 93,
+        "collision_screens": 35,
+        "rows": 1460,
+        "tolerance": 1.0023744672545445
+      }
+    ]
+  },
+  "private_labels_opened": false,
+  "q1_sha256": "7ef9e4348524af4e540182820612b835cfcc332119b1bcaebfccac8fe783a8b2",
+  "q3_q4_computed": false,
+  "raw": {
+    "bytes": 6834858,
+    "path": "runs/xscr/2026-08-14/raw/q2_collisions.jsonl",
+    "rows": 17160,
+    "sha256": "05bb4922fa0068d414d85d0bfc8fcdf633a466b4fdd320c1615680da8bc11cdb",
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "screen_seal_sha256": "d1b6463074f7c13d562291ea6bbb650c3f3805f242777c9b14633dd45e18dab6",
+  "status": "PASS_XSCR_Q2_COMPLETE_AWAITING_HUMAN_DECISION"
+}
