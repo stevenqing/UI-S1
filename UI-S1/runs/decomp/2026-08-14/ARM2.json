@@ -1,0 +1,83 @@
+{
+  "evaluator_imported": false,
+  "evidence_status": "LABEL_FREE_PUBLIC_STRUCTURE",
+  "labels_opened": false,
+  "open_audit": {
+    "enabled": true,
+    "forbidden_open_count": 0,
+    "opened_path_count": 5,
+    "opened_paths_sha256": "5630fcf956b7a060db1a817eea6ea59817108a15a5bed74d4159025d17333e41"
+  },
+  "q1": {
+    "image_sha256": {
+      "rows": 1581,
+      "rows_on_singleton_screen_fraction": 0.9664769133459835,
+      "rows_on_singleton_screens": 1528,
+      "rows_per_screen_median": 1.0,
+      "rows_per_screen_q1": 1.0,
+      "rows_per_screen_q3": 1.0,
+      "screens": 1551,
+      "singleton_screen_fraction": 0.9851708575112831,
+      "singleton_screens": 1528
+    },
+    "img_filename": {
+      "rows": 1581,
+      "rows_on_singleton_screen_fraction": 1.0,
+      "rows_on_singleton_screens": 1581,
+      "rows_per_screen_median": 1.0,
+      "rows_per_screen_q1": 1.0,
+      "rows_per_screen_q3": 1.0,
+      "screens": 1581,
+      "singleton_screen_fraction": 1.0,
+      "singleton_screens": 1581
+    },
+    "partition_disagreement": true
+  },
+  "q2": [
+    {
+      "collision_row_fraction": 0.001265022137887413,
+      "collision_rows": 2,
+      "collision_screen_fraction": 0.0006447453255963894,
+      "collision_screens": 1,
+      "rows": 1581,
+      "screens": 1551,
+      "tolerance_pixels": 7.0
+    },
+    {
+      "collision_row_fraction": 0.0,
+      "collision_rows": 0,
+      "collision_screen_fraction": 0.0,
+      "collision_screens": 0,
+      "rows": 1581,
+      "screens": 1551,
+      "tolerance_pixels": 14.0
+    },
+    {
+      "collision_row_fraction": 0.002530044275774826,
+      "collision_rows": 4,
+      "collision_screen_fraction": 0.0012894906511927789,
+      "collision_screens": 2,
+      "rows": 1581,
+      "screens": 1551,
+      "tolerance_pixels": 28.0
+    }
+  ],
+  "raw": {
+    "q1": {
+      "bytes": 357898,
+      "path": "runs/decomp/2026-08-14/raw/arm2_q1_screens.jsonl",
+      "rows": 3132,
+      "sha256": "21331281bc5a48c82daea80bd370afe1ee7ce7f4821ef26ecf444da1692ae766"
+    },
+    "q2": {
+      "bytes": 1360872,
+      "path": "runs/decomp/2026-08-14/raw/arm2_q2_rows.jsonl",
+      "rows": 4743,
+      "sha256": "93d71932fd8662859ec82c4aa422d783059ac1a43ec4f20c9c5d8bb70c8269f3"
+    },
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "status": "PASS_DECOMP_ARM2_LABEL_FREE_COMPLETE_AWAITING_HUMAN_DECISION",
+  "target_bbox_opened": false
+}
