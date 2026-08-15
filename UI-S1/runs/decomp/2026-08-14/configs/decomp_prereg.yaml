@@ -50,8 +50,8 @@ arm2:
   q1: screen_multiplicity
   q2: top_mode_collision
   mode_weight: member_count
-  mode_tie_break: [mean_public_coverage, earliest_canonical_index]
-  representative_tie_break: [highest_public_coverage, earliest_canonical_index]
+  mode_tie_break: earliest_canonical_index
+  representative_tie_break: earliest_canonical_index
   terminal_human_decision: true
 arm3:
   evidence_status: POST_SELECTION_MECHANISM_INVENTORY
