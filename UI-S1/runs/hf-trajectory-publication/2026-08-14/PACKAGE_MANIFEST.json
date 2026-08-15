@@ -1,0 +1,22 @@
+{
+  "created_at_utc": "2026-08-15T05:46:26.751649+00:00",
+  "releases": {
+    "androidcontrol": {
+      "artifact_count": 12,
+      "readme_sha256": "cebad02d642e3fab6f1cb325e8c8034ca39b352c392439084db862946661eb7b",
+      "release_manifest_sha256": "072aa2af0a35a71c4a41d50cd7b27ac2b3f8e61231865788ad269fa232683630",
+      "total_bytes": 20295492,
+      "total_rows": 17768
+    },
+    "mind2web": {
+      "artifact_count": 44,
+      "readme_sha256": "ed2d88695849795566debd516b19d24cb4affc829529dd7f9e9fe3dc69c99e63",
+      "release_manifest_sha256": "c494439648843e4ad52fab6f12562808ad777045be07d8b702348b68e2f7e115",
+      "total_bytes": 52131701,
+      "total_rows": 20800
+    }
+  },
+  "schema_version": 1,
+  "stage_root": "/scratch/workspaceblobstore/hf-trajectory-publication/2026-08-14",
+  "status": "PASS_HF_TRAJECTORY_PACKAGES_VALIDATED"
+}
