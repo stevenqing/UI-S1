@@ -1,0 +1,10 @@
+{
+  "authorized_next_stage": "Q3_Q4",
+  "decision": "PROCEED",
+  "evidence_status": "POST_SELECTION_FEASIBILITY",
+  "private_labels_authorized": true,
+  "q2_commit": "c56020f279cffc1a649f777f64b21491d619232d",
+  "q3_q4_authorized": true,
+  "reason": "AndroidControl collisions are nearly absent, but the Mind2Web collision surface remains 3.77% to 6.37%; paired repair and damage bounds are needed to determine the signed feasibility ceiling.",
+  "schema_version": 1
+}
