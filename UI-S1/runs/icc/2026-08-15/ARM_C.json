@@ -1,0 +1,308 @@
+{
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "folds": [
+    {
+      "development_rows": 1267,
+      "empirical_kappa_neff": 1.54717649020257,
+      "empirical_phi_neff": 1.5268653761964446,
+      "outer_fold": 0,
+      "phi_ci_99": {
+        "cross_lineage": [
+          0.5645595130500115,
+          0.6366873186807525
+        ],
+        "within_lineage": [
+          0.659933614597863,
+          0.7112407039763123
+        ]
+      },
+      "strata": {
+        "cross_lineage": {
+          "kappa_mean_zero_fill": 0.5899241338162301,
+          "pairs": 48,
+          "phi_mean_valid": 0.6000678871601722,
+          "phi_mean_zero_fill": 0.6000678871601722,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "within_lineage": {
+          "kappa_mean_zero_fill": 0.6788903362572364,
+          "pairs": 18,
+          "phi_mean_valid": 0.6862319867073337,
+          "phi_mean_zero_fill": 0.6862319867073337,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      },
+      "structured_phi_neff": 1.5268653761964446
+    },
+    {
+      "development_rows": 1270,
+      "empirical_kappa_neff": 1.646351948328367,
+      "empirical_phi_neff": 1.621454023510654,
+      "outer_fold": 1,
+      "phi_ci_99": {
+        "cross_lineage": [
+          0.5090227403006541,
+          0.5968392062685212
+        ],
+        "within_lineage": [
+          0.6149788589686693,
+          0.6862052227243902
+        ]
+      },
+      "strata": {
+        "cross_lineage": {
+          "kappa_mean_zero_fill": 0.5437102213700795,
+          "pairs": 48,
+          "phi_mean_valid": 0.5545081600812544,
+          "phi_mean_zero_fill": 0.5545081600812544,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "within_lineage": {
+          "kappa_mean_zero_fill": 0.6463868993673709,
+          "pairs": 18,
+          "phi_mean_valid": 0.6548998681496276,
+          "phi_mean_zero_fill": 0.6548998681496276,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      },
+      "structured_phi_neff": 1.6214540235106536
+    },
+    {
+      "development_rows": 1244,
+      "empirical_kappa_neff": 1.5548677139207399,
+      "empirical_phi_neff": 1.5370279232393742,
+      "outer_fold": 2,
+      "phi_ci_99": {
+        "cross_lineage": [
+          0.550299807809658,
+          0.6417530599794616
+        ],
+        "within_lineage": [
+          0.6496316349435253,
+          0.7247992416850058
+        ]
+      },
+      "strata": {
+        "cross_lineage": {
+          "kappa_mean_zero_fill": 0.5842114607641018,
+          "pairs": 48,
+          "phi_mean_valid": 0.5931187593836694,
+          "phi_mean_zero_fill": 0.5931187593836694,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "within_lineage": {
+          "kappa_mean_zero_fill": 0.6813355567311989,
+          "pairs": 18,
+          "phi_mean_valid": 0.6874417111697879,
+          "phi_mean_zero_fill": 0.6874417111697879,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      },
+      "structured_phi_neff": 1.537027923239374
+    },
+    {
+      "development_rows": 1275,
+      "empirical_kappa_neff": 1.598867371032654,
+      "empirical_phi_neff": 1.5786356655523706,
+      "outer_fold": 3,
+      "phi_ci_99": {
+        "cross_lineage": [
+          0.5371552684130054,
+          0.6095009148521262
+        ],
+        "within_lineage": [
+          0.6388714403954007,
+          0.6963170026876513
+        ]
+      },
+      "strata": {
+        "cross_lineage": {
+          "kappa_mean_zero_fill": 0.5638047386452371,
+          "pairs": 48,
+          "phi_mean_valid": 0.5734851604217396,
+          "phi_mean_zero_fill": 0.5734851604217396,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "within_lineage": {
+          "kappa_mean_zero_fill": 0.6649583500432623,
+          "pairs": 18,
+          "phi_mean_valid": 0.671206447558441,
+          "phi_mean_zero_fill": 0.671206447558441,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      },
+      "structured_phi_neff": 1.5786356655523701
+    },
+    {
+      "development_rows": 1268,
+      "empirical_kappa_neff": 1.6246973148615604,
+      "empirical_phi_neff": 1.6021850559573267,
+      "outer_fold": 4,
+      "phi_ci_99": {
+        "cross_lineage": [
+          0.5200341734341368,
+          0.6105684635152918
+        ],
+        "within_lineage": [
+          0.6250133319641398,
+          0.6960713526584511
+        ]
+      },
+      "strata": {
+        "cross_lineage": {
+          "kappa_mean_zero_fill": 0.5529736345150202,
+          "pairs": 48,
+          "phi_mean_valid": 0.5630665076905877,
+          "phi_mean_zero_fill": 0.5630665076905877,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "within_lineage": {
+          "kappa_mean_zero_fill": 0.6540673602175464,
+          "pairs": 18,
+          "phi_mean_valid": 0.6617464857675512,
+          "phi_mean_zero_fill": 0.6617464857675512,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      },
+      "structured_phi_neff": 1.6021850559573267
+    }
+  ],
+  "historical_GRAN_G_P8_status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED",
+  "historical_status_changed": false,
+  "neff": {
+    "empirical_kappa": 1.5936767669403409,
+    "empirical_phi": 1.5725697506279792,
+    "kappa_vs_phi_relative_error": 0.013421990537420003,
+    "mask_anchor": 1.5936767669403409,
+    "structured_phi": 1.572569750627979,
+    "structured_vs_phi_relative_error": 1.4119857312298011e-16,
+    "threshold": 0.1
+  },
+  "raw": {
+    "bytes": 91740,
+    "path": "runs/icc/2026-08-15/raw/arm_c_pairwise.jsonl",
+    "rows": 330,
+    "sha256": "c4434ea9691a983d3844be03730b33e10ff24bc27b432dd6596882f5f60e9bae",
+    "write_flush_fsync_per_row": true
+  },
+  "retrospective_A2_supported": true,
+  "schema_version": 1,
+  "spec_sha256": "5bca43bc15d77303b6554827c4c8e4f2282f318e6d0bfeef626c5d3269e7477a",
+  "status": "PASS_ICC_ARM_C_DIRECT_ERROR_DEPENDENCE",
+  "summaries": {
+    "cross_lineage": {
+      "androidcontrol_reference": 0.398,
+      "fold_ci_99": [
+        [
+          0.5645595130500115,
+          0.6366873186807525
+        ],
+        [
+          0.5090227403006541,
+          0.5968392062685212
+        ],
+        [
+          0.550299807809658,
+          0.6417530599794616
+        ],
+        [
+          0.5371552684130054,
+          0.6095009148521262
+        ],
+        [
+          0.5200341734341368,
+          0.6105684635152918
+        ]
+      ],
+      "fold_mean": 0.5768492949474847,
+      "fold_range": [
+        0.5545081600812544,
+        0.6000678871601722
+      ],
+      "fold_values": [
+        0.6000678871601722,
+        0.5545081600812544,
+        0.5931187593836694,
+        0.5734851604217396,
+        0.5630665076905877
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.5899241338162301,
+        0.5437102213700795,
+        0.5842114607641018,
+        0.5638047386452371,
+        0.5529736345150202
+      ],
+      "signed_difference": 0.1788492949474847,
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "within_lineage": {
+      "androidcontrol_reference": 0.895,
+      "fold_ci_99": [
+        [
+          0.659933614597863,
+          0.7112407039763123
+        ],
+        [
+          0.6149788589686693,
+          0.6862052227243902
+        ],
+        [
+          0.6496316349435253,
+          0.7247992416850058
+        ],
+        [
+          0.6388714403954007,
+          0.6963170026876513
+        ],
+        [
+          0.6250133319641398,
+          0.6960713526584511
+        ]
+      ],
+      "fold_mean": 0.6723052998705483,
+      "fold_range": [
+        0.6548998681496276,
+        0.6874417111697879
+      ],
+      "fold_values": [
+        0.6862319867073337,
+        0.6548998681496276,
+        0.6874417111697879,
+        0.671206447558441,
+        0.6617464857675512
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.6788903362572364,
+        0.6463868993673709,
+        0.6813355567311989,
+        0.6649583500432623,
+        0.6540673602175464
+      ],
+      "signed_difference": -0.2226947001294517,
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}
