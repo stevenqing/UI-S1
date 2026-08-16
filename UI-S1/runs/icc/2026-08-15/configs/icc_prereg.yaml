@@ -45,7 +45,7 @@ same_budget:
   full: {lineages: 3, views_each: [0, 1, 2, 3]}
   leave_one_out: {lineages: 2, views_each: [0, 1, 2, 3, 4, 5]}
   omitted: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
-  aggregators: [density_B3, F1_majority]
+  aggregators: [B3_mvp, M1_ccm, source_priority]
   bootstrap: {unit: application_group, resamples: 10000, confidence: 0.99}
 retention:
   raw_write_flush_fsync: true
