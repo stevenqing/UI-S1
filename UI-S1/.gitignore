@@ -79,6 +79,7 @@ runs/otext/**/raw/
 runs/otext/**/failed_attempts/
 runs/xscr/**/raw/
 runs/decomp/**/raw/
+runs/evid/**/raw/
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
