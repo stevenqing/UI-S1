@@ -1,0 +1,9 @@
+{
+  "decision": "CLOSE_CORRELATION_DISCOUNT_DIRECTION",
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "new_rho_rescue_round_authorized": false,
+  "reason": "Arm A selected a low-rho endpoint in three of five folds, and Arm B showed that diversity-increase switches produced 13 corrections versus 23 harms. These two independent diagnostics satisfy the preregistered human closure rule. Arm C supports the aggregate kappa-to-phi effective-count approximation but does not rescue the row-level block selector.",
+  "historical_evid_result_changed": false,
+  "historical_gran_G_P8_status_changed": false,
+  "schema_version": 1
+}
