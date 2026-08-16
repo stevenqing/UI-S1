@@ -1,0 +1,95 @@
+schema_version: 1
+status: PREREGISTERED_BEFORE_ANY_EVID_RESULT
+date: '2026-08-15'
+gpu_stage0: false
+gpu_stage1: false
+gpu_stage2_authorized: false
+evidence_status: POST_SELECTION_SINGLE_BENCHMARK_VALIDATION
+benchmark: screenspot_pro
+rows: 1581
+pool: C_uni
+candidate_count: 12
+mind2web_status: BLOCKED_ALIGNED_POOL_UNAVAILABLE
+changes_existing_statuses: false
+method:
+  partition: canonical_ordered_greedy_complete_link
+  tolerance_pixels: 14.0
+  block_ties: [mean_coverage, earliest_block_order]
+  representative: [highest_coverage, earliest_candidate_index]
+  score:
+    within_lineage: n_over_1_plus_n_minus_1_rho_v
+    cross_lineage: weighted_sum_over_1_plus_L_minus_1_rho_l
+  primary:
+    rho_v: 0.895
+    rho_l: 0.398
+    rho_provenance: androidcontrol_failure_kappa_heuristic
+    weights: uniform
+  secondary_weighted:
+    rho_v: 0.895
+    rho_l: 0.398
+    weights: inner_train_lineage_reliability_mean_normalized
+  secondary_rho_grid:
+    values: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    cartesian: true
+    weights: uniform
+  rho_zero_anchor:
+    expected_accuracy: 0.6369386464263125
+    rowwise_identical_to_B3: required
+  diagonal_path:
+    values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    claim: additive_to_reliability_average_sensitivity
+  exact_singleton_control: true
+stage0:
+  lineage_transitions: [[1, 2], [2, 3]]
+  transition_weighting: equal_supported_budget_view_cells
+  aggregators: [density_B3, F1_majority]
+  transition_bootstrap:
+    unit: application_group_rows
+    resamples: 10000
+    confidence: 0.99
+  oracle:
+    primary: any_block_with_correct_canonical_representative
+    diagnostic: any_block_contains_correct_candidate
+    comparison: nested_dev_selection
+  disagreement:
+    comparison: fixed_primary_vs_canonical_B3_block
+    label_free: true
+  gates:
+    E_G1_min_oracle_gain: 0.007
+    E_G2_min_disagreement: 0.007
+    E_G3_min_pooled_2_to_3_point_each_aggregator: 0.007
+stage1:
+  folds: application_group_kfold_5
+  inner_validation: next_fold_mod_5
+  bootstrap:
+    unit: application_group
+    resamples: 10000
+    confidence: 0.99
+  mandatory_baselines:
+    B3: 0.6369386464263125
+    A2_A3: 0.6388361796331435
+    A4: 0.6394686907020873
+    majority_best_single: 0.5983554712207464
+    nested_dev_selection: 0.6382036685641999
+  primary_comparison: fixed_primary_minus_nested_dev_selection
+  stricter_context: fixed_primary_minus_A4
+  practical_threshold: 0.007
+  positive_requires: [ci99_lower_gt_zero, point_gain_ge_0_007]
+kill_conditions:
+  E_K1: fixed_primary_dev_selection_ci_includes_zero
+  E_K2: rho_zero_not_rowwise_B3
+  E_K3: finite_positive_exact_singleton_indistinguishable
+  E_K4: diagonal_path_no_systematic_transition
+  E_K5: fitted_rho_any_endpoint
+  E_K6: stage0_E_G1_or_E_G2_fail
+stage2:
+  authorized: false
+  prerequisite: new_committed_spec_after_E_G3_and_positive_stage1
+  proposed_new_lineages: 3
+  views_per_new_lineage: 2
+  estimated_forwards: 9486
+  generation_trace_policy: docs/generation_trace_retention_policy.md
+retention:
+  raw_write_flush_fsync: true
+  backup_root: /scratch/workspaceblobstore/evid/2026-08-15
+  per_file_sha256: true
