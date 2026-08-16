@@ -1,0 +1,24 @@
+{
+  "adjudication_sha256": "1bb2447ab9295c52220d8af9c2aa247c40b417d9a3f5aaaf7f3d211b8c2dd6f5",
+  "changes_existing_statuses": false,
+  "date": "2026-08-16",
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "gpu_used": false,
+  "historical_GRAN_G_P8_status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED",
+  "historical_status_changed": false,
+  "method_claim_allowed": false,
+  "next_action": "CLOSE_ICC_NO_RHO_RESCUE",
+  "outcome": "ICC_CLOSE_CORRELATION_DISCOUNT_DIRECTION_A2_TOTAL_APPROX_SUPPORTED",
+  "report": "runs/icc/2026-08-15/REPORT.md",
+  "report_sha256": "fd5d4d125334832cdca23c625a663875a16c7716d7386eda7054f9fc0fa6de5e",
+  "retention": {
+    "artifact_count": 25,
+    "manifest": "/scratch/workspaceblobstore/icc/2026-08-15/BACKUP_MANIFEST.json",
+    "manifest_sha256": "f443cc155cab12628f12bed4af8e461fc8ed47028f29e5148c32718f72a2a337",
+    "total_bytes": 883876,
+    "verified": true
+  },
+  "round": "icc",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
