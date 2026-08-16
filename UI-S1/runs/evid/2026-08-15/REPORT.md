@@ -12,7 +12,7 @@ The rho-zero control reproduced canonical B3 row by row with zero mismatches. Th
 
 The fixed-output block oracle reaches **78.56%**, or **+14.74 pp** over nested dev-selection. Contains-any-correct coverage is 79.19%; the difference is block-output loss and is not counted as attainable oracle accuracy. E-G1 passed.
 
-The separated $2	o3$ lineage marginal is **+0.855 pp** for density B3, 99% CI **[+0.502,+1.216]**, but only **+0.317 pp** for F1 majority, CI **[-0.123,+0.705]**. The conservative minimum is below 0.70 pp, so E-G3 failed and Stage 2 was permanently blocked before any GPU request.
+The separated $2\to3$ lineage marginal is **+0.855 pp** for density B3, 99% CI **[+0.502,+1.216]**, but only **+0.317 pp** for F1 majority, CI **[-0.123,+0.705]**. The conservative minimum is below 0.70 pp, so E-G3 failed and Stage 2 was permanently blocked before any GPU request.
 
 ## Stage 1
 

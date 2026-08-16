@@ -11,6 +11,7 @@
     "resamples": 10000,
     "unit": "application_group"
   },
+  "formatting_correction_001": true,
   "gpu_used": false,
   "kill_conditions": {
     "E_K1": true,
@@ -26,7 +27,7 @@
   "outcome": "EVID_FIXED_AGGREGATOR_FAILED_STAGE2_BLOCKED",
   "positive_primary": false,
   "report": "runs/evid/2026-08-15/REPORT.md",
-  "report_sha256": "293fb824417a0c501b0bf9dc2de2b06f038f98f0a650f880bdd4104e26593213",
+  "report_sha256": "8cde719397ca785a8329c93fb551673669b3f9202485a8d420491f12979de589",
   "schema_version": 1,
   "stage0_gates": {
     "E_G1": true,

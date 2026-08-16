@@ -1,0 +1,26 @@
+{
+  "adjudication_sha256": "99094416ef182c15d3bc3048ee2b493152a9dd8c406b9d4b4252a626ff5b28d0",
+  "changes_existing_statuses": false,
+  "date": "2026-08-15",
+  "evidence_status": "POST_SELECTION_SINGLE_BENCHMARK_VALIDATION",
+  "gpu_used": false,
+  "next_action": "CLOSE_EVID_SCORE_FAMILY_NO_STAGE2_GPU",
+  "outcome": "EVID_FIXED_AGGREGATOR_FAILED_STAGE2_BLOCKED",
+  "report": "runs/evid/2026-08-15/REPORT.md",
+  "report_sha256": "8cde719397ca785a8329c93fb551673669b3f9202485a8d420491f12979de589",
+  "retention": {
+    "artifact_count": 20,
+    "correction_manifest": "/scratch/workspaceblobstore/evid/2026-08-15/correction-001/BACKUP_MANIFEST.json",
+    "correction_manifest_sha256": "4fcce18ebffd4fdd3e1dcf42bd515c942cbee6439a4174dff32ac31d5a1e6146",
+    "correction_verified": true,
+    "manifest": "/scratch/workspaceblobstore/evid/2026-08-15/BACKUP_MANIFEST.json",
+    "manifest_sha256": "da2534f5649bf280c306ebcb0293b88a35ba20535fe464d8552c0570284ab78e",
+    "original_manifest_preserved": true,
+    "total_bytes": 1530125,
+    "verified": true
+  },
+  "round": "evid",
+  "schema_version": 1,
+  "stage2_authorized": false,
+  "status": "COMPLETE"
+}
