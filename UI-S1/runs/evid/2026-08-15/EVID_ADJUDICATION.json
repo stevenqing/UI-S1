@@ -1,0 +1,40 @@
+{
+  "changes_existing_statuses": false,
+  "evidence_status": "POST_SELECTION_SINGLE_BENCHMARK_VALIDATION",
+  "fixed_accuracy": 0.6306135357368754,
+  "fixed_minus_dev_selection": {
+    "ci_99": [
+      -0.01619442387771284,
+      0.0
+    ],
+    "point_delta": -0.007590132827324478,
+    "resamples": 10000,
+    "unit": "application_group"
+  },
+  "gpu_used": false,
+  "kill_conditions": {
+    "E_K1": true,
+    "E_K2": false,
+    "E_K3": false,
+    "E_K4": true,
+    "E_K5": true,
+    "E_K6": false
+  },
+  "main_table_sha256": "b0f571e913503ce9618cfe7909a2510829e5ed2a5b2324d80fc6006c217b5fb8",
+  "mind2web_status": "BLOCKED_ALIGNED_POOL_UNAVAILABLE",
+  "next_action": "CLOSE_EVID_SCORE_FAMILY_NO_STAGE2_GPU",
+  "outcome": "EVID_FIXED_AGGREGATOR_FAILED_STAGE2_BLOCKED",
+  "positive_primary": false,
+  "report": "runs/evid/2026-08-15/REPORT.md",
+  "report_sha256": "293fb824417a0c501b0bf9dc2de2b06f038f98f0a650f880bdd4104e26593213",
+  "schema_version": 1,
+  "stage0_gates": {
+    "E_G1": true,
+    "E_G2": true,
+    "E_G3": false,
+    "E_G3_min_point": 0.0031747807855032413
+  },
+  "stage2_authorized": false,
+  "stage2_blocked_by_E_G3": true,
+  "status": "COMPLETE"
+}
