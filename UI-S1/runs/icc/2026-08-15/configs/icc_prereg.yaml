@@ -1,0 +1,53 @@
+schema_version: 1
+status: PREREGISTERED_BEFORE_ANY_ICC_RESULT
+date: '2026-08-15'
+gpu: false
+evidence_status: POST_SELECTION_DIAGNOSTIC
+changes_existing_statuses: false
+historical_gran_G_P8_status_unchanged: NOT_ADJUDICABLE_PREREG_UNDERDEFINED
+arm_a:
+  source: runs/evid/2026-08-15/SELECTED_PARAMETERS.json
+  grid: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  output: selected_pairs_and_full_inner_curves
+  endpoint_classes: [low_endpoint, high_endpoint, mixed_endpoint, interior]
+arm_b:
+  sources:
+    stage0: runs/evid/2026-08-15/raw/stage0_rows.jsonl
+    stage1: runs/evid/2026-08-15/raw/stage1_rows.jsonl
+  outcome_classes: [unchanged_correct, unchanged_wrong, wrong_to_correct, correct_to_wrong, correct_to_correct, wrong_to_wrong]
+  direction_classes: [diversity_increase, diversity_decrease, same_L_concentration_increase, same_L_concentration_decrease, lineage_substitution, composition_same]
+  labels_evaluation_side: true
+arm_c:
+  coding: failure_one_success_zero
+  folds: outer_development_application_group_kfold_5
+  primary_estimator: pearson_phi
+  sensitivity_estimator: cohen_kappa
+  within_lineage_pairs: 18
+  cross_lineage_pairs: 48
+  pair_weighting: equal
+  undefined_phi: exclude_and_count
+  undefined_sensitivity: zero_fill
+  bootstrap:
+    unit: application_within_outer_development_fold
+    resamples: 10000
+    confidence: 0.99
+  neff:
+    empirical_phi: K_squared_over_one_R_one
+    empirical_kappa: MASK_exact
+    structured_formula: 144_over_12_plus_36_rho_v_plus_96_rho_l
+    mask_anchor: 1.5936767669403409
+    relative_error_threshold: 0.10
+    retrospective_support_requires_both: [kappa_vs_phi, structured_vs_phi]
+  androidcontrol_reference: {rho_v: 0.895, rho_l: 0.398}
+same_budget:
+  rows: 1581
+  budget: 12
+  full: {lineages: 3, views_each: [0, 1, 2, 3]}
+  leave_one_out: {lineages: 2, views_each: [0, 1, 2, 3, 4, 5]}
+  omitted: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  aggregators: [density_B3, F1_majority]
+  bootstrap: {unit: application_group, resamples: 10000, confidence: 0.99}
+retention:
+  raw_write_flush_fsync: true
+  backup_root: /scratch/workspaceblobstore/icc/2026-08-15
+  per_file_sha256: true
