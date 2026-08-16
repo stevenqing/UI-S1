@@ -1,0 +1,26 @@
+{
+  "arm_a_low_endpoint_folds": 3,
+  "arm_b_net_correct_changes": -10,
+  "arm_c_cross_phi": 0.5768492949474847,
+  "arm_c_within_phi": 0.6723052998705483,
+  "changes_existing_statuses": false,
+  "decision": "CLOSE_CORRELATION_DISCOUNT_DIRECTION",
+  "disclosure": {
+    "path": "docs/research_disclosures.md",
+    "sha256": "96c0ced5e66f85fb6852797d710d65b72f8225dcdee9ed19816f42e026d546d3"
+  },
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "gpu_used": false,
+  "historical_GRAN_G_P8_status": "NOT_ADJUDICABLE_PREREG_UNDERDEFINED",
+  "historical_status_changed": false,
+  "main_tables_sha256": "262174e67962c18d1ff1e01f3d4a289b4e97c2baccd2276a5aa1d38714b7f280",
+  "method_claim_allowed": false,
+  "new_rho_rescue_round_authorized": false,
+  "next_action": "CLOSE_ICC_NO_RHO_RESCUE",
+  "outcome": "ICC_CLOSE_CORRELATION_DISCOUNT_DIRECTION_A2_TOTAL_APPROX_SUPPORTED",
+  "report": "runs/icc/2026-08-15/REPORT.md",
+  "report_sha256": "fd5d4d125334832cdca23c625a663875a16c7716d7386eda7054f9fc0fa6de5e",
+  "retrospective_A2_supported": true,
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
