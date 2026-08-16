@@ -1,0 +1,276 @@
+{
+  "E_K2": false,
+  "diagonal_path": {
+    "step_change_rows": {
+      "0.0": 0,
+      "0.1": 26,
+      "0.2": 0,
+      "0.3": 5,
+      "0.4": 2,
+      "0.5": 2,
+      "0.6": 4,
+      "0.7": 3,
+      "0.8": 5,
+      "0.9": 0,
+      "1.0": 694
+    }
+  },
+  "disagreement": {
+    "fraction": 0.07020872865275142,
+    "label_free": true,
+    "rows": 111,
+    "total_rows": 1581
+  },
+  "gates": {
+    "E_G1": true,
+    "E_G2": true,
+    "E_G3": false,
+    "E_G3_min_point": 0.0031747807855032413
+  },
+  "lineage_transitions": {
+    "F1_majority": {
+      "1_to_2": {
+        "by_budget": {
+          "2": 0.010647269660552405,
+          "3": 0.014951858879752589,
+          "4": 0.017951266528116627
+        },
+        "ci_99": [
+          0.005280881552168556,
+          0.024607055804510294
+        ],
+        "pairs": [
+          {
+            "budget": 2,
+            "point_delta": 0.010647269660552405,
+            "view_count": 2
+          },
+          {
+            "budget": 3,
+            "point_delta": 0.014951858879752589,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.017951266528116627,
+            "view_count": 4
+          }
+        ],
+        "pooled_point_delta": 0.01451679835614054,
+        "supported_pairs": 3,
+        "transition": [
+          1,
+          2
+        ]
+      },
+      "2_to_3": {
+        "by_budget": {
+          "3": 0.0037687117857896357,
+          "4": 0.002246501946059206,
+          "5": 0.002389058575703429,
+          "6": 0.0028415927944815955,
+          "7": 0.004083953680727892,
+          "8": 0.006100402809680827
+        },
+        "ci_99": [
+          -0.0012343587844420162,
+          0.007051035061867476
+        ],
+        "pairs": [
+          {
+            "budget": 3,
+            "point_delta": 0.0032504041042941134,
+            "view_count": 2
+          },
+          {
+            "budget": 3,
+            "point_delta": 0.004287019467285158,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.0002899009065991942,
+            "view_count": 2
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.003000913627099644,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.0034486913044787793,
+            "view_count": 4
+          },
+          {
+            "budget": 5,
+            "point_delta": 0.0018149553728301626,
+            "view_count": 3
+          },
+          {
+            "budget": 5,
+            "point_delta": 0.002963161778576695,
+            "view_count": 4
+          },
+          {
+            "budget": 6,
+            "point_delta": 0.002866572600917938,
+            "view_count": 3
+          },
+          {
+            "budget": 6,
+            "point_delta": 0.002816612988045253,
+            "view_count": 4
+          },
+          {
+            "budget": 7,
+            "point_delta": 0.004083953680727892,
+            "view_count": 4
+          },
+          {
+            "budget": 8,
+            "point_delta": 0.006100402809680827,
+            "view_count": 4
+          }
+        ],
+        "pooled_point_delta": 0.0031747807855032413,
+        "supported_pairs": 11,
+        "transition": [
+          2,
+          3
+        ]
+      }
+    },
+    "density_B3": {
+      "1_to_2": {
+        "by_budget": {
+          "2": 0.014741021856771397,
+          "3": 0.015751282591889737,
+          "4": 0.019095810367157573
+        },
+        "ci_99": [
+          0.011275829828794872,
+          0.021624742216430407
+        ],
+        "pairs": [
+          {
+            "budget": 2,
+            "point_delta": 0.014741021856771397,
+            "view_count": 2
+          },
+          {
+            "budget": 3,
+            "point_delta": 0.015751282591889737,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.019095810367157573,
+            "view_count": 4
+          }
+        ],
+        "pooled_point_delta": 0.016529371605272902,
+        "supported_pairs": 3,
+        "transition": [
+          1,
+          2
+        ]
+      },
+      "2_to_3": {
+        "by_budget": {
+          "3": 0.010467179703422647,
+          "4": 0.007377496996409105,
+          "5": 0.009194910042870208,
+          "6": 0.007320329945959769,
+          "7": 0.008660536174767697,
+          "8": 0.009271280668464277
+        },
+        "ci_99": [
+          0.005023614237514394,
+          0.012155111287810848
+        ],
+        "pairs": [
+          {
+            "budget": 3,
+            "point_delta": 0.008090870756904955,
+            "view_count": 2
+          },
+          {
+            "budget": 3,
+            "point_delta": 0.012843488649940338,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": -0.0029868578255675127,
+            "view_count": 2
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.010656933024105752,
+            "view_count": 3
+          },
+          {
+            "budget": 4,
+            "point_delta": 0.014462415790689076,
+            "view_count": 4
+          },
+          {
+            "budget": 5,
+            "point_delta": 0.006550003513950409,
+            "view_count": 3
+          },
+          {
+            "budget": 5,
+            "point_delta": 0.011839816571790007,
+            "view_count": 4
+          },
+          {
+            "budget": 6,
+            "point_delta": 0.005431080620833972,
+            "view_count": 3
+          },
+          {
+            "budget": 6,
+            "point_delta": 0.009209579271085566,
+            "view_count": 4
+          },
+          {
+            "budget": 7,
+            "point_delta": 0.008660536174767697,
+            "view_count": 4
+          },
+          {
+            "budget": 8,
+            "point_delta": 0.009271280668464277,
+            "view_count": 4
+          }
+        ],
+        "pooled_point_delta": 0.008548104292451321,
+        "supported_pairs": 11,
+        "transition": [
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "oracle": {
+    "contains_correct_accuracy": 0.7919038583175205,
+    "nested_dev_selection_accuracy": 0.6382036685641999,
+    "output_correct_accuracy": 0.7855787476280834,
+    "output_oracle_gain": 0.14737507906388359
+  },
+  "proceed_stage1": true,
+  "raw": {
+    "bytes": 982307,
+    "path": "runs/evid/2026-08-15/raw/stage0_rows.jsonl",
+    "rows": 1581,
+    "sha256": "a8c6068bee2c43c2010c4dcc26f0313efa4b8b7b40fdb90f0b0a8f9428aaac33",
+    "write_flush_fsync_per_row": true
+  },
+  "rho_zero_rowwise_mismatches": 0,
+  "schema_version": 1,
+  "stage2_permanently_blocked": true,
+  "status": "PASS_EVID_STAGE0_COMPLETE"
+}
