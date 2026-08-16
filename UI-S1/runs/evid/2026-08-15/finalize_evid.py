@@ -71,7 +71,7 @@ The rho-zero control reproduced canonical B3 row by row with zero mismatches. Th
 
 The fixed-output block oracle reaches **{100 * stage0['oracle']['output_correct_accuracy']:.2f}%**, or **{100 * stage0['oracle']['output_oracle_gain']:+.2f} pp** over nested dev-selection. Contains-any-correct coverage is {100 * stage0['oracle']['contains_correct_accuracy']:.2f}%; the difference is block-output loss and is not counted as attainable oracle accuracy. E-G1 passed.
 
-The separated $2\to3$ lineage marginal is **{100 * density_23['pooled_point_delta']:+.3f} pp** for density B3, 99% CI **[{100 * density_23['ci_99'][0]:+.3f},{100 * density_23['ci_99'][1]:+.3f}]**, but only **{100 * majority_23['pooled_point_delta']:+.3f} pp** for F1 majority, CI **[{100 * majority_23['ci_99'][0]:+.3f},{100 * majority_23['ci_99'][1]:+.3f}]**. The conservative minimum is below 0.70 pp, so E-G3 failed and Stage 2 was permanently blocked before any GPU request.
+The separated $2\\to3$ lineage marginal is **{100 * density_23['pooled_point_delta']:+.3f} pp** for density B3, 99% CI **[{100 * density_23['ci_99'][0]:+.3f},{100 * density_23['ci_99'][1]:+.3f}]**, but only **{100 * majority_23['pooled_point_delta']:+.3f} pp** for F1 majority, CI **[{100 * majority_23['ci_99'][0]:+.3f},{100 * majority_23['ci_99'][1]:+.3f}]**. The conservative minimum is below 0.70 pp, so E-G3 failed and Stage 2 was permanently blocked before any GPU request.
 
 ## Stage 1
 
