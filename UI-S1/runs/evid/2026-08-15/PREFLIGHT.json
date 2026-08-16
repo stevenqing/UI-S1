@@ -1,0 +1,88 @@
+{
+  "bank": {
+    "benchmark": "screenspot_pro",
+    "candidates_per_row": 12,
+    "canonical_order": "view_major_then_lineage",
+    "rows": 1581
+  },
+  "config": {
+    "path": "runs/evid/2026-08-15/configs/evid_prereg.yaml",
+    "sha256": "800964825ab3887c5c3b8666bb6b3cc92e7759854d5060f27666d07f9077e15d"
+  },
+  "dependencies": {
+    "canonical_aggregator": {
+      "bytes": 3901,
+      "path": "runs/ccm-h2h/2026-07-31/h1/aggregators_coord.py",
+      "sha256": "9c038a473f65e4e43814791d32c16b08c2890fdee2e4211a5beaa5019d5020f1"
+    },
+    "close_e1": {
+      "bytes": 19410,
+      "path": "runs/close/2026-08-08/e1_arm_aggregator_matrix.py",
+      "sha256": "bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148"
+    },
+    "decomp_arm1": {
+      "bytes": 63078,
+      "path": "runs/decomp/2026-08-14/ARM1.json",
+      "sha256": "4e421184b2c7f9c35c77f5c9e8b519f3ffea9cbc3eefec82bb3af11d5914f916"
+    },
+    "decomp_preflight": {
+      "bytes": 399130,
+      "path": "runs/decomp/2026-08-14/PREFLIGHT.json",
+      "sha256": "63b675d9dc638a165db21dd2fd14c3a9d6e1bed170990fa1f540c7f63c8beec5"
+    },
+    "decomp_status": {
+      "bytes": 852,
+      "path": "runs/decomp/2026-08-14/STATUS.json",
+      "sha256": "5ba8c6e3830252c50644e362f3b4913afe7ca74fda7bc44b3d637cb04a3e456e"
+    },
+    "generation_trace_policy": {
+      "bytes": 1441,
+      "path": "docs/generation_trace_retention_policy.md",
+      "sha256": "9e66947406eb567ae2ca858d1d4af5b647f893b207f5cd1d54cddb332cdf1cc0"
+    },
+    "kappa_anchor": {
+      "bytes": 12146,
+      "path": "runs/ccm-h2h/2026-07-31/h2_collision_floor.json",
+      "sha256": "47c534850bf505a3318ad6f8586dd6f7ef76367a53219899df8b03210b7ee4e3"
+    },
+    "mask_common": {
+      "bytes": 8868,
+      "path": "runs/mask/2026-08-14/mask_common.py",
+      "sha256": "c44dcfd64f3d4a0062ad1778c34f4e2f960658fc6f62cafc396981688f7ae9f3"
+    },
+    "sourcebias_common": {
+      "bytes": 6607,
+      "path": "runs/sourcebias/2026-08-03/sourcebias_common.py",
+      "sha256": "1bb7aa5b093974c85513ff9671608bfaa508d303e90b40d09cfaaba91147fda2"
+    }
+  },
+  "gpu_used": false,
+  "mandatory_baselines": {
+    "A2_A3": 0.6388361796331435,
+    "A4": 0.6394686907020873,
+    "B3": 0.6369386464263125,
+    "majority_best_single": 0.5983554712207464,
+    "nested_dev_selection": 0.6382036685641999
+  },
+  "mind2web_status": "BLOCKED_ALIGNED_POOL_UNAVAILABLE",
+  "rho_anchors": {
+    "configured": {
+      "rho_l": 0.398,
+      "rho_v": 0.895
+    },
+    "exact_provenance": {
+      "cross_family_failure_kappa": 0.3981704074778036,
+      "view_failure_kappa": 0.8946701841469047
+    },
+    "mapping_status": "FROZEN_HEURISTIC_NOT_VALIDATED_ICC"
+  },
+  "schema_version": 1,
+  "spec": {
+    "path": "runs/evid/2026-08-15/SPEC.md",
+    "sha256": "d8d36cf750265acc91067e56a5c73d8487d9308401ca9fae93ee8666f44d7b49"
+  },
+  "stage0_computed": false,
+  "stage1_computed": false,
+  "stage2_authorized": false,
+  "status": "PASS_EVID_PREFLIGHT_NO_STAGE_RESULT"
+}
