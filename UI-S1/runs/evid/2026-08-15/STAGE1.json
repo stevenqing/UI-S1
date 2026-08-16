@@ -1,0 +1,246 @@
+{
+  "accuracy": {
+    "baselines": {
+      "A2_A3": 0.6388361796331435,
+      "A4": 0.6394686907020873,
+      "B3": 0.6369386464263125,
+      "majority_best_single": 0.5983554712207464,
+      "nested_dev_selection": 0.6382036685641999
+    },
+    "variants": {
+      "exact_singleton": 0.5983554712207464,
+      "fixed": 0.6306135357368754,
+      "rho_fitted": 0.6350411132194813,
+      "weighted": 0.6306135357368754
+    }
+  },
+  "comparisons": {
+    "exact_singleton": {
+      "A2_A3": {
+        "ci_99": [
+          -0.06066683771380893,
+          -0.021303678879861686
+        ],
+        "point_delta": -0.04048070841239722,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "A4": {
+        "ci_99": [
+          -0.06004763421107851,
+          -0.021660344235312514
+        ],
+        "point_delta": -0.041113219481340925,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "B3": {
+        "ci_99": [
+          -0.05829338671496661,
+          -0.018927262171831084
+        ],
+        "point_delta": -0.038583175205566096,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "majority_best_single": {
+        "ci_99": [
+          0.0,
+          0.0
+        ],
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "nested_dev_selection": {
+        "ci_99": [
+          -0.05970167829180172,
+          -0.020637321133544377
+        ],
+        "point_delta": -0.03984819734345351,
+        "resamples": 10000,
+        "unit": "application_group"
+      }
+    },
+    "fixed": {
+      "A2_A3": {
+        "ci_99": [
+          -0.019802164345386803,
+          0.0027703969929295676
+        ],
+        "point_delta": -0.008222643896268185,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "A4": {
+        "ci_99": [
+          -0.01855292568851166,
+          0.0
+        ],
+        "point_delta": -0.008855154965211892,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "B3": {
+        "ci_99": [
+          -0.014473729582577132,
+          0.0011655045634637465
+        ],
+        "point_delta": -0.006325110689437065,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "majority_best_single": {
+        "ci_99": [
+          0.011680688925529686,
+          0.05381219337334993
+        ],
+        "point_delta": 0.03225806451612903,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "nested_dev_selection": {
+        "ci_99": [
+          -0.01619442387771284,
+          0.0
+        ],
+        "point_delta": -0.007590132827324478,
+        "resamples": 10000,
+        "unit": "application_group"
+      }
+    },
+    "rho_fitted": {
+      "A2_A3": {
+        "ci_99": [
+          -0.010883531531833105,
+          0.0028296949304534385
+        ],
+        "point_delta": -0.003795066413662239,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "A4": {
+        "ci_99": [
+          -0.010234818861946318,
+          0.001256297229219141
+        ],
+        "point_delta": -0.004427577482605946,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "B3": {
+        "ci_99": [
+          -0.005765546460290416,
+          0.0024861884727644277
+        ],
+        "point_delta": -0.0018975332068311196,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "majority_best_single": {
+        "ci_99": [
+          0.01751902423991692,
+          0.0563209507290937
+        ],
+        "point_delta": 0.036685641998734975,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "nested_dev_selection": {
+        "ci_99": [
+          -0.007751963039240741,
+          0.0018999487165688835
+        ],
+        "point_delta": -0.0031625553447185324,
+        "resamples": 10000,
+        "unit": "application_group"
+      }
+    },
+    "weighted": {
+      "A2_A3": {
+        "ci_99": [
+          -0.0209981576822128,
+          0.004453040094232165
+        ],
+        "point_delta": -0.008222643896268185,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "A4": {
+        "ci_99": [
+          -0.020270338797215067,
+          0.002004008016032064
+        ],
+        "point_delta": -0.008855154965211892,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "B3": {
+        "ci_99": [
+          -0.016960319519663845,
+          0.00353370521437332
+        ],
+        "point_delta": -0.006325110689437065,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "majority_best_single": {
+        "ci_99": [
+          0.012101451842785478,
+          0.052917371209053085
+        ],
+        "point_delta": 0.03225806451612903,
+        "resamples": 10000,
+        "unit": "application_group"
+      },
+      "nested_dev_selection": {
+        "ci_99": [
+          -0.01767323490753135,
+          0.002001402508551657
+        ],
+        "point_delta": -0.007590132827324478,
+        "resamples": 10000,
+        "unit": "application_group"
+      }
+    }
+  },
+  "evidence_status": "POST_SELECTION_SINGLE_BENCHMARK_VALIDATION",
+  "kill_conditions": {
+    "E_K1": true,
+    "E_K2": false,
+    "E_K3": false,
+    "E_K4": true,
+    "E_K5": true,
+    "E_K6": false
+  },
+  "path": {
+    "disagreement_from_B3": {
+      "0.0": 0.0,
+      "0.1": 0.01644528779253637,
+      "0.2": 0.01644528779253637,
+      "0.3": 0.015812776723592662,
+      "0.4": 0.01454775458570525,
+      "0.5": 0.015812776723592662,
+      "0.6": 0.015812776723592662,
+      "0.7": 0.017710309930423784,
+      "0.8": 0.017077798861480076,
+      "0.9": 0.017077798861480076,
+      "1.0": 0.4282099936748893
+    },
+    "spearman": 0.7189627192516639,
+    "systematic": false
+  },
+  "positive_primary": false,
+  "raw": {
+    "bytes": 444188,
+    "path": "runs/evid/2026-08-15/raw/stage1_rows.jsonl",
+    "rows": 1581,
+    "sha256": "8d02bbf16b5b0dc7126b907d067f595fde3e13ddf3d31197420d2391127f1a91",
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "single_benchmark_claim_only": true,
+  "stage2_authorized": false,
+  "stage2_blocked_by_E_G3": true,
+  "status": "PASS_EVID_STAGE1_COMPLETE"
+}
