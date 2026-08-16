@@ -1,0 +1,91 @@
+{
+  "beneficial_changes": 14,
+  "changed_fraction": 0.07020872865275142,
+  "changed_rows": 111,
+  "direction_summary": {
+    "composition_same": {
+      "correct_to_wrong": 0,
+      "initially_wrong_rows": 0,
+      "net_correct": 0,
+      "rows": 0,
+      "wrong_to_correct": 0,
+      "wrong_to_correct_rate_all": null,
+      "wrong_to_correct_rate_given_wrong": null
+    },
+    "diversity_decrease": {
+      "correct_to_wrong": 0,
+      "initially_wrong_rows": 0,
+      "net_correct": 0,
+      "rows": 0,
+      "wrong_to_correct": 0,
+      "wrong_to_correct_rate_all": null,
+      "wrong_to_correct_rate_given_wrong": null
+    },
+    "diversity_increase": {
+      "correct_to_wrong": 23,
+      "initially_wrong_rows": 63,
+      "net_correct": -10,
+      "rows": 104,
+      "wrong_to_correct": 13,
+      "wrong_to_correct_rate_all": 0.125,
+      "wrong_to_correct_rate_given_wrong": 0.20634920634920634
+    },
+    "lineage_substitution": {
+      "correct_to_wrong": 0,
+      "initially_wrong_rows": 0,
+      "net_correct": 0,
+      "rows": 0,
+      "wrong_to_correct": 0,
+      "wrong_to_correct_rate_all": null,
+      "wrong_to_correct_rate_given_wrong": null
+    },
+    "same_L_concentration_decrease": {
+      "correct_to_wrong": 1,
+      "initially_wrong_rows": 2,
+      "net_correct": 0,
+      "rows": 7,
+      "wrong_to_correct": 1,
+      "wrong_to_correct_rate_all": 0.14285714285714285,
+      "wrong_to_correct_rate_given_wrong": 0.5
+    },
+    "same_L_concentration_increase": {
+      "correct_to_wrong": 0,
+      "initially_wrong_rows": 0,
+      "net_correct": 0,
+      "rows": 0,
+      "wrong_to_correct": 0,
+      "wrong_to_correct_rate_all": null,
+      "wrong_to_correct_rate_given_wrong": null
+    }
+  },
+  "diversity_vs_concentration": {
+    "concentration_increase_correction_rate": null,
+    "diversity_increase_correction_rate": 0.125
+  },
+  "harmful_changes": 24,
+  "net_accuracy_delta": -0.006325110689437065,
+  "net_correct_changes": -10,
+  "outcome_counts": {
+    "correct_to_correct": 22,
+    "correct_to_wrong": 24,
+    "unchanged_correct": 961,
+    "unchanged_wrong": 509,
+    "wrong_to_correct": 14,
+    "wrong_to_wrong": 51
+  },
+  "raw": {
+    "bytes": 40253,
+    "path": "runs/icc/2026-08-15/raw/arm_b_changed_rows.jsonl",
+    "rows": 111,
+    "sha256": "7af42d2ff7251593ae72fb9533a73213eb66f824fb72d409951fdf1fd72b9df7",
+    "write_flush_fsync_per_row": true
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "source_hashes": {
+    "spec": "5bca43bc15d77303b6554827c4c8e4f2282f318e6d0bfeef626c5d3269e7477a",
+    "stage0": "e359097f22ea5be4c11c27f61af37a4da34f74b2103cafe49923245d228a84fa",
+    "stage1": "9bc09c55f25129e1200dec25d05131ca7ec4f9879030c443def6d5506720ba8c"
+  },
+  "status": "PASS_ICC_ARM_B_CHANGED_ROW_AUDIT"
+}
