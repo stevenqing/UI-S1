@@ -81,6 +81,7 @@ runs/xscr/**/raw/
 runs/decomp/**/raw/
 runs/evid/**/raw/
 runs/icc/**/raw/
+runs/cover/**/raw/
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
