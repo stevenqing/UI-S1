@@ -1,0 +1,117 @@
+schema_version: 1
+round: owin
+amendment: '003'
+date: '2026-08-17'
+status: FROZEN_BEFORE_ANY_OWIN_RESULT_OR_GPU_AUTHORIZATION
+legality:
+  outputs_seen_before_amendment: false
+  preflight_run: false
+  geometry_calibration_run: false
+  arm_b_run: false
+  sample_manifest_created: false
+  arm_a_run: false
+  gpu_authorized: false
+  void_if_any_owin_statistic_predates_commit: true
+unchanged_primary:
+  sample_counts: {uncovered_0: 150, partial_1_10: 150, common_11: 200}
+  exact_rows: 500
+  exact_calls: 6000
+  O_I: {below_0_05: O_I1, from_0_05_through_0_10_inclusive: O_I2, above_0_10: O_I3}
+  estimand: corrected_B3_pool_level_point_using_full_common_delta
+notation:
+  jitter_radius: R
+  correlation_matrix: Phi
+  forbidden_correlation_matrix_key: R
+dependence:
+  slots: 11_crop_slots_excluding_full_image
+  pair_count: 55
+  sufficient_statistics: inverse_inclusion_weighted
+  matrices:
+    zero_fill:
+      key: phi_matrix_zero
+      diagonal: 1.0
+      undefined_off_diagonal: 0.0
+    mean_fill:
+      key: phi_matrix_mean
+      diagonal: 1.0
+      undefined_off_diagonal: mean_valid_signed_phi
+      unavailable_when_no_valid_pairs: true
+  neff:
+    formula: 121_divided_by_one_transpose_Phi_one
+    nonfinite_or_nonpositive_denominator: UNDEFINED_NONPOSITIVE_DENOMINATOR
+    PSD_projection: prohibited
+    correlation_clipping: prohibited
+    neff_clipping: prohibited
+    endpoints_selected: false
+    ordered_interval_only_if_mean_valid_phi_nonnegative: true
+    negative_mean_label: NEGATIVE_MEAN_PHI_ORDER_NOT_ASSUMED
+  reliability:
+    constant_slot: binary_error_identical_over_rows_with_strictly_positive_analysis_weight
+    bootstrap_analysis_weight: inverse_inclusion_weight_times_application_multiplicity
+    zero_multiplicity_rows_affect_constancy: false
+    undefined_pair_threshold: 11
+    trigger: undefined_pairs_gt_11
+    label: DEPENDENCE_DIAGNOSTIC_UNRELIABLE
+    excluded_from_pooled_or_cross_stratum_summary: true
+  comparator_degeneracy:
+    all_11_slots_constant: UNDEFINED_DEGENERATE_COMPARATOR
+    no_valid_pair_but_not_all_constant: NO_VALID_PAIR_COMPARATOR
+    artificial_zero_fill_neff_11_output_prohibited: true
+    relative_difference: NOT_APPLICABLE
+  intersection_context:
+    positive_area_formula: max_0_min_right_x2_minus_max_left_x1_times_max_0_min_bottom_y2_minus_max_top_y1_gt_0
+    does_not_redefine_cover_strata: true
+  relative_difference:
+    formula: absolute_oracle_minus_existing_divided_by_existing
+    denominator: matched_existing_same_fill_neff
+    denominator_must_be_positive_finite: true
+    comparisons: [zero_to_zero, mean_to_mean]
+  bootstrap:
+    resamples: 10000
+    confidence: 0.99
+    quantiles: [0.005, 0.995]
+    unit: application_group
+    recompute_weights_phi_undefined_fill_neff_each_replicate: true
+    minimum_reliable_finite_replicates: 9900
+    insufficient_label: DEPENDENCE_BOOTSTRAP_UNRELIABLE
+  labels:
+    lower_strictly_above_0_10: MATERIAL_DEPENDENCE_MISMATCH
+    upper_strictly_below_0_10: APPROXIMATELY_MATCHED
+    otherwise: DEPENDENCE_MATCH_INDETERMINATE
+    combined_precedence: [MATERIAL_DEPENDENCE_MISMATCH, DEPENDENCE_MATCH_INDETERMINATE, APPROXIMATELY_MATCHED]
+    unavailable_fill_without_other_mismatch: DEPENDENCE_MATCH_INDETERMINATE
+    issued_per_stratum_leave_one_fold_unit: true
+    pooled_cross_stratum_label: prohibited
+  always_report:
+    - undefined_pair_count
+    - constant_slot_count
+    - nonconstant_slot_count
+    - valid_pair_count
+    - mean_valid_signed_phi
+    - mean_zero_filled_off_diagonal_phi
+    - both_denominators
+    - both_neff_when_defined
+calibration_decomposition:
+  population_small_weight_numerator: 465
+  population_common_denominator: 931
+  w: 465_divided_by_931
+  formula: delta_pool_B3_minus_w_delta_small_B3_minus_one_minus_w_delta_large_B3
+  point_absolute_tolerance: 0.005
+  pass: absolute_point_delta_le_0_005
+  failure_label: CALIBRATION_DECOMPOSITION_CHECK_FAILED
+  failure_blocks_corrected_value_reporting_and_interpretation: true
+  bootstrap: joint_application_group_10000_99_percent
+  report_achieved_weighted_share: sum_IPW_small_divided_by_sum_IPW_common
+  report_raw_sample_share: true
+  pass_is_scientific_constant_shift_evidence: false
+disclosures:
+  radius_calibration_uses_GT_geometry_not_label_free: true
+  historical_0_8577_is_crop_center_coverage_not_success: true
+  recorded_in: docs/research_disclosures.md
+unchanged:
+  - radius_calibration_grid_and_selection
+  - arm_b_and_N_star
+  - target_size_heterogeneity_and_sensitivity
+  - model_runner_trace_retention_and_backup
+  - GT_ORACLE_NON_DEPLOYABLE
+  - post_selection_single_benchmark_scope
