@@ -1,0 +1,138 @@
+{
+  "containment_reconciliation": {
+    "contradiction": false,
+    "cover_crop_only_uncovered_center": 0.14231499051233396,
+    "rank0_full_bbox": 0.9993674889310563,
+    "rank0_full_image": true,
+    "rank11_full_bbox": 0.6103731815306768
+  },
+  "dependencies": {
+    "allocation_l4": {
+      "path": "runs/allocation-law/2026-08-01/L4_RESULTS.json",
+      "sha256": "3ccbca9ce2f781624b90608f98f121b66d29d836bbe3ca48e941e55a507af0af"
+    },
+    "allocation_module": {
+      "path": "runs/allocation-law/2026-08-01/allocation_eval.py",
+      "sha256": "eaf05b9c3bca000a38a1b93fed4ddf87fc6aa03b9978053c2a51e73b0112bb9d"
+    },
+    "config": {
+      "path": "runs/cwin/2026-08-17/configs/cwin_prereg.yaml",
+      "sha256": "57886f18a81ffc250bf0d4eb5319cd5fc851f1b10b0fa59818faec800878399e"
+    },
+    "cover_arm_a": {
+      "path": "runs/cover/2026-08-16/ARM_A.json",
+      "sha256": "681030ad35ed5ee5a7548ca2ce00adf813527e0e0ba4fc9a372cdf624d72aad9"
+    },
+    "gran_manifest": {
+      "path": "runs/gran/2026-08-14/INPUT_MANIFEST.json",
+      "sha256": "c10d6c84b6fd8e541c2ee3a6b10a9248362cb5468ad86fed7f6cddb34d2a0205"
+    },
+    "h3_module": {
+      "path": "runs/ccm-h2h/2026-07-31/h3/h3_eval.py",
+      "sha256": "b585a8c0caf12315f90fbc7b1c8b8294a3febf8d865a80fcd166ea9c5d11ab08"
+    },
+    "p0": {
+      "path": "runs/cwin/2026-08-17/CONTAINMENT_RECONCILIATION.md",
+      "sha256": "5269a01dec3b90daa0ec21c53e98137a4bd72c4e78f3b53b7e478faae2b0e679"
+    },
+    "regions": {
+      "bytes": 1013066,
+      "path": "runs/allocation-law/2026-08-01/raw/shared_regions_n12.jsonl",
+      "sha256": "2a7233cf0fbab109ea481ba891d2d7e65a481c48cd73c623d7d76fc61c06ae17"
+    },
+    "spec": {
+      "path": "runs/cwin/2026-08-17/SPEC.md",
+      "sha256": "b0f7708345b403b3393a0151f352807bbd9d697e8ef4d11a97af9d1d27d2831d"
+    }
+  },
+  "geometry": {
+    "all_rows_equal_crop_size": true,
+    "crop_size_counts": {
+      "1288x728": 1581
+    },
+    "crop_views": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "full_image_view": 0,
+    "invalid_rows": 0,
+    "rows": 1581
+  },
+  "gpu_used": false,
+  "gta1_trace_files": {
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-0.jsonl": {
+      "bytes": 700237,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "14900e22f642c6a636b8dbc4240b342ec20c294a57da9e09be228b841c4c8474"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-1.jsonl": {
+      "bytes": 698603,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "c067003c36bd8cd589c6681bbbd66b27c157f5dbef9b1de46631d804e4fe1d82"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-2.jsonl": {
+      "bytes": 700365,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "8a2e3bef16377de9925f6058abf2f624b580e0c4b225776d9287426a2416642b"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-3.jsonl": {
+      "bytes": 699547,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "0365437c0ed572bc7addda8c134d143d7fd3d078c33eb551492219d29ab34656"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-4.jsonl": {
+      "bytes": 699970,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "c2a662c237059603bea5d0521b05fd7ec619e46064b4a853bf488e2e1aa90fa4"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-5.jsonl": {
+      "bytes": 697345,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "ba7faad4215d6c6c80a6223da0280333df97c8f9382610f7d5c51aa91d5821f1"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-6.jsonl": {
+      "bytes": 698007,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "b6bfe0b203ffabce4a6dfc07b864192c13a1cb04bcac12a428f0786efe1979ad"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-7.jsonl": {
+      "bytes": 697218,
+      "roles": [
+        "screenspot_gta1_views_0_15"
+      ],
+      "sha256": "185ba448275c5870721037fbe966229fca9c68ff3fcf2d66d16ec79f4f0d6f78"
+    }
+  },
+  "pool_scope": {
+    "mixed_C_uni_is_not_replacement_pool": true,
+    "stage1a": "GTA1_v_only_N12",
+    "stage1b": "full_36_requires_new_amendment"
+  },
+  "schema_version": 1,
+  "stage0_computed": false,
+  "stage1_authorized": false,
+  "status": "PASS_CWIN_PREFLIGHT_NO_GEOMETRY_OR_RESULT"
+}
