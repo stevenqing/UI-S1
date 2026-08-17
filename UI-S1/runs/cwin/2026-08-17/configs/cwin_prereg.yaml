@@ -1,0 +1,69 @@
+schema_version: 1
+status: PREREGISTERED_AFTER_P0_BEFORE_ANY_CWIN_RESULT
+date: '2026-08-17'
+gpu_stage0: false
+gpu_stage1_authorized: false
+evidence_status: POST_SELECTION_EXPLORATORY_PILOT
+changes_existing_statuses: false
+p0:
+  reconciliation: runs/cwin/2026-08-17/CONTAINMENT_RECONCILIATION.md
+  rank0_semantics: full_image_view0
+  e3_interpretation: full_image_to_late_crop_decay
+geometry:
+  full_image_view: 0
+  crop_views: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  K_grid: [2, 3, 4]
+  complementary_search: exact_all_integer_top_left_integral_image
+  complementary_objective: maximum_new_count_zero_pixels
+  complementary_tie_break: [top, left]
+  update_after_each_window: true
+  redundancy_score: sum_pairwise_rectangle_iou_with_remaining
+  redundancy_tie_break: earlier_original_rank
+  recompute_after_each_drop: true
+  audit: {area_ratio: [0.95, 1.05], aspect_ratio_difference_max: 0.03, exact_dimensions_required: true, mismatch_rate_max: 0.10}
+nested:
+  folds: application_group_kfold_5
+  inner_validation: next_fold_mod_5
+  K_selection: maximum_L4_upper
+  tie_break: smaller_K
+stage0:
+  L1: target_center_coverage_transition
+  L2_conservative:
+    estimator: outer_development_coverage_count_B3_accuracy_99_lower
+    bootstrap: {unit: application_group, resamples: 10000, confidence: 0.99}
+    empty_stratum_value: 0.0
+  L3:
+    pool: GTA1_v_only_N12
+    methods: [B3_mvp, M1_ccm]
+    comparison: drop_only_minus_original
+  L4_upper: drop_only_B3_delta_plus_drop_wrong_new_window_target_covered_fraction
+  L4_conservative: drop_only_B3_delta_plus_L2_conservative
+  W_G1_min_upper_gain: 0.007
+stage1:
+  authorized: false
+  stage1a:
+    pool: GTA1_v_only_N12
+    original_forwards: 12
+    complementary_forwards_formula: K_times_1581
+  stage1b:
+    prerequisite: stage1a_W_P1_pass_and_new_amendment
+    pool: full_36
+    original_forwards: 36
+    additional_forwards_formula: 2K_times_1581
+  controls: [random_positive_gain_window, drop_only, matched_area_high_overlap]
+  methods: [B3_mvp, M1_ccm]
+  trace_policy: docs/generation_trace_retention_policy.md
+  additional_trace_fields: [coordinate_token_entropy, coordinate_top1_minus_top2_probability]
+kill_conditions:
+  W_K1: W_G1_upper_below_MDE
+  W_K2: W_P1_ci_lower_not_positive
+  W_K3: random_control_indistinguishable
+  W_K4: B3_positive_M1_ccm_not_distinguishable
+  W_K5: K_endpoint
+  W_K6: new_candidate_phi_not_below_0_672_and_0_577
+  W_K7: geometry_mismatch_rate_gt_0_10
+retention:
+  raw_write_flush_fsync: true
+  backup_root: /scratch/workspaceblobstore/cwin/2026-08-17
+  per_file_sha256: true
+  recursive_raw_deletion_prohibited: true
