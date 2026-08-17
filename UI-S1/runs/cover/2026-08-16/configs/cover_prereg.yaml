@@ -1,0 +1,46 @@
+schema_version: 1
+status: PREREGISTERED_BEFORE_ANY_COVER_RESULT
+date: '2026-08-16'
+gpu: false
+evidence_status: POST_SELECTION_DIAGNOSTIC
+changes_existing_statuses: false
+arm_a:
+  benchmark: screenspot_pro
+  rows: 1581
+  region_source: gta1_shared_attention_rank
+  full_image_view: 0
+  crop_views: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  lineage_regions_identical: true
+  coverage_map: {dtype: uint8, format: png, values: [0, 11]}
+  rectangle_semantics: left_top_inclusive_right_bottom_exclusive
+  target_strata: [common_11, partial_1_10, uncovered_0]
+  low_coverage: [partial_1_10, uncovered_0]
+  row_classes: [selected_correct, recoverable, zero_candidate_success_coverage]
+  bootstrap: {unit: application_group, resamples: 10000, confidence: 0.99}
+  gates:
+    A_G1_common_fraction: 0.90
+    A_G2_min_low_fraction: 0.10
+    A_G3_min_accuracy_gap: 0.007
+  followup_gpu_authorized: false
+arm_b:
+  benchmark: mind2web
+  rows: 2080
+  candidates_per_row: 12
+  models: [TongUI-7B, CogAgent-18B, UI-TARS-7B]
+  slot_roles: [stage1_full, stage1_view1, stage2_crop0, stage2_crop1]
+  folds: website_group_kfold_5
+  bootstrap: {unit: episode_within_fold, resamples: 10000, confidence: 0.99}
+  primary_strata: {within_model_pairs: 18, cross_model_pairs: 48}
+  trend_strata: {within_model_cross_slot: 18, cross_model_matched_role: 12, cross_model_unmatched_role: 36}
+  estimator: pearson_phi
+  sensitivity: cohen_kappa_zero_fill
+  undefined_phi: exclude_and_count
+  neff: K_squared_over_one_R_one
+references:
+  screenspot_pro: {rho_within: 0.6723052998705483, rho_cross: 0.5768492949474847, neff: 1.5725697506279792}
+  androidcontrol: {rho_within: 0.895, rho_cross: 0.398}
+retention:
+  raw_write_flush_fsync: true
+  coverage_maps_exact_png: true
+  backup_root: /scratch/workspaceblobstore/cover/2026-08-16
+  per_file_sha256: true
