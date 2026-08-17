@@ -1,0 +1,693 @@
+{
+  "candidates_per_row": 12,
+  "empirical_phi_neff": 2.180608226586123,
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "folds": [
+    {
+      "development_rows": 1664,
+      "empirical_phi_neff": 2.137023017403705,
+      "outer_fold": 0,
+      "phi_ci_99": {
+        "cross_model": [
+          0.333728321694851,
+          0.405709226647762
+        ],
+        "cross_model_matched_role": [
+          0.36246367522577544,
+          0.4357326800920935
+        ],
+        "cross_model_unmatched_role": [
+          0.3233631258847687,
+          0.3973615397863036
+        ],
+        "within_model": [
+          0.5230741483270993,
+          0.5827170171299383
+        ],
+        "within_model_cross_slot": [
+          0.5230741483270993,
+          0.5827170171299383
+        ]
+      },
+      "summaries": {
+        "cross_model": {
+          "kappa_mean_zero_fill": 0.36281647940981615,
+          "pairs": 48,
+          "phi_mean_valid": 0.3695035823327663,
+          "phi_mean_zero_fill": 0.3695035823327663,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "cross_model_matched_role": {
+          "kappa_mean_zero_fill": 0.39162743063741773,
+          "pairs": 12,
+          "phi_mean_valid": 0.3986218964519616,
+          "phi_mean_zero_fill": 0.3986218964519616,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 12
+        },
+        "cross_model_unmatched_role": {
+          "kappa_mean_zero_fill": 0.35321282900061557,
+          "pairs": 36,
+          "phi_mean_valid": 0.3597974776263679,
+          "phi_mean_zero_fill": 0.3597974776263679,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 36
+        },
+        "within_model": {
+          "kappa_mean_zero_fill": 0.5492166002987009,
+          "pairs": 18,
+          "phi_mean_valid": 0.5530864930720698,
+          "phi_mean_zero_fill": 0.5530864930720698,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        },
+        "within_model_cross_slot": {
+          "kappa_mean_zero_fill": 0.5492166002987009,
+          "pairs": 18,
+          "phi_mean_valid": 0.5530864930720698,
+          "phi_mean_zero_fill": 0.5530864930720698,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      }
+    },
+    {
+      "development_rows": 1663,
+      "empirical_phi_neff": 2.1828137508339225,
+      "outer_fold": 1,
+      "phi_ci_99": {
+        "cross_model": [
+          0.3239505287828691,
+          0.39986249882239155
+        ],
+        "cross_model_matched_role": [
+          0.3535609939846569,
+          0.4313711634267151
+        ],
+        "cross_model_unmatched_role": [
+          0.3133557536526014,
+          0.3894548951963116
+        ],
+        "within_model": [
+          0.5056898019542067,
+          0.5648461237433289
+        ],
+        "within_model_cross_slot": [
+          0.5056898019542067,
+          0.5648461237433289
+        ]
+      },
+      "summaries": {
+        "cross_model": {
+          "kappa_mean_zero_fill": 0.3544087375580576,
+          "pairs": 48,
+          "phi_mean_valid": 0.36131866398558365,
+          "phi_mean_zero_fill": 0.36131866398558365,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "cross_model_matched_role": {
+          "kappa_mean_zero_fill": 0.3853886578434804,
+          "pairs": 12,
+          "phi_mean_valid": 0.39273612000715225,
+          "phi_mean_zero_fill": 0.39273612000715225,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 12
+        },
+        "cross_model_unmatched_role": {
+          "kappa_mean_zero_fill": 0.3440820974629167,
+          "pairs": 36,
+          "phi_mean_valid": 0.35084617864506085,
+          "phi_mean_zero_fill": 0.35084617864506085,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 36
+        },
+        "within_model": {
+          "kappa_mean_zero_fill": 0.5318577775621329,
+          "pairs": 18,
+          "phi_mean_valid": 0.5356473897327279,
+          "phi_mean_zero_fill": 0.5356473897327279,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        },
+        "within_model_cross_slot": {
+          "kappa_mean_zero_fill": 0.5318577775621329,
+          "pairs": 18,
+          "phi_mean_valid": 0.5356473897327279,
+          "phi_mean_zero_fill": 0.5356473897327279,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      }
+    },
+    {
+      "development_rows": 1664,
+      "empirical_phi_neff": 2.22783160241051,
+      "outer_fold": 2,
+      "phi_ci_99": {
+        "cross_model": [
+          0.3134730772023499,
+          0.38776909390686287
+        ],
+        "cross_model_matched_role": [
+          0.34634127404082515,
+          0.4245876718607184
+        ],
+        "cross_model_unmatched_role": [
+          0.3017225246118765,
+          0.3765166569350553
+        ],
+        "within_model": [
+          0.49417778488998126,
+          0.5572236173680637
+        ],
+        "within_model_cross_slot": [
+          0.49417778488998126,
+          0.5572236173680637
+        ]
+      },
+      "summaries": {
+        "cross_model": {
+          "kappa_mean_zero_fill": 0.3442431481788759,
+          "pairs": 48,
+          "phi_mean_valid": 0.3511934203007237,
+          "phi_mean_zero_fill": 0.3511934203007237,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "cross_model_matched_role": {
+          "kappa_mean_zero_fill": 0.3788191499103432,
+          "pairs": 12,
+          "phi_mean_valid": 0.3861758084007943,
+          "phi_mean_zero_fill": 0.3861758084007943,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 12
+        },
+        "cross_model_unmatched_role": {
+          "kappa_mean_zero_fill": 0.33271781426838687,
+          "pairs": 36,
+          "phi_mean_valid": 0.339532624267367,
+          "phi_mean_zero_fill": 0.339532624267367,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 36
+        },
+        "within_model": {
+          "kappa_mean_zero_fill": 0.5217245752050095,
+          "pairs": 18,
+          "phi_mean_valid": 0.5256187214137952,
+          "phi_mean_zero_fill": 0.5256187214137952,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        },
+        "within_model_cross_slot": {
+          "kappa_mean_zero_fill": 0.5217245752050095,
+          "pairs": 18,
+          "phi_mean_valid": 0.5256187214137952,
+          "phi_mean_zero_fill": 0.5256187214137952,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      }
+    },
+    {
+      "development_rows": 1664,
+      "empirical_phi_neff": 2.1841495297872386,
+      "outer_fold": 3,
+      "phi_ci_99": {
+        "cross_model": [
+          0.3220334727695688,
+          0.3911366158604424
+        ],
+        "cross_model_matched_role": [
+          0.3516793456006359,
+          0.4240412330215596
+        ],
+        "cross_model_unmatched_role": [
+          0.3107131205572433,
+          0.38137132047957606
+        ],
+        "within_model": [
+          0.5171295545233786,
+          0.5723159432098585
+        ],
+        "within_model_cross_slot": [
+          0.5171295545233786,
+          0.5723159432098585
+        ]
+      },
+      "summaries": {
+        "cross_model": {
+          "kappa_mean_zero_fill": 0.3512082823946061,
+          "pairs": 48,
+          "phi_mean_valid": 0.357490210891245,
+          "phi_mean_zero_fill": 0.357490210891245,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "cross_model_matched_role": {
+          "kappa_mean_zero_fill": 0.3822703648056358,
+          "pairs": 12,
+          "phi_mean_valid": 0.38878042007248226,
+          "phi_mean_zero_fill": 0.38878042007248226,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 12
+        },
+        "cross_model_unmatched_role": {
+          "kappa_mean_zero_fill": 0.3408542549242629,
+          "pairs": 36,
+          "phi_mean_valid": 0.3470601411641659,
+          "phi_mean_zero_fill": 0.3470601411641659,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 36
+        },
+        "within_model": {
+          "kappa_mean_zero_fill": 0.5408126405995177,
+          "pairs": 18,
+          "phi_mean_valid": 0.5447358820692753,
+          "phi_mean_zero_fill": 0.5447358820692753,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        },
+        "within_model_cross_slot": {
+          "kappa_mean_zero_fill": 0.5408126405995177,
+          "pairs": 18,
+          "phi_mean_valid": 0.5447358820692753,
+          "phi_mean_zero_fill": 0.5447358820692753,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      }
+    },
+    {
+      "development_rows": 1665,
+      "empirical_phi_neff": 2.171195303535386,
+      "outer_fold": 4,
+      "phi_ci_99": {
+        "cross_model": [
+          0.3239063286312533,
+          0.39824949085253797
+        ],
+        "cross_model_matched_role": [
+          0.3523239839292053,
+          0.42993266256274554
+        ],
+        "cross_model_unmatched_role": [
+          0.31361334215663506,
+          0.3886245528419844
+        ],
+        "within_model": [
+          0.5147890449437812,
+          0.572673724090419
+        ],
+        "within_model_cross_slot": [
+          0.5147890449437812,
+          0.572673724090419
+        ]
+      },
+      "summaries": {
+        "cross_model": {
+          "kappa_mean_zero_fill": 0.35520002712472376,
+          "pairs": 48,
+          "phi_mean_valid": 0.36185572985441966,
+          "phi_mean_zero_fill": 0.36185572985441966,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 48
+        },
+        "cross_model_matched_role": {
+          "kappa_mean_zero_fill": 0.3855454761541585,
+          "pairs": 12,
+          "phi_mean_valid": 0.3923680921872707,
+          "phi_mean_zero_fill": 0.3923680921872707,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 12
+        },
+        "cross_model_unmatched_role": {
+          "kappa_mean_zero_fill": 0.34508487744824556,
+          "pairs": 36,
+          "phi_mean_valid": 0.35168494241013604,
+          "phi_mean_zero_fill": 0.35168494241013604,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 36
+        },
+        "within_model": {
+          "kappa_mean_zero_fill": 0.5405475384310785,
+          "pairs": 18,
+          "phi_mean_valid": 0.5440212281465967,
+          "phi_mean_zero_fill": 0.5440212281465967,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        },
+        "within_model_cross_slot": {
+          "kappa_mean_zero_fill": 0.5405475384310785,
+          "pairs": 18,
+          "phi_mean_valid": 0.5440212281465967,
+          "phi_mean_zero_fill": 0.5440212281465967,
+          "undefined_phi_pairs": 0,
+          "valid_phi_pairs": 18
+        }
+      }
+    }
+  ],
+  "models": [
+    "TongUI-7B",
+    "CogAgent-18B",
+    "UI-TARS-7B"
+  ],
+  "raw": {
+    "bytes": 142232,
+    "path": "runs/cover/2026-08-16/raw/arm_b_pairwise.jsonl",
+    "rows": 330,
+    "sha256": "2e9c084d423480e4faf76a0d4beb78e924712271636561bbe97394a17b35fd53",
+    "write_flush_fsync_per_row": true
+  },
+  "references": {
+    "androidcontrol": {
+      "rho_cross": 0.398,
+      "rho_within": 0.895
+    },
+    "screenspot_pro": {
+      "neff": 1.5725697506279792,
+      "rho_cross": 0.5768492949474847,
+      "rho_within": 0.6723052998705483
+    }
+  },
+  "rows": 2080,
+  "schema_version": 1,
+  "slot_roles": [
+    "stage1_full",
+    "stage1_view1",
+    "stage2_crop0",
+    "stage2_crop1"
+  ],
+  "source_hashes": {
+    "amendment": "8aad9a16dfce5736b3b4f827ee2501bf9e147c4022472ba37cfc58cd22d50503",
+    "feasibility": "6a1d7cce9a30791e74e2327f9e827035412cbcf45b17e8e7b8119550922c67f5",
+    "icc_arm_c": "3d3396a99e2914ca6584907ccfdca08f4ccc90feaedec22788875ccd66aaf43d",
+    "icc_raw": "c4434ea9691a983d3844be03730b33e10ff24bc27b432dd6596882f5f60e9bae"
+  },
+  "status": "PASS_COVER_ARM_B_DEPENDENCE_COMPLETE",
+  "summaries": {
+    "cross_model": {
+      "fold_ci_99": [
+        [
+          0.333728321694851,
+          0.405709226647762
+        ],
+        [
+          0.3239505287828691,
+          0.39986249882239155
+        ],
+        [
+          0.3134730772023499,
+          0.38776909390686287
+        ],
+        [
+          0.3220334727695688,
+          0.3911366158604424
+        ],
+        [
+          0.3239063286312533,
+          0.39824949085253797
+        ]
+      ],
+      "fold_mean": 0.36027232147294763,
+      "fold_range": [
+        0.3511934203007237,
+        0.3695035823327663
+      ],
+      "fold_values": [
+        0.3695035823327663,
+        0.36131866398558365,
+        0.3511934203007237,
+        0.357490210891245,
+        0.36185572985441966
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.36281647940981615,
+        0.3544087375580576,
+        0.3442431481788759,
+        0.3512082823946061,
+        0.35520002712472376
+      ],
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "cross_model_matched_role": {
+      "fold_ci_99": [
+        [
+          0.36246367522577544,
+          0.4357326800920935
+        ],
+        [
+          0.3535609939846569,
+          0.4313711634267151
+        ],
+        [
+          0.34634127404082515,
+          0.4245876718607184
+        ],
+        [
+          0.3516793456006359,
+          0.4240412330215596
+        ],
+        [
+          0.3523239839292053,
+          0.42993266256274554
+        ]
+      ],
+      "fold_mean": 0.3917364674239322,
+      "fold_range": [
+        0.3861758084007943,
+        0.3986218964519616
+      ],
+      "fold_values": [
+        0.3986218964519616,
+        0.39273612000715225,
+        0.3861758084007943,
+        0.38878042007248226,
+        0.3923680921872707
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.39162743063741773,
+        0.3853886578434804,
+        0.3788191499103432,
+        0.3822703648056358,
+        0.3855454761541585
+      ],
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "cross_model_unmatched_role": {
+      "fold_ci_99": [
+        [
+          0.3233631258847687,
+          0.3973615397863036
+        ],
+        [
+          0.3133557536526014,
+          0.3894548951963116
+        ],
+        [
+          0.3017225246118765,
+          0.3765166569350553
+        ],
+        [
+          0.3107131205572433,
+          0.38137132047957606
+        ],
+        [
+          0.31361334215663506,
+          0.3886245528419844
+        ]
+      ],
+      "fold_mean": 0.34978427282261954,
+      "fold_range": [
+        0.339532624267367,
+        0.3597974776263679
+      ],
+      "fold_values": [
+        0.3597974776263679,
+        0.35084617864506085,
+        0.339532624267367,
+        0.3470601411641659,
+        0.35168494241013604
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.35321282900061557,
+        0.3440820974629167,
+        0.33271781426838687,
+        0.3408542549242629,
+        0.34508487744824556
+      ],
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "within_model": {
+      "fold_ci_99": [
+        [
+          0.5230741483270993,
+          0.5827170171299383
+        ],
+        [
+          0.5056898019542067,
+          0.5648461237433289
+        ],
+        [
+          0.49417778488998126,
+          0.5572236173680637
+        ],
+        [
+          0.5171295545233786,
+          0.5723159432098585
+        ],
+        [
+          0.5147890449437812,
+          0.572673724090419
+        ]
+      ],
+      "fold_mean": 0.5406219428868929,
+      "fold_range": [
+        0.5256187214137952,
+        0.5530864930720698
+      ],
+      "fold_values": [
+        0.5530864930720698,
+        0.5356473897327279,
+        0.5256187214137952,
+        0.5447358820692753,
+        0.5440212281465967
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.5492166002987009,
+        0.5318577775621329,
+        0.5217245752050095,
+        0.5408126405995177,
+        0.5405475384310785
+      ],
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "within_model_cross_slot": {
+      "fold_ci_99": [
+        [
+          0.5230741483270993,
+          0.5827170171299383
+        ],
+        [
+          0.5056898019542067,
+          0.5648461237433289
+        ],
+        [
+          0.49417778488998126,
+          0.5572236173680637
+        ],
+        [
+          0.5171295545233786,
+          0.5723159432098585
+        ],
+        [
+          0.5147890449437812,
+          0.572673724090419
+        ]
+      ],
+      "fold_mean": 0.5406219428868929,
+      "fold_range": [
+        0.5256187214137952,
+        0.5530864930720698
+      ],
+      "fold_values": [
+        0.5530864930720698,
+        0.5356473897327279,
+        0.5256187214137952,
+        0.5447358820692753,
+        0.5440212281465967
+      ],
+      "kappa_zero_fill_fold_values": [
+        0.5492166002987009,
+        0.5318577775621329,
+        0.5217245752050095,
+        0.5408126405995177,
+        0.5405475384310785
+      ],
+      "undefined_phi_pairs_by_fold": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "trend": {
+    "interpretation": "source_stage_not_model_scale",
+    "mind2web": {
+      "means": {
+        "cross_model_matched_role": 0.3917364674239322,
+        "cross_model_unmatched_role": 0.34978427282261954,
+        "within_model_cross_slot": 0.5406219428868929
+      },
+      "ordering": [
+        "within_model_cross_slot",
+        "cross_model_matched_role",
+        "cross_model_unmatched_role"
+      ]
+    },
+    "ordering_consistent": true,
+    "screenspot_pro": {
+      "fold_values": {
+        "cross_model_matched_role": [
+          0.6531227933496814,
+          0.6119698461269221,
+          0.643940128042353,
+          0.6285540707158491,
+          0.6239529925433865
+        ],
+        "cross_model_unmatched_role": [
+          0.5823829184303358,
+          0.5353542647326983,
+          0.5761783031641083,
+          0.5551288569903696,
+          0.5427710127396549
+        ],
+        "within_model_cross_slot": [
+          0.6862319867073337,
+          0.6548998681496276,
+          0.6874417111697879,
+          0.671206447558441,
+          0.6617464857675512
+        ]
+      },
+      "means": {
+        "cross_model_matched_role": 0.6323079661556383,
+        "cross_model_unmatched_role": 0.5583630712114334,
+        "within_model_cross_slot": 0.6723052998705483
+      },
+      "ordering": [
+        "within_model_cross_slot",
+        "cross_model_matched_role",
+        "cross_model_unmatched_role"
+      ]
+    }
+  }
+}
