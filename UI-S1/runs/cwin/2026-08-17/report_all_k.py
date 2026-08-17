@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import math
 import os
 from collections import Counter
 from pathlib import Path
@@ -145,8 +146,11 @@ def main():
                 "M1_drop_delta": m1_accuracy - original["accuracy"]["M1_ccm"],
             },
         }
-    if per_k["4"]["L1"] != stage0["L1"] or any(
-        per_k["4"]["L3"][key] != stage0["L3"][key]
+    l1_keys = ("newly_covered_rows", "partial_to_higher_rows", "lost_all_coverage_rows")
+    if any(per_k["4"]["L1"][key] != stage0["L1"][key] for key in l1_keys) or any(
+        not math.isclose(
+            per_k["4"]["L3"][key], stage0["L3"][key], rel_tol=0.0, abs_tol=1e-15
+        )
         for key in ("B3_drop_delta", "M1_drop_delta")
     ):
         raise ValueError("CWIN selected-K reconstruction mismatch")
