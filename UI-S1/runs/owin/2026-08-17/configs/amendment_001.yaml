@@ -1,0 +1,133 @@
+schema_version: 1
+round: owin
+amendment: '001'
+date: '2026-08-17'
+status: FROZEN_BEFORE_ANY_OWIN_RESULT_OR_GPU_AUTHORIZATION
+supersedes:
+  - arm_a_single_forward_primary_estimand
+  - arm_a_400_call_budget
+  - unmatched_B3_calibration
+  - arm_b_unspecified_saturation_handling
+  - center_only_secondary_reporting
+legality:
+  outputs_seen_before_amendment: false
+  preflight_run: false
+  arm_b_run: false
+  arm_a_run: false
+  gpu_authorized: false
+  void_if_any_owin_statistic_predates_commit: true
+thresholds_unchanged:
+  O_I1_below: 0.05
+  O_I2_lower_inclusive: 0.05
+  O_I2_upper_inclusive: 0.10
+  O_I3_above: 0.10
+primary_interpretation_aggregator: B3
+oracle_pool:
+  rows: 400
+  calls_per_row: 12
+  exact_calls: 4800
+  slot_0: original_full_image_view0
+  crop_slots: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  crop_jitter_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  crop_jitter_0_maps_to_pool_slot: 1
+  aggregators: [B3, M1_ccm]
+spiral:
+  family: one_turn_archimedean_equal_angle
+  crop_short_edge: 728
+  maximum_radius_fraction: 0.15
+  maximum_radius_pixels: 109.2
+  indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  radius: 109.2_times_j_over_10
+  angle_radians: 2pi_times_j_over_11
+  component_rounding: nearest_integer_half_away_from_zero
+  normative_integer_offsets:
+    - [0, 0]
+    - [9, 6]
+    - [9, 20]
+    - [-5, 32]
+    - [-29, 33]
+    - [-52, 15]
+    - [-63, -18]
+    - [-50, -58]
+    - [-12, -86]
+    - [41, -89]
+    - [92, -59]
+  normative_list_overrides_platform_trigonometric_disagreement: true
+  random: false
+window_repair:
+  crop_size: [1288, 728]
+  initial_left: floor_GT_center_x_plus_dx_minus_644
+  initial_top: floor_GT_center_y_plus_dy_minus_364
+  first_constraint: target_center_inside_half_open_window
+  second_constraint: full_window_inside_image
+  combined_solution: nearest_integer_in_feasible_interval
+  tie_break: smaller_coordinate
+  resize: prohibited
+calibration:
+  B3:
+    existing_common_anchor: 0.8195488721804511
+    delta: oracle_pool_common_B3_minus_existing_common_B3
+    correction: clip_oracle_pool_stratum_B3_minus_delta_to_0_1
+    drives_O_I: true
+  M1_ccm:
+    existing_common_anchor: frozen_fold_local_M1_common_accuracy_bound_in_preflight
+    B3_anchor_substitution_prohibited: true
+    delta: oracle_pool_common_M1_minus_existing_common_M1
+    correction: clip_oracle_pool_stratum_M1_minus_delta_to_0_1
+    drives_O_I: false
+  recompute_inside_joint_bootstrap: true
+  raw_values_always_reported: true
+single_forward:
+  oracle_source: crop_jitter_0_pool_slot_1
+  baseline: equal_weight_mean_correctness_over_existing_GTA1_views_1_to_11_and_population_rows_in_stratum
+  best_or_selected_slot: false
+  delta: oracle_zero_jitter_common_minus_existing_single_common
+  correction: clip_oracle_zero_jitter_stratum_minus_delta_to_0_1
+  drives_O_I: false
+  pool_minus_single_reported: true
+  historical_N_eff_1_5726_context_only: true
+budget:
+  sample_counts: {uncovered_0: 150, partial_1_10: 150, common_11: 100}
+  exact_rows: 400
+  exact_calls: 4800
+  gpu_authorized_by_amendment: false
+  future_execution_amendment_rebinds: [call_budget, shard_count, hardware, runner_hash, model_index_hash, authorization_nonce]
+arm_b_saturation:
+  N_candidates: [4, 5, 6, 7, 8, 9, 10]
+  N_star: smallest_N_meeting_all_conditions
+  conditions:
+    median_union_area_at_least: 0.99
+    each_center_stratum_coverage_at_least: 0.99
+  if_none: NONE
+  N_11_not_saturation_by_definition: true
+  exact_G_N_still_reported: true
+  failure: false
+secondary_full_bbox:
+  rectangle_semantics: half_open
+  containment: left_le_x1_and_top_le_y1_and_x2_le_right_and_y2_le_bottom
+  counts: [uncovered_0, partial_1_10, common_11]
+  arm_b_every_N: true
+  arm_a_weighted_secondary_domains: true
+  changes_sampling: false
+  changes_primary_center_interpretation: false
+execution:
+  common_first_outputs: 1200
+  total_outputs: 4800
+  common_freezes: [delta_pool_B3, delta_pool_M1, delta_single]
+  O_I_uses: corrected_B3_pool_level_point_estimate_only
+unchanged:
+  - sampling
+  - row_hash_ranking
+  - inverse_probability_weights
+  - grouped_bootstrap
+  - bootstrap_seed_base
+  - model_and_source_revisions
+  - prompt_processor_greedy_contract
+  - coordinate_transform_tests
+  - trace_retention
+  - label_trace_separation
+  - backup_and_manifest
+  - GT_ORACLE_NON_DEPLOYABLE
+  - X2_SPLIT_non_conflict
+  - Mind2Web_exclusion
+  - post_selection_single_benchmark_scope
