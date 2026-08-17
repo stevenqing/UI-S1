@@ -1,0 +1,39 @@
+{
+  "arm_a_accuracy_gap": {
+    "ci_99": [
+      0.3444838251719847,
+      0.5396158046061331
+    ],
+    "point_delta": 0.44416425679583577,
+    "resamples": 10000,
+    "unit": "application_group"
+  },
+  "arm_a_gates": {
+    "A_G1": false,
+    "A_G2": false,
+    "A_G3": true
+  },
+  "arm_a_low_coverage_fraction": 0.41113219481340924,
+  "arm_b_interpretation": "COMMON_SOURCE_STAGE_ORDERING_BENCHMARK_SPECIFIC_STRENGTH",
+  "arm_b_mind2web_cross_phi": 0.36027232147294763,
+  "arm_b_mind2web_neff": 2.180608226586123,
+  "arm_b_mind2web_within_phi": 0.5406219428868929,
+  "arm_b_ordering_consistent": true,
+  "changes_existing_statuses": false,
+  "complementary_spec": {
+    "gpu_authorized": false,
+    "path": "runs/complementary-window/2026-08-17/SPEC.md",
+    "sha256": "e869f694e48a04066362cc183480275f51a069932d98c61394adb9f7245343c9"
+  },
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "followup_gpu_authorized": false,
+  "gpu_used": false,
+  "main_tables_sha256": "e1583e8bdb0fe6bee1abf009bbec08c25b93359a1a342b1fb26b7580db331ff8",
+  "method_claim_allowed": false,
+  "next_action": "PREPARE_PUBLIC_GATE_AND_NET_LEDGER_NO_GPU",
+  "outcome": "COVER_COMPLEMENTARY_SPEC_AUTHORIZED_COMMON_ORDERING_STRENGTH_SPLIT",
+  "report": "runs/cover/2026-08-16/REPORT.md",
+  "report_sha256": "ac853edee50a8c6428353ea2c62e6df9c1c6993bba58959df77144bda7e9ec12",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
