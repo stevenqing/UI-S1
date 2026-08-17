@@ -1,0 +1,30 @@
+{
+  "L4_conservative": 0.03779294665400333,
+  "L4_upper": 0.20619860847564833,
+  "W_G1": true,
+  "W_K5": true,
+  "all_k_sha256": "9a6859ad91bf8669ea86a3f9262071617a7809fba078b78c7d5c7e695f797358",
+  "changes_existing_statuses": false,
+  "date": "2026-08-17",
+  "evidence_status": "POST_SELECTION_EXPLORATORY_PILOT",
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "method_claim_allowed": false,
+  "next_action": "WRITE_SEPARATE_STAGE1_AMENDMENT_NO_GPU_BEFORE_EXPLICIT_AUTHORIZATION",
+  "outcome": "CWIN_STAGE0_W_G1_PASS_W_K5_ENDPOINT_AMENDMENT_REQUIRED_GPU_UNAUTHORIZED",
+  "report": "runs/cwin/2026-08-17/REPORT.md",
+  "report_sha256": "962d8f31da6c0211623bf756cf82eb90c58190979b2874f62dd2b64df81ccaff",
+  "reporting_recovery_declared": true,
+  "round": "cwin",
+  "schema_version": 1,
+  "selected_K": {
+    "0": 4,
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4
+  },
+  "stage0_sha256": "1f4ae2124fd35fa3bf1763113ade11944fefe97fd7098b719b58cd0bf4f4a095",
+  "status": "COMPLETE_STAGE0",
+  "window_manifest_sha256": "cf8087eb4acf559c60f5e360d29f5a98439539d2a8c71980bff30a2af42e7eee"
+}

@@ -1,0 +1,28 @@
+{
+  "W_G1": true,
+  "W_K5": true,
+  "adjudication_sha256": "fa7222e1d379f2e08dc2c206fcc3db6f9f5d6491946582445ed82103780289b3",
+  "changes_existing_statuses": false,
+  "date": "2026-08-17",
+  "evidence_status": "POST_SELECTION_EXPLORATORY_PILOT",
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "method_claim_allowed": false,
+  "next_action": "WRITE_SEPARATE_STAGE1_AMENDMENT_NO_GPU_BEFORE_EXPLICIT_AUTHORIZATION",
+  "outcome": "CWIN_STAGE0_W_G1_PASS_W_K5_ENDPOINT_AMENDMENT_REQUIRED_GPU_UNAUTHORIZED",
+  "report": "runs/cwin/2026-08-17/REPORT.md",
+  "report_sha256": "962d8f31da6c0211623bf756cf82eb90c58190979b2874f62dd2b64df81ccaff",
+  "retention": {
+    "archive": "/scratch/workspaceblobstore/cwin/2026-08-17/cwin-run.tar",
+    "archive_sha256": "3688200d919eaf596cf2f577f5201431bfd9b400969d2e0c4f2d98339031d73b",
+    "artifact_count": 1602,
+    "failed_attempt_retained": true,
+    "manifest": "/scratch/workspaceblobstore/cwin/2026-08-17/BACKUP_MANIFEST.json",
+    "manifest_sha256": "111ae204185e26f160d8ecdf6e078fcedcac658d83569d157d626ac0add04aea",
+    "total_bytes": 15414830,
+    "verified": true
+  },
+  "round": "cwin",
+  "schema_version": 1,
+  "status": "COMPLETE_STAGE0"
+}

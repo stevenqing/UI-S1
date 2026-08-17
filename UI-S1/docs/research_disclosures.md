@@ -1,6 +1,6 @@
 # Research Process Disclosures
 
-Updated: 2026-08-16
+Updated: 2026-08-17
 
 This list records specification, evidence-status, and execution-boundary errors that materially affect interpretation. Original results and correction artifacts remain immutable.
 
@@ -25,3 +25,9 @@ The nominal prospective holdout was excluded from reported aggregates, but all p
 ## EVID
 
 The fixed EVID constants 0.895 and 0.398 were described as prior kappa anchors suitable for the effective-evidence formula. They are AndroidControl failure-agreement kappas, while the formula requires a ScreenSpot-Pro error-correlation model. The benchmark and statistical estimand differ, and GRAN had already marked this kappa-as-ICC mapping as requiring validation. Therefore `EVID_FIXED_AGGREGATOR_FAILED_STAGE2_BLOCKED` strictly rejects the frozen aggregator with these transferred constants, not every correctly parameterized member of the score family. EVID's result, gates, and Stage-2 block remain unchanged. ICC is a separate retrospective diagnostic and remains post-selection.
+
+## CWIN
+
+The initial `STAGE0.json` schema retained all-K geometry but reported L1/L3 summaries only for nested-selected K, while the specification required those endpoints for every K in `{2,3,4}`. After Stage 0, `STAGE0_REPORTING_RECOVERY.md` and its reconstruction code were committed before the omitted tables were computed. `STAGE0_ALL_K.json` reconstructs only all-K L1/L3 from the frozen geometry and candidate bank; K=4 reproduces the original selected-K result. It changes no geometry, nested selection, L2/L4 gate, W-G1, W-K5, or authorization.
+
+The first scratch-retention implementation copied artifacts one file at a time and was interrupted after persistent backend request latency. Its 304 partial copies were retained rather than deleted. `RETENTION_RECOVERY.md` was committed before a single-tar recovery, which records every source artifact's SHA-256 and independently verifies every archive member. This retention recovery changes no scientific result. GPU remains unauthorized.
