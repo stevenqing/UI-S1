@@ -1,0 +1,137 @@
+schema_version: 1
+round: owin
+amendment: '002'
+date: '2026-08-17'
+status: FROZEN_BEFORE_ANY_OWIN_RESULT_OR_GPU_AUTHORIZATION
+legality:
+  outputs_seen_before_amendment: false
+  preflight_run: false
+  arm_b_run: false
+  sample_manifest_created: false
+  arm_a_run: false
+  gpu_authorized: false
+  void_if_any_owin_statistic_predates_commit: true
+supersedes_amendment_001:
+  - fixed_R_109_2
+  - sample_400_rows
+  - common_sample_100
+  - exact_calls_4800
+  - common_first_outputs_1200
+thresholds_and_primary_estimand_unchanged:
+  O_I1_below: 0.05
+  O_I2_lower_inclusive: 0.05
+  O_I2_upper_inclusive: 0.10
+  O_I3_above: 0.10
+  estimand: corrected_B3_pool_level_point_using_full_common_delta
+radius_calibration:
+  status: EVALUATION_SIDE_GT_GEOMETRY_ZERO_GPU_NOT_LABEL_FREE
+  prohibited_inputs: [candidate_correctness, model_outputs, target_class, aggregator_outputs, O_I_endpoints]
+  existing_target:
+    slots: GTA1_views_1_to_11
+    pairs_per_row: 55
+    row_statistic: ordinary_median_pairwise_rectangle_IoU
+    population_statistic: ordinary_median_over_1581_row_medians
+    name: IoU_star
+  R_grid: [109.2, 150, 200, 250, 300, 340]
+  candidate_family:
+    radius: R_times_j_over_10
+    angle: 2pi_times_j_over_11
+    indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    component_rounding: nearest_integer_half_away_from_zero
+    placement_and_repairs: amendment_001
+    pairs_per_row: 55
+    row_statistic: ordinary_median_pairwise_final_window_IoU
+    population_statistic: ordinary_median_over_1581_row_medians
+  selection: minimum_absolute_IoU_R_minus_IoU_star
+  tie_break: smaller_R
+  endpoint_values: [109.2, 340]
+  endpoint_action: record_RADIUS_GRID_ENDPOINT_no_expansion
+  preflight_records_all_candidate_normative_offsets: true
+dependence_diagnostic:
+  gate: false
+  slots: oracle_crop_slots_1_to_11_excluding_full_image
+  variable: binary_error
+  estimator: ICC_Arm_C_empirical_phi_matrix_neff
+  matrix_size: 11
+  pair_count: 55
+  diagonal: 1.0
+  undefined_phi: record_and_zero_fill
+  neff: 121_divided_by_one_transpose_R_one
+  strata: [uncovered_0, partial_1_10, common_11]
+  folds: leave_one_outer_fold_out_on_sampled_rows_within_stratum
+  sufficient_statistics: inverse_inclusion_weighted_n_sx_sy_sxy
+  bootstrap: resample_applications_and_recompute_weighted_sufficient_statistics
+  unweighted_sample_phi_primary_prohibited: true
+  primary_fold_summary: [unweighted_mean, full_range]
+  secondary_fold_summary: sample_row_count_weighted_mean
+  matched_reference: existing_GTA1_views_1_to_11_same_sample_strata_and_folds
+  contextual_reference:
+    name: historical_C_uni_12_slot_empirical_phi_neff
+    value: 1.5725697506279792
+    cardinality_and_lineage_mismatch: true
+  material_relative_difference_threshold: 0.10
+  above_threshold_label: MATERIAL_DEPENDENCE_MISMATCH
+  at_or_below_threshold_label: APPROXIMATELY_MATCHED
+sample_and_budget:
+  counts: {uncovered_0: 150, partial_1_10: 150, common_11: 200}
+  exact_rows: 500
+  calls_per_row: 12
+  exact_calls: 6000
+  common_first_rows: 200
+  common_first_outputs: 2400
+  gpu_authorized_by_amendment: false
+constant_shift:
+  named_primary_limitation: true
+  raw_and_corrected_equal_prominence: true
+  raw_may_move_to_appendix: false
+  target_area:
+    formula: max_0_x2_minus_x1_times_max_0_y2_minus_y1
+    population: all_931_common_rows
+    order: [area, row_id]
+    common_small: first_465
+    common_large: remaining_466
+    numeric_median: area_of_466th_sorted_row
+    rank_membership_controls_over_threshold_predicate: true
+    frozen_in_preflight: true
+  heterogeneity:
+    delta_small: oracle_pool_small_B3_minus_existing_pool_small_B3
+    delta_large: oracle_pool_large_B3_minus_existing_pool_large_B3
+    contrast: delta_small_minus_delta_large
+    interval: application_group_bootstrap_10000_99_percent_joint
+    excludes_zero_label: CONSTANT_SHIFT_SIZE_HETEROGENEITY_DETECTED
+    includes_zero_label: NO_DETECTED_SIZE_HETEROGENEITY_AT_99_PERCENT
+    includes_zero_does_not_validate_cross_stratum_constant_shift: true
+  sensitivity:
+    correction: clip_oracle_pool_stratum_B3_minus_delta_small_to_0_1
+    output: U_perfect_small_with_joint_99_interval
+    drives_O_I: false
+execution:
+  preflight_includes_geometry_design_calibration: true
+  preflight_has_model_accuracy_or_O_I_result: false
+  arm_b_before_sampling: true
+  sample_manifest_rows: 500
+  windows_per_row: 12
+  execution_amendment_exact_calls: 6000
+  common_parsed_first_outputs: 2400
+  O_I_uses_only_full_common_corrected_B3_pool_point: true
+net_benefit_reconciliation:
+  historical_0_8577_means: currently_crop_center_covered
+  historical_0_8577_is_model_success_rate: false
+  frozen_full_B3_success_rate: 0.6369386464263125
+  future_damage_domains: [original_B3_correct_rows, existing_crop_center_covered_rows]
+unchanged:
+  - sample_allocation_algorithm
+  - sha256_row_order
+  - inverse_probability_weights
+  - application_group_bootstrap_10000_99_percent
+  - bootstrap_seed_base
+  - model_source_prompt_processor_greedy_contract
+  - coordinate_transform_and_trace_tests
+  - trace_label_separation_and_backup
+  - GT_ORACLE_NON_DEPLOYABLE
+  - arm_b_layout_N_star_and_full_bbox
+  - M1_secondary_calibration
+  - single_forward_and_pool_minus_single
+  - X2_SPLIT_non_conflict
+  - Mind2Web_exclusion
+  - post_selection_single_benchmark_scope
