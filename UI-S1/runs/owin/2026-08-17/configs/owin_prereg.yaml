@@ -1,0 +1,130 @@
+schema_version: 1
+round: owin
+date: '2026-08-17'
+status: PREREGISTERED_BEFORE_ANY_OWIN_RESULT
+evidence_status: POST_SELECTION_SINGLE_BENCHMARK_MEASUREMENT
+measurement_not_method: true
+changes_existing_statuses: false
+gpu:
+  arm_a_requested: true
+  arm_a_authorized_by_this_config: false
+  exact_forward_count: 400
+  arm_b: false
+oracle_label: GT_ORACLE_NON_DEPLOYABLE
+anchors:
+  rows: 1581
+  full_B3: 0.6369386464263125
+  crop_width: 1288
+  crop_height: 728
+  existing_11_crop_median_union: 0.3219237075617284
+  strata:
+    uncovered_0: {rows: 225, fraction: 0.14231499051233396, B3: 0.0}
+    partial_1_10: {rows: 425, fraction: 0.26881720430107525, B3: 0.5741176470588235}
+    common_11: {rows: 931, fraction: 0.5888678051865908, B3: 0.8195488721804511}
+contamination_reconciliation:
+  leaked_items_are_fold_level_values_not_row_ids: true
+  leaked_values: [0.6388361796331435, 0.6388361796331435, 0.6306135357368754, 0.6255534471853258, 0.6325110689437066]
+  fictitious_row_exclusion_prohibited: true
+  prohibited_uses: [sampling_target, threshold, implementation_anchor, decision_input]
+arm_b:
+  gpu: false
+  window_counts: [4, 5, 6, 7, 8, 9, 10, 11]
+  window_size: [1288, 728]
+  rectangle_semantics: half_open_integer
+  row_count_candidates: all_integers_1_to_N
+  windows_per_row: floor_then_center_out_remainder
+  anchor_spacing: uniform_edge_to_edge
+  singleton_anchor: centered_integer
+  rational_rounding: half_up_floor_value_plus_0_5
+  window_order: [top, left]
+  layout_objective:
+    - maximum_exact_union_pixel_area
+    - minimum_sum_pairwise_overlap_pixel_area
+    - minimum_maximum_pairwise_overlap_pixel_area
+    - smaller_row_count
+    - lexicographically_smaller_rectangles
+  construction_uses_target_or_model: false
+  outputs:
+    - union_area_distribution
+    - target_center_binary_coverage
+    - existing_stratum_by_tiling_coverage_transition
+    - existing_GTA1_crop_prefix_comparator
+sampling:
+  target_counts: {uncovered_0: 150, partial_1_10: 150, common_11: 100}
+  total: 400
+  allocation_unit: application_within_stratum
+  allocation: proportional_largest_remainder_with_minimum_one_if_feasible
+  allocation_tie_break: application_string
+  row_hash_text: OWIN|20260817|stratum|application|row_id
+  row_selection: smallest_sha256
+  record_inclusion_probability: true
+  record_inverse_probability_weight: true
+  replacement_after_output_prohibited: true
+arm_a:
+  model_id: GTA1-7B
+  model_revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+  official_source_revision: 988ff3c61b9f7632d780ae27c83260de75b3c95f
+  calls_per_row: 1
+  decoding: greedy_match_frozen_H1_exact_arguments_bound_in_execution_amendment
+  window:
+    source: GT_bbox_center
+    size: [1288, 728]
+    initial_left: floor_center_x_minus_644
+    initial_top: floor_center_y_minus_364
+    boundary: minimum_translation_clamp
+    scaling: prohibited
+    coordinate_transform: crop_local_plus_final_left_top
+  correctness: parsed_full_image_point_inside_GT_bbox_established_inclusive_evaluator
+  calibration:
+    delta: oracle_common_minus_existing_common_B3
+    systematic_window_effect: grouped_99_CI_excludes_zero
+    correction: clip_oracle_stratum_minus_delta_to_0_1
+    correction_applied_regardless_of_significance: true
+    raw_values_always_reported: true
+  perfect_coverage:
+    corrected_accuracy: sum_population_stratum_fraction_times_corrected_oracle_accuracy
+    signed_gain: corrected_accuracy_minus_existing_full_B3
+    mathematical_universal_upper_bound: false
+  interpretation:
+    O_I1: point_gain_below_0_05
+    O_I2: point_gain_at_least_0_05_and_at_most_0_10
+    O_I3: point_gain_above_0_10
+    boundary_0_05: O_I2
+    boundary_0_10: O_I2
+    human_recorded: true
+factorized_opportunity:
+  formula: sum_s_p_s_times_q_s_N_times_corrected_oracle_minus_existing_stratum_B3
+  N: [4, 5, 6, 7, 8, 9, 10, 11]
+  negative_terms_clipped: false
+  deployable_expected_gain: false
+bootstrap:
+  unit: application_group
+  design_weighted: true
+  resamples: 10000
+  confidence: 0.99
+  quantiles: [0.005, 0.995]
+  seed_base: 20260817
+  correction_recomputed_jointly_per_replicate: true
+authorization:
+  prereg_allows: [result_free_preflight, arm_b_zero_gpu, sample_manifest_preparation, runner_implementation]
+  arm_a_requires:
+    - committed_result_free_preflight
+    - committed_arm_b
+    - committed_400_row_sample_and_window_manifest
+    - committed_runner_and_tests
+    - committed_execution_amendment
+    - explicit_one_time_nonce_authorization
+trace_retention:
+  policy: docs/generation_trace_retention_policy.md
+  additional_fields: [coordinate_token_entropy, coordinate_top1_minus_top2_probability_margin]
+  generation_trace_excludes: [target_bbox, correctness, reward, evaluation_label]
+  evaluation_file_separate: true
+  jsonl_write_flush_fsync_per_row: true
+  raw_recursive_deletion_prohibited: true
+  backup_root: /scratch/workspaceblobstore/owin/2026-08-17
+  status_records_manifest_sha256: true
+scope:
+  mind2web_excluded: true
+  x2_not_revived: true
+  split_not_repeated: true
+  future_O_I3_requires_net_benefit_ledger: true
