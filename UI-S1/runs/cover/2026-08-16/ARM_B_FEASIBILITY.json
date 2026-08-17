@@ -1,0 +1,96 @@
+{
+  "arm_statistics_computed": false,
+  "config": {
+    "path": "runs/cover/2026-08-16/configs/cover_prereg.yaml",
+    "sha256": "5b13629e45750220d18fe12f0ba6abd2bdc957a49744daa242611f317f80c42e"
+  },
+  "gpu_used": false,
+  "mind2web": {
+    "folds": 5,
+    "folds_file": {
+      "path": "runs/complementarity/2026-07-30/folds.json",
+      "sha256": "0637c9d91bb2ba676802f98f9313fcfd8e9da04e971e90ab52217a008429fbec"
+    },
+    "lsa_loader": {
+      "path": "runs/lsa/2026-08-10/lsa_common.py",
+      "sha256": "9fb1270eec1efe711d1efde19484c598ff420dca083deb5189237dcb2aac8239"
+    },
+    "models": [
+      "TongUI-7B",
+      "CogAgent-18B",
+      "UI-TARS-7B"
+    ],
+    "private_files": [
+      {
+        "bytes": 615945,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-0.jsonl",
+        "rows_selected": 416,
+        "rows_total": 2920,
+        "sha256": "26ea7201ee45623e5eae237ab41e780ca1aa157f8131d234815ecd7d220ce630"
+      },
+      {
+        "bytes": 612231,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-1.jsonl",
+        "rows_selected": 417,
+        "rows_total": 2912,
+        "sha256": "28c0efc7ddad6a6b2f6798d30975959891e45bc9794d9224b7509ec8ac87118a"
+      },
+      {
+        "bytes": 634803,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-2.jsonl",
+        "rows_selected": 416,
+        "rows_total": 3012,
+        "sha256": "76b5114a5550007c475c8cda96c2d058b9e40195070bab874c920cca7fbbb0e6"
+      },
+      {
+        "bytes": 615496,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-3.jsonl",
+        "rows_selected": 416,
+        "rows_total": 2888,
+        "sha256": "eaa90d42e5e16f76981c91a26f553949b754bc9cd8c0d8b0e272a9e7fcbfc313"
+      },
+      {
+        "bytes": 618464,
+        "path": "runs/visual-utility-selector/2026-08-11/data/private_labels_fold-4.jsonl",
+        "rows_selected": 415,
+        "rows_total": 2912,
+        "sha256": "9295f86dd72927c94f73dde62c527e66fdd3f3af5ab297470767fa94824c021c"
+      }
+    ],
+    "private_rows": 2080,
+    "public": {
+      "bytes": 27532334,
+      "path": "runs/visual-utility-selector/2026-08-11/data/public_records.jsonl",
+      "sha256": "d85119da583f78d78ee498bd4983e254c232fcca4addf4f7779ff8ae08fb82bb"
+    },
+    "public_rows": 2080,
+    "role_code": {
+      "path": "runs/close/2026-08-08/e1_arm_aggregator_matrix.py",
+      "sha256": "bfd5e9b8013f1232a3f8532d9faaa63ba900c2c841ebee86dac98dd63c05b148"
+    },
+    "slot_roles": [
+      "stage1_full",
+      "stage1_view1",
+      "stage2_crop0",
+      "stage2_crop1"
+    ],
+    "status": "READY_2080x12",
+    "xfer_manifest": {
+      "path": "runs/xfer/2026-08-07/PUBLICATION_MANIFEST.json",
+      "sha256": "2dd39c26f27a02528fc9731989b604cb2afe063789965d32dd685e3a4e4a4759"
+    }
+  },
+  "schema_version": 1,
+  "screenspot_regions": {
+    "bytes": 1013066,
+    "path": "runs/allocation-law/2026-08-01/raw/shared_regions_n12.jsonl",
+    "rows": 1581,
+    "sha256": "2a7233cf0fbab109ea481ba891d2d7e65a481c48cd73c623d7d76fc61c06ae17",
+    "status": "READY_1581x12_VIEW0_FULL_VIEW1_11_CROPS"
+  },
+  "spec": {
+    "path": "runs/cover/2026-08-16/SPEC.md",
+    "sha256": "bf7731ddea837723a4b0da8ec80c6d9beda1184dfce1ce2e823f4afcaedab429"
+  },
+  "status": "PASS_COVER_ARM_B_FEASIBILITY_AND_INPUT_LOCK"
+}
