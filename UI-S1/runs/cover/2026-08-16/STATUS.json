@@ -1,0 +1,23 @@
+{
+  "adjudication_sha256": "6c1d155a013904d08a818762feea407278e433833838a58fc26f946af01820fd",
+  "changes_existing_statuses": false,
+  "date": "2026-08-17",
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "followup_gpu_authorized": false,
+  "gpu_used": false,
+  "method_claim_allowed": false,
+  "next_action": "PREPARE_PUBLIC_GATE_AND_NET_LEDGER_NO_GPU",
+  "outcome": "COVER_COMPLEMENTARY_SPEC_AUTHORIZED_COMMON_ORDERING_STRENGTH_SPLIT",
+  "report": "runs/cover/2026-08-16/REPORT.md",
+  "report_sha256": "ac853edee50a8c6428353ea2c62e6df9c1c6993bba58959df77144bda7e9ec12",
+  "retention": {
+    "artifact_count": 1602,
+    "manifest": "/scratch/workspaceblobstore/cover/2026-08-16/BACKUP_MANIFEST.json",
+    "manifest_sha256": "7acb219b9f3e81ccaebdcabefb2d48bfc97e76d79c34c366cded19a32630010c",
+    "total_bytes": 12920361,
+    "verified": true
+  },
+  "round": "cover",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}
