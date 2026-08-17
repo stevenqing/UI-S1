@@ -1,0 +1,152 @@
+schema_version: 1
+round: prune
+date: '2026-08-17'
+status: PREREGISTERED_AFTER_CWIN_STAGE0_BEFORE_ANY_PRUNE_RESULT
+gpu: false
+evidence_status: POST_SELECTION
+changes_existing_statuses: false
+prior_result_access:
+  cwin_stage0_seen: true
+  v_only_k4_B3_delta: 0.006957621758380772
+  v_only_k4_M1_delta: 0.010120177103099304
+  cwin_all_folds_selected_k4: true
+  arm1: POST_HOC_REPORTING_PROTOCOL
+  arm3: POST_RESULT_SECOND_ATTEMPT
+pools:
+  v_only_n12:
+    canonical_slots: GTA1_views_0_to_11
+    immutable_slots: [GTA1-7B/view0]
+    eligible_slots: GTA1_views_1_to_11
+    eligible_count: 11
+    aggregators: [B3_mvp, M1_ccm]
+  c_uni_n12:
+    order: view_major
+    lineages: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+    views: [0, 1, 2, 3]
+    immutable_slots:
+      - GTA1-7B/view0
+      - Qwen3-VL-8B-Instruct/view0
+      - UI-TARS-7B-SFT/view0
+    eligible_views: [1, 2, 3]
+    eligible_count: 9
+    pruning_unit: lineage_view_slot
+    aggregators: [density_B3, F1_majority]
+  decomp_subsets:
+    count: 4083
+    role: provenance_and_integrity_anchor_only
+    accuracy_search_prohibited: true
+folds:
+  unit: application
+  count: 5
+  outer_test: fold_f
+  inner_validation: fold_f_plus_1_mod_5
+  inner_train: remaining_three_folds
+  outer_development: all_four_non_test_folds
+selection:
+  objective: highest_inner_validation_accuracy
+  tie_break: smaller_K
+  R2_inner_fit: inner_train_only
+  R2_outer_refit: outer_development_only
+  outer_test_used_for_selection: false
+rules:
+  R1:
+    name: geometric_redundancy
+    score: sum_pairwise_rectangle_iou_with_all_other_eligible_slots
+    ranking_scope: per_row
+    recompute_after_deletion: false
+    order: descending_score_then_earlier_canonical_slot
+    coordinates: half_open_integer_pixels
+  R2:
+    name: error_redundancy
+    indicator: binary_slot_error
+    score: mean_finite_signed_Pearson_phi_with_other_eligible_slots
+    ranking_scope: fitted_fold_global
+    undefined_pair: exclude
+    no_finite_pair_score: negative_infinity
+    order: descending_score_then_earlier_canonical_slot
+  C2:
+    name: reverse_deletion
+    K_source: corresponding_forward_rule_selected_K
+    order: ascending_redundancy_then_later_canonical_slot
+    separately_tuned: false
+random_control:
+  name: C1
+  realizations: 256
+  sample: uniform_without_replacement
+  R1_scope: per_row
+  R2_scope: global_per_fit_fold_realization
+  seed_text: PRUNE|20260817|pool|rule|outer_fold|phase|row_or_GLOBAL|K|realization
+  seed_conversion: sha256_first_8_bytes_unsigned_big_endian
+  generator: numpy_Generator_PCG64
+  estimand: per_row_mean_correctness_over_256_realizations
+  realization_selection_prohibited: true
+  monte_carlo_standard_error_reported: true
+K_grids:
+  arm1: [2, 3, 4]
+  arm2: [2, 3, 4]
+  arm3: [2, 3, 4, 5, 6, 7, 8, 9]
+  endpoint_tie_break: smaller_K
+  expansion_after_arm3_prohibited: true
+arms:
+  arm2:
+    order: 1
+    pool: c_uni_n12
+    primary: true
+  arm2_controls:
+    order: 2
+    controls: [C1, C2]
+  arm1:
+    order: 3
+    pool: v_only_n12
+    post_hoc: true
+    report_every_K: true
+  arm3:
+    order: 4
+    pool: v_only_n12
+    post_result_second_attempt: true
+bootstrap:
+  paired: true
+  unit: application_group
+  resamples: 10000
+  confidence: 0.99
+  quantiles: [0.005, 0.995]
+  seed_base: 20260817
+  shared_group_multiplicities_within_endpoint: true
+endpoints:
+  P_P1:
+    primary: true
+    contrast: c_uni_pruned_minus_full_pool
+    robust_pass: R1_and_R2_lower_99_positive_for_density_B3_and_F1_majority
+  P_P2:
+    contrast: v_only_pruned_minus_full_pool
+    pass_cell: lower_99_positive
+  P_P3:
+    contrast: redundancy_pruned_minus_matched_C1_mean
+    mechanism_support: both_rules_and_both_pool_relevant_aggregators_lower_99_positive
+  P_P4:
+    contrast: C2_reverse_minus_full_pool
+    positive_point_estimate_cancels_mechanism: true
+  P_P5:
+    report: [selected_K, fraction_of_12_forwards_saved, absolute_calls_saved]
+kill_conditions:
+  P_K1: robust_P_P1_not_positive
+  P_K2: required_P_P3_not_distinguishable
+  P_K3: corresponding_C2_point_delta_positive
+  P_K4: any_selected_K_at_grid_endpoint
+  P_K5: density_positive_majority_not_distinguishable
+  P_K6: R1_R2_qualitative_disagreement
+power_interpretation:
+  sspro_MDE: 0.007
+  cwin_B3_observed_near_MDE: true
+  uncertain_if_99_CI_contains_zero: true
+discipline:
+  leaked_five_cells_optimization_prohibited: true
+  historical_0_6388_endpoint: M1_ccm
+  mind2web_excluded: true
+  result_scope: single_benchmark_post_selection
+retention:
+  jsonl_write_flush_fsync_per_row: true
+  retain_slot_lists_rankings_seeds_samples_folds_rows_bootstraps: true
+  raw_recursive_deletion_prohibited: true
+  backup_root: /scratch/workspaceblobstore/prune/2026-08-17
+  status_records_manifest_sha256: true
