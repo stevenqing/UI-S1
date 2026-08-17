@@ -1,0 +1,117 @@
+{
+  "area": {
+    "full_image_baseline_fraction": 1.0,
+    "intersection_fraction": {
+      "maximum": 0.37002314814814813,
+      "mean": 0.09177975217407248,
+      "median": 0.08469810956790123,
+      "minimum": 0.0,
+      "q1": 0.05004336392121755,
+      "q3": 0.1369164737654321
+    },
+    "uncovered_fraction": {
+      "maximum": 0.9387079686635481,
+      "mean": 0.6811701219449341,
+      "median": 0.6780762924382716,
+      "minimum": 0.0,
+      "q1": 0.5998394097222223,
+      "q3": 0.8074628665123457
+    },
+    "union_fraction": {
+      "maximum": 1.0,
+      "mean": 0.31882987805506585,
+      "median": 0.3219237075617284,
+      "minimum": 0.06129203133645189,
+      "q1": 0.19253713348765433,
+      "q3": 0.4001605902777778
+    }
+  },
+  "b3_accuracy": 0.6369386464263125,
+  "conditional_accuracy": {
+    "ci_99": [
+      0.3444838251719847,
+      0.5396158046061331
+    ],
+    "point_delta": 0.44416425679583577,
+    "resamples": 10000,
+    "unit": "application_group"
+  },
+  "evidence_status": "POST_SELECTION_DIAGNOSTIC",
+  "followup_gpu_authorized": false,
+  "gates": {
+    "A_G1": false,
+    "A_G2": false,
+    "A_G3": true
+  },
+  "geometry": {
+    "crop_views": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "full_image_view": 0,
+    "lineage_regions_identical": true,
+    "map_bytes": 11381820,
+    "map_count": 1581
+  },
+  "low_coverage_fraction": 0.41113219481340924,
+  "raw": {
+    "map_manifest": {
+      "bytes": 440502,
+      "path": "runs/cover/2026-08-16/raw/arm_a_map_manifest.jsonl",
+      "rows": 1581,
+      "sha256": "1aba94f54d6af665709f8913e379c24c4146a43be8f64675ff6bb5b71b6a16ee"
+    },
+    "rows": {
+      "bytes": 871165,
+      "path": "runs/cover/2026-08-16/raw/arm_a_rows.jsonl",
+      "rows": 1581,
+      "sha256": "c4b11f6650780c028796d69c1691693f2de060e3c99101c29ce05216d9e7dba5"
+    },
+    "write_flush_fsync_per_row": true
+  },
+  "row_class_cross_table": {
+    "common_11": {
+      "recoverable": 89,
+      "selected_correct": 763,
+      "zero_candidate_success_coverage": 79
+    },
+    "partial_1_10": {
+      "recoverable": 102,
+      "selected_correct": 244,
+      "zero_candidate_success_coverage": 79
+    },
+    "uncovered_0": {
+      "recoverable": 54,
+      "selected_correct": 0,
+      "zero_candidate_success_coverage": 171
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS_COVER_ARM_A_COMPLETE_AWAITING_HUMAN_DECISION",
+  "target_strata": {
+    "common_11": {
+      "b3_accuracy": 0.8195488721804511,
+      "fraction": 0.5888678051865908,
+      "rows": 931
+    },
+    "partial_1_10": {
+      "b3_accuracy": 0.5741176470588235,
+      "fraction": 0.26881720430107525,
+      "rows": 425
+    },
+    "uncovered_0": {
+      "b3_accuracy": 0.0,
+      "fraction": 0.14231499051233396,
+      "rows": 225
+    }
+  }
+}
