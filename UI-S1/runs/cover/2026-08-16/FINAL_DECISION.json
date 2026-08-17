@@ -1,0 +1,13 @@
+{
+  "arm_a": {
+    "decision": "AUTHORIZE_COMPLEMENTARY_WINDOW_SPEC_ONLY",
+    "gpu_authorized": false,
+    "reason": "A-G3 passed: crop-only low-coverage rows are 41.11% and their B3 accuracy is substantially below the common-coverage stratum. This establishes headroom but not net benefit. A new specification must freeze the net-benefit ledger, candidate source, geometry, and expected failure-phi before any GPU request."
+  },
+  "arm_b": {
+    "decision": "COMMON_SOURCE_STAGE_ORDERING_BENCHMARK_SPECIFIC_STRENGTH",
+    "reason": "Both benchmarks order dependence as within-model > cross-model matched-role > cross-model unmatched-role. Mind2Web cross-model phi and effective dependence are materially lower than ScreenSpot-Pro, so the ordering generalizes but the dependence level does not."
+  },
+  "changes_existing_statuses": false,
+  "schema_version": 1
+}
