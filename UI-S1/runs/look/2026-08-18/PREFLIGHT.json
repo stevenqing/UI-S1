@@ -1,0 +1,42 @@
+{
+  "B3_correct_rows": 1007,
+  "dependencies": {
+    "runs/gran/2026-08-14/TAU_SWEEP.json": {
+      "bytes": 2013434,
+      "sha256": "1e409692652f981698530f41d578c76236f9021c9d23dc27956cca73c40adf6a"
+    },
+    "runs/gran/2026-08-14/gran_common.py": {
+      "bytes": 6287,
+      "sha256": "0904d75f5c4b96d61ab519e79dc8d6ca2ffd1e9e754a10f3f0c4f7117d82fc06"
+    },
+    "runs/look/2026-08-18/SPEC.md": {
+      "bytes": 14481,
+      "sha256": "a996883ce9329fbfc68ae9e4c40011984a5bbab07d7715e261377b28fef98d0b"
+    },
+    "runs/look/2026-08-18/configs/look_prereg.yaml": {
+      "bytes": 5422,
+      "sha256": "ef7938c50158bbb57e9a4be6cf0efc0fa70a1c1a0ff85c14843de7a646749d5e"
+    },
+    "runs/mask/2026-08-14/mask_common.py": {
+      "bytes": 8868,
+      "sha256": "c44dcfd64f3d4a0062ad1778c34f4e2f960658fc6f62cafc396981688f7ae9f3"
+    },
+    "runs/owin/2026-08-17/INPUT_IMAGE_MANIFEST.jsonl": {
+      "bytes": 397630,
+      "sha256": "92842e80c04c1d2e7238df14419452aec22776be1c429b1911ca1ed44f139f17"
+    }
+  },
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "rows": 1581,
+  "sample_summary_sha256": "8f6e069ce514ffc538b83f7b3fcda12c137c238b52b19be80b905a04057690a7",
+  "schema_version": 1,
+  "status": "PASS_LOOK_PREFLIGHT_AND_EVALUATION_SIDE_PREPARATION",
+  "tau_by_fold": [
+    0.0022908676527677724,
+    0.0015135612484362087,
+    0.012022644346174132,
+    0.0034673685045253167,
+    0.0034673685045253167
+  ]
+}

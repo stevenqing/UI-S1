@@ -1,0 +1,358 @@
+{
+  "allocations": {
+    "pool_correct": {
+      "android_studio": {
+        "inclusion_probability": 0.6875,
+        "inverse_probability_weight": 1.4545454545454546,
+        "population": 16,
+        "sample": 11
+      },
+      "autocad": {
+        "inclusion_probability": 0.75,
+        "inverse_probability_weight": 1.3333333333333333,
+        "population": 8,
+        "sample": 6
+      },
+      "blender": {
+        "inclusion_probability": 0.6842105263157895,
+        "inverse_probability_weight": 1.4615384615384615,
+        "population": 19,
+        "sample": 13
+      },
+      "davinci": {
+        "inclusion_probability": 0.7272727272727273,
+        "inverse_probability_weight": 1.375,
+        "population": 11,
+        "sample": 8
+      },
+      "eviews": {
+        "inclusion_probability": 0.75,
+        "inverse_probability_weight": 1.3333333333333333,
+        "population": 4,
+        "sample": 3
+      },
+      "excel": {
+        "inclusion_probability": 0.7222222222222222,
+        "inverse_probability_weight": 1.3846153846153846,
+        "population": 18,
+        "sample": 13
+      },
+      "fruitloops": {
+        "inclusion_probability": 0.7777777777777778,
+        "inverse_probability_weight": 1.2857142857142856,
+        "population": 9,
+        "sample": 7
+      },
+      "illustrator": {
+        "inclusion_probability": 0.75,
+        "inverse_probability_weight": 1.3333333333333333,
+        "population": 12,
+        "sample": 9
+      },
+      "inventor": {
+        "inclusion_probability": 0.7272727272727273,
+        "inverse_probability_weight": 1.375,
+        "population": 22,
+        "sample": 16
+      },
+      "linux_common": {
+        "inclusion_probability": 0.7333333333333333,
+        "inverse_probability_weight": 1.3636363636363638,
+        "population": 15,
+        "sample": 11
+      },
+      "macos_common": {
+        "inclusion_probability": 0.8,
+        "inverse_probability_weight": 1.25,
+        "population": 5,
+        "sample": 4
+      },
+      "matlab": {
+        "inclusion_probability": 0.6842105263157895,
+        "inverse_probability_weight": 1.4615384615384615,
+        "population": 19,
+        "sample": 13
+      },
+      "origin": {
+        "inclusion_probability": 0.7142857142857143,
+        "inverse_probability_weight": 1.4,
+        "population": 7,
+        "sample": 5
+      },
+      "photoshop": {
+        "inclusion_probability": 0.6923076923076923,
+        "inverse_probability_weight": 1.4444444444444444,
+        "population": 13,
+        "sample": 9
+      },
+      "powerpoint": {
+        "inclusion_probability": 0.7333333333333333,
+        "inverse_probability_weight": 1.3636363636363638,
+        "population": 15,
+        "sample": 11
+      },
+      "premiere": {
+        "inclusion_probability": 0.7333333333333333,
+        "inverse_probability_weight": 1.3636363636363638,
+        "population": 15,
+        "sample": 11
+      },
+      "pycharm": {
+        "inclusion_probability": 0.7142857142857143,
+        "inverse_probability_weight": 1.4,
+        "population": 21,
+        "sample": 15
+      },
+      "quartus": {
+        "inclusion_probability": 0.7142857142857143,
+        "inverse_probability_weight": 1.4,
+        "population": 7,
+        "sample": 5
+      },
+      "solidworks": {
+        "inclusion_probability": 0.7142857142857143,
+        "inverse_probability_weight": 1.4,
+        "population": 28,
+        "sample": 20
+      },
+      "stata": {
+        "inclusion_probability": 0.6923076923076923,
+        "inverse_probability_weight": 1.4444444444444444,
+        "population": 13,
+        "sample": 9
+      },
+      "unreal_engine": {
+        "inclusion_probability": 0.7142857142857143,
+        "inverse_probability_weight": 1.4,
+        "population": 7,
+        "sample": 5
+      },
+      "vivado": {
+        "inclusion_probability": 0.6842105263157895,
+        "inverse_probability_weight": 1.4615384615384615,
+        "population": 19,
+        "sample": 13
+      },
+      "vmware": {
+        "inclusion_probability": 0.6666666666666666,
+        "inverse_probability_weight": 1.5,
+        "population": 3,
+        "sample": 2
+      },
+      "vscode": {
+        "inclusion_probability": 0.6923076923076923,
+        "inverse_probability_weight": 1.4444444444444444,
+        "population": 13,
+        "sample": 9
+      },
+      "windows_common": {
+        "inclusion_probability": 0.6923076923076923,
+        "inverse_probability_weight": 1.4444444444444444,
+        "population": 26,
+        "sample": 18
+      },
+      "word": {
+        "inclusion_probability": 0.6666666666666666,
+        "inverse_probability_weight": 1.5,
+        "population": 6,
+        "sample": 4
+      }
+    },
+    "recoverable": {
+      "android_studio": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 12,
+        "sample": 12
+      },
+      "autocad": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 3,
+        "sample": 3
+      },
+      "blender": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 7,
+        "sample": 7
+      },
+      "davinci": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 8,
+        "sample": 8
+      },
+      "eviews": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 1,
+        "sample": 1
+      },
+      "excel": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 3,
+        "sample": 3
+      },
+      "fruitloops": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 10,
+        "sample": 10
+      },
+      "illustrator": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 3,
+        "sample": 3
+      },
+      "inventor": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 7,
+        "sample": 7
+      },
+      "linux_common": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 7,
+        "sample": 7
+      },
+      "macos_common": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 8,
+        "sample": 8
+      },
+      "matlab": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 8,
+        "sample": 8
+      },
+      "origin": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 5,
+        "sample": 5
+      },
+      "photoshop": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 6,
+        "sample": 6
+      },
+      "powerpoint": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 10,
+        "sample": 10
+      },
+      "premiere": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 6,
+        "sample": 6
+      },
+      "pycharm": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 16,
+        "sample": 16
+      },
+      "quartus": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 4,
+        "sample": 4
+      },
+      "solidworks": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 17,
+        "sample": 17
+      },
+      "stata": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 7,
+        "sample": 7
+      },
+      "unreal_engine": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 2,
+        "sample": 2
+      },
+      "vivado": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 7,
+        "sample": 7
+      },
+      "vmware": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 2,
+        "sample": 2
+      },
+      "vscode": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 6,
+        "sample": 6
+      },
+      "windows_common": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 12,
+        "sample": 12
+      },
+      "word": {
+        "inclusion_probability": 1.0,
+        "inverse_probability_weight": 1.0,
+        "population": 3,
+        "sample": 3
+      }
+    }
+  },
+  "eligible_counts": {
+    "pool_correct": 351,
+    "recoverable": 180
+  },
+  "formal_calls": 1290,
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "inference_manifest": {
+    "bytes": 377775,
+    "path": "runs/look/2026-08-18/INFERENCE_INPUT_MANIFEST.jsonl",
+    "rows": 430,
+    "sha256": "f54867f19ff2a6cdacfe3f25fc357240d204cef043d126088dac350545ed42a9"
+  },
+  "next_action": "COMMIT_RUNNER_AND_TESTS_THEN_SEPARATE_GPU_AUTHORIZATION",
+  "observational_L_K3": false,
+  "private_rows": {
+    "bytes": 4043817,
+    "path": "runs/look/2026-08-18/raw/private_preflight_rows.jsonl",
+    "rows": 1581,
+    "sha256": "adf5b544f07354bfea04dc3296786d1f90273629e859f89f8002cad1a7999b6e"
+  },
+  "sample_counts": {
+    "pool_correct": 250,
+    "recoverable": 180
+  },
+  "sample_manifest": {
+    "bytes": 496377,
+    "path": "runs/look/2026-08-18/SAMPLE_WINDOW_MANIFEST.jsonl",
+    "rows": 430,
+    "sha256": "c2e9d1a866f9486e1839ff27951dc338bdd78b79fecf9358b0d3b08e02ac7177"
+  },
+  "schema_version": 1,
+  "separation_quartile_boundaries": [
+    0.026944981581206527,
+    0.06105051050808982,
+    0.1480652981453389
+  ],
+  "status": "PASS_LOOK_SAMPLE_AND_WINDOWS_FROZEN_NO_GPU"
+}
