@@ -1,0 +1,196 @@
+{
+  "B3": {
+    "corrected": {
+      "common_11": 0.8195488721804511,
+      "partial_1_10": 0.6063641869317621,
+      "uncovered_0": 0.46395793668237373
+    },
+    "delta_common": 0.03942106050054495,
+    "existing": {
+      "common_11": 0.8195488721804511,
+      "partial_1_10": 0.5741176470588235,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.711635240480413,
+    "perfect_gain": 0.07469659405410056,
+    "raw": {
+      "common_11": 0.8589699326809961,
+      "partial_1_10": 0.645785247432307,
+      "uncovered_0": 0.5033789971829187
+    }
+  },
+  "M1_ccm": {
+    "corrected": {
+      "common_11": 0.8045112781954887,
+      "partial_1_10": 0.6138426911153905,
+      "uncovered_0": 0.4519171961310711
+    },
+    "delta_common": 0.04417785043456357,
+    "existing": {
+      "common_11": 0.8045112781954887,
+      "partial_1_10": 0.48470588235294115,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.7030768582248779,
+    "perfect_gain": 0.09902878738363818,
+    "raw": {
+      "common_11": 0.8486891286300523,
+      "partial_1_10": 0.658020541549954,
+      "uncovered_0": 0.4960950465656347
+    }
+  },
+  "O_I": {
+    "classification": "O_I2",
+    "point_gain": 0.07469659405410056,
+    "thresholds": {
+      "O_I1": "<0.05",
+      "O_I2": "[0.05,0.10]",
+      "O_I3": ">0.10"
+    },
+    "uses": "corrected_B3_pool_level_point_using_full_common_delta"
+  },
+  "arm_b_N_star": "NONE",
+  "bootstrap": {
+    "B3_corrected_common_11": {
+      "ci_99": [
+        0.7528248370273795,
+        0.8760796093430554
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_corrected_partial_1_10": {
+      "ci_99": [
+        0.46569441776537795,
+        0.7166229501326307
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_corrected_uncovered_0": {
+      "ci_99": [
+        0.273271908464642,
+        0.6731853513114546
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_perfect_gain": {
+      "ci_99": [
+        0.02855299231220944,
+        0.11518099432059696
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_common_11": {
+      "ci_99": [
+        0.7922010142815146,
+        0.9162193053145681
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_partial_1_10": {
+      "ci_99": [
+        0.5054445289128217,
+        0.758898695250388
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_uncovered_0": {
+      "ci_99": [
+        0.3302046664080114,
+        0.6956365461679804
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_small_sensitivity_gain": {
+      "ci_99": [
+        -0.08334358048539167,
+        0.060097020197844075
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_10": {
+      "ci_99": [
+        0.019848618554685515,
+        0.12813169602917374
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_11": {
+      "ci_99": [
+        0.02122007083610996,
+        0.13040012438968487
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_4": {
+      "ci_99": [
+        0.011311498111787362,
+        0.06761288304661095
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_5": {
+      "ci_99": [
+        0.015057079688174177,
+        0.09295762359518832
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_6": {
+      "ci_99": [
+        0.016305678347432167,
+        0.10241846878078237
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_7": {
+      "ci_99": [
+        0.018200010573973364,
+        0.1032565065217071
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_8": {
+      "ci_99": [
+        0.0189318151219215,
+        0.11290442321276217
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_9": {
+      "ci_99": [
+        0.019883043513417867,
+        0.12807554033170915
+      ],
+      "finite_replicates": 10000
+    },
+    "M1_perfect_gain": {
+      "ci_99": [
+        0.056145180310348,
+        0.13942806578453174
+      ],
+      "finite_replicates": 10000
+    },
+    "single_perfect_gain": {
+      "ci_99": [
+        0.07952909704406526,
+        0.17787405747471147
+      ],
+      "finite_replicates": 10000
+    }
+  },
+  "common_frozen_reproduction": {
+    "B3_delta_absolute_difference": 0.0,
+    "B3_raw_absolute_difference": 0.0,
+    "pass": true,
+    "single_delta_absolute_difference": 0.0,
+    "single_raw_absolute_difference": 0.0,
+    "tolerance": 1e-12
+  },
+  "constant_shift_limitation_required": true,
+  "dependence": {
+    "common_11": {
+      "folds": [
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 

@@ -1,4 +1,5 @@
 import sys
+import json
 import unittest
 from pathlib import Path
 
@@ -28,6 +29,10 @@ class FinalEvaluationTest(unittest.TestCase):
         self.assertEqual(evaluation.dependence_label([0.11, 0.20]), "MATERIAL_DEPENDENCE_MISMATCH")
         self.assertEqual(evaluation.dependence_label([0.01, 0.09]), "APPROXIMATELY_MATCHED")
         self.assertEqual(evaluation.dependence_label([0.05, 0.15]), "DEPENDENCE_MATCH_INDETERMINATE")
+
+    def test_numpy_scalars_are_json_serializable(self):
+        value = {"integer": np.int64(1), "floating": np.float64(0.5), "boolean": np.bool_(True)}
+        self.assertEqual(json.loads(json.dumps(value, default=evaluation.json_scalar)), {"integer": 1, "floating": 0.5, "boolean": True})
 
 
 if __name__ == "__main__":

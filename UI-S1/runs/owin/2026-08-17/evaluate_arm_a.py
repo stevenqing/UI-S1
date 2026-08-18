@@ -60,11 +60,21 @@ def write_jsonl_fsynced(path, rows):
 def atomic_json(path, value):
     temporary = path.with_suffix(path.suffix + ".tmp")
     with temporary.open("x", encoding="utf-8") as handle:
-        json.dump(value, handle, indent=2, sort_keys=True)
+        json.dump(value, handle, indent=2, sort_keys=True, default=json_scalar)
         handle.write("\n")
         handle.flush()
         os.fsync(handle.fileno())
     temporary.replace(path)
+
+
+def json_scalar(value):
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.floating):
+        return float(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
 
 
 def weighted_ratio(rows, field, multiplicity=None):
@@ -102,7 +112,7 @@ def phi_from_weighted(values_left, values_right, weights):
 def dependence_endpoint(error_matrix, weights):
     slot_count = error_matrix.shape[1]
     pairs = []
-    constant_slots = sum(np.all(error_matrix[:, slot] == error_matrix[0, slot]) for slot in range(slot_count))
+    constant_slots = int(sum(bool(np.all(error_matrix[:, slot] == error_matrix[0, slot])) for slot in range(slot_count)))
     for left in range(slot_count):
         for right in range(left + 1, slot_count):
             pairs.append(phi_from_weighted(error_matrix[:, left], error_matrix[:, right], weights))
