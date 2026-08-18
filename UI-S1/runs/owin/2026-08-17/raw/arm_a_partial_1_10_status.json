@@ -1,0 +1,13 @@
+{
+  "authorization_sha256": "ff4830b416a1085a85838d605cc2bffb1d6279c78f53a178538cc1afddaff2a0",
+  "calls": 1800,
+  "failure_rate": 0.0,
+  "failures": 0,
+  "mode": "formal",
+  "rows": 150,
+  "shard": "partial_1_10",
+  "status": "OWIN_SHARD_COMPLETE",
+  "trace_bytes": 4549603,
+  "trace_path": "runs/owin/2026-08-17/raw/arm_a_partial_1_10.jsonl",
+  "trace_sha256": "9da29fcb4ce9da3cb6145e4ef1283fc88fd58f40bf50b3a417d435226374053d"
+}
