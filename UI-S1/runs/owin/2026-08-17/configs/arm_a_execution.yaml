@@ -1,0 +1,101 @@
+schema_version: 1
+round: owin
+date: '2026-08-17'
+status: EXECUTION_CONTRACT_FROZEN_NOT_AUTHORIZED
+authorization: false
+model:
+  id: GTA1-7B
+  revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+  official_source_revision: 988ff3c61b9f7632d780ae27c83260de75b3c95f
+  index_path: runs/collision-law/2026-07-30/w3_assets/GTA1-7B/model.safetensors.index.json
+  index_sha256: 3067e9b0f35596ff3426a0d0ec8c982a51fa1e110c4fc30dcf3be9ea37409df6
+runner:
+  path: runs/owin/2026-08-17/run_arm_a.py
+  sha256: 04e972e225f85de4c0f6a35a80601c4b3c92ff6e853d0d21bf470ea32daccae3
+  device_argument: cuda:0
+  physical_gpu_visibility: CUDA_VISIBLE_DEVICES=3
+tests:
+  runner: {path: runs/owin/2026-08-17/test_arm_a_runner.py, sha256: 085c25d9b99245763ec6c1aa707ce112b4f6669047086bd02fa3dcd43991c70b}
+  geometry: {path: runs/owin/2026-08-17/test_owin_geometry.py, sha256: 0d15f8fb9ec397b7fb00a41ca72860229e815274cc8be609a714e72d96bce566}
+inputs:
+  preflight: {path: runs/owin/2026-08-17/PREFLIGHT.json, sha256: 950299a399881a066165c53dcf1e4840118159ad389c4b7623748256e8ca9b39}
+  arm_b: {path: runs/owin/2026-08-17/ARM_B.json, sha256: a9981f603be1a31223c762f6a0974f853c42e2197ea98d3cc1c622effd2c0b2d}
+  sample_windows: {path: runs/owin/2026-08-17/SAMPLE_WINDOW_MANIFEST.jsonl, sha256: bf26cab9a09a818179d84235d014591886073e480c01f1a838e17aa318f9edca}
+  formal: {path: runs/owin/2026-08-17/INFERENCE_INPUT_MANIFEST.jsonl, sha256: d34b7387fc3b4f0fd2d8e9d117c7fbe1547f41a69952b414a7c2e27536b37855, rows: 500, calls: 6000}
+  smoke: {path: runs/owin/2026-08-17/SMOKE_INPUT_MANIFEST.jsonl, sha256: 967e824247f9fe1950b371979c8e569aafada848aeb029bf562eab8bd05f6952, rows: 3, calls: 36, overlap_with_formal: 0}
+hardware:
+  execution_card_count: 1
+  physical_gpu_index: 3
+  visible_runner_index: 0
+  uuid: GPU-477c4cfb-2b63-208d-53b8-5baef1a65b36
+  model: NVIDIA A100-SXM4-80GB
+  memory_mib: 81920
+  driver: 580.167.08
+  torch_cuda: '13.2'
+  protected_pid_2274_present: true
+  protected_pid_policy: do_not_signal_stop_reprioritize_or_modify
+  excluded_gpu:
+    physical_index: 2
+    reason: unrelated_vllm_engine_present
+backend:
+  python: 3.12.13
+  torch: 2.13.0+cu132
+  transformers: 5.14.1
+  numpy: 2.3.5
+  pillow: 12.3.0
+  qwen_vl_utils: 0.0.14
+  qwen_vl_utils_module_sha256: a0c454a56f2ba478731013afe1ba5d5d9caff652fe0ce51be1c315476e5c7905
+  flash_attn_distribution_version: metadata_unavailable
+prompt:
+  template_sha256: b7a49e56bb9cf4f8d5e4689f35f40c091b6d92ec0c4419458f496219a7807993
+  byte_identical_to_h1_source: true
+parser:
+  function: extract_coordinates
+  function_source_sha256: 86d92fd28135567647a88f7b08e1c0b32ec2a8b7ab381839299d5d1d951e2877
+  mvp_source_sha256: bf2b218d8770a6cc950b87b1d652431da932bbd70fcfe2121f681dd26ffcd4ec
+processor:
+  min_pixels: 3136
+  max_pixels: 8847360
+  crop_resize_before_smart_resize: 2x
+  full_image_resize_before_smart_resize: 1x
+decoding:
+  mode: greedy
+  do_sample: false
+  temperature: 0.0
+  top_p: null
+  top_k: null
+  max_new_tokens: 32
+  use_cache: true
+  pad_token_id: 151645
+logprobs:
+  requested: true
+  generate_return_dict_in_generate: true
+  generate_output_scores: true
+  unavailable_handling: explicit_backend_version_reason_never_zero_fill
+shards:
+  count: 3
+  order: [common_11, partial_1_10, uncovered_0]
+  boundaries:
+    common_11: {rows: 200, calls: 2400, selector: execution_shard_equals_common_11}
+    partial_1_10: {rows: 150, calls: 1800, selector: execution_shard_equals_partial_1_10}
+    uncovered_0: {rows: 150, calls: 1800, selector: execution_shard_equals_uncovered_0}
+formal_calls_exact: 6000
+smoke_calls_separate: 36
+known_differences_from_historical_h1:
+  - fixed_committed_oracle_windows_replace_attention_proposal_generation
+  - return_dict_in_generate_and_output_scores_enabled_for_retention
+  - historical_runtime_package_versions_not_retained_current_versions_bound_here
+  - formal_execution_uses_one_bound_gpu_instead_of_historical_eight_shard_generation
+known_invariants_with_historical_h1:
+  - model_and_official_source_revisions
+  - prompt_template
+  - processor_pixel_bounds
+  - full_image_1x_and_crop_2x_pre_smart_resize
+  - greedy_temperature_zero_max_new_tokens_32
+  - parser_and_crop_local_to_full_image_transform
+commands:
+  validate: CUDA_VISIBLE_DEVICES='' .venv-scaleup/bin/python -W error runs/owin/2026-08-17/run_arm_a.py --mode validate-only
+  smoke: CUDA_VISIBLE_DEVICES=3 .venv-scaleup/bin/python -W error runs/owin/2026-08-17/run_arm_a.py --mode smoke --device cuda:0
+  formal_common: CUDA_VISIBLE_DEVICES=3 .venv-scaleup/bin/python -W error runs/owin/2026-08-17/run_arm_a.py --mode formal --shard common_11 --device cuda:0
+  formal_partial: CUDA_VISIBLE_DEVICES=3 .venv-scaleup/bin/python -W error runs/owin/2026-08-17/run_arm_a.py --mode formal --shard partial_1_10 --device cuda:0
+  formal_uncovered: CUDA_VISIBLE_DEVICES=3 .venv-scaleup/bin/python -W error runs/owin/2026-08-17/run_arm_a.py --mode formal --shard uncovered_0 --device cuda:0
