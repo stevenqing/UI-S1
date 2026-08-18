@@ -37,6 +37,11 @@ runtime:
   transformers_overlay: 4.51.2
   flash_attn: 2.7.4.post1
   qwen_vl_utils: 0.0.11
+evaluation_runtime:
+  python: .venv-scaleup/bin/python
+  python_version: 3.12.13
+  sklearn: 1.9.0
+  gpu_visible: false
 hardware:
   physical_gpu_index: 3
   visible_runner_index: 0
@@ -71,6 +76,8 @@ failure:
   noninfrastructure_rate_stop: 0.01
   silent_replacement: prohibited
 commands:
-  test: PYTHONPATH=$PWD/runs/collision-law/2026-07-30/w3_assets/mvp-overlay:$PWD/runs/collision-law/2026-07-30/w3_assets/MVP CUDA_VISIBLE_DEVICES='' runs/mind2web-tongui/2026-07-28/.venv/bin/python -W error -m unittest runs/look/2026-08-18/test_look_runner.py runs/look/2026-08-18/test_look_preparation.py
+  runner_test: PYTHONPATH=$PWD/runs/collision-law/2026-07-30/w3_assets/mvp-overlay:$PWD/runs/collision-law/2026-07-30/w3_assets/MVP CUDA_VISIBLE_DEVICES='' runs/mind2web-tongui/2026-07-28/.venv/bin/python -W error -m unittest runs/look/2026-08-18/test_look_runner.py runs/look/2026-08-18/test_look_preparation.py
+  evaluator_test: CUDA_VISIBLE_DEVICES='' .venv-scaleup/bin/python -W error -m unittest runs/look/2026-08-18/test_look_evaluation.py
+  evaluate: CUDA_VISIBLE_DEVICES='' .venv-scaleup/bin/python -W error runs/look/2026-08-18/evaluate_look.py
   smoke: PYTHONPATH=$PWD/runs/collision-law/2026-07-30/w3_assets/mvp-overlay:$PWD/runs/collision-law/2026-07-30/w3_assets/MVP CUDA_VISIBLE_DEVICES=3 runs/mind2web-tongui/2026-07-28/.venv/bin/python runs/look/2026-08-18/run_look.py --mode smoke --device cuda:0
   formal: PYTHONPATH=$PWD/runs/collision-law/2026-07-30/w3_assets/mvp-overlay:$PWD/runs/collision-law/2026-07-30/w3_assets/MVP CUDA_VISIBLE_DEVICES=3 runs/mind2web-tongui/2026-07-28/.venv/bin/python runs/look/2026-08-18/run_look.py --mode formal --device cuda:0

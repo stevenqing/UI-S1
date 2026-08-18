@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "round": "look",
+  "date": "2026-08-18",
+  "status": "AUTHORIZED_ONE_TIME_LOOK",
+  "gpu_authorized": true,
+  "smoke_calls": 9,
+  "formal_calls": 1290,
+  "nonce": "6a35ee2a8a705f5d2a142eff823d1e5e96d9e8040a659c6afa1dd28c567437fa",
+  "execution_config": {
+    "path": "runs/look/2026-08-18/configs/look_execution.yaml",
+    "sha256": "358d785756101e2b99aca174671af6b6305901e620c1877065a88629d48c440c"
+  },
+  "runner": {
+    "path": "runs/look/2026-08-18/run_look.py",
+    "sha256": "d7bbce08849016a036c129099826b203d8e2ae73098d9cd23a9dda6b6d5a10bb"
+  },
+  "evaluator": {
+    "path": "runs/look/2026-08-18/evaluate_look.py",
+    "sha256": "d2f6e4f985a08fde7b0f570dbec3e84dcaff090fde3fc2b0143f4a0010dbe979"
+  },
+  "hardware": {
+    "physical_gpu_index": 3,
+    "visible_runner_index": 0,
+    "uuid": "GPU-477c4cfb-2b63-208d-53b8-5baef1a65b36",
+    "model": "NVIDIA A100-SXM4-80GB"
+  },
+  "runtime": {
+    "generation": "historical_H1",
+    "evaluation": "venv_scaleup_sklearn_1_9_0_zero_gpu"
+  },
+  "smoke_must_pass_before_formal": true,
+  "formal_nonce_consumed_at_start": true,
+  "protected_pid_2274_policy": "do_not_signal_stop_reprioritize_or_modify",
+  "additional_calls_authorized": false
+}
