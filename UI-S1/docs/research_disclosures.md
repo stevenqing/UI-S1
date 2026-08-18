@@ -47,3 +47,5 @@ The first complete CPU evaluation computed its statistics but failed while seria
 LOOK was preregistered after all ScreenSpot-Pro labels and the local-comparison direction were known. Its mode extraction, geometry, sample, null controls, and 1,290-call budget were frozen before GPU execution. The historical H1 runtime generated 1,290/1,290 formal traces with zero failures; all outputs parsed and retained token logprobs.
 
 The diagnostic is not a method result. Main confrontation AUROC is 0.540 [0.458,0.633], while the random-noncandidate null AUROC is 0.726 and the paired main-minus-null interval is entirely negative. L-K1 therefore cancels candidate-identity signal wording despite a positive descriptive main-versus-M1 correctness difference. No follow-up method is authorized.
+
+LOOK's frozen three-way AUROC interpretation was underpowered for the realized 180 recoverable rows: its 99% interval width was about 0.175 and crossed both 0.60 and 0.65 thresholds. TIGHT explicitly treats promotion of LOOK's better-performing null geometry as post-result direction selection and does not revise LOOK's L-D3/L-K1 outcome.

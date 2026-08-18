@@ -1,0 +1,131 @@
+schema_version: 1
+round: tight
+date: '2026-08-18'
+status: PREREGISTERED_POST_HOC_DIRECTION_AFTER_LOOK_BEFORE_ANY_TIGHT_RESULT
+evidence_status: POST_HOC_DIRECTION_SELECTION_POST_SELECTION_SINGLE_BENCHMARK
+changes_existing_statuses: false
+gpu:
+  stage0: false
+  stage1_authorized: false
+direction_source:
+  look_decision: L_D3
+  look_kill: L_K1
+  look_main_AUROC: 0.5400446428571428
+  look_null_AUROC: 0.7257128112501613
+  look_main_minus_null: -0.18566816839301847
+  promoted_null_is_post_result_direction_selection: true
+power_disclosure:
+  look_recoverable_rows: 180
+  look_L_P1_CI: [0.4584165226326084, 0.6330708607258855]
+  prior_three_way_thresholds_underpowered: true
+  tight_primary_is_full_benchmark_net: true
+folds:
+  unit: application
+  count: 5
+  inner_validation: next_fold_mod_5
+  inner_train: remaining_three
+  outer_development: four_non_test
+blocks:
+  source: frozen_LOOK_GRAN_complete_link_modes
+  point: arithmetic_member_centroid
+  order: [member_count, sum_reliability, max_reliability, earliest_candidate]
+  fewer_than_k: use_all_and_flag_infeasible_for_stage1_k
+stage0:
+  top_k_report: [1, 2, 3, 4, 5]
+  k_grid: [2, 3, 4]
+  contains_correct: any_member_correct_in_top_k_blocks
+  fixed_output_oracle: any_frozen_representative_correct_in_top_k_blocks
+  selection: maximum_inner_validation_fixed_output_oracle_tie_smaller_k
+  integrity_anchor_all_block_fixed_output_oracle: 0.7855787476280834
+  G_G1:
+    quantity: k3_fixed_output_oracle_minus_canonical_B3
+    stop_if_strictly_below: 0.007
+    equality: pass
+  look_complements:
+    null_AUROC_and_CI: reuse_frozen_LOOK
+    distance: [pixels, image_diagonal_normalized, main_short_edge_normalized]
+    angle: atan2_minus_pi_to_pi
+    quadrants: zero_to_nonnegative_side
+  damage_domains: [canonical_B3_correct_1007, existing_crop_center_covered_1356]
+window:
+  target_short_edge: min_nonnegative_bbox_width_height
+  invalid_or_zero: exclude_and_report
+  population_median: numpy_median_all_1581_valid_rows
+  short_dimension: ceil_8_times_median_short_edge
+  height: short_dimension
+  width: ceil_height_times_1288_divided_by_728
+  initial_top_left: floor_center_minus_half_dimensions
+  boundary: minimum_integer_translation
+  resize_full_image_rectangle: prohibited
+primary:
+  calls_per_row: selected_k_blocks
+  score: negative_output_to_block_centroid_distance_divided_by_window_height
+  unmappable_score: negative_infinity
+  selection: highest_score_then_earlier_block_rank
+  answer: selected_tight_window_parsed_output
+  threshold: none
+secondary_scores: [coordinate_token_logprob, coordinate_token_entropy, coordinate_top1_minus_top2_margin]
+C1:
+  sample_rows: 500
+  sample_hash: TIGHT|20260818|CONTROL_SAMPLE|application|row_id
+  calls_per_row_block: 1
+  nominal_offset_fraction_of_height: 0.30
+  direction_index: stable_row_index_plus_block_rank_mod_4
+  directions: [right, down, left, up]
+  rounding: half_away_from_zero
+  regression:
+    response: normalized_output_coordinate_stacked_xy
+    predictors: [normalized_candidate_coordinate, normalized_achieved_window_center_coordinate]
+    intercepts: separate_by_axis
+    weights: inverse_inclusion
+    bootstrap: application_group_10000_99_percent
+    pass: lower_99_beta_c_positive_and_lower_99_beta_c_minus_beta_w_positive
+C2:
+  seed: TIGHT|20260818|C2|row_id|block_rank|j
+  attempts: 10000
+  angle: uniform_0_2pi
+  radius: achieved_C1_window_center_to_candidate_distance
+  random_point_rounding: half_away_from_zero
+  noncandidate: strict_distance_gt_14_from_all_C_uni_candidates
+  achieved_radius_tolerance_pixels: 1
+  first_valid: true
+  score: negative_output_to_random_point_distance_divided_by_window_height
+  endpoint: weighted_paired_primary_minus_C2_score_lower_99_positive
+stage1:
+  authorized: false
+  model: GTA1-7B
+  runtime: frozen_historical_H1
+  additive_budget: true
+  example_k3: {primary: 4743, C1: 1500, C2: 1500, total: 7743}
+  execution_amendment_required: true
+endpoints:
+  G_P1: proposed_answer_minus_full_N12_B3_lower_99_positive
+  G_P2: proposed_answer_minus_full_N12_M1_lower_99_positive
+  G_P3: C1_beta_c_and_beta_c_minus_beta_w_lower_99_positive
+  G_P4: repair_damage_original_correct_and_crop_covered_separate
+  G_P5: recoverable_candidate_level_primary_score_AUROC_descriptive_underpowered
+  G_P6: primary_minus_C2_score_lower_99_positive
+  G_P7: calls_and_pp_per_1000_calls
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  quantiles: [0.005, 0.995]
+  unit: application_group
+kill_conditions:
+  G_K1: G_G1
+  G_K2: G_P3_fails
+  G_K3: G_P6_not_positive_or_undefined
+  G_K4: G_P1_not_positive
+  G_K5: any_fold_k_endpoint_2_or_4
+  G_K6: B3_positive_M1_not_positive
+  G_K7: observed_damage_gt_observed_repair
+contamination:
+  leaked_values_are_fold_level_not_rows: true
+  prohibited_uses: [fit, threshold, sample, implementation_check]
+retention:
+  trace_policy: docs/generation_trace_retention_policy.md
+  jsonl_write_flush_fsync_per_row: true
+  raw_recursive_deletion_prohibited: true
+  prediction_jsonl_recursive_deletion_prohibited: true
+  backup_root: /scratch/workspaceblobstore/tight/2026-08-18
+  status_records_manifest_sha256: true
