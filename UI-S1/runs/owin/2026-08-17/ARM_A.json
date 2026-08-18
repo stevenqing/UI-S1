@@ -1,0 +1,1202 @@
+{
+  "B3": {
+    "corrected": {
+      "common_11": 0.8195488721804511,
+      "partial_1_10": 0.6063641869317621,
+      "uncovered_0": 0.46395793668237373
+    },
+    "delta_common": 0.03942106050054495,
+    "existing": {
+      "common_11": 0.8195488721804511,
+      "partial_1_10": 0.5741176470588235,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.711635240480413,
+    "perfect_gain": 0.07469659405410056,
+    "raw": {
+      "common_11": 0.8589699326809961,
+      "partial_1_10": 0.645785247432307,
+      "uncovered_0": 0.5033789971829187
+    }
+  },
+  "M1_ccm": {
+    "corrected": {
+      "common_11": 0.8045112781954887,
+      "partial_1_10": 0.6138426911153905,
+      "uncovered_0": 0.4519171961310711
+    },
+    "delta_common": 0.04417785043456357,
+    "existing": {
+      "common_11": 0.8045112781954887,
+      "partial_1_10": 0.48470588235294115,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.7030768582248779,
+    "perfect_gain": 0.09902878738363818,
+    "raw": {
+      "common_11": 0.8486891286300523,
+      "partial_1_10": 0.658020541549954,
+      "uncovered_0": 0.4960950465656347
+    }
+  },
+  "O_I": {
+    "classification": "O_I2",
+    "point_gain": 0.07469659405410056,
+    "thresholds": {
+      "O_I1": "<0.05",
+      "O_I2": "[0.05,0.10]",
+      "O_I3": ">0.10"
+    },
+    "uses": "corrected_B3_pool_level_point_using_full_common_delta"
+  },
+  "arm_b_N_star": "NONE",
+  "bootstrap": {
+    "B3_corrected_common_11": {
+      "ci_99": [
+        0.7528248370273795,
+        0.8760796093430554
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_corrected_partial_1_10": {
+      "ci_99": [
+        0.46569441776537795,
+        0.7166229501326307
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_corrected_uncovered_0": {
+      "ci_99": [
+        0.273271908464642,
+        0.6731853513114546
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_perfect_gain": {
+      "ci_99": [
+        0.02855299231220944,
+        0.11518099432059696
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_common_11": {
+      "ci_99": [
+        0.7922010142815146,
+        0.9162193053145681
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_partial_1_10": {
+      "ci_99": [
+        0.5054445289128217,
+        0.758898695250388
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_raw_uncovered_0": {
+      "ci_99": [
+        0.3302046664080114,
+        0.6956365461679804
+      ],
+      "finite_replicates": 10000
+    },
+    "B3_small_sensitivity_gain": {
+      "ci_99": [
+        -0.08334358048539167,
+        0.060097020197844075
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_10": {
+      "ci_99": [
+        0.019848618554685515,
+        0.12813169602917374
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_11": {
+      "ci_99": [
+        0.02122007083610996,
+        0.13040012438968487
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_4": {
+      "ci_99": [
+        0.011311498111787362,
+        0.06761288304661095
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_5": {
+      "ci_99": [
+        0.015057079688174177,
+        0.09295762359518832
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_6": {
+      "ci_99": [
+        0.016305678347432167,
+        0.10241846878078237
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_7": {
+      "ci_99": [
+        0.018200010573973364,
+        0.1032565065217071
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_8": {
+      "ci_99": [
+        0.0189318151219215,
+        0.11290442321276217
+      ],
+      "finite_replicates": 10000
+    },
+    "G_N_9": {
+      "ci_99": [
+        0.019883043513417867,
+        0.12807554033170915
+      ],
+      "finite_replicates": 10000
+    },
+    "M1_perfect_gain": {
+      "ci_99": [
+        0.056145180310348,
+        0.13942806578453174
+      ],
+      "finite_replicates": 10000
+    },
+    "single_perfect_gain": {
+      "ci_99": [
+        0.07952909704406526,
+        0.17787405747471147
+      ],
+      "finite_replicates": 10000
+    }
+  },
+  "common_frozen_reproduction": {
+    "B3_delta_absolute_difference": 0.0,
+    "B3_raw_absolute_difference": 0.0,
+    "pass": true,
+    "single_delta_absolute_difference": 0.0,
+    "single_raw_absolute_difference": 0.0,
+    "tolerance": 1e-12
+  },
+  "constant_shift_limitation_required": true,
+  "dependence": {
+    "common_11": {
+      "folds": [
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 90.21481017158447,
+            "mean_valid_signed_phi": 0.7201346379234953,
+            "mean_zero_filled_off_diagonal_phi": 0.7201346379234953,
+            "neff_mean": 1.3412431924410582,
+            "neff_zero": 1.3412431924410582,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 90.21481017158447
+          },
+          "match_intervals": {
+            "combined_label": "DEPENDENCE_MATCH_INDETERMINATE",
+            "mean": {
+              "ci_99": [
+                0.0003933622733976139,
+                0.14686390624915727
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            },
+            "zero": {
+              "ci_99": [
+                0.0003933622733976139,
+                0.14686390624915727
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 88.27087892880108,
+            "mean_valid_signed_phi": 0.7024625357163736,
+            "mean_zero_filled_off_diagonal_phi": 0.7024625357163736,
+            "neff_mean": 1.3707805050587305,
+            "neff_zero": 1.3707805050587305,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 88.27087892880108
+          },
+          "outer_fold": 0,
+          "rows": 158
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 86.65662950108596,
+            "mean_valid_signed_phi": 0.6877875409189634,
+            "mean_zero_filled_off_diagonal_phi": 0.6877875409189634,
+            "neff_mean": 1.3963155582745537,
+            "neff_zero": 1.3963155582745537,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 86.65662950108596
+          },
+          "match_intervals": {
+            "combined_label": "DEPENDENCE_MATCH_INDETERMINATE",
+            "mean": {
+              "ci_99": [
+                0.00032466769598109654,
+                0.14969604727322255
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            },
+            "zero": {
+              "ci_99": [
+                0.00032466769598109654,
+                0.14969604727322255
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 87.82096252884669,
+            "mean_valid_signed_phi": 0.698372386625879,
+            "mean_zero_filled_off_diagonal_phi": 0.698372386625879,
+            "neff_mean": 1.3778031635699157,
+            "neff_zero": 1.3778031635699157,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 87.82096252884669
+          },
+          "outer_fold": 1,
+          "rows": 150
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 90.32146392436718,
+            "mean_valid_signed_phi": 0.7211042174942471,
+            "mean_zero_filled_off_diagonal_phi": 0.7211042174942471,
+            "neff_mean": 1.339659420282672,
+            "neff_zero": 1.339659420282672,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 90.32146392436718
+          },
+          "match_intervals": {
+            "combined_label": "DEPENDENCE_MATCH_INDETERMINATE",
+            "mean": {
+              "ci_99": [
+                0.00042686996380406886,
+                0.1496192278553246
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            },
+            "zero": {
+              "ci_99": [
+                0.00042686996380406886,
+                0.1496192278553246
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 86.65373227102555,
+            "mean_valid_signed_phi": 0.6877612024638685,
+            "mean_zero_filled_off_diagonal_phi": 0.6877612024638685,
+            "neff_mean": 1.3963622434813328,
+            "neff_zero": 1.3963622434813328,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 86.65373227102555
+          },
+          "outer_fold": 2,
+          "rows": 166
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 89.62093422630502,
+            "mean_valid_signed_phi": 0.714735765693682,
+            "mean_zero_filled_off_diagonal_phi": 0.714735765693682,
+            "neff_mean": 1.3501309827284167,
+            "neff_zero": 1.3501309827284167,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 89.62093422630502
+          },
+          "match_intervals": {
+            "combined_label": "DEPENDENCE_MATCH_INDETERMINATE",
+            "mean": {
+              "ci_99": [
+                0.0003748843213061135,
+                0.1334807246353373
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            },
+            "zero": {
+              "ci_99": [
+                0.0003748843213061135,
+                0.1334807246353373
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 87.12663966430141,
+            "mean_valid_signed_phi": 0.6920603605845581,
+            "mean_zero_filled_off_diagonal_phi": 0.6920603605845581,
+            "neff_mean": 1.388783045762037,
+            "neff_zero": 1.388783045762037,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 87.12663966430141
+          },
+          "outer_fold": 3,
+          "rows": 169
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 87.05798220850906,
+            "mean_valid_signed_phi": 0.691436201895537,
+            "mean_zero_filled_off_diagonal_phi": 0.691436201895537,
+            "neff_mean": 1.3898782964001828,
+            "neff_zero": 1.3898782964001828,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 87.05798220850906
+          },
+          "match_intervals": {
+            "combined_label": "DEPENDENCE_MATCH_INDETERMINATE",
+            "mean": {
+              "ci_99": [
+                0.00025536505165450724,
+                0.14231319647880786
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            },
+            "zero": {
+              "ci_99": [
+                0.00025536505165450724,
+                0.14231319647880786
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "DEPENDENCE_MATCH_INDETERMINATE"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 89.57957487533399,
+            "mean_valid_signed_phi": 0.7143597715939454,
+            "mean_zero_filled_off_diagonal_phi": 0.7143597715939454,
+            "neff_mean": 1.3507543451550552,
+            "neff_zero": 1.3507543451550552,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 89.57957487533399
+          },
+          "outer_fold": 4,
+          "rows": 157
+        }
+      ],
+      "oracle_fold_summary": {
+        "mean": {
+          "mean": 1.376896660605414,
+          "range": [
+            1.3507543451550552,
+            1.3963622434813328
+          ]
+        },
+        "zero": {
+          "mean": 1.376896660605414,
+          "range": [
+            1.3507543451550552,
+            1.3963622434813328
+          ]
+        }
+      }
+    },
+    "partial_1_10": {
+      "folds": [
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 48.16338455503865,
+            "mean_valid_signed_phi": 0.3378489505003514,
+            "mean_zero_filled_off_diagonal_phi": 0.3378489505003514,
+            "neff_mean": 2.5122819153568288,
+            "neff_zero": 2.5122819153568288,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 48.16338455503865
+          },
+          "match_intervals": {
+            "combined_label": "MATERIAL_DEPENDENCE_MISMATCH",
+            "mean": {
+              "ci_99": [
+                0.4306127647820989,
+                0.6690139195767746
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            },
+            "zero": {
+              "ci_99": [
+                0.4306127647820989,
+                0.6690139195767746
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 109.18156945096831,
+            "mean_valid_signed_phi": 0.8925597222815302,
+            "mean_zero_filled_off_diagonal_phi": 0.8925597222815302,
+            "neff_mean": 1.108245655456887,
+            "neff_zero": 1.108245655456887,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 109.18156945096831
+          },
+          "outer_fold": 0,
+          "rows": 116
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 47.10028419919214,
+            "mean_valid_signed_phi": 0.3281844018108376,
+            "mean_zero_filled_off_diagonal_phi": 0.3281844018108376,
+            "neff_mean": 2.5689866219973974,
+            "neff_zero": 2.5689866219973974,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 47.10028419919214
+          },
+          "match_intervals": {
+            "combined_label": "MATERIAL_DEPENDENCE_MISMATCH",
+            "mean": {
+              "ci_99": [
+                0.43885329377893906,
+                0.6822826611097976
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            },
+            "zero": {
+              "ci_99": [
+                0.43885329377893906,
+                0.6822826611097976
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 109.46824039863853,
+            "mean_valid_signed_phi": 0.895165821805805,
+            "mean_zero_filled_off_diagonal_phi": 0.895165821805805,
+            "neff_mean": 1.1053434270923468,
+            "neff_zero": 1.1053434270923468,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 109.46824039863853
+          },
+          "outer_fold": 1,
+          "rows": 133
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 49.16863124146859,
+            "mean_valid_signed_phi": 0.34698755674062354,
+            "mean_zero_filled_off_diagonal_phi": 0.34698755674062354,
+            "neff_mean": 2.4609186171110897,
+            "neff_zero": 2.4609186171110897,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 49.16863124146859
+          },
+          "match_intervals": {
+            "combined_label": "MATERIAL_DEPENDENCE_MISMATCH",
+            "mean": {
+              "ci_99": [
+                0.400104586467686,
+                0.6690682383493445
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            },
+            "zero": {
+              "ci_99": [
+                0.400104586467686,
+                0.6690682383493445
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 106.94157556635554,
+            "mean_valid_signed_phi": 0.872196141512323,
+            "mean_zero_filled_off_diagonal_phi": 0.872196141512323,
+            "neff_mean": 1.1314589238020103,
+            "neff_zero": 1.1314589238020103,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 106.94157556635554
+          },
+          "outer_fold": 2,
+          "rows": 101
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 47.398769525930334,
+            "mean_valid_signed_phi": 0.33089790478118497,
+            "mean_zero_filled_off_diagonal_phi": 0.33089790478118497,
+            "neff_mean": 2.5528088853404687,
+            "neff_zero": 2.5528088853404687,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 47.398769525930334
+          },
+          "match_intervals": {
+            "combined_label": "MATERIAL_DEPENDENCE_MISMATCH",
+            "mean": {
+              "ci_99": [
+                0.4630943316868114,
+                0.6749857420880445
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            },
+            "zero": {
+              "ci_99": [
+                0.4630943316868114,
+                0.6749857420880445
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 111.45197721441691,
+            "mean_valid_signed_phi": 0.9131997928583353,
+            "mean_zero_filled_off_diagonal_phi": 0.9131997928583353,
+            "neff_mean": 1.0856693889531823,
+            "neff_zero": 1.0856693889531823,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 111.45197721441691
+          },
+          "outer_fold": 3,
+          "rows": 118
+        },
+        {
+          "comparator_status": "AVAILABLE",
+          "existing": {
+            "constant_slot_count": 0,
+            "mean_denominator": 45.870482624970634,
+            "mean_valid_signed_phi": 0.317004387499733,
+            "mean_zero_filled_off_diagonal_phi": 0.317004387499733,
+            "neff_mean": 2.6378619337685127,
+            "neff_zero": 2.6378619337685127,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 45.870482624970634
+          },
+          "match_intervals": {
+            "combined_label": "MATERIAL_DEPENDENCE_MISMATCH",
+            "mean": {
+              "ci_99": [
+                0.47018649177058225,
+                0.6895379343373135
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            },
+            "zero": {
+              "ci_99": [
+                0.47018649177058225,
+                0.6895379343373135
+              ],
+              "finite_reliable_replicates": 10000,
+              "label": "MATERIAL_DEPENDENCE_MISMATCH"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 111.04312813448045,
+            "mean_valid_signed_phi": 0.9094829830407315,
+            "mean_zero_filled_off_diagonal_phi": 0.9094829830407315,
+            "neff_mean": 1.0896667090777659,
+            "neff_zero": 1.0896667090777659,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 111.04312813448045
+          },
+          "outer_fold": 4,
+          "rows": 132
+        }
+      ],
+      "oracle_fold_summary": {
+        "mean": {
+          "mean": 1.1040768208764384,
+          "range": [
+            1.0856693889531823,
+            1.1314589238020103
+          ]
+        },
+        "zero": {
+          "mean": 1.1040768208764384,
+          "range": [
+            1.0856693889531823,
+            1.1314589238020103
+          ]
+        }
+      }
+    },
+    "uncovered_0": {
+      "folds": [
+        {
+          "comparator_status": "UNDEFINED_DEGENERATE_COMPARATOR",
+          "existing": {
+            "constant_slot_count": 11,
+            "mean_denominator": 11.0,
+            "mean_valid_signed_phi": 0.0,
+            "mean_zero_filled_off_diagonal_phi": 0.0,
+            "neff_mean": 11.0,
+            "neff_zero": 11.0,
+            "nonconstant_slot_count": 0,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 11.0
+          },
+          "match_intervals": {
+            "combined_label": "UNDEFINED_DEGENERATE_COMPARATOR",
+            "mean": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            },
+            "zero": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 91.61282542147664,
+            "mean_valid_signed_phi": 0.7328438674679696,
+            "mean_zero_filled_off_diagonal_phi": 0.7328438674679696,
+            "neff_mean": 1.3207757695860145,
+            "neff_zero": 1.3207757695860145,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 91.61282542147664
+          },
+          "outer_fold": 0,
+          "rows": 135
+        },
+        {
+          "comparator_status": "UNDEFINED_DEGENERATE_COMPARATOR",
+          "existing": {
+            "constant_slot_count": 11,
+            "mean_denominator": 451.0,
+            "mean_valid_signed_phi": 4.0,
+            "mean_zero_filled_off_diagonal_phi": 4.0,
+            "neff_mean": 0.2682926829268293,
+            "neff_zero": 0.2682926829268293,
+            "nonconstant_slot_count": 0,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 451.0
+          },
+          "match_intervals": {
+            "combined_label": "UNDEFINED_DEGENERATE_COMPARATOR",
+            "mean": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            },
+            "zero": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 92.9565506217132,
+            "mean_valid_signed_phi": 0.7450595511064837,
+            "mean_zero_filled_off_diagonal_phi": 0.7450595511064837,
+            "neff_mean": 1.301683412204156,
+            "neff_zero": 1.301683412204156,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 92.9565506217132
+          },
+          "outer_fold": 1,
+          "rows": 127
+        },
+        {
+          "comparator_status": "UNDEFINED_DEGENERATE_COMPARATOR",
+          "existing": {
+            "constant_slot_count": 11,
+            "mean_denominator": 451.0,
+            "mean_valid_signed_phi": 4.0,
+            "mean_zero_filled_off_diagonal_phi": 4.0,
+            "neff_mean": 0.2682926829268293,
+            "neff_zero": 0.2682926829268293,
+            "nonconstant_slot_count": 0,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 451.0
+          },
+          "match_intervals": {
+            "combined_label": "UNDEFINED_DEGENERATE_COMPARATOR",
+            "mean": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            },
+            "zero": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 87.39907027403406,
+            "mean_valid_signed_phi": 0.6945370024912184,
+            "mean_zero_filled_off_diagonal_phi": 0.6945370024912184,
+            "neff_mean": 1.3844540865321842,
+            "neff_zero": 1.3844540865321842,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 87.39907027403406
+          },
+          "outer_fold": 2,
+          "rows": 124
+        },
+        {
+          "comparator_status": "UNDEFINED_DEGENERATE_COMPARATOR",
+          "existing": {
+            "constant_slot_count": 11,
+            "mean_denominator": 341.0,
+            "mean_valid_signed_phi": 3.0,
+            "mean_zero_filled_off_diagonal_phi": 3.0,
+            "neff_mean": 0.3548387096774194,
+            "neff_zero": 0.3548387096774194,
+            "nonconstant_slot_count": 0,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 341.0
+          },
+          "match_intervals": {
+            "combined_label": "UNDEFINED_DEGENERATE_COMPARATOR",
+            "mean": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            },
+            "zero": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 90.09823974289264,
+            "mean_valid_signed_phi": 0.7190749067535697,
+            "mean_zero_filled_off_diagonal_phi": 0.7190749067535697,
+            "neff_mean": 1.342978512624549,
+            "neff_zero": 1.342978512624549,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 90.09823974289264
+          },
+          "outer_fold": 3,
+          "rows": 101
+        },
+        {
+          "comparator_status": "UNDEFINED_DEGENERATE_COMPARATOR",
+          "existing": {
+            "constant_slot_count": 11,
+            "mean_denominator": null,
+            "mean_valid_signed_phi": null,
+            "mean_zero_filled_off_diagonal_phi": 0.0,
+            "neff_mean": null,
+            "neff_zero": 11.0,
+            "nonconstant_slot_count": 0,
+            "pair_count": 55,
+            "reliability": "DEPENDENCE_DIAGNOSTIC_UNRELIABLE",
+            "undefined_pair_count": 55,
+            "valid_pair_count": 0,
+            "zero_denominator": 11.0
+          },
+          "match_intervals": {
+            "combined_label": "UNDEFINED_DEGENERATE_COMPARATOR",
+            "mean": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            },
+            "zero": {
+              "ci_99": null,
+              "label": "UNDEFINED_DEGENERATE_COMPARATOR"
+            }
+          },
+          "oracle": {
+            "constant_slot_count": 0,
+            "mean_denominator": 93.52952368619886,
+            "mean_valid_signed_phi": 0.7502683971472626,
+            "mean_zero_filled_off_diagonal_phi": 0.7502683971472626,
+            "neff_mean": 1.293709143713459,
+            "neff_zero": 1.293709143713459,
+            "nonconstant_slot_count": 11,
+            "pair_count": 55,
+            "reliability": "RELIABLE",
+            "undefined_pair_count": 0,
+            "valid_pair_count": 55,
+            "zero_denominator": 93.52952368619886
+          },
+          "outer_fold": 4,
+          "rows": 113
+        }
+      ],
+      "oracle_fold_summary": {
+        "mean": {
+          "mean": 1.3287201849320724,
+          "range": [
+            1.293709143713459,
+            1.3844540865321842
+          ]
+        },
+        "zero": {
+          "mean": 1.3287201849320724,
+          "range": [
+            1.293709143713459,
+            1.3844540865321842
+          ]
+        }
+      }
+    }
+  },
+  "dependence_limitation_required": true,
+  "dependence_unavailable_units": [
+    "uncovered_0/fold0:UNDEFINED_DEGENERATE_COMPARATOR",
+    "uncovered_0/fold1:UNDEFINED_DEGENERATE_COMPARATOR",
+    "uncovered_0/fold2:UNDEFINED_DEGENERATE_COMPARATOR",
+    "uncovered_0/fold3:UNDEFINED_DEGENERATE_COMPARATOR",
+    "uncovered_0/fold4:UNDEFINED_DEGENERATE_COMPARATOR",
+    "common_11/fold0:DEPENDENCE_MATCH_INDETERMINATE",
+    "common_11/fold1:DEPENDENCE_MATCH_INDETERMINATE",
+    "common_11/fold2:DEPENDENCE_MATCH_INDETERMINATE",
+    "common_11/fold3:DEPENDENCE_MATCH_INDETERMINATE",
+    "common_11/fold4:DEPENDENCE_MATCH_INDETERMINATE"
+  ],
+  "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION_SINGLE_BENCHMARK",
+  "factorized_G_N": {
+    "10": {
+      "G_N": 0.07099152504774703,
+      "ci_99": [
+        0.019848618554685515,
+        0.12813169602917374
+      ],
+      "q": {
+        "common_11": 0.9742212674543501,
+        "partial_1_10": 0.9788235294117648,
+        "uncovered_0": 0.9466666666666667
+      }
+    },
+    "11": {
+      "G_N": 0.0734003821717684,
+      "ci_99": [
+        0.02122007083610996,
+        0.13040012438968487
+      ],
+      "q": {
+        "common_11": 0.9838882921589689,
+        "partial_1_10": 0.9858823529411764,
+        "uncovered_0": 0.9822222222222222
+      }
+    },
+    "4": {
+      "G_N": 0.041321425807941,
+      "ci_99": [
+        0.011311498111787362,
+        0.06761288304661095
+      ],
+      "q": {
+        "common_11": 0.6981740064446831,
+        "partial_1_10": 0.6705882352941176,
+        "uncovered_0": 0.5377777777777778
+      }
+    },
+    "5": {
+      "G_N": 0.0550382074872389,
+      "ci_99": [
+        0.015057079688174177,
+        0.09295762359518832
+      ],
+      "q": {
+        "common_11": 0.7873254564983888,
+        "partial_1_10": 0.8988235294117647,
+        "uncovered_0": 0.7155555555555555
+      }
+    },
+    "6": {
+      "G_N": 0.06038164991601913,
+      "ci_99": [
+        0.016305678347432167,
+        0.10241846878078237
+      ],
+      "q": {
+        "common_11": 0.8249194414607949,
+        "partial_1_10": 0.9058823529411765,
+        "uncovered_0": 0.7955555555555556
+      }
+    },
+    "7": {
+      "G_N": 0.060940260260757,
+      "ci_99": [
+        0.018200010573973364,
+        0.1032565065217071
+      ],
+      "q": {
+        "common_11": 0.9022556390977443,
+        "partial_1_10": 0.9364705882352942,
+        "uncovered_0": 0.8
+      }
+    },
+    "8": {
+      "G_N": 0.0652934352082766,
+      "ci_99": [
+        0.0189318151219215,
+        0.11290442321276217
+      ],
+      "q": {
+        "common_11": 0.9430719656283566,
+        "partial_1_10": 0.9647058823529412,
+        "uncovered_0": 0.8622222222222222
+      }
+    },
+    "9": {
+      "G_N": 0.07097112875434225,
+      "ci_99": [
+        0.019883043513417867,
+        0.12807554033170915
+      ],
+      "q": {
+        "common_11": 0.9699248120300752,
+        "partial_1_10": 0.9764705882352941,
+        "uncovered_0": 0.9466666666666667
+      }
+    }
+  },
+  "gpu": {
+    "failed_smoke_attempts_retained": 36,
+    "failures": 0,
+    "formal_calls": 6000,
+    "smoke_success_calls": 36
+  },
+  "pool_minus_single": {
+    "B3_raw_by_stratum": {
+      "common_11": 0.03537178897007054,
+      "partial_1_10": 0.020065359477124067,
+      "uncovered_0": 0.0644425451092116
+    },
+    "M1_minus_single_raw_by_stratum": {
+      "common_11": 0.025090984919126758,
+      "partial_1_10": 0.03230065359477108,
+      "uncovered_0": 0.05715859449192762
+    }
+  },
+  "private_rows": {
+    "bytes": 312857,
+    "path": "runs/owin/2026-08-17/raw/private_arm_a_evaluation.jsonl",
+    "rows": 500,
+    "sha256": "803a18a5ea80a033973d3782a9262cafd8979762a2832b3794011156e08093de",
+    "write_flush_fsync_per_row": true
+  },
+  "schema_version": 1,
+  "secondary_full_bbox_domains": {
+    "common_11": {
+      "oracle_B3": 0.8539290929015186,
+      "rows": 181
+    },
+    "partial_1_10": {
+      "oracle_B3": 0.6889323753183061,
+      "rows": 168
+    },
+    "uncovered_0": {
+      "oracle_B3": 0.5095549716144404,
+      "rows": 151
+    }
+  },
+  "single_forward": {
+    "corrected": {
+      "common_11": 0.7689678742310321,
+      "partial_1_10": 0.5710896184752895,
+      "uncovered_0": 0.3843061825938136
+    },
+    "delta_common": 0.05463026947989347,
+    "existing": {
+      "common_11": 0.7689678742310321,
+      "partial_1_10": 0.3013903743315508,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.661031669730991,
+    "perfect_gain": 0.12719232754250284,
+    "raw": {
+      "common_11": 0.8235981437109255,
+      "partial_1_10": 0.625719887955183,
+      "uncovered_0": 0.4389364520737071
+    }
+  },
+  "small_target_sensitivity_B3": {
+    "corrected": {
+      "common_11": 0.7441143837168757,
+      "partial_1_10": 0.5309296984681866,
+      "uncovered_0": 0.38852344821879825
+    },
+    "delta_common": 0.11485554896412042,
+    "existing": {
+      "common_11": 0.8195488721804511,
+      "partial_1_10": 0.5741176470588235,
+      "uncovered_0": 0.0
+    },
+    "perfect_accuracy": 0.6362007520168376,
+    "perfect_gain": -0.0007378944094749151,
+    "raw": {
+      "common_11": 0.8589699326809961,
+      "partial_1_10": 0.645785247432307,
+      "uncovered_0": 0.5033789971829187
+    }
+  },
+  "status": "PASS_OWIN_ARM_A_COMPLETE",
+  "trace_shards": {
+    "common_11": {
+      "bytes": 6135071,
+      "path": "runs/owin/2026-08-17/raw/arm_a_common_11.jsonl",
+      "sha256": "8acee9c2bff77fe0ee84d982a611d90ab7b9d82ed1888af1ef9908a0039e2214"
+    },
+    "partial_1_10": {
+      "bytes": 4549603,
+      "path": "runs/owin/2026-08-17/raw/arm_a_partial_1_10.jsonl",
+      "sha256": "9da29fcb4ce9da3cb6145e4ef1283fc88fd58f40bf50b3a417d435226374053d"
+    },
+    "uncovered_0": {
+      "bytes": 4614837,
+      "path": "runs/owin/2026-08-17/raw/arm_a_uncovered_0.jsonl",
+      "sha256": "eb5a268d3204590cbdffcf19583c2178713c835bf811e74e1d17031e3899f02b"
+    }
+  }
+}
