@@ -1,0 +1,23 @@
+{
+  "adjudication_sha256": "b3a664138c4b319abfc00af034dfa5fb31ec837ffbfafd9694d4b75950c4dc26",
+  "date": "2026-08-18",
+  "evidence_status": "POST_SELECTION_SINGLE_BENCHMARK_DIAGNOSTIC_NOT_METHOD",
+  "formal_gpu_calls": 1290,
+  "method_claim_allowed": false,
+  "next_action": "CLOSE_LOOK_DIRECTION_NO_METHOD_SPEC",
+  "outcome": "LOOK_L_D3_L_K1_NULL_DOMINATES_NO_METHOD_AUTHORIZED",
+  "report": "runs/look/2026-08-18/REPORT.md",
+  "report_sha256": "2f1bbf488f763774dcc096bee6df2da014f7801d217e840484619374747d6b71",
+  "retention": {
+    "archive": "/scratch/workspaceblobstore/look/2026-08-18/look-run.tar",
+    "archive_sha256": "787520276b6ea88737ad739848693de9e5a7b1e460999b3e62d16ff65de8a28a",
+    "artifact_count": 32,
+    "manifest": "/scratch/workspaceblobstore/look/2026-08-18/BACKUP_MANIFEST.json",
+    "manifest_sha256": "b36ce8ff12df4e6db57db454641b5f54553e4021307d20789e2bc3997354cef9",
+    "total_bytes": 8517618,
+    "verified": true
+  },
+  "round": "look",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

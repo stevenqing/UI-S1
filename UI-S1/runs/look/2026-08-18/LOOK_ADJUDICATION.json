@@ -1,0 +1,25 @@
+{
+  "changes_existing_statuses": false,
+  "date": "2026-08-18",
+  "decision": "L_D3",
+  "evidence_status": "POST_SELECTION_SINGLE_BENCHMARK_DIAGNOSTIC_NOT_METHOD",
+  "formal_gpu_calls": 1290,
+  "future_method_authorized": false,
+  "kill_conditions": {
+    "L_K1": true,
+    "L_K2": false,
+    "L_K3": false,
+    "L_K4": false,
+    "L_K5": false
+  },
+  "method_claim_allowed": false,
+  "next_action": "CLOSE_LOOK_DIRECTION_NO_METHOD_SPEC",
+  "outcome": "LOOK_L_D3_L_K1_NULL_DOMINATES_NO_METHOD_AUTHORIZED",
+  "report": "runs/look/2026-08-18/REPORT.md",
+  "report_sha256": "2f1bbf488f763774dcc096bee6df2da014f7801d217e840484619374747d6b71",
+  "results_sha256": "4069ac6c23d623190ead57b3d26b55dd1a7e5c45fc73aa128e38368714ea72b4",
+  "round": "look",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "trace_sha256": "57d95f3d7a2be68255815294b7f6fe10755e2ed375007e397e814416f774e408"
+}

@@ -41,3 +41,9 @@ Amendment 002 corrects two additional result-free drafting errors. First, the hi
 The first OWIN smoke failed before model loading because an initially bound Transformers 5.14.1 runtime was incompatible with the frozen vendored processor. The second loaded the model but global `-W error` promoted the historical `do_sample=false, temperature=0` warning to an exception before token generation. Both failures were retained, formal nonce remained unconsumed, and new amendments bound the historical H1 runtime and warning policy before a 36/36 passing smoke. Formal generation then completed 6,000/6,000 traces with zero failures.
 
 The first complete CPU evaluation computed its statistics but failed while serializing a NumPy integer to JSON. The incomplete JSON and private evaluation rows were retained before an explicit scalar-container serialization correction and deterministic rerun. This changed no trace, bootstrap sample, statistic, threshold, or interpretation.
+
+## LOOK
+
+LOOK was preregistered after all ScreenSpot-Pro labels and the local-comparison direction were known. Its mode extraction, geometry, sample, null controls, and 1,290-call budget were frozen before GPU execution. The historical H1 runtime generated 1,290/1,290 formal traces with zero failures; all outputs parsed and retained token logprobs.
+
+The diagnostic is not a method result. Main confrontation AUROC is 0.540 [0.458,0.633], while the random-noncandidate null AUROC is 0.726 and the paired main-minus-null interval is entirely negative. L-K1 therefore cancels candidate-identity signal wording despite a positive descriptive main-versus-M1 correctness difference. No follow-up method is authorized.
