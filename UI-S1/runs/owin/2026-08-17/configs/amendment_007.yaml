@@ -1,0 +1,29 @@
+schema_version: 1
+round: owin
+amendment: '007'
+date: '2026-08-17'
+status: FROZEN_AFTER_COMMON_GENERATION_BEFORE_ANY_OWIN_LABEL_OR_COORDINATE_PARSE
+timing:
+  common_generation_complete: true
+  common_calls: 2400
+  common_failures: 0
+  any_trace_joined_to_labels: false
+  any_owin_correctness_computed: false
+  any_owin_endpoint_computed: false
+contradiction:
+  prior_requirement: freeze_M1_after_common_only
+  issue: M1_fold_local_fit_requires_all_500_outer_development_candidate_labels
+resolution:
+  common_stage_freezes: [B3_pool_calibration, zero_jitter_single_calibration, B3_size_heterogeneity, calibration_identity, small_target_sensitivity_inputs]
+  common_stage_M1: DEFERRED
+  M1_execution: after_all_6000_integrity_pass
+  M1_fit: each_outer_fold_on_four_non_test_folds_of_full_500_row_sample
+  M1_test: corresponding_outer_test_fold
+unchanged:
+  - M1_formula_and_candidate_pool
+  - existing_common_M1_anchor
+  - sample_and_calls
+  - runner_and_generation
+  - B3_and_single_calibration
+  - O_I_estimand_and_thresholds
+  - dependence_and_sensitivity_diagnostics
