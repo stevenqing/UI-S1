@@ -61,16 +61,25 @@ def main():
     for row_id in sorted(regions):
         width, height = regions[row_id]["img_size"]
         target_bbox = gta1_rows[row_id]["target_bbox"]
+        existing_full_bbox_count = sum(contains_bbox(rectangle, target_bbox) for rectangle in regions[row_id]["regions"][1:])
         for count in range(4, 12):
             tiling = tiling_layout(width, height, count)
             prefix = regions[row_id]["regions"][1 : count + 1]
-            raw.append({"row_id": row_id, "application": cover[row_id]["application"], "existing_center_stratum": cover[row_id]["target_stratum"], "N": count, "width": width, "height": height, "tiling": {**tiling, **evaluate_rectangles(tiling["rectangles"], target_bbox)}, "existing_prefix": {"rectangles": prefix, **evaluate_rectangles(prefix, target_bbox)}})
+            raw.append({"row_id": row_id, "application": cover[row_id]["application"], "existing_center_stratum": cover[row_id]["target_stratum"], "existing_full_bbox_stratum": distribution(existing_full_bbox_count), "N": count, "width": width, "height": height, "tiling": {**tiling, **evaluate_rectangles(tiling["rectangles"], target_bbox)}, "existing_prefix": {"rectangles": prefix, **evaluate_rectangles(prefix, target_bbox)}})
     write_jsonl_fsynced(RAW_PATH, raw)
     summaries = {}
     for count in range(4, 12):
         rows = [row for row in raw if row["N"] == count]
         summaries[str(count)] = {}
         for name in ("tiling", "existing_prefix"):
+            center_by_stratum = {}
+            for stratum in ("uncovered_0", "partial_1_10", "common_11"):
+                stratum_rows = [row for row in rows if row["existing_center_stratum"] == stratum]
+                center_by_stratum[stratum] = {
+                    "rows": len(stratum_rows),
+                    "covered_rows": sum(row[name]["center_count"] > 0 for row in stratum_rows),
+                    "coverage_fraction": sum(row[name]["center_count"] > 0 for row in stratum_rows) / len(stratum_rows),
+                }
             summaries[str(count)][name] = {
                 "union_fraction": summarize([row[name]["union_area"] / (row["width"] * row["height"]) for row in rows]),
                 "center_covered_rows": sum(row[name]["center_count"] > 0 for row in rows),
@@ -78,8 +87,16 @@ def main():
                 "full_bbox_covered_rows": sum(row[name]["full_bbox_count"] > 0 for row in rows),
                 "full_bbox_uncovered_rows": sum(row[name]["full_bbox_count"] == 0 for row in rows),
                 "center_transition": dict(Counter(f"{row['existing_center_stratum']}->{('covered' if row[name]['center_count'] > 0 else 'uncovered')}" for row in rows)),
+                "full_bbox_transition": dict(Counter(f"{row['existing_full_bbox_stratum']}->{distribution(row[name]['full_bbox_count'])}" for row in rows)),
+                "center_coverage_by_existing_stratum": center_by_stratum,
             }
-    output = {"schema_version": 1, "status": "PASS_OWIN_ARM_B_COMPLETE_ZERO_GPU", "gpu_used": False, "gpu_authorized": False, "rows": 1581, "window_counts": list(range(4, 12)), "summaries": summaries, "raw": {"path": str(RAW_PATH.relative_to(ROOT)), "rows": len(raw), "bytes": RAW_PATH.stat().st_size, "sha256": sha256_file(RAW_PATH), "write_flush_fsync_per_row": True}}
+    n_star = None
+    for count in range(4, 11):
+        tiling = summaries[str(count)]["tiling"]
+        if tiling["union_fraction"]["median"] >= 0.99 and all(value["coverage_fraction"] >= 0.99 for value in tiling["center_coverage_by_existing_stratum"].values()):
+            n_star = count
+            break
+    output = {"schema_version": 1, "status": "PASS_OWIN_ARM_B_COMPLETE_ZERO_GPU", "gpu_used": False, "gpu_authorized": False, "rows": 1581, "window_counts": list(range(4, 12)), "N_star": n_star if n_star is not None else "NONE", "N_star_definition": {"candidate_counts": list(range(4, 11)), "median_union_at_least": 0.99, "each_existing_center_stratum_coverage_at_least": 0.99, "N_11_not_saturation_by_definition": True}, "summaries": summaries, "raw": {"path": str(RAW_PATH.relative_to(ROOT)), "rows": len(raw), "bytes": RAW_PATH.stat().st_size, "sha256": sha256_file(RAW_PATH), "write_flush_fsync_per_row": True}}
     atomic_json(OUTPUT_PATH, output)
     print(json.dumps({"status": output["status"], "summaries": summaries, "gpu_authorized": False}, indent=2))
 
