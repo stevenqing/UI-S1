@@ -1,0 +1,20 @@
+{
+  "calls": 9,
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "manifest": {
+    "bytes": 2301,
+    "path": "runs/look/2026-08-18/SMOKE_INPUT_MANIFEST.jsonl",
+    "sha256": "d95b73d8bbf7bd508687a6ff2ba714f1dd4bdf2275c96b073fbc86961ef1de80"
+  },
+  "next_action": "COMMIT_RUNNER_TESTS_AND_SEPARATE_AUTHORIZATION",
+  "overlap_with_formal": [],
+  "row_ids": [
+    "linux_common_linux_30",
+    "solidworks_windows_55",
+    "vmware_macos_28"
+  ],
+  "rows": 3,
+  "schema_version": 1,
+  "status": "PASS_LOOK_SMOKE_INPUT_FROZEN"
+}
