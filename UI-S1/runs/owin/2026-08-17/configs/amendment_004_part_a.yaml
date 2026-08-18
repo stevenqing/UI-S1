@@ -1,0 +1,85 @@
+schema_version: 1
+round: owin
+amendment: 004A
+date: '2026-08-17'
+status: FROZEN_BEFORE_ANY_OWIN_RESULT_OR_GPU_AUTHORIZATION
+legality:
+  outputs_seen_before_part_a: false
+  preflight_run: false
+  geometry_calibration_run: false
+  arm_b_run: false
+  sample_manifest_created: false
+  runner_committed: false
+  tests_committed: false
+  arm_a_run: false
+  gpu_authorized: false
+  void_if_any_owin_statistic_predates_commit: true
+blocking_identity:
+  name: CALIBRATION_IDENTITY_CHECK
+  data_scope: same_sampled_common_rows
+  outcomes:
+    A: oracle_pool_B3_correctness
+    B: frozen_existing_pool_B3_correctness_on_same_sampled_row
+  estimator: ratio_IPW
+  achieved_weight: sum_IPW_common_small_divided_by_sum_IPW_common
+  formula: A_common_minus_B_common_minus_hatw_times_A_small_minus_B_small_minus_one_minus_hatw_times_A_large_minus_B_large
+  subgroup_partition: frozen_common_small_465_and_common_large_466
+  denominator_requirement: positive_finite
+  point_absolute_tolerance: 1.0e-9
+  pass: absolute_Delta_ident_le_1e_minus_9
+  failure_label: CALIBRATION_IDENTITY_CHECK_FAILED
+  failure_blocks_corrected_value_reporting_and_interpretation: true
+  point_check_controls_blocking: true
+  bootstrap:
+    same_application_multiplicities_for_all_ratios: true
+    recompute_hatw: true
+    zero_subgroup_denominator: retain_as_nonfinite
+    report: [maximum_absolute_finite_residual, nonfinite_replicate_count]
+    scientific_interval: false
+representativeness:
+  name: CALIBRATION_REPRESENTATIVENESS_DIAGNOSTIC
+  prior_Delta_decomp_definition_retained: true
+  population_weight: 465_divided_by_931
+  report_point_and_grouped_bootstrap_99_interval: true
+  blocking: false
+  reference_scale_only: 0.005
+  report_exceeds_reference_scale: true
+  diagnostics:
+    - population_weight_w
+    - achieved_IPW_weight_hatw
+    - raw_sample_small_share
+    - hatw_minus_w
+    - delta_small_minus_delta_large
+    - hatw_minus_w_times_delta_small_minus_delta_large
+    - exact_hatw_minus_w_times_A_small_minus_A_large
+    - B3_anchor_remainder
+  requested_product_is_exact_identity: false
+dependence_unavailable:
+  statuses:
+    - DEPENDENCE_DIAGNOSTIC_UNRELIABLE
+    - UNDEFINED_DEGENERATE_COMPARATOR
+    - NO_VALID_PAIR_COMPARATOR
+    - DEPENDENCE_BOOTSTRAP_UNRELIABLE
+  mandatory_text: Residual pool-dependence comparability could not be quantified for the affected stratum(s).
+  placement: every_pool_level_oracle_table_figure_caption_conclusion_and_paragraph
+  named_limitation: true
+  historical_1_5726_substitution_prohibited: true
+part_b:
+  committed_now: false
+  gpu_authorized: false
+  placeholders_permitted_in_authorization_commit: false
+  prerequisites:
+    - committed_and_pushed_part_a
+    - committed_geometry_calibration_preflight
+    - committed_arm_b_outputs
+    - committed_500_row_12_window_manifest
+    - committed_runner
+    - committed_tests
+  future_commit_may_authorize_only_after_all_prerequisites_verified: true
+unchanged:
+  sample_counts: {uncovered_0: 150, partial_1_10: 150, common_11: 200}
+  exact_rows: 500
+  exact_formal_calls: 6000
+  O_I_estimand: corrected_B3_pool_level_point_using_full_common_delta
+  O_I_thresholds: [0.05, 0.10]
+  gpu_authorized: false
