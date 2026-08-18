@@ -1,0 +1,81 @@
+{
+  "M1_status": "DEFERRED_BY_AMENDMENT_007_UNTIL_ALL_500_ROWS",
+  "O_I_status": "NOT_COMPUTABLE_BEFORE_LOW_STRATA",
+  "anchors": {
+    "existing_common_B3": 0.8195488721804511,
+    "existing_single_GTA1_views1_11": 0.7689678742310321
+  },
+  "calibration": {
+    "delta_pool_B3": 0.03942106050054495,
+    "delta_pool_B3_ci_99": [
+      -0.020239753844246068,
+      0.10930347923609218
+    ],
+    "delta_single": 0.05463026947989347,
+    "delta_single_ci_99": [
+      -0.007398682617414037,
+      0.12049361790731763
+    ]
+  },
+  "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION",
+  "gpu_generation_complete": {
+    "common": true,
+    "partial": false,
+    "uncovered": false
+  },
+  "identity": {
+    "Delta_ident": 6.245004513516506e-17,
+    "bootstrap": {
+      "finite_replicates": 10000,
+      "maximum_absolute_finite_residual": 7.771561172376096e-16,
+      "nonfinite_replicates": 0
+    },
+    "pass": true,
+    "tolerance": 1e-09
+  },
+  "private_rows": {
+    "bytes": 80573,
+    "path": "runs/owin/2026-08-17/raw/private_common_evaluation.jsonl",
+    "rows": 200,
+    "sha256": "eb6c28dcdc502dd8750193c5848262084216d32a21fb9b29067a57232522adc1",
+    "write_flush_fsync_per_row": true
+  },
+  "raw": {
+    "oracle_B3": 0.8589699326809961,
+    "oracle_B3_ci_99": [
+      0.7937956092652465,
+      0.9179784507757482
+    ],
+    "zero_jitter_single": 0.8235981437109255,
+    "zero_jitter_single_ci_99": [
+      0.7453500757709141,
+      0.8944014450616514
+    ]
+  },
+  "representativeness": {
+    "Delta_decomp": -0.0007347689641943739,
+    "achieved_IPW_w": 0.5113764919887369,
+    "exceeds_reference_scale": false,
+    "population_w": 0.49946294307196565,
+    "raw_sample_small_share": 0.515,
+    "reference_scale": 0.005
+  },
+  "sample_rows": 200,
+  "schema_version": 1,
+  "size_heterogeneity": {
+    "contrast_ci_99": [
+      0.045003861816627015,
+      0.2735093466987468
+    ],
+    "contrast_small_minus_large": 0.14923913917151033,
+    "delta_large_B3": -0.0343835902073899,
+    "delta_small_B3": 0.11485554896412042,
+    "existing_large": 0.924892703862661,
+    "existing_small": 0.7139784946236559,
+    "label": "CONSTANT_SHIFT_SIZE_HETEROGENEITY_DETECTED",
+    "oracle_large": 0.8905091136552711,
+    "oracle_small": 0.8288340435877763
+  },
+  "status": "PASS_OWIN_COMMON_CALIBRATION_FROZEN",
+  "trace_sha256": "8acee9c2bff77fe0ee84d982a611d90ab7b9d82ed1888af1ef9908a0039e2214"
+}
