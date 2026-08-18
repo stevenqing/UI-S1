@@ -1,0 +1,31 @@
+{
+  "O_I": {
+    "classification": "O_I2",
+    "point_gain": 0.07469659405410056,
+    "thresholds": {
+      "O_I1": "<0.05",
+      "O_I2": "[0.05,0.10]",
+      "O_I3": ">0.10"
+    },
+    "uses": "corrected_B3_pool_level_point_using_full_common_delta"
+  },
+  "arm_a_sha256": "2da52ee32330697115c468df1e96193d630a392b172a84dd17c1c728df084e59",
+  "arm_b_N_star": "NONE",
+  "arm_b_sha256": "a9981f603be1a31223c762f6a0974f853c42e2197ea98d3cc1c622effd2c0b2d",
+  "changes_existing_statuses": false,
+  "common_calibration_sha256": "f398d85eb22595931d80af58bf4efed0e69ff955057a18b867d748bac564bc10",
+  "constant_shift_limitation": true,
+  "date": "2026-08-17",
+  "dependence_limitation": true,
+  "deployable_rule_produced": false,
+  "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION_SINGLE_BENCHMARK",
+  "formal_gpu_calls": 6000,
+  "method_claim_allowed": false,
+  "next_action": "HUMAN_REVIEW_O_I_AND_NO_FURTHER_GPU_WITHOUT_NEW_SPEC",
+  "outcome": "OWIN_O_I2_GT_ORACLE_NON_DEPLOYABLE",
+  "report": "runs/owin/2026-08-17/REPORT.md",
+  "report_sha256": "32f23e036a6f86aa4b0a65b35832a1466f1fb575ab3a7f7337e264dbe6a0e597",
+  "round": "owin",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

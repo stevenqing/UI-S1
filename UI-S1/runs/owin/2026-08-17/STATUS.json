@@ -1,0 +1,23 @@
+{
+  "adjudication_sha256": "5b5558a24f4ca5ab22d3b21d0a2c18f281ad4cba581df4beef9e6caa94cbad47",
+  "date": "2026-08-17",
+  "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION_SINGLE_BENCHMARK",
+  "formal_gpu_calls": 6000,
+  "method_claim_allowed": false,
+  "next_action": "HUMAN_REVIEW_O_I_AND_NO_FURTHER_GPU_WITHOUT_NEW_SPEC",
+  "outcome": "OWIN_O_I2_GT_ORACLE_NON_DEPLOYABLE",
+  "report": "runs/owin/2026-08-17/REPORT.md",
+  "report_sha256": "32f23e036a6f86aa4b0a65b35832a1466f1fb575ab3a7f7337e264dbe6a0e597",
+  "retention": {
+    "archive": "/scratch/workspaceblobstore/owin/2026-08-17/owin-run.tar",
+    "archive_sha256": "752c30a4d8d83288fbce1abb4e364819fa26b161d590da5b40b501d511cfc9b7",
+    "artifact_count": 73,
+    "manifest": "/scratch/workspaceblobstore/owin/2026-08-17/BACKUP_MANIFEST.json",
+    "manifest_sha256": "7759d7db69681914dcc154e9d50e43208c186af59e76bf61b1dd020f355878a0",
+    "total_bytes": 32090854,
+    "verified": true
+  },
+  "round": "owin",
+  "schema_version": 1,
+  "status": "COMPLETE"
+}

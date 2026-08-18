@@ -71,15 +71,24 @@ def main():
         lines.append(f"| {stratum} | {pct(arm_a['B3']['existing'][stratum])} | {pct(arm_a['B3']['raw'][stratum])} | {pct(arm_a['B3']['corrected'][stratum])} |")
     lines.extend([
         "",
-        f"Corrected B3 perfect-coverage opportunity is **{pp(arm_a['B3']['perfect_gain'])}**, 99% CI {interval(arm_a['bootstrap'].get('B3_perfect_gain', {}).get('ci_99'))}. It maps to **{arm_a['O_I']['classification']}** under the frozen 5/10 pp thresholds.",
+        f"Corrected B3 perfect-coverage opportunity is **{pp(arm_a['B3']['perfect_gain'])}**, 99% CI {interval(arm_a['bootstrap'].get('B3_perfect_gain', {}).get('ci_99'))}. It maps to **{arm_a['O_I']['classification']}** under the frozen 5/10 pp thresholds. Constant-shift is heterogeneous and residual pool-dependence comparability is unavailable or indeterminate in affected units.",
         "",
-        f"Raw M1_ccm and corrected M1_ccm opportunity are co-reported; corrected gain is {pp(arm_a['M1_ccm']['perfect_gain'])}, 99% CI {interval(arm_a['bootstrap'].get('M1_perfect_gain', {}).get('ci_99'))}. The corrected single-forward opportunity is {pp(arm_a['single_forward']['perfect_gain'])}, CI {interval(arm_a['bootstrap'].get('single_perfect_gain', {}).get('ci_99'))}. Neither drives O-I.",
+        "| Stratum | Existing M1 | Raw oracle-pool M1 | Corrected oracle-pool M1 | Existing single | Raw zero-jitter single | Corrected single |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ])
+    for stratum in ("uncovered_0", "partial_1_10", "common_11"):
+        lines.append(f"| {stratum} | {pct(arm_a['M1_ccm']['existing'][stratum])} | {pct(arm_a['M1_ccm']['raw'][stratum])} | {pct(arm_a['M1_ccm']['corrected'][stratum])} | {pct(arm_a['single_forward']['existing'][stratum])} | {pct(arm_a['single_forward']['raw'][stratum])} | {pct(arm_a['single_forward']['corrected'][stratum])} |")
+    lines.extend([
+        "",
+        f"Corrected M1_ccm gain is {pp(arm_a['M1_ccm']['perfect_gain'])}, 99% CI {interval(arm_a['bootstrap'].get('M1_perfect_gain', {}).get('ci_99'))}. Corrected single-forward gain is {pp(arm_a['single_forward']['perfect_gain'])}, CI {interval(arm_a['bootstrap'].get('single_perfect_gain', {}).get('ci_99'))}. Neither drives O-I. Both remain GT-oracle measurements subject to constant-shift and residual dependence limitations.",
+        "",
+        f"Small-target calibration sensitivity changes the B3 opportunity to {pp(arm_a['small_target_sensitivity_B3']['perfect_gain'])}, CI {interval(arm_a['bootstrap'].get('B3_small_sensitivity_gain', {}).get('ci_99'))}. It does not drive O-I and is shown beside the primary value because the constant-shift assumption is violated by target-size heterogeneity.",
         "",
         "### Named limitations",
         "",
         f"Constant-shift is not validated. Common small-minus-large calibration heterogeneity is {pp(common['size_heterogeneity']['contrast_small_minus_large'])}, CI {interval(common['size_heterogeneity']['contrast_ci_99'])}, labeled `{common['size_heterogeneity']['label']}`. Raw and corrected values must remain adjacent; small-target sensitivity is reported beside the primary estimate.",
         "",
-        dependence_text,
+        dependence_text + (f" Affected units: {', '.join(arm_a['dependence_unavailable_units'])}." if arm_a["dependence_unavailable_units"] else ""),
         "",
         "No historical N_eff value substitutes for unavailable matched diagnostics. These limitations apply beside every pool-level oracle opportunity.",
         "",
