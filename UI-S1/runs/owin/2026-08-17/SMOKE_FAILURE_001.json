@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "round": "owin",
+  "date": "2026-08-17",
+  "status": "PRE_FORWARD_IMPORT_FAILURE_RETAINED",
+  "authorization_commit": "f861859247da37ac6857034a53208123d8dcb49b",
+  "stage": "import_vendored_qwen2_5_vl_processor",
+  "error_type": "ImportError",
+  "error": "cannot import name 'VideoInput' from 'transformers.image_utils'",
+  "bound_transformers": "5.14.1",
+  "required_historical_transformers_overlay": "4.51.2",
+  "model_loaded": false,
+  "model_forwards": 0,
+  "trace_created": false,
+  "formal_nonce_consumed": false,
+  "formal_calls": 0,
+  "gpu_authorized_for_retry": false,
+  "next_action": "COMMIT_AMENDMENT_005_HISTORICAL_RUNTIME_AND_NEW_AUTHORIZATION"
+}

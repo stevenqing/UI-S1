@@ -12,10 +12,11 @@ RUN_DIR = Path(__file__).resolve().parent
 ROOT = RUN_DIR.parents[2]
 MODEL_ROOT = ROOT / "runs/collision-law/2026-07-30/w3_assets/GTA1-7B"
 MVP_ROOT = ROOT / "runs/collision-law/2026-07-30/w3_assets/MVP"
+TRANSFORMERS_OVERLAY_ROOT = ROOT / "runs/collision-law/2026-07-30/w3_assets/mvp-overlay"
 DATA_ROOT = ROOT / "runs/collision-law/2026-07-30/w3_assets/ScreenSpot-Pro"
 FORMAL_INPUT_PATH = RUN_DIR / "INFERENCE_INPUT_MANIFEST.jsonl"
 SMOKE_INPUT_PATH = RUN_DIR / "SMOKE_INPUT_MANIFEST.jsonl"
-AUTHORIZATION_PATH = RUN_DIR / "EXECUTION_AUTHORIZATION.json"
+AUTHORIZATION_PATH = RUN_DIR / "EXECUTION_AUTHORIZATION_005.json"
 SMOKE_STATUS_PATH = RUN_DIR / "SMOKE_STATUS.json"
 NONCE_MARKER_PATH = RUN_DIR / "raw/NONCE_CONSUMED.json"
 FORMAL_SHARDS = ("common_11", "partial_1_10", "uncovered_0")
@@ -122,7 +123,7 @@ def coordinate_token_indices(processor, token_ids, output_text):
 def load_runtime(device):
     import torch
 
-    sys.path.insert(0, str(MVP_ROOT))
+    sys.path[:0] = [str(MVP_ROOT), str(TRANSFORMERS_OVERLAY_ROOT)]
     import mvp_sspro
 
     config = mvp_sspro.Qwen2_5_VLConfig.from_pretrained(MODEL_ROOT)
