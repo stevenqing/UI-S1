@@ -1,0 +1,12 @@
+{
+  "authorization_sha256": "78b452336e5c8851f7a9a8904d594ae707a3e8e70887fdc72db7f90106ceb42f",
+  "calls": 9,
+  "failure_rate": 0.0,
+  "failures": 0,
+  "mode": "smoke",
+  "rows": 3,
+  "status": "PASS_LOOK_SMOKE_9",
+  "trace_bytes": 22160,
+  "trace_path": "runs/look/2026-08-18/smoke/traces.jsonl",
+  "trace_sha256": "866c2b4f41fe444d0064025ed093ee7c3f0057ecdb62b2dca09ea631ec12b740"
+}
