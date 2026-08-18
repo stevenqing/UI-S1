@@ -1,0 +1,145 @@
+schema_version: 1
+round: tile
+date: '2026-08-18'
+status: PREREGISTERED_AFTER_OWIN_BEFORE_ANY_TILE_RESULT
+evidence_status: POST_SELECTION_SINGLE_BENCHMARK_METHOD_CANDIDATE
+changes_existing_statuses: false
+gpu:
+  stage0: false
+  stage1_authorized: false
+authority:
+  owin_outcome: OWIN_O_I2_GT_ORACLE_NON_DEPLOYABLE
+  owin_arm_b: runs/owin/2026-08-17/ARM_B.json
+  owin_arm_b_raw: runs/owin/2026-08-17/raw/arm_b_rows.jsonl
+  prohibited_target: OWIN_factorized_G_N
+anchors:
+  rows: 1581
+  canonical_B3_correct_rows: 1007
+  canonical_B3_accuracy: 0.6369386464263125
+  existing_crop_center_covered_rows: 1356
+  existing_crop_center_covered_fraction: 0.857685009487666
+  existing_11_crop_median_union: 0.3219237075617284
+  tile_N4_median_union: 0.783395061728395
+  tile_N6_median_union: 1.0
+  tile_N4_center_covered_rows: 1056
+  tile_N11_center_covered_rows: 1556
+  owin_uncovered_raw_oracle_B3: 0.5033789971829187
+contamination:
+  items_are_fold_level_values_not_rows: true
+  values: [0.6388361796331435, 0.6388361796331435, 0.6306135357368754, 0.6255534471853258, 0.6325110689437066]
+  prohibited_uses: [fit, bin, N_selection, threshold, sample, implementation_check]
+folds:
+  unit: application
+  count: 5
+  outer_test: fold_f
+  inner_validation: fold_f_plus_1_mod_5
+  inner_train: remaining_three_folds
+  outer_development: all_four_non_test_folds
+stage0:
+  N_grid: [4, 5, 6, 8, 11]
+  N_counts: crop_windows_excluding_full_image
+  eccentricity:
+    formula: sqrt_square_target_minus_window_center_over_644_364
+    eligible_pairs: existing_GTA1_views1_to11_containing_target_center
+    bins: 10
+    binning: numpy_quantile_method_linear_at_0_1_through_0_9
+    boundaries: numeric_quantiles
+    application_to_source_and_tile: bisect_right
+    repeated_boundaries: retained_empty_bins_use_fallback
+    target_scale_split: row_area_less_or_equal_fit_split_median_is_small
+    curves: [small, large]
+    empty_bin_fallback: pooled_same_scale_eligible_pair_accuracy
+    empty_scale_fallback: pooled_all_scale_eligible_pair_accuracy
+  fitting:
+    inner_validation_curve_fit: inner_train_only
+    outer_test_curve_refit: outer_development_only
+    outer_test_used_for_fit_or_selection: false
+  row_score:
+    value: maximum_curve_probability_over_center_covering_tile_windows
+    uncovered_value: 0.0
+    optimistic_not_aggregator_probability: true
+  expected_ledger:
+    repair: one_minus_y_times_p
+    damage: y_times_one_minus_p
+    net: p_minus_y
+    hard_damage_diagnostic_threshold: 0.5
+    hard_counts_are_not_observed_flips: true
+    domains: [full_benchmark, original_B3_correct_1007, existing_crop_center_covered_1356, uncovered_0, partial_1_10, common_11]
+  selection:
+    objective: maximum_inner_validation_expected_B3_net
+    tie_break: smaller_N
+    policy: fold_local_N
+  gates:
+    T_G1: every_fixed_N_cross_fitted_outer_expected_net_below_0_007
+    equality_at_0_007: pass
+    T_G2: nested_expected_damage_divided_by_expected_repair_above_0_5_requires_human_review
+    zero_repair_ratio: NA_requires_human_review
+  endpoint_grid_values: [4, 11]
+stage1:
+  authorized: false
+  arm_T:
+    pool: rerun_full_image_plus_N_fixed_OWIN_tiles
+    calls_per_row: N_plus_1
+    fold_local_N_from_stage0: true
+  baseline:
+    pool: frozen_GTA1_v_only_N12
+    forwards: 12
+  C2:
+    pool: frozen_GTA1_view0_plus_views1_toN
+    pool_budget: N_plus_1
+    gpu: false
+  C1:
+    unique_rows: 400
+    allocation: application_proportional_largest_remainder_minimum_one_if_feasible
+    sample_hash: TILE|20260818|C1_SAMPLE|application|row_id
+    window_seed: TILE|20260818|C1_WINDOW|row_id|outer_fold|N|k
+    seed_conversion: sha256_first_8_bytes_unsigned_big_endian
+    generator: numpy_PCG64
+    top_left: uniform_integer_legal_positions
+    duplicates_retained: true
+    random_crop_calls: sum_sampled_fold_N
+    full_output_shared_with_arm_T: true
+  full_image_reproduction:
+    required_before_endpoints: true
+    compare: [parsed_point_exact, correctness]
+    any_correctness_disagreement: NOT_ADJUDICABLE_RUNTIME_DRIFT
+  proposer: GTA1-7B
+  cross_lineage_scope: excluded
+comparators:
+  - canonical_B3
+  - fold_local_M1_ccm
+  - frozen_F1_source_priority_majority
+  - nested_dev_selection_majority_A0_ours_A1_A2_A3_A4
+  - fold_local_best_single
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  quantiles: [0.005, 0.995]
+  unit: application_group
+  paired: true
+endpoints:
+  T_P1: Arm_T_minus_full_N12_B3_full_benchmark_lower_99_positive
+  T_P2: Arm_T_minus_full_N12_M1_full_benchmark_lower_99_positive
+  T_P3: Arm_T_minus_C2_equal_budget_lower_99_positive_for_geometry_claim
+  T_P4: Arm_T_minus_C1_400_rows_lower_99_positive_for_regular_tiling_claim
+  T_P5: observed_damage_original_correct_and_crop_covered_separately
+  T_P6: pool_budget_new_calls_and_difference_from_12
+kill_conditions:
+  T_K1: T_G1
+  T_K2: T_P1_not_positive
+  T_K3: T_P3_indistinguishable
+  T_K4: T_P4_indistinguishable
+  T_K5: any_fold_selected_N_is_4_or_11
+  T_K6: B3_positive_M1_indistinguishable
+  T_K7: observed_and_predicted_net_opposite_sign
+retention:
+  jsonl_write_flush_fsync_per_row: true
+  retain_curves_boundaries_pairs_scores_ledgers_layouts_seeds_traces_bootstraps_failures: true
+  raw_recursive_deletion_prohibited: true
+  predictions_jsonl_recursive_deletion_prohibited: true
+  backup_root: /scratch/workspaceblobstore/tile/2026-08-18
+  status_records_manifest_sha256: true
+scope:
+  mind2web_excluded: true
+  stage0_always_paper_evidence: true
+  stage0_does_not_prove_placement_mechanism: true
