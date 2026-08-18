@@ -6,6 +6,7 @@ from pathlib import Path
 RUN_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(RUN_DIR))
 import owin_common as common
+import prepare_sample_manifest as sample
 
 
 class OwinGeometryTest(unittest.TestCase):
@@ -36,6 +37,14 @@ class OwinGeometryTest(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(len(first["rectangles"]), 11)
         self.assertTrue(all(0 <= left < right <= 3840 and 0 <= top < bottom <= 2160 for left, top, right, bottom in first["rectangles"]))
+
+    def test_sample_allocation(self):
+        allocations = sample.allocate_counts({"a": 10, "b": 20, "c": 30}, 20)
+        self.assertEqual(sum(allocations.values()), 20)
+        self.assertTrue(all(1 <= allocations[key] <= value for key, value in {"a": 10, "b": 20, "c": 30}.items()))
+
+    def test_row_hash_is_deterministic(self):
+        self.assertEqual(sample.row_hash("common_11", "app", "row"), sample.row_hash("common_11", "app", "row"))
 
 
 if __name__ == "__main__":
