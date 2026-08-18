@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "preflight_sha256": "950299a399881a066165c53dcf1e4840118159ad389c4b7623748256e8ca9b39",
+    "sample_manifest_sha256": "bf26cab9a09a818179d84235d014591886073e480c01f1a838e17aa318f9edca"
+  },
+  "forbidden_fields_absent": [
+    "target_bbox",
+    "bbox",
+    "correct",
+    "correctness",
+    "reward",
+    "label"
+  ],
+  "formal": {
+    "bytes": 1392007,
+    "calls": 6000,
+    "path": "runs/owin/2026-08-17/INFERENCE_INPUT_MANIFEST.jsonl",
+    "rows": 500,
+    "sha256": "d34b7387fc3b4f0fd2d8e9d117c7fbe1547f41a69952b414a7c2e27536b37855"
+  },
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "next_action": "COMMIT_RUNNER_AND_TESTS_NO_GPU_BEFORE_PART_B",
+  "schema_version": 1,
+  "smoke": {
+    "bytes": 8365,
+    "calls": 36,
+    "overlap_with_formal": [],
+    "path": "runs/owin/2026-08-17/SMOKE_INPUT_MANIFEST.jsonl",
+    "row_ids": [
+      "blender_windows_11",
+      "premiere_windows_13",
+      "powerpoint_windows_51"
+    ],
+    "rows": 3,
+    "sha256": "967e824247f9fe1950b371979c8e569aafada848aeb029bf562eab8bd05f6952"
+  },
+  "status": "PASS_OWIN_LABEL_FREE_INFERENCE_INPUTS_FROZEN"
+}
