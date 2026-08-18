@@ -1,0 +1,135 @@
+schema_version: 1
+round: look
+date: '2026-08-18'
+status: PREREGISTERED_BEFORE_ANY_LOOK_RESULT
+evidence_status: POST_SELECTION_SINGLE_BENCHMARK_DIAGNOSTIC
+diagnostic_not_method: true
+changes_existing_statuses: false
+gpu:
+  requested_max_formal_calls: 1500
+  authorized: false
+scope:
+  benchmark: ScreenSpot-Pro
+  mind2web_excluded: true
+  future_method_requires_new_spec_and_net_ledger: true
+pool:
+  name: C_uni_N12
+  order: view_major_lineage_minor
+  models: [GTA1-7B, Qwen3-VL-8B-Instruct, UI-TARS-7B-SFT]
+  views: [0, 1, 2, 3]
+  rows: 1581
+  canonical_B3_correct_rows: 1007
+folds:
+  unit: application
+  count: 5
+  tau_star_by_outer_fold: [0.0022908676527677724, 0.0015135612484362087, 0.012022644346174132, 0.0034673685045253167, 0.0034673685045253167]
+  source_reliability_fit: four_non_test_outer_development_folds
+modes:
+  clustering: frozen_GRAN_deterministic_complete_link_diagonal_normalized
+  order:
+    - descending_member_count
+    - descending_sum_source_reliability
+    - descending_max_source_reliability
+    - ascending_min_canonical_candidate_index
+  centroid: arithmetic_mean_member_points_full_image_pixels
+  correctness: any_member_point_inside_GT_bbox
+  required_count: 3
+  synthetic_or_alternate_tau: prohibited
+geometry:
+  target_aspect_ratio: 1288_divided_by_728
+  source: frozen_mode_centroids_only
+  short_edge: max_1_min_max_dx_1_max_dy_1
+  padding_each_side: 0.25_times_short_edge
+  aspect_adjustment: symmetric_expand_shorter_dimension_never_shrink
+  integer_conversion: floor_left_top_ceil_right_bottom
+  boundary: minimum_integer_translation_tie_smaller_top_left
+  infeasible: width_gt_image_or_height_gt_image
+  processor_resize_does_not_change_full_image_rectangle: true
+  main_modes: [M1, M2]
+  sensitivity_modes: [M1, M2, M3]
+null_control:
+  seed_text: LOOK|20260818|NULL|row_id|k
+  attempts: 10000
+  seed_conversion: sha256_first_8_bytes_unsigned_big_endian
+  generator: numpy_PCG64
+  random_pixel: uniform_integer_full_image
+  noncandidate: euclidean_distance_strictly_gt_14_from_all_12_candidates
+  modes: [M1, random_point]
+  main_area_ratio_inclusive: [0.9, 1.1]
+  selection: first_valid_attempt
+  no_valid_attempt: row_ineligible
+sampling:
+  strata:
+    recoverable: canonical_B3_wrong_and_any_C_uni_candidate_correct
+    pool_correct: canonical_B3_correct
+  target_rows: {recoverable: 250, pool_correct: 250}
+  eligibility: [at_least_three_modes, main_window_feasible, sensitivity_window_feasible, null_window_valid, image_and_candidate_identity_valid]
+  allocation: application_proportional_largest_remainder_minimum_one_if_feasible
+  tie_break: application_string
+  row_hash: LOOK|20260818|SAMPLE|stratum|application|row_id
+  if_less_than_target: include_all_eligible
+  observational_threshold_per_stratum: 150
+  calls_per_row: 3
+model:
+  id: GTA1-7B
+  revision: 701bedc80b447863bd60e3318ae44f6cbbfafd78
+  official_source_revision: 988ff3c61b9f7632d780ae27c83260de75b3c95f
+  runtime: frozen_historical_H1
+  prompt: frozen_grounding_prompt_no_comparison_question
+  decoding: greedy
+mapping:
+  main: nearest_of_M1_M2_by_euclidean_distance_then_mode_rank
+  sensitivity: nearest_of_M1_M2_M3_by_euclidean_distance_then_mode_rank
+  null: nearest_of_M1_random_by_euclidean_distance_tie_M1
+  invalid: unparsable_or_nonfinite_is_UNMAPPABLE
+auroc:
+  unit: candidate_record
+  main_records: [M1, M2]
+  null_records: [M1, random_point]
+  score: negative_full_image_distance_divided_by_image_diagonal
+  mode_label: any_member_correct
+  random_label: random_pixel_inside_GT_bbox
+  CEIL_0_540: contextual_reference_only
+bootstrap:
+  resamples: 10000
+  confidence: 0.99
+  quantiles: [0.005, 0.995]
+  unit: application_group
+  preserve_all_rows_and_candidate_records: true
+  inverse_inclusion_weighted: true
+  minimum_finite_replicates: 9900
+endpoints:
+  L_P1: recoverable_main_candidate_level_AUROC
+  L_P2: recoverable_main_selected_mode_correct_minus_M1_correct
+  L_P3: pool_correct_B3_mode_overturn_harm_and_unmappable
+  L_P4: recoverable_main_minus_null_candidate_AUROC
+  L_P5:
+    separation: M1_M2_distance_divided_by_image_diagonal
+    boundaries: full_eligible_recoverable_numeric_quartiles_numpy_linear
+    application: bisect_right
+  L_P6: main_and_sensitivity_area_null_attempts_area_ratio_and_separation
+interpretation:
+  L_D1: L_P1_upper_99_strictly_below_0_60
+  L_D2: L_P1_lower_99_strictly_above_0_65
+  L_D3: otherwise_including_equal_boundaries
+  L_P1_undefined: no_directional_adjudication
+  L_P4_required_for_candidate_identity_claim: lower_99_strictly_positive
+kill_conditions:
+  L_K1: L_P4_not_positive_or_undefined
+  L_K2: sampled_main_area_gt_0_8_fraction_gt_0_5
+  L_K3: either_realized_stratum_lt_150
+  L_K4: main_unmappable_fraction_gt_0_10_in_either_stratum
+  L_K5: noninfrastructure_formal_failure_rate_gt_0_01
+contamination:
+  values_are_fold_level_not_rows: true
+  prohibited_as_sampling_or_threshold_inputs: true
+retention:
+  trace_policy: docs/generation_trace_retention_policy.md
+  additional_trace_fields: [coordinate_token_entropy, coordinate_top1_minus_top2_probability_margin]
+  generation_trace_excludes: [target_bbox, correctness, mode_correctness, random_correctness, stratum, reward, label]
+  evaluation_file_separate: true
+  jsonl_write_flush_fsync_per_row: true
+  raw_recursive_deletion_prohibited: true
+  prediction_jsonl_recursive_deletion_prohibited: true
+  backup_root: /scratch/workspaceblobstore/look/2026-08-18
+  status_records_manifest_sha256: true
