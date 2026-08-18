@@ -83,6 +83,7 @@ runs/evid/**/raw/
 runs/icc/**/raw/
 runs/cover/**/raw/
 runs/cwin/**/raw/
+runs/owin/**/raw/
 runs/**/*.png
 runs/**/*.jpg
 runs/**/*.jpeg
