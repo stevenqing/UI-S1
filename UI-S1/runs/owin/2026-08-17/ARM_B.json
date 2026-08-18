@@ -1,0 +1,776 @@
+{
+  "N_star": "NONE",
+  "N_star_definition": {
+    "N_11_not_saturation_by_definition": true,
+    "candidate_counts": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "each_existing_center_stratum_coverage_at_least": 0.99,
+    "median_union_at_least": 0.99
+  },
+  "gpu_authorized": false,
+  "gpu_used": false,
+  "raw": {
+    "bytes": 10137741,
+    "path": "runs/owin/2026-08-17/raw/arm_b_rows.jsonl",
+    "rows": 12648,
+    "sha256": "a9ab19d2b9be2c130408ae47d1d56b08b342b37d438c4c124f07cb682323b918",
+    "write_flush_fsync_per_row": true
+  },
+  "rows": 1581,
+  "schema_version": 1,
+  "status": "PASS_OWIN_ARM_B_COMPLETE_ZERO_GPU",
+  "summaries": {
+    "10": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9929411764705882,
+            "covered_rows": 422,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1353,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 422,
+          "partial_1_10->uncovered": 3,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 228,
+        "full_bbox_covered_rows": 1341,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 473,
+          "partial_1_10->uncovered_0": 3,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 240,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.30928963318806596,
+          "median": 0.3141037326388889,
+          "minimum": 0.06129203133645189,
+          "q1": 0.18611304012345678,
+          "q3": 0.38908637152777775
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.9742212674543501,
+            "covered_rows": 907,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9788235294117648,
+            "covered_rows": 416,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.9466666666666667,
+            "covered_rows": 213,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1536,
+        "center_transition": {
+          "common_11->covered": 907,
+          "common_11->uncovered": 24,
+          "partial_1_10->covered": 416,
+          "partial_1_10->uncovered": 9,
+          "uncovered_0->covered": 213,
+          "uncovered_0->uncovered": 12
+        },
+        "center_uncovered_rows": 45,
+        "full_bbox_covered_rows": 1474,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 816,
+          "common_11->uncovered_0": 52,
+          "partial_1_10->partial_1_10": 446,
+          "partial_1_10->uncovered_0": 30,
+          "uncovered_0->partial_1_10": 212,
+          "uncovered_0->uncovered_0": 25
+        },
+        "full_bbox_uncovered_rows": 107,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.9777767369043755,
+          "median": 1.0,
+          "minimum": 0.4605842261455661,
+          "q1": 1.0,
+          "q3": 1.0
+        }
+      }
+    },
+    "11": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 425,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1356,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 425,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 225,
+        "full_bbox_covered_rows": 1344,
+        "full_bbox_transition": {
+          "common_11->common_11": 868,
+          "partial_1_10->partial_1_10": 476,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 237,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.31882987805506585,
+          "median": 0.3219237075617284,
+          "minimum": 0.06129203133645189,
+          "q1": 0.19253713348765433,
+          "q3": 0.4001605902777778
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.9838882921589689,
+            "covered_rows": 916,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9858823529411764,
+            "covered_rows": 419,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.9822222222222222,
+            "covered_rows": 221,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1556,
+        "center_transition": {
+          "common_11->covered": 916,
+          "common_11->uncovered": 15,
+          "partial_1_10->covered": 419,
+          "partial_1_10->uncovered": 6,
+          "uncovered_0->covered": 221,
+          "uncovered_0->uncovered": 4
+        },
+        "center_uncovered_rows": 25,
+        "full_bbox_covered_rows": 1519,
+        "full_bbox_transition": {
+          "common_11->common_11": 2,
+          "common_11->partial_1_10": 833,
+          "common_11->uncovered_0": 33,
+          "partial_1_10->partial_1_10": 464,
+          "partial_1_10->uncovered_0": 12,
+          "uncovered_0->partial_1_10": 220,
+          "uncovered_0->uncovered_0": 17
+        },
+        "full_bbox_uncovered_rows": 62,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.9808427147990864,
+          "median": 1.0,
+          "minimum": 0.5066426487601228,
+          "q1": 1.0,
+          "q3": 1.0
+        }
+      }
+    },
+    "4": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9129411764705883,
+            "covered_rows": 388,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1319,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 388,
+          "partial_1_10->uncovered": 37,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 262,
+        "full_bbox_covered_rows": 1309,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 441,
+          "partial_1_10->uncovered_0": 35,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 272,
+        "union_fraction": {
+          "maximum": 0.6558453896604939,
+          "mean": 0.24342798424538506,
+          "median": 0.25428372896634616,
+          "minimum": 0.05063565716010261,
+          "q1": 0.14614840534979423,
+          "q3": 0.30899112654320987
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.6981740064446831,
+            "covered_rows": 650,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.6705882352941176,
+            "covered_rows": 285,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.5377777777777778,
+            "covered_rows": 121,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1056,
+        "center_transition": {
+          "common_11->covered": 650,
+          "common_11->uncovered": 281,
+          "partial_1_10->covered": 285,
+          "partial_1_10->uncovered": 140,
+          "uncovered_0->covered": 121,
+          "uncovered_0->uncovered": 104
+        },
+        "center_uncovered_rows": 525,
+        "full_bbox_covered_rows": 993,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 574,
+          "common_11->uncovered_0": 294,
+          "partial_1_10->partial_1_10": 301,
+          "partial_1_10->uncovered_0": 175,
+          "uncovered_0->partial_1_10": 118,
+          "uncovered_0->uncovered_0": 119
+        },
+        "full_bbox_uncovered_rows": 588,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.7355936065119473,
+          "median": 0.783395061728395,
+          "minimum": 0.18423369045822643,
+          "q1": 0.485791969229749,
+          "q3": 1.0
+        }
+      }
+    },
+    "5": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9223529411764706,
+            "covered_rows": 392,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1323,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 392,
+          "partial_1_10->uncovered": 33,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 258,
+        "full_bbox_covered_rows": 1315,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 447,
+          "partial_1_10->uncovered_0": 29,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 266,
+        "union_fraction": {
+          "maximum": 0.7543229166666666,
+          "mean": 0.2550241692937515,
+          "median": 0.263935546875,
+          "minimum": 0.054627671363362,
+          "q1": 0.15408203125,
+          "q3": 0.3231879340277778
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.7873254564983888,
+            "covered_rows": 733,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.8988235294117647,
+            "covered_rows": 382,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.7155555555555555,
+            "covered_rows": 161,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1276,
+        "center_transition": {
+          "common_11->covered": 733,
+          "common_11->uncovered": 198,
+          "partial_1_10->covered": 382,
+          "partial_1_10->uncovered": 43,
+          "uncovered_0->covered": 161,
+          "uncovered_0->uncovered": 64
+        },
+        "center_uncovered_rows": 305,
+        "full_bbox_covered_rows": 1236,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 661,
+          "common_11->uncovered_0": 207,
+          "partial_1_10->partial_1_10": 412,
+          "partial_1_10->uncovered_0": 64,
+          "uncovered_0->partial_1_10": 163,
+          "uncovered_0->uncovered_0": 74
+        },
+        "full_bbox_uncovered_rows": 345,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.7940800091047657,
+          "median": 0.8927160493827161,
+          "minimum": 0.23029211307278305,
+          "q1": 0.6072399615371863,
+          "q3": 1.0
+        }
+      }
+    },
+    "6": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9552941176470588,
+            "covered_rows": 406,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1337,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 406,
+          "partial_1_10->uncovered": 19,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 244,
+        "full_bbox_covered_rows": 1328,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 460,
+          "partial_1_10->uncovered_0": 16,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 253,
+        "union_fraction": {
+          "maximum": 0.8003909465020577,
+          "mean": 0.2676711997847152,
+          "median": 0.2774864783653846,
+          "minimum": 0.056750556435792965,
+          "q1": 0.16258138020833332,
+          "q3": 0.3377391975308642
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.8249194414607949,
+            "covered_rows": 768,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9058823529411765,
+            "covered_rows": 385,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.7955555555555556,
+            "covered_rows": 179,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1332,
+        "center_transition": {
+          "common_11->covered": 768,
+          "common_11->uncovered": 163,
+          "partial_1_10->covered": 385,
+          "partial_1_10->uncovered": 40,
+          "uncovered_0->covered": 179,
+          "uncovered_0->uncovered": 46
+        },
+        "center_uncovered_rows": 249,
+        "full_bbox_covered_rows": 1265,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 679,
+          "common_11->uncovered_0": 189,
+          "partial_1_10->partial_1_10": 408,
+          "partial_1_10->uncovered_0": 68,
+          "uncovered_0->partial_1_10": 178,
+          "uncovered_0->uncovered_0": 59
+        },
+        "full_bbox_uncovered_rows": 316,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.8605963121711578,
+          "median": 1.0,
+          "minimum": 0.2763505356873397,
+          "q1": 0.7286879538446235,
+          "q3": 1.0
+        }
+      }
+    },
+    "7": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9623529411764706,
+            "covered_rows": 409,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1340,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 409,
+          "partial_1_10->uncovered": 16,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 241,
+        "full_bbox_covered_rows": 1331,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 463,
+          "partial_1_10->uncovered_0": 13,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 250,
+        "union_fraction": {
+          "maximum": 0.8051568930041152,
+          "mean": 0.27880251311217485,
+          "median": 0.2870182291666667,
+          "minimum": 0.05828822116593733,
+          "q1": 0.1697970920138889,
+          "q3": 0.3492708333333333
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.9022556390977443,
+            "covered_rows": 840,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9364705882352942,
+            "covered_rows": 398,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.8,
+            "covered_rows": 180,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1418,
+        "center_transition": {
+          "common_11->covered": 840,
+          "common_11->uncovered": 91,
+          "partial_1_10->covered": 398,
+          "partial_1_10->uncovered": 27,
+          "uncovered_0->covered": 180,
+          "uncovered_0->uncovered": 45
+        },
+        "center_uncovered_rows": 163,
+        "full_bbox_covered_rows": 1381,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 758,
+          "common_11->uncovered_0": 110,
+          "partial_1_10->partial_1_10": 440,
+          "partial_1_10->uncovered_0": 36,
+          "uncovered_0->partial_1_10": 183,
+          "uncovered_0->uncovered_0": 54
+        },
+        "full_bbox_uncovered_rows": 200,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.9005622879897047,
+          "median": 1.0,
+          "minimum": 0.3224089583018963,
+          "q1": 0.8116648429987732,
+          "q3": 1.0
+        }
+      }
+    },
+    "8": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9764705882352941,
+            "covered_rows": 415,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1346,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 415,
+          "partial_1_10->uncovered": 10,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 235,
+        "full_bbox_covered_rows": 1335,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 467,
+          "partial_1_10->uncovered_0": 9,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 246,
+        "union_fraction": {
+          "maximum": 0.8422813786008231,
+          "mean": 0.2892899699410928,
+          "median": 0.2965961371527778,
+          "minimum": 0.05828822116593733,
+          "q1": 0.17607927981697005,
+          "q3": 0.36273763020833333
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.9430719656283566,
+            "covered_rows": 878,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9647058823529412,
+            "covered_rows": 410,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.8622222222222222,
+            "covered_rows": 194,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1482,
+        "center_transition": {
+          "common_11->covered": 878,
+          "common_11->uncovered": 53,
+          "partial_1_10->covered": 410,
+          "partial_1_10->uncovered": 15,
+          "uncovered_0->covered": 194,
+          "uncovered_0->uncovered": 31
+        },
+        "center_uncovered_rows": 99,
+        "full_bbox_covered_rows": 1418,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 785,
+          "common_11->uncovered_0": 83,
+          "partial_1_10->partial_1_10": 440,
+          "partial_1_10->uncovered_0": 36,
+          "uncovered_0->partial_1_10": 193,
+          "uncovered_0->uncovered_0": 44
+        },
+        "full_bbox_uncovered_rows": 163,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.9399764658050117,
+          "median": 1.0,
+          "minimum": 0.36846738091645287,
+          "q1": 0.8946417321529229,
+          "q3": 1.0
+        }
+      }
+    },
+    "9": {
+      "existing_prefix": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 1.0,
+            "covered_rows": 931,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9882352941176471,
+            "covered_rows": 420,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.0,
+            "covered_rows": 0,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1351,
+        "center_transition": {
+          "common_11->covered": 931,
+          "partial_1_10->covered": 420,
+          "partial_1_10->uncovered": 5,
+          "uncovered_0->uncovered": 225
+        },
+        "center_uncovered_rows": 230,
+        "full_bbox_covered_rows": 1339,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 868,
+          "partial_1_10->partial_1_10": 471,
+          "partial_1_10->uncovered_0": 5,
+          "uncovered_0->uncovered_0": 237
+        },
+        "full_bbox_uncovered_rows": 242,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.2996608249743072,
+          "median": 0.3048904079861111,
+          "minimum": 0.059790126251194606,
+          "q1": 0.18093123070987654,
+          "q3": 0.3747995334201389
+        }
+      },
+      "tiling": {
+        "center_coverage_by_existing_stratum": {
+          "common_11": {
+            "coverage_fraction": 0.9699248120300752,
+            "covered_rows": 903,
+            "rows": 931
+          },
+          "partial_1_10": {
+            "coverage_fraction": 0.9764705882352941,
+            "covered_rows": 415,
+            "rows": 425
+          },
+          "uncovered_0": {
+            "coverage_fraction": 0.9466666666666667,
+            "covered_rows": 213,
+            "rows": 225
+          }
+        },
+        "center_covered_rows": 1531,
+        "center_transition": {
+          "common_11->covered": 903,
+          "common_11->uncovered": 28,
+          "partial_1_10->covered": 415,
+          "partial_1_10->uncovered": 10,
+          "uncovered_0->covered": 213,
+          "uncovered_0->uncovered": 12
+        },
+        "center_uncovered_rows": 50,
+        "full_bbox_covered_rows": 1497,
+        "full_bbox_transition": {
+          "common_11->partial_1_10": 822,
+          "common_11->uncovered_0": 46,
+          "partial_1_10->partial_1_10": 458,
+          "partial_1_10->uncovered_0": 18,
+          "uncovered_0->partial_1_10": 217,
+          "uncovered_0->uncovered_0": 20
+        },
+        "full_bbox_uncovered_rows": 84,
+        "union_fraction": {
+          "maximum": 1.0,
+          "mean": 0.9747107590096646,
+          "median": 1.0,
+          "minimum": 0.4145258035310095,
+          "q1": 1.0,
+          "q3": 1.0
+        }
+      }
+    }
+  },
+  "window_counts": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ]
+}
