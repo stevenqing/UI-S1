@@ -1,0 +1,13 @@
+{
+  "authorization_sha256": "9b7d6a8774a3a76b9153f595793a9fc25e735ee4d9cff3e03dff6263be321511",
+  "calls": 36,
+  "failure_rate": 1.0,
+  "failures": 36,
+  "mode": "smoke",
+  "rows": 3,
+  "shard": null,
+  "status": "OWIN_SHARD_COMPLETE",
+  "trace_bytes": 25521,
+  "trace_path": "runs/owin/2026-08-17/smoke/traces.jsonl",
+  "trace_sha256": "9c31030e6fc0ccf7f6961305474e26f5a6b5a808c213935c0084539e8a2145ee"
+}

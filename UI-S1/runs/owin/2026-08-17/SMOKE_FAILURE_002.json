@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "round": "owin",
+  "date": "2026-08-17",
+  "status": "PRE_GENERATION_WARNING_PROMOTED_TO_ERROR_RETAINED",
+  "authorization_commit": "fdcfd12",
+  "attempt_rows": 3,
+  "attempt_calls": 36,
+  "unique_row_slot_pairs": 36,
+  "successful_traces": 0,
+  "failures": 36,
+  "error_type": "UserWarning",
+  "error": "do_sample false with temperature 0.0 warning promoted by -W error",
+  "model_loaded": true,
+  "token_generation_started": false,
+  "formal_nonce_consumed": false,
+  "formal_calls": 0,
+  "repair": "remove_global_W_error_from_execution_commands_only",
+  "gpu_authorized_for_retry": false
+}
