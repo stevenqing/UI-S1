@@ -208,7 +208,7 @@ def corrected_values(sample_rows, population_rows, method, multiplicity=None, de
     return {"raw": raw, "existing": existing, "delta_common": delta, "corrected": corrected, "perfect_accuracy": perfect, "perfect_gain": perfect - baseline}
 
 
-def bootstrap_endpoints(sample_rows, population_rows, arm_b, resamples=RESAMPLES, seed=20260817):
+def bootstrap_endpoints(sample_rows, population_rows, single_population_rows, arm_b, resamples=RESAMPLES, seed=20260817):
     applications = sorted({row["application"] for row in population_rows})
     rng = np.random.default_rng(seed)
     values = defaultdict(list)
@@ -220,6 +220,14 @@ def bootstrap_endpoints(sample_rows, population_rows, arm_b, resamples=RESAMPLES
             continue
         values["B3_perfect_gain"].append(b3["perfect_gain"])
         values["M1_perfect_gain"].append(m1["perfect_gain"])
+        single_raw = {stratum: weighted_ratio([row for row in sample_rows if row["stratum"] == stratum], "zero_jitter_correct", multiplicity) for stratum in STRATA}
+        single_existing = {stratum: population_ratio([row for row in single_population_rows if row["stratum"] == stratum], "single_slot_correct", multiplicity) for stratum in STRATA}
+        if None not in [*single_raw.values(), *single_existing.values()]:
+            delta_single = single_raw["common_11"] - single_existing["common_11"]
+            single_corrected = {stratum: min(1.0, max(0.0, single_raw[stratum] - delta_single)) for stratum in STRATA}
+            baseline_single = sum(sum(multiplicity.get(row["application"], 0) for row in population_rows if row["stratum"] == stratum) / sum(multiplicity.get(row["application"], 0) for row in population_rows) * single_existing[stratum] for stratum in STRATA)
+            perfect_single = sum(sum(multiplicity.get(row["application"], 0) for row in population_rows if row["stratum"] == stratum) / sum(multiplicity.get(row["application"], 0) for row in population_rows) * single_corrected[stratum] for stratum in STRATA)
+            values["single_perfect_gain"].append(perfect_single - baseline_single)
         for stratum in STRATA:
             values[f"B3_raw_{stratum}"].append(b3["raw"][stratum])
             values[f"B3_corrected_{stratum}"].append(b3["corrected"][stratum])
@@ -287,12 +295,21 @@ def main():
         row = {"row_id": row_id, "application": cover[row_id]["application"], "stratum": cover[row_id]["target_stratum"], "size_half": "common_small" if row_id in small_ids else ("common_large" if cover[row_id]["target_stratum"] == "common_11" else "NA"), "existing_b3_correct": cover[row_id]["b3_correct"], "existing_m1_correct": cwin[row_id]["original_m1_correct"]}
         row.update({f"tiling_center_{count}": tiling[(row_id, count)] for count in range(4, 12)})
         population_rows.append(row)
+    single_population_rows = []
+    for row_id in sorted(cover):
+        for candidate in gta1[row_id]["candidates"][1:12]:
+            single_population_rows.append({"row_id": row_id, "application": cover[row_id]["application"], "stratum": cover[row_id]["target_stratum"], "single_slot_correct": bool(h3.point_in_bbox(candidate["point"], gta1[row_id]["target_bbox"]))})
     b3 = corrected_values(private_rows, population_rows, "b3")
     m1_values = corrected_values(private_rows, population_rows, "m1")
     common_small = [row for row in private_rows if row["size_half"] == "common_small"]
     delta_small = weighted_ratio(common_small, "oracle_b3_correct") - population_ratio([row for row in population_rows if row["size_half"] == "common_small"], "existing_b3_correct")
     sensitivity = corrected_values(private_rows, population_rows, "b3", delta_override=delta_small)
+    single_raw = {stratum: weighted_ratio([row for row in private_rows if row["stratum"] == stratum], "zero_jitter_correct") for stratum in STRATA}
+    single_existing = {stratum: population_ratio([row for row in single_population_rows if row["stratum"] == stratum], "single_slot_correct") for stratum in STRATA}
+    delta_single = single_raw["common_11"] - single_existing["common_11"]
+    single_corrected = {stratum: min(1.0, max(0.0, single_raw[stratum] - delta_single)) for stratum in STRATA}
     fractions = {stratum: sum(row["stratum"] == stratum for row in population_rows) / len(population_rows) for stratum in STRATA}
+    single_values = {"raw": single_raw, "existing": single_existing, "delta_common": delta_single, "corrected": single_corrected, "perfect_accuracy": sum(fractions[stratum] * single_corrected[stratum] for stratum in STRATA), "perfect_gain": sum(fractions[stratum] * (single_corrected[stratum] - single_existing[stratum]) for stratum in STRATA)}
     factorized = {}
     for count in range(4, 12):
         q = {stratum: arm_b["summaries"][str(count)]["tiling"]["center_coverage_by_existing_stratum"][stratum]["coverage_fraction"] for stratum in STRATA}
@@ -316,7 +333,9 @@ def main():
                 comparator_status = "AVAILABLE"
             interval_labels = dependence_bootstrap(current, RESAMPLES, 20261000 + STRATA.index(stratum) * 5 + outer_fold) if oracle_endpoint["reliability"] == "RELIABLE" and existing_endpoint["reliability"] == "RELIABLE" and comparator_status == "AVAILABLE" else {"zero": {"ci_99": None, "label": comparator_status if comparator_status != "AVAILABLE" else "DEPENDENCE_DIAGNOSTIC_UNRELIABLE"}, "mean": {"ci_99": None, "label": comparator_status if comparator_status != "AVAILABLE" else "DEPENDENCE_DIAGNOSTIC_UNRELIABLE"}, "combined_label": comparator_status if comparator_status != "AVAILABLE" else "DEPENDENCE_DIAGNOSTIC_UNRELIABLE"}
             dependence[stratum]["folds"].append({"outer_fold": outer_fold, "rows": len(current), "oracle": oracle_endpoint, "existing": existing_endpoint, "comparator_status": comparator_status, "match_intervals": interval_labels})
-    intervals = bootstrap_endpoints(private_rows, population_rows, arm_b)
+            reliable_folds = [fold for fold in dependence[stratum]["folds"] if fold["oracle"]["reliability"] == "RELIABLE"]
+            dependence[stratum]["oracle_fold_summary"] = {fill: {"mean": float(np.mean([fold["oracle"][f"neff_{fill}"] for fold in reliable_folds if fold["oracle"][f"neff_{fill}"] is not None])) if any(fold["oracle"][f"neff_{fill}"] is not None for fold in reliable_folds) else None, "range": [float(min(fold["oracle"][f"neff_{fill}"] for fold in reliable_folds if fold["oracle"][f"neff_{fill}"] is not None)), float(max(fold["oracle"][f"neff_{fill}"] for fold in reliable_folds if fold["oracle"][f"neff_{fill}"] is not None))] if any(fold["oracle"][f"neff_{fill}"] is not None for fold in reliable_folds) else None} for fill in ("zero", "mean")}
+            intervals = bootstrap_endpoints(private_rows, population_rows, single_population_rows, arm_b)
     gain = b3["perfect_gain"]
     interpretation = "O_I1" if gain < 0.05 else ("O_I2" if gain <= 0.10 else "O_I3")
     for count in range(4, 12):
@@ -326,7 +345,12 @@ def main():
         selected = [row for row in private_rows if row["existing_full_bbox_stratum"] == stratum]
         full_bbox_domains[stratum] = {"rows": len(selected), "oracle_B3": weighted_ratio(selected, "oracle_b3_correct")}
     unreliable = [f"{stratum}/fold{fold['outer_fold']}:{fold['match_intervals']['combined_label']}" for stratum, value in dependence.items() for fold in value["folds"] if fold["match_intervals"]["combined_label"] in {"DEPENDENCE_DIAGNOSTIC_UNRELIABLE", "UNDEFINED_DEGENERATE_COMPARATOR", "NO_VALID_PAIR_COMPARATOR", "DEPENDENCE_MATCH_INDETERMINATE"}]
-    output = {"schema_version": 1, "status": "PASS_OWIN_ARM_A_COMPLETE", "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION_SINGLE_BENCHMARK", "gpu": {"formal_calls": 6000, "failures": 0, "smoke_success_calls": 36, "failed_smoke_attempts_retained": 36}, "B3": b3, "M1_ccm": m1_values, "small_target_sensitivity_B3": sensitivity, "bootstrap": intervals, "O_I": {"point_gain": gain, "classification": interpretation, "thresholds": {"O_I1": "<0.05", "O_I2": "[0.05,0.10]", "O_I3": ">0.10"}, "uses": "corrected_B3_pool_level_point_using_full_common_delta"}, "factorized_G_N": factorized, "secondary_full_bbox_domains": full_bbox_domains, "dependence": dependence, "dependence_unavailable_units": unreliable, "dependence_limitation_required": bool(unreliable), "constant_shift_limitation_required": True, "arm_b_N_star": arm_b["N_star"], "private_rows": {"path": str(PRIVATE_ROWS_PATH.relative_to(ROOT)), "rows": len(private_rows), "bytes": PRIVATE_ROWS_PATH.stat().st_size, "sha256": sha256_file(PRIVATE_ROWS_PATH), "write_flush_fsync_per_row": True}, "trace_shards": {stratum: {"path": str(SHARD_PATHS[stratum].relative_to(ROOT)), "bytes": SHARD_PATHS[stratum].stat().st_size, "sha256": sha256_file(SHARD_PATHS[stratum])} for stratum in STRATA}}
+    common_frozen = json.loads(COMMON_PATH.read_text())
+    common_reproduction = {"B3_raw_absolute_difference": abs(b3["raw"]["common_11"] - common_frozen["raw"]["oracle_B3"]), "B3_delta_absolute_difference": abs(b3["delta_common"] - common_frozen["calibration"]["delta_pool_B3"]), "single_raw_absolute_difference": abs(single_values["raw"]["common_11"] - common_frozen["raw"]["zero_jitter_single"]), "single_delta_absolute_difference": abs(single_values["delta_common"] - common_frozen["calibration"]["delta_single"]), "tolerance": 1e-12}
+    common_reproduction["pass"] = all(value <= common_reproduction["tolerance"] for key, value in common_reproduction.items() if key.endswith("difference"))
+    if not common_reproduction["pass"]:
+        raise ValueError("OWIN final evaluator does not reproduce frozen common calibration")
+    output = {"schema_version": 1, "status": "PASS_OWIN_ARM_A_COMPLETE", "evidence_status": "GT_ORACLE_NON_DEPLOYABLE_POST_SELECTION_SINGLE_BENCHMARK", "gpu": {"formal_calls": 6000, "failures": 0, "smoke_success_calls": 36, "failed_smoke_attempts_retained": 36}, "B3": b3, "M1_ccm": m1_values, "single_forward": single_values, "pool_minus_single": {"B3_raw_by_stratum": {stratum: b3["raw"][stratum] - single_values["raw"][stratum] for stratum in STRATA}, "M1_minus_single_raw_by_stratum": {stratum: m1_values["raw"][stratum] - single_values["raw"][stratum] for stratum in STRATA}}, "common_frozen_reproduction": common_reproduction, "small_target_sensitivity_B3": sensitivity, "bootstrap": intervals, "O_I": {"point_gain": gain, "classification": interpretation, "thresholds": {"O_I1": "<0.05", "O_I2": "[0.05,0.10]", "O_I3": ">0.10"}, "uses": "corrected_B3_pool_level_point_using_full_common_delta"}, "factorized_G_N": factorized, "secondary_full_bbox_domains": full_bbox_domains, "dependence": dependence, "dependence_unavailable_units": unreliable, "dependence_limitation_required": bool(unreliable), "constant_shift_limitation_required": True, "arm_b_N_star": arm_b["N_star"], "private_rows": {"path": str(PRIVATE_ROWS_PATH.relative_to(ROOT)), "rows": len(private_rows), "bytes": PRIVATE_ROWS_PATH.stat().st_size, "sha256": sha256_file(PRIVATE_ROWS_PATH), "write_flush_fsync_per_row": True}, "trace_shards": {stratum: {"path": str(SHARD_PATHS[stratum].relative_to(ROOT)), "bytes": SHARD_PATHS[stratum].stat().st_size, "sha256": sha256_file(SHARD_PATHS[stratum])} for stratum in STRATA}}
     atomic_json(OUTPUT_PATH, output)
     print(json.dumps({"status": output["status"], "B3": b3, "M1_ccm": m1_values, "sensitivity": sensitivity, "O_I": output["O_I"], "G_N": {key: value["G_N"] for key, value in factorized.items()}, "dependence_unavailable_units": unreliable}, indent=2))
 
