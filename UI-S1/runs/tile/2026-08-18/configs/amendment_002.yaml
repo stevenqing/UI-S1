@@ -1,0 +1,35 @@
+schema_version: 1
+round: tile
+amendment: '002'
+date: '2026-08-18'
+status: FROZEN_AFTER_FAILED_PREFLIGHT_BEFORE_ANY_TILE_STATISTIC
+failed_preflight:
+  output_written: false
+  tile_statistic_computed: false
+  reason: invalid_C_uni_equals_V_only_B3_assertion
+anchors:
+  folds_mismatch: 0
+  C_uni_B3_correct_rows: 1007
+  V_only_B3_correct_rows: 950
+  B3_disagreement_rows: 143
+  crop_center_covered_rows: 1356
+primary:
+  pool: GTA1_V_only_N12
+  row_label: CWIN_original_b3_correct
+  original_correct_domain: 950
+  uses: [stage0_ledger, N_selection, T_G1, T_P1]
+  M1: GTA1_V_only_N12_fold_local_M1_ccm
+contextual:
+  pool: C_uni_N12
+  row_label: COVER_b3_correct
+  original_correct_domain: 1007
+  mandatory_ledger: true
+damage_domains:
+  - V_only_original_correct_950
+  - C_uni_original_correct_1007
+  - crop_center_covered_1356
+preflight:
+  require_row_and_fold_equality: true
+  require_B3_equality: false
+  record_disagreement_ID_hash: true
+unchanged: [geometry, curves, N_grid, thresholds, controls, stage1_unauthorized]
