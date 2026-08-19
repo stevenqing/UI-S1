@@ -6,6 +6,7 @@ from pathlib import Path
 RUN_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(RUN_DIR))
 import tile_common as common
+import stage0
 
 
 class TileStage0Test(unittest.TestCase):
@@ -28,6 +29,13 @@ class TileStage0Test(unittest.TestCase):
 
     def test_select_n_tie_smaller(self):
         self.assertEqual(common.select_n({4: 0.1, 5: 0.1, 6: 0.0}), 4)
+
+    def test_contextual_summary_uses_prefixed_fields(self):
+        rows = [{"C_uni_expected_repair": 0.2, "C_uni_expected_damage": 0.7, "hard_below_0_5": True}]
+        value = stage0.summarize_rows(rows, "C_uni_")
+        self.assertAlmostEqual(value["expected_repair"], 0.2)
+        self.assertAlmostEqual(value["expected_damage"], 0.7)
+        self.assertAlmostEqual(value["expected_net"], -0.5)
 
 
 if __name__ == "__main__":
