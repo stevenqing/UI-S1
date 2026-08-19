@@ -14,6 +14,7 @@ ALLOCATION_DIR = ROOT / "runs/allocation-law/2026-08-01"
 GTA1_ROOT = ROOT / "runs/ccm-h2h/2026-07-31/h1/shards/top18"
 REGION_PATH = ALLOCATION_DIR / "raw/shared_regions_n12.jsonl"
 COVER_PATH = ROOT / "runs/cover/2026-08-16/raw/arm_a_rows.jsonl"
+CWIN_PATH = ROOT / "runs/cwin/2026-08-17/raw/stage0_rows.jsonl"
 OWIN_RAW_PATH = ROOT / "runs/owin/2026-08-17/raw/arm_b_rows.jsonl"
 PREFLIGHT_PATH = RUN_DIR / "PREFLIGHT.json"
 CONFIG_PATH = RUN_DIR / "configs/tile_prereg.yaml"
@@ -71,6 +72,7 @@ def main():
     manifest = allocation.load_manifest(REGION_PATH)
     gta1 = allocation.load_gta1(GTA1_ROOT, manifest)
     cover = {row["row_id"]: row for row in read_jsonl(COVER_PATH)}
+    cwin = {row["row_id"]: row for row in read_jsonl(CWIN_PATH)}
     layouts = {(row["row_id"], row["N"]): row["tiling"]["rectangles"] for row in read_jsonl(OWIN_RAW_PATH) if row["N"] in N_GRID}
     pairs = []
     areas = {}
@@ -100,9 +102,10 @@ def main():
             values = []
             for row_id in sorted(row_id for row_id in gta1 if cover[row_id]["fold"] == inner_fold):
                 score = score_layout(layouts[(row_id, N)], gta1[row_id]["target_bbox"], areas[row_id], inner_curve)
-                values.append(score["p_hat"] - int(cover[row_id]["b3_correct"]))
-                ledger = ledger_record(score["p_hat"], cover[row_id]["b3_correct"])
-                score_rows.append({"row_id": row_id, "application": cover[row_id]["application"], "outer_fold": outer_fold, "phase": "inner_validation", "N": N, "B3_correct": bool(cover[row_id]["b3_correct"]), "target_stratum": cover[row_id]["target_stratum"], "crop_covered": cover[row_id]["target_coverage_count"] > 0, "tile_rectangles_sha256": __import__("hashlib").sha256(json.dumps(layouts[(row_id, N)], separators=(",", ":")).encode()).hexdigest(), **score, **ledger})
+                values.append(score["p_hat"] - int(cwin[row_id]["original_b3_correct"]))
+                ledger = ledger_record(score["p_hat"], cwin[row_id]["original_b3_correct"])
+                contextual = ledger_record(score["p_hat"], cover[row_id]["b3_correct"])
+                score_rows.append({"row_id": row_id, "application": cover[row_id]["application"], "outer_fold": outer_fold, "phase": "inner_validation", "N": N, "V_only_B3_correct": bool(cwin[row_id]["original_b3_correct"]), "C_uni_B3_correct": bool(cover[row_id]["b3_correct"]), "target_stratum": cover[row_id]["target_stratum"], "crop_covered": cover[row_id]["target_coverage_count"] > 0, "tile_rectangles_sha256": __import__("hashlib").sha256(json.dumps(layouts[(row_id, N)], separators=(",", ":")).encode()).hexdigest(), **score, **ledger, "C_uni_expected_repair": contextual["expected_repair"], "C_uni_expected_damage": contextual["expected_damage"], "C_uni_expected_net": contextual["expected_net"]})
             inner_scores[N] = float(np.mean(values))
         selected_N = select_n(inner_scores)
         development_folds = [fold for fold in range(5) if fold != outer_fold]
@@ -114,8 +117,9 @@ def main():
         for N in N_GRID:
             for row_id in sorted(row_id for row_id in gta1 if cover[row_id]["fold"] == outer_fold):
                 score = score_layout(layouts[(row_id, N)], gta1[row_id]["target_bbox"], areas[row_id], outer_curve)
-                ledger = ledger_record(score["p_hat"], cover[row_id]["b3_correct"])
-                score_rows.append({"row_id": row_id, "application": cover[row_id]["application"], "outer_fold": outer_fold, "phase": "outer_test", "N": N, "selected_policy": N == selected_N, "B3_correct": bool(cover[row_id]["b3_correct"]), "target_stratum": cover[row_id]["target_stratum"], "crop_covered": cover[row_id]["target_coverage_count"] > 0, "tile_rectangles_sha256": __import__("hashlib").sha256(json.dumps(layouts[(row_id, N)], separators=(",", ":")).encode()).hexdigest(), **score, **ledger})
+                ledger = ledger_record(score["p_hat"], cwin[row_id]["original_b3_correct"])
+                contextual = ledger_record(score["p_hat"], cover[row_id]["b3_correct"])
+                score_rows.append({"row_id": row_id, "application": cover[row_id]["application"], "outer_fold": outer_fold, "phase": "outer_test", "N": N, "selected_policy": N == selected_N, "V_only_B3_correct": bool(cwin[row_id]["original_b3_correct"]), "C_uni_B3_correct": bool(cover[row_id]["b3_correct"]), "target_stratum": cover[row_id]["target_stratum"], "crop_covered": cover[row_id]["target_coverage_count"] > 0, "tile_rectangles_sha256": __import__("hashlib").sha256(json.dumps(layouts[(row_id, N)], separators=(",", ":")).encode()).hexdigest(), **score, **ledger, "C_uni_expected_repair": contextual["expected_repair"], "C_uni_expected_damage": contextual["expected_damage"], "C_uni_expected_net": contextual["expected_net"]})
     write_jsonl_fsynced(CURVES_PATH, curve_rows)
     write_jsonl_fsynced(SCORES_PATH, score_rows)
     outer_rows = [row for row in score_rows if row["phase"] == "outer_test"]
@@ -123,10 +127,10 @@ def main():
     bootstrap = {}
     for N in N_GRID:
         current = [row for row in outer_rows if row["N"] == N]
-        fixed[str(N)] = {"full": summarize_rows(current), "original_correct": summarize_rows([row for row in current if row["B3_correct"]]), "crop_covered": summarize_rows([row for row in current if row["crop_covered"]]), "strata": {stratum: summarize_rows([row for row in current if row["target_stratum"] == stratum]) for stratum in ("uncovered_0", "partial_1_10", "common_11")}, "fold_expected_net_pp": {str(fold): 100 * float(np.mean([row["expected_net"] for row in current if row["outer_fold"] == fold])) for fold in range(5)}}
+        fixed[str(N)] = {"full": summarize_rows(current), "V_only_original_correct": summarize_rows([row for row in current if row["V_only_B3_correct"]]), "C_uni_original_correct_contextual": summarize_rows([row for row in current if row["C_uni_B3_correct"]]), "C_uni_contextual_full": {"rows": len(current), "expected_repair": sum(row["C_uni_expected_repair"] for row in current), "expected_damage": sum(row["C_uni_expected_damage"] for row in current), "expected_net": sum(row["C_uni_expected_net"] for row in current), "expected_net_pp": 100 * float(np.mean([row["C_uni_expected_net"] for row in current]))}, "crop_covered": summarize_rows([row for row in current if row["crop_covered"]]), "strata": {stratum: summarize_rows([row for row in current if row["target_stratum"] == stratum]) for stratum in ("uncovered_0", "partial_1_10", "common_11")}, "fold_expected_net_pp": {str(fold): 100 * float(np.mean([row["expected_net"] for row in current if row["outer_fold"] == fold])) for fold in range(5)}}
         bootstrap[str(N)] = grouped_bootstrap(current, ("expected_net", "expected_repair", "expected_damage"), 10000, 20261800 + N)
     selected_rows = [row for row in outer_rows if row["selected_policy"]]
-    selected_summary = {"full": summarize_rows(selected_rows), "original_correct": summarize_rows([row for row in selected_rows if row["B3_correct"]]), "crop_covered": summarize_rows([row for row in selected_rows if row["crop_covered"]]), "strata": {stratum: summarize_rows([row for row in selected_rows if row["target_stratum"] == stratum]) for stratum in ("uncovered_0", "partial_1_10", "common_11")}}
+    selected_summary = {"full": summarize_rows(selected_rows), "V_only_original_correct": summarize_rows([row for row in selected_rows if row["V_only_B3_correct"]]), "C_uni_original_correct_contextual": summarize_rows([row for row in selected_rows if row["C_uni_B3_correct"]]), "C_uni_contextual_full": {"rows": len(selected_rows), "expected_repair": sum(row["C_uni_expected_repair"] for row in selected_rows), "expected_damage": sum(row["C_uni_expected_damage"] for row in selected_rows), "expected_net": sum(row["C_uni_expected_net"] for row in selected_rows), "expected_net_pp": 100 * float(np.mean([row["C_uni_expected_net"] for row in selected_rows]))}, "crop_covered": summarize_rows([row for row in selected_rows if row["crop_covered"]]), "strata": {stratum: summarize_rows([row for row in selected_rows if row["target_stratum"] == stratum]) for stratum in ("uncovered_0", "partial_1_10", "common_11")}}
     repair = selected_summary["full"]["expected_repair"]
     ratio = selected_summary["full"]["expected_damage"] / repair if repair > 0 else None
     t_g1 = all(fixed[str(N)]["full"]["expected_net"] / 1581 < 0.007 for N in N_GRID)
