@@ -1,0 +1,117 @@
+{
+  "GTA1_shards": {
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-0.jsonl": {
+      "bytes": 700237,
+      "sha256": "14900e22f642c6a636b8dbc4240b342ec20c294a57da9e09be228b841c4c8474"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-1.jsonl": {
+      "bytes": 698603,
+      "sha256": "c067003c36bd8cd589c6681bbbd66b27c157f5dbef9b1de46631d804e4fe1d82"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-2.jsonl": {
+      "bytes": 700365,
+      "sha256": "8a2e3bef16377de9925f6058abf2f624b580e0c4b225776d9287426a2416642b"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-3.jsonl": {
+      "bytes": 699547,
+      "sha256": "0365437c0ed572bc7addda8c134d143d7fd3d078c33eb551492219d29ab34656"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-4.jsonl": {
+      "bytes": 699970,
+      "sha256": "c2a662c237059603bea5d0521b05fd7ec619e46064b4a853bf488e2e1aa90fa4"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-5.jsonl": {
+      "bytes": 697345,
+      "sha256": "ba7faad4215d6c6c80a6223da0280333df97c8f9382610f7d5c51aa91d5821f1"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-6.jsonl": {
+      "bytes": 698007,
+      "sha256": "b6bfe0b203ffabce4a6dfc07b864192c13a1cb04bcac12a428f0786efe1979ad"
+    },
+    "runs/ccm-h2h/2026-07-31/h1/shards/top18/shard-7.jsonl": {
+      "bytes": 697218,
+      "sha256": "185ba448275c5870721037fbe966229fca9c68ff3fcf2d66d16ec79f4f0d6f78"
+    }
+  },
+  "OWIN_layouts": {
+    "N_grid": [
+      4,
+      5,
+      6,
+      8,
+      11
+    ],
+    "raw_sha256": "a9ab19d2b9be2c130408ae47d1d56b08b342b37d438c4c124f07cb682323b918",
+    "rows_per_N": 1581
+  },
+  "anchors": {
+    "B3_disagreement_ids_sha256": "de3a50e5d46838ef0615f8fccc7de50764827650711074f49013ebbb9a4a8067",
+    "B3_disagreement_rows": 143,
+    "C_uni_B3_correct_rows": 1007,
+    "V_only_B3_correct_rows": 950,
+    "crop_center_covered_rows": 1356
+  },
+  "dependencies": {
+    "runs/allocation-law/2026-08-01/allocation_eval.py": {
+      "bytes": 15968,
+      "sha256": "eaf05b9c3bca000a38a1b93fed4ddf87fc6aa03b9978053c2a51e73b0112bb9d"
+    },
+    "runs/allocation-law/2026-08-01/raw/shared_regions_n12.jsonl": {
+      "bytes": 1013066,
+      "sha256": "2a7233cf0fbab109ea481ba891d2d7e65a481c48cd73c623d7d76fc61c06ae17"
+    },
+    "runs/cover/2026-08-16/raw/arm_a_rows.jsonl": {
+      "bytes": 871165,
+      "sha256": "c4b11f6650780c028796d69c1691693f2de060e3c99101c29ce05216d9e7dba5"
+    },
+    "runs/cwin/2026-08-17/raw/stage0_rows.jsonl": {
+      "bytes": 714049,
+      "sha256": "7e53c2f194a929337e344da822026a455c5941ec5c0f984adcae83796031cc2f"
+    },
+    "runs/owin/2026-08-17/ARM_B.json": {
+      "bytes": 23533,
+      "sha256": "a9981f603be1a31223c762f6a0974f853c42e2197ea98d3cc1c622effd2c0b2d"
+    },
+    "runs/owin/2026-08-17/raw/arm_b_rows.jsonl": {
+      "bytes": 10137741,
+      "sha256": "a9ab19d2b9be2c130408ae47d1d56b08b342b37d438c4c124f07cb682323b918"
+    },
+    "runs/tile/2026-08-18/AMENDMENT_001_STAGE0_OPERATIONS.md": {
+      "bytes": 3451,
+      "sha256": "05366c415f3045fda92a30eebb12357e1187059de20ae4af3f344b614d88cf86"
+    },
+    "runs/tile/2026-08-18/AMENDMENT_002_BASELINE_RECONCILIATION.md": {
+      "bytes": 2438,
+      "sha256": "701979300cc66889f45a0ac34d3ca941b86cdf55ddfa41b289a45e6eeb82f28a"
+    },
+    "runs/tile/2026-08-18/SPEC.md": {
+      "bytes": 14640,
+      "sha256": "452e86047b271826a225d0ab291932fcf3c0be35fdf22972be9b3d4080281846"
+    },
+    "runs/tile/2026-08-18/configs/amendment_001.yaml": {
+      "bytes": 1372,
+      "sha256": "6cc19058ba64550a214c10f168465197794e61ad1890a5a66714618bd7d2fd15"
+    },
+    "runs/tile/2026-08-18/configs/amendment_002.yaml": {
+      "bytes": 1017,
+      "sha256": "aaa5f8ff81fdadd66b3251b5e5faec57d258e1213f22d59d59f370393453c79d"
+    },
+    "runs/tile/2026-08-18/configs/tile_prereg.yaml": {
+      "bytes": 5472,
+      "sha256": "92066e76e462e77bb89784289dbaebabeea10be8da20f0c2fef9c3070098f442"
+    }
+  },
+  "fold_loads": [
+    314,
+    311,
+    337,
+    306,
+    313
+  ],
+  "gpu_used": false,
+  "rows": 1581,
+  "schema_version": 1,
+  "stage0_computed": false,
+  "stage1_authorized": false,
+  "status": "PASS_TILE_PREFLIGHT_NO_TILE_STATISTIC"
+}
