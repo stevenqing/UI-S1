@@ -1,0 +1,77 @@
+schema_version: 1
+round: tight
+amendment: '001'
+date: '2026-08-18'
+status: FROZEN_BEFORE_ANY_TIGHT_RESULT
+legality:
+  preflight_run: false
+  stage0_run: false
+  gpu_run: false
+  any_tight_statistic_seen: false
+dependency:
+  tile_stage0_currently_available: false
+  required_artifacts: [cross_fitted_small_large_curves, numeric_boundaries, fit_memberships, fallback_flags, hashes]
+  no_substitute_curve: true
+arms:
+  selected_block: maximum_primary_score_tie_earlier_block_rank
+  S:
+    answer: frozen_representative_of_selected_block
+    bounded_by_fixed_output_oracle: true
+  G:
+    answer: parsed_tight_window_output_of_selected_block
+    bounded_by_fixed_output_oracle: false
+    primary: true
+stage0:
+  G_G1_S:
+    quantity: k3_fixed_output_oracle_minus_B3
+    stop_selection_arm_if_strictly_below: 0.007
+    equality: pass
+    stops_generation_arm: false
+  global_automatic_stop: false
+  generation_estimate:
+    source: committed_TILE_fold_local_outer_development_curves
+    tight_eccentricity: sqrt_dx_over_half_width_squared_plus_dy_over_half_height_squared
+    outputs: [G_estimate_rank1, G_estimate_best]
+    selected_block_prediction_prohibited_without_GPU_score: true
+    label: EXTRAPOLATION_LIMITED_TIGHT_VS_TILE_WINDOW_SCALE
+    automatic_gate: false
+    report_scale_ratios: [width, height, area, processor_resize]
+  stage1_choices_after_human_review: [both_S_and_G, G_only_with_S_diagnostic, neither]
+C1_regression:
+  equation: O_equals_axis_intercept_plus_b_o_times_C_minus_W_plus_b_W_times_W
+  coordinates: x_by_image_width_y_by_image_height
+  window_center: achieved_after_boundary_translation
+  shared_coefficients: [b_o, b_W]
+  separate_axis_intercepts: true
+  beta_mapping:
+    beta_c: b_o
+    beta_w: b_W_minus_b_o
+    beta_c_minus_beta_w: two_b_o_minus_b_W
+  pass: lower_99_b_o_positive_and_lower_99_two_b_o_minus_b_W_positive
+  diagnostics: [rank, singular_values, condition_number, covariance, finite_bootstrap_count]
+  axis_diagnostics:
+    models: [x_only, y_only]
+    report: [b_o_x, b_o_y, difference, paired_application_bootstrap_99_CI]
+    gate: false
+endpoints:
+  G_P1_G: Arm_G_minus_B3
+  G_P2_G: Arm_G_minus_M1
+  G_P1_S: Arm_S_minus_B3
+  G_P2_S: Arm_S_minus_M1
+  G_P3: reparameterized_C1_blocking_regression
+  G_P4: separate_S_and_G_damage_domains
+kill_conditions:
+  G_K1_SELECTION_ARM_CLOSED: G_G1_S
+  G_K4: G_P1_G_not_positive
+  G_K4S: G_P1_S_not_positive
+  G_K6: evaluated_separately_for_G_and_S
+  G_K7: damage_gt_repair_separately_for_G_and_S
+unchanged:
+  - global_tight_window_size
+  - k_grid
+  - primary_score
+  - no_threshold
+  - C1_sample_and_directions
+  - C2_control
+  - model_runtime_and_retention
+  - stage1_unauthorized
