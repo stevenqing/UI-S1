@@ -20,6 +20,8 @@ SPEC_PATH = RUN_DIR / "SPEC.md"
 CONFIG_PATH = RUN_DIR / "configs/tile_prereg.yaml"
 AMENDMENT_PATH = RUN_DIR / "AMENDMENT_001_STAGE0_OPERATIONS.md"
 AMENDMENT_CONFIG_PATH = RUN_DIR / "configs/amendment_001.yaml"
+BASELINE_AMENDMENT_PATH = RUN_DIR / "AMENDMENT_002_BASELINE_RECONCILIATION.md"
+BASELINE_AMENDMENT_CONFIG_PATH = RUN_DIR / "configs/amendment_002.yaml"
 OUTPUT_PATH = RUN_DIR / "PREFLIGHT.json"
 
 
@@ -63,7 +65,7 @@ def main():
     selected = [row for row in raw if row["N"] in N_GRID]
     if len({(row["row_id"], row["N"]) for row in selected}) != 1581 * len(N_GRID):
         raise ValueError("TILE OWIN layout identity mismatch")
-    dependencies = [SPEC_PATH, CONFIG_PATH, AMENDMENT_PATH, AMENDMENT_CONFIG_PATH, REGION_PATH, COVER_PATH, CWIN_PATH, OWIN_RESULT_PATH, OWIN_RAW_PATH, ALLOCATION_DIR / "allocation_eval.py"]
+    dependencies = [SPEC_PATH, CONFIG_PATH, AMENDMENT_PATH, AMENDMENT_CONFIG_PATH, BASELINE_AMENDMENT_PATH, BASELINE_AMENDMENT_CONFIG_PATH, REGION_PATH, COVER_PATH, CWIN_PATH, OWIN_RESULT_PATH, OWIN_RAW_PATH, ALLOCATION_DIR / "allocation_eval.py"]
     output = {"schema_version": 1, "status": "PASS_TILE_PREFLIGHT_NO_TILE_STATISTIC", "gpu_used": False, "stage0_computed": False, "stage1_authorized": False, "rows": 1581, "fold_loads": fold_loads, "anchors": {"V_only_B3_correct_rows": 950, "C_uni_B3_correct_rows": 1007, "B3_disagreement_rows": 143, "B3_disagreement_ids_sha256": hashlib.sha256(json.dumps(disagreement_ids, separators=(",", ":")).encode()).hexdigest(), "crop_center_covered_rows": 1356}, "OWIN_layouts": {"N_grid": list(N_GRID), "rows_per_N": 1581, "raw_sha256": sha256_file(OWIN_RAW_PATH)}, "GTA1_shards": {str(path.relative_to(ROOT)): {"bytes": path.stat().st_size, "sha256": sha256_file(path)} for path in sorted(GTA1_ROOT.glob("shard-*.jsonl"))}, "dependencies": {str(path.relative_to(ROOT)): {"bytes": path.stat().st_size, "sha256": sha256_file(path)} for path in dependencies}}
     atomic_json(OUTPUT_PATH, output)
     print(json.dumps(output, indent=2))
