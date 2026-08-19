@@ -1,0 +1,36 @@
+schema_version: 1
+round: tile
+amendment: '001'
+date: '2026-08-18'
+status: FROZEN_BEFORE_ANY_TILE_RESULT
+correctness:
+  single_slot: inclusive_point_inside_target_bbox
+  crop_center_geometry: half_open_rectangle_contains_center
+authoritative:
+  rows_folds_B3: runs/cover/2026-08-16/raw/arm_a_rows.jsonl
+  independent_anchor: runs/cwin/2026-08-17/raw/stage0_rows.jsonl
+  fold_recomputation: allocation_eval_group_folds_on_GTA1_N12
+  require_row_application_fold_B3_exact_equality: true
+  GTA1: allocation_eval_hash_validated_top18
+  layouts: runs/owin/2026-08-17/raw/arm_b_rows.jsonl
+  layout_field: tiling.rectangles
+  layout_reconstruction_during_scoring: prohibited
+outputs:
+  pairs: runs/tile/2026-08-18/raw/eccentricity_pairs.jsonl
+  curves: runs/tile/2026-08-18/raw/fold_curves.jsonl
+  row_scores: runs/tile/2026-08-18/raw/row_scores.jsonl
+  stage0: runs/tile/2026-08-18/STAGE0.json
+  report: runs/tile/2026-08-18/REPORT.md
+  exclusive_create: true
+  jsonl_write_flush_fsync_per_row: true
+bootstrap:
+  resamples: 10000
+  unit: application_group
+  uses_frozen_cross_fitted_row_scores: true
+  refit_curves: false
+  reselect_N: false
+T_G2:
+  ratio: nested_expected_damage_divided_by_expected_repair
+  zero_repair: NA_REVIEW_REQUIRED
+  human_decision_separate_commit_before_stage1: true
+unchanged: [N_grid, curves, ledgers, gates, controls, endpoints, stage1_unauthorized]
